@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD5EF22D-21A7-4698-A9DB-D4442D280F06}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Support.Data</RootNamespace>
+    <AssemblyName>Support.Data.PCL</AssemblyName>
+    <DefaultLanguage>es-ES</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile328</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;PORTABLE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Files\AssemblyInfo.Common.cs">
+      <Link>Properties\AssemblyInfo.Common.cs</Link>
+    </Compile>
+    <Compile Include="..\Files\AssemblyInfo.Platform.cs">
+      <Link>Properties\AssemblyInfo.Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\AutoIncrementAttribute.cs">
+      <Link>Attributes\AutoIncrementAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\CollationAttribute.cs">
+      <Link>Attributes\CollationAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\ColumnAttribute.cs">
+      <Link>Attributes\ColumnAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\IgnoreAttribute.cs">
+      <Link>Attributes\IgnoreAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\IndexedAttribute.cs">
+      <Link>Attributes\IndexedAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\MaxLengthAttribute.cs">
+      <Link>Attributes\MaxLengthAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\NotNullAttribute.cs">
+      <Link>Attributes\NotNullAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\PrimaryKeyAttribute.cs">
+      <Link>Attributes\PrimaryKeyAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\SchemaAttribute.cs">
+      <Link>Attributes\SchemaAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\TableAttribute.cs">
+      <Link>Attributes\TableAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\UniqueAttribute.cs">
+      <Link>Attributes\UniqueAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\ColumnInfo.cs">
+      <Link>ColumnInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\CreateFlags.cs">
+      <Link>CreateFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Engines.cs">
+      <Link>Engines.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\IndexedColumn.cs">
+      <Link>IndexedColumn.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\IndexInfo.cs">
+      <Link>IndexInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Attributes\BuildDateAttribute.cs">
+      <Link>Attributes\BuildDateAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Attributes\ContactAttribute.cs">
+      <Link>Attributes\ContactAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Attributes\DeveloperAttribute.cs">
+      <Link>Attributes\DeveloperAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Attributes\Extensions.cs">
+      <Link>Attributes\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Attributes\ExternalRefAttribute.cs">
+      <Link>Attributes\ExternalRefAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Attributes\IdAttribute.cs">
+      <Link>Attributes\IdAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Attributes\MailAddressAttribute.cs">
+      <Link>Attributes\MailAddressAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Attributes\ProductLevelAttribute.cs">
+      <Link>Attributes\ProductLevelAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Attributes\ThirdPartyAttribute.cs">
+      <Link>Attributes\ThirdPartyAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Attributes\UrlAttribute.cs">
+      <Link>Attributes\UrlAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Extensions.cs">
+      <Link>Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\ProductLevels.cs">
+      <Link>ProductLevels.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
