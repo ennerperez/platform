@@ -52,6 +52,9 @@
     <Compile Include="..\Support.Data\Attributes\ColumnAttribute.cs">
       <Link>Attributes\ColumnAttribute.cs</Link>
     </Compile>
+    <Compile Include="..\Support.Data\Attributes\DefaultAttribute.cs">
+      <Link>Attributes\DefaultAttribute.cs</Link>
+    </Compile>
     <Compile Include="..\Support.Data\Attributes\IgnoreAttribute.cs">
       <Link>Attributes\IgnoreAttribute.cs</Link>
     </Compile>

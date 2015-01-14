@@ -43,39 +43,6 @@
     <Compile Include="..\Files\AssemblyInfo.Platform.cs">
       <Link>Properties\AssemblyInfo.Platform.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Data\Attributes\AutoIncrementAttribute.cs">
-      <Link>Attributes\AutoIncrementAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\CollationAttribute.cs">
-      <Link>Attributes\CollationAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\ColumnAttribute.cs">
-      <Link>Attributes\ColumnAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\IgnoreAttribute.cs">
-      <Link>Attributes\IgnoreAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\IndexedAttribute.cs">
-      <Link>Attributes\IndexedAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\MaxLengthAttribute.cs">
-      <Link>Attributes\MaxLengthAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\NotNullAttribute.cs">
-      <Link>Attributes\NotNullAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\PrimaryKeyAttribute.cs">
-      <Link>Attributes\PrimaryKeyAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\SchemaAttribute.cs">
-      <Link>Attributes\SchemaAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\TableAttribute.cs">
-      <Link>Attributes\TableAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\UniqueAttribute.cs">
-      <Link>Attributes\UniqueAttribute.cs</Link>
-    </Compile>
     <Compile Include="..\Support\Attributes\BuildDateAttribute.cs">
       <Link>Attributes\BuildDateAttribute.cs</Link>
     </Compile>

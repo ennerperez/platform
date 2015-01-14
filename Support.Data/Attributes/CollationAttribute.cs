@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Support.Data.Attributes
 {
@@ -10,9 +7,9 @@ namespace Support.Data.Attributes
     {
         public CollationAttribute(string collation)
         {
-            Value = collation;
+            this.Value = collation;
         }
 
-        public string Value { get; set; }
+        public string Value { get; private set; }
     }
 }

@@ -11,7 +11,7 @@ namespace Support.Data.Attributes
 
         public string Name { get; set; }
 
-        SchemaAttribute(string name)
+        public SchemaAttribute(string name)
         {
             this.Name = name;
         }

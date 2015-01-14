@@ -24,7 +24,7 @@ namespace Support
             }
             return customAttributes[0];
         }
-        
+
         public static String CompanyName()
         {
 
@@ -42,11 +42,13 @@ namespace Support
             return "";
         }
 
+#if (!PORTABLE)
         public static String DirectoryPath()
         {
             System.IO.FileInfo fileinfo = new System.IO.FileInfo(System.Reflection.Assembly.GetEntryAssembly().GetName().FullName);
             return fileinfo.Directory.FullName;
         }
+#endif
 
         #endregion
 

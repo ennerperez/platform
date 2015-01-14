@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Support.Data.Attributes
 {
@@ -11,7 +8,10 @@ namespace Support.Data.Attributes
         public override bool Unique
         {
             get { return true; }
-            set { }
+            set
+            {
+                /* throw?  */
+            }
         }
     }
 }
