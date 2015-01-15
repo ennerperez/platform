@@ -12,7 +12,7 @@ namespace Support.Data
         public const string ImplicitPkName = "Id";
         public const string ImplicitIndexSuffix = "Id";
 
-        public static string SqlDecl(IDbConnection conn, TableMapping.Column p, bool storeDateTimeAsTicks, IDictionary<Type, string> extraTypeMappings)
+        public static string SqlDecl(IDbConnection conn, TableMapping.Column p, bool storeDateTimeAsTicks) //, IDictionary<Type, string> extraTypeMappings)
         {
             string decl = null;
 
@@ -27,7 +27,7 @@ namespace Support.Data
                     break;
             }
 
-            decl += SqlType(conn, p, storeDateTimeAsTicks, extraTypeMappings) + " ";
+            decl += SqlType(conn, p, storeDateTimeAsTicks) + " "; //, extraTypeMappings) + " ";
 
             if (p.IsPK)
                 decl += "PRIMARY KEY ";
@@ -53,7 +53,7 @@ namespace Support.Data
             return decl;
 
         }
-        public static string SqlType(IDbConnection conn, TableMapping.Column p, bool storeDateTimeAsTicks, IDictionary<Type, string> extraTypeMappings)
+        public static string SqlType(IDbConnection conn, TableMapping.Column p, bool storeDateTimeAsTicks) //, IDictionary<Type, string> extraTypeMappings)
         {
             Type clrType = p.ColumnType;
             object interfaces = clrType.GetInterfaces().ToList();

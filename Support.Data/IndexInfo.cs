@@ -5,12 +5,14 @@ using System.Text;
 
 namespace Support.Data
 {
-    public struct IndexInfo
+    public class IndexInfo
     {
         public List<IndexedColumn> Columns { get; set; }
         public string IndexName { get; set; }
         public string SchemaName { get; set; }
         public string TableName { get; set; }
         public bool Unique { get; set; }
+
+        public bool NonClustered { get; set; }
     }
 }

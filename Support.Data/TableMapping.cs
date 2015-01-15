@@ -13,7 +13,7 @@ namespace Support.Data
     {
         private readonly Column _autoPk;
         private Column[] _insertColumns;
-        private PreparedInsertCommand _insertCommand;
+        private IDbCommand _insertCommand;
         private string _insertCommandExtra;
         private Column[] _insertOrReplaceColumns;
 
@@ -36,7 +36,7 @@ namespace Support.Data
             {
                 SchemaName = schemaAttr != null ? Convert.ToString(schemaAttr.ConstructorArguments.FirstOrDefault().Value) : null;
             }
-                        
+
             IEnumerable<PropertyInfo> props = MappedType.GetPublicInstanceProperties();
 
             var cols = new List<Column>();
@@ -89,6 +89,20 @@ namespace Support.Data
         public Type MappedType { get; private set; }
 
         public string TableName { get; private set; }
+
+        public string GetTableName(bool schema = true)
+        {
+            if (!string.IsNullOrEmpty(SchemaName) && schema)
+            {
+                return SchemaName + "." + this.TableName;
+            }
+            else
+            {
+                return this.TableName;
+            }
+
+        }
+        
         public string SchemaName { get; private set; }
 
         public Column[] Columns { get; private set; }
@@ -143,7 +157,7 @@ namespace Support.Data
             return exact;
         }
 
-        public PreparedInsertCommand GetInsertCommand(IDbConnection conn, string extra)
+        public IDbCommand GetInsertCommand(IDbConnection conn, string extra)
         {
             if (_insertCommand == null)
             {
@@ -159,13 +173,13 @@ namespace Support.Data
             return _insertCommand;
         }
 
-        private PreparedInsertCommand CreateInsertCommand(IDbConnection conn, string extra)
+        private IDbCommand CreateInsertCommand(IDbConnection conn, string extra)
         {
             Column[] cols = InsertColumns;
             string insertSql;
             if (!cols.Any() && Columns.Count() == 1 && Columns[0].IsAutoInc)
             {
-                insertSql = string.Format("insert {1} into \"{0}\" default values", TableName, extra);
+                insertSql = string.Format("INSERT {1} INTO {0} DEFAULT VALUES", TableName, extra);
             }
             else
             {
@@ -176,16 +190,17 @@ namespace Support.Data
                     cols = InsertOrReplaceColumns;
                 }
 
-                insertSql = string.Format("insert {3} into \"{0}\"({1}) values ({2})", TableName,
+                insertSql = string.Format("INSERT {3} INTO {0} ({1}) VALUES ({2})", TableName,
                     string.Join(",", (from c in cols
-                                                     select "\"" + c.Name + "\"").ToArray()),
+                                      select "[" + c.Name + "]").ToArray()),
                     string.Join(",", (from c in cols
-                                                     select "?").ToArray()), extra);
+                                      select "@" + c.Name).ToArray()), extra);
             }
 
-            var insertCommand = new PreparedInsertCommand(conn);
-            insertCommand.CommandText = insertSql;
-            return insertCommand;
+            //var insertCommand = new PreparedInsertCommand(conn);
+            //insertCommand.CommandText = insertSql;
+            //return insertCommand;
+            return conn.CreateCommand(insertSql, null);
         }
 
         protected internal void Dispose()
@@ -257,7 +272,7 @@ namespace Support.Data
             public bool IsNullable { get; private set; }
 
             public int? MaxStringLength { get; private set; }
-            public object DefaultValue { get; private set ; }
+            public object DefaultValue { get; private set; }
 
             /// <summary>
             ///     Set column value.

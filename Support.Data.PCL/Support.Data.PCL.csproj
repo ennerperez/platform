@@ -79,6 +79,9 @@
     <Compile Include="..\Support.Data\Attributes\UniqueAttribute.cs">
       <Link>Attributes\UniqueAttribute.cs</Link>
     </Compile>
+    <Compile Include="..\Support.Data\BaseTableQuery.cs">
+      <Link>BaseTableQuery.cs</Link>
+    </Compile>
     <Compile Include="..\Support.Data\ColumnInfo.cs">
       <Link>ColumnInfo.cs</Link>
     </Compile>
@@ -93,6 +96,15 @@
     </Compile>
     <Compile Include="..\Support.Data\IndexInfo.cs">
       <Link>IndexInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Orm.cs">
+      <Link>Orm.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\TableMapping.cs">
+      <Link>TableMapping.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\TableQuery.cs">
+      <Link>TableQuery.cs</Link>
     </Compile>
     <Compile Include="..\Support\Attributes\BuildDateAttribute.cs">
       <Link>Attributes\BuildDateAttribute.cs</Link>
