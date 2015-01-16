@@ -411,28 +411,22 @@ namespace Support.Data
             string decl = null;
             string query = null;
 
+            int count = 0;
+            
             switch (conn.GetEngine())
             {
                 case Engines.SQLite:
                 case Engines.MySql:
                     decl = string.Join(",", decls.ToArray());
-                    query = "CREATE TABLE IF NOT EXISTS '" + map.TableName + "' (" + decl + ")";
+                    query = string.Format("CREATE TABLE IF NOT EXISTS '{0}' ({1});", map.TableName, decl);
+                    conn.Execute(query);
+                    count = conn.ExecuteScalar<int>(String.Format("SELECT COUNT(1) FROM sqlite_master WHERE type='table' AND name='{0}';", map.TableName));
                     break;
                 case Engines.Sql:
                 case Engines.SqlCE:
                     decl = string.Join(",", decls.ToArray());
-                    query = "IF OBJECT_ID('" + map.TableName + "', 'U') IS NULL CREATE TABLE " + map.TableName + " (" + decl + ")";
-                    break;
-                default:
-                    break;
-            }
+                    query = String.Format( "IF OBJECT_ID('{0}', 'U') IS NULL CREATE TABLE {0} ({1})", map.TableName, decl);
 
-            int count = 0;
-
-            switch (conn.GetEngine())
-            {
-                case Engines.Sql:
-                case Engines.SqlCE:
                     if (!string.IsNullOrEmpty(map.SchemaName))
                     {
                         count = conn.CreateSchema(map);
@@ -443,9 +437,9 @@ namespace Support.Data
                     {
                         count += conn.Execute(query);
                     }
+                    
                     break;
                 default:
-                    count = conn.Execute(query);
                     break;
             }
 
@@ -462,7 +456,7 @@ namespace Support.Data
                 foreach (IndexedAttribute i in c.Indices)
                 {
                     string iname = i.Name ?? map.GetTableName(false) + "_" + c.Name;
-                    IndexInfo iinfo = null;
+                    IndexInfo iinfo;
                     if (!indexes.TryGetValue(iname, out iinfo))
                     {
                         iinfo = new IndexInfo
@@ -563,26 +557,33 @@ namespace Support.Data
             }
 
             string columns = null;
+            int count = 0;
 
             switch (conn.GetEngine())
             {
                 case Engines.SQLite:
                 case Engines.MySql:
-                    sqlFormat = "CREATE {2} INDEX IF NOT EXISTS '{3}' ON '{0}'({1})";
+                    sqlFormat = "CREATE {2} INDEX IF NOT EXISTS '{3}' ON '{0}'({1});";
                     columns = string.Join(", ", columnNames.Select(C => string.Format("'{0}'", C)).ToArray());
+                    tsql = string.Format(sqlFormat, tableName, columns, unique ? "UNIQUE" : "", indexName);
+                    conn.Execute(tsql);
+                    count = conn.ExecuteScalar<int>(String.Format("SELECT COUNT(1) FROM sqlite_master WHERE type='index' AND name='{0}';", indexName));
                     break;
                 case Engines.Sql:
+                case Engines.SqlCE:
                     if (!string.IsNullOrEmpty(schemaName))
                         tableName = schemaName + "." + tableName;
                     sqlFormat = "IF NOT EXISTS (SELECT name FROM sys.indexes WHERE name = N'{3}') CREATE {2} " + (nonclustered ? "NONCLUSTERED" : "" + " INDEX {3} ON {0} ({1});");
                     columns = string.Join(", ", columnNames.Select(C => string.Format("[{0}]", C)).ToArray());
+                    tsql = string.Format(sqlFormat, tableName, columns, unique ? "UNIQUE" : "", indexName);
+                    count = conn.Execute(tsql);
                     break;
                 default:
                     throw new NotSupportedException("Operation is not supported in the selected data engine.");
             }
 
-            tsql = string.Format(sqlFormat, tableName, columns, unique ? "UNIQUE" : "", indexName);
-            return conn.Execute(tsql);
+            return count;
+            
         }
 
         /// <summary>
@@ -847,33 +848,34 @@ namespace Support.Data
         }
 
 
-        public static long LastInsertRowid(this IDbConnection conn, TableMapping map)
+        public static object LastInsertRowPK(this IDbConnection conn, TableMapping map)
         {
-            long _return = 0;
+            object _return = 0;
             string _tsql = null;
 
             if (map.HasAutoIncPK)
             {
                 _tsql = string.Format("SELECT MAX({0}) FROM {1}", map.PK.Name, map.TableName);
-                _return = conn.ExecuteScalar<long>(_tsql);
+                _return = conn.ExecuteScalar<object>(_tsql);
+                return Convert.ChangeType(_return, map.PK.ColumnType);
             }
 
             return _return;
         }
 
-        public static long LastInsertRowid(this IDbConnection conn, Type ty)
+        public static object LastInsertRowPK(this IDbConnection conn, Type ty)
         {
-            return conn.LastInsertRowid(conn.GetMapping(ty));
+            return conn.LastInsertRowPK(conn.GetMapping(ty));
         }
 
-        public static long LastInsertRowid<T>(this IDbConnection conn)
+        public static object LastInsertRowPK<T>(this IDbConnection conn)
         {
-            return conn.LastInsertRowid(typeof(T));
+            return conn.LastInsertRowPK(typeof(T));
         }
 
-        public static long LastInsertRowid(this IDbConnection conn)
+        public static object LastInsertRowPK(this IDbConnection conn)
         {
-            long _return;
+            object _return = 0;
 
             string _tsql = null;
             switch (conn.GetEngine())
@@ -891,7 +893,7 @@ namespace Support.Data
                     throw new NotSupportedException("Operation is not supported in the selected data engine.");
             }
 
-            _return = conn.ExecuteScalar<long>(_tsql);
+            _return = conn.ExecuteScalar<object>(_tsql);
 
             return _return;
         }
@@ -1024,7 +1026,7 @@ namespace Support.Data
             cmd.Connection.Open();
             object _return = cmd.ExecuteScalar();
             cmd.Connection.Close();
-            return (T)_return;
+            return (T)_return.CType<T>();
         }
 
         /// <summary>
@@ -1812,7 +1814,7 @@ namespace Support.Data
                 count = insertCmd.ExecuteNonQuery();
                 if (map.HasAutoIncPK)
                 {
-                    long id = conn.LastInsertRowid(map);
+                    var id = conn.LastInsertRowPK(map);
                     map.SetAutoIncPK(obj, id);
                 }
 

@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DD5EF22D-21A7-4698-A9DB-D4442D280F06}</ProjectGuid>
+    <ProjectGuid>{44448EE1-AE0E-4610-A6BE-208EB7FBCFFB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Support.Data</RootNamespace>
-    <AssemblyName>Support.Data.PCL</AssemblyName>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model.PCL</AssemblyName>
     <DefaultLanguage>es-ES</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -43,68 +43,26 @@
     <Compile Include="..\Files\AssemblyInfo.Platform.cs">
       <Link>Properties\AssemblyInfo.Platform.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Data\Attributes\AutoIncrementAttribute.cs">
-      <Link>Attributes\AutoIncrementAttribute.cs</Link>
+    <Compile Include="..\Model\Entities\Entities.cs">
+      <Link>Entities\Entities.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Data\Attributes\CollationAttribute.cs">
-      <Link>Attributes\CollationAttribute.cs</Link>
+    <Compile Include="..\Model\Entities\Entity.cs">
+      <Link>Entities\Entity.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Data\Attributes\ColumnAttribute.cs">
-      <Link>Attributes\ColumnAttribute.cs</Link>
+    <Compile Include="..\Model\Interfaces\IAuditable.cs">
+      <Link>Interfaces\IAuditable.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Data\Attributes\DefaultAttribute.cs">
-      <Link>Attributes\DefaultAttribute.cs</Link>
+    <Compile Include="..\Model\Interfaces\IEntity.cs">
+      <Link>Interfaces\IEntity.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Data\Attributes\IgnoreAttribute.cs">
-      <Link>Attributes\IgnoreAttribute.cs</Link>
+    <Compile Include="..\Model\Interfaces\IRecord.cs">
+      <Link>Interfaces\IRecord.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Data\Attributes\IndexedAttribute.cs">
-      <Link>Attributes\IndexedAttribute.cs</Link>
+    <Compile Include="..\Model\Interfaces\IWarning.cs">
+      <Link>Interfaces\IWarning.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Data\Attributes\MaxLengthAttribute.cs">
-      <Link>Attributes\MaxLengthAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\NotNullAttribute.cs">
-      <Link>Attributes\NotNullAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\PrimaryKeyAttribute.cs">
-      <Link>Attributes\PrimaryKeyAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\SchemaAttribute.cs">
-      <Link>Attributes\SchemaAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\TableAttribute.cs">
-      <Link>Attributes\TableAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Attributes\UniqueAttribute.cs">
-      <Link>Attributes\UniqueAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\BaseTableQuery.cs">
-      <Link>BaseTableQuery.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\ColumnInfo.cs">
-      <Link>ColumnInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\CreateFlags.cs">
-      <Link>CreateFlags.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Engines.cs">
-      <Link>Engines.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\IndexedColumn.cs">
-      <Link>IndexedColumn.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\IndexInfo.cs">
-      <Link>IndexInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Orm.cs">
-      <Link>Orm.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\TableMapping.cs">
-      <Link>TableMapping.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\TableQuery.cs">
-      <Link>TableQuery.cs</Link>
+    <Compile Include="..\Model\Singleton.cs">
+      <Link>Singleton.cs</Link>
     </Compile>
     <Compile Include="..\Support\Attributes\BuildDateAttribute.cs">
       <Link>Attributes\BuildDateAttribute.cs</Link>
@@ -138,9 +96,6 @@
     </Compile>
     <Compile Include="..\Support\Extensions.cs">
       <Link>Extensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\ProductLevels.cs">
-      <Link>ProductLevels.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

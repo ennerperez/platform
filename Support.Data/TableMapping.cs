@@ -27,9 +27,6 @@ namespace Support.Data
             CustomAttributeData tableAttr = _cad.Where(a => object.ReferenceEquals(a.Constructor.DeclaringType, typeof(TableAttribute))).FirstOrDefault();
             CustomAttributeData schemaAttr = _cad.Where(s => object.ReferenceEquals(s.Constructor.DeclaringType, typeof(SchemaAttribute))).FirstOrDefault();
 
-            //Dim tableAttr As CustomAttributeData = Type.GetCustomAttributesData().Where(Function(a) a.GetType Is GetType(TableAttribute)).FirstOrDefault() 'Function(data As CustomAttributeData) data.GetType GetType(TableAttribute))
-            //Dim schemaAttr As CustomAttributeData = Type.GetCustomAttributesData().Where(Function(a) a.GetType Is GetType(SchemaAttribute)).FirstOrDefault()
-
             TableName = tableAttr != null ? Convert.ToString(tableAttr.ConstructorArguments.FirstOrDefault().Value) : MappedType.Name;
 
             if (conn.GetEngine() == Engines.Sql)
@@ -43,8 +40,9 @@ namespace Support.Data
             foreach (PropertyInfo p in props)
             {
                 bool ignore = p.GetCustomAttributes(typeof(IgnoreAttribute), true).Any();
+                bool include = p.GetCustomAttributes(typeof(ColumnAttribute), true).Any();
 
-                if (p.CanWrite && !ignore)
+                if (p.CanWrite && !ignore && include)
                 {
                     cols.Add(new Column(p, createFlags));
                 }
@@ -137,7 +135,7 @@ namespace Support.Data
             }
         }
 
-        public void SetAutoIncPK(object obj, long id)
+        public void SetAutoIncPK(object obj, object id)
         {
             if (_autoPk != null)
             {

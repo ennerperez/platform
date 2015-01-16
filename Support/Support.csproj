@@ -55,12 +55,21 @@
     <Compile Include="Attributes\DeveloperAttribute.cs" />
     <Compile Include="Attributes\ContactAttribute.cs" />
     <Compile Include="Attributes\BuildDateAttribute.cs" />
+    <Compile Include="Collections\Extensions.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Helpers.cs" />
-    <Compile Include="ProductLevels.cs" />
+    <Compile Include="IO\CRC32.cs" />
+    <Compile Include="IO\Extensions.cs" />
+    <Compile Include="IO\Helpers.cs" />
+    <Compile Include="OS\Helpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\Extensions.cs" />
+    <Compile Include="Reflection\IReflectionService.cs" />
     <Compile Include="Reflection\ReflectionService.cs" />
+    <Compile Include="Security\Extensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Diagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

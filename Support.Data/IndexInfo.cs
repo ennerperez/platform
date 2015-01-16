@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Support.Data
 {
-    public class IndexInfo
+    public struct IndexInfo
     {
         public List<IndexedColumn> Columns { get; set; }
         public string IndexName { get; set; }

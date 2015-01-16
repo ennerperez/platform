@@ -13,7 +13,7 @@ namespace Support
     {
         #region Types
 
-        
+
 
 
         #endregion
@@ -60,7 +60,21 @@ namespace Support
 
         public static object CType<T>(this object obj)
         {
-            return (T)obj;
+            if (obj.GetType() == typeof(Int64) && (Int64)obj <= Int32.MaxValue)
+            {
+                return Convert.ToInt32(obj);
+            }
+            else if (obj.GetType() == typeof(Int32) && (Int32)obj <= Int16.MaxValue)
+            {
+                return Convert.ToInt16(obj);
+            }
+            //else if (obj.GetType() == typeof(Int16) && (Int64)obj <= Int32.MaxValue)
+            //{
+            //}
+            else
+            {
+                return (T)obj;
+            }
         }
 
         #endregion
@@ -129,7 +143,7 @@ namespace Support
 #endif
 
         #endregion
-        
+
         #region Strings
 
         /// <summary>Devuelve un valor de tipo Boolean que indica si una expresión puede evaluarse como un número.</summary>

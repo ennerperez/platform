@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Support.Data.Attributes.AutoIncrementAttribute" Collapsed="true">
+    <Position X="1.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\AutoIncrementAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.Attributes.CollationAttribute" Collapsed="true">
+    <Position X="1.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Attributes\CollationAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.Attributes.ColumnAttribute" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\ColumnAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.Attributes.DefaultAttribute" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Attributes\DefaultAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.Attributes.IgnoreAttribute" Collapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\IgnoreAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.Attributes.IndexedAttribute" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAQAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\IndexedAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.Attributes.MaxLengthAttribute" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Attributes\MaxLengthAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.Attributes.NotNullAttribute" Collapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\NotNullAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.Attributes.PrimaryKeyAttribute" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\PrimaryKeyAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.Attributes.SchemaAttribute" Collapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\SchemaAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.Attributes.TableAttribute" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\TableAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.Attributes.UniqueAttribute" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Attributes\UniqueAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.BaseTableQuery" Collapsed="true">
+    <Position X="1.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseTableQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.Extensions" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iAQQEEABEAhAiAbiBBAEQEQQCAWKghgBQYAcoBAACE0=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.Orm" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAECAAAAAAAAAABBgAAAAAAAAAAAwAAAAAAAACAAE=</HashCode>
+      <FileName>Orm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.TableMapping" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAMAAiCgCAUAQgAAAQAAACAAAAgAAAAEACQgAQAA=</HashCode>
+      <FileName>TableMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Support.Data.TableQuery&lt;T&gt;" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EOAAAAAIAICAAVsAIAAARAQABAGIAWA0AgHAQAAAUJA=</HashCode>
+      <FileName>TableQuery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Struct Name="Support.Data.ColumnInfo" Collapsed="true">
+    <Position X="1.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAQAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>ColumnInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Support.Data.IndexedColumn" Collapsed="true">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IndexedColumn.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Support.Data.IndexInfo" Collapsed="true">
+    <Position X="4.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAQAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAQgAQAA=</HashCode>
+      <FileName>IndexInfo.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="Support.Data.CreateFlags" Collapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgQAAAIAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>CreateFlags.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Support.Data.Engines" Collapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAgAAAAQAAAAAACAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engines.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
