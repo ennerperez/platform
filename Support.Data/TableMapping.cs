@@ -13,7 +13,7 @@ namespace Support.Data
     {
         private readonly Column _autoPk;
         private Column[] _insertColumns;
-        private IDbCommand _insertCommand;
+        //private IDbCommand _insertCommand;
         private string _insertCommandExtra;
         private Column[] _insertOrReplaceColumns;
 
@@ -157,18 +157,19 @@ namespace Support.Data
 
         public IDbCommand GetInsertCommand(IDbConnection conn, string extra)
         {
-            if (_insertCommand == null)
-            {
-                _insertCommand = CreateInsertCommand(conn, extra);
-                _insertCommandExtra = extra;
-            }
-            else if (_insertCommandExtra != extra)
-            {
-                _insertCommand.Dispose();
-                _insertCommand = CreateInsertCommand(conn, extra);
-                _insertCommandExtra = extra;
-            }
-            return _insertCommand;
+        //    if (_insertCommand == null)
+        //    {
+        //        _insertCommand = CreateInsertCommand(conn, extra);
+        //        _insertCommandExtra = extra;
+        //    }
+        //    else if (_insertCommandExtra != extra)
+        //    {
+        //        _insertCommand.Dispose();
+        //        _insertCommand = CreateInsertCommand(conn, extra);
+        //        _insertCommandExtra = extra;
+        //    }
+        //    return _insertCommand;
+            return CreateInsertCommand(conn, extra);
         }
 
         private IDbCommand CreateInsertCommand(IDbConnection conn, string extra)
@@ -203,11 +204,11 @@ namespace Support.Data
 
         protected internal void Dispose()
         {
-            if (_insertCommand != null)
-            {
-                _insertCommand.Dispose();
-                _insertCommand = null;
-            }
+            //if (_insertCommand != null)
+            //{
+            //    _insertCommand.Dispose();
+            //    _insertCommand = null;
+            //}
         }
 
         public class Column

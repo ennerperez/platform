@@ -79,7 +79,17 @@ namespace Support.Data
             if (object.ReferenceEquals(clrType, typeof(Byte)) || object.ReferenceEquals(clrType, typeof(UInt16)) || object.ReferenceEquals(clrType, typeof(SByte)) || object.ReferenceEquals(clrType, typeof(Int16)) || object.ReferenceEquals(clrType, typeof(Int32)))
                 return "INTEGER";
             if (object.ReferenceEquals(clrType, typeof(UInt32)) || object.ReferenceEquals(clrType, typeof(Int64)))
-                return "BIGINT";
+
+                if (conn.GetEngine() == Engines.SQLite && p.IsAutoInc)
+                {
+                    return "INTEGER";
+                }
+                else
+                {
+                    return "BIGINT";
+                }
+
+                
             if (object.ReferenceEquals(clrType, typeof(Single)))
                 return "FLOAT";
             if (object.ReferenceEquals(clrType, typeof(String)))

@@ -41,7 +41,8 @@ namespace Support.Data
         private static Assembly _assembly;
         public static Assembly DataEngineAssembly(IDbConnection conn)
         {
-            if (_assembly == null) _assembly = conn.GetAssembly();
+            //if (_assembly == null) 
+            _assembly = conn.GetAssembly();
             return _assembly;
         }
 
@@ -1793,7 +1794,7 @@ namespace Support.Data
                 System.Math.Max(System.Threading.Interlocked.Increment(ref i), i - 1);
             }
 
-            IDbCommand insertCmd = (IDbCommand)map.GetInsertCommand(conn, extra);
+            IDbCommand insertCmd =  (IDbCommand)map.GetInsertCommand(conn, extra);
             foreach (IDbDataParameter Item in _params)
             {
                 if (Item.Value == null)
@@ -2021,6 +2022,20 @@ namespace Support.Data
 
         #endregion
 
+        public static void CopyTo<T>(this IDbConnection conn, IDbConnection target, CreateFlags createFlags = CreateFlags.AllImplicit)
+        {
+            TableMapping map = conn.GetMapping(typeof(T));
+            TableQuery<T> table = new TableQuery<T>(conn);
+
+            target.CreateTable<T>(createFlags);
+            foreach (T item in table)
+            {
+                target.Insert(item);
+            }
+            
+            
+        }
+        
         #region IDbCommand
 
         /// <summary>
