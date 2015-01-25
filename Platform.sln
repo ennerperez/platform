@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.PCL", "Support.PCL\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{64E2131D-CEDC-4D5A-AC73-CE9C0EDB8CAD}"
 	ProjectSection(SolutionItems) = preProject
-		Documents\CHANGELOG.MD = Documents\CHANGELOG.MD
+		Documents\Changes.md = Documents\Changes.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Data", "Support.Data\Support.Data.csproj", "{4AC6FA64-1C7E-4648-BE3F-592DC9567401}"
@@ -31,6 +31,29 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Web", "Support.Web\Support.Web.csproj", "{F3E05D2E-3F45-458C-BD16-A7878B32C4B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Drawing", "Support.Drawing\Support.Drawing.csproj", "{D544E494-3925-4180-A4A8-26801118D527}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{47568DD7-5B96-44AC-9887-17B921C5F2D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{71DCC09B-F9A0-40F7-9A60-F94814774887}"
+	ProjectSection(SolutionItems) = preProject
+		Files\Config.Common.wxi = Files\Config.Common.wxi
+		Files\Config.Platform.wxi = Files\Config.Platform.wxi
+	EndProjectSection
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Setup\Setup.wixproj", "{5D2AC7EF-7F30-4DDF-8F90-D8640B5E6EFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{4A239D50-824B-43EB-9561-FD8B01D535A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Icons", "Icons", "{76B3CEAA-AD6E-47C1-ACBE-05313A4506AE}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\Icons\AppIcon.Platform.ico = Resources\Icons\AppIcon.Platform.ico
+	EndProjectSection
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Bootstrapper", "Bootstrapper\Bootstrapper.wixproj", "{B9AD2AB2-C519-4EF3-B4C6-9934C149CA15}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{E69077EA-E59E-40F2-B83A-B50712C989FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyInfoUtil", "AssemblyInfoUtil\AssemblyInfoUtil.csproj", "{F55D526E-61B1-4474-8B9A-AB2FB1CF62A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +89,14 @@ Global
 		{D544E494-3925-4180-A4A8-26801118D527}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D544E494-3925-4180-A4A8-26801118D527}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D544E494-3925-4180-A4A8-26801118D527}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D2AC7EF-7F30-4DDF-8F90-D8640B5E6EFD}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{5D2AC7EF-7F30-4DDF-8F90-D8640B5E6EFD}.Release|Any CPU.ActiveCfg = Release|x86
+		{B9AD2AB2-C519-4EF3-B4C6-9934C149CA15}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B9AD2AB2-C519-4EF3-B4C6-9934C149CA15}.Release|Any CPU.ActiveCfg = Release|x86
+		{F55D526E-61B1-4474-8B9A-AB2FB1CF62A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F55D526E-61B1-4474-8B9A-AB2FB1CF62A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F55D526E-61B1-4474-8B9A-AB2FB1CF62A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F55D526E-61B1-4474-8B9A-AB2FB1CF62A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,5 +104,10 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{18F0A51D-255E-4845-A724-B676D5FBBFBC} = {EE046FAB-551D-49ED-A2D0-2D648C7732A3}
 		{44448EE1-AE0E-4610-A6BE-208EB7FBCFFB} = {EE046FAB-551D-49ED-A2D0-2D648C7732A3}
+		{71DCC09B-F9A0-40F7-9A60-F94814774887} = {47568DD7-5B96-44AC-9887-17B921C5F2D3}
+		{5D2AC7EF-7F30-4DDF-8F90-D8640B5E6EFD} = {47568DD7-5B96-44AC-9887-17B921C5F2D3}
+		{76B3CEAA-AD6E-47C1-ACBE-05313A4506AE} = {4A239D50-824B-43EB-9561-FD8B01D535A4}
+		{B9AD2AB2-C519-4EF3-B4C6-9934C149CA15} = {47568DD7-5B96-44AC-9887-17B921C5F2D3}
+		{F55D526E-61B1-4474-8B9A-AB2FB1CF62A6} = {E69077EA-E59E-40F2-B83A-B50712C989FB}
 	EndGlobalSection
 EndGlobal

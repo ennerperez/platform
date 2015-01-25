@@ -14,7 +14,7 @@ namespace Support.Data
         private readonly Column _autoPk;
         private Column[] _insertColumns;
         //private IDbCommand _insertCommand;
-        private string _insertCommandExtra;
+        //private string _insertCommandExtra;
         private Column[] _insertOrReplaceColumns;
 
         public TableMapping(System.Data.IDbConnection conn, Type type, CreateFlags createFlags = CreateFlags.None)
