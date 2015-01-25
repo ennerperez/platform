@@ -1,80 +1,69 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Support;
 
-namespace Support.Attributes
+namespace Support
 {
 
-    public static class Extensions
+    public static partial class Extensions
     {
 
-//#if (!PORTABLE)
+        #region AssemblyInfo
 
-//        public static Support.ProductLevel ProductLevel(this global::System.Configuration.ApplicationSettingsBase obj)
-//        {
-//            return System.Reflection.Assembly.GetCallingAssembly().GetCustomAttributes(false).OfType<Support.Attributes.AssemblyProduct.ProductLevelAttribute>().FirstOrDefault().ProductLevel;
-//        }
-//        public static int LevelNumber(this global::System.Configuration.ApplicationSettingsBase obj)
-//        {
-//            return System.Reflection.Assembly.GetCallingAssembly().GetCustomAttributes(false).OfType<Support.Attributes.AssemblyProduct.ProductLevelAttribute>().FirstOrDefault().LevelNumber;
-//        }
+        public static ProductLevels ProductLevel(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.GetAttribute<Attributes.AssemblyProduct.ProductLevelAttribute>(assembly).ProductLevel;
+        }
+        public static int LevelNumber(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.GetAttribute<Attributes.AssemblyProduct.ProductLevelAttribute>(assembly).LevelNumber;
+        }
+        public static DateTime AssemblyDate(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.GetAttribute<Attributes.AssemblyProduct.BuildDateAttribute>(assembly).AssemblyDate;
+        }
 
-//        public static System.DateTime AssemblyDate(this global::System.Configuration.ApplicationSettingsBase obj)
-//        {
-//            return System.Reflection.Assembly.GetCallingAssembly().GetCustomAttributes(false).OfType<Support.Attributes.AssemblyProduct.BuildDateAttribute>().FirstOrDefault().AssemblyDate;
-//        }
+        public static string[] DevelopersNames(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.GetAttributes<Attributes.AssemblyProduct.DeveloperAttribute>(assembly).Select(d => d.DeveloperName).ToArray();
+        }
+        public static string[] ThirdParties(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.GetAttributes<Attributes.AssemblyProduct.ThirdPartyAttribute>(assembly).Select(d => d.ThirdParty + ": " + d.Info).ToArray();
+        }
+#if (!PORTABLE)
+        public static System.Diagnostics.Process[] ExternalReferences(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.GetAttributes<Attributes.AssemblyProduct.ExternalRefAttribute>(assembly).Select(d => new System.Diagnostics.Process() { StartInfo = new System.Diagnostics.ProcessStartInfo(d.FileName, d.Arguments) }).ToArray();
+        }
+#else
+        public static string[][] ExternalReferences(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.GetAttributes<Attributes.AssemblyProduct.ExternalRefAttribute>(assembly).Select(d => new string[] { d.FileName, d.Arguments }).ToArray();
+        }
+#endif
 
-//        public static string CompanyID(this global::System.Configuration.ApplicationSettingsBase obj)
-//        {
-//            Support.Attributes.AssemblyCompany.IdAttribute _return = System.Reflection.Assembly.GetCallingAssembly().GetCustomAttributes(false).OfType<Support.Attributes.AssemblyCompany.IdAttribute>().FirstOrDefault();
-//            if (_return != null)
-//            {
-//                return _return.CompanyID;
-//            }
-//            else
-//            {
-//                return null;
-//            }
-//        }
-//        public static System.Net.Mail.MailAddress[] CompanyEmails(this global::System.Configuration.ApplicationSettingsBase obj)
-//        {
-//            return System.Reflection.Assembly.GetCallingAssembly().GetCustomAttributes(false).OfType<Support.Attributes.AssemblyCompany.MailAttribute>().Select(e => e.CompanyEmail).ToArray();
-//        }
-//        public static Uri CompanyUrl(this global::System.Configuration.ApplicationSettingsBase obj)
-//        {
-//            return System.Reflection.Assembly.GetCallingAssembly().GetCustomAttributes(false).OfType<Support.Attributes.AssemblyCompany.UrlAttribute>().FirstOrDefault().CompanyUrl;
-//        }
-//        public static string[] CompanyPhones(this global::System.Configuration.ApplicationSettingsBase obj)
-//        {
-//            return System.Reflection.Assembly.GetCallingAssembly().GetCustomAttributes(false).OfType<Support.Attributes.AssemblyCompany.ContactAttribute>().Where(w => w.Contact[0] == "number").Select(p => p.Contact[1]).ToArray();
-//        }
-//        public static string[] CompanyContacts(this global::System.Configuration.ApplicationSettingsBase obj)
-//        {
-//            return System.Reflection.Assembly.GetCallingAssembly().GetCustomAttributes(false).OfType<Support.Attributes.AssemblyCompany.ContactAttribute>().Select(c => String.Join(",", c.Contact)).ToArray();
-//        }
-//        public static string[] ThirdParty(this global::System.Configuration.ApplicationSettingsBase obj)
-//        {
-//            return System.Reflection.Assembly.GetCallingAssembly().GetCustomAttributes(false).OfType<Support.Attributes.AssemblyProduct.ThirdPartyAttribute>().Select(c => String.Join(",", new string[] { c.ThirdParty, c.Info })).ToArray();
-//        }
-//        public static string[] Developers(this global::System.Configuration.ApplicationSettingsBase obj)
-//        {
-//            return System.Reflection.Assembly.GetCallingAssembly().GetCustomAttributes(false).OfType<Support.Attributes.AssemblyProduct.DeveloperAttribute>().Select(c => String.Join(",", new string[] { c.DeveloperName, c.AditionalInfo })).ToArray();
-//        }
+        public static string CompanyID(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.GetAttribute<Attributes.AssemblyCompany.IdAttribute>(assembly).CompanyID;
+        }
+        public static string[][] Contacts(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.GetAttributes<Attributes.AssemblyCompany.ContactAttribute>(assembly).Select(d => d.Contact).ToArray();
+        }
+#if (!PORTABLE)
+        public static System.Net.Mail.MailAddress[] CompanyEmail(this System.Reflection.Assembly assembly)
+#else
+        public static String[] CompanyEmail(this System.Reflection.Assembly assembly)
+#endif
+        {
+            return Helpers.GetAttributes<Attributes.AssemblyCompany.MailAttribute>(assembly).Select(d => d.CompanyEmail).ToArray();
+        }
+        public static Uri CompanyURL(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.GetAttribute<Attributes.AssemblyCompany.UrlAttribute>(assembly).CompanyUrl;
+        }
 
-//        public static Support.Attributes.AssemblyProduct.ExternalRefAttribute[] Externals(this global::System.Configuration.ApplicationSettingsBase obj)
-//        {
-//            return System.Reflection.Assembly.GetCallingAssembly().GetCustomAttributes(false).OfType<Support.Attributes.AssemblyProduct.ExternalRefAttribute>().ToArray();
-//        }
-//        public static Support.Attributes.AssemblyProduct.ExternalRefAttribute Externals(this global::System.Configuration.ApplicationSettingsBase obj, string key)
-//        {
-//            return System.Reflection.Assembly.GetCallingAssembly().GetCustomAttributes(false).OfType<Support.Attributes.AssemblyProduct.ExternalRefAttribute>().FirstOrDefault(k => k.Description == key);
-//        }
-               
-
-//#endif
+        #endregion
 
     }
-
 }

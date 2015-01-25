@@ -64,6 +64,7 @@
     <Compile Include="IndexInfo.cs" />
     <Compile Include="CreateFlags.cs" />
     <Compile Include="Engines.cs" />
+    <Compile Include="Operations.cs" />
     <Compile Include="Orm.cs" />
     <Compile Include="PreparedInsertCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Support.Data.Attributes;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Reflection;
-using Support;
-using System.Diagnostics;
-using Support.Data.Attributes;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading;
-using System.Collections;
 
 namespace Support.Data
 {
@@ -774,7 +771,7 @@ namespace Support.Data
                 }
                 else
                 {
-                    _params.Add(conn.CreateParameter(prefix + i + 1, args[i]));
+                    _params.Add(conn.CreateParameter(prefix + (i + 1), args[i].Value()));
                 }
             }
             return _params.ToArray();
@@ -935,7 +932,7 @@ namespace Support.Data
             try
             {
 #endif
-                cmd.Prepare();
+            cmd.Prepare();
 #if DEBUG
             }
             catch (Exception ex)
@@ -943,7 +940,7 @@ namespace Support.Data
                 Console.WriteLine(string.Format("{0} -- {1}", query, ex.Message));
             }
 #endif
-                int _return = 0;
+            int _return = 0;
 #if DEBUG
             try
             {
@@ -1895,7 +1892,7 @@ namespace Support.Data
             ps.Add(pk.GetValue(obj));
             string q = string.Format("UPDATE {0} SET {1} WHERE {2} = {3} ",
                                         map.TableName,
-                                        string.Join(",", (from c in cols select "[" + c.Name + "] = @" + c.Name).ToArray()),
+                                        string.Join(",", (from c in cols select "[" + c.Name + "] = @param" + (cols.ToList().IndexOf(c) + 1)).ToArray()),
                                         pk.Name, pk.GetValue(obj));
             try
             {
@@ -2079,7 +2076,7 @@ namespace Support.Data
                         try
                         {
 #endif
-                            Item.SetValue(obj, val);
+                        Item.SetValue(obj, val);
 #if DEBUG
                         }
                         catch (Exception ex)
@@ -2143,6 +2140,16 @@ namespace Support.Data
         }
 
         #endregion
+
+        private static object Value(this object obj)
+        {
+            if (obj != null && (obj.GetType() == typeof(System.DateTime)))
+            {
+                if ((System.DateTime)obj < new System.DateTime(1753, 1, 1)) { obj = null; }
+            }
+
+            return obj;
+        }
 
     }
 }

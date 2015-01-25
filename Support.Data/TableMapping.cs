@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Support.Data.Attributes;
+using Support.Reflection;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using Support.Data.Attributes;
-using System.Data;
-using Support.Reflection;
 
 namespace Support.Data
 {
@@ -100,7 +99,7 @@ namespace Support.Data
             }
 
         }
-        
+
         public string SchemaName { get; private set; }
 
         public Column[] Columns { get; private set; }
@@ -157,18 +156,18 @@ namespace Support.Data
 
         public IDbCommand GetInsertCommand(IDbConnection conn, string extra)
         {
-        //    if (_insertCommand == null)
-        //    {
-        //        _insertCommand = CreateInsertCommand(conn, extra);
-        //        _insertCommandExtra = extra;
-        //    }
-        //    else if (_insertCommandExtra != extra)
-        //    {
-        //        _insertCommand.Dispose();
-        //        _insertCommand = CreateInsertCommand(conn, extra);
-        //        _insertCommandExtra = extra;
-        //    }
-        //    return _insertCommand;
+            //    if (_insertCommand == null)
+            //    {
+            //        _insertCommand = CreateInsertCommand(conn, extra);
+            //        _insertCommandExtra = extra;
+            //    }
+            //    else if (_insertCommandExtra != extra)
+            //    {
+            //        _insertCommand.Dispose();
+            //        _insertCommand = CreateInsertCommand(conn, extra);
+            //        _insertCommandExtra = extra;
+            //    }
+            //    return _insertCommand;
             return CreateInsertCommand(conn, extra);
         }
 
@@ -288,50 +287,50 @@ namespace Support.Data
                 try
                 {
 #endif
-                    if (propType.IsGenericType && propType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                if (propType.IsGenericType && propType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                {
+                    Type[] typeCol = propType.GetGenericArguments();
+                    if (typeCol.Length > 0)
                     {
-                        Type[] typeCol = propType.GetGenericArguments();
-                        if (typeCol.Length > 0)
+                        Type nullableType = typeCol[0];
+                        if (object.ReferenceEquals(nullableType.BaseType, typeof(Enum)))
                         {
-                            Type nullableType = typeCol[0];
-                            if (object.ReferenceEquals(nullableType.BaseType, typeof(Enum)))
-                            {
-                                object result = val == null ? null : Enum.Parse(nullableType, val.ToString(), false);
-                                _prop.SetValue(obj, result, null);
-                            }
-                            else
-                            {
-                                _prop.SetValue(obj, val, null);
-                            }
+                            object result = val == null ? null : Enum.Parse(nullableType, val.ToString(), false);
+                            _prop.SetValue(obj, result, null);
+                        }
+                        else
+                        {
+                            _prop.SetValue(obj, val, null);
                         }
                     }
-                    else if (propType.IsEnum)
+                }
+                else if (propType.IsEnum)
+                {
+                    _prop.SetValue(obj, Enum.Parse(propType, val.ToString()), null);
+                }
+                else if (val == null || val.GetType() == typeof(System.DBNull))
+                {
+                    _prop.SetValue(obj, null, null);
+                }
+                else if (object.ReferenceEquals(propType, typeof(Int32)) & object.ReferenceEquals(val.GetType(), typeof(Int64)))
+                {
+                    if (Convert.ToInt32(val) <= Int32.MaxValue)
                     {
-                        _prop.SetValue(obj, Enum.Parse(propType, val.ToString()), null);
+                        _prop.SetValue(obj, Convert.ToInt32(val), null);
                     }
-                    else if (val == null)
-                    {
-                        _prop.SetValue(obj, null, null);
-                    }
-                    else if (object.ReferenceEquals(propType, typeof(Int32)) & object.ReferenceEquals(val.GetType(), typeof(Int64)))
-                    {
-                        if (Convert.ToInt32(val) <= Int32.MaxValue)
-                        {
-                            _prop.SetValue(obj, Convert.ToInt32(val), null);
-                        }
-                    }
-                    else
-                    {
-                        if (object.ReferenceEquals(propType, typeof(bool)))
-                            val = Convert.ToInt32(val) == 1;
-                        if (object.ReferenceEquals(propType, typeof(int)))
-                            val = Convert.ToInt32(val);
-                        if (object.ReferenceEquals(val.GetType(), typeof(byte[])))
-                            val = BitConverter.ToInt64((byte[])val, 0);
-                        if (object.ReferenceEquals(propType, typeof(TimeSpan)))
-                            val = TimeSpan.Parse(val.ToString());
-                        _prop.SetValue(obj, val, null);
-                    }
+                }
+                else
+                {
+                    if (object.ReferenceEquals(propType, typeof(bool)))
+                        val = Convert.ToInt32(val) == 1;
+                    if (object.ReferenceEquals(propType, typeof(int)))
+                        val = Convert.ToInt32(val);
+                    if (object.ReferenceEquals(val.GetType(), typeof(byte[])))
+                        val = BitConverter.ToInt64((byte[])val, 0);
+                    if (object.ReferenceEquals(propType, typeof(TimeSpan)))
+                        val = TimeSpan.Parse(val.ToString());
+                    _prop.SetValue(obj, val, null);
+                }
 
 #if DEBUG
                 }
@@ -344,7 +343,13 @@ namespace Support.Data
 
             public object GetValue(object obj)
             {
-                return _prop.GetValue(obj, null);
+                var _return = _prop.GetValue(obj, null);
+                if (_return != null && (_return.GetType() == typeof(System.DateTime)))
+                {
+                    if ((System.DateTime)_return < new System.DateTime(1753, 1, 1)) { _return = null; }
+                }
+
+                return _return;
             }
         }
     }

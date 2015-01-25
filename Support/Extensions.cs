@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security;
-using System.Text;
-using System.Threading;
 
 namespace Support
 {
-    public static class Extensions
+    public static partial class Extensions
     {
+
         #region Types
 
 
@@ -18,63 +12,78 @@ namespace Support
 
         #endregion
 
+        #region AssemblyInfo
+
+        public static T GetAttribute<T>(this System.Reflection.Assembly assembly) where T : System.Attribute
+        {
+            return Helpers.GetAttribute<T>(assembly);
+        }
+
+        public static object GetAttribute(this System.Reflection.Assembly assembly, Type AttributeType)
+        {
+            return Helpers.GetAttribute(AttributeType, assembly);
+        }
+
+        public static String Title(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.Title(assembly);
+        }
+        public static String Description(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.Description(assembly);
+        }
+        public static String Company(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.Company(assembly);
+        }
+        public static String Product(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.Product(assembly);
+        }
+        public static String Copyright(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.Copyright(assembly);
+        }
+        public static String Trademark(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.Trademark(assembly);
+        }
+        public static Version Version(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.Version(assembly);
+        }
+        public static Version FileVersion(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.FileVersion(assembly);
+        }
+
+#if (!PORTABLE)
+        public static Guid GUID(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.GUID(assembly);
+        }
+        public static String DirectoryPath(this System.Reflection.Assembly assembly)
+        {
+            return Helpers.DirectoryPath(assembly);
+        }
+#endif
+
+        #endregion
+
         #region Objects
 
         public static object IsNull(this object value, object replacement = null)
         {
-            if (value == null)
-            {
-                return replacement;
-            }
-            else
-            {
-                return value;
-            }
+            return Helpers.IsNull(value, replacement);
         }
-        public static object IsNull<T>(this object value, object replacement = null)
+        public static object IsNull<T>(this T value, object replacement = null)
         {
-            if (value == null)
-            {
-                if (replacement == null)
-                {
-                    if (typeof(T) == typeof(System.String))
-                    { return ""; }
-                    if (typeof(T) == typeof(System.Int16) || typeof(T) == typeof(System.Int32) || typeof(T) == typeof(System.Int64) ||
-                        typeof(T) == typeof(System.UInt16) || typeof(T) == typeof(System.UInt32) || typeof(T) == typeof(System.UInt64))
-                    { return 0; }
-                    if (typeof(T) == typeof(System.Decimal) || typeof(T) == typeof(System.Double))
-                    { return 0.0; }
-
-                    return null;
-                }
-                else
-                {
-                    return replacement;
-                }
-            }
-            else
-            {
-                return value;
-            }
+            return Helpers.IsNull<T>(value, replacement);
         }
 
         public static object CType<T>(this object obj)
         {
-            if (obj.GetType() == typeof(Int64) && (Int64)obj <= Int32.MaxValue)
-            {
-                return Convert.ToInt32(obj);
-            }
-            else if (obj.GetType() == typeof(Int32) && (Int32)obj <= Int16.MaxValue)
-            {
-                return Convert.ToInt16(obj);
-            }
-            //else if (obj.GetType() == typeof(Int16) && (Int64)obj <= Int32.MaxValue)
-            //{
-            //}
-            else
-            {
-                return (T)obj;
-            }
+            return Helpers.CType<T>(obj);
         }
 
         #endregion
@@ -96,17 +105,7 @@ namespace Support
         /// <returns>Human readable string for enum element</returns>
         public static string GetDescription(this System.Enum value)
         {
-            // Get information on the enum element
-            System.Reflection.FieldInfo fi = value.GetType().GetField(value.ToString());
-            // Get description for elum element
-            System.ComponentModel.DescriptionAttribute[] attributes = (System.ComponentModel.DescriptionAttribute[])fi.GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), false);
-            if (attributes.Length > 0)
-            {
-                // DescriptionAttribute exists - return that
-                return attributes.FirstOrDefault().Description;
-            }
-            // No Description set - return enum element name
-            return value.ToString();
+            return Helpers.GetDescription(value);
         }
 
         /// <summary>
@@ -124,20 +123,7 @@ namespace Support
         /// <returns>Enum element</returns>
         public static T ValueOf<T>(this string description)
         {
-            Type enumType = typeof(T);
-            string[] names = System.Enum.GetNames(enumType);
-
-            foreach (string name in names)
-            {
-                if (GetDescription((System.Enum)System.Enum.Parse(enumType, name, true)).Equals(description, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    // Found it!
-                    return (T)System.Enum.Parse(enumType, name, true);
-                }
-
-            }
-            // No such description in this enum
-            throw new ArgumentException("The string is not a description or value of the specified enum.");
+            return Helpers.ValueOf<T>(description);
         }
 
 #endif
@@ -153,52 +139,12 @@ namespace Support
         /// <remarks>http://aspalliance.com/80_Benchmarking_IsNumeric_Options.all"/></remarks>
         public static bool IsNumeric(this string expression)
         {
-            bool hasDecimal = false;
-            for (int i = 0; i < expression.Length; i++)
-            {
-                // Check for decimal
-                if (expression[i] == '.')
-                {
-                    if (hasDecimal) // 2nd decimal
-                        return false;
-                    else // 1st decimal
-                    {
-                        // inform loop decimal found and continue 
-                        hasDecimal = true;
-                        continue;
-                    }
-                }
-                // check if number
-                if (!char.IsNumber(expression[i]))
-                    return false;
-            }
-            return true;
+            return Helpers.IsNumeric(expression);
         }
 
         public static string ToSentence(this string obj, bool capitalize = false)
         {
-            if (capitalize)
-            {
-                List<string> _return = new List<string>();
-                foreach (string Item in obj.Split(' '))
-                {
-                    _return.Add(Item.ToSentence());
-                }
-                return String.Join(" ", _return);
-            }
-            else
-            {
-                return obj.Substring(0, 1).ToUpper() + obj.Substring(1).ToLower();
-            }
-        }
-
-        #endregion
-
-        #region Dates
-
-        public static string ISO8601(System.DateTime date)
-        {
-            return string.Format("{0:yyyy-MM-dd HH:mm:ss}", date);
+            return Helpers.ToSentence(obj, capitalize);
         }
 
         #endregion

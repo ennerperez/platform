@@ -63,6 +63,33 @@ namespace Model
 
         #endregion
 
+        #region Operators
+
+         public static bool operator ==(Entity<T> var1 ,Entity<T> var2 )
+         {
+             return var1.Id.Equals(var2.Id);
+         }
+         public static bool  operator !=(Entity<T> var1, Entity<T> var2)
+         {
+             return !var1.Id.Equals(var2.Id);
+         }
+
+         public override bool Equals(Object obj)
+         {
+             // Check for null values and compare run-time types.
+             if (obj == null || GetType() != obj.GetType()) return false;
+
+             Entity<T> p = (Entity<T>)obj;
+             return (this.Id.Equals(p.Id));
+         }
+         public override int GetHashCode()
+         {
+             return this.Id.GetHashCode();
+         }
+
+
+        #endregion
+
         public event EventHandler<EventArgs> Changed;
         public void OnChanged(EventArgs e)
         {

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading;
 
 namespace Model
@@ -30,6 +29,7 @@ namespace Model
                 return instance;
             }
         }
+
     }
 
     /// <summary>
@@ -125,6 +125,30 @@ namespace Model
         {
             get { return _instance.Value; }
         }
+
+        public static T GetInstance()
+        {
+            return GetInstance(new object[] { });
+        }
+        public static T GetInstance(IEnumerable<object> args)
+        {
+            // Get non-public constructors for T.
+#if (!PORTABLE)
+            var ctor = typeof(T).GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null, Type.EmptyTypes, null);
+#else
+            var ctor = typeof(T).GetConstructor(new Type[] { typeof(T) });
+#endif
+
+            // If we can't find the right type of constructor, throw an exception.
+            if (ctor == null)
+            {
+                throw new ConstructorNotFoundException("Non-public ctor() note found.");
+            }
+
+            // Invoke constructor and return resulting object.
+            return ctor.Invoke(args.ToArray()) as T;
+        }
+
     }
 
     /// <summary>

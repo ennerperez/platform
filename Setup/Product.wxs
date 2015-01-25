@@ -97,10 +97,10 @@
       <File Id="SUPPORT.DRAWING.DLL" Name="Support.Drawing.dll" Source="$(var.SolutionDir)Support.Drawing\bin\$(var.Configuration)\Support.Drawing.dll" Checksum="yes"/>
       <!--<File Id="SUPPORT.NET.DLL" Name="Support.Net.dll" Source="$(var.SolutionDir)Support.Net\bin\$(var.Configuration)\Support.Net.dll" Checksum="yes" />-->
       <File Id="SUPPORT.WEB.DLL" Name="Support.Web.dll" Source="$(var.SolutionDir)Support.Web\bin\$(var.Configuration)\Support.Web.dll" Checksum="yes" />
-      <!--<File Id="SUPPORT.WINDOWS.DLL" Name="Support.Windows.dll" Source="$(var.SolutionDir)Support.Windows\bin\$(var.Configuration)\Support.Windows.dll" Checksum="yes" />-->
+      <File Id="SUPPORT.WINDOWS.DLL" Name="Support.Windows.dll" Source="$(var.SolutionDir)Support.Windows\bin\$(var.Configuration)\Support.Windows.dll" Checksum="yes" />
       <File Id="MODEL.DLL" Name="Model.dll" Source="$(var.SolutionDir)Model\bin\$(var.Configuration)\Model.dll" />
       <!--<File Id="MODEL.SPS.DLL" Name="Model.SPS.dll" Source="$(var.SolutionDir)Model.SPS\bin\$(var.Configuration)\Model.SPS.dll" />-->
-      <!--<File Id="PRESENTATION.WINDOWS.FORMS.DLL" Name="Presentation.Windows.Forms.dll" Source="$(var.SolutionDir)Presentation.Windows.Forms\bin\$(var.Configuration)\Presentation.Windows.Forms.dll" Checksum="yes" />-->
+      <File Id="PRESENTATION.WINDOWS.FORMS.DLL" Name="Presentation.Windows.Forms.dll" Source="$(var.SolutionDir)Presentation.Windows.Forms\bin\$(var.Configuration)\Presentation.Windows.Forms.dll" Checksum="yes" />
       <!--<File Id="SERVICES.SOCIALS.DLL" Name="Services.Socials.dll" Source="$(var.SolutionDir)Services.Socials\Bin\$(var.Configuration)\Services.Socials.dll" Vital="yes" Checksum="yes" />
       <File Id="SERVICES.WEATHER.DLL" Name="Services.Weather.dll" Source="$(var.SolutionDir)Services.Weather\Bin\$(var.Configuration)\Services.Weather.dll" Vital="yes" Checksum="yes" />
       <File Id="SERVICES.TAXES.DLL" Name="Services.Taxes.dll" Source="$(var.SolutionDir)Services.Taxes\Bin\$(var.Configuration)\Services.Taxes.dll" Vital="yes" Checksum="yes" />-->
@@ -118,11 +118,11 @@
       <File Id="SUPPORT.DRAWING.PDB" Name="Support.Drawing.pdb" Source="$(var.SolutionDir)Support.Drawing\bin\$(var.Configuration)\Support.Drawing.pdb" Checksum="yes"/>
       <!--<File Id="SUPPORT.NET.PDB" Name="Support.Net.pdb" Source="$(var.SolutionDir)Support.Net\bin\$(var.Configuration)\Support.Net.pdb" Checksum="yes" />-->
       <File Id="SUPPORT.WEB.PDB" Name="Support.Web.pdb" Source="$(var.SolutionDir)Support.Web\bin\$(var.Configuration)\Support.Web.pdb" Checksum="yes" />
-      <!--<File Id="SUPPORT.WINDOWS.PDB" Name="Support.Windows.pdb" Source="$(var.SolutionDir)Support.Windows\bin\$(var.Configuration)\Support.Windows.pdb" Checksum="yes" />-->
+      <File Id="SUPPORT.WINDOWS.PDB" Name="Support.Windows.pdb" Source="$(var.SolutionDir)Support.Windows\bin\$(var.Configuration)\Support.Windows.pdb" Checksum="yes" />
       <File Id="MODEL.PDB" Name="Model.pdb" Source="$(var.SolutionDir)Model\bin\$(var.Configuration)\Model.pdb" />
-      <!--<File Id="MODEL.SPS.PDB" Name="Model.SPS.pdb" Source="$(var.SolutionDir)Model.SPS\bin\$(var.Configuration)\Model.SPS.pdb" />
+      <!--<File Id="MODEL.SPS.PDB" Name="Model.SPS.pdb" Source="$(var.SolutionDir)Model.SPS\bin\$(var.Configuration)\Model.SPS.pdb" />-->
       <File Id="PRESENTATION.WINDOWS.FORMS.PDB" Name="Presentation.Windows.Forms.pdb" Source="$(var.SolutionDir)Presentation.Windows.Forms\bin\$(var.Configuration)\Presentation.Windows.Forms.pdb" Checksum="yes" />
-      <File Id="SERVICES.SOCIALS.PDB" Name="Services.Socials.pdb" Source="$(var.SolutionDir)Services.Socials\Bin\$(var.Configuration)\Services.Socials.pdb" Vital="yes" Checksum="yes" />
+      <!--<File Id="SERVICES.SOCIALS.PDB" Name="Services.Socials.pdb" Source="$(var.SolutionDir)Services.Socials\Bin\$(var.Configuration)\Services.Socials.pdb" Vital="yes" Checksum="yes" />
       <File Id="SERVICES.WEATHER.PDB" Name="Services.Weather.pdb" Source="$(var.SolutionDir)Services.Weather\Bin\$(var.Configuration)\Services.Weather.pdb" Vital="yes" Checksum="yes" />
       <File Id="SERVICES.TAXES.PDB" Name="Services.Taxes.pdb" Source="$(var.SolutionDir)Services.Taxes\Bin\$(var.Configuration)\Services.Taxes.pdb" Vital="yes" Checksum="yes" />-->
     </Component>

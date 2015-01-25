@@ -67,7 +67,10 @@
     <Compile Include="Reflection\Extensions.cs" />
     <Compile Include="Reflection\IReflectionService.cs" />
     <Compile Include="Reflection\ReflectionService.cs" />
+    <Compile Include="Security\Cryptography\Extensions.cs" />
+    <Compile Include="Security\Cryptography\Helpers.cs" />
     <Compile Include="Security\Extensions.cs" />
+    <Compile Include="Security\Helpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagram.cd" />
