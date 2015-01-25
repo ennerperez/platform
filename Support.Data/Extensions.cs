@@ -413,7 +413,7 @@ namespace Support.Data
             string query = null;
 
             int count = 0;
-            
+
             switch (conn.GetEngine())
             {
                 case Engines.SQLite:
@@ -426,7 +426,7 @@ namespace Support.Data
                 case Engines.Sql:
                 case Engines.SqlCE:
                     decl = string.Join(",", decls.ToArray());
-                    query = String.Format( "IF OBJECT_ID('{0}', 'U') IS NULL CREATE TABLE {0} ({1})", map.TableName, decl);
+                    query = String.Format("IF OBJECT_ID('{0}', 'U') IS NULL CREATE TABLE {0} ({1})", map.TableName, decl);
 
                     if (!string.IsNullOrEmpty(map.SchemaName))
                     {
@@ -438,7 +438,7 @@ namespace Support.Data
                     {
                         count += conn.Execute(query);
                     }
-                    
+
                     break;
                 default:
                     break;
@@ -584,7 +584,7 @@ namespace Support.Data
             }
 
             return count;
-            
+
         }
 
         /// <summary>
@@ -931,23 +931,24 @@ namespace Support.Data
 #endif
             //cmd.Connection.TryOpen();
             cmd.Connection.Open();
+#if DEBUG
             try
             {
+#endif
                 cmd.Prepare();
 #if DEBUG
             }
             catch (Exception ex)
             {
                 Console.WriteLine(string.Format("{0} -- {1}", query, ex.Message));
-#endif
             }
-
-            int _return = 0;
-#if DEBUG
 #endif
+                int _return = 0;
+#if DEBUG
             try
             {
-                _return = cmd.ExecuteNonQuery();
+#endif
+            _return = cmd.ExecuteNonQuery();
 #if DEBUG
             }
             catch (Exception ex)
@@ -957,7 +958,6 @@ namespace Support.Data
 #endif
             //cmd.Connection.TryClose();
             cmd.Connection.Close();
-
 #if DEBUG
             if (TimeExecution)
             {
@@ -1794,7 +1794,7 @@ namespace Support.Data
                 System.Math.Max(System.Threading.Interlocked.Increment(ref i), i - 1);
             }
 
-            IDbCommand insertCmd =  (IDbCommand)map.GetInsertCommand(conn, extra);
+            IDbCommand insertCmd = (IDbCommand)map.GetInsertCommand(conn, extra);
             foreach (IDbDataParameter Item in _params)
             {
                 if (Item.Value == null)
@@ -2032,10 +2032,10 @@ namespace Support.Data
             {
                 target.Insert(item);
             }
-            
-            
+
+
         }
-        
+
         #region IDbCommand
 
         /// <summary>
@@ -2075,26 +2075,27 @@ namespace Support.Data
                     {
                         Type colType = Item.ColumnType;
                         object val = reader[Item.Name];
+#if DEBUG
                         try
                         {
+#endif
                             Item.SetValue(obj, val);
 #if DEBUG
                         }
                         catch (Exception ex)
                         {
                             Console.WriteLine(ex.Message);
-#endif
                         }
+#endif
                     }
                     //OnInstanceCreated(obj)
                     _return.Add(obj);
 
                 }
-
-#if DEBUG
             }
             catch (Exception ex)
             {
+#if DEBUG
                 Console.WriteLine(ex.Message);
 #endif
                 throw ex;
