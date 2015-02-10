@@ -40,6 +40,10 @@ namespace Support.Drawing
         {
             return Helpers.GetDominantColor(@this);
         }
+        public static System.Drawing.Color[] GetPalette(this System.Drawing.Image @this)
+        {
+            return Helpers.GetPalette(@this);
+        }
 
         public static bool DrawAdjustedImage(this System.Drawing.Image @this, System.Drawing.Imaging.ColorMatrix cm)
         {
@@ -93,6 +97,21 @@ namespace Support.Drawing
         public static int GetLuminosity(this System.Drawing.Color @this)
         {
             return Helpers.GetLuminosity(@this);
+        }
+
+        public static System.Drawing.Color ChangeColorBrightness(this System.Drawing.Color @this, float correctionFactor)
+        {
+            return Helpers.ChangeColorBrightness(@this, correctionFactor);
+        }
+
+        public static System.Drawing.Color LightenBy(this System.Drawing.Color @this, int percent)
+        {
+            return Helpers.LightenBy(@this, percent);
+        }
+
+        public static System.Drawing.Color DarkenBy(this System.Drawing.Color @this, int percent)
+        {
+            return Helpers.DarkenBy(@this, percent);
         }
 
         #endregion

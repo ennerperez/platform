@@ -15,4 +15,9 @@
 [assembly: AssemblyVersion("3.0.0.0")]
 [assembly: AssemblyFileVersion("3.0.0.0")]
 
+#if !CORE
+[assembly: Support.Core.Attributes.AssemblyProduct.ProductLevel(Support.Core.ProductLevels.RTW, 1)]    
+#else
 [assembly: Support.Attributes.AssemblyProduct.ProductLevel(Support.ProductLevels.RTW, 1)]
+#endif
+

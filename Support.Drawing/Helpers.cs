@@ -116,6 +116,47 @@ namespace Support.Drawing
             return ((num * 240) + 0xff) / 510;
         }
 
+        /// <summary>
+        /// Creates color with corrected brightness.
+        /// </summary>
+        /// <param name="color">Color to correct.</param>
+        /// <param name="correctionFactor">The brightness correction factor. Must be between -1 and 1. 
+        /// Negative values produce darker colors.</param>
+        /// <returns>
+        /// Corrected <see cref="Color"/> structure.
+        /// </returns>
+        public static System.Drawing.Color ChangeColorBrightness(System.Drawing.Color color, float correctionFactor)
+        {
+            float red = (float)color.R;
+            float green = (float)color.G;
+            float blue = (float)color.B;
+
+            if (correctionFactor < 0)
+            {
+                correctionFactor = 1 + correctionFactor;
+                red *= correctionFactor;
+                green *= correctionFactor;
+                blue *= correctionFactor;
+            }
+            else
+            {
+                red = (255 - red) * correctionFactor + red;
+                green = (255 - green) * correctionFactor + green;
+                blue = (255 - blue) * correctionFactor + blue;
+            }
+
+            return System.Drawing.Color.FromArgb(color.A, (int)red, (int)green, (int)blue);
+        }
+
+        public static System.Drawing.Color LightenBy(System.Drawing.Color color, int percent)
+        {
+            return ChangeColorBrightness(color, (float)(percent / 100.0));
+        }
+        public static System.Drawing.Color DarkenBy(System.Drawing.Color color, int percent)
+        {
+            return ChangeColorBrightness(color, (float)(-1 * percent / 100.0));
+        }
+
         #endregion
 
         #region Image
@@ -235,6 +276,28 @@ namespace Support.Drawing
             b /= total;
 
             return System.Drawing.Color.FromArgb(r, g, b);
+        }
+        public static System.Drawing.Color[] GetPalette(System.Drawing.Image image)
+        {
+
+            System.Collections.Generic.List<System.Drawing.Color> colors;
+            using (var b = new System.Drawing.Bitmap(image))
+            {
+                var bd = b.LockBits(new System.Drawing.Rectangle(0, 0, b.Width, b.Height), System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+                byte[] arr = new byte[bd.Width * bd.Height * 3];
+                colors = new System.Collections.Generic.List<System.Drawing.Color>();
+                System.Runtime.InteropServices.Marshal.Copy(bd.Scan0, arr, 0, arr.Length);
+                b.UnlockBits(bd);
+
+                for (int i = 0; i < ((bd.Width * bd.Height)); i++)
+                {
+                    var start = i * 3;
+                    colors.Add(System.Drawing.Color.FromArgb(arr[start], arr[start + 1], arr[start + 2]));
+                }
+            }
+
+            return colors.ToArray();
+
         }
 
         public static bool DrawAdjustedImage(System.Drawing.Image img, System.Drawing.Imaging.ColorMatrix cm)

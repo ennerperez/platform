@@ -3,24 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Support.Attributes.AssemblyCompany
+namespace Support
+{
+#if !CORE
+    namespace Core
     {
+#endif
 
-        [AttributeUsage(AttributeTargets.Assembly)]
-        public class IdAttribute : global::System.Attribute
+        namespace Attributes.AssemblyCompany
         {
-            
-            private string companyid;
 
-            public IdAttribute(string id)
+            [AttributeUsage(AttributeTargets.Assembly)]
+            public class IdAttribute : global::System.Attribute
             {
-                this.companyid = id;
+
+                private string companyid;
+
+                public IdAttribute(string id)
+                {
+                    this.companyid = id;
+                }
+
+                public virtual string CompanyID
+                {
+                    get { return this.companyid; }
+                }
             }
 
-            public virtual string CompanyID
-            {
-                get { return this.companyid; }
-            }
         }
 
+#if !CORE
     }
+#endif
+
+}

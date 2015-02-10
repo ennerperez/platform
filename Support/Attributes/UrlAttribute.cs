@@ -3,27 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Support.Attributes.AssemblyCompany
+namespace Support
+{
+#if !CORE
+    namespace Core
     {
-
-        [AttributeUsage(AttributeTargets.Assembly)]
-        public class UrlAttribute : global::System.Attribute
+#endif
+        namespace Attributes.AssemblyCompany
         {
-            
-            private Uri url;
-            public UrlAttribute(Uri url)
+
+            [AttributeUsage(AttributeTargets.Assembly)]
+            public class UrlAttribute : global::System.Attribute
             {
-                this.url = url;
-            }
-            public UrlAttribute(string url)
-            {
-                this.url = new Uri(url);
+
+                private Uri url;
+                public UrlAttribute(Uri url)
+                {
+                    this.url = url;
+                }
+                public UrlAttribute(string url)
+                {
+                    this.url = new Uri(url);
+                }
+
+                public virtual Uri CompanyUrl
+                {
+                    get { return this.url; }
+                }
             }
 
-            public virtual Uri CompanyUrl
-            {
-                get { return this.url; }
-            }
         }
 
+#if !CORE
     }
+#endif
+
+}

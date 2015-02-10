@@ -4,53 +4,61 @@ using System.Linq;
 using System.Text;
 
 namespace Support
-{ 
-
-    namespace Attributes.AssemblyProduct
+{
+#if !CORE
+    namespace Core
     {
+#endif
 
-        [AttributeUsage(AttributeTargets.Assembly)]
-        public class ProductLevelAttribute : global::System.Attribute
+        namespace Attributes.AssemblyProduct
         {
 
-            private ProductLevels productlevel;
-            private int levelnumber;
-
-            public ProductLevelAttribute(ProductLevels level, int number = 1)
+            [AttributeUsage(AttributeTargets.Assembly)]
+            public class ProductLevelAttribute : global::System.Attribute
             {
-                productlevel = level;
-                levelnumber = number;
-            }
 
-            public virtual ProductLevels ProductLevel
-            {
-                get { return this.productlevel; }
-            }
+                private ProductLevels productlevel;
+                private int levelnumber;
 
-            public virtual int LevelNumber
-            {
-                get { return this.levelnumber; }
+                public ProductLevelAttribute(ProductLevels level, int number = 1)
+                {
+                    productlevel = level;
+                    levelnumber = number;
+                }
+
+                public virtual ProductLevels ProductLevel
+                {
+                    get { return this.productlevel; }
+                }
+
+                public virtual int LevelNumber
+                {
+                    get { return this.levelnumber; }
+                }
+
             }
 
         }
 
-    }
+        /// <summary>
+        /// Product type levels
+        /// </summary>
+        /// <remarks></remarks>
+        public enum ProductLevels
+        {
+            Milestone = -3,
+            Alpha = -2,
+            Beta = -1,
+            Preview = -1,
+            RC = 0,
+            Release = 1,
+            RTM = 1,
+            RTW = 1,
+            GA = 1
+        }
 
-    /// <summary>
-    /// Product type levels
-    /// </summary>
-    /// <remarks></remarks>
-    public enum ProductLevels
-    {
-        Milestone = -3,
-        Alpha = -2,
-        Beta = -1,
-        Preview = -1,
-        RC = 0,
-        Release = 1,
-        RTM = 1,
-        RTW = 1,
-        GA = 1
+#if !CORE
     }
+#endif
 
 }

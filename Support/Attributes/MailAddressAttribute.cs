@@ -1,11 +1,18 @@
 ﻿using System;
 
-namespace Support.Attributes.AssemblyCompany
+namespace Support
+{
+#if !CORE
+    namespace Core
     {
+#endif
 
-        [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
-        public class MailAttribute : global::System.Attribute
+        namespace Attributes.AssemblyCompany
         {
+
+            [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
+            public class MailAttribute : global::System.Attribute
+            {
 
 #if (!PORTABLE)
 
@@ -28,20 +35,26 @@ namespace Support.Attributes.AssemblyCompany
 
 #else
 
-            private string email;
+                private string email;
 
-            public MailAttribute(string email)
-            {
-                this.email = email;
-            }
+                public MailAttribute(string email)
+                {
+                    this.email = email;
+                }
 
-            public virtual string CompanyEmail
-            {
-                get { return this.email; }
-            }
+                public virtual string CompanyEmail
+                {
+                    get { return this.email; }
+                }
 
 
 #endif
 
+            }
         }
+
+
+#if !CORE
     }
+#endif
+}

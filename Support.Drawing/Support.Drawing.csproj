@@ -48,7 +48,9 @@
     </Compile>
     <Compile Include="Extentions.cs" />
     <Compile Include="Helpers.cs" />
+    <Compile Include="HSLColor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Swatch.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Support\Support.csproj">
