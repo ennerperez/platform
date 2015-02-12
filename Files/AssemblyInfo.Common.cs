@@ -8,7 +8,7 @@
 [assembly: AssemblyCopyright("© Enner Pérez. Todos los derechos reservados, 2015")]
 [assembly: AssemblyTrademark("Enner Pérez")]
 
-#if !CORE
+#if CORE
 [assembly: Support.Attributes.AssemblyCompany.Id("18384909")]
 [assembly: Support.Attributes.AssemblyCompany.Contact("Twitter", "@ennerperez")]
 [assembly: Support.Attributes.AssemblyCompany.Contact("04146328236")]
@@ -29,7 +29,7 @@
 [assembly: AssemblyCopyright("© Argument C.A. Todos los derechos reservados, 2015")]
 [assembly: AssemblyTrademark("© Argument C.A.")]
 
-#if !CORE
+#if !CORE && PORTABLE
 [assembly: Support.Core.Attributes.AssemblyCompany.Id("J-18384909-0")]
 #else
 [assembly: Support.Attributes.AssemblyCompany.Id("J-18384909-0")]
