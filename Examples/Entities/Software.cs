@@ -20,7 +20,7 @@ namespace Examples.Entities
 
         [Column("name")]
         public string Name { get; set; }
-
+                
         [Ignore]
         public IEnumerable<Versions> Versions { get; set; }
 

@@ -28,6 +28,10 @@ namespace Examples.Entities
         [Column("version")]
         public string Version { get; set; }
 
+        [Column("release")]
+        public DateTime Release { get; set; }
+
+
         public override void Save()
         {
             if (this.Software != 0)

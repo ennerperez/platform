@@ -21,14 +21,18 @@ namespace Examples
 
         static void Main(string[] args)
         {
+
+#if !PORTABLE
+            System.Data.SqlClient.SqlConnectionStringBuilder csb = new System.Data.SqlClient.SqlConnectionStringBuilder();
+            csb.DataSource = "(localdb)\\CAP";
+            csb.InitialCatalog = "software";
+
+            Connection = new System.Data.SqlClient.SqlConnection(csb.ConnectionString);
+#else
             System.Data.SQLite.SQLiteConnectionStringBuilder csb = new System.Data.SQLite.SQLiteConnectionStringBuilder();
             csb.DataSource = "database.db";
 
             if (System.IO.File.Exists(csb.DataSource)) System.IO.File.Delete(csb.DataSource);
-
-#if !PORTABLE
-            Connection = new System.Data.SQLite.SQLiteConnection(csb.ConnectionString);
-#else
             Connection = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.Win32.SQLitePlatformWin32(), csb.DataSource);
 #endif
 
@@ -37,11 +41,11 @@ namespace Examples
 
             Entities.Software VisualStudio = new Entities.Software() { Name = "Visual Studio" };
             VisualStudio.Versions = new List<Entities.Versions>();
-            (VisualStudio.Versions as List<Entities.Versions>).Add(new Entities.Versions() { Name = "2005", Version = "8" });
-            (VisualStudio.Versions as List<Entities.Versions>).Add(new Entities.Versions() { Name = "2008", Version = "9" });
-            (VisualStudio.Versions as List<Entities.Versions>).Add(new Entities.Versions() { Name = "2010", Version = "10" });
-            (VisualStudio.Versions as List<Entities.Versions>).Add(new Entities.Versions() { Name = "2012", Version = "11" });
-            (VisualStudio.Versions as List<Entities.Versions>).Add(new Entities.Versions() { Name = "2013", Version = "12" });
+            (VisualStudio.Versions as List<Entities.Versions>).Add(new Entities.Versions() { Name = "2005", Release = new DateTime(2004, 1, 1), Version = "8" });
+            (VisualStudio.Versions as List<Entities.Versions>).Add(new Entities.Versions() { Name = "2008", Release = new DateTime(2007, 1, 1), Version = "9" });
+            (VisualStudio.Versions as List<Entities.Versions>).Add(new Entities.Versions() { Name = "2010", Release = new DateTime(2010, 1, 1), Version = "10" });
+            (VisualStudio.Versions as List<Entities.Versions>).Add(new Entities.Versions() { Name = "2012", Release = new DateTime(2011, 1, 1), Version = "11" });
+            (VisualStudio.Versions as List<Entities.Versions>).Add(new Entities.Versions() { Name = "2013", Release = new DateTime(2013, 1, 1), Version = "12" });
 
             VisualStudio.Save();
 

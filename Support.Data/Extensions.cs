@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -152,6 +153,7 @@ namespace Support.Data
             typeMap[typeof(Guid)] = DbType.Guid;
             typeMap[typeof(DateTime)] = DbType.DateTime;
             typeMap[typeof(DateTimeOffset)] = DbType.DateTimeOffset;
+            typeMap[typeof(TimeSpan)] = DbType.Time;
             typeMap[typeof(byte[])] = DbType.Binary;
             typeMap[typeof(System.Nullable<byte>)] = DbType.Byte;
             typeMap[typeof(System.Nullable<sbyte>)] = DbType.SByte;
@@ -169,6 +171,7 @@ namespace Support.Data
             typeMap[typeof(System.Nullable<Guid>)] = DbType.Guid;
             typeMap[typeof(System.Nullable<DateTime>)] = DbType.DateTime;
             typeMap[typeof(System.Nullable<DateTimeOffset>)] = DbType.DateTimeOffset;
+            typeMap[typeof(System.Nullable<TimeSpan>)] = DbType.Time;
             //typeMap(GetType(System.Data.Linq.Binary)) = DbType.Binary
 
             if (typeMap.ContainsKey(typ))
@@ -1787,6 +1790,10 @@ namespace Support.Data
             while (i < vals.Length)
             {
                 vals[i] = cols[i].GetValue(obj);
+                //if (vals[i].GetType() == typeof(DateTime))
+                //{
+                //    vals[i] = DateTime.Parse(vals[i].ToString()).ToLongDateString();
+                //}
                 _params.Add(conn.CreateParameter(cols[i].Name, vals[i]));
                 System.Math.Max(System.Threading.Interlocked.Increment(ref i), i - 1);
             }
