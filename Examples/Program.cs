@@ -36,6 +36,9 @@ namespace Examples
             Connection = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.Win32.SQLitePlatformWin32(), csb.DataSource);
 #endif
 
+            Connection.DropDatabase();
+            Connection.CreateDatabase();
+
             Connection.CreateTable<Entities.Software>(CreateFlags.AllImplicit);
             Connection.CreateTable<Entities.Versions>(CreateFlags.AllImplicit);
 

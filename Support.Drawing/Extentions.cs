@@ -6,6 +6,12 @@ namespace Support.Drawing
     {
 
         #region Image
+        
+        public static void FromFile(this System.Drawing.Image @this, string filename, bool safe = true)
+        {
+            //_BackgroundWorker.RunWorkerAsync({this, uri.ToString})
+            @this = Helpers.FromFile(filename, safe);
+        }
 
         public static void FromURI(this System.Drawing.Image @this, Uri uri)
         {

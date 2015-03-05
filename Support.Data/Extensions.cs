@@ -60,6 +60,7 @@ namespace Support.Data
                     return "System.Data.OleDb";
             }
         }
+
         internal static object CreateObject(this IDbConnection conn, string type, object[] args = null)
         {
             Type _type;
@@ -303,6 +304,48 @@ namespace Support.Data
             return conn.DropSchema(typeof(T));
         }
 
+        /// <summary>
+        ///     Executes a "drop database" on the server.  This is non-recoverable.
+        /// </summary>
+        public static int DropDatabase(this IDbConnection conn)
+        {
+            string _tsql = null;
+            System.Data.Common.DbConnectionStringBuilder csb;
+
+            switch (conn.GetEngine())
+            {
+                case Engines.SQLite:
+                    csb = (System.Data.Common.DbConnectionStringBuilder)conn.CreateObject("SQLiteConnectionStringBuilder", new object[] { conn.ConnectionString });
+                    if (csb.ContainsKey("Data Source"))
+                    {
+                        object file;
+                        csb.TryGetValue("Data Source", out file);
+                        if (file != null && !System.IO.File.Exists(file.ToString()))
+                        {
+                            if (conn.State != ConnectionState.Closed) conn.Close();
+                            System.IO.File.Delete(file.ToString());
+                        }
+                    }
+                    break;
+                case Engines.MySql:
+                    _tsql = String.Format("DROP DATABASE IF EXISTS {0}", conn.Database);
+                    break;
+                case Engines.Sql:
+                    csb = (System.Data.Common.DbConnectionStringBuilder)conn.CreateObject("SqlConnectionStringBuilder", new object[] { conn.ConnectionString });
+                    if (csb.ContainsKey("Initial Catalog")) csb.Remove("Initial Catalog");
+                    csb.Add("Initial Catalog", "master");
+                    string database = conn.Database;
+                    conn = (IDbConnection)conn.CreateObject("SqlConnection", new object[] { csb.ToString() });
+
+                    _tsql = "IF  EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'{0}') DROP DATABASE {0} ";
+                    _tsql = string.Format(_tsql, database);
+
+                    break;
+                default:
+                    throw new NotSupportedException("Operation is not supported in the selected data engine.");
+            }
+            return conn.Execute(_tsql);
+        }
 
         /// <summary>
         ///     Executes a "drop table" on the database.  This is non-recoverable.
@@ -394,6 +437,60 @@ namespace Support.Data
             return conn.CreateSchema(typeof(T));
         }
 
+        /// <summary>
+        ///     Executes a "create database if not exists" on the server.
+        /// </summary>
+        /// <returns>
+        ///     The number of databases added to the database.
+        /// </returns>
+        public static int CreateDatabase(this IDbConnection conn)
+        {
+            string _tsql = null;
+            System.Data.Common.DbConnectionStringBuilder csb;
+
+            switch (conn.GetEngine())
+            {
+                case Engines.SQLite:
+                    csb = (System.Data.Common.DbConnectionStringBuilder)conn.CreateObject("SQLiteConnectionStringBuilder", new object[] { conn.ConnectionString });
+                    if (csb.ContainsKey("Data Source"))
+                    {
+                        object file;
+                        csb.TryGetValue("Data Source", out file);
+                        if (file != null && !System.IO.File.Exists(file.ToString()))
+                        {
+                            conn.Open();
+                            conn.Close();
+                        }
+                    }
+                    break;
+                case Engines.MySql:
+                    _tsql = String.Format("CREATE DATABASE IF NOT EXISTS {0}", conn.Database);
+                    break;
+                case Engines.Sql:
+                    csb = (System.Data.Common.DbConnectionStringBuilder)conn.CreateObject("SqlConnectionStringBuilder", new object[] { conn.ConnectionString });
+                    if (csb.ContainsKey("Initial Catalog")) csb.Remove("Initial Catalog");
+                    csb.Add("Initial Catalog", "master");
+                    string database = conn.Database;
+                    conn = (IDbConnection)conn.CreateObject("SqlConnection", new object[] { csb.ToString() });
+
+                    string datapath = conn.ExecuteScalar<String>("SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1) FROM master.sys.master_files WHERE database_id = 1 AND file_id = 1");
+
+                    _tsql = "IF  NOT EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'{0}') " +
+                        "CREATE DATABASE {0} ON PRIMARY " +
+                        "(NAME = {0}, " +
+                        "FILENAME = '{1}{0}.mdf', " +
+                        "SIZE = 4096KB, FILEGROWTH = 10%) " +
+                        "LOG ON (NAME = {0}_log, " +
+                        "FILENAME = '{1}{0}_log.ldf', " +
+                        "SIZE = 1024KB, FILEGROWTH = 10%)";
+                    _tsql = string.Format(_tsql, database, datapath);
+
+                    break;
+                default:
+                    throw new NotSupportedException("Operation is not supported in the selected data engine.");
+            }
+            return conn.Execute(_tsql);
+        }
 
         /// <summary>
         ///     Executes a "create table if not exists" on the database. It also
@@ -736,6 +833,14 @@ namespace Support.Data
                 if (object.ReferenceEquals(value.GetType(), typeof(string)))
                 {
                     _return.Size = value.ToString().Length;
+                }
+                else if (object.ReferenceEquals(value.GetType(), typeof(decimal)) || object.ReferenceEquals(value.GetType(), typeof(double)))
+                {
+                    //_return.Precision = value.ToString().Split(new string[] { System.Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalSeparator }, StringSplitOptions.None).Last().Length;
+                    //if (_return.Precision == 0) _return.Precision = System.Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalDigits;
+                    _return.Precision = 18;
+                    _return.Scale = 8;
+
                 }
                 else
                 {
@@ -2145,6 +2250,7 @@ namespace Support.Data
         {
             return ExecuteDeferredQuery<T>(cmd, map).ToList();
         }
+
 
         #endregion
 

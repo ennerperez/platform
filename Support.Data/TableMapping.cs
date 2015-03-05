@@ -16,7 +16,7 @@ namespace Support.Data
         //private string _insertCommandExtra;
         private Column[] _insertOrReplaceColumns;
 
-        public TableMapping(System.Data.IDbConnection conn, Type type, CreateFlags createFlags = CreateFlags.None)
+        public TableMapping(System.Data.IDbConnection conn, Type type, CreateFlags createFlags = CreateFlags.None, BindingFlags bindinFlags = BindingFlags.Public)
         {
 
             MappedType = type;
@@ -33,8 +33,24 @@ namespace Support.Data
                 SchemaName = schemaAttr != null ? Convert.ToString(schemaAttr.ConstructorArguments.FirstOrDefault().Value) : null;
             }
 
-            IEnumerable<PropertyInfo> props = MappedType.GetPublicInstanceProperties();
+            IEnumerable<PropertyInfo> props;
 
+            switch (bindinFlags)
+            {
+                case BindingFlags.Default:
+                    props = MappedType.GetInstanceProperties();
+                    break;
+                case BindingFlags.NonPublic:
+                    props = MappedType.GetNonPublicInstanceProperties();
+                    break;
+                case BindingFlags.Static:
+                    props = MappedType.GetStaticInstanceProperties();
+                    break;
+                default:
+                    props = MappedType.GetPublicInstanceProperties();                    
+                    break;
+            }
+            
             var cols = new List<Column>();
             foreach (PropertyInfo p in props)
             {
@@ -343,10 +359,16 @@ namespace Support.Data
 
             public object GetValue(object obj)
             {
+                Type propType = _prop.PropertyType;
                 var _return = _prop.GetValue(obj, null);
                 if (_return != null && (_return.GetType() == typeof(System.DateTime)))
                 {
                     if ((System.DateTime)_return < new System.DateTime(1753, 1, 1)) { _return = null; }
+                }
+                else if (propType.IsEnum)
+                {
+                    _return = Convert.ChangeType(_return, Enum.GetUnderlyingType(propType));
+                    //_return = Int32.Parse( ( Enum.Parse(propType, _return.ToString()));
                 }
 
                 return _return;

@@ -12,7 +12,19 @@ namespace Support.Reflection
     {
         public IEnumerable<PropertyInfo> GetPublicInstanceProperties(Type mappedType)
         {
-            return mappedType.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetProperty);
+            return mappedType.GetProperties(  BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetProperty);
+        }
+        public IEnumerable<PropertyInfo> GetNonPublicInstanceProperties(Type mappedType)
+        {
+            return mappedType.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty);
+        }
+        public IEnumerable<PropertyInfo> GetStaticInstanceProperties(Type mappedType)
+        {
+            return mappedType.GetProperties(BindingFlags.Static | BindingFlags.Instance | BindingFlags.SetProperty);
+        }
+        public IEnumerable<PropertyInfo> GetInstanceProperties(Type mappedType)
+        {
+            return mappedType.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty);
         }
 
         public object GetMemberValue(object obj, Expression expr, MemberInfo member)

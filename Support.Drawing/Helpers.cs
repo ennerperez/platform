@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Support.Drawing
 {
@@ -160,6 +161,69 @@ namespace Support.Drawing
         #endregion
 
         #region Image
+
+
+        //public static System.Drawing.Image FromFile( string filename, bool safe = false)
+        //{
+        //    if (safe)
+        //    {
+
+        //        using (var sourceImage = System.Drawing.Image.FromFile(filename))
+        //        {
+        //            var targetImage = new System.Drawing.Bitmap(sourceImage.Width, sourceImage.Height,
+        //              System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+        //            using (var canvas = System.Drawing.Graphics.FromImage(targetImage))
+        //            {
+        //                canvas.DrawImageUnscaled(sourceImage, 0, 0);
+        //            }
+        //            return targetImage;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return System.Drawing.Image.FromFile(filename);
+        //    }
+        //}
+
+        [DllImport("Kernel32.dll", EntryPoint = "CopyMemory")]
+        private extern static void CopyMemory(IntPtr dest, IntPtr src, uint length);
+
+        public static System.Drawing.Image FromFile(string filename, bool safe = true)
+        {
+            if (safe)
+            {
+
+                using (var sourceImage = (System.Drawing.Bitmap)System.Drawing.Image.FromFile(filename))
+                {
+                    var targetImage = new System.Drawing.Bitmap(sourceImage.Width, sourceImage.Height,
+                      sourceImage.PixelFormat);
+                    var sourceData = sourceImage.LockBits(
+                      new System.Drawing.Rectangle(0, 0, sourceImage.Width, sourceImage.Height),
+                      System.Drawing.Imaging.ImageLockMode.ReadOnly, sourceImage.PixelFormat);
+                    var targetData = targetImage.LockBits(
+                      new System.Drawing.Rectangle(0, 0, sourceImage.Width, sourceImage.Height),
+                      System.Drawing.Imaging.ImageLockMode.WriteOnly, targetImage.PixelFormat);
+                    CopyMemory(targetData.Scan0, sourceData.Scan0,
+                      (uint)sourceData.Stride * (uint)sourceData.Height);
+                    sourceImage.UnlockBits(sourceData);
+                    targetImage.UnlockBits(targetData);
+                    try
+                    {
+                        targetImage.Palette = sourceImage.Palette;
+                    }
+                    catch
+                    {
+                    }
+
+                    return targetImage;
+                }
+            }
+            else
+            {
+                return System.Drawing.Image.FromFile(filename);
+            }
+        }
+
 
         public static System.Drawing.Image FromURI(Uri uri)
         {

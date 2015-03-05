@@ -18,6 +18,21 @@ namespace Support.Reflection
             ReflectionService _return = new ReflectionService();
             return _return.GetPublicInstanceProperties(typ);
         }
+        public static IEnumerable<PropertyInfo> GetNonPublicInstanceProperties(this Type typ)
+        {
+            ReflectionService _return = new ReflectionService();
+            return _return.GetNonPublicInstanceProperties(typ);
+        }
+        public static IEnumerable<PropertyInfo> GetStaticInstanceProperties(this Type typ)
+        {
+            ReflectionService _return = new ReflectionService();
+            return _return.GetStaticInstanceProperties(typ);
+        }
+        public static IEnumerable<PropertyInfo> GetInstanceProperties(this Type typ)
+        {
+            ReflectionService _return = new ReflectionService();
+            return _return.GetInstanceProperties(typ);
+        }
 
         public static object GetMemberValue(this Type typ, Expression expr, MemberInfo member)
         {
