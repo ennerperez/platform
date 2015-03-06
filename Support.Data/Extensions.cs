@@ -842,14 +842,18 @@ namespace Support.Data
                     _return.Scale = 8;
 
                 }
+                else if (object.ReferenceEquals(value.GetType(), typeof(Int64)) || object.ReferenceEquals(value.GetType(), typeof(UInt64)))
+                {
+                    _return.Size = int.MaxValue;
+                }
                 else
                 {
                     try
                     {
-                        _return.Size = (int)value.GetType().GetMaxValue();
+                        _return.Size = (int)(value.GetType().GetMaxValue());
                         //CObj(value.GetType).MaxValue
                     }
-                    catch
+                    catch //(Exception ex)
                     {
                     }
                 }
@@ -859,6 +863,8 @@ namespace Support.Data
                 _return.DbType = DbType.String;
                 _return.Size = 4;
             }
+
+            if (_return.Size == 0) { _return.Size = 1; }
 
             return _return;
         }
