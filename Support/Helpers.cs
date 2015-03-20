@@ -49,7 +49,7 @@ namespace Support
 
         public static object CType<T>(object obj)
         {
-            if (obj.GetType() == typeof(Int64) )
+            if (obj.GetType() == typeof(Int64))
             {
                 return Convert.ToInt64(obj);
             }
@@ -66,7 +66,11 @@ namespace Support
             //}
             else
             {
+#if (!PORTABLE)
                 return (T)Convert.ChangeType(obj, typeof(T));
+#else
+                return (T)Convert.ChangeType(obj, typeof(T), null );
+#endif
                 //return (T)obj;
             }
         }

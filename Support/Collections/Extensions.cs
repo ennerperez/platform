@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Support.Collections
@@ -17,13 +19,13 @@ namespace Support.Collections
         {
             Array.Clear(source, 0, source.Length);
         }
-        
+
         public static void Add<T>(ref T[] source, T item)
         {
             Array.Resize<T>(ref source, source.Length);
             source[source.Length - 1] = item;
         }
-        
+
         public static int IndexOf<T>(this IEnumerable<T> obj, T value)
         {
             return IndexOf(obj, value, EqualityComparer<T>.Default);
@@ -62,6 +64,37 @@ namespace Support.Collections
                 list[k] = list[n];
                 list[n] = value;
             }
+        }
+
+
+        public static DataTable ToDataTable<T>(this ICollection<T> items)
+        {
+            return items.AsEnumerable<T>().ToDataTable<T>();
+        }
+        
+        public static DataTable ToDataTable<T>(this IEnumerable<T> items)
+        {
+            var tb = new DataTable(typeof(T).Name);
+
+            PropertyInfo[] props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            foreach (var prop in props)
+            {
+                tb.Columns.Add(prop.Name, prop.PropertyType);
+            }
+
+            foreach (var item in items)
+            {
+                var values = new object[props.Length];
+                for (var i = 0; i < props.Length; i++)
+                {
+                    values[i] = props[i].GetValue(item, null);
+                }
+
+                tb.Rows.Add(values);
+            }
+
+            return tb;
         }
 
     }

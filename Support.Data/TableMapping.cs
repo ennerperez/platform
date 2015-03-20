@@ -341,8 +341,8 @@ namespace Support.Data
                         val = Convert.ToInt32(val) == 1;
                     if (object.ReferenceEquals(propType, typeof(int)))
                         val = Convert.ToInt32(val);
-                    if (object.ReferenceEquals(val.GetType(), typeof(byte[])))
-                        val = BitConverter.ToInt64((byte[])val, 0);
+                    //if (object.ReferenceEquals(val.GetType(), typeof(byte[])))
+                    //    val = BitConverter.ToInt64((byte[])val, 0);
                     if (object.ReferenceEquals(propType, typeof(TimeSpan)))
                         val = TimeSpan.Parse(val.ToString());
                     _prop.SetValue(obj, val, null);

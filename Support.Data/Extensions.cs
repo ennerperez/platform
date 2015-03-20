@@ -1040,20 +1040,17 @@ namespace Support.Data
                 _Stopwatch.Start();
             }
 #endif
-            //cmd.Connection.TryOpen();
             cmd.Connection.Open();
-#if DEBUG
+
             try
             {
-#endif
             cmd.Prepare();
-#if DEBUG
             }
             catch (Exception ex)
             {
                 Console.WriteLine(string.Format("{0} -- {1}", query, ex.Message));
             }
-#endif
+
             int _return = 0;
 #if DEBUG
             try
@@ -1067,7 +1064,6 @@ namespace Support.Data
                 Console.WriteLine(ex.Message);
             }
 #endif
-            //cmd.Connection.TryClose();
             cmd.Connection.Close();
 #if DEBUG
             if (TimeExecution)

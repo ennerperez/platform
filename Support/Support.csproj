@@ -67,6 +67,7 @@
     <Compile Include="Reflection\Extensions.cs" />
     <Compile Include="Reflection\IReflectionService.cs" />
     <Compile Include="Reflection\ReflectionService.cs" />
+    <Compile Include="Reflection\ReflectOn.cs" />
     <Compile Include="Security\Cryptography\Extensions.cs" />
     <Compile Include="Security\Cryptography\Helpers.cs" />
     <Compile Include="Security\Extensions.cs" />

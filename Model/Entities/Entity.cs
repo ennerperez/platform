@@ -170,7 +170,7 @@ namespace Model
     }
 
 
-    public abstract class Entity : Entity<int>
+    public abstract class Entity : Entity<long>
     {
 
         public override object Insert() { return this.Id == 0; }
