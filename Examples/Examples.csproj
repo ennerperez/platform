@@ -53,6 +53,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.94.1\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,6 +70,12 @@
     </Compile>
     <Compile Include="Entities\Software.cs" />
     <Compile Include="Entities\Versions.cs" />
+    <Compile Include="FormDemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDemo.Designer.cs">
+      <DependentUpon>FormDemo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,6 +83,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{8e95a50b-545e-4092-94e3-7638d4c8a4f7}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Presentation.Windows.Forms\Presentation.Windows.Forms.csproj">
+      <Project>{aed11b6c-b7d8-48f8-b19f-da6b8d72d89f}</Project>
+      <Name>Presentation.Windows.Forms</Name>
     </ProjectReference>
     <ProjectReference Include="..\Support.Data\Support.Data.csproj">
       <Project>{4ac6fa64-1c7e-4648-be3f-592dc9567401}</Project>
@@ -100,6 +112,11 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FormDemo.resx">
+      <DependentUpon>FormDemo.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets')" />

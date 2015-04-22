@@ -12,7 +12,7 @@ using Support.Data.Attributes;
 namespace Examples.Entities
 {
     [Table("software")]
-    public class Software : Model.Entity
+    public class Software : Model.Entity<int>
     {
 
         [Column("id"), PrimaryKey, AutoIncrement, Unique]

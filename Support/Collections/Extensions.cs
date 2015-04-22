@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Support.Reflection;
 
 namespace Support.Collections
 {
@@ -67,11 +68,21 @@ namespace Support.Collections
         }
 
 
+        public static ICollection<T> Clone<T>(this ICollection<T> items) where T : ICloneable
+        {
+            ICollection<T> _return = Activator.CreateInstance<ICollection<T>>();
+            foreach (T item in items)
+            {
+                _return.Add(item.Clone<T>());
+            }
+            return _return;
+        }
+
         public static DataTable ToDataTable<T>(this ICollection<T> items)
         {
             return items.AsEnumerable<T>().ToDataTable<T>();
         }
-        
+
         public static DataTable ToDataTable<T>(this IEnumerable<T> items)
         {
             var tb = new DataTable(typeof(T).Name);
@@ -90,6 +101,37 @@ namespace Support.Collections
                 {
                     values[i] = props[i].GetValue(item, null);
                 }
+
+                tb.Rows.Add(values);
+            }
+
+            return tb;
+        }
+
+        public static DataTable ToLinkedDataTable<T>(this ICollection<T> items, string propertyName = null)
+        {
+            var tb = new DataTable(typeof(T).Name);
+
+            PropertyInfo[] props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            foreach (var prop in props)
+            {
+                tb.Columns.Add(prop.Name, prop.PropertyType);
+            }
+
+            if (propertyName == null) propertyName = typeof(T).ToString();
+
+            tb.Columns.Add(propertyName, typeof(T));
+
+            foreach (var item in items)
+            {
+                var values = new object[props.Length+1];
+                for (var i = 0; i < props.Length; i++)
+                {
+                    values[i] = props[i].GetValue(item, null);
+                }
+
+                values[props.Length] = item;
 
                 tb.Rows.Add(values);
             }

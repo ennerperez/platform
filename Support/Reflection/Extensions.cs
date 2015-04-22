@@ -11,8 +11,8 @@ namespace Support.Reflection
     public static class Extensions
     {
 
-        #region  ReflectionService 
-                
+        #region  ReflectionService
+
         public static IEnumerable<PropertyInfo> GetPublicInstanceProperties(this Type typ)
         {
             ReflectionService _return = new ReflectionService();
@@ -38,6 +38,15 @@ namespace Support.Reflection
         {
             ReflectionService _return = new ReflectionService();
             return _return.GetMemberValue(typ, expr, member);
+        }
+
+        #endregion
+
+        #region Generics
+
+        public static T Clone<T>(this T item) where T : ICloneable
+        {
+            return (T)item.Clone();
         }
 
         #endregion

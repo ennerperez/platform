@@ -13,14 +13,14 @@ namespace Examples.Entities
 {
 
     [Table("versions")]
-    public class Versions : Model.Entity
+    public class Versions : Model.Entity<int>
     {
 
         [Column("id"), PrimaryKey, AutoIncrement, Unique]
         public override int Id { get; set; }
 
         [Column("software")]
-        public int Software { get; set; }
+        public long Software { get; set; }
 
         [Column("name")]
         public string Name { get; set; }

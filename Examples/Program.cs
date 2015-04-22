@@ -23,8 +23,12 @@ namespace Examples
         {
 
 #if !PORTABLE
+            
+            FormDemo demo = new FormDemo();
+                demo.ShowDialog();
+            
             System.Data.SqlClient.SqlConnectionStringBuilder csb = new System.Data.SqlClient.SqlConnectionStringBuilder();
-            csb.DataSource = "(localdb)\\CAP";
+            csb.DataSource = "(localdb)\\CAD";
             csb.InitialCatalog = "software";
 
             Connection = new System.Data.SqlClient.SqlConnection(csb.ConnectionString);
@@ -36,8 +40,12 @@ namespace Examples
             Connection = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.Win32.SQLitePlatformWin32(), csb.DataSource);
 #endif
 
+#if !PORTABLE
+
             Connection.DropDatabase();
             Connection.CreateDatabase();
+
+#endif
 
             Connection.CreateTable<Entities.Software>(CreateFlags.AllImplicit);
             Connection.CreateTable<Entities.Versions>(CreateFlags.AllImplicit);
