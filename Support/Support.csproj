@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +46,7 @@
     <Compile Include="..\Files\AssemblyInfo.Platform.cs">
       <Link>Properties\AssemblyInfo.Platform.cs</Link>
     </Compile>
+    <Compile Include="ArgumentOutOfRangeEventArgs.cs" />
     <Compile Include="Attributes\UrlAttribute.cs" />
     <Compile Include="Attributes\ThirdPartyAttribute.cs" />
     <Compile Include="Attributes\ProductLevelAttribute.cs" />
@@ -55,7 +57,9 @@
     <Compile Include="Attributes\DeveloperAttribute.cs" />
     <Compile Include="Attributes\ContactAttribute.cs" />
     <Compile Include="Attributes\BuildDateAttribute.cs" />
+    <Compile Include="Managers\BrandingManager.cs" />
     <Compile Include="Collections\Extensions.cs" />
+    <Compile Include="Collections\TypeListComparer.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="IO\CRC32.cs" />
@@ -63,6 +67,7 @@
     <Compile Include="IO\Helpers.cs" />
     <Compile Include="IO\IniFile.cs" />
     <Compile Include="Localization\ResourceEnumConverter.cs" />
+    <Compile Include="Managers\ConfigurationManager.cs" />
     <Compile Include="OS\Helpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\Extensions.cs" />

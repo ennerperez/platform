@@ -1,9 +1,26 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Presentation.Windows.Forms
 {
     public static class Extensions
     {
+
+        public static void ShowIn(this Form form, Form parent, params object[] param)
+        {
+            System.Type _t = form.GetType();
+            Form _ChildForm;
+            if (param != null)
+            {
+                _ChildForm = (Form) Activator.CreateInstance( _t, param);
+            }
+            else
+            {
+                _ChildForm = (Form)Activator.CreateInstance(_t);
+            }
+            _ChildForm.MdiParent = parent;
+            _ChildForm.Show();
+        }
 
         public static System.Windows.Forms.Form GetParentForm(this System.Windows.Forms.Control @this)
         {

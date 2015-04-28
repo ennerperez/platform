@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Support
 {
@@ -6,13 +8,14 @@ namespace Support
     {
 
         #region Types
-
-
-
+        
+        
 
         #endregion
 
         #region AssemblyInfo
+
+        #region C#
 
         public static T GetAttribute<T>(this System.Reflection.Assembly assembly) where T : System.Attribute
         {
@@ -56,6 +59,13 @@ namespace Support
         {
             return Helpers.FileVersion(assembly);
         }
+
+        #endregion
+
+        #region VB
+
+
+        #endregion
 
 #if (!PORTABLE)
         public static Guid GUID(this System.Reflection.Assembly assembly)
@@ -145,6 +155,20 @@ namespace Support
         public static string ToSentence(this string obj, bool capitalize = false)
         {
             return Helpers.ToSentence(obj, capitalize);
+        }
+
+        public static string TrimFromEnd(this string source, string suffix)
+        {
+            if (string.IsNullOrEmpty(source) || string.IsNullOrEmpty(suffix))
+            {
+                return source;
+            }
+            int num = source.LastIndexOf(suffix, StringComparison.OrdinalIgnoreCase);
+            if (num <= 0)
+            {
+                return source;
+            }
+            return source.Substring(0, num);
         }
 
         #endregion

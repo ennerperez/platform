@@ -139,5 +139,78 @@ namespace Support.Collections
             return tb;
         }
 
+
+        public static void AddRange<T>(this ICollection<T> target, IEnumerable<T> items)
+        {
+            if (target == null)
+            {
+                throw new ArgumentNullException("target");
+            }
+            if (items == null)
+            {
+                throw new ArgumentNullException("items");
+            }
+            foreach (T current in items)
+            {
+                target.Add(current);
+            }
+        }
+        public static TValue GetOrCreateValue<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TValue> createValueCallback)
+        {
+            if (dictionary == null)
+            {
+                throw new ArgumentNullException("dictionary");
+            }
+            if (!dictionary.ContainsKey(key))
+            {
+                lock (dictionary)
+                {
+                    if (!dictionary.ContainsKey(key))
+                    {
+                        dictionary[key] = createValueCallback();
+                    }
+                }
+            }
+            return dictionary[key];
+        }
+        public static IDictionary<TKey, TValue> ToDictionary<TKey, TValue>(this IEnumerable<KeyValuePair<TKey, TValue>> source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
+            return source.ToDictionary((KeyValuePair<TKey, TValue> m) => m.Key, (KeyValuePair<TKey, TValue> m) => m.Value);
+        }
+        public static bool Empty<T>(this IEnumerable<T> source)
+        {
+            return !source.Any<T>();
+        }
+        public static bool SetEqual<T>(this IEnumerable<T> x, IEnumerable<T> y)
+        {
+            if (x == null)
+            {
+                throw new ArgumentNullException("x");
+            }
+            if (y == null)
+            {
+                throw new ArgumentNullException("y");
+            }
+            List<T> list = x.ToList<T>();
+            List<T> list2 = y.ToList<T>();
+            if (list.Count<T>() != list2.Count<T>())
+            {
+                return false;
+            }
+            foreach (T current in list2)
+            {
+                if (!list.Contains(current))
+                {
+                    return false;
+                }
+                list.Remove(current);
+            }
+            return list.Empty<T>();
+        }
+
     }
 }

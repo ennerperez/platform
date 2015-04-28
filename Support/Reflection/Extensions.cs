@@ -51,5 +51,22 @@ namespace Support.Reflection
 
         #endregion
 
+        public static string GetNameSafe(this Assembly assembly)
+        {
+            if (assembly == null)
+            {
+                throw new ArgumentNullException("assembly");
+            }
+            return new AssemblyName(assembly.FullName).Name;
+        }
+
+        public static string GetDirectory(this Assembly assembly)
+        {
+            if (assembly == null) assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            string path = System.IO.Path.GetDirectoryName(assembly.GetName().CodeBase);
+            System.IO.FileInfo file = new System.IO.FileInfo(path);
+            return file.Directory.FullName;
+        }
+
     }
 }
