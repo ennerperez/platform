@@ -8,13 +8,13 @@ using System.Text;
 namespace Model
 {
     public abstract class Entity<T> : IEntity<T>, IRecord, INotifyPropertyChanged
-#if (!PORTABLE)
+#if !PORTABLE
 , ICloneable, INotifyPropertyChanging
 #endif
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
-#if (!PORTABLE)
+#if !PORTABLE
         public event PropertyChangingEventHandler PropertyChanging;
 #endif
 

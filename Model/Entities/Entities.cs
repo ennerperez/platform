@@ -7,13 +7,14 @@ using System.Text;
 
 namespace Model
 {
-    public abstract partial class Entities<T> :
-#if (!PORTABLE)
- ObservableCollection<T>
+
+    public abstract partial class Entities<TEntity, TKey> :
+#if !(PORTABLE)
+ ObservableCollection<TEntity>
 #else
- List<T>
+ List<TEntity>
 #endif
- where T : IEntity, IDisposable //, IChangeTracking
+ where TEntity : IEntity<TKey>
     {
 
 #if (!PORTABLE)
@@ -23,18 +24,18 @@ namespace Model
         }
 #endif
 
-        public T GetItem(int id)
+        public TEntity GetItem(TKey id)
         {
 #if (!PORTABLE)
-            return this.Items.Where(i => i.Id == id).FirstOrDefault();
+            return this.Items.Where(i => i.Id.Equals(id)).FirstOrDefault();
 #else
-            return this.Where(i => i.Id == id).FirstOrDefault();
+            return this.Where(i => i.Id.Equals(id)).FirstOrDefault();
 #endif
         }
 
         public Type Type()
         {
-            return typeof(T);
+            return typeof(TEntity);
         }
 
         protected internal bool IsLoaded;
@@ -69,10 +70,10 @@ namespace Model
 
 #if (!PORTABLE)
 
-        public virtual Dictionary<long, T> ToDictionary()
+        public virtual Dictionary<TKey, TEntity> ToDictionary()
         {
-            Dictionary<long, T> _return = new Dictionary<long, T>();
-            foreach (T item in this.ToList())
+            Dictionary<TKey, TEntity> _return = new Dictionary<TKey, TEntity>();
+            foreach (TEntity item in this.ToList())
             {
                 _return.Add(item.Id, item);
             }
@@ -138,4 +139,13 @@ namespace Model
         #endregion
 
     }
+
+
+    public abstract partial class Entities<TEntity> : Entities<TEntity, long> where TEntity : IEntity<long>
+    {
+        public Entities():base()
+        {
+        }
+    }
+
 }

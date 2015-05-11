@@ -1908,7 +1908,7 @@ namespace Support.Data
             IDbCommand insertCmd = (IDbCommand)map.GetInsertCommand(conn, extra);
             foreach (IDbDataParameter Item in _params)
             {
-                if (Item.Value == null)
+                if (Item.Value == null || Item.Value == "NULL")
                 {
                     insertCmd.CommandText = insertCmd.CommandText.Replace(Item.ParameterName, "NULL");
                 }
