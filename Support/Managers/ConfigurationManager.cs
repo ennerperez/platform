@@ -16,6 +16,7 @@ namespace Support.Configuration
 
         public ConfigurationManager()
         {
+            this.ConnectionStrings = new Dictionary<String, String>();
         }
 
         public void Load()
@@ -27,11 +28,11 @@ namespace Support.Configuration
 
             _XDocument = XDocument.Load(_File);
 
-            foreach (XElement item in _XDocument.Element("configuration").Elements("connectionStrings"))
+            foreach (XElement item in _XDocument.Element("configuration").Elements("connectionStrings").Where(x=> x.HasAttributes))
             {
-                this.ConnectionStrings.Add(item.Element("name").Value, item.Element("@connectionString").Value);
+                    this.ConnectionStrings.Add(item.Element("name").Value, item.Element("@connectionString").Value);
             }
-            
+
         }
 
         public void Reset()
@@ -47,12 +48,17 @@ namespace Support.Configuration
             XElement _configuration = new XElement("configuration");
             XElement _connectionStrings = new XElement("connectionStrings");
 
-            foreach (KeyValuePair<string, string> item in this.ConnectionStrings)
+            if (this.ConnectionStrings != null)
             {
-                _connectionStrings.Add(new XElement("add", new object[] { new XAttribute("name", item.Key), new XAttribute("connectionString", item.Value), new XAttribute("providerName", "System.Data.SqlClient") }));
+                foreach (KeyValuePair<string, string> item in this.ConnectionStrings)
+                {
+                    _connectionStrings.Add(new XElement("add", new object[] { new XAttribute("name", item.Key), new XAttribute("connectionString", item.Value), new XAttribute("providerName", "System.Data.SqlClient") }));
+                }
+
+                _configuration.Add(_connectionStrings);
+
             }
 
-            _configuration.Add(_connectionStrings);
             _XDocument.Add(_configuration);
             _XDocument.Save(_File);
 
