@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("Support Data")]
-[assembly: AssemblyDescription("Support Platform for Data")]
+[assembly: AssemblyDescription("Platform Support for Data")]
 [assembly: AssemblyConfiguration("")]
 
 [assembly: AssemblyCulture("")]

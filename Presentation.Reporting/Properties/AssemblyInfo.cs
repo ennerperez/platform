@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("Presentation Reporting")]
-[assembly: AssemblyDescription("Presentation for Reporting")]
+[assembly: AssemblyDescription("Platform Presentation for Reporting")]
 [assembly: AssemblyConfiguration("")]
 
 [assembly: AssemblyCulture("")]

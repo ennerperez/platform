@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Presentation.Reporting</RootNamespace>
-    <AssemblyName>Presentation.Reporting</AssemblyName>
+    <AssemblyName>Platform.Presentation.Reporting</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

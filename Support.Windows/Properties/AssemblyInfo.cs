@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("Support Windows")]
-[assembly: AssemblyDescription("Support Plarform for Windows")]
+[assembly: AssemblyDescription("Plarform Support for Windows")]
 [assembly: AssemblyConfiguration("")]
 
 [assembly: AssemblyCulture("")]

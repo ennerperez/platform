@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("Support Web")]
-[assembly: AssemblyDescription("Support Platform for Web")]
+[assembly: AssemblyDescription("Platform Support for Web")]
 [assembly: AssemblyConfiguration("")]
 
 [assembly: AssemblyCulture("")]

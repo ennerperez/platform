@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("Model Portable")]
-[assembly: AssemblyDescription("Portable Model Platform")]
+[assembly: AssemblyDescription("Platform Model Pattern (Portable)")]
 [assembly: AssemblyConfiguration("")]
 
 [assembly: AssemblyCulture("")]

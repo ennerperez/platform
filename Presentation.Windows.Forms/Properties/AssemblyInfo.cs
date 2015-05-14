@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("Presentation Windows Forms")]
-[assembly: AssemblyDescription("Presentation for Windows Forms")]
+[assembly: AssemblyDescription("Platform Presentation for Windows Forms")]
 [assembly: AssemblyConfiguration("")]
 
 [assembly: AssemblyCulture("")]

@@ -70,6 +70,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{B9D86D8C-D006-43E1-AA4C-9F09099982EB}"
 	ProjectSection(SolutionItems) = preProject
 		NuGet\Platform.Support.Core.nuspec = NuGet\Platform.Support.Core.nuspec
+		NuGet\Platform.Support.Model.nuspec = NuGet\Platform.Support.Model.nuspec
 	EndProjectSection
 EndProject
 Global

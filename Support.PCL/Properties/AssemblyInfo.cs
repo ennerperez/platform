@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("Support Core Portable")]
-[assembly: AssemblyDescription("Portable Support Platform Core")]
+[assembly: AssemblyTitle("Support Portable")]
+[assembly: AssemblyDescription("Platform Support Core (Portable)")]
 [assembly: AssemblyConfiguration("")]
 
 [assembly: AssemblyCulture("")]

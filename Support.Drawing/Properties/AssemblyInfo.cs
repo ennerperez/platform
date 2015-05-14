@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("Support Drawing")]
-[assembly: AssemblyDescription("Support Platform for Drawing")]
+[assembly: AssemblyDescription("Platform Support for Drawing")]
 [assembly: AssemblyConfiguration("")]
 
 [assembly: AssemblyCulture("")]

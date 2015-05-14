@@ -5,7 +5,7 @@
 
 #if PERSONAL
 
-[assembly: AssemblyCopyright("© Enner Pérez. Todos los derechos reservados, 2015")]
+[assembly: AssemblyCopyright("© Enner Pérez. All rights reserved., 2015")]
 [assembly: AssemblyTrademark("Enner Pérez")]
 
 #if CORE

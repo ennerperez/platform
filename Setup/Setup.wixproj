@@ -60,7 +60,7 @@
 	</Target>
 	-->
   <Target Name="BeforeBuild">
-    <GetAssemblyIdentity AssemblyFiles="$(SolutionDir)Support\bin\$(Configuration)\Support.Core.dll">
+    <GetAssemblyIdentity AssemblyFiles="$(SolutionDir)Support\bin\$(Configuration)\Platform.Support.Core.dll">
       <Output TaskParameter="Assemblies" ItemName="AssemblyVersions" />
     </GetAssemblyIdentity>
     <CreateProperty Value="%(AssemblyVersions.Version)">

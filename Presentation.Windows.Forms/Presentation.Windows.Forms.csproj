@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Presentation.Windows.Forms</RootNamespace>
-    <AssemblyName>Presentation.Windows.Forms</AssemblyName>
+    <AssemblyName>Platform.Presentation.Windows.Forms</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
