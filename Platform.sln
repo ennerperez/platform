@@ -15,7 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.PCL", "Support.PCL\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{64E2131D-CEDC-4D5A-AC73-CE9C0EDB8CAD}"
 	ProjectSection(SolutionItems) = preProject
-		Documents\Changes.md = Documents\Changes.md
+		CHANGELOG.md = CHANGELOG.md
+		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Data", "Support.Data\Support.Data.csproj", "{4AC6FA64-1C7E-4648-BE3F-592DC9567401}"
@@ -64,6 +66,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples.PCL", "Examples.PCL\Examples.PCL.csproj", "{4A8C6649-347A-4645-8C9B-FC8F3FC50417}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reporting", "Presentation.Reporting\Presentation.Reporting.csproj", "{EE7DA415-99ED-4E8A-B129-BE09F40ACB83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{B9D86D8C-D006-43E1-AA4C-9F09099982EB}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet\Platform.Support.Core.nuspec = NuGet\Platform.Support.Core.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
