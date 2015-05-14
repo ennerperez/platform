@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Platform.Presentation.Windows.Forms</id>
+    <version>3.0.0.2</version>
+    <title>Platform Presentation for Windows Forms</title>
+    <authors>Enner Pérez</authors>
+    <owners>Enner Pérez</owners>
+    <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
+    <iconUrl>https://github.com/ennerperez/platform/blob/master/Resources/Icons/AppIcon.Platform.ico?raw=true</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>.NET Framework Base Development Platform</description>
+    <summary>Development Platform</summary>
+    <releaseNotes />
+    <copyright>© Enner Pérez. All rights reserved.</copyright>
+    <language>en-US</language>
+    <tags>.NET Framework Base Development Platform Support</tags>
+    <dependencies>
+      <dependency id="Platform.Support.Core" version="3.0.0.2" />
+      <dependency id="Platform.Support.Drawing" version="3.0.0.2" />
+      <dependency id="Platform.Support.Windows" version="3.0.0.2" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\Presentation.Windows.Forms\bin\Release\Platform.Presentation.Windows.Forms.dll" target="lib\net40\Platform.Presentation.Windows.Forms.dll" />
+  </files>
+</package>

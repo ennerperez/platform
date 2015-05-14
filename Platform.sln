@@ -71,10 +71,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{B9D86D8C
 	ProjectSection(SolutionItems) = preProject
 		NuGet\Platform.Model.nuspec = NuGet\Platform.Model.nuspec
 		NuGet\Platform.nuspec = NuGet\Platform.nuspec
+		NuGet\Platform.Presentation.nuspec = NuGet\Platform.Presentation.nuspec
+		NuGet\Platform.Presentation.Windows.Forms.nuspec = NuGet\Platform.Presentation.Windows.Forms.nuspec
 		NuGet\Platform.Support.Core.nuspec = NuGet\Platform.Support.Core.nuspec
 		NuGet\Platform.Support.Data.nuspec = NuGet\Platform.Support.Data.nuspec
 		NuGet\Platform.Support.Drawing.nuspec = NuGet\Platform.Support.Drawing.nuspec
 		NuGet\Platform.Support.nuspec = NuGet\Platform.Support.nuspec
+		NuGet\Platform.Support.Windows.nuspec = NuGet\Platform.Support.Windows.nuspec
 	EndProjectSection
 EndProject
 Global
