@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Support.Windows
+namespace Platform.Support.Windows
 {
     public static class NativeMethods
     {

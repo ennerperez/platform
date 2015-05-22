@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 
-namespace Model
+namespace Platform.Model
 {
 
     public sealed class Singleton

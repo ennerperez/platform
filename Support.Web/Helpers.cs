@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Support.Web
+namespace Platform.Support.Web
 {
     public static class Helpers
     {

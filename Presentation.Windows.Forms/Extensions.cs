@@ -12,7 +12,7 @@ namespace Presentation.Windows.Forms
             Form _ChildForm;
             if (param != null)
             {
-                _ChildForm = (Form) Activator.CreateInstance( _t, param);
+                _ChildForm = (Form)Activator.CreateInstance(_t, param);
             }
             else
             {
@@ -32,6 +32,11 @@ namespace Presentation.Windows.Forms
             }
 
             return (System.Windows.Forms.Form)_return;
+        }
+
+        private static Screen GetScreen(this Form @this)
+        {
+            return System.Windows.Forms.Screen.FromRectangle(new System.Drawing.Rectangle(@this.Location, @this.Size));
         }
 
         //#region  Draggable

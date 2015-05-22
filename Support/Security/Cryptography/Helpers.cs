@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Support.Security.Cryptography
+namespace Platform.Support.Security.Cryptography
 {
     public static class Helpers
     {

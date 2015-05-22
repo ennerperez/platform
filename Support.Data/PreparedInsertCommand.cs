@@ -4,7 +4,7 @@
 //using System.Linq;
 //using System.Text;
 
-//namespace Support.Data
+//namespace Platform.Support.Data
 //{
 //    public class PreparedInsertCommand : IDisposable
 //    {

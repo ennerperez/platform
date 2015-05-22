@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Support
+namespace Platform.Support
 {
 
     public delegate void ArgumentOutOfRangeEventHandler<T>(object sender, ArgumentOutOfRangeEventArgs<T> e);

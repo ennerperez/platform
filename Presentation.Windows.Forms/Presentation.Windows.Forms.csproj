@@ -7,7 +7,7 @@
     <ProjectGuid>{AED11B6C-B7D8-48F8-B19F-DA6B8D72D89F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Presentation.Windows.Forms</RootNamespace>
+    <RootNamespace>Platform.Presentation.Windows.Forms</RootNamespace>
     <AssemblyName>Platform.Presentation.Windows.Forms</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -95,29 +95,6 @@
     <Compile Include="Components\CultureManager.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Patterns\MVP\Binder\AttributeBasedPresenterDiscoveryStrategy.cs" />
-    <Compile Include="Patterns\MVP\Binder\CompositePresenterDiscoveryStrategy.cs" />
-    <Compile Include="Patterns\MVP\Binder\ConventionBasedPresenterDiscoveryStrategy.cs" />
-    <Compile Include="Patterns\MVP\Binder\DefaultCompositeViewTypeFactory.cs" />
-    <Compile Include="Patterns\MVP\Binder\DefaultPresenterFactory.cs" />
-    <Compile Include="Patterns\MVP\Binder\ICompositeViewTypeFactory.cs" />
-    <Compile Include="Patterns\MVP\Binder\IPresenterDiscoveryStrategy.cs" />
-    <Compile Include="Patterns\MVP\Binder\IPresenterFactory.cs" />
-    <Compile Include="Patterns\MVP\Binder\PresenterBinder.cs" />
-    <Compile Include="Patterns\MVP\Binder\PresenterBinding.cs" />
-    <Compile Include="Patterns\MVP\Binder\PresenterCreatedEventArgs.cs" />
-    <Compile Include="Patterns\MVP\Binder\PresenterDiscoveryResult.cs" />
-    <Compile Include="Patterns\MVP\BindingMode.cs" />
-    <Compile Include="Patterns\MVP\CompositeView.cs" />
-    <Compile Include="Patterns\MVP\Extensions.cs" />
-    <Compile Include="Patterns\MVP\Forms\Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Patterns\MVP\ICompositeView.cs" />
-    <Compile Include="Patterns\MVP\IPresenter.cs" />
-    <Compile Include="Patterns\MVP\IView.cs" />
-    <Compile Include="Patterns\MVP\Presenter.cs" />
-    <Compile Include="Patterns\MVP\Attributes\PresenterBindingAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CueProvider.cs">
       <SubType>Component</SubType>

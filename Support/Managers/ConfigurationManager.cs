@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Support.Configuration
+namespace Platform.Support.Configuration
 {
     public class ConfigurationManager : IDisposable
     {

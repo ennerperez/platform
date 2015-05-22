@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Support.Drawing
+namespace Platform.Support.Drawing
 {
     public class HSLColor
     {

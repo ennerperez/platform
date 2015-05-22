@@ -4,9 +4,9 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Support.Reflection;
+using Platform.Support.Reflection;
 
-namespace Support.Collections
+namespace Platform.Support.Collections
 {
     public static class Extensions
     {

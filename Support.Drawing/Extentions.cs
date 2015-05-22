@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Support.Drawing
+namespace Platform.Support.Drawing
 {
     public static class Extensions
     {

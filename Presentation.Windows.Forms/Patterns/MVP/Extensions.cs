@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Support.Collections;
+using Platform.Support.Collections;
 
 namespace Presentation.Windows.Forms.Patterns.MVP
 {

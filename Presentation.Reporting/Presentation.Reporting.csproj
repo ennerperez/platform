@@ -7,7 +7,7 @@
     <ProjectGuid>{EE7DA415-99ED-4E8A-B129-BE09F40ACB83}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Presentation.Reporting</RootNamespace>
+    <RootNamespace>Platform.Presentation.Reporting</RootNamespace>
     <AssemblyName>Platform.Presentation.Reporting</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

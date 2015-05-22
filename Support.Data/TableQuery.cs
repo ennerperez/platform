@@ -7,7 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace Support.Data
+namespace Platform.Support.Data
 {
     public class TableQuery<T> : BaseTableQuery, IEnumerable<T>
     {

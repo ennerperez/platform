@@ -8,7 +8,7 @@
     <ProjectGuid>{18F0A51D-255E-4845-A724-B676D5FBBFBC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Support</RootNamespace>
+    <RootNamespace>Platform.Support</RootNamespace>
     <AssemblyName>Platform.Support.Core.PCL</AssemblyName>
     <DefaultLanguage>es-ES</DefaultLanguage>
     <FileAlignment>512</FileAlignment>

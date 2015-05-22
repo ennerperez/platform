@@ -7,7 +7,7 @@
     <ProjectGuid>{4AC6FA64-1C7E-4648-BE3F-592DC9567401}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Support.Data</RootNamespace>
+    <RootNamespace>Platform.Support.Data</RootNamespace>
     <AssemblyName>Platform.Support.Data</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace Model
+namespace Platform.Model
 {
     public abstract class Entity<T> : IEntity<T>, IRecord, INotifyPropertyChanged
 #if !PORTABLE

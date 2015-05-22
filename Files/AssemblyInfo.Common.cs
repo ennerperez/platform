@@ -9,19 +9,19 @@
 [assembly: AssemblyTrademark("Enner Pérez")]
 
 #if CORE
-[assembly: Support.Attributes.AssemblyCompany.Id("18384909")]
-[assembly: Support.Attributes.AssemblyCompany.Contact("Twitter", "@ennerperez")]
-[assembly: Support.Attributes.AssemblyCompany.Contact("04146328236")]
-[assembly: Support.Attributes.AssemblyCompany.Mail("ennerperez@gmail.com")]
-[assembly: Support.Attributes.AssemblyProduct.Developer("Enner Pérez")]
-//[assembly: Support.Attributes.AssemblyCompany.Url("http://www.ennerperez.net/")]
+[assembly: Platform.Support.Attributes.AssemblyCompany.Id("18384909")]
+[assembly: Platform.Support.Attributes.AssemblyCompany.Contact("Twitter", "@ennerperez")]
+[assembly: Platform.Support.Attributes.AssemblyCompany.Contact("04146328236")]
+[assembly: Platform.Support.Attributes.AssemblyCompany.Mail("ennerperez@gmail.com")]
+[assembly: Platform.Support.Attributes.AssemblyProduct.Developer("Enner Pérez")]
+//[assembly: Platform.Support.Attributes.AssemblyCompany.Url("http://www.ennerperez.net/")]
 #else
-[assembly: Support.Core.Attributes.AssemblyCompany.Id("18384909")]
-[assembly: Support.Core.Attributes.AssemblyCompany.Contact("Twitter", "@ennerperez")]
-[assembly: Support.Core.Attributes.AssemblyCompany.Contact("04146328236")]
-[assembly: Support.Core.Attributes.AssemblyCompany.Mail("ennerperez@gmail.com")]
-[assembly: Support.Core.Attributes.AssemblyProduct.Developer("Enner Pérez")]
-//[assembly: Support.Core.Attributes.AssemblyCompany.Url("http://www.ennerperez.net/")]
+[assembly: Platform.Support.Core.Attributes.AssemblyCompany.Id("18384909")]
+[assembly: Platform.Support.Core.Attributes.AssemblyCompany.Contact("Twitter", "@ennerperez")]
+[assembly: Platform.Support.Core.Attributes.AssemblyCompany.Contact("04146328236")]
+[assembly: Platform.Support.Core.Attributes.AssemblyCompany.Mail("ennerperez@gmail.com")]
+[assembly: Platform.Support.Core.Attributes.AssemblyProduct.Developer("Enner Pérez")]
+//[assembly: Platform.Support.Core.Attributes.AssemblyCompany.Url("http://www.ennerperez.net/")]
 #endif
 
 #else
@@ -30,9 +30,9 @@
 [assembly: AssemblyTrademark("© Argument C.A.")]
 
 #if !CORE && PORTABLE
-[assembly: Support.Core.Attributes.AssemblyCompany.Id("J-18384909-0")]
+//[assembly: Platform.Support.Attributes.AssemblyCompany.Id("J-18384909-0")]
 #else
-[assembly: Support.Attributes.AssemblyCompany.Id("J-18384909-0")]
+[assembly: Platform.Support.Attributes.AssemblyCompany.Id("J-18384909-0")]
 #endif
 
 #endif

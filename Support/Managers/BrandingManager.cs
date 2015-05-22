@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
-using Support.Reflection;
+using Platform.Support.Reflection;
 
-namespace Support.Branding
+namespace Platform.Support.Branding
 {
 
     public class BrandingManager : IDisposable

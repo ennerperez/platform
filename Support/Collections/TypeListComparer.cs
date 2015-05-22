@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Support.Collections
+namespace Platform.Support.Collections
 {
     public class TypeListComparer<T> : IEqualityComparer<IEnumerable<T>> where T : class
     {

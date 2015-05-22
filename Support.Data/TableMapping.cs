@@ -1,12 +1,12 @@
-﻿using Support.Data.Attributes;
-using Support.Reflection;
+﻿using Platform.Support.Data.Attributes;
+using Platform.Support.Reflection;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection;
 
-namespace Support.Data
+namespace Platform.Support.Data
 {
     public class TableMapping
     {

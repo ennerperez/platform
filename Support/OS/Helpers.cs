@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace Support.OS
+namespace Platform.Support.OS
 {
     public static class Helpers
     {

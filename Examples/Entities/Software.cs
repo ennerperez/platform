@@ -5,14 +5,14 @@ using System.Text;
 #if PORTABLE
 using SQLite.Net.Attributes;
 #else
-using Support.Data;
-using Support.Data.Attributes;
+using Platform.Support.Data;
+using Platform.Support.Data.Attributes;
 #endif
 
 namespace Examples.Entities
 {
     [Table("software")]
-    public class Software : Model.Entity<int>
+    public class Software : Platform.Model.Entity<int>, Platform.Model.MVC.IModel
     {
 
         [Column("id"), PrimaryKey, AutoIncrement, Unique]

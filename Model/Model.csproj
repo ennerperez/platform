@@ -7,7 +7,7 @@
     <ProjectGuid>{8E95A50B-545E-4092-94E3-7638D4C8A4F7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Model</RootNamespace>
+    <RootNamespace>Platform.Model</RootNamespace>
     <AssemblyName>Platform.Model</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

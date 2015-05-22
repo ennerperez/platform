@@ -1,4 +1,4 @@
-﻿using Support.Data.Attributes;
+﻿using Platform.Support.Data.Attributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading;
 
-namespace Support.Data
+namespace Platform.Support.Data
 {
     public static class Extensions
     {
@@ -1908,7 +1908,7 @@ namespace Support.Data
             IDbCommand insertCmd = (IDbCommand)map.GetInsertCommand(conn, extra);
             foreach (IDbDataParameter Item in _params)
             {
-                if (Item.Value == null || Item.Value == "NULL")
+                if (Item.Value == null || Item.Value.ToString() == "NULL")
                 {
                     insertCmd.CommandText = insertCmd.CommandText.Replace(Item.ParameterName, "NULL");
                 }

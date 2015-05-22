@@ -80,6 +80,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Model.MVC\Model.MVC.csproj">
+      <Project>{8a7c7fbf-a028-4d54-8e92-6d8c4fc3a2fb}</Project>
+      <Name>Model.MVC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{8e95a50b-545e-4092-94e3-7638d4c8a4f7}</Project>
       <Name>Model</Name>

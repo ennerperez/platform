@@ -5,7 +5,7 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-namespace Support.Windows
+namespace Platform.Support.Windows
 {
     internal static class ExternDll
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Support
+namespace Platform.Support
 {
     public static class Helpers
     {

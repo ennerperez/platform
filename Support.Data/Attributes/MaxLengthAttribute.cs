@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Support.Data.Attributes
+namespace Platform.Support.Data.Attributes
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class MaxLengthAttribute : Attribute

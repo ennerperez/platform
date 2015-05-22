@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Support.Reflection
+namespace Platform.Support.Reflection
 {
     public static class ReflectOn<T>
     {

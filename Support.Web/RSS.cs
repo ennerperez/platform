@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Support.Web
+namespace Platform.Support.Web
 {
     public abstract class RSS
     {

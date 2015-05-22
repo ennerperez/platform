@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Model
+namespace Platform.Model
 {
     public interface IEntity : IEntity<int> 
     {

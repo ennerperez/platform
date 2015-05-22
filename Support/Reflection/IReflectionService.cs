@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 
-namespace Support.Reflection
+namespace Platform.Support.Reflection
 {
 
     public interface IReflectionService

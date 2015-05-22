@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 #if !PORTABLE
-using Support.Data;
+using Platform.Support.Data;
+using System.Collections;
 #else
 using SQLite.Net.Interop;
 #endif
@@ -23,10 +24,7 @@ namespace Examples
         {
 
 #if !PORTABLE
-                        
-            FormDemo demo = new FormDemo();
-                demo.ShowDialog();
-            
+                       
             System.Data.SqlClient.SqlConnectionStringBuilder csb = new System.Data.SqlClient.SqlConnectionStringBuilder();
             csb.DataSource = "(localdb)\\CAD";
             csb.InitialCatalog = "software";
@@ -59,6 +57,19 @@ namespace Examples
             (VisualStudio.Versions as List<Entities.Versions>).Add(new Entities.Versions() { Name = "2013", Release = new DateTime(2013, 1, 1), Version = "12" });
 
             VisualStudio.Save();
+
+            FormDemo view = new FormDemo();
+            view.Visible = false;
+#if !PORTABLE  
+            IList users = new ArrayList();
+#else
+            List<Entities.Software> users = new List<Entities.Software>();
+#endif
+            users.Add(VisualStudio);
+
+            Platform.Model.MVC.Controller<Entities.Software> controller = new Platform.Model.MVC.Controller<Entities.Software>(view, users);
+            controller.LoadView();
+            view.ShowDialog();
 
             Console.ReadKey();
 

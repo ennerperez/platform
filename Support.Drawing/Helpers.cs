@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Support.Drawing
+namespace Platform.Support.Drawing
 {
     public static partial class Helpers
     {

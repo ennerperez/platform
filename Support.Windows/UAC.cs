@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace Support.Windows
+namespace Platform.Support.Windows
 {
     public class UAC
     {

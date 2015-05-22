@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Support
+namespace Platform.Support
 {
 
 #if !CORE

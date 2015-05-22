@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Support
+namespace Platform.Support
 {
 #if !CORE
     namespace Core
@@ -14,7 +14,11 @@ namespace Support
         {
 
             [AttributeUsage(AttributeTargets.Assembly)]
+#if !CORE
+            internal class IdAttribute : global::System.Attribute
+#else
             public class IdAttribute : global::System.Attribute
+#endif
             {
 
                 private string companyid;

@@ -1,26 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
-    <metadata>
-        <id>Platform.Model</id>
-        <version>3.0.0.2</version>
-        <title>Platform Model Pattern</title>
-        <authors>Enner Pérez</authors>
-        <owners>Enner Pérez</owners>
-        <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
-        <iconUrl>https://github.com/ennerperez/platform/blob/master/Resources/Icons/AppIcon.Platform.ico?raw=true</iconUrl>
-        <requireLicenseAcceptance>true</requireLicenseAcceptance>
-        <description>.NET Framework Base Development Platform</description>
-        <summary>Development Platform</summary>
-        <releaseNotes />
-        <copyright>© Enner Pérez. All rights reserved.</copyright>
-        <language>en-US</language>
-        <tags>.NET Framework Base Development Platform Support</tags>
-        <dependencies>
-            <dependency id="Platform.Support.Core" version="3.0.0.2" />
-        </dependencies>
-    </metadata>
-    <files>
-        <file src="..\Model\bin\Release\Platform.Model.dll" target="lib\net40\Platform.Model.dll" />
-        <file src="..\Model.PCL\bin\Release\Platform.Model.PCL.dll" target="lib\portable-net4+sl5+wp8+win8\Platform.Model.PCL.dll" />
-    </files>
+  <metadata>
+    <id>Platform.Model</id>
+    <version>3.0.0.3</version>
+    <title>Platform Model Pattern</title>
+    <authors>Enner Pérez</authors>
+    <owners>Enner Pérez</owners>
+    <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
+    <iconUrl>https://github.com/ennerperez/platform/blob/master/Resources/Icons/AppIcon.Platform.ico?raw=true</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>.NET Framework Base Development Platform</description>
+    <summary>Development Platform</summary>
+    <releaseNotes />
+    <copyright>© Enner Pérez. All rights reserved.</copyright>
+    <language>en-US</language>
+    <tags>.NET Framework Base Development Platform Support</tags>
+    <dependencies>
+      <dependency id="Platform.Support.Core" version="3.0.0.3" />
+      <dependency id="Platform.Model.MVC" version="3.0.0.3" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\Model\bin\Release\Platform.Model.dll" target="lib\net40\Platform.Model.dll" />
+    <file src="..\Model.PCL\bin\Release\Platform.Model.PCL.dll" target="lib\portable-net4+sl5+wp8+win8\Platform.Model.PCL.dll" />
+  </files>
 </package>

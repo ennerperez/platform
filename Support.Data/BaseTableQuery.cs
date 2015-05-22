@@ -1,5 +1,5 @@
 ﻿
-namespace Support.Data
+namespace Platform.Support.Data
 {
     public abstract class BaseTableQuery
     {

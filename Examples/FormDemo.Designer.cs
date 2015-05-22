@@ -29,16 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDemo));
+            #if !PORTABLE
             this.appearanceControl1 = new Presentation.Windows.Forms.Components.AppearanceControl();
             this.customizableMenuStrip1 = new Presentation.Windows.Forms.Customs.MenuStrip();
+#endif
             this.fILEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            #if !PORTABLE
             this.toolStrip1 = new Presentation.Windows.Forms.Customs.ToolStrip();
+#endif
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.fillBar1 = new Presentation.Windows.Forms.Controls.FillBar();
+            this.listView1 = new System.Windows.Forms.ListView();
+            #if !PORTABLE
             this.customizableMenuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+#endif
             this.SuspendLayout();
+            #if !PORTABLE
             // 
             // appearanceControl1
             // 
@@ -58,9 +65,9 @@
             this.appearanceControl1.CustomAppearance.ButtonAppearance.PressedAppearance.intGradientMiddle = -20115;
             this.appearanceControl1.CustomAppearance.ButtonAppearance.PressedAppearance.intHighlight = -6771246;
             this.appearanceControl1.CustomAppearance.ButtonAppearance.SelectedAppearance.Border = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.appearanceControl1.CustomAppearance.ButtonAppearance.SelectedAppearance.BorderHighlight = System.Drawing.Color.Red;
+            this.appearanceControl1.CustomAppearance.ButtonAppearance.SelectedAppearance.BorderHighlight = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.appearanceControl1.CustomAppearance.ButtonAppearance.SelectedAppearance.GradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.appearanceControl1.CustomAppearance.ButtonAppearance.SelectedAppearance.Highlight = System.Drawing.Color.Lime;
+            this.appearanceControl1.CustomAppearance.ButtonAppearance.SelectedAppearance.Highlight = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))));
             this.appearanceControl1.CustomAppearance.ButtonAppearance.SelectedAppearance.intBorder = -4194304;
             this.appearanceControl1.CustomAppearance.ButtonAppearance.SelectedAppearance.intBorderHighlight = -65536;
             this.appearanceControl1.CustomAppearance.ButtonAppearance.SelectedAppearance.intGradientBegin = -64;
@@ -107,6 +114,7 @@
             this.appearanceControl1.CustomAppearance.ToolStripAppearance.intPanelGradientEnd = -3876102;
             this.appearanceControl1.Preset = Presentation.Windows.Forms.Components.AppearanceControl.enumPresetStyles.Custom;
             this.appearanceControl1.Renderer.RoundedEdges = true;
+
             // 
             // customizableMenuStrip1
             // 
@@ -119,6 +127,7 @@
             this.customizableMenuStrip1.Size = new System.Drawing.Size(452, 24);
             this.customizableMenuStrip1.TabIndex = 0;
             this.customizableMenuStrip1.Text = "customizableMenuStrip1";
+#endif
             // 
             // fILEToolStripMenuItem
             // 
@@ -131,6 +140,7 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(125, 20);
             this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            #if !PORTABLE
             // 
             // toolStrip1
             // 
@@ -143,6 +153,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(452, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+#endif
             // 
             // toolStripButton1
             // 
@@ -153,36 +164,36 @@
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
             // 
-            // fillBar1
+            // listView1
             // 
-            this.fillBar1.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.fillBar1.CustomBrush = null;
-            this.fillBar1.FillColor = System.Drawing.SystemColors.ActiveCaption;
-            this.fillBar1.Location = new System.Drawing.Point(45, 163);
-            this.fillBar1.MaxValue = 100F;
-            this.fillBar1.MinValue = 0F;
-            this.fillBar1.Name = "fillBar1";
-            this.fillBar1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.fillBar1.Size = new System.Drawing.Size(242, 23);
-            this.fillBar1.TabIndex = 2;
-            this.fillBar1.Text = "fillBar1";
-            this.fillBar1.Value = 50F;
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.Location = new System.Drawing.Point(13, 66);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(427, 287);
+            this.listView1.TabIndex = 2;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // FormDemo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(452, 365);
-            this.Controls.Add(this.fillBar1);
+            this.Controls.Add(this.listView1);
+            #if !PORTABLE
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.customizableMenuStrip1);
             this.MainMenuStrip = this.customizableMenuStrip1;
+#endif
             this.Name = "FormDemo";
             this.Text = "FormDemo";
+            #if !PORTABLE
             this.customizableMenuStrip1.ResumeLayout(false);
             this.customizableMenuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+#endif
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,13 +201,17 @@
 
         #endregion
 
+
+#if !PORTABLE
         private Presentation.Windows.Forms.Components.AppearanceControl appearanceControl1;
         private Presentation.Windows.Forms.Customs.MenuStrip customizableMenuStrip1;
+        private Presentation.Windows.Forms.Customs.ToolStrip toolStrip1;
+#endif
         private System.Windows.Forms.ToolStripMenuItem fILEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private Presentation.Windows.Forms.Customs.ToolStrip toolStrip1;
+        
         private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private Presentation.Windows.Forms.Controls.FillBar fillBar1;
+        private System.Windows.Forms.ListView listView1;
 
 
 

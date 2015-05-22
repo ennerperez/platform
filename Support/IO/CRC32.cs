@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Support.IO
+namespace Platform.Support.IO
 {
    
 	public class CRC32 : HashAlgorithm

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Platform.Support.Windows</id>
-    <version>3.0.0.2</version>
+    <version>3.0.0.3</version>
     <title>Plarform Support for Windows</title>
     <authors>Enner Pérez</authors>
     <owners>Enner Pérez</owners>
@@ -16,7 +16,7 @@
     <language>en-US</language>
     <tags>.NET Framework Base Development Platform Support</tags>
     <dependencies>
-      <dependency id="Platform.Support.Core" version="3.0.0.2" />
+      <dependency id="Platform.Support.Core" version="3.0.0.3" />
     </dependencies>
   </metadata>
   <files>

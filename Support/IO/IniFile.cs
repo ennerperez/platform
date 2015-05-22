@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Support.IO
+namespace Platform.Support.IO
 {
     public class IniFile
     {

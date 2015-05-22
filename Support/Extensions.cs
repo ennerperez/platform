@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Support
+namespace Platform.Support
 {
     public static partial class Extensions
     {

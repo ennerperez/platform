@@ -1,10 +1,10 @@
-﻿using Support.Data.Attributes;
+﻿using Platform.Support.Data.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Support.Data
+namespace Platform.Support.Data
 {
     public struct ColumnInfo
     {

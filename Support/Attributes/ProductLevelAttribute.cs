@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Support
+namespace Platform.Support
 {
 #if !CORE
     namespace Core
@@ -14,7 +14,11 @@ namespace Support
         {
 
             [AttributeUsage(AttributeTargets.Assembly)]
+#if !CORE
+            internal class ProductLevelAttribute : global::System.Attribute
+#else
             public class ProductLevelAttribute : global::System.Attribute
+#endif
             {
 
                 private ProductLevels productlevel;

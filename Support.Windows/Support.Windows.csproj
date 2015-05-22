@@ -7,7 +7,7 @@
     <ProjectGuid>{3441E7A2-F6D5-4E34-ABD6-86B131105C29}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Support.Windows</RootNamespace>
+    <RootNamespace>Platform.Support.Windows</RootNamespace>
     <AssemblyName>Platform.Support.Windows</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

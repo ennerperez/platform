@@ -8,7 +8,7 @@
     <ProjectGuid>{44448EE1-AE0E-4610-A6BE-208EB7FBCFFB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Model</RootNamespace>
+    <RootNamespace>Platform.Model</RootNamespace>
     <AssemblyName>Platform.Model.PCL</AssemblyName>
     <DefaultLanguage>es-ES</DefaultLanguage>
     <FileAlignment>512</FileAlignment>

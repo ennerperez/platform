@@ -1,7 +1,7 @@
 ﻿using Presentation.Windows.Forms.Patterns.MVP.Attributes;
 using System;
 using System.Collections.Generic;
-using Support.Collections;
+using Platform.Support.Collections;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -62,7 +62,7 @@ namespace Presentation.Windows.Forms.Patterns.MVP.Binder
                     }
                     goto IL_1A1;
                 }
-                goto IL_19F;
+                //goto IL_19F;
             IL_1A1:
                 return new PresenterDiscoveryResult(new IView[]
 				{

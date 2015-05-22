@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Support
+namespace Platform.Support
 {
 #if !CORE
     namespace Core

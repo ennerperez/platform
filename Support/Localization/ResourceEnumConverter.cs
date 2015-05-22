@@ -5,7 +5,7 @@ using System.Globalization;
 using System.ComponentModel;
 using System.Resources;
 
-namespace Support.Localization
+namespace Platform.Support.Localization
 {
 
     /// <summary>

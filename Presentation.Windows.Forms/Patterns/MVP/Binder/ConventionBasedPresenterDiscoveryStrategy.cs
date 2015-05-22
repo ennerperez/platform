@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using Support;
-using Support.Reflection;
-using Support.Collections;
+using Platform.Support;
+using Platform.Support.Reflection;
+using Platform.Support.Collections;
 using System.Linq;
 using System.Text;
 

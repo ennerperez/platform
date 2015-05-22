@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Support.Data.Attributes;
+using Platform.Support.Data.Attributes;
 using System.Data;
 
-namespace Support.Data
+namespace Platform.Support.Data
 {
     public static class Orm
     {
