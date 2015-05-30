@@ -5,7 +5,7 @@ using System.Text;
 //using System;
 using System.Runtime.InteropServices;
 
-namespace Presentation.Windows.Forms
+namespace Platform.Presentation.Windows.Forms
 {
 
     /// <summary>

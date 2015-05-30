@@ -1,5 +1,5 @@
-﻿using Presentation.Windows.Forms.Components;
-using Presentation.Windows.Forms.Customs;
+﻿using Platform.Presentation.Windows.Forms.Components;
+using Platform.Presentation.Windows.Forms.Customs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using System.Xml.Serialization;
 
-namespace Presentation.Windows.Forms.Designers
+namespace Platform.Presentation.Windows.Forms.Designers
 {   
 
     public class AppearanceEditor : System.Windows.Forms.Form

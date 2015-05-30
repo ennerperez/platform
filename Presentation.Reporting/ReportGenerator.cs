@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using Microsoft.Reporting.Common;
 
-namespace Presentation.Reporting
+namespace Platform.Presentation.Reporting
 {
     namespace Windows.Forms
     {

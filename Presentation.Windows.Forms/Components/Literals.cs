@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace Presentation.Windows.Forms.Components
+namespace Platform.Presentation.Windows.Forms.Components
 {
     [System.Drawing.ToolboxBitmap(typeof(System.Windows.Forms.Label))]
     public class Literals : System.ComponentModel.Component

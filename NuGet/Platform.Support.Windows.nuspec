@@ -2,21 +2,21 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Platform.Support.Windows</id>
-    <version>3.0.0.3</version>
+    <version>3.0.0.4</version>
     <title>Plarform Support for Windows</title>
     <authors>Enner Pérez</authors>
     <owners>Enner Pérez</owners>
     <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
     <iconUrl>https://github.com/ennerperez/platform/blob/master/Resources/Icons/AppIcon.Platform.ico?raw=true</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>.NET Framework Base Development Platform</description>
-    <summary>Development Platform</summary>
+    <description>Libset for agile windows based software development</description>
+    <summary>Libset for agile windows based</summary>
     <releaseNotes />
     <copyright>© Enner Pérez. All rights reserved.</copyright>
     <language>en-US</language>
-    <tags>.NET Framework Base Development Platform Support</tags>
+    <tags>.NET Framework Base Development Platform Support Windows API</tags>
     <dependencies>
-      <dependency id="Platform.Support.Core" version="3.0.0.3" />
+      <dependency id="Platform.Support.Core" version="3.0.0.4" />
     </dependencies>
   </metadata>
   <files>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Presentation.Windows.Forms
+namespace Platform.Presentation.Windows.Forms
 {
     public static class Extensions
     {

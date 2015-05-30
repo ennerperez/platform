@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 
-namespace Presentation.Windows.Forms.Controls
+namespace Platform.Presentation.Windows.Forms.Controls
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.LinkLabel))]
     public class LinkLabel : Control

@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDemo));
             #if !PORTABLE
-            this.appearanceControl1 = new Presentation.Windows.Forms.Components.AppearanceControl();
-            this.customizableMenuStrip1 = new Presentation.Windows.Forms.Customs.MenuStrip();
+            this.appearanceControl1 = new Platform.Presentation.Windows.Forms.Components.AppearanceControl();
+            this.customizableMenuStrip1 = new Platform.Presentation.Windows.Forms.Customs.MenuStrip();
 #endif
             this.fILEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             #if !PORTABLE
-            this.toolStrip1 = new Presentation.Windows.Forms.Customs.ToolStrip();
+            this.toolStrip1 = new Platform.Presentation.Windows.Forms.Customs.ToolStrip();
 #endif
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -112,7 +112,7 @@
             this.appearanceControl1.CustomAppearance.ToolStripAppearance.intGradientMiddle = -3415556;
             this.appearanceControl1.CustomAppearance.ToolStripAppearance.intPanelGradientBegin = -6373643;
             this.appearanceControl1.CustomAppearance.ToolStripAppearance.intPanelGradientEnd = -3876102;
-            this.appearanceControl1.Preset = Presentation.Windows.Forms.Components.AppearanceControl.enumPresetStyles.Custom;
+            this.appearanceControl1.Preset = Platform.Presentation.Windows.Forms.Components.AppearanceControl.enumPresetStyles.Custom;
             this.appearanceControl1.Renderer.RoundedEdges = true;
 
             // 
@@ -203,9 +203,9 @@
 
 
 #if !PORTABLE
-        private Presentation.Windows.Forms.Components.AppearanceControl appearanceControl1;
-        private Presentation.Windows.Forms.Customs.MenuStrip customizableMenuStrip1;
-        private Presentation.Windows.Forms.Customs.ToolStrip toolStrip1;
+        private Platform.Presentation.Windows.Forms.Components.AppearanceControl appearanceControl1;
+        private Platform.Presentation.Windows.Forms.Customs.MenuStrip customizableMenuStrip1;
+        private Platform.Presentation.Windows.Forms.Customs.ToolStrip toolStrip1;
 #endif
         private System.Windows.Forms.ToolStripMenuItem fILEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;

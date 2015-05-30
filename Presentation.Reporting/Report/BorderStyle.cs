@@ -1,4 +1,4 @@
-﻿namespace Presentation.Reporting.RDLC
+﻿namespace Platform.Presentation.Reporting.RDLC
 {
     public enum BorderStyle
     {

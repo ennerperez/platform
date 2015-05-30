@@ -2,21 +2,21 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Platform.Support.Data</id>
-    <version>3.0.0.3</version>
+    <version>3.0.0.4</version>
     <title>Platform Support for Data</title>
     <authors>Enner Pérez</authors>
     <owners>Enner Pérez</owners>
     <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
     <iconUrl>https://github.com/ennerperez/platform/blob/master/Resources/Icons/AppIcon.Platform.ico?raw=true</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>.NET Framework Base Development Platform</description>
-    <summary>Development Platform</summary>
+    <description>Libset for agile data layer software development, included ORM connection based</description>
+    <summary>Libset for agile data layer software development</summary>
     <releaseNotes />
     <copyright>© Enner Pérez. All rights reserved.</copyright>
     <language>en-US</language>
-    <tags>.NET Framework Base Development Platform Support</tags>
+    <tags>.NET Framework Base Development Platform Support Data ORM</tags>
     <dependencies>
-      <dependency id="Platform.Support.Core" version="3.0.0.3" />
+      <dependency id="Platform.Support.Core" version="3.0.0.4" />
     </dependencies>
   </metadata>
   <files>

@@ -1,4 +1,4 @@
-﻿using Presentation.Windows.Forms.Components;
+﻿using Platform.Presentation.Windows.Forms.Components;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Presentation.Windows.Forms.Renderers.ColorTables
+namespace Platform.Presentation.Windows.Forms.Renderers.ColorTables
 {
     public class Office2003OliveColorTable : ProfessionalColorTable
     {

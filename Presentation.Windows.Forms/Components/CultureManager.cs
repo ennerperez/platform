@@ -13,7 +13,7 @@ using System.ComponentModel.Design;
 using System.Drawing;
 using System.Resources;
 
-namespace Presentation.Windows.Forms.Components
+namespace Platform.Presentation.Windows.Forms.Components
 {
     
     /// <summary>

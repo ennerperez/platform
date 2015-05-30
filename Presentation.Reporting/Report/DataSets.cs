@@ -1,4 +1,4 @@
-﻿namespace Presentation.Reporting.RDLC
+﻿namespace Platform.Presentation.Reporting.RDLC
 {
     public class DataSets : CollectionOf<DataSet>, IElement
     {

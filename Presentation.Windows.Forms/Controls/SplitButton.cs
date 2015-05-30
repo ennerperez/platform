@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
 
-namespace Presentation.Windows.Forms.Controls
+namespace Platform.Presentation.Windows.Forms.Controls
 {
     public class SplitButton : Button
     {

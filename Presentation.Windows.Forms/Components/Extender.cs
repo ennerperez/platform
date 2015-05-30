@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Presentation.Windows.Forms.Components
+namespace Platform.Presentation.Windows.Forms.Components
 {
     [System.Drawing.ToolboxBitmap(typeof(System.Windows.Forms.Form))]
     public partial class Extender : Component, IExtenderProvider

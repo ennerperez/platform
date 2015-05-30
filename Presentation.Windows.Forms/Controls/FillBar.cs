@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 
-namespace Presentation.Windows.Forms.Controls
+namespace Platform.Presentation.Windows.Forms.Controls
 {
 
     /// <summary>

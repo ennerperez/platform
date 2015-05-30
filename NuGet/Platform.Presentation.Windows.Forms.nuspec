@@ -2,23 +2,23 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Platform.Presentation.Windows.Forms</id>
-    <version>3.0.0.3</version>
+    <version>3.0.0.4</version>
     <title>Platform Presentation for Windows Forms</title>
     <authors>Enner Pérez</authors>
     <owners>Enner Pérez</owners>
     <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
     <iconUrl>https://github.com/ennerperez/platform/blob/master/Resources/Icons/AppIcon.Platform.ico?raw=true</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>.NET Framework Base Development Platform</description>
-    <summary>Development Platform</summary>
+    <description>Libset for agile entities modeling, included drawing helpers, windows forms controls and templates</description>
+    <summary>Libset for agile windows forms based presentation layer</summary>
     <releaseNotes />
     <copyright>© Enner Pérez. All rights reserved.</copyright>
     <language>en-US</language>
-    <tags>.NET Framework Base Development Platform Support</tags>
+    <tags>.NET Framework Base Development Platform Support Windows Drawing Forms</tags>
     <dependencies>
-      <dependency id="Platform.Support.Core" version="3.0.0.3" />
-      <dependency id="Platform.Support.Drawing" version="3.0.0.3" />
-      <dependency id="Platform.Support.Windows" version="3.0.0.3" />
+      <dependency id="Platform.Support.Core" version="3.0.0.4" />
+      <dependency id="Platform.Support.Drawing" version="3.0.0.4" />
+      <dependency id="Platform.Support.Windows" version="3.0.0.4" />
     </dependencies>
   </metadata>
   <files>

@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Presentation.Windows.Forms.Controls
+namespace Platform.Presentation.Windows.Forms.Controls
 {
     //Properties for the MenuItem
     internal class Properties

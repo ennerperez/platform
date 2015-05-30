@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Presentation.Windows.Forms
+namespace Platform.Presentation.Windows.Forms
 {
 
     namespace Components

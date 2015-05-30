@@ -4,7 +4,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace Presentation.Windows.Forms.Providers
+namespace Platform.Presentation.Windows.Forms.Providers
 {
     [ProvideProperty("Shield", typeof(Button)), ToolboxItem(true), System.Drawing.ToolboxBitmap(typeof(UserAcountControlProvider), "UserAcountControl.bmp")]
     public sealed class UserAcountControlProvider : System.ComponentModel.Component, IExtenderProvider

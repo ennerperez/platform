@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace Presentation.Windows.Forms
+namespace Platform.Presentation.Windows.Forms
 {
 
     /// <summary>

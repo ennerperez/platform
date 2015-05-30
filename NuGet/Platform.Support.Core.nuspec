@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
-    <metadata>
-        <id>Platform.Support.Core</id>
-        <version>3.0.0.3</version>
-        <title>Platform Support Core</title>
-        <authors>Enner Pérez</authors>
-        <owners>Enner Pérez</owners>
-        <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
-        <iconUrl>https://github.com/ennerperez/platform/blob/master/Resources/Icons/AppIcon.Platform.ico?raw=true</iconUrl>
-        <requireLicenseAcceptance>true</requireLicenseAcceptance>
-        <description>.NET Framework Base Development Platform</description>
-        <summary>Development Platform</summary>
-        <releaseNotes />
-        <copyright>© Enner Pérez. All rights reserved.</copyright>
-        <language>en-US</language>
-        <tags>.NET Framework Base Development Platform Support</tags>
-    </metadata>
-    <files>
-        <file src="..\Support\bin\Release\Platform.Support.Core.dll" target="lib\net40\Platform.Support.Core.dll" />
-        <file src="..\Support.PCL\bin\Release\Platform.Support.Core.PCL.dll" target="lib\portable-net4+sl5+wp8+win8\Platform.Support.Core.PCL.dll" />
-    </files>
+  <metadata>
+    <id>Platform.Support.Core</id>
+    <version>3.0.0.4</version>
+    <title>Platform Support Core</title>
+    <authors>Enner Pérez</authors>
+    <owners>Enner Pérez</owners>
+    <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
+    <iconUrl>https://github.com/ennerperez/platform/blob/master/Resources/Icons/AppIcon.Platform.ico?raw=true</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Libset for agile software development</description>
+    <summary>Libset for agile software development</summary>
+    <releaseNotes />
+    <copyright>© Enner Pérez. All rights reserved.</copyright>
+    <language>en-US</language>
+    <tags>.NET Framework Base Development Platform Support</tags>
+  </metadata>
+  <files>
+    <file src="..\Support\bin\Release\Platform.Support.Core.dll" target="lib\net40\Platform.Support.Core.dll" />
+    <file src="..\Support.PCL\bin\Release\Platform.Support.Core.PCL.dll" target="lib\portable-net4+sl5+wp8+win8\Platform.Support.Core.PCL.dll" />
+  </files>
 </package>

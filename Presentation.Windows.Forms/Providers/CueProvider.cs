@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Security;
 using System.Windows.Forms;
 
-namespace Presentation.Windows.Forms.Providers
+namespace Platform.Presentation.Windows.Forms.Providers
 {
 
     [ProvideProperty("HasCue", typeof(System.Windows.Forms.Control))]
