@@ -29,23 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDemo));
-            #if !PORTABLE
             this.appearanceControl1 = new Platform.Presentation.Windows.Forms.Components.AppearanceControl();
             this.customizableMenuStrip1 = new Platform.Presentation.Windows.Forms.Customs.MenuStrip();
-#endif
             this.fILEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            #if !PORTABLE
             this.toolStrip1 = new Platform.Presentation.Windows.Forms.Customs.ToolStrip();
-#endif
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.listView1 = new System.Windows.Forms.ListView();
-            #if !PORTABLE
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.customizableMenuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-#endif
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            #if !PORTABLE
             // 
             // appearanceControl1
             // 
@@ -114,7 +109,6 @@
             this.appearanceControl1.CustomAppearance.ToolStripAppearance.intPanelGradientEnd = -3876102;
             this.appearanceControl1.Preset = Platform.Presentation.Windows.Forms.Components.AppearanceControl.enumPresetStyles.Custom;
             this.appearanceControl1.Renderer.RoundedEdges = true;
-
             // 
             // customizableMenuStrip1
             // 
@@ -127,7 +121,6 @@
             this.customizableMenuStrip1.Size = new System.Drawing.Size(452, 24);
             this.customizableMenuStrip1.TabIndex = 0;
             this.customizableMenuStrip1.Text = "customizableMenuStrip1";
-#endif
             // 
             // fILEToolStripMenuItem
             // 
@@ -140,7 +133,6 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(125, 20);
             this.toolStripMenuItem1.Text = "toolStripMenuItem1";
-            #if !PORTABLE
             // 
             // toolStrip1
             // 
@@ -153,7 +145,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(452, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
-#endif
             // 
             // toolStripButton1
             // 
@@ -175,25 +166,32 @@
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pictureBox1.Location = new System.Drawing.Point(205, 143);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 87);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // FormDemo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(452, 365);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.listView1);
-            #if !PORTABLE
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.customizableMenuStrip1);
             this.MainMenuStrip = this.customizableMenuStrip1;
-#endif
             this.Name = "FormDemo";
             this.Text = "FormDemo";
-            #if !PORTABLE
             this.customizableMenuStrip1.ResumeLayout(false);
             this.customizableMenuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-#endif
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,6 +210,7 @@
         
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.PictureBox pictureBox1;
 
 
 

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Platform.Model</id>
-    <version>3.0.0.4</version>
+    <version>3.0.0.5</version>
     <title>Platform Model Pattern</title>
     <authors>Enner Pérez</authors>
     <owners>Enner Pérez</owners>
@@ -16,8 +16,8 @@
     <language>en-US</language>
     <tags>.NET Framework Base Development Platform Support Modeling MVC</tags>
     <dependencies>
-      <dependency id="Platform.Support.Core" version="3.0.0.4" />
-      <dependency id="Platform.Model.MVC" version="3.0.0.4" />
+      <dependency id="Platform.Support.Core" version="3.0.0.5" />
+      <dependency id="Platform.Model.MVC" version="3.0.0.5s" />
     </dependencies>
   </metadata>
   <files>

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Platform.Presentation.Windows.Forms;
 
 namespace Examples
 {
@@ -14,6 +15,10 @@ namespace Examples
         public FormDemo()
         {
             InitializeComponent();
+
+            this.pictureBox1.Image = Platform.Support.Drawing.FontAwesome.Helpers.GetIcon(Platform.Support.Drawing.FontAwesome.IconType.Archive, this.pictureBox1.Width, Color.Azure);
+            this.toolStripButton1.SetIcon(Platform.Support.Drawing.FontAwesome.IconType.Apple);
+
         }
 
 

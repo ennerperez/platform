@@ -217,5 +217,17 @@ namespace Platform.Presentation.Windows.Forms
 
         //#endregion
 
+        #region FontAwesome
+
+        public static void SetIcon(this ToolStripItem @this, Platform.Support.Drawing.FontAwesome.IconType type)
+        {
+            @this.Font = new System.Drawing.Font(Platform.Support.Drawing.FontAwesome.Helpers.FontFamily, @this.Font.Size, System.Drawing.GraphicsUnit.Point);
+            @this.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            @this.ToolTipText = @this.Text;
+            @this.Text = char.ConvertFromUtf32((int)type);
+        }
+
+        #endregion
+
     }
 }

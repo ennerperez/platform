@@ -31,7 +31,7 @@
 
 #if !CORE && PORTABLE
 //[assembly: Platform.Support.Attributes.AssemblyCompany.Id("J-18384909-0")]
-#else
+#elif !NUGET
 [assembly: Platform.Support.Attributes.AssemblyCompany.Id("J-18384909-0")]
 #endif
 

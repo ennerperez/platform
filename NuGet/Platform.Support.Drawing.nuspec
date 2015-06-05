@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Platform.Support.Drawing</id>
-    <version>3.0.0.4</version>
+    <version>3.0.0.5</version>
     <title>Platform Support for Drawing</title>
     <authors>Enner Pérez</authors>
     <owners>Enner Pérez</owners>
@@ -16,7 +16,7 @@
     <language>en-US</language>
     <tags>.NET Framework Base Development Platform Support Drawing</tags>
     <dependencies>
-      <dependency id="Platform.Support.Core" version="3.0.0.4" />
+      <dependency id="Platform.Support.Core" version="3.0.0.5" />
     </dependencies>
   </metadata>
   <files>
