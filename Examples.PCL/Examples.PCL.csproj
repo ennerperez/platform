@@ -66,14 +66,6 @@
     <Compile Include="..\Examples\Entities\Versions.cs">
       <Link>Entities\Versions.cs</Link>
     </Compile>
-    <Compile Include="..\Examples\FormDemo.cs">
-      <Link>FormDemo.cs</Link>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="..\Examples\FormDemo.designer.cs">
-      <Link>FormDemo.designer.cs</Link>
-      <DependentUpon>FormDemo.cs</DependentUpon>
-    </Compile>
     <Compile Include="..\Examples\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
@@ -102,12 +94,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\Examples\FormDemo.resx">
-      <Link>FormDemo.resx</Link>
-      <DependentUpon>FormDemo.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.94.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.94.0\build\net45\System.Data.SQLite.Core.targets')" />

@@ -58,18 +58,21 @@ namespace Examples
 
             VisualStudio.Save();
 
+#if !PORTABLE  
             FormDemo view = new FormDemo();
             view.Visible = false;
-#if !PORTABLE  
             IList users = new ArrayList();
 #else
             List<Entities.Software> users = new List<Entities.Software>();
 #endif
             users.Add(VisualStudio);
+                       
 
+#if !PORTABLE  
             Platform.Model.MVC.Controller<Entities.Software> controller = new Platform.Model.MVC.Controller<Entities.Software>(view, users);
             controller.LoadView();
             view.ShowDialog();
+#endif
 
             Console.ReadKey();
 
