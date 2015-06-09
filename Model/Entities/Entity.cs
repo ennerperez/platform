@@ -65,27 +65,35 @@ namespace Platform.Model
 
         #region Operators
 
-         public static bool operator ==(Entity<T> var1 ,Entity<T> var2 )
-         {
-             return var1.Id.Equals(var2.Id);
-         }
-         public static bool  operator !=(Entity<T> var1, Entity<T> var2)
-         {
-             return !var1.Id.Equals(var2.Id);
-         }
+        public static bool operator ==(Entity<T> var1, Entity<T> var2)
+        {
+            if (var1.Equals(null) || var2.Equals(null))
+            {
+                return false;
+            }
+            return var1.Id.Equals(var2.Id);
+        }
+        public static bool operator !=(Entity<T> var1, Entity<T> var2)
+        {
+            if (var1.Equals(null) || var2.Equals(null))
+            {
+                return false;
+            }
+            return !var1.Id.Equals(var2.Id);
+        }
 
-         public override bool Equals(Object obj)
-         {
-             // Check for null values and compare run-time types.
-             if (obj == null || GetType() != obj.GetType()) return false;
+        public override bool Equals(Object obj)
+        {
+            // Check for null values and compare run-time types.
+            if (obj == null || GetType() != obj.GetType()) return false;
 
-             Entity<T> p = (Entity<T>)obj;
-             return (this.Id.Equals(p.Id));
-         }
-         public override int GetHashCode()
-         {
-             return this.Id.GetHashCode();
-         }
+            Entity<T> p = (Entity<T>)obj;
+            return (this.Id.Equals(p.Id));
+        }
+        public override int GetHashCode()
+        {
+            return this.Id.GetHashCode();
+        }
 
 
         #endregion
@@ -136,10 +144,10 @@ namespace Platform.Model
         {
             Type _ty = this.GetType();
             Entity _object = (Entity)Activator.CreateInstance(_ty);
-            this.CopyTo(ref _object);
+            this.CopyTo(_object);
             return _object;
         }
-        public void CopyTo(ref Entity target)
+        public void CopyTo(Entity target)
         {
             if (object.ReferenceEquals(this.GetType(), target.GetType()))
             {
