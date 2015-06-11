@@ -222,6 +222,40 @@ public class AssemblyInfoUtil
 
         // AssemblyInfo
         assemblyInfo = args[0];
+
+        if (lang == Lang.none)
+        {
+            
+            int _result = -1;
+            int _fileResult = -1;
+            string globalAssemblyInfo = assemblyInfo;
+
+            for (Lang f = Lang.vb; f <= Lang.fs; f++)
+            {
+                assemblyInfo = globalAssemblyInfo + "." + Enum.GetName(typeof(Lang), f);
+                if (System.IO.File.Exists(assemblyInfo))
+                {
+                    _fileResult = processFile();
+                    if (_fileResult == 0) _result = _fileResult;
+                   
+                }
+            }
+
+            if (_result == -1)
+            {
+                return showError("Can not find file \"" + assemblyInfo + "\"");
+            }
+            return _result;
+        }
+        {
+            return processFile();
+        }
+
+
+    }
+
+    static int processFile()
+    {
         if (!System.IO.File.Exists(assemblyInfo))
         {
             return showError("Can not find file \"" + assemblyInfo + "\"");
@@ -238,7 +272,7 @@ public class AssemblyInfoUtil
         {
             return showError("Can't use " + cmd_changelog + " option with " + cmd_version + " or " + cmd_increment + ".");
         }
-        
+
         if (has_version && has_increment)
         {
             return showError("Can't use " + cmd_increment + " option with " + cmd_version + ".");
@@ -268,21 +302,20 @@ public class AssemblyInfoUtil
                 return showError("Can't use " + cmd_increment + " option with an invalid version format.");
             }
 
-        }     
+        }
 
         // Version value
         if (has_version && !isValidVersion(version))
         {
             return showError("Can't use " + cmd_version + " option with an invalid version format.");
         }
-        
+
         // Default values
         if (string.IsNullOrEmpty(info)) info = "";
         if (string.IsNullOrEmpty(version)) version = "1.0.0.0";
 
 
         return processAssemblyInfo(assemblyInfo);
-
     }
 
     static int processAssemblyInfo(string file)
@@ -329,10 +362,10 @@ public class AssemblyInfoUtil
                 part = "[assembly: AssemblyVersion(\"";
                 break;
             case Lang.fs:
-                part =  "<[assembly: AssemblyVersion(\"";
+                part = "<[assembly: AssemblyVersion(\"";
                 break;
             default:
-                part =  "<Assembly: AssemblyVersion(\"";
+                part = "<Assembly: AssemblyVersion(\"";
                 break;
         }
 
@@ -358,10 +391,10 @@ public class AssemblyInfoUtil
                 _return = line.Substring(spos, epos - spos);
                 break;
             }
- 
+
         }
         reader.Close();
-        
+
         return _return;
     }
 
