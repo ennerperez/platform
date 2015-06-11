@@ -234,27 +234,32 @@ public class AssemblyInfoUtil
         }
 
         // Compatibility
-        if (has_changelog && (has_version || has_increment))
+        if (has_changelog && (has_version))
         {
             return showError("Can't use " + cmd_changelog + " option with " + cmd_version + " or " + cmd_increment + ".");
         }
-
+        
         if (has_version && has_increment)
         {
             return showError("Can't use " + cmd_increment + " option with " + cmd_version + ".");
         }
 
-        // Increment value
-        if (has_increment && (increment > 4 || increment < 0))
-        {
-            return showError("Can't use " + cmd_increment + " option with " + increment + ".");
-        }
+        // Processing
+        if (has_changelog) readFromChangeLog(changelog);
 
         // Version + Increment values
         if (has_increment)
         {
-            version = getCurentVersion();
-            if (isValidVersion(version) || version.Split('.').Length < (increment - 1))
+
+            // Increment value
+            if (increment > 5 || increment < 1)
+            {
+                return showError("Can't use " + cmd_increment + " option with " + increment + ".");
+            }
+
+            if (!has_changelog) version = getCurentVersion();
+
+            if (isValidVersion(version) && increment > version.Split('.').Length)
             {
                 return showError("The current version \"" + version + "\" does not have the indicated position.");
             }
@@ -263,7 +268,7 @@ public class AssemblyInfoUtil
                 return showError("Can't use " + cmd_increment + " option with an invalid version format.");
             }
 
-        }
+        }     
 
         // Version value
         if (has_version && !isValidVersion(version))
@@ -271,10 +276,6 @@ public class AssemblyInfoUtil
             return showError("Can't use " + cmd_version + " option with an invalid version format.");
         }
         
-
-        // Processing
-        if (has_changelog) readFromChangeLog(changelog);
-
         // Default values
         if (string.IsNullOrEmpty(info)) info = "";
         if (string.IsNullOrEmpty(version)) version = "1.0.0.0";
