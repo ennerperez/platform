@@ -113,8 +113,8 @@ namespace Platform.Support.Branding
                 string _preculture = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
 
 
-                var cultures = _XDocument.Elements("cultures");
-                var _element = cultures.FirstOrDefault(x => x.Attribute("value").Value == _preculture);
+                IEnumerable<XElement> cultures = brand.Elements("cultures");
+                XElement _element = cultures.Elements().FirstOrDefault(x => x.Attribute("value").Value == _preculture);
                 if (_element != null)
                 {
                     {
@@ -205,7 +205,7 @@ namespace Platform.Support.Branding
                 }
             }
 
-            return null;
+            return _Cache.Name;
         }
 
         public static string BrandEULA(this System.Reflection.Assembly assembly)
@@ -221,7 +221,7 @@ namespace Platform.Support.Branding
                 }
             }
 
-            return null;
+            return _Cache.EULA;
         }
 
         public static string BrandURL(this System.Reflection.Assembly assembly)
@@ -236,6 +236,12 @@ namespace Platform.Support.Branding
                     }
                 }
             }
+
+            if (_Cache.URL != null)
+            {
+                return _Cache.URL.ToString();
+            }
+
             return null;
         }
 
@@ -251,7 +257,7 @@ namespace Platform.Support.Branding
                     }
                 }
             }
-            return null;
+            return _Cache.Logo;
         }
 
         #endregion

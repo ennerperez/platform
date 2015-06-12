@@ -7,6 +7,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Changelog file specification
 - AssemblyInfoUltil updated [New features]
 
+### Fixed
+- BrandingManager
+
 ### Added
 - .editoricon.png for IDE icon recognition
 

@@ -229,14 +229,37 @@ public class Program
             int _fileResult = -1;
             string globalAssemblyInfo = assemblyInfo;
 
+            int _c = 0;
+            string _version = null;
+            string _date = null;
+            string _info = null;
+            int _increment = 0;
+
             for (Lang f = Lang.vb; f <= Lang.fs; f++)
             {
                 assemblyInfo = globalAssemblyInfo + "." + Enum.GetName(typeof(Lang), f);
                 if (System.IO.File.Exists(assemblyInfo))
                 {
+
+                    if (_c == 0)
+                    {
+                        _version = version;
+                        _date = date;
+                        _info = info;
+                        _increment = increment;
+                    }
+                    else
+                    {
+                        version = _version;
+                        date = _date;
+                        info = _info;
+                        increment = _increment;
+                    }
+
                     _fileResult = processFile();
                     if (_fileResult == 0) _result = _fileResult;
 
+                    _c++;
                 }
             }
 
