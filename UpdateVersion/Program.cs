@@ -5,10 +5,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Collections.Generic;
 
-/// <summary>
-/// Summary description for Class1.
-/// </summary>
-public class AssemblyInfoUtil
+public class Program
 {
 
     private enum Lang
@@ -122,6 +119,24 @@ public class AssemblyInfoUtil
                     {
                         date = date_match[0].Value;
                     }
+
+                    List<string> infoList = new List<string>();
+                    //if (!string.IsNullOrEmpty(date)) infoList.Add(date);
+                    infoList.Add(new Version(version).ToString(3));
+                    if (!string.IsNullOrEmpty(info) && !infoList.Contains(info)) infoList.Add(info);
+
+                    var info_match = Regex.Matches(line, "\\[(.*?)\\]");
+                    foreach (var item in info_match)
+                    {
+                        string _info = item.ToString().Replace("[", "").Replace("]", "");
+                        if (!infoList.Contains(_info) && _info != version) infoList.Add(_info);
+                    }
+
+                    if (infoList.Count > 0)
+                    {
+                        info = string.Join(" ", infoList.ToArray());
+                    }
+
                 }
                 else
                 {
@@ -129,25 +144,9 @@ public class AssemblyInfoUtil
                     _version = "1.0.0.0";
                 }
 
-                List<string> infoList = new List<string>();
-                if (!string.IsNullOrEmpty(date)) infoList.Add(date);
-                if (!string.IsNullOrEmpty(info) && !infoList.Contains(info)) infoList.Add(info);
-
-                var info_match = Regex.Matches(line, "\\[(.*?)\\]");
-                foreach (var item in info_match)
-                {
-                    string _info = item.ToString().Replace("[", "").Replace("]", "");
-                    if (!infoList.Contains(_info) && _info != version) infoList.Add(_info);
-                }
-
-                if (infoList.Count > 0)
-                {
-                    info = string.Join(", ", infoList.ToArray());
-                }
-
             }
 
-            if (!string.IsNullOrEmpty(version) || !string.IsNullOrEmpty(date) || !string.IsNullOrEmpty(info))
+            if (!string.IsNullOrEmpty(version) || !string.IsNullOrEmpty(date)) // || !string.IsNullOrEmpty(info))
             {
                 break;
             }
@@ -225,7 +224,7 @@ public class AssemblyInfoUtil
 
         if (lang == Lang.none)
         {
-            
+
             int _result = -1;
             int _fileResult = -1;
             string globalAssemblyInfo = assemblyInfo;
@@ -237,7 +236,7 @@ public class AssemblyInfoUtil
                 {
                     _fileResult = processFile();
                     if (_fileResult == 0) _result = _fileResult;
-                   
+
                 }
             }
 
@@ -316,14 +315,15 @@ public class AssemblyInfoUtil
 
 
         return processAssemblyInfo(assemblyInfo);
+
     }
 
     static int processAssemblyInfo(string file)
     {
-        System.Console.WriteLine("Processing \"" + assemblyInfo + "\"...");
+        System.Console.WriteLine("Processing \"" + file + "\"...");
 
-        StreamReader reader = new StreamReader(assemblyInfo);
-        StreamWriter writer = new StreamWriter(assemblyInfo + ".out");
+        StreamReader reader = new StreamReader(file);
+        StreamWriter writer = new StreamWriter(file + ".out");
         String line;
 
         while ((line = reader.ReadLine()) != null)
@@ -334,8 +334,10 @@ public class AssemblyInfoUtil
         reader.Close();
         writer.Close();
 
-        File.Delete(assemblyInfo);
-        File.Move(assemblyInfo + ".out", assemblyInfo);
+        File.Delete(file);
+        File.Move(file + ".out", file);
+
+        version = getCurentVersion();
 
         Console.WriteLine("Version updated: " + version + (!string.IsNullOrEmpty(info) ? " [" + info + "]" : ""));
 
@@ -416,7 +418,7 @@ public class AssemblyInfoUtil
             default:
                 line = ProcessLinePart(line, "<Assembly: AssemblyVersion(\"");
                 line = ProcessLinePart(line, "<Assembly: AssemblyFileVersion(\"");
-                line = ProcessLinePart(line, "<assembly: AssemblyInformationalVersion(\"", info);
+                line = ProcessLinePart(line, "<Assembly: AssemblyInformationalVersion(\"", info);
                 break;
         }
 
@@ -445,6 +447,8 @@ public class AssemblyInfoUtil
             spos += part.Length;
             int epos = line.IndexOf('"', spos);
             string oldVersion = line.Substring(spos, epos - spos);
+            if (has_changelog) oldVersion = version;
+
             string newVersion = "";
             bool performChange = false;
 
@@ -482,7 +486,7 @@ public class AssemblyInfoUtil
                 else
                 {
                     str.Insert(spos, newVersion);
-                    version = newVersion;
+                    if (!has_changelog) version = newVersion;
                 }
                 line = str.ToString();
             }
