@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;PERSONAL,CORE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CORE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -25,7 +25,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;PERSONAL,CORE</DefineConstants>
+    <DefineConstants>TRACE;CORE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -47,6 +47,7 @@
       <Link>Properties\AssemblyInfo.Platform.cs</Link>
     </Compile>
     <Compile Include="ArgumentOutOfRangeEventArgs.cs" />
+    <Compile Include="Attributes\MadeIn.cs" />
     <Compile Include="Attributes\UrlAttribute.cs" />
     <Compile Include="Attributes\ThirdPartyAttribute.cs" />
     <Compile Include="Attributes\ProductLevelAttribute.cs" />
@@ -81,16 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagram.cd" />
+    <None Include="Package.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>if $(ConfigurationName) == Debug    "$(SolutionDir).tools\UpdateVersion.exe" "$(SolutionDir)Files\AssemblyInfo.Platform.cs" /l:"$(SolutionDir)CHANGELOG.md" /c:4 /i:$(ConfigurationName)
-if $(ConfigurationName) == Release  "$(SolutionDir).tools\UpdateVersion.exe" "$(SolutionDir)Files\AssemblyInfo.Platform.cs" /l:"$(SolutionDir)CHANGELOG.md" /i:RTM</PreBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
+  <Import Project="$(SolutionDir)Files\Microsoft.Framework.props" />
+  <Import Project="$(SolutionDir).tools\UpdateVersion.msbuild" />
+  <Import Project="$(SolutionDir).nuget\NuGet.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

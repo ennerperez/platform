@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{8BE2B02F
 	ProjectSection(SolutionItems) = preProject
 		Files\AssemblyInfo.Common.cs = Files\AssemblyInfo.Common.cs
 		Files\AssemblyInfo.Platform.cs = Files\AssemblyInfo.Platform.cs
+		Files\Microsoft.Framework.props = Files\Microsoft.Framework.props
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.PCL", "Support.PCL\Support.PCL.csproj", "{18F0A51D-255E-4845-A724-B676D5FBBFBC}"
@@ -45,6 +46,9 @@ EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Setup\Setup.wixproj", "{5D2AC7EF-7F30-4DDF-8F90-D8640B5E6EFD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{4A239D50-824B-43EB-9561-FD8B01D535A4}"
+	ProjectSection(SolutionItems) = preProject
+		.editoricon.png = .editoricon.png
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Icons", "Icons", "{76B3CEAA-AD6E-47C1-ACBE-05313A4506AE}"
 	ProjectSection(SolutionItems) = preProject
@@ -65,25 +69,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples.PCL", "Examples.PC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reporting", "Presentation.Reporting\Presentation.Reporting.csproj", "{EE7DA415-99ED-4E8A-B129-BE09F40ACB83}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{B9D86D8C-D006-43E1-AA4C-9F09099982EB}"
-	ProjectSection(SolutionItems) = preProject
-		NuGet\Platform.Model.MVC.nuspec = NuGet\Platform.Model.MVC.nuspec
-		NuGet\Platform.Model.nuspec = NuGet\Platform.Model.nuspec
-		NuGet\Platform.nuspec = NuGet\Platform.nuspec
-		NuGet\Platform.Presentation.nuspec = NuGet\Platform.Presentation.nuspec
-		NuGet\Platform.Presentation.Windows.Forms.nuspec = NuGet\Platform.Presentation.Windows.Forms.nuspec
-		NuGet\Platform.Support.Core.nuspec = NuGet\Platform.Support.Core.nuspec
-		NuGet\Platform.Support.Data.nuspec = NuGet\Platform.Support.Data.nuspec
-		NuGet\Platform.Support.Drawing.nuspec = NuGet\Platform.Support.Drawing.nuspec
-		NuGet\Platform.Support.nuspec = NuGet\Platform.Support.nuspec
-		NuGet\Platform.Support.Windows.nuspec = NuGet\Platform.Support.Windows.nuspec
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.MVC", "Model.MVC\Model.MVC.csproj", "{8A7C7FBF-A028-4D54-8E92-6D8C4FC3A2FB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.MVC.PCL", "Model.MVC.PCL\Model.MVC.PCL.csproj", "{C4C6EA21-5740-42F0-990B-BE703B1F8B66}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateVersion", "UpdateVersion\UpdateVersion.csproj", "{F55D526E-61B1-4474-8B9A-AB2FB1CF62A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{388B655D-A132-4C7F-AA34-1CAAEC911C5E}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".tools", ".tools", "{C9F53230-9E15-49C9-B392-72321BE57E1E}"
+	ProjectSection(SolutionItems) = preProject
+		.tools\UpdateVersion.exe = .tools\UpdateVersion.exe
+		UpdateVersion\UpdateVersion.msbuild = UpdateVersion\UpdateVersion.msbuild
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

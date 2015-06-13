@@ -87,7 +87,8 @@
     </Component>
 
     <Component Id="ApplicationTools" Guid="DBCD5997-D430-4C10-B80D-8B555433C75D" Directory="ToolsFolder">
-      <File Id="AssemblyInfoUtil.exe" Name="AssemblyInfoUtil.exe" Source="$(var.SolutionDir)AssemblyInfoUtil\Bin\$(var.Configuration)\AssemblyInfoUtil.exe" Checksum="yes" />
+      <File Id="UpdateVersion.exe" Name="UpdateVersion.exe" Source="$(var.SolutionDir).tools\UpdateVersion.exe" Checksum="yes" />
+      <File Id="UpdateVersion.msbuild" Name="UpdateVersion.msbuild" Source="$(var.SolutionDir).tools\UpdateVersion.msbuild" Checksum="yes" />
     </Component>
 
     <!-- Main Libs -->
@@ -129,17 +130,17 @@
       <File Id="SERVICES.TAXES.PDB" Name="Services.Taxes.pdb" Source="$(var.SolutionDir)Services.Taxes\Bin\$(var.Configuration)\Services.Taxes.pdb" Vital="yes" Checksum="yes" />-->
     </Component>
 
-    <!-- Portable Libs -->
+    <!-- Portable Libs --><!--
     <Component Id="ApplicationPortableFiles" Guid="A7CB9DFB-5E3C-4A42-8EE2-571AB270FE35" Directory="PortableFolder">
       <File Id="SUPPORT.CORE.PCL.DLL" Name="Platform.Support.Core.PCL.dll" Source="$(var.SolutionDir)Support.PCL\Bin\$(var.Configuration)\Platform.Support.Core.PCL.dll" Vital="yes" Checksum="yes" />
-      <!--<File Id="SUPPORT.DATA.DLL" Name="Platform.Support.Data.PCL.dll" Source="$(var.SolutionDir)Support.Data.PCL\Bin\$(var.Configuration)\Platform.Support.Data.PCL.dll" Vital="yes" Checksum="yes" />-->
+      --><!--<File Id="SUPPORT.DATA.DLL" Name="Platform.Support.Data.PCL.dll" Source="$(var.SolutionDir)Support.Data.PCL\Bin\$(var.Configuration)\Platform.Support.Data.PCL.dll" Vital="yes" Checksum="yes" />--><!--
       <File Id="MODEL.PCL.DLL" Name="Platform.Model.PCL.dll" Source="$(var.SolutionDir)Model.PCL\Bin\$(var.Configuration)\Platform.Model.PCL.dll" Vital="yes" Checksum="yes" />
     </Component>
     <Component Id="ApplicationPortableDebugFiles" Guid="01473191-F0A1-4FD9-AB92-AFCB16DA0659" Directory="PortableFolder">
       <File Id="SUPPORT.CORE.PCL.PDB" Name="Platform.Support.Core.PCL.pdb" Source="$(var.SolutionDir)Support.PCL\Bin\$(var.Configuration)\Platform.Support.Core.PCL.pdb" Vital="yes" Checksum="yes" />
-      <!--<File Id="SUPPORT.DATA.PCL.PDB" Name="Platform.Support.Data.PCL.pdb" Source="$(var.SolutionDir)Support.Data.PCL\Bin\$(var.Configuration)\Platform.Support.Data.PCL.pdb" Vital="yes" Checksum="yes" />-->
+      --><!--<File Id="SUPPORT.DATA.PCL.PDB" Name="Platform.Support.Data.PCL.pdb" Source="$(var.SolutionDir)Support.Data.PCL\Bin\$(var.Configuration)\Platform.Support.Data.PCL.pdb" Vital="yes" Checksum="yes" />--><!--
       <File Id="MODEL.PCL.PDB" Name="Platform.Model.PCL.pdb" Source="$(var.SolutionDir)Model.PCL\Bin\$(var.Configuration)\Platform.Model.PCL.pdb" Vital="yes" Checksum="yes" />
-    </Component>
+    </Component>-->
 
     <!-- Components Groups -->
     <ComponentGroup Id="ApplicationFilesGroup" Directory="InstallFolder">
@@ -175,12 +176,12 @@
       <ComponentRef Id="ApplicationMenuShortcuts" />
       <!--<ComponentRef Id="ApplicationDesktopShortcuts" />-->
     </Feature>
-    <Feature Id="PortableFeature" Level="1" Title="!(loc.PortableFeatureTitle)" Description="!(loc.PortableFeatureDescription)">
+    <!--<Feature Id="PortableFeature" Level="1" Title="!(loc.PortableFeatureTitle)" Description="!(loc.PortableFeatureDescription)">
       <ComponentRef Id="ApplicationPortableFiles" />
       <Feature Id="PortableDebugFeature" Level="1" Title="!(loc.PortableDebugFeatureTitle)" Description="!(loc.PortableDebugFeatureDescription)">
         <ComponentRef Id="ApplicationPortableDebugFiles" />
       </Feature>
-    </Feature>
+    </Feature>-->
 
   </Product>
 

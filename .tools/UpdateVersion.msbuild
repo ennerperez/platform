@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <UpdateVersionApp>$(SolutionDir).tools\UpdateVersion.exe</UpdateVersionApp>
+    <AssemblyInfoFile>$(SolutionDir)Files\AssemblyInfo.Platform.cs</AssemblyInfoFile>
+    <ChangeLogFile>$(SolutionDir)CHANGELOG.md</ChangeLogFile>
+  </PropertyGroup>
+
+  <Target Name="BeforeBuild" BeforeTargets="CoreBuild"  Condition="Exists($(ChangeLogFile))" >
+    <Exec WorkingDirectory="$(ProjectDir)" Condition="'$(ConfigurationName)' == 'Debug'" Command="$(UpdateVersionApp) $(AssemblyInfoFile) /l:$(ChangeLogFile) /c:4 /i:$(ConfigurationName)" />
+    <Exec WorkingDirectory="$(ProjectDir)" Condition="'$(ConfigurationName)' == 'Release'" Command="$(UpdateVersionApp) $(AssemblyInfoFile) /l:$(ChangeLogFile) /i:RTM" />
+  </Target>
+
+</Project>
