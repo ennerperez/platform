@@ -58,6 +58,7 @@
           <Directory Id="SharedFolder" Name="Shared" />
           <Directory Id="PortableFolder" Name="Portable" />
           <Directory Id="ToolsFolder" Name="Tools" />
+          <Directory Id="NuGetCacheDirProduct" Name="NuGet" />
         </Directory>
       </Directory>
       <!--<Directory Id="CommonFilesFolder" Name="$(var.PlatformCommonFilesFolder)">
@@ -69,120 +70,17 @@
           <Directory Id="ProductMenuFolder" Name="$(var.ProductName)" />
         </Directory>
       </Directory>
+      
       <!--<Directory Id="DesktopFolder"/>-->
       <!-- Others folder -->
       <!--<Directory Id="FontsFolder"/>-->
     </Directory>
 
-    <!-- Components -->
-    
-    <Component Id="ApplicationFilesShared" Guid="08B8D5DA-5168-4246-8547-5E3C7D455AEF" Directory="SharedFolder" Permanent="yes" Shared="yes">
-      <File Id="AppIcon.ico" Source="$(var.SolutionDir)Resources\Icons\AppIcon.$(var.TargetName).ico" Checksum="no" />
+      <!-- Features -->
+      <?include Features\DefaultFeature.wxi?>
+      <!--<?include Features\PortableFeature.wxi?>-->
+      <?include Features\NuGetCacheFeature.wxi?>
 
-      <!--<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\AppFile" Name="FriendlyTypeName" Value="!(loc.app)" Type="string" />
-      <ProgId Id="AppFile" Description="!(loc.app)" Icon="AppIconFile.ico">
-        <Extension Id="app" />
-      </ProgId>-->
-
-    </Component>
-
-    <Component Id="ApplicationTools" Guid="DBCD5997-D430-4C10-B80D-8B555433C75D" Directory="ToolsFolder">
-      <File Id="UpdateVersion.exe" Name="UpdateVersion.exe" Source="$(var.SolutionDir).tools\UpdateVersion.exe" Checksum="yes" />
-      <File Id="UpdateVersion.msbuild" Name="UpdateVersion.msbuild" Source="$(var.SolutionDir).tools\UpdateVersion.msbuild" Checksum="yes" />
-    </Component>
-
-    <!-- Main Libs -->
-    <Component Id="ApplicationFiles" Guid="6CF7FC4B-FCA4-4E2F-AA95-C0D114660855" Directory="InstallFolder">
-      <File Id="SUPPORT.CORE.DLL" Name="Platform.Support.Core.dll" Source="$(var.SolutionDir)Support\Bin\$(var.Configuration)\Platform.Support.Core.dll" Vital="yes" Checksum="yes" />
-      <File Id="SUPPORT.DATA.DLL" Name="Platform.Support.Data.dll" Source="$(var.SolutionDir)Support.Data\Bin\$(var.Configuration)\Platform.Support.Data.dll" Checksum="yes" />
-      <File Id="SUPPORT.DRAWING.DLL" Name="Platform.Support.Drawing.dll" Source="$(var.SolutionDir)Support.Drawing\bin\$(var.Configuration)\Platform.Support.Drawing.dll" Checksum="yes"/>
-      <!--<File Id="SUPPORT.NET.DLL" Name="Platform.Support.Net.dll" Source="$(var.SolutionDir)Support.Net\bin\$(var.Configuration)\Platform.Support.Net.dll" Checksum="yes" />-->
-      <File Id="SUPPORT.WEB.DLL" Name="Platform.Support.Web.dll" Source="$(var.SolutionDir)Support.Web\bin\$(var.Configuration)\Platform.Support.Web.dll" Checksum="yes" />
-      <File Id="SUPPORT.WINDOWS.DLL" Name="Platform.Support.Windows.dll" Source="$(var.SolutionDir)Support.Windows\bin\$(var.Configuration)\Platform.Support.Windows.dll" Checksum="yes" />
-      <File Id="MODEL.DLL" Name="Platform.Model.dll" Source="$(var.SolutionDir)Model\bin\$(var.Configuration)\Platform.Model.dll" />
-      <!--<File Id="MODEL.SPS.DLL" Name="Platform.Model.SPS.dll" Source="$(var.SolutionDir)Model.SPS\bin\$(var.Configuration)\Model.SPS.dll" />-->
-      <File Id="PRESENTATION.WINDOWS.FORMS.DLL" Name="Platform.Presentation.Windows.Forms.dll" Source="$(var.SolutionDir)Presentation.Windows.Forms\bin\$(var.Configuration)\Platform.Presentation.Windows.Forms.dll" Checksum="yes" />
-      <File Id="PRESENTATION.REPORTING.DLL" Name="Platform.Presentation.Reporting.dll" Source="$(var.SolutionDir)Presentation.Reporting\bin\$(var.Configuration)\Platform.Presentation.Reporting.dll" Checksum="yes" />
-      <!--<File Id="SERVICES.SOCIALS.DLL" Name="Services.Socials.dll" Source="$(var.SolutionDir)Services.Socials\Bin\$(var.Configuration)\Services.Socials.dll" Vital="yes" Checksum="yes" />
-      <File Id="SERVICES.WEATHER.DLL" Name="Services.Weather.dll" Source="$(var.SolutionDir)Services.Weather\Bin\$(var.Configuration)\Services.Weather.dll" Vital="yes" Checksum="yes" />
-      <File Id="SERVICES.TAXES.DLL" Name="Services.Taxes.dll" Source="$(var.SolutionDir)Services.Taxes\Bin\$(var.Configuration)\Services.Taxes.dll" Vital="yes" Checksum="yes" />-->
-
-      <!-- Capabilities keys for Vista/7 "Set Program Access and Defaults" -->
-      <!--<RegistryValue Root="HKLM" Key="SOFTWARE\$(var.ProductManufacturer)\$(var.ProductName).exe\Capabilities" Name="ApplicationDescription" Value="!(loc.ProductDescription)" Type="string" />
-      <RegistryValue Root="HKLM" Key="SOFTWARE\$(var.ProductManufacturer)\$(var.ProductName).exe\Capabilities" Name="ApplicationIcon" Value="[APPLICATIONFOLDER]$(var.ProductName).exe,0" Type="string" />
-      <RegistryValue Root="HKLM" Key="SOFTWARE\$(var.ProductManufacturer)\$(var.ProductName).exe\Capabilities" Name="ApplicationName" Value="$(var.ProductName)" Type="string" />
-      <RegistryValue Root="HKLM" Key="SOFTWARE\$(var.ProductManufacturer)\$(var.ProductName).exe\Capabilities\DefaultIcon" Value="[APPLICATIONFOLDER]$(var.ProductName).exe,0" Type="string" />-->
-
-    </Component>
-    <Component Id="ApplicationDebugFiles" Guid="6CF7FC4B-FCA4-4E2F-AA95-C0D114660856" Directory="InstallFolder">
-      <File Id="SUPPORT.CORE.PDB" Name="Platform.Support.Core.pdb" Source="$(var.SolutionDir)Support\Bin\$(var.Configuration)\Platform.Support.Core.pdb" Checksum="yes" />
-      <File Id="SUPPORT.DATA.PDB" Name="Platform.Support.Data.pdb" Source="$(var.SolutionDir)Support.Data\Bin\$(var.Configuration)\Platform.Support.Data.pdb" Checksum="yes" />
-      <File Id="SUPPORT.DRAWING.PDB" Name="Platform.Support.Drawing.pdb" Source="$(var.SolutionDir)Support.Drawing\bin\$(var.Configuration)\Platform.Support.Drawing.pdb" Checksum="yes"/>
-      <!--<File Id="SUPPORT.NET.PDB" Name="Platform.Support.Net.pdb" Source="$(var.SolutionDir)Support.Net\bin\$(var.Configuration)\Platform.Support.Net.pdb" Checksum="yes" />-->
-      <File Id="SUPPORT.WEB.PDB" Name="Platform.Support.Web.pdb" Source="$(var.SolutionDir)Support.Web\bin\$(var.Configuration)\Platform.Support.Web.pdb" Checksum="yes" />
-      <File Id="SUPPORT.WINDOWS.PDB" Name="Platform.Support.Windows.pdb" Source="$(var.SolutionDir)Support.Windows\bin\$(var.Configuration)\Platform.Support.Windows.pdb" Checksum="yes" />
-      <File Id="MODEL.PDB" Name="Platform.Model.pdb" Source="$(var.SolutionDir)Model\bin\$(var.Configuration)\Platform.Model.pdb" />
-      <!--<File Id="MODEL.SPS.PDB" Name="Platform.Model.SPS.pdb" Source="$(var.SolutionDir)Model.SPS\bin\$(var.Configuration)\Model.SPS.pdb" />-->
-      <File Id="PRESENTATION.WINDOWS.FORMS.PDB" Name="Platform.Presentation.Windows.Forms.pdb" Source="$(var.SolutionDir)Presentation.Windows.Forms\bin\$(var.Configuration)\Platform.Presentation.Windows.Forms.pdb" Checksum="yes" />
-      <File Id="PRESENTATION.REPORTING.PDB" Name="Platform.Presentation.Reporting.pdb" Source="$(var.SolutionDir)Presentation.Reporting\bin\$(var.Configuration)\Platform.Presentation.Reporting.pdb" Checksum="yes" />
-      <!--<File Id="SERVICES.SOCIALS.PDB" Name="Services.Socials.pdb" Source="$(var.SolutionDir)Services.Socials\Bin\$(var.Configuration)\Services.Socials.pdb" Vital="yes" Checksum="yes" />
-      <File Id="SERVICES.WEATHER.PDB" Name="Services.Weather.pdb" Source="$(var.SolutionDir)Services.Weather\Bin\$(var.Configuration)\Services.Weather.pdb" Vital="yes" Checksum="yes" />
-      <File Id="SERVICES.TAXES.PDB" Name="Services.Taxes.pdb" Source="$(var.SolutionDir)Services.Taxes\Bin\$(var.Configuration)\Services.Taxes.pdb" Vital="yes" Checksum="yes" />-->
-    </Component>
-
-    <!-- Portable Libs --><!--
-    <Component Id="ApplicationPortableFiles" Guid="A7CB9DFB-5E3C-4A42-8EE2-571AB270FE35" Directory="PortableFolder">
-      <File Id="SUPPORT.CORE.PCL.DLL" Name="Platform.Support.Core.PCL.dll" Source="$(var.SolutionDir)Support.PCL\Bin\$(var.Configuration)\Platform.Support.Core.PCL.dll" Vital="yes" Checksum="yes" />
-      --><!--<File Id="SUPPORT.DATA.DLL" Name="Platform.Support.Data.PCL.dll" Source="$(var.SolutionDir)Support.Data.PCL\Bin\$(var.Configuration)\Platform.Support.Data.PCL.dll" Vital="yes" Checksum="yes" />--><!--
-      <File Id="MODEL.PCL.DLL" Name="Platform.Model.PCL.dll" Source="$(var.SolutionDir)Model.PCL\Bin\$(var.Configuration)\Platform.Model.PCL.dll" Vital="yes" Checksum="yes" />
-    </Component>
-    <Component Id="ApplicationPortableDebugFiles" Guid="01473191-F0A1-4FD9-AB92-AFCB16DA0659" Directory="PortableFolder">
-      <File Id="SUPPORT.CORE.PCL.PDB" Name="Platform.Support.Core.PCL.pdb" Source="$(var.SolutionDir)Support.PCL\Bin\$(var.Configuration)\Platform.Support.Core.PCL.pdb" Vital="yes" Checksum="yes" />
-      --><!--<File Id="SUPPORT.DATA.PCL.PDB" Name="Platform.Support.Data.PCL.pdb" Source="$(var.SolutionDir)Support.Data.PCL\Bin\$(var.Configuration)\Platform.Support.Data.PCL.pdb" Vital="yes" Checksum="yes" />--><!--
-      <File Id="MODEL.PCL.PDB" Name="Platform.Model.PCL.pdb" Source="$(var.SolutionDir)Model.PCL\Bin\$(var.Configuration)\Platform.Model.PCL.pdb" Vital="yes" Checksum="yes" />
-    </Component>-->
-
-    <!-- Components Groups -->
-    <ComponentGroup Id="ApplicationFilesGroup" Directory="InstallFolder">
-      <ComponentRef Id="ApplicationFiles" Primary="yes" />
-      <ComponentRef Id="ApplicationTools" Primary="yes" />
-      <!--<ComponentRef Id="ApplicationReferencesFiles" />-->
-    </ComponentGroup>
-
-    <!-- Shortcuts -->
-    <DirectoryRef Id="ProgramMenuFolder">
-      <Component Id="ApplicationMenuShortcuts" Guid="CDC278F2-FC2A-4D9D-BCD8-F7D6A453F418">
-
-        <CreateFolder Directory="ManufacturerMenuFolder" />
-        <CreateFolder Directory="ProductMenuFolder" />
-
-        <!--<Shortcut Id="ApplicationMenuShortcut" Directory="ProductMenuFolder" Name="$(var.ProductName) !(loc.ProductInit)" Description="$(var.ProductDescription)" Arguments="/l" Target="[InstallFolder]$(var.ProductName).exe" WorkingDirectory="InstallFolder" Icon="ProductIcon" />-->
-        <Shortcut Id="ApplicationMenuUninstallShortcut" Directory="ProductMenuFolder" Name="!(loc.Uninstall)" Description="!(loc.UninstallDescription)" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" />
-
-        <RemoveFolder Id="RemoveProductMenuFolder" Directory="ProductMenuFolder" On="uninstall" />
-        <RemoveFolder Id="RemoveManufacturerMenuFolder" Directory="ManufacturerMenuFolder" On="uninstall" />
-
-        <RegistryValue Root="HKCU" Key="Software\$(var.ProductManufacturerName)\$(var.ProductName)" Name="installed" Type="integer" Value="1" KeyPath="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <!-- Features -->
-    <Feature Id="DefaultFeature" Level="1" Title="!(loc.DefaultFeatureTitle)" Description="!(loc.DefaultFeatureDescription)">
-      <ComponentRef Id="ApplicationFilesShared" />
-      <ComponentGroupRef Id="ApplicationFilesGroup" />
-      <Feature Id="DefaultDebugFeature" Level="1" Title="!(loc.DefaultDebugFeatureTitle)" Description="!(loc.DefaultDebugFeatureDescription)">
-        <ComponentRef Id="ApplicationDebugFiles" />
-      </Feature>
-      <ComponentRef Id="ApplicationMenuShortcuts" />
-      <!--<ComponentRef Id="ApplicationDesktopShortcuts" />-->
-    </Feature>
-    <!--<Feature Id="PortableFeature" Level="1" Title="!(loc.PortableFeatureTitle)" Description="!(loc.PortableFeatureDescription)">
-      <ComponentRef Id="ApplicationPortableFiles" />
-      <Feature Id="PortableDebugFeature" Level="1" Title="!(loc.PortableDebugFeatureTitle)" Description="!(loc.PortableDebugFeatureDescription)">
-        <ComponentRef Id="ApplicationPortableDebugFiles" />
-      </Feature>
-    </Feature>-->
-
-  </Product>
+    </Product>
 
 </Wix>

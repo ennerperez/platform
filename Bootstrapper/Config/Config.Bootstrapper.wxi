@@ -2,10 +2,9 @@
 <Include>
 
   <!-- Statics definitions -->
-  <?define ComputerName = "PC-EP" ?>
-
+  
   <!-- Basic reference -->
-  <?include $(var.SolutionDir)Files\Config.$(var.TargetName).wxi?>
+  <?include $(var.ProjectDir)..\Setup\Config\Config.Common.wxi?>
 
   <!-- Product definitions -->
   <?define ProductDescription = "!(bind.packageDescription.Setup)"?>
@@ -17,7 +16,7 @@
   <?define ProductManufacturerURL = "http://www.argumentca.com.ve/"?>
   
 
-  <?define ProductCopyright = "$(var.ProductManufacturer) © 2014"?>
+  <?define ProductCopyright = "$(var.ProductManufacturer) © 2015"?>
   <?define ProductVersion = "!(bind.packageVersion.Setup)"?>
   <?define ProductUpgradeCode = "751EE86C-6C7B-4355-BC34-7823F859C5B6"?>
 

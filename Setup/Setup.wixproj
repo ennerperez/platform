@@ -27,12 +27,14 @@
     <Folder Include="Config" />
     <Folder Include="Globalization" />
     <Folder Include="Files" />
+    <Folder Include="Features" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\Files\Config.Platform.wxi">
-      <Link>Config\Config.Platform.wxi</Link>
-    </Content>
+    <Content Include="Config\Config.Common.wxi" />
     <Content Include="Config\Config.Setup.wxi" />
+    <Content Include="Features\DefaultFeature.wxi" />
+    <Content Include="Features\NuGetCacheFeature.wxi" />
+    <Content Include="Features\PortableFeature.wxi" />
     <Content Include="Files\WixUIBanner.bmp" />
     <Content Include="Files\WixUIDialog.bmp" />
     <Content Include="Files\WixUILicense.rtf" />

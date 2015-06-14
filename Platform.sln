@@ -5,11 +5,12 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "Support\Support.csproj", "{25AB6BBF-A879-4570-9E0E-947D52AE7333}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{8BE2B02F-E29C-4E9A-93FD-C8EEED874C90}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".files", ".files", "{8BE2B02F-E29C-4E9A-93FD-C8EEED874C90}"
 	ProjectSection(SolutionItems) = preProject
-		Files\AssemblyInfo.Common.cs = Files\AssemblyInfo.Common.cs
-		Files\AssemblyInfo.Platform.cs = Files\AssemblyInfo.Platform.cs
-		Files\Microsoft.Framework.props = Files\Microsoft.Framework.props
+		.files\AssemblyInfo.Common.cs = .files\AssemblyInfo.Common.cs
+		.files\AssemblyInfo.Platform.cs = .files\AssemblyInfo.Platform.cs
+		AssemblyInfo.Version.cs = AssemblyInfo.Version.cs
+		.files\Microsoft.Framework.props = .files\Microsoft.Framework.props
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.PCL", "Support.PCL\Support.PCL.csproj", "{18F0A51D-255E-4845-A724-B676D5FBBFBC}"
@@ -36,12 +37,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Drawing", "Support.Drawing\Support.Drawing.csproj", "{D544E494-3925-4180-A4A8-26801118D527}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{47568DD7-5B96-44AC-9887-17B921C5F2D3}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{71DCC09B-F9A0-40F7-9A60-F94814774887}"
-	ProjectSection(SolutionItems) = preProject
-		Files\Config.Common.wxi = Files\Config.Common.wxi
-		Files\Config.Platform.wxi = Files\Config.Platform.wxi
-	EndProjectSection
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Setup\Setup.wixproj", "{5D2AC7EF-7F30-4DDF-8F90-D8640B5E6EFD}"
 EndProject
@@ -85,7 +80,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".tools", ".tools", "{C9F53230-9E15-49C9-B392-72321BE57E1E}"
 	ProjectSection(SolutionItems) = preProject
 		.tools\UpdateVersion.exe = .tools\UpdateVersion.exe
-		UpdateVersion\UpdateVersion.msbuild = UpdateVersion\UpdateVersion.msbuild
+		.tools\UpdateVersion.targets = .tools\UpdateVersion.targets
 	EndProjectSection
 EndProject
 Global
@@ -163,7 +158,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{18F0A51D-255E-4845-A724-B676D5FBBFBC} = {EE046FAB-551D-49ED-A2D0-2D648C7732A3}
 		{44448EE1-AE0E-4610-A6BE-208EB7FBCFFB} = {EE046FAB-551D-49ED-A2D0-2D648C7732A3}
-		{71DCC09B-F9A0-40F7-9A60-F94814774887} = {47568DD7-5B96-44AC-9887-17B921C5F2D3}
 		{5D2AC7EF-7F30-4DDF-8F90-D8640B5E6EFD} = {47568DD7-5B96-44AC-9887-17B921C5F2D3}
 		{76B3CEAA-AD6E-47C1-ACBE-05313A4506AE} = {4A239D50-824B-43EB-9561-FD8B01D535A4}
 		{B9AD2AB2-C519-4EF3-B4C6-9934C149CA15} = {47568DD7-5B96-44AC-9887-17B921C5F2D3}

@@ -54,8 +54,8 @@
     <Folder Include="Theme" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\Files\Config.Platform.wxi">
-      <Link>Config\Config.Platform.wxi</Link>
+    <Content Include="..\Setup\Config\Config.Common.wxi">
+      <Link>Config\Config.Common.wxi</Link>
     </Content>
     <Content Include="Config\Config.Bootstrapper.wxi" />
     <Content Include="Files\Logo.jpg" />

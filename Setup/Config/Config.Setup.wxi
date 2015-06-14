@@ -2,7 +2,7 @@
 <Include>
   
   <!-- Basic reference -->
-  <?include $(var.SolutionDir)Files\Config.$(var.TargetName).wxi?>
+  <?include Config.Common.wxi?>
 
   <!-- Product definitions -->
   <?define ProductDescription = "!(loc.ProductDescription)"?>

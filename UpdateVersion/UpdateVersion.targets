@@ -3,8 +3,8 @@
 
   <PropertyGroup>
     <UpdateVersionApp>$(SolutionDir).tools\UpdateVersion.exe</UpdateVersionApp>
-    <AssemblyInfoFile>$(SolutionDir)Files\AssemblyInfo.Platform.cs</AssemblyInfoFile>
-    <ChangeLogFile>$(SolutionDir)CHANGELOG.md</ChangeLogFile>
+    <AssemblyInfoFile>$(ProjectDir)..\AssemblyInfo.Version</AssemblyInfoFile>
+    <ChangeLogFile>$(ProjectDir)..\CHANGELOG.md</ChangeLogFile>
   </PropertyGroup>
 
   <Target Name="BeforeBuild" BeforeTargets="CoreBuild"  Condition="Exists($(ChangeLogFile))" >

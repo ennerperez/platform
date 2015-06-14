@@ -24,5 +24,8 @@
   <String Id="ModulesDebugFeatureDescription">Debug independent modules</String>-->
   <String Id="PortableDebugFeatureTitle">Debug</String>
   <String Id="PortableDebugFeatureDescription">Debug portable libraries</String>
+
+  <String Id="NuGetCacheFeatureTitle">NuGet Cache Packages</String>
+  <String Id="NuGetCacheFeatureDescription">Install NuGet Packages locally</String>
   
 </WixLocalization>
