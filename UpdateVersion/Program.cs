@@ -270,7 +270,9 @@ public class Program
             return _result;
         }
         {
+
             return processFile();
+
         }
 
 
@@ -283,61 +285,69 @@ public class Program
             return showError("Can not find file \"" + assemblyInfo + "\"");
         }
 
-        // Changelog
-        if (has_changelog && !System.IO.File.Exists(changelog))
-        {
-            return showError("Can not find file \"" + changelog + "\"");
-        }
-
-        // Compatibility
-        if (has_changelog && (has_version))
-        {
-            return showError("Can't use " + cmd_changelog + " option with " + cmd_version + " or " + cmd_increment + ".");
-        }
-
-        if (has_version && has_increment)
-        {
-            return showError("Can't use " + cmd_increment + " option with " + cmd_version + ".");
-        }
-
-        // Processing
-        if (has_changelog) readFromChangeLog(changelog);
-
-        // Version + Increment values
-        if (has_increment)
+        var fileInfo = new System.IO.FileInfo(assemblyInfo);
+        if (!fileInfo.IsReadOnly)
         {
 
-            // Increment value
-            if (increment > 5 || increment < 1)
+            // Changelog
+            if (has_changelog && !System.IO.File.Exists(changelog))
             {
-                return showError("Can't use " + cmd_increment + " option with " + increment + ".");
+                return showError("Can not find file \"" + changelog + "\"");
             }
 
-            if (!has_changelog) version = getCurentVersion();
+            // Compatibility
+            if (has_changelog && (has_version))
+            {
+                return showError("Can't use " + cmd_changelog + " option with " + cmd_version + " or " + cmd_increment + ".");
+            }
 
-            if (isValidVersion(version) && increment > version.Split('.').Length)
+            if (has_version && has_increment)
             {
-                return showError("The current version \"" + version + "\" does not have the indicated position.");
+                return showError("Can't use " + cmd_increment + " option with " + cmd_version + ".");
             }
-            else if (!isValidVersion(version))
+
+            // Processing
+            if (has_changelog) readFromChangeLog(changelog);
+
+            // Version + Increment values
+            if (has_increment)
             {
-                return showError("Can't use " + cmd_increment + " option with an invalid version format.");
+
+                // Increment value
+                if (increment > 5 || increment < 1)
+                {
+                    return showError("Can't use " + cmd_increment + " option with " + increment + ".");
+                }
+
+                if (!has_changelog) version = getCurentVersion();
+
+                if (isValidVersion(version) && increment > version.Split('.').Length)
+                {
+                    return showError("The current version \"" + version + "\" does not have the indicated position.");
+                }
+                else if (!isValidVersion(version))
+                {
+                    return showError("Can't use " + cmd_increment + " option with an invalid version format.");
+                }
+
             }
+
+            // Version value
+            if (has_version && !isValidVersion(version))
+            {
+                return showError("Can't use " + cmd_version + " option with an invalid version format.");
+            }
+
+            // Default values
+            if (string.IsNullOrEmpty(info)) info = "";
+            if (string.IsNullOrEmpty(version)) version = "1.0.0.0";
+
+
+            return processAssemblyInfo(assemblyInfo);
 
         }
 
-        // Version value
-        if (has_version && !isValidVersion(version))
-        {
-            return showError("Can't use " + cmd_version + " option with an invalid version format.");
-        }
-
-        // Default values
-        if (string.IsNullOrEmpty(info)) info = "";
-        if (string.IsNullOrEmpty(version)) version = "1.0.0.0";
-
-
-        return processAssemblyInfo(assemblyInfo);
+        return 0;
 
     }
 
@@ -516,7 +526,6 @@ public class Program
         }
         return line;
     }
-
 
 
 }
