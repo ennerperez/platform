@@ -6,7 +6,7 @@ namespace Platform.Presentation.Windows.Forms
     public static class Extensions
     {
 
-        public static void ShowIn(this Form form, Form parent, params object[] param)
+        public static void ShowIn(this Form form, Form parent, EventHandler action,  params object[] param)
         {
             System.Type _t = form.GetType();
             Form _ChildForm;
@@ -19,7 +19,14 @@ namespace Platform.Presentation.Windows.Forms
                 _ChildForm = (Form)Activator.CreateInstance(_t);
             }
             _ChildForm.MdiParent = parent;
+            if (action  != null) _ChildForm.Shown += action;
+
             _ChildForm.Show();
+        }
+
+        public static void ShowIn(this Form form, Form parent, params object[] param)
+        {
+            ShowIn(form, parent, null, param);
         }
 
         public static System.Windows.Forms.Form GetParentForm(this System.Windows.Forms.Control @this)
@@ -34,7 +41,7 @@ namespace Platform.Presentation.Windows.Forms
             return (System.Windows.Forms.Form)_return;
         }
 
-        private static Screen GetScreen(this Form @this)
+        public static Screen GetScreen(this Form @this)
         {
             return System.Windows.Forms.Screen.FromRectangle(new System.Drawing.Rectangle(@this.Location, @this.Size));
         }
