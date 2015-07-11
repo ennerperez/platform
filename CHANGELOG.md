@@ -4,12 +4,17 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
 
-## [3.0.0.7] - 2015-06-13
+## [3.0.0.8] - [UNRELEASED]
+### Changed
+- GetDominantColor optimized
+- Platform name fix
+
+## [3.0.0.7] - 2015-07-11
 ### Changed
 - Target files optimized
 - Building process refresh
 - Size for open URL in BrandManager
-- DominantColor optimized
+- GetDominantColor optimized
 
 ## [3.0.0.6] - 2015-06-13
 ### Changed

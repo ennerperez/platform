@@ -312,16 +312,20 @@ namespace Platform.Support.Drawing
             int totalR = 0;
             int totalG = 0;
             int totalB = 0;
+
+            System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(source);
+
             for (int x = 0; x <= source.Width - 1; x++)
             {
                 for (int y = 0; y <= source.Height - 1; y++)
                 {
-                    System.Drawing.Color pixel = new System.Drawing.Bitmap(source).GetPixel(x, y);
+                    System.Drawing.Color pixel = bmp.GetPixel(x, y);
                     totalR += pixel.R;
                     totalG += pixel.G;
                     totalB += pixel.B;
                 }
             }
+
             int totalPixels = source.Height * source.Width;
             int averageR = totalR / totalPixels;
             int averageg = totalG / totalPixels;
