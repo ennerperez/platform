@@ -37,11 +37,17 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Files\AssemblyInfo.Common.cs">
+    <Compile Include="..\.files\AssemblyInfo.Common.cs">
       <Link>Properties\AssemblyInfo.Common.cs</Link>
     </Compile>
-    <Compile Include="..\Files\AssemblyInfo.Platform.cs">
+    <Compile Include="..\.files\AssemblyInfo.Platform.cs">
       <Link>Properties\AssemblyInfo.Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\AssemblyInfo.Version.cs">
+      <Link>Properties\AssemblyInfo.Version.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\ArgumentOutOfRangeEventArgs.cs">
+      <Link>ArgumentOutOfRangeEventArgs.cs</Link>
     </Compile>
     <Compile Include="..\Support\Attributes\BuildDateAttribute.cs">
       <Link>Attributes\BuildDateAttribute.cs</Link>
@@ -61,6 +67,9 @@
     <Compile Include="..\Support\Attributes\IdAttribute.cs">
       <Link>Attributes\IdAttribute.cs</Link>
     </Compile>
+    <Compile Include="..\Support\Attributes\MadeIn.cs">
+      <Link>Attributes\MadeIn.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Attributes\MailAddressAttribute.cs">
       <Link>Attributes\MailAddressAttribute.cs</Link>
     </Compile>
@@ -72,6 +81,12 @@
     </Compile>
     <Compile Include="..\Support\Attributes\UrlAttribute.cs">
       <Link>Attributes\UrlAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Collections\Extensions.cs">
+      <Link>Collections\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Collections\TypeListComparer.cs">
+      <Link>Collections\TypeListComparer.cs</Link>
     </Compile>
     <Compile Include="..\Support\Extensions.cs">
       <Link>Extensions.cs</Link>

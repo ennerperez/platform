@@ -16,5 +16,7 @@
     <language>en</language>
     <tags>.NET Framework Base Development Platform</tags>    
   </metadata>
-  <files />
+  <files>
+    <file src="..\Support.PCL\bin\Release\Platform.Support.Core.PCL.dll" target="lib\portable-net4+sl4+wp7+win8\Platform.Support.Core.PCL.dll" />
+  </files>
 </package>

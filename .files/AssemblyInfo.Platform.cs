@@ -5,7 +5,9 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyProduct("Platform")]
 
+#if !PORTABLE
 [assembly: ComVisible(true)]
+#endif
 [assembly: CLSCompliant(false)]
 //[assembly: SecurityRules(SecurityRuleSet.Level2)] 
 
@@ -18,5 +20,4 @@ using System.Runtime.InteropServices;
 //#if (NETFX_40 || NETFX_45 || NETFX_451)
 //[assembly: AllowPartiallyTrustedCallers()]
 //#endif
-
 [assembly: NeutralResourcesLanguageAttribute("en")]

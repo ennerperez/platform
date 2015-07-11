@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Target files optimized
 - Building process refresh
+- Size for open URL in BrandManager
+- DominantColor optimized
 
 ## [3.0.0.6] - 2015-06-13
 ### Changed

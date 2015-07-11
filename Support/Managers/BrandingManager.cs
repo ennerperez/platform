@@ -68,6 +68,11 @@ namespace Platform.Support.Branding
             get { return _URL; }
         }
 
+        private Tuple<int, int> _URLDisplaySize;
+        public Tuple<int, int> URLDisplaySize
+        {
+            get { return _URLDisplaySize; }
+        }
 
         private string _EULA;
         public string EULA
@@ -111,8 +116,7 @@ namespace Platform.Support.Branding
                 this._Key = new Guid(brand.Element("key").Attribute("value").Value);
 
                 string _preculture = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
-
-
+                
                 IEnumerable<XElement> cultures = brand.Elements("cultures");
                 XElement _element = cultures.Elements().FirstOrDefault(x => x.Attribute("value").Value == _preculture);
                 if (_element != null)
@@ -123,6 +127,7 @@ namespace Platform.Support.Branding
                         if (!string.IsNullOrEmpty(_preurl))
                         {
                             this._URL = new Uri(_preurl);
+                            this._URLDisplaySize = new Tuple<int,int>(int.Parse(_element.Element("url").Attribute("width").Value), int.Parse(_element.Element("url").Attribute("height").Value));
                         }
                         this._EULA = _element.Element("eula").Attribute("value").Value;
                     }
@@ -240,6 +245,27 @@ namespace Platform.Support.Branding
             if (_Cache.URL != null)
             {
                 return _Cache.URL.ToString();
+            }
+
+            return null;
+        }
+
+        public static Tuple<int, int> BrandURLDisplaySize(this System.Reflection.Assembly assembly)
+        {
+            if (_Cache == null)
+            {
+                if (IsBranded(assembly))
+                {
+                    if (_Cache != null && _Cache.URL != null)
+                    {
+                        return _Cache.URLDisplaySize;
+                    }
+                }
+            }
+
+            if (_Cache.URL != null)
+            {
+                return _Cache.URLDisplaySize;
             }
 
             return null;

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+#if !PORTABLE
+using System.Data;
 using Platform.Support.Reflection;
+#endif
 
 namespace Platform.Support.Collections
 {
@@ -67,7 +69,8 @@ namespace Platform.Support.Collections
             }
         }
 
-
+#if !PORTABLE
+        
         public static ICollection<T> Clone<T>(this ICollection<T> items) where T : ICloneable
         {
             ICollection<T> _return = Activator.CreateInstance<ICollection<T>>();
@@ -138,6 +141,8 @@ namespace Platform.Support.Collections
 
             return tb;
         }
+
+#endif
 
 
         public static void AddRange<T>(this ICollection<T> target, IEnumerable<T> items)

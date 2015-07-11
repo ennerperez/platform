@@ -307,39 +307,26 @@ namespace Platform.Support.Drawing
             return result;
         }
 
-        public static System.Drawing.Color GetDominantColor(System.Drawing.Image bmp)
+        public static System.Drawing.Color GetDominantColor(System.Drawing.Image source)
         {
-            //Used for tally
-            int r = 0;
-            int g = 0;
-            int b = 0;
-
-            int total = 0;
-
-            int x = 0;
-            while (x < bmp.Width)
+            int totalR = 0;
+            int totalG = 0;
+            int totalB = 0;
+            for (int x = 0; x <= source.Width - 1; x++)
             {
-                int y = 0;
-                while (y < bmp.Height)
+                for (int y = 0; y <= source.Height - 1; y++)
                 {
-                    System.Drawing.Color clr = new System.Drawing.Bitmap(bmp).GetPixel(x, y);
-
-                    r += clr.R;
-                    g += clr.G;
-                    b += clr.B;
-
-                    System.Math.Max(System.Threading.Interlocked.Increment(ref total), total - 1);
-                    System.Math.Max(System.Threading.Interlocked.Increment(ref y), y - 1);
+                    System.Drawing.Color pixel = new System.Drawing.Bitmap(source).GetPixel(x, y);
+                    totalR += pixel.R;
+                    totalG += pixel.G;
+                    totalB += pixel.B;
                 }
-                System.Math.Max(System.Threading.Interlocked.Increment(ref x), x - 1);
             }
-
-            //Calculate average
-            r /= total;
-            g /= total;
-            b /= total;
-
-            return System.Drawing.Color.FromArgb(r, g, b);
+            int totalPixels = source.Height * source.Width;
+            int averageR = totalR / totalPixels;
+            int averageg = totalG / totalPixels;
+            int averageb = totalB / totalPixels;
+            return System.Drawing.Color.FromArgb(averageR, averageg, averageb);
         }
         public static System.Drawing.Color[] GetPalette(System.Drawing.Image image)
         {
