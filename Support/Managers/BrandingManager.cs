@@ -14,13 +14,17 @@ namespace Platform.Support.Branding
 
         public BrandingManager()
         {
+            this._Logos = new Dictionary<string, byte[]>();
+            this._Phones = new Dictionary<string, string>();
+            this._URLs = new Dictionary<string, Uri>();
+            this._EMails = new Dictionary<string, System.Net.Mail.MailAddress>();
         }
 
-        public BrandingManager(System.IO.FileInfo file)
+        public BrandingManager(System.IO.FileInfo file, Guid guid)
             : this()
         {
             if (file != null && file.Exists)
-                this.Load(file);
+                this.Load(file, guid);
         }
 
         #region Properties
@@ -49,29 +53,40 @@ namespace Platform.Support.Branding
             get { return _Key; }
         }
 
-        private string _Phone;
-        public string Phone
+        private Dictionary<string, byte[]> _Logos;
+        public Dictionary<string, byte[]> Logos
         {
-            get { return _Phone; }
+            get { return _Logos; }
         }
 
-        private byte[] _Logo;
-        public byte[] Logo
+        private Dictionary<string, string> _Phones;
+        public Dictionary<string, string> Phones
         {
-            get { return _Logo; }
+            get { return _Phones; }
         }
 
-
-        private Uri _URL;
-        public Uri URL
+        private Dictionary<string, Uri> _URLs;
+        public Dictionary<string, Uri> URLs
         {
-            get { return _URL; }
+            get { return _URLs; }
         }
 
-        private Tuple<int, int> _URLDisplaySize;
-        public Tuple<int, int> URLDisplaySize
+        private Dictionary<string, System.Net.Mail.MailAddress> _EMails;
+        public Dictionary<string, System.Net.Mail.MailAddress> EMails
         {
-            get { return _URLDisplaySize; }
+            get { return _EMails; }
+        }
+
+        private string _ProductName;
+        public string ProductName
+        {
+            get { return _ProductName; }
+        }
+
+        private string _ProductDescription;
+        public string ProductDescription
+        {
+            get { return _ProductDescription; }
         }
 
         private string _EULA;
@@ -82,13 +97,13 @@ namespace Platform.Support.Branding
 
         #endregion
 
-        public void Load(System.IO.DirectoryInfo directory)
+        public void Load(System.IO.DirectoryInfo directory, Guid guid)
         {
             System.IO.FileInfo _File = directory.GetFiles("*.sku").FirstOrDefault();
-            this.Load(_File);
+            this.Load(_File, guid);
         }
 
-        public void Load(System.IO.FileInfo file)
+        public void Load(System.IO.FileInfo file, Guid guid)
         {
 
             if (file != null)
@@ -99,44 +114,72 @@ namespace Platform.Support.Branding
                 var brand = _XDocument.Element("SKUID").Element("brand");
 
                 this._Id = brand.Attribute("id").Value;
-                this._Name = brand.Element("name").Attribute("value").Value;
-                this._Description = brand.Attribute("id").Value;
+                this._Key = new Guid(brand.Attribute("key").Value);
 
-                string _prelogo = brand.Element("logo").Attribute("value").Value;
-                if (!string.IsNullOrEmpty(_prelogo))
+                this._Name = brand.Element("name").Value;
+                this._Description = brand.Element("description").Value;
+
+                foreach (var item in brand.Elements("logos"))
                 {
-                    try
+                    string _prelogo = item.Value;
+                    if (!string.IsNullOrEmpty(_prelogo))
                     {
-                        this._Logo = System.Convert.FromBase64String(_prelogo);
-                    }
-                    catch
-                    {
+                        try
+                        {
+                            this._Logos.Add(item.Attribute("id").Value, System.Convert.FromBase64String(_prelogo));
+                        }
+                        catch (Exception) { }
                     }
                 }
-                this._Key = new Guid(brand.Element("key").Attribute("value").Value);
 
-                string _preculture = System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
-                
-                IEnumerable<XElement> cultures = brand.Elements("cultures");
-                XElement _element = cultures.Elements().FirstOrDefault(x => x.Attribute("value").Value == _preculture);
-                if (_element != null)
+                foreach (var item in brand.Elements("phones"))
                 {
+                    string _prephone = item.Value;
+                    if (!string.IsNullOrEmpty(_prephone))
                     {
-                        this._Phone = _element.Element("phone").Attribute("value").Value;
-                        string _preurl = _element.Element("url").Attribute("value").Value;
-                        if (!string.IsNullOrEmpty(_preurl))
-                        {
-                            this._URL = new Uri(_preurl);
-                            this._URLDisplaySize = new Tuple<int,int>(int.Parse(_element.Element("url").Attribute("width").Value), int.Parse(_element.Element("url").Attribute("height").Value));
-                        }
-                        this._EULA = _element.Element("eula").Attribute("value").Value;
+                        this._Phones.Add(item.Attribute("id").Value, _prephone);
                     }
+                }
+
+                foreach (var item in brand.Elements("urls"))
+                {
+                    string _preurl = item.Value;
+                    if (!string.IsNullOrEmpty(_preurl))
+                    {
+                        try
+                        {
+                            Uri _url = new Uri(_preurl);
+                            this._URLs.Add(item.Attribute("id").Value, _url);
+                        }
+                        catch (Exception) { }
+                    }
+                }
+
+                foreach (var item in brand.Elements("emails"))
+                {
+                    string _preemail = item.Value;
+                    if (!string.IsNullOrEmpty(_preemail))
+                    {
+                        try
+                        {
+                            System.Net.Mail.MailAddress _email = new System.Net.Mail.MailAddress(_preemail);
+                            this._EMails.Add(item.Attribute("id").Value, _email);
+                        }
+                        catch (Exception) { }
+                    }
+                }
+
+                XElement product = brand.Element("product").Elements("products").Where<XElement>((x) => x.Attribute("guid").Value == guid.ToString()).FirstOrDefault();
+                if (product != null)
+                {
+                    this._ProductName = product.Element("name").Value;
+                    this._ProductDescription = product.Element("description").Value;
+                    this._EULA = product.Element("eula").Value;
                 }
 
             }
 
         }
-
 
         #region IDisposable Support
         // Para detectar llamadas redundantes
@@ -169,6 +212,7 @@ namespace Platform.Support.Branding
 
     }
 
+
     public static class Brand
     {
 
@@ -188,7 +232,7 @@ namespace Platform.Support.Branding
             System.IO.FileInfo _file = Brand.GetBrandFiles(assembly).FirstOrDefault();
             if (_file != null && _file.Exists)
             {
-                _Cache = new BrandingManager(_file);
+                _Cache = new BrandingManager(_file, assembly.GUID());
             }
             else
             {
@@ -229,61 +273,113 @@ namespace Platform.Support.Branding
             return _Cache.EULA;
         }
 
-        public static string BrandURL(this System.Reflection.Assembly assembly)
+        public static string BrandURL(this System.Reflection.Assembly assembly, string key = null)
         {
             if (_Cache == null)
             {
                 if (IsBranded(assembly))
                 {
-                    if (_Cache != null && _Cache.URL != null)
+                    if (key == null)
                     {
-                        return _Cache.URL.ToString();
+                        if (_Cache != null && _Cache.URLs.Count > 0)
+                        {
+                            var frist = _Cache.URLs.FirstOrDefault();
+                            return frist.Value.ToString();
+                        }
+                    }
+                    else
+                    {
+                        if (_Cache != null && _Cache.URLs.ContainsKey(key))
+                        {
+                            return _Cache.URLs[key].ToString();
+                        }
                     }
                 }
             }
 
-            if (_Cache.URL != null)
+            if (key == null)
             {
-                return _Cache.URL.ToString();
+                if (_Cache.URLs.Count > 0)
+                {
+                    var frist = _Cache.URLs.FirstOrDefault();
+                    return frist.Value.ToString();
+                }
+            }
+            else
+            {
+                if (_Cache.URLs.ContainsKey(key))
+                {
+                    return _Cache.URLs[key].ToString();
+                }
             }
 
             return null;
         }
 
-        public static Tuple<int, int> BrandURLDisplaySize(this System.Reflection.Assembly assembly)
+        //public static Tuple<int, int> BrandURLDisplaySize(this System.Reflection.Assembly assembly)
+        //{
+        //    if (_Cache == null)
+        //    {
+        //        if (IsBranded(assembly))
+        //        {
+        //            if (_Cache != null && _Cache.URL != null)
+        //            {
+        //                return _Cache.URLDisplaySize;
+        //            }
+        //        }
+        //    }
+
+        //    if (_Cache.URL != null)
+        //    {
+        //        return _Cache.URLDisplaySize;
+        //    }
+
+        //    return null;
+        //}
+
+        public static byte[] BrandLogo(this System.Reflection.Assembly assembly, string key = null)
         {
+
             if (_Cache == null)
             {
                 if (IsBranded(assembly))
                 {
-                    if (_Cache != null && _Cache.URL != null)
+                    if (key == null)
                     {
-                        return _Cache.URLDisplaySize;
+                        if (_Cache != null && _Cache.Logos.Count > 0)
+                        {
+                            var frist = _Cache.Logos.FirstOrDefault();
+                            return frist.Value;
+                        }
+                    }
+                    else
+                    {
+                        if (_Cache != null && _Cache.Logos.ContainsKey(key))
+                        {
+                            return _Cache.Logos[key];
+                        }
                     }
                 }
             }
 
-            if (_Cache.URL != null)
+            if (key == null)
             {
-                return _Cache.URLDisplaySize;
+                if (_Cache.Logos.Count > 0)
+                {
+                    var frist = _Cache.Logos.FirstOrDefault();
+                    return frist.Value;
+                }
+            }
+            else
+            {
+                if (_Cache.Logos.ContainsKey(key))
+                {
+                    return _Cache.Logos[key];
+                }
             }
 
             return null;
-        }
 
-        public static byte[] BrandLogo(this System.Reflection.Assembly assembly)
-        {
-            if (_Cache == null)
-            {
-                if (IsBranded(assembly))
-                {
-                    if (_Cache != null && _Cache.Logo != null)
-                    {
-                        return _Cache.Logo;
-                    }
-                }
-            }
-            return _Cache.Logo;
         }
 
         #endregion

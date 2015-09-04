@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="BrandingSchema"
+    targetNamespace="http://www.w3.org/2015/brandingSchema"
+    elementFormDefault="qualified"
+    xmlns="http://www.w3.org/2015/brandingSchema"
+    xmlns:mstns="http://www.w3.org/2015/brandingSchema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:annotation>
+    <xs:documentation>
+      Product Branding 1.5
+      (C) 2015 - Enner Pérez
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\b[A-F0-9]{8}(?:-[A-F0-9]{4}){3}-[A-F0-9]{12}\b"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="product">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="eula" type="xs:string" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="guid" type="guid" default="00000000-AAAA-BBBB-CCCC-000000000000" />
+  </xs:complexType>
+
+  <!--<xs:complexType name="culture">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="products">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="product" type="product" minOccurs="1" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="value" default="es">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="\b[A-Za-z]{2}\b"></xs:pattern>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>-->
+  
+  <xs:complexType name="brand">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="logos" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="logo">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:base64Binary">
+                    <xs:attribute name="id" type="xs:string" default="main" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="phones" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="phone">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <!--<xs:restriction base="xs:string">
+                    <xs:pattern value="\b\d{2}[-.]?\d{3}[-.]?\d{3}[-.]?\d{4}\b" />
+                  </xs:restriction>-->
+                  <xs:extension base="xs:string">
+                    <xs:attribute name="id" type="xs:string" default="main" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="emails" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="email">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                    <xs:attribute name="id" type="xs:string" default="main" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="urls" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="url">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:anyURI">
+                    <xs:attribute name="id" type="xs:string" default="main" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="products" minOccurs="1" maxOccurs="1" >
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="product" type="product" minOccurs="1" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="id" default="X000000000">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="\b[A-Za-z]{1}\w+\b" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="value" default="DEMO">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="\w+" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="key" type="guid" default="00000000-AAAA-BBBB-CCCC-000000000000" />
+    <xs:attribute name="culture" default="es">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="\b[A-Za-z]{2}\b"></xs:pattern>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:element name="SKUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="brand" type="brand" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
