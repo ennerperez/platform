@@ -38,6 +38,7 @@
     <Content Include="Files\WixUIBanner.bmp" />
     <Content Include="Files\WixUIDialog.bmp" />
     <Content Include="Files\WixUILicense.rtf" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <WixExtension Include="WixUtilExtension">

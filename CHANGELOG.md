@@ -4,11 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
 
-## [3.0.0.8] - [UNRELEASED]
+## [3.0.0.8] - 2015-09-09
 ### Changed
 - GetDominantColor optimized
 - Platform name fix
 - Branding Schema 1.5
+- CType fix
+- ORM fix
 
 ### Removed
 - Size for open URL in BrandManager

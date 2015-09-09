@@ -3,7 +3,7 @@ using System.Reflection;
 [assembly: AssemblyVersion("3.0.0.8")]
 [assembly: AssemblyFileVersion("3.0.0.8")]
 
-[assembly: AssemblyInformationalVersion("3.0.0 RTM UNRELEASED")]
+[assembly: AssemblyInformationalVersion("3.0.0 RTM")]
 
 #if (!DEBUG)
 [assembly: Platform.Support.Attributes.AssemblyProduct.ProductLevel(Platform.Support.ProductLevels.RTW)]

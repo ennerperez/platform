@@ -64,12 +64,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Files\AssemblyInfo.Common.cs">
+    <Compile Include="..\.files\AssemblyInfo.Common.cs">
       <Link>Properties\AssemblyInfo.Common.cs</Link>
     </Compile>
-    <Compile Include="..\Files\AssemblyInfo.Platform.cs">
+    <Compile Include="..\.files\AssemblyInfo.Platform.cs">
       <Link>Properties\AssemblyInfo.Platform.cs</Link>
     </Compile>
+    <Compile Include="..\AssemblyInfo.Version.cs">
+      <Link>Properties\AssemblyInfo.Version.cs</Link>
+    </Compile>
+    <Compile Include="Demos\SQLite.cs" />
     <Compile Include="Entities\Software.cs" />
     <Compile Include="Entities\Versions.cs" />
     <Compile Include="FormDemo.cs">

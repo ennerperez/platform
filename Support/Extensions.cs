@@ -91,9 +91,9 @@ namespace Platform.Support
             return Helpers.IsNull<T>(value, replacement);
         }
 
-        public static object CType<T>(this object obj)
+        public static T CType<T>(this object obj)
         {
-            return Helpers.CType<T>(obj);
+            return (T)Helpers.CType<T>(obj);
         }
 
         #endregion
