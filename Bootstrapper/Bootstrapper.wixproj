@@ -61,7 +61,6 @@
     <Content Include="Files\Logo.jpg" />
     <Content Include="Files\LogoSlide.png" />
     <Content Include="Files\SplashScreen.bmp" />
-    <Content Include="packages.config" />
     <Content Include="Theme\ClassicTheme.xml" />
   </ItemGroup>
   <ItemGroup>
