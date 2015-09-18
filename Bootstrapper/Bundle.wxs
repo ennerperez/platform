@@ -12,7 +12,7 @@
         Copyright="$(var.ProductCopyright)"
         UpgradeCode="$(var.ProductUpgradeCode)"
         SplashScreenSourceFile="Files\SplashScreen.bmp"
-        IconSourceFile="$(var.SolutionDir)Resources\Icons\AppIcon.$(var.TargetName).ico"
+        IconSourceFile="$(var.SolutionDir).resources\AppIcon.$(var.TargetName).ico"
         Compressed="yes">
 
     <Variable Name="DelayStart" Type="numeric" Value="10000" />

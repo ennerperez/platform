@@ -28,20 +28,27 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\Build\release\</OutputPath>
     <DefineConstants>TRACE;PORTABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\Support.PCL\Support.PCL.csproj">
+      <Project>{18f0a51d-255e-4845-a724-b676d5fbbfbc}</Project>
+      <Name>Support.PCL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Files\AssemblyInfo.Common.cs">
+    <Compile Include="..\.files\AssemblyInfo.Common.cs">
       <Link>Properties\AssemblyInfo.Common.cs</Link>
     </Compile>
-    <Compile Include="..\Files\AssemblyInfo.Platform.cs">
+    <Compile Include="..\.files\AssemblyInfo.Platform.cs">
       <Link>Properties\AssemblyInfo.Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\.files\AssemblyInfo.Version.cs">
+      <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
     <Compile Include="..\Model.MVC\Controller.cs">
       <Link>Controller.cs</Link>
@@ -55,46 +62,10 @@
     <Compile Include="..\Model.MVC\IView.cs">
       <Link>IView.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Attributes\BuildDateAttribute.cs">
-      <Link>Attributes\BuildDateAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\ContactAttribute.cs">
-      <Link>Attributes\ContactAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\DeveloperAttribute.cs">
-      <Link>Attributes\DeveloperAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\Extensions.cs">
-      <Link>Attributes\Extensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\ExternalRefAttribute.cs">
-      <Link>Attributes\ExternalRefAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\IdAttribute.cs">
-      <Link>Attributes\IdAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\MailAddressAttribute.cs">
-      <Link>Attributes\MailAddressAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\ProductLevelAttribute.cs">
-      <Link>Attributes\ProductLevelAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\ThirdPartyAttribute.cs">
-      <Link>Attributes\ThirdPartyAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\UrlAttribute.cs">
-      <Link>Attributes\UrlAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Extensions.cs">
-      <Link>Extensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Helpers.cs">
-      <Link>Helpers.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

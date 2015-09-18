@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "Support\Support.csproj", "{25AB6BBF-A879-4570-9E0E-947D52AE7333}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".files", ".files", "{8BE2B02F-E29C-4E9A-93FD-C8EEED874C90}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{8BE2B02F-E29C-4E9A-93FD-C8EEED874C90}"
 	ProjectSection(SolutionItems) = preProject
 		.files\AssemblyInfo.Common.cs = .files\AssemblyInfo.Common.cs
 		.files\AssemblyInfo.Platform.cs = .files\AssemblyInfo.Platform.cs
-		AssemblyInfo.Version.cs = AssemblyInfo.Version.cs
+		.files\AssemblyInfo.Version.cs = .files\AssemblyInfo.Version.cs
 		.files\Microsoft.Framework.props = .files\Microsoft.Framework.props
 	EndProjectSection
 EndProject
@@ -24,10 +24,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Data", "Support.Data\Support.Data.csproj", "{4AC6FA64-1C7E-4648-BE3F-592DC9567401}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portable", "Portable", "{EE046FAB-551D-49ED-A2D0-2D648C7732A3}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{949CB855-72A4-4CB7-AB6E-CAEA184C0802}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{8E95A50B-545E-4092-94E3-7638D4C8A4F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.PCL", "Model.PCL\Model.PCL.csproj", "{44448EE1-AE0E-4610-A6BE-208EB7FBCFFB}"
@@ -40,27 +36,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Setup\Setup.wixproj", "{5D2AC7EF-7F30-4DDF-8F90-D8640B5E6EFD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{4A239D50-824B-43EB-9561-FD8B01D535A4}"
-	ProjectSection(SolutionItems) = preProject
-		.editoricon.png = .editoricon.png
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Icons", "Icons", "{76B3CEAA-AD6E-47C1-ACBE-05313A4506AE}"
-	ProjectSection(SolutionItems) = preProject
-		Resources\Icons\AppIcon.Platform.ico = Resources\Icons\AppIcon.Platform.ico
-	EndProjectSection
-EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Bootstrapper", "Bootstrapper\Bootstrapper.wixproj", "{B9AD2AB2-C519-4EF3-B4C6-9934C149CA15}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{E69077EA-E59E-40F2-B83A-B50712C989FB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Windows.Forms", "Presentation.Windows.Forms\Presentation.Windows.Forms.csproj", "{AED11B6C-B7D8-48F8-B19F-DA6B8D72D89F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Windows", "Support.Windows\Support.Windows.csproj", "{3441E7A2-F6D5-4E34-ABD6-86B131105C29}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{08F050EE-6B4E-44E9-B877-A71149F3BD14}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples.PCL", "Examples.PCL\Examples.PCL.csproj", "{4A8C6649-347A-4645-8C9B-FC8F3FC50417}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reporting", "Presentation.Reporting\Presentation.Reporting.csproj", "{EE7DA415-99ED-4E8A-B129-BE09F40ACB83}"
 EndProject
@@ -68,20 +48,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.MVC", "Model.MVC\Mode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.MVC.PCL", "Model.MVC.PCL\Model.MVC.PCL.csproj", "{C4C6EA21-5740-42F0-990B-BE703B1F8B66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateVersion", "UpdateVersion\UpdateVersion.csproj", "{F55D526E-61B1-4474-8B9A-AB2FB1CF62A6}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{388B655D-A132-4C7F-AA34-1CAAEC911C5E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{438EDCA0-3C84-4A67-903C-BC1E306C227D}"
 	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
+		.resources\AppIcon.Platform.ico = .resources\AppIcon.Platform.ico
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".tools", ".tools", "{C9F53230-9E15-49C9-B392-72321BE57E1E}"
-	ProjectSection(SolutionItems) = preProject
-		.tools\UpdateVersion.exe = .tools\UpdateVersion.exe
-		.tools\UpdateVersion.targets = .tools\UpdateVersion.targets
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portable", "Portable", "{E2558961-1D89-4AC7-840E-F57D987E8173}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,14 +101,6 @@ Global
 		{3441E7A2-F6D5-4E34-ABD6-86B131105C29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3441E7A2-F6D5-4E34-ABD6-86B131105C29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3441E7A2-F6D5-4E34-ABD6-86B131105C29}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08F050EE-6B4E-44E9-B877-A71149F3BD14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08F050EE-6B4E-44E9-B877-A71149F3BD14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08F050EE-6B4E-44E9-B877-A71149F3BD14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08F050EE-6B4E-44E9-B877-A71149F3BD14}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A8C6649-347A-4645-8C9B-FC8F3FC50417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A8C6649-347A-4645-8C9B-FC8F3FC50417}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A8C6649-347A-4645-8C9B-FC8F3FC50417}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A8C6649-347A-4645-8C9B-FC8F3FC50417}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EE7DA415-99ED-4E8A-B129-BE09F40ACB83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EE7DA415-99ED-4E8A-B129-BE09F40ACB83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE7DA415-99ED-4E8A-B129-BE09F40ACB83}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -149,21 +113,15 @@ Global
 		{C4C6EA21-5740-42F0-990B-BE703B1F8B66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4C6EA21-5740-42F0-990B-BE703B1F8B66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4C6EA21-5740-42F0-990B-BE703B1F8B66}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F55D526E-61B1-4474-8B9A-AB2FB1CF62A6}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{F55D526E-61B1-4474-8B9A-AB2FB1CF62A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{18F0A51D-255E-4845-A724-B676D5FBBFBC} = {EE046FAB-551D-49ED-A2D0-2D648C7732A3}
-		{44448EE1-AE0E-4610-A6BE-208EB7FBCFFB} = {EE046FAB-551D-49ED-A2D0-2D648C7732A3}
+		{18F0A51D-255E-4845-A724-B676D5FBBFBC} = {E2558961-1D89-4AC7-840E-F57D987E8173}
+		{44448EE1-AE0E-4610-A6BE-208EB7FBCFFB} = {E2558961-1D89-4AC7-840E-F57D987E8173}
 		{5D2AC7EF-7F30-4DDF-8F90-D8640B5E6EFD} = {47568DD7-5B96-44AC-9887-17B921C5F2D3}
-		{76B3CEAA-AD6E-47C1-ACBE-05313A4506AE} = {4A239D50-824B-43EB-9561-FD8B01D535A4}
 		{B9AD2AB2-C519-4EF3-B4C6-9934C149CA15} = {47568DD7-5B96-44AC-9887-17B921C5F2D3}
-		{08F050EE-6B4E-44E9-B877-A71149F3BD14} = {949CB855-72A4-4CB7-AB6E-CAEA184C0802}
-		{4A8C6649-347A-4645-8C9B-FC8F3FC50417} = {949CB855-72A4-4CB7-AB6E-CAEA184C0802}
-		{C4C6EA21-5740-42F0-990B-BE703B1F8B66} = {EE046FAB-551D-49ED-A2D0-2D648C7732A3}
-		{F55D526E-61B1-4474-8B9A-AB2FB1CF62A6} = {E69077EA-E59E-40F2-B83A-B50712C989FB}
+		{C4C6EA21-5740-42F0-990B-BE703B1F8B66} = {E2558961-1D89-4AC7-840E-F57D987E8173}
 	EndGlobalSection
 EndGlobal

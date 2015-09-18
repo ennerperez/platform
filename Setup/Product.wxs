@@ -11,7 +11,7 @@
     <Media Id="1" Cabinet="$(var.TargetName).cab" EmbedCab="yes" />
 
     <!-- Icons -->
-    <Icon Id="ProductIcon" SourceFile="$(var.SolutionDir)Resources\Icons\AppIcon.$(var.TargetName).ico" />
+    <Icon Id="ProductIcon" SourceFile="$(var.SolutionDir).resources\AppIcon.$(var.TargetName).ico" />
 
     <Property Id="ARPPRODUCTICON" Value="ProductIcon" />
     <Property Id="ARPHELPLINK" Value="$(var.ProductManufacturerURL)" />

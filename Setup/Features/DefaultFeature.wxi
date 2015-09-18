@@ -14,7 +14,7 @@
   <!-- Components -->
 
   <Component Id="ApplicationFilesShared" Guid="08B8D5DA-5168-4246-8547-5E3C7D455AEF" Directory="SharedFolder" Permanent="yes" Shared="yes">
-    <File Id="AppIcon.ico" Source="$(var.SolutionDir)Resources\Icons\AppIcon.$(var.TargetName).ico" Checksum="no" />
+    <File Id="AppIcon.ico" Source="$(var.SolutionDir).resources\AppIcon.$(var.TargetName).ico" Checksum="no" />
   </Component>
 
   <Component Id="ApplicationFiles" Guid="6CF7FC4B-FCA4-4E2F-AA95-C0D114660855" Directory="InstallFolder">

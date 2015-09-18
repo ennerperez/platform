@@ -5,7 +5,7 @@
     <ComponentRef Id="NuGetCachenFiles" />
   </Feature>
 
-  <?define NuGetPackagesVersion = "3.0.0.6" ?>
+  <?define NuGetPackagesVersion = "3.0.0.8" ?>
   
   <!-- Components -->
   <Component Id="NuGetCachenFiles" Guid="F431A267-C2EF-4BD5-A2CE-D2D2F599F6AA" Directory="NuGetCacheDirProduct">

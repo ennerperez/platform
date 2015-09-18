@@ -4,6 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
 
+## [3.0.0.9] - [UNRELEASED]
+- Examples removed
+- Solution tree clear
+- Build folder adjustments
+- PCL minor fixes
+
 ## [3.0.0.8] - 2015-09-09
 ### Changed
 - GetDominantColor optimized
@@ -57,5 +63,5 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ORM data mappings
 - Report Generator
 - MVC patterns
-- HSLColor 
+- HSLColor
 - Swatch Colors
