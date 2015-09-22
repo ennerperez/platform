@@ -109,17 +109,19 @@ namespace Platform.Support.Branding
             if (file != null)
             {
                 XDocument _XDocument;
+                XNamespace _ns = "http://www.w3.org/2015/brandingSchema";
+
                 _XDocument = XDocument.Load(file.FullName);
 
-                var brand = _XDocument.Element("SKUID").Element("brand");
+                var brand = _XDocument.Element(_ns + "SKUID").Element(_ns + "brand");
 
                 this._Id = brand.Attribute("id").Value;
                 this._Key = new Guid(brand.Attribute("key").Value);
 
-                this._Name = brand.Element("name").Value;
-                this._Description = brand.Element("description").Value;
+                this._Name = brand.Element(_ns + "name").Value;
+                this._Description = brand.Element(_ns + "description").Value;
 
-                foreach (var item in brand.Elements("logos"))
+                foreach (var item in brand.Elements(_ns + "logos").Elements())
                 {
                     string _prelogo = item.Value;
                     if (!string.IsNullOrEmpty(_prelogo))
@@ -132,7 +134,7 @@ namespace Platform.Support.Branding
                     }
                 }
 
-                foreach (var item in brand.Elements("phones"))
+                foreach (var item in brand.Elements(_ns + "phones").Elements())
                 {
                     string _prephone = item.Value;
                     if (!string.IsNullOrEmpty(_prephone))
@@ -141,7 +143,7 @@ namespace Platform.Support.Branding
                     }
                 }
 
-                foreach (var item in brand.Elements("urls"))
+                foreach (var item in brand.Elements(_ns + "urls").Elements())
                 {
                     string _preurl = item.Value;
                     if (!string.IsNullOrEmpty(_preurl))
@@ -155,7 +157,7 @@ namespace Platform.Support.Branding
                     }
                 }
 
-                foreach (var item in brand.Elements("emails"))
+                foreach (var item in brand.Elements(_ns + "emails").Elements())
                 {
                     string _preemail = item.Value;
                     if (!string.IsNullOrEmpty(_preemail))
@@ -169,12 +171,12 @@ namespace Platform.Support.Branding
                     }
                 }
 
-                XElement product = brand.Element("product").Elements("products").Where<XElement>((x) => x.Attribute("guid").Value == guid.ToString()).FirstOrDefault();
+                XElement product = brand.Element(_ns + "products").Elements().Where<XElement>((x) => x.Attribute("guid").Value.ToLower() == guid.ToString().ToLower()).FirstOrDefault();
                 if (product != null)
                 {
-                    this._ProductName = product.Element("name").Value;
-                    this._ProductDescription = product.Element("description").Value;
-                    this._EULA = product.Element("eula").Value;
+                    this._ProductName = product.Element(_ns + "name").Value;
+                    this._ProductDescription = product.Element(_ns + "description").Value;
+                    this._EULA = product.Element(_ns + "eula").Value;
                 }
 
             }

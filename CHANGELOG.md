@@ -4,11 +4,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
 
-## [3.0.0.9] - [UNRELEASED]
+## [3.0.1.0] - [UNRELEASED]
+- BrandingManager lowercase fixes
+
+## [3.0.0.9] - 2015-09-22
 - Examples removed
 - Solution tree clear
 - Build folder adjustments
 - PCL minor fixes
+- BrandingManager fixes
 
 ## [3.0.0.8] - 2015-09-09
 ### Changed
