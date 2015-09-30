@@ -53,7 +53,8 @@
     <xs:sequence>
       <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
       <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" />
-      <xs:element name="logos" minOccurs="1" maxOccurs="1">
+      <xs:element name="eula" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="logos" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:sequence minOccurs="0" maxOccurs="unbounded">
             <xs:element name="logo">
@@ -68,7 +69,7 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="phones" minOccurs="1" maxOccurs="1">
+      <xs:element name="phones" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:sequence minOccurs="1" maxOccurs="unbounded">
             <xs:element name="phone">
@@ -86,7 +87,7 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="emails" minOccurs="1" maxOccurs="1">
+      <xs:element name="emails" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:sequence minOccurs="1" maxOccurs="unbounded">
             <xs:element name="email">
@@ -101,7 +102,7 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="urls" minOccurs="1" maxOccurs="1">
+      <xs:element name="urls" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:sequence minOccurs="1" maxOccurs="unbounded">
             <xs:element name="url">
@@ -116,7 +117,7 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="products" minOccurs="1" maxOccurs="1" >
+      <xs:element name="products" minOccurs="0" maxOccurs="1" >
         <xs:complexType>
           <xs:sequence minOccurs="1" maxOccurs="unbounded">
             <xs:element name="product" type="product" minOccurs="1" />

@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [3.0.1.0] - [UNRELEASED]
 - BrandingManager lowercase fixes
+- BrandingScheme
+- String Extensions
 
 ## [3.0.0.9] - 2015-09-22
 - Examples removed
