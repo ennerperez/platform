@@ -8,8 +8,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [UNRELEASED]
 
-## [3.0.0.10] - [UNRELEASED]
+## [3.0.1.10] - 2015-10-02
 ### Changed
+- Version
 - BrandingScheme
 - String Extensions
 
