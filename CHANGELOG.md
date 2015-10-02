@@ -2,27 +2,47 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+* Version: major version.minor version.build number.revision
+* Order: Changed - Fixed - Added - Removed
+
+
 ## [UNRELEASED]
 
-## [3.0.1.0] - [UNRELEASED]
-- BrandingManager lowercase fixes
+## [3.0.0.10] - [UNRELEASED]
+### Changed
 - BrandingScheme
 - String Extensions
 
+### Fixed
+- TableMapping
+- ORM Extensions
+- BrandingManager
+- BrandingManager lowercase
+
+### Added
+- Samples projects
+
 ## [3.0.0.9] - 2015-09-22
-- Examples removed
+### Changed
 - Solution tree clear
 - Build folder adjustments
-- PCL minor fixes
-- BrandingManager fixes
+
+### Fixed
+- PCL minor
+- BrandingManager
+
+### Removed
+- Examples
 
 ## [3.0.0.8] - 2015-09-09
 ### Changed
 - GetDominantColor optimized
-- Platform name fix
 - Branding Schema 1.5
-- CType fix
-- ORM fix
+
+### Fixed
+- Platform name
+- CType
+- ORM
 
 ### Removed
 - Size for open URL in BrandManager

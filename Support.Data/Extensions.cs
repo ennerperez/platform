@@ -320,7 +320,7 @@ namespace Platform.Support.Data
                     {
                         object file;
                         csb.TryGetValue("Data Source", out file);
-                        if (file != null && !System.IO.File.Exists(file.ToString()))
+                        if (file != null && System.IO.File.Exists(file.ToString()))
                         {
                             if (conn.State != ConnectionState.Closed) conn.Close();
                             System.IO.File.Delete(file.ToString());
@@ -337,7 +337,7 @@ namespace Platform.Support.Data
                     string database = conn.Database;
                     conn = (IDbConnection)conn.CreateObject("SqlConnection", new object[] { csb.ToString() });
 
-                    _tsql = "IF  EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'{0}') DROP DATABASE {0} ";
+                    _tsql = "IF  EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'{0}') DROP DATABASE [{0}] ";
                     _tsql = string.Format(_tsql, database);
 
                     break;
@@ -356,7 +356,7 @@ namespace Platform.Support.Data
             switch (conn.GetEngine())
             {
                 case Engines.Sql:
-                    _tsql = string.Format("IF OBJECT_ID('{0}', 'U') IS NOT NULL DROP TABLE {0}", map.TableName);
+                    _tsql = string.Format("IF OBJECT_ID('{0}', 'U') IS NOT NULL DROP TABLE [{0}]", map.TableName);
 
                     break;
                 case Engines.SQLite:
@@ -364,7 +364,7 @@ namespace Platform.Support.Data
                     _tsql = string.Format("DROP TABLE IF EXISTS '{0}'", map.TableName);
                     break;
                 default:
-                    _tsql = string.Format("DROP TABLE {0}", map.TableName);
+                    _tsql = string.Format("DROP TABLE [{0}]", map.TableName);
                     break;
             }
 
@@ -407,7 +407,7 @@ namespace Platform.Support.Data
             {
                 case Engines.Sql:
                 case Engines.SqlCE:
-                    _tsql = string.Format("IF NOT EXISTS (Select schema_name FROM information_schema.schemata WHERE schema_name = '{0}' ) EXEC sp_executesql N'CREATE SCHEMA {0}'", map.SchemaName);
+                    _tsql = string.Format("IF NOT EXISTS (Select schema_name FROM information_schema.schemata WHERE schema_name = '{0}' ) EXEC sp_executesql N'CREATE SCHEMA [{0}]'", map.SchemaName);
                     break;
                 default:
                     throw new NotSupportedException("Operation is not supported in the selected data engine.");
@@ -464,7 +464,7 @@ namespace Platform.Support.Data
                     }
                     break;
                 case Engines.MySql:
-                    _tsql = String.Format("CREATE DATABASE IF NOT EXISTS {0}", conn.Database);
+                    _tsql = String.Format("CREATE DATABASE IF NOT EXISTS [{0}]", conn.Database);
                     break;
                 case Engines.Sql:
                     csb = (System.Data.Common.DbConnectionStringBuilder)conn.CreateObject("SqlConnectionStringBuilder", new object[] { conn.ConnectionString });
@@ -476,8 +476,8 @@ namespace Platform.Support.Data
                     string datapath = conn.ExecuteScalar<String>("SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1) FROM master.sys.master_files WHERE database_id = 1 AND file_id = 1");
 
                     _tsql = "IF  NOT EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'{0}') " +
-                        "CREATE DATABASE {0} ON PRIMARY " +
-                        "(NAME = {0}, " +
+                        "CREATE DATABASE [{0}] ON PRIMARY " +
+                        "(NAME = '{0}', " +
                         "FILENAME = '{1}{0}.mdf', " +
                         "SIZE = 4096KB, FILEGROWTH = 10%) " +
                         "LOG ON (NAME = {0}_log, " +
@@ -523,7 +523,7 @@ namespace Platform.Support.Data
                 case Engines.Sql:
                 case Engines.SqlCE:
                     decl = string.Join(",", decls.ToArray());
-                    query = String.Format("IF OBJECT_ID('{0}', 'U') IS NULL CREATE TABLE {0} ({1})", map.TableName, decl);
+                    query = String.Format("IF OBJECT_ID('{0}', 'U') IS NULL CREATE TABLE [{0}] ({1})", map.TableName, decl);
 
                     if (!string.IsNullOrEmpty(map.SchemaName))
                     {
@@ -671,7 +671,7 @@ namespace Platform.Support.Data
                 case Engines.SqlCE:
                     if (!string.IsNullOrEmpty(schemaName))
                         tableName = schemaName + "." + tableName;
-                    sqlFormat = "IF NOT EXISTS (SELECT name FROM sys.indexes WHERE name = N'{3}') CREATE {2} " + (nonclustered ? "NONCLUSTERED" : "" + " INDEX {3} ON {0} ({1});");
+                    sqlFormat = "IF NOT EXISTS (SELECT name FROM sys.indexes WHERE name = N'{3}') CREATE {2} " + (nonclustered ? "NONCLUSTERED" : "" + " INDEX {3} ON [{0}] ({1});");
                     columns = string.Join(", ", columnNames.Select(C => string.Format("[{0}]", C)).ToArray());
                     tsql = string.Format(sqlFormat, tableName, columns, unique ? "UNIQUE" : "", indexName);
                     count = conn.Execute(tsql);
@@ -845,6 +845,12 @@ namespace Platform.Support.Data
                 else if (object.ReferenceEquals(value.GetType(), typeof(Int64)) || object.ReferenceEquals(value.GetType(), typeof(UInt64)))
                 {
                     _return.Size = int.MaxValue;
+                }
+                else if (object.ReferenceEquals(value.GetType(), typeof(Version)) || object.ReferenceEquals(value.GetType(), typeof(Guid)))
+                {
+                    _return.Value = value.ToString();
+                    _return.DbType = DbType.String;
+                    _return.Size = value.ToString().Length;
                 }
                 else
                 {
@@ -1031,6 +1037,9 @@ namespace Platform.Support.Data
         public static int Execute(this IDbConnection conn, string query, IDbDataParameter[] args)
         {
 
+            if (string.IsNullOrEmpty(query))
+                return 0;
+
             IDbCommand cmd = conn.CreateCommand(query, args);
 
 #if DEBUG
@@ -1100,6 +1109,10 @@ namespace Platform.Support.Data
 
         public static T ExecuteScalar<T>(this IDbConnection conn, string query, IDbDataParameter[] args)
         {
+
+            if (string.IsNullOrEmpty(query))
+                return default(T);
+
             IDbCommand cmd = conn.CreateCommand(query, args);
 
 #if DEBUG

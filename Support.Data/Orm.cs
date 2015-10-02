@@ -146,6 +146,18 @@ namespace Platform.Support.Data
                         return "VARCHAR(36)";
                 }
             }
+
+            if (object.ReferenceEquals(clrType, typeof(Version)))
+            {
+                switch (conn.GetEngine())
+                {
+                    case Engines.Sql:
+                    case Engines.SqlCE:
+                        return "NVARCHAR(400)";
+                    default:
+                        return "VARCHAR(200)";
+                }
+            }
             //If serializer IsNot Nothing AndAlso serializer.CanDeserialize(clrType) Then
             //    Return "blob"
             //End If

@@ -15,9 +15,10 @@ namespace Platform.Support.Branding
         public BrandingManager()
         {
             this._Logos = new Dictionary<string, byte[]>();
-            this._Phones = new Dictionary<string, string>();
+            this._PhonesNumbers = new Dictionary<string, string>();
             this._URLs = new Dictionary<string, Uri>();
-            this._EMails = new Dictionary<string, System.Net.Mail.MailAddress>();
+            this._MailAddress = new Dictionary<string, System.Net.Mail.MailAddress>();
+            this._Products = new Dictionary<Guid, BrandedProduct>();
         }
 
         public BrandingManager(System.IO.FileInfo file, Guid guid)
@@ -59,10 +60,10 @@ namespace Platform.Support.Branding
             get { return _Logos; }
         }
 
-        private Dictionary<string, string> _Phones;
-        public Dictionary<string, string> Phones
+        private Dictionary<string, string> _PhonesNumbers;
+        public Dictionary<string, string> PhonesNumbers
         {
-            get { return _Phones; }
+            get { return _PhonesNumbers; }
         }
 
         private Dictionary<string, Uri> _URLs;
@@ -71,10 +72,16 @@ namespace Platform.Support.Branding
             get { return _URLs; }
         }
 
-        private Dictionary<string, System.Net.Mail.MailAddress> _EMails;
-        public Dictionary<string, System.Net.Mail.MailAddress> EMails
+        private Dictionary<Guid, BrandedProduct> _Products;
+        public Dictionary<Guid, BrandedProduct> Products
         {
-            get { return _EMails; }
+            get { return _Products; }
+        }
+
+        private Dictionary<string, System.Net.Mail.MailAddress> _MailAddress;
+        public Dictionary<string, System.Net.Mail.MailAddress> MailAddress
+        {
+            get { return _MailAddress; }
         }
 
         private string _ProductName;
@@ -89,6 +96,12 @@ namespace Platform.Support.Branding
             get { return _ProductDescription; }
         }
 
+        private string _ProductEULA;
+        public string ProductEULA
+        {
+            get { return _ProductEULA; }
+        }
+
         private string _EULA;
         public string EULA
         {
@@ -96,6 +109,11 @@ namespace Platform.Support.Branding
         }
 
         #endregion
+
+        public void Load(string directory, Guid guid)
+        {
+            this.Load(new System.IO.DirectoryInfo(directory), guid);
+        }
 
         public void Load(System.IO.DirectoryInfo directory, Guid guid)
         {
@@ -120,6 +138,7 @@ namespace Platform.Support.Branding
 
                 this._Name = brand.Element(_ns + "name").Value;
                 this._Description = brand.Element(_ns + "description").Value;
+                this._EULA = brand.Element(_ns + "eula").Value;
 
                 foreach (var item in brand.Elements(_ns + "logos").Elements())
                 {
@@ -139,7 +158,7 @@ namespace Platform.Support.Branding
                     string _prephone = item.Value;
                     if (!string.IsNullOrEmpty(_prephone))
                     {
-                        this._Phones.Add(item.Attribute("id").Value, _prephone);
+                        this._PhonesNumbers.Add(item.Attribute("id").Value, _prephone);
                     }
                 }
 
@@ -165,18 +184,46 @@ namespace Platform.Support.Branding
                         try
                         {
                             System.Net.Mail.MailAddress _email = new System.Net.Mail.MailAddress(_preemail);
-                            this._EMails.Add(item.Attribute("id").Value, _email);
+                            this._MailAddress.Add(item.Attribute("id").Value, _email);
                         }
                         catch (Exception) { }
                     }
                 }
 
+                foreach (var item in brand.Elements(_ns + "products").Elements())
+                {
+                    try
+                    {
+                        var bpguid = new Guid(item.Attribute("guid").Value);
+
+                        string name = null;
+                        string description = null;
+                        string eula = null;
+
+                        if (item.Element(_ns + "name") != null)
+                            name = item.Element(_ns + "name").Value;
+                        if (item.Element(_ns + "description") != null)
+                            description = item.Element(_ns + "description").Value;
+                        if (item.Element(_ns + "eula") != null)
+                            eula = item.Element(_ns + "eula").Value;
+
+                        var bproduct = new BrandedProduct(new Guid(item.Attribute("guid").Value), name, description, eula);
+
+                        this._Products.Add(bpguid, bproduct);
+                    }
+                    catch (Exception) { }
+                }
+
                 XElement product = brand.Element(_ns + "products").Elements().Where<XElement>((x) => x.Attribute("guid").Value.ToLower() == guid.ToString().ToLower()).FirstOrDefault();
                 if (product != null)
                 {
-                    this._ProductName = product.Element(_ns + "name").Value;
-                    this._ProductDescription = product.Element(_ns + "description").Value;
-                    this._EULA = product.Element(_ns + "eula").Value;
+
+                    if (product.Element(_ns + "name") != null)
+                        this._ProductName = product.Element(_ns + "name").Value;
+                    if (product.Element(_ns + "description") != null)
+                        this._ProductDescription = product.Element(_ns + "description").Value;
+                    if (product.Element(_ns + "eula") != null)
+                        this._ProductEULA = product.Element(_ns + "eula").Value;
                 }
 
             }
@@ -214,6 +261,23 @@ namespace Platform.Support.Branding
 
     }
 
+    public struct BrandedProduct
+    {
+
+        public BrandedProduct(Guid g, string n, string d, string e = null)
+        {
+            GUID = g;
+            Name = n;
+            Description = d;
+            EULA = e;
+        }
+
+        public Guid GUID { get; set; }
+        public String Name { get; set; }
+        public String Description { get; set; }
+        public String EULA { get; set; }
+
+    }
 
     public static class Brand
     {
@@ -318,26 +382,54 @@ namespace Platform.Support.Branding
             return null;
         }
 
-        //public static Tuple<int, int> BrandURLDisplaySize(this System.Reflection.Assembly assembly)
-        //{
-        //    if (_Cache == null)
-        //    {
-        //        if (IsBranded(assembly))
-        //        {
-        //            if (_Cache != null && _Cache.URL != null)
-        //            {
-        //                return _Cache.URLDisplaySize;
-        //            }
-        //        }
-        //    }
+        public static BrandedProduct? BrandProduct(this System.Reflection.Assembly assembly, Guid? key = null)
+        {
 
-        //    if (_Cache.URL != null)
-        //    {
-        //        return _Cache.URLDisplaySize;
-        //    }
+            if (key == null)
+            {
+                key = assembly.GUID();
+            }
 
-        //    return null;
-        //}
+            if (_Cache == null)
+            {
+                if (IsBranded(assembly))
+                {
+                    if (key == null)
+                    {
+                        if (_Cache != null && _Cache.Products.Count > 0)
+                        {
+                            var frist = _Cache.Products.FirstOrDefault();
+                            return frist.Value;
+                        }
+                    }
+                    else
+                    {
+                        if (_Cache != null && _Cache.Products.ContainsKey(key.Value))
+                        {
+                            return _Cache.Products[key.Value];
+                        }
+                    }
+                }
+            }
+
+            if (key == null)
+            {
+                if (_Cache.URLs.Count > 0)
+                {
+                    var frist = _Cache.Products.FirstOrDefault();
+                    return frist.Value;
+                }
+            }
+            else
+            {
+                if (_Cache.Products.ContainsKey(key.Value))
+                {
+                    return _Cache.Products[key.Value];
+                }
+            }
+
+            return null;
+        }
 
         public static byte[] BrandLogo(this System.Reflection.Assembly assembly, string key = null)
         {
@@ -386,34 +478,34 @@ namespace Platform.Support.Branding
 
         #endregion
 
-        #region VB#
+        //#region VB
 
-        public static bool IsBranded(this Microsoft.VisualBasic.ApplicationServices.AssemblyInfo assembly)
-        {
-            return IsBranded(assembly.LoadedAssemblies.FirstOrDefault(x => x.GetName().Name == assembly.AssemblyName));
-        }
+        //public static bool IsBranded(this Microsoft.VisualBasic.ApplicationServices.AssemblyInfo assembly)
+        //{
+        //    return IsBranded(assembly.LoadedAssemblies.FirstOrDefault(x => x.GetName().Name == assembly.AssemblyName));
+        //}
 
-        public static string BrandName(this Microsoft.VisualBasic.ApplicationServices.AssemblyInfo assembly)
-        {
-            return BrandName(assembly.LoadedAssemblies.FirstOrDefault(x => x.GetName().Name == assembly.AssemblyName));
-        }
+        //public static string BrandName(this Microsoft.VisualBasic.ApplicationServices.AssemblyInfo assembly)
+        //{
+        //    return BrandName(assembly.LoadedAssemblies.FirstOrDefault(x => x.GetName().Name == assembly.AssemblyName));
+        //}
 
-        public static string BrandEULA(this Microsoft.VisualBasic.ApplicationServices.AssemblyInfo assembly)
-        {
-            return BrandEULA(assembly.LoadedAssemblies.FirstOrDefault(x => x.GetName().Name == assembly.AssemblyName));
-        }
+        //public static string BrandEULA(this Microsoft.VisualBasic.ApplicationServices.AssemblyInfo assembly)
+        //{
+        //    return BrandEULA(assembly.LoadedAssemblies.FirstOrDefault(x => x.GetName().Name == assembly.AssemblyName));
+        //}
 
-        public static string BrandURL(this Microsoft.VisualBasic.ApplicationServices.AssemblyInfo assembly)
-        {
-            return BrandURL(assembly.LoadedAssemblies.FirstOrDefault(x => x.GetName().Name == assembly.AssemblyName));
-        }
+        //public static string BrandURL(this Microsoft.VisualBasic.ApplicationServices.AssemblyInfo assembly)
+        //{
+        //    return BrandURL(assembly.LoadedAssemblies.FirstOrDefault(x => x.GetName().Name == assembly.AssemblyName));
+        //}
 
-        public static byte[] BrandLogo(this Microsoft.VisualBasic.ApplicationServices.AssemblyInfo assembly)
-        {
-            return BrandLogo(assembly.LoadedAssemblies.FirstOrDefault(x => x.GetName().Name == assembly.AssemblyName));
-        }
+        //public static byte[] BrandLogo(this Microsoft.VisualBasic.ApplicationServices.AssemblyInfo assembly)
+        //{
+        //    return BrandLogo(assembly.LoadedAssemblies.FirstOrDefault(x => x.GetName().Name == assembly.AssemblyName));
+        //}
 
-        #endregion
+        //#endregion
 
     }
 
