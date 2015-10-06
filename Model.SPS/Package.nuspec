@@ -2,20 +2,22 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>$id$</id>
-    <version>3.0.1.11</version>
-    <title>Platform Support Core (Portable)</title>
-    <authors>Enner Pérez</authors>
-    <owners>Enner Pérez</owners>
+    <version>$version$</version>
+    <title>$description$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
     <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
     <iconUrl>https://raw.githubusercontent.com/ennerperez/platform/master/.editoricon.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Libset for agile software development</description>
     <summary />
     <releaseNotes />
-    <copyright>© Enner Pérez. All rights reserved., 2015</copyright>
+    <copyright>$copyright$</copyright>
     <language>en</language>
     <tags>.NET Framework Base Development Platform</tags>
-    <dependencies />
+    <dependencies>
+      <dependency id="Platform.Support.Core" version="$version$" />
+    </dependencies>
   </metadata>
   <files />
 </package>

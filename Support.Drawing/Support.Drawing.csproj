@@ -72,7 +72,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="FontAwesome\Fonts\fontawesome-webfont.ttf" />
     <None Include="Package.nuspec" />
   </ItemGroup>

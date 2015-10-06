@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Platform.Model.CRUD;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 
 namespace Platform.Model
 {
-    public abstract class Entity<T> : IEntity<T>, IRecord, INotifyPropertyChanged
+    public abstract class Entity<TKey> : IEntity<TKey>, IRecord, INotifyPropertyChanged
 #if !PORTABLE
 , ICloneable, INotifyPropertyChanging
 #endif
@@ -59,13 +59,13 @@ namespace Platform.Model
 
         #region Properties
 
-        public virtual T Id { get; set; }
+        public virtual TKey Id { get; set; }
 
         #endregion
 
         #region Operators
 
-        public static bool operator ==(Entity<T> var1, Entity<T> var2)
+        public static bool operator ==(Entity<TKey> var1, Entity<TKey> var2)
         {
             if (var1.Equals(null) || var2.Equals(null))
             {
@@ -73,7 +73,7 @@ namespace Platform.Model
             }
             return var1.Id.Equals(var2.Id);
         }
-        public static bool operator !=(Entity<T> var1, Entity<T> var2)
+        public static bool operator !=(Entity<TKey> var1, Entity<TKey> var2)
         {
             if (var1.Equals(null) || var2.Equals(null))
             {
@@ -87,28 +87,13 @@ namespace Platform.Model
             // Check for null values and compare run-time types.
             if (obj == null || GetType() != obj.GetType()) return false;
 
-            Entity<T> p = (Entity<T>)obj;
-            return (this.Id.Equals(p.Id));
+            Entity<TKey> p = (Entity<TKey>)obj;
+            return (Id.Equals(p.Id));
         }
-        public override int GetHashCode()
-        {
-            return this.Id.GetHashCode();
-        }
-
-
+        
         #endregion
 
-        public event EventHandler<EventArgs> Changed;
-        public void OnChanged(EventArgs e)
-        {
-            if (Changed != null) { Changed(this, e); }
-        }
-
-        public event EventHandler<EventArgs> Error;
-        public void OnError(EventArgs e)
-        {
-            if (Error != null) { Error(this, e); }
-        }
+        #region Extended LSE
 
         protected internal bool IsLoaded;
 
@@ -130,28 +115,55 @@ namespace Platform.Model
             if (Erased != null) { Erased(this, new EventArgs()); }
         }
 
+        #endregion
+
+        #region Basic CRUD
+
+        public virtual object Create() { return null; }
+        public virtual object Read() { return null; }
+        public virtual object Update() { return null; }
+        public virtual object Delete() { return null; }
+
+        #endregion
+
         public virtual void Refresh(object e) { }
 
-        public virtual object Insert() { return null; }//this.Id == 0; }
-        public virtual object Update() { return null; }//this.Id != 0; }
-        public virtual object Delete() { return null; }// this.Id != 0; }
+        #region EventHandler
+
+        public event EventHandler<RecordEventArgs> Changed;
+        public void OnChanged(RecordEventArgs e)
+        {
+            if (Changed != null) { Changed(this, e); }
+        }
+
+        public event EventHandler<RecordEventArgs> Error;
+        public void OnError(RecordEventArgs e)
+        {
+            if (Error != null) { Error(this, e); }
+        }
+
+        #endregion
 
         public virtual IEnumerable AsEnumerable() { return null; }
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
 
 #if (!PORTABLE)
 
         public object Clone()
         {
-            Type _ty = this.GetType();
+            Type _ty = GetType();
             Entity _object = (Entity)Activator.CreateInstance(_ty);
-            this.CopyTo(_object);
+            CopyTo(_object);
             return _object;
         }
         public void CopyTo(Entity target)
         {
-            if (object.ReferenceEquals(this.GetType(), target.GetType()))
+            if (object.ReferenceEquals(GetType(), target.GetType()))
             {
-                Type t = this.GetType();
+                Type t = GetType();
                 System.ComponentModel.PropertyDescriptorCollection properties = System.ComponentModel.TypeDescriptor.GetProperties(target);
                 foreach (System.ComponentModel.PropertyDescriptor item in properties.OfType<System.ComponentModel.PropertyDescriptor>())
                 {
@@ -177,13 +189,13 @@ namespace Platform.Model
 
     }
 
-
     public abstract class Entity : Entity<long>
     {
 
-        public override object Insert() { return this.Id == 0; }
-        public override object Update() { return this.Id != 0; }
-        public override object Delete() { return this.Id != 0; }
+        public override object Create() { return Id == 0; }
+        public override object Read() { return Id == 0; }
+        public override object Update() { return Id != 0; }
+        public override object Delete() { return Id != 0; }
 
     }
 

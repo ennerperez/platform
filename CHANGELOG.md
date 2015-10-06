@@ -6,7 +6,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Order: Changed - Fixed - Added - Removed
 
 
-## [UNRELEASED]
+## UNRELEASED
+
+## [3.0.1.11] - [UNRELEASED]
+### Changed
+- Installer updated
+- Preliminar SPS Model
+- Preliminar SPS Model (Portable Plugin)
+- CRUD Model (Active Record)
 
 ## [3.0.1.10] - 2015-10-02
 ### Changed

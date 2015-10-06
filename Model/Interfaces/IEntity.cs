@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Platform.Model
 {
-    public interface IEntity : IEntity<int> 
+    public interface IEntity : IEntity<long> 
     {
-        new int Id { get; set; }
+        new long Id { get; set; }
     }
     public interface IEntity<T> 
     {

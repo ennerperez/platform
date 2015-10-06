@@ -35,6 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\Model.CRUD.PCL\Model.CRUD.PCL.csproj">
+      <Project>{62521597-3b37-4cf9-80e4-1f2728d86f4b}</Project>
+      <Name>Model.CRUD.PCL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Support.PCL\Support.PCL.csproj">
       <Project>{18f0a51d-255e-4845-a724-b676d5fbbfbc}</Project>
       <Name>Support.PCL</Name>
@@ -62,9 +66,6 @@
     <Compile Include="..\Model\Interfaces\IEntity.cs">
       <Link>Interfaces\IEntity.cs</Link>
     </Compile>
-    <Compile Include="..\Model\Interfaces\IRecord.cs">
-      <Link>Interfaces\IRecord.cs</Link>
-    </Compile>
     <Compile Include="..\Model\Interfaces\ISynchronizable.cs">
       <Link>Interfaces\ISynchronizable.cs</Link>
     </Compile>
@@ -77,6 +78,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.files\Microsoft.Framework.props" Condition="Exists('$(SolutionDir)\.files\Microsoft.Framework.props')" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

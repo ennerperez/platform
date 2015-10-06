@@ -88,7 +88,6 @@
     <Compile Include="Security\Helpers.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="Diagram.cd" />
     <None Include="Package.nuspec" />
     <None Include="Schemas\BrandingSchema.xsd">

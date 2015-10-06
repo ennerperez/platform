@@ -1,18 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3441E7A2-F6D5-4E34-ABD6-86B131105C29}</ProjectGuid>
+    <ProjectGuid>{C1A77ACD-FF1E-4287-A246-D2BEC4A5CAF7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Platform.Support.Windows</RootNamespace>
-    <AssemblyName>Platform.Support.Windows</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>Platform.Model.SPS.Plugin</RootNamespace>
+    <AssemblyName>Platform.Model.SPS.Plugin.PCL</AssemblyName>
+    <DefaultLanguage>es-ES</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile328</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -27,19 +29,16 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\Build\release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;PORTABLE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\Support.PCL\Support.PCL.csproj">
+      <Project>{18f0a51d-255e-4845-a724-b676d5fbbfbc}</Project>
+      <Name>Support.PCL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\.files\AssemblyInfo.Common.cs">
@@ -51,29 +50,26 @@
     <Compile Include="..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
-    <Compile Include="ExternDll.cs" />
-    <Compile Include="NativeMethods.cs" />
-    <Compile Include="UAC.cs" />
+    <Compile Include="..\Model.SPS\Interfaces\IPluggable.cs">
+      <Link>Interfaces\IPluggable.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS\Interfaces\IPlugIn.cs">
+      <Link>Interfaces\IPlugIn.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS\Interfaces\IPlugInBasedApplication.cs">
+      <Link>Interfaces\IPlugInBasedApplication.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS\Interfaces\Runnable\IRunnable.cs">
+      <Link>Runnable\IRunnable.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS\Interfaces\Runnable\IRunnablePlugIn.cs">
+      <Link>Runnable\IRunnablePlugIn.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Support\Support.csproj">
-      <Project>{25ab6bbf-a879-4570-9e0e-947d52ae7333}</Project>
-      <Name>Support</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Package.nuspec" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.files\Microsoft.Framework.props" Condition="Exists('$(SolutionDir)\.files\Microsoft.Framework.props')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

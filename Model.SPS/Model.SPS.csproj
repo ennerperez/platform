@@ -1,18 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8E95A50B-545E-4092-94E3-7638D4C8A4F7}</ProjectGuid>
+    <ProjectGuid>{A2C87538-0A4A-48F7-8728-9897C0CC015F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Platform.Model</RootNamespace>
-    <AssemblyName>Platform.Model</AssemblyName>
+    <RootNamespace>Platform.Model.SPS</RootNamespace>
+    <AssemblyName>Platform.Model.SPS</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,10 +28,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>
+    </NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -51,39 +50,36 @@
     <Compile Include="..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
-    <Compile Include="Entities\Entities.cs" />
-    <Compile Include="Entities\Entity.cs" />
-    <Compile Include="Interfaces\IAuditable.cs" />
-    <Compile Include="Interfaces\IEntity.cs" />
-    <Compile Include="Interfaces\ISynchronizable.cs" />
-    <Compile Include="Interfaces\IWarning.cs" />
+    <Compile Include="ApplicationPlugIn.cs" />
+    <Compile Include="Attributes\PlugInApplicationAttribute.cs" />
+    <Compile Include="Attributes\PlugInAttribute.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="Interfaces\IApplicationPlugIn.cs" />
+    <Compile Include="Interfaces\IPluggable.cs" />
+    <Compile Include="Interfaces\IPlugIn.cs" />
+    <Compile Include="Interfaces\IPlugInApplication.cs" />
+    <Compile Include="Interfaces\IPlugInBasedApplication.cs" />
+    <Compile Include="Interfaces\Runnable\IRunnable.cs" />
+    <Compile Include="Interfaces\Runnable\IRunnablePlugIn.cs" />
+    <Compile Include="PlugIn.cs" />
+    <Compile Include="PlugInApplication.cs" />
+    <Compile Include="PlugInBasedApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Singleton.cs" />
+    <Compile Include="Runnable\RunnablePlugIn.cs" />
+    <Compile Include="Runnable\RunnablePlugInBasedApplication.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model.CRUD\Model.CRUD.csproj">
-      <Project>{a57d24e5-511a-4db2-944e-fc9d7aa01b67}</Project>
-      <Name>Model.CRUD</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Support\Support.csproj">
       <Project>{25ab6bbf-a879-4570-9e0e-947d52ae7333}</Project>
       <Name>Support</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Diagram.cd" />
     <None Include="Package.nuspec" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.files\Microsoft.Framework.props" Condition="Exists('$(SolutionDir)\.files\Microsoft.Framework.props')" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

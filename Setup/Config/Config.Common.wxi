@@ -3,6 +3,9 @@
 
   <!-- Auto-generate ProductCode for each build, release and upgrade -->
   <?define ProductCode = "*" ?>
+  
+  <!-- Source path -->
+  <?define SourcePath = "$(var.SolutionDir)Build\$(var.Configuration)\" ?>
 
   <!-- Note that 4th version (Revision) is ignored by Windows Installer -->
   <!--<?define ProductVersion = "1.0.0.0" ?>-->
