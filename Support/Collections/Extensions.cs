@@ -54,12 +54,19 @@ namespace Platform.Support.Collections
             Array.Clear(source, 0, source.Length);
         }
 
+        public static void Add<T>(ref IEnumerable<T> source, T item)
+        {
+            var list = source.ToList<T>();
+            list.Add(item);
+            source = list.AsEnumerable<T>();
+        }
+        
         public static void Add<T>(ref T[] source, T item)
         {
             Array.Resize<T>(ref source, source.Length);
             source[source.Length - 1] = item;
         }
-
+        
         public static int IndexOf<T>(this IEnumerable<T> obj, T value)
         {
             return IndexOf(obj, value, EqualityComparer<T>.Default);
