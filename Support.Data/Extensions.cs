@@ -1147,7 +1147,7 @@ namespace Platform.Support.Data
             cmd.Connection.Open();
             object _return = cmd.ExecuteScalar();
             cmd.Connection.Close();
-            T _result = (T)_return.CType<T>();
+            T _result = (T)_return; //.CType<T>();
             return _result;
         }
 

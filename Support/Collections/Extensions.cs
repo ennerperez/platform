@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -12,6 +13,36 @@ namespace Platform.Support.Collections
 {
     public static class Extensions
     {
+
+        public static Dictionary<int, TValues> AsDictionary<TValues>(this IEnumerable<TValues> value)
+        {
+            Dictionary<int, TValues> data = new Dictionary<int, TValues>();
+            int i = 0;
+            foreach (var item in value)
+            {
+                data.Add(i, item);
+                i++;
+            }
+            return data;
+        }
+        public static Dictionary<int, object> AsDictionary(this IEnumerable value)
+        {
+            return AsDictionary<object>((IEnumerable<object>)value);
+        }
+
+        public static int Count(this IEnumerable source)
+        {
+
+            if (source == null)
+                return 0;
+
+            int res = 0;
+
+            foreach (var item in source)
+                res++;
+
+            return res;
+        }
 
         public static void RemoveAt<T>(ref T[] source, int index)
         {
@@ -67,6 +98,39 @@ namespace Platform.Support.Collections
                 list[k] = list[n];
                 list[n] = value;
             }
+        }
+
+        public static T ElementAt<T>(this IEnumerable<T> source, int index)
+        {
+            if (source != null)
+            {
+                int counter = 0;
+                foreach (T item in source)
+                {
+                    if (counter == index)
+                    {
+                        return item;
+                    }
+                    counter++;
+                }
+            }
+            return default(T);
+        }
+        public static object ElementAt(this IEnumerable source, int index)
+        {
+            if (source != null)
+            {
+                int counter = 0;
+                foreach (var item in source)
+                {
+                    if (counter == index)
+                    {
+                        return item;
+                    }
+                    counter++;
+                }
+            }
+            return null;
         }
 
 #if !PORTABLE
@@ -144,7 +208,6 @@ namespace Platform.Support.Collections
 
 #endif
 
-
         public static void AddRange<T>(this ICollection<T> target, IEnumerable<T> items)
         {
             if (target == null)
@@ -160,6 +223,14 @@ namespace Platform.Support.Collections
                 target.Add(current);
             }
         }
+        public static void AddRange<TKey, TValue>(this IDictionary<TKey, TValue> target, IEnumerable<KeyValuePair<TKey, TValue>> source)
+        {
+            foreach (var item in source)
+            {
+                target.Add(item);
+            }
+        }
+
         public static TValue GetOrCreateValue<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TValue> createValueCallback)
         {
             if (dictionary == null)

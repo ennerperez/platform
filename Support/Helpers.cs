@@ -47,29 +47,29 @@ namespace Platform.Support
             }
         }
 
-        public static T CType<T>(object obj)
-        {
-            //if (obj.GetType() == typeof(Int64))
-            //{
-            //    return Convert.ToInt64(obj);
-            //}
-            //if (obj.GetType() == typeof(Int32))
-            //{
-            //    return Convert.ToInt32(obj);
-            //}
-            //else if (obj.GetType() == typeof(Int16))
-            //{
-            //    return (T)Convert.ToInt16(obj);
-            //}
-            //else
-            //{
-#if (!PORTABLE)
-                return (T)Convert.ChangeType(obj, typeof(T));
-#else
-                return (T)Convert.ChangeType(obj, typeof(T), null );
-#endif
-            //}
-        }
+//        public static T CType<T>(object obj)
+//        {
+//            //if (obj.GetType() == typeof(Int64))
+//            //{
+//            //    return Convert.ToInt64(obj);
+//            //}
+//            //if (obj.GetType() == typeof(Int32))
+//            //{
+//            //    return Convert.ToInt32(obj);
+//            //}
+//            //else if (obj.GetType() == typeof(Int16))
+//            //{
+//            //    return (T)Convert.ToInt16(obj);
+//            //}
+//            //else
+//            //{
+//#if (!PORTABLE)
+//                return (T)Convert.ChangeType(obj, typeof(T));
+//#else
+//                return (T)Convert.ChangeType(obj, typeof(T), null );
+//#endif
+//            //}
+//        }
 
         #endregion
 
@@ -327,4 +327,5 @@ namespace Platform.Support
         #endregion
 
     }
+    
 }

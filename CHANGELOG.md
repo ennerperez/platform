@@ -8,8 +8,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## UNRELEASED
 
-## [3.0.1.11] - [UNRELEASED]
+## [3.0.1.11] - 2015-10-08
 ### Changed
+- IsNull parser
+- Markdown parser
+- IEnumerable extensions
+- Timer in PCL
+- BCL references
 - Installer updated
 - Preliminar SPS Model
 - Preliminar SPS Model (Portable Plugin)
