@@ -379,15 +379,18 @@ namespace Platform.Support.Data
             public object GetValue(object obj)
             {
                 Type propType = _prop.PropertyType;
+
+                if (propType.DeclaringType == null && propType.GetGenericArguments().Count() > 0)
+                    propType = propType.GetGenericArguments().First();
+
                 var _return = _prop.GetValue(obj, null);
                 if (_return != null && (_return.GetType() == typeof(System.DateTime)))
                 {
                     if ((System.DateTime)_return < new System.DateTime(1753, 1, 1)) { _return = null; }
                 }
-                else if (propType.IsEnum)
+                else if (_return != null && propType.IsEnum)
                 {
                     _return = Convert.ChangeType(_return, Enum.GetUnderlyingType(propType));
-                    //_return = Int32.Parse( ( Enum.Parse(propType, _return.ToString()));
                 }
                 else if (_return != null && (_return.GetType() == typeof(Guid)))
                 {

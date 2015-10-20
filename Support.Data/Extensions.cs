@@ -825,7 +825,7 @@ namespace Platform.Support.Data
             if (!name.StartsWith("@"))
                 name = "@" + name;
 
-            var rvalue = value == null ?  DBNull.Value : value;
+            var rvalue = value == null ? DBNull.Value : value;
             IDbDataParameter _return = (IDbDataParameter)conn.CreateObject(_type, new object[] { name, rvalue });
             if (value != null)
             {
@@ -1911,13 +1911,18 @@ namespace Platform.Support.Data
             int i = 0;
             while (i < vals.Length)
             {
-                vals[i] = cols[i].GetValue(obj);
-                //if (vals[i].GetType() == typeof(DateTime))
-                //{
-                //    vals[i] = DateTime.Parse(vals[i].ToString()).ToLongDateString();
-                //}
-                _params.Add(conn.CreateParameter(cols[i].Name, vals[i]));
-                System.Math.Max(System.Threading.Interlocked.Increment(ref i), i - 1);
+                try
+                {
+                    vals[i] = cols[i].GetValue(obj);
+
+                    _params.Add(conn.CreateParameter(cols[i].Name, vals[i]));
+                    System.Math.Max(System.Threading.Interlocked.Increment(ref i), i - 1);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                    throw;
+                }
             }
 
             IDbCommand insertCmd = (IDbCommand)map.GetInsertCommand(conn, extra);
