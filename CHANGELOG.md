@@ -5,8 +5,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Version: major version.minor version.build number.revision
 * Order: Changed - Fixed - Added - Removed
 
-
 ## UNRELEASED
+
+## [3.0.1.12] - 2015-10-19
+### Changed
+- DbNUll Fix
 
 ## [3.0.1.11] - 2015-10-08
 ### Changed
