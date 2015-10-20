@@ -389,6 +389,10 @@ namespace Platform.Support.Data
                     _return = Convert.ChangeType(_return, Enum.GetUnderlyingType(propType));
                     //_return = Int32.Parse( ( Enum.Parse(propType, _return.ToString()));
                 }
+                else if (_return != null && (_return.GetType() == typeof(Guid)))
+                {
+                    _return = _return.ToString().ToUpper();
+                }
 
                 return _return;
             }

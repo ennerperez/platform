@@ -825,7 +825,8 @@ namespace Platform.Support.Data
             if (!name.StartsWith("@"))
                 name = "@" + name;
 
-            IDbDataParameter _return = (IDbDataParameter)conn.CreateObject(_type, new object[] { name, value.IsNull("NULL") });
+            var rvalue = value == null ?  DBNull.Value : value;
+            IDbDataParameter _return = (IDbDataParameter)conn.CreateObject(_type, new object[] { name, rvalue });
             if (value != null)
             {
                 _return.DbType = value.GetType().GetDbType();
@@ -1053,7 +1054,7 @@ namespace Platform.Support.Data
 
             try
             {
-            cmd.Prepare();
+                cmd.Prepare();
             }
             catch (Exception ex)
             {
@@ -1065,7 +1066,7 @@ namespace Platform.Support.Data
             try
             {
 #endif
-            _return = cmd.ExecuteNonQuery();
+                _return = cmd.ExecuteNonQuery();
 #if DEBUG
             }
             catch (Exception ex)
@@ -2018,10 +2019,15 @@ namespace Platform.Support.Data
                                        select c.GetValue(obj);
             var ps = new List<object>(vals);
             ps.Add(pk.GetValue(obj));
-            string q = string.Format("UPDATE {0} SET {1} WHERE {2} = {3} ",
+
+            var keyvalue = pk.GetValue(obj);
+            //if (keyvalue.GetType() == typeof(string))
+            //    keyvalue = string.Format("'{0}'", keyvalue.ToString());
+
+            string q = string.Format("UPDATE {0} SET {1} WHERE {2} = @param" + (cols.ToList().Count + 1).ToString(),
                                         map.TableName,
                                         string.Join(",", (from c in cols select "[" + c.Name + "] = @param" + (cols.ToList().IndexOf(c) + 1)).ToArray()),
-                                        pk.Name, pk.GetValue(obj));
+                                        pk.Name);
             try
             {
                 rowsAffected = conn.Execute(q, ps.ToArray());
@@ -2204,7 +2210,7 @@ namespace Platform.Support.Data
                         try
                         {
 #endif
-                        Item.SetValue(obj, val);
+                            Item.SetValue(obj, val);
 #if DEBUG
                         }
                         catch (Exception ex)
