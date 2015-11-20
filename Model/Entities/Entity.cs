@@ -65,22 +65,36 @@ namespace Platform.Model
 
         #region Operators
 
-        public static bool operator ==(Entity<TKey> var1, Entity<TKey> var2)
-        {
-            if (var1.Equals(null) || var2.Equals(null))
-            {
-                return false;
-            }
-            return var1.Id.Equals(var2.Id);
-        }
-        public static bool operator !=(Entity<TKey> var1, Entity<TKey> var2)
-        {
-            if (var1.Equals(null) || var2.Equals(null))
-            {
-                return false;
-            }
-            return !var1.Id.Equals(var2.Id);
-        }
+        //public static bool operator ==(Entity<TKey> var1, Entity<TKey> var2)
+        //{
+
+        //    if (object.ReferenceEquals(var1, null))
+        //    {
+        //        return object.ReferenceEquals(var2, null);
+        //    }
+
+        //    if (object.ReferenceEquals(var2, null))
+        //    {
+        //        return object.ReferenceEquals(var1, null);
+        //    }
+
+        //    return var1.Id.Equals(var2.Id);
+
+        //}
+        //public static bool operator !=(Entity<TKey> var1, Entity<TKey> var2)
+        //{
+        //    if (object.ReferenceEquals(var1, null))
+        //    {
+        //        return object.ReferenceEquals(var2, null);
+        //    }
+
+        //    if (object.ReferenceEquals(var2, null))
+        //    {
+        //        return object.ReferenceEquals(var1, null);
+        //    }
+
+        //    return !var1.Id.Equals(var2.Id);
+        //}
 
         public override bool Equals(Object obj)
         {
@@ -90,7 +104,7 @@ namespace Platform.Model
             Entity<TKey> p = (Entity<TKey>)obj;
             return (Id.Equals(p.Id));
         }
-        
+
         #endregion
 
         #region Extended LSE
