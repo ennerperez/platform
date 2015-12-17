@@ -6,6 +6,19 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Order: Changed - Fixed - Added - Removed
 
 ## UNRELEASED
+### Changed
+- Fillbar ctor fix
+- VistaMenu as component
+- AppearenceContrl as AppearenceManager
+
+### Added
+- Interop User32
+- Interop Gdi32
+- AnimatedBitmapControl
+- BlinkingImage
+- ImageComboBox
+- ImageCropControl
+- TextAndImageColumn
 
 ## [3.0.1.12] - 2015-10-19
 ### Changed

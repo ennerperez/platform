@@ -19,7 +19,7 @@ namespace Platform.Presentation.Windows.Forms
         using System.Windows.Forms.Design;
         using System.Xml.Serialization;
 
-        public class AppearanceControl : Component
+        public class AppearanceManager : Component
         {
 
             public event EventHandler AppearanceChanged;
@@ -47,7 +47,7 @@ namespace Platform.Presentation.Windows.Forms
                 OfficeClassic = 6
             }
 
-            public AppearanceControl()
+            public AppearanceManager()
             {
                 customRenderer = new ToolStripProfessionalRenderer(new CustomColorTable(this));
                 office2007Renderer = new ToolStripProfessionalRenderer(new Office2007ColorTable());
@@ -127,7 +127,7 @@ namespace Platform.Presentation.Windows.Forms
                 {
                 }
 
-                public void SetAppearanceControl(AppearanceControl ap)
+                public void SetAppearanceControl(AppearanceManager ap)
                 {
                     _ButtonAppearance = new ButtonAppearanceProperties(ap);
                     _ButtonAppearance.SelectedAppearance.SetAppearanceControl(ap);
@@ -146,7 +146,7 @@ namespace Platform.Presentation.Windows.Forms
                     _OverflowButtonAppearance.SetAppearanceControl(ap);
                 }
 
-                public AppearanceProperties(AppearanceControl appearanceControl)
+                public AppearanceProperties(AppearanceManager appearanceControl)
                 {
                     _ButtonAppearance = new ButtonAppearanceProperties(appearanceControl);
                     _GripAppearance = new GripAppearanceProperties(appearanceControl);
@@ -269,7 +269,7 @@ namespace Platform.Presentation.Windows.Forms
                     {
                     }
 
-                    public ButtonAppearanceProperties(AppearanceControl appearanceControl)
+                    public ButtonAppearanceProperties(AppearanceManager appearanceControl)
                     {
                         _SelectedAppearance = new SelectedButtonAppearanceProperties(appearanceControl);
                         _CheckedAppearance = new CheckedButtonAppearanceProperties(appearanceControl);
@@ -318,7 +318,7 @@ namespace Platform.Presentation.Windows.Forms
                     {
                     }
 
-                    public ImageMarginAppearanceProperties(AppearanceControl appearanceControl)
+                    public ImageMarginAppearanceProperties(AppearanceManager appearanceControl)
                     {
                         _Normal = new ImageMarginNormalAppearanceProperties(appearanceControl);
                         _Revealed = new ImageMarginRevealedAppearanceProperties(appearanceControl);
@@ -366,14 +366,14 @@ namespace Platform.Presentation.Windows.Forms
                         this._Highlight = pct.ButtonSelectedHighlight;
                     }
 
-                    private AppearanceControl ap;
-                    public SelectedButtonAppearanceProperties(AppearanceControl appearanceControl)
+                    private AppearanceManager ap;
+                    public SelectedButtonAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
                         ap = appearanceControl;
                     }
 
-                    public void SetAppearanceControl(AppearanceControl appearanceControl)
+                    public void SetAppearanceControl(AppearanceManager appearanceControl)
                     {
                         ap = appearanceControl;
                     }
@@ -525,14 +525,14 @@ namespace Platform.Presentation.Windows.Forms
                         this._Highlight = pct.ButtonPressedHighlight;
 
                     }
-                    private AppearanceControl ap;
-                    public PressedButtonAppearanceProperties(AppearanceControl appearanceControl)
+                    private AppearanceManager ap;
+                    public PressedButtonAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
                         ap = appearanceControl;
                     }
 
-                    public void SetAppearanceControl(AppearanceControl appearanceControl)
+                    public void SetAppearanceControl(AppearanceManager appearanceControl)
                     {
                         ap = appearanceControl;
                     }
@@ -686,14 +686,14 @@ namespace Platform.Presentation.Windows.Forms
                         this._PressedBackrgound = pct.CheckPressedBackground;
                         this._SelectedBackground = pct.CheckSelectedBackground;
                     }
-                    private AppearanceControl ap;
-                    public CheckedButtonAppearanceProperties(AppearanceControl appearanceControl)
+                    private AppearanceManager ap;
+                    public CheckedButtonAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
                         ap = appearanceControl;
                     }
 
-                    public void SetAppearanceControl(AppearanceControl appearanceControl)
+                    public void SetAppearanceControl(AppearanceManager appearanceControl)
                     {
                         ap = appearanceControl;
                     }
@@ -883,14 +883,14 @@ namespace Platform.Presentation.Windows.Forms
                         this._Light = pct.GripLight;
 
                     }
-                    private AppearanceControl ap;
-                    public GripAppearanceProperties(AppearanceControl appearanceControl)
+                    private AppearanceManager ap;
+                    public GripAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
                         ap = appearanceControl;
                     }
 
-                    public void SetAppearanceControl(AppearanceControl appearanceControl)
+                    public void SetAppearanceControl(AppearanceManager appearanceControl)
                     {
                         ap = appearanceControl;
                     }
@@ -955,14 +955,14 @@ namespace Platform.Presentation.Windows.Forms
                         this._GradientEnd = pct.ButtonSelectedGradientEnd;
 
                     }
-                    private AppearanceControl ap;
-                    public MenuStripAppearanceProperties(AppearanceControl appearanceControl)
+                    private AppearanceManager ap;
+                    public MenuStripAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
                         ap = appearanceControl;
                     }
 
-                    public void SetAppearanceControl(AppearanceControl appearanceControl)
+                    public void SetAppearanceControl(AppearanceManager appearanceControl)
                     {
                         ap = appearanceControl;
                     }
@@ -1052,14 +1052,14 @@ namespace Platform.Presentation.Windows.Forms
                         this._SelectedGradientEnd = pct.MenuItemSelectedGradientEnd;
 
                     }
-                    private AppearanceControl ap;
-                    public MenuItemAppearanceProperties(AppearanceControl appearanceControl)
+                    private AppearanceManager ap;
+                    public MenuItemAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
                         ap = appearanceControl;
                     }
 
-                    public void SetAppearanceControl(AppearanceControl appearanceControl)
+                    public void SetAppearanceControl(AppearanceManager appearanceControl)
                     {
                         ap = appearanceControl;
                     }
@@ -1228,14 +1228,14 @@ namespace Platform.Presentation.Windows.Forms
                         this._GradientEnd = pct.RaftingContainerGradientEnd;
 
                     }
-                    private AppearanceControl ap;
-                    public RaftingContainerAppearanceProperties(AppearanceControl appearanceControl)
+                    private AppearanceManager ap;
+                    public RaftingContainerAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
                         ap = appearanceControl;
                     }
 
-                    public void SetAppearanceControl(AppearanceControl appearanceControl)
+                    public void SetAppearanceControl(AppearanceManager appearanceControl)
                     {
                         ap = appearanceControl;
                     }
@@ -1300,14 +1300,14 @@ namespace Platform.Presentation.Windows.Forms
                         this._GradientEnd = pct.StatusStripGradientEnd;
 
                     }
-                    private AppearanceControl ap;
-                    public StatusStripAppearanceProperties(AppearanceControl appearanceControl)
+                    private AppearanceManager ap;
+                    public StatusStripAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
                         ap = appearanceControl;
                     }
 
-                    public void SetAppearanceControl(AppearanceControl appearanceControl)
+                    public void SetAppearanceControl(AppearanceManager appearanceControl)
                     {
                         ap = appearanceControl;
                     }
@@ -1372,14 +1372,14 @@ namespace Platform.Presentation.Windows.Forms
                         this._Light = pct.SeparatorLight;
 
                     }
-                    private AppearanceControl ap;
-                    public SeparatorAppearanceProperties(AppearanceControl appearanceControl)
+                    private AppearanceManager ap;
+                    public SeparatorAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
                         ap = appearanceControl;
                     }
 
-                    public void SetAppearanceControl(AppearanceControl appearanceControl)
+                    public void SetAppearanceControl(AppearanceManager appearanceControl)
                     {
                         ap = appearanceControl;
                     }
@@ -1453,14 +1453,14 @@ namespace Platform.Presentation.Windows.Forms
 
                     }
 
-                    private AppearanceControl ap;
-                    public ToolStripAppearanceProperties(AppearanceControl appearanceControl)
+                    private AppearanceManager ap;
+                    public ToolStripAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
                         ap = appearanceControl;
                     }
 
-                    public void SetAppearanceControl(AppearanceControl appearanceControl)
+                    public void SetAppearanceControl(AppearanceManager appearanceControl)
                     {
                         ap = appearanceControl;
                     }
@@ -1674,14 +1674,14 @@ namespace Platform.Presentation.Windows.Forms
                         this._GradientMiddle = pct.OverflowButtonGradientMiddle;
 
                     }
-                    private AppearanceControl ap;
-                    public OverflowButtonAppearanceProperties(AppearanceControl appearanceControl)
+                    private AppearanceManager ap;
+                    public OverflowButtonAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
                         ap = appearanceControl;
                     }
 
-                    public void SetAppearanceControl(AppearanceControl appearanceControl)
+                    public void SetAppearanceControl(AppearanceManager appearanceControl)
                     {
                         ap = appearanceControl;
                     }
@@ -1768,14 +1768,14 @@ namespace Platform.Presentation.Windows.Forms
                         this._GradientMiddle = pct.ImageMarginGradientMiddle;
 
                     }
-                    private AppearanceControl ap;
-                    public ImageMarginNormalAppearanceProperties(AppearanceControl appearanceControl)
+                    private AppearanceManager ap;
+                    public ImageMarginNormalAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
                         ap = appearanceControl;
                     }
 
-                    public void SetAppearanceControl(AppearanceControl appearanceControl)
+                    public void SetAppearanceControl(AppearanceManager appearanceControl)
                     {
                         ap = appearanceControl;
                     }
@@ -1862,14 +1862,14 @@ namespace Platform.Presentation.Windows.Forms
                         this._GradientMiddle = pct.ImageMarginRevealedGradientMiddle;
 
                     }
-                    private AppearanceControl ap;
-                    public ImageMarginRevealedAppearanceProperties(AppearanceControl appearanceControl)
+                    private AppearanceManager ap;
+                    public ImageMarginRevealedAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
                         ap = appearanceControl;
                     }
 
-                    public void SetAppearanceControl(AppearanceControl appearanceControl)
+                    public void SetAppearanceControl(AppearanceManager appearanceControl)
                     {
                         ap = appearanceControl;
                     }
@@ -1973,8 +1973,8 @@ namespace Platform.Presentation.Windows.Forms
         {
 
 
-            private AppearanceControl ac = null;
-            public CustomColorTable(AppearanceControl appearanceControl)
+            private AppearanceManager ac = null;
+            public CustomColorTable(AppearanceManager appearanceControl)
             {
                 ac = appearanceControl;
             }

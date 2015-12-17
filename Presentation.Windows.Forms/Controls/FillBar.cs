@@ -19,6 +19,11 @@ namespace Platform.Presentation.Windows.Forms.Controls
     public class FillBar : Control
     {
 
+        public FillBar()
+        {
+            Invalidate();
+        }
+
         #region  Events
 
         public event EventHandler<EventArgs> ValueChanged;
@@ -197,6 +202,12 @@ namespace Platform.Presentation.Windows.Forms.Controls
             e.Graphics.FillRectangle(_bsh, _recFill);
             e.Graphics.DrawRectangle(new Pen(this.BorderColor, this.BorderWidth), e.ClipRectangle);
 
+        }
+
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            base.OnSizeChanged(e);
+            this.Invalidate();
         }
 
     }

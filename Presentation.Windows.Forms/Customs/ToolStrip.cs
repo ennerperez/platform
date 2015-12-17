@@ -19,8 +19,8 @@ namespace Platform.Presentation.Windows.Forms.Customs
             this.RoundedEdges = true;
         }
 
-        private AppearanceControl _Appearance;
-        public AppearanceControl Appearance
+        private AppearanceManager _Appearance;
+        public AppearanceManager Appearance
         {
             get { return _Appearance; }
             set

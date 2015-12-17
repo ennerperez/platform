@@ -54,7 +54,7 @@
     <Compile Include="..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
-    <Compile Include="Components\AppearanceControl.cs">
+    <Compile Include="Components\AppearanceManager.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\Extender.cs">
@@ -63,11 +63,29 @@
     <Compile Include="Components\Literals.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\AnimatedBitmapControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\BlinkingImage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\BlinkingImage.designer.cs">
+      <DependentUpon>BlinkingImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BufferedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\FillBar.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageCropControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageCropControl.designer.cs">
+      <DependentUpon>ImageCropControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\LinkLabel.cs">
       <SubType>Component</SubType>
@@ -79,7 +97,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\TaskBar.cs" />
-    <Compile Include="Controls\VistaMenu.cs" />
+    <Compile Include="Controls\TextAndImageColumn.cs" />
+    <Compile Include="Components\VistaMenu.cs" />
     <Compile Include="Customs\ContextMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -129,6 +148,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\AnimatedBitmapControl.resx">
+      <DependentUpon>AnimatedBitmapControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BlinkingImage.resx">
+      <DependentUpon>BlinkingImage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Designers\CustomAppearancePropertyEditor.resx">
       <DependentUpon>CustomAppearancePropertyEditor.cs</DependentUpon>
     </EmbeddedResource>

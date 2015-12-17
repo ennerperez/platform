@@ -18,8 +18,8 @@ namespace Platform.Presentation.Windows.Forms.Customs
         {
         }
 
-        private AppearanceControl _Appearance;
-        public AppearanceControl Appearance
+        private AppearanceManager _Appearance;
+        public AppearanceManager Appearance
         {
             get { return _Appearance; }
             set

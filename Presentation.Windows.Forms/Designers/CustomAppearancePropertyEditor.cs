@@ -56,7 +56,7 @@ namespace Platform.Presentation.Windows.Forms.Designers
             this.Save_Button = new System.Windows.Forms.Button();
             this.Panel1 = new System.Windows.Forms.Panel();
             this.CustomizableToolStrip1 = new Presentation.Windows.Forms.Customs.ToolStrip();
-            this.AppearanceControl1 = new Presentation.Windows.Forms.Components.AppearanceControl();
+            this.AppearanceControl1 = new Presentation.Windows.Forms.Components.AppearanceManager();
             this.NewToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.OpenToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.SaveToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -328,7 +328,7 @@ namespace Platform.Presentation.Windows.Forms.Designers
             this.AppearanceControl1.CustomAppearance.ToolStripAppearance.intGradientMiddle = -3415556;
             this.AppearanceControl1.CustomAppearance.ToolStripAppearance.intPanelGradientBegin = -6373643;
             this.AppearanceControl1.CustomAppearance.ToolStripAppearance.intPanelGradientEnd = -3876102;
-            this.AppearanceControl1.Preset = Presentation.Windows.Forms.Components.AppearanceControl.enumPresetStyles.Custom;
+            this.AppearanceControl1.Preset = Presentation.Windows.Forms.Components.AppearanceManager.enumPresetStyles.Custom;
             this.AppearanceControl1.Renderer.RoundedEdges = true;
             // 
             // NewToolStripButton
@@ -894,12 +894,12 @@ namespace Platform.Presentation.Windows.Forms.Designers
         internal Presentation.Windows.Forms.Customs.StatusStrip CustomizableStatusStrip1;
         internal Presentation.Windows.Forms.Customs.MenuStrip CustomizableMenuStrip1;
         internal System.Windows.Forms.PropertyGrid PropertyGrid1;
-        internal AppearanceControl AppearanceControl1;
+        internal AppearanceManager AppearanceControl1;
 
         #endregion
 
-        private AppearanceControl.AppearanceProperties _ap = null;
-        public AppearanceEditor(AppearanceControl.AppearanceProperties ap)
+        private AppearanceManager.AppearanceProperties _ap = null;
+        public AppearanceEditor(AppearanceManager.AppearanceProperties ap)
         {
             InitializeComponent();
             _ap = ap;
@@ -910,7 +910,7 @@ namespace Platform.Presentation.Windows.Forms.Designers
             
         }
 
-        public AppearanceControl.AppearanceProperties CustomAppearance
+        public AppearanceManager.AppearanceProperties CustomAppearance
         {
             get { return _ap; }
         }
@@ -961,10 +961,10 @@ namespace Platform.Presentation.Windows.Forms.Designers
             {
                 using (FileStream fs = new FileStream(xmlFile, FileMode.Open, FileAccess.Read, FileShare.None))
                 {
-                    XmlSerializer ser = new XmlSerializer(typeof(AppearanceControl.AppearanceProperties));
+                    XmlSerializer ser = new XmlSerializer(typeof(AppearanceManager.AppearanceProperties));
 
-                    AppearanceControl.AppearanceProperties ap;
-                    ap = (AppearanceControl.AppearanceProperties)ser.Deserialize(fs);
+                    AppearanceManager.AppearanceProperties ap;
+                    ap = (AppearanceManager.AppearanceProperties)ser.Deserialize(fs);
                     _ap = ap;
                     this.CustomizableMenuStrip1.Appearance.CustomAppearance = ap;
                     this.CustomizableStatusStrip1.Appearance.CustomAppearance = ap;
@@ -982,10 +982,10 @@ namespace Platform.Presentation.Windows.Forms.Designers
         {
             try
             {
-                XmlSerializer ser = new XmlSerializer(typeof(AppearanceControl.AppearanceProperties));
+                XmlSerializer ser = new XmlSerializer(typeof(AppearanceManager.AppearanceProperties));
 
-                AppearanceControl.AppearanceProperties ap;
-                ap = (AppearanceControl.AppearanceProperties)ser.Deserialize(stream);
+                AppearanceManager.AppearanceProperties ap;
+                ap = (AppearanceManager.AppearanceProperties)ser.Deserialize(stream);
                 ap.SetAppearanceControl(AppearanceControl1);
                 _ap = ap;
                 this.AppearanceControl1.CustomAppearance = _ap;
@@ -998,13 +998,13 @@ namespace Platform.Presentation.Windows.Forms.Designers
             }
         }
 
-        public void SaveAppearance(string xmlFile, AppearanceControl ac)
+        public void SaveAppearance(string xmlFile, AppearanceManager ac)
         {
             try
             {
                 using (FileStream fs = new FileStream(xmlFile, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
-                    XmlSerializer ser = new XmlSerializer(typeof(AppearanceControl.AppearanceProperties));
+                    XmlSerializer ser = new XmlSerializer(typeof(AppearanceManager.AppearanceProperties));
                     ser.Serialize(fs, ac.CustomAppearance);
                     fs.Close();
                 }
@@ -1071,7 +1071,7 @@ namespace Platform.Presentation.Windows.Forms.Designers
 
         private System.Windows.Forms.Control GetEditControl(string PropertyName, object CurrentValue)
         {
-            AppearanceControl.AppearanceProperties ap = CurrentValue as AppearanceControl.AppearanceProperties;
+            AppearanceManager.AppearanceProperties ap = CurrentValue as AppearanceManager.AppearanceProperties;
             if (ap != null)
             {
                 _appearanceEditor = new AppearanceEditor(ap);
