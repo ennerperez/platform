@@ -10,6 +10,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fillbar ctor fix
 - VistaMenu as component
 - AppearenceContrl as AppearenceManager
+- Pictogram structure
+- FontAwesome 4.5 updated
 
 ### Added
 - Interop User32
@@ -19,6 +21,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ImageComboBox
 - ImageCropControl
 - TextAndImageColumn
+- Foundation font integrated
 
 ## [3.0.1.12] - 2015-10-19
 ### Changed

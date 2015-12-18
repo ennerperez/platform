@@ -1,65 +1,54 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
-using System.ComponentModel;
+using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text;
 
-namespace Platform.Support.Drawing.FontAwesome
+namespace Platform.Support.Drawing
 {
-    public static class Helpers
+    public class Pictogram
     {
 
         /// <summary>
-        /// Initializes the <see cref="Icon" /> class by loading the font from resources upon first use.
+        /// Store the icon font in a static variable to reuse between icons
         /// </summary>
-        static Helpers()
+        internal readonly PrivateFontCollection Fonts = new PrivateFontCollection();
+
+        /// <summary>
+        /// Store the icon font in a static variable to reuse between icons
+        /// </summary>
+        public FontFamily FontFamily
         {
-            InitializeFont();
-        }
-
-        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
-        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont,
-           IntPtr pdv, [System.Runtime.InteropServices.In] ref uint pcFonts);
-
-        /// <summary>
-        /// Store the icon font in a static variable to reuse between icons
-        /// </summary>
-        internal static readonly PrivateFontCollection Fonts = new PrivateFontCollection();
-
-        /// <summary>
-        /// Store the icon font in a static variable to reuse between icons
-        /// </summary>
-        public static FontFamily FontFamily
-        { 
-            get 
+            get
             {
-                return Helpers.Fonts.Families[0];
-            } 
-            private set 
-            { 
-            } 
+                return Fonts.Families[0];
+            }
+            private set
+            {
+            }
         }
 
         /// <summary>
         /// Store the font in a static variable to quick reference
         /// </summary>
-        private static Font iconFont;
+        private Font iconFont;
 
         /// <summary>
         /// Loads the icon font from the resources.
         /// </summary>
-        private static void InitializeFont()
+        internal void InitializeFont(byte[] pFontData)
         {
             try
             {
-                byte[] pFontData = Properties.Resources.fontawesome_webfont;
+                //byte[] pFontData = Properties.Resources.fontawesome_webfont;
                 IntPtr fontBuffer = Marshal.AllocCoTaskMem(pFontData.Length);
                 Marshal.Copy(pFontData, 0, fontBuffer, pFontData.Length);
 
                 uint dummy = 0;
                 Fonts.AddMemoryFont(fontBuffer, pFontData.Length);
-                AddFontMemResourceEx((IntPtr)fontBuffer, (uint)pFontData.Length, IntPtr.Zero, ref dummy);
+                Pictogram.AddFontMemResourceEx((IntPtr)fontBuffer, (uint)pFontData.Length, IntPtr.Zero, ref dummy);
 
                 // log?
             }
@@ -91,7 +80,7 @@ namespace Platform.Support.Drawing.FontAwesome
         /// Sets a new font with approprate size for the allocated space.
         /// </summary>
         /// <param name="g">The g.</param>
-        private static void SetFontSize(Graphics g, string IconChar)
+        private void SetFontSize(Graphics g, string IconChar)
         {
             var Width = (int)g.VisibleClipBounds.Width;
             var Height = (int)g.VisibleClipBounds.Height;
@@ -103,7 +92,7 @@ namespace Platform.Support.Drawing.FontAwesome
         /// </summary>
         /// <param name="size">The size of the font in points.</param>
         /// <returns>A new System.Drawing.Font instance</returns>
-        private static Font GetIconFont(float size)
+        private Font GetIconFont(float size)
         {
             return new Font(Fonts.Families[0], size, GraphicsUnit.Point);
         }
@@ -118,7 +107,7 @@ namespace Platform.Support.Drawing.FontAwesome
         /// <param name="minFontSize">Size of the min font.</param>
         /// <param name="smallestOnFail">if set to <c>true</c> [smallest on fail].</param>
         /// <returns></returns>
-        private static Font GetAdjustedFont(Graphics g, string graphicString, int containerWidth, int maxFontSize, int minFontSize, bool smallestOnFail)
+        private Font GetAdjustedFont(Graphics g, string graphicString, int containerWidth, int maxFontSize, int minFontSize, bool smallestOnFail)
         {
             for (double adjustedSize = maxFontSize; adjustedSize >= minFontSize; adjustedSize = adjustedSize - 0.5)
             {
@@ -138,12 +127,12 @@ namespace Platform.Support.Drawing.FontAwesome
         }
 
 
-        public static System.Drawing.Image GetIcon(IconType type, int size, Color color)
+        public Image GetIcon(int type, int size, Color color)
         {
             return GetIcon(type, size, new SolidBrush(color));
         }
 
-        public static System.Drawing.Image GetIcon(IconType type, int size, Brush brush)
+        public Image GetIcon(int type, int size, Brush brush)
         {
             System.Drawing.Bitmap result = new System.Drawing.Bitmap(size, size);
             string IconChar = char.ConvertFromUtf32((int)type);
@@ -156,11 +145,11 @@ namespace Platform.Support.Drawing.FontAwesome
                 graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
                 graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
-                // is the font ready to go?
-                if (iconFont == null)
-                {
+                //// is the font ready to go?
+                //if (iconFont == null)
+                //{
                     SetFontSize(graphics, IconChar);
-                }
+                //}
 
                 // Measure string so that we can center the icon.
                 SizeF stringSize = graphics.MeasureString(IconChar, iconFont, size);
@@ -180,6 +169,10 @@ namespace Platform.Support.Drawing.FontAwesome
         }
 
         #endregion
+
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        internal static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont,
+          IntPtr pdv, [System.Runtime.InteropServices.In] ref uint pcFonts);
 
     }
 }

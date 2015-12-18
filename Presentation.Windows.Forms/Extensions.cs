@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Windows.Forms
@@ -29,7 +30,7 @@ namespace Platform.Presentation.Windows.Forms
             ShowIn(form, parent, null, param);
         }
 
-        public static DialogResult ShowAsDialog(this Form form,EventHandler shown, params object[] param)
+        public static DialogResult ShowAsDialog(this Form form, EventHandler shown, params object[] param)
         {
             System.Type _t = form.GetType();
             Form _ChildForm;
@@ -41,7 +42,7 @@ namespace Platform.Presentation.Windows.Forms
             {
                 _ChildForm = (Form)Activator.CreateInstance(_t);
             }
-         
+
             if (shown != null) _ChildForm.Shown += shown;
 
             return _ChildForm.ShowDialog();
@@ -153,7 +154,7 @@ namespace Platform.Presentation.Windows.Forms
             return false;
         }
 
-        public static bool IsInDesignMode(this  Control @this)
+        public static bool IsInDesignMode(this Control @this)
         {
             return System.Reflection.Assembly.GetExecutingAssembly().Location.Contains("VisualStudio");
         }
@@ -242,15 +243,84 @@ namespace Platform.Presentation.Windows.Forms
 
         //#endregion
 
-        #region FontAwesome
+        #region Pictograms
 
-        public static void SetIcon(this ToolStripItem @this, Platform.Support.Drawing.FontAwesome.IconType type)
+        public static void SetIcon(this Control @this, Support.Drawing.Pictogram pictogram, int type)
         {
-            @this.Font = new System.Drawing.Font(Platform.Support.Drawing.FontAwesome.Helpers.FontFamily, @this.Font.Size, System.Drawing.GraphicsUnit.Point);
-            @this.DisplayStyle = ToolStripItemDisplayStyle.Text;
-            @this.ToolTipText = @this.Text;
+            @this.Font = new System.Drawing.Font(pictogram.FontFamily, @this.Font.Size, System.Drawing.GraphicsUnit.Point);
             @this.Text = char.ConvertFromUtf32((int)type);
         }
+
+        public static void SetIcon(this Component @this, Support.Drawing.Pictogram pictogram, int type)
+        {
+
+            if (@this.GetType() == typeof(ToolStripItem) ||
+                @this.GetType() == typeof(ToolStripButton) ||
+                @this.GetType() == typeof(ToolStripDropDownButton) ||
+                @this.GetType() == typeof(ToolStripDropDown))
+            {
+                (@this as ToolStripItem).Font = new System.Drawing.Font(pictogram.FontFamily, (@this as ToolStripItem).Font.Size, System.Drawing.GraphicsUnit.Point);
+                (@this as ToolStripItem).Text = char.ConvertFromUtf32((int)type);
+                (@this as ToolStripItem).DisplayStyle = ToolStripItemDisplayStyle.Text;
+                (@this as ToolStripItem).ToolTipText = (@this as ToolStripItem).Text;
+            }
+
+        }
+
+
+        public static void SetImage(this Control @this, Support.Drawing.Pictogram pictogram, int type, int? size = null, System.Drawing.Color? color = null)
+        {
+            if (@this.GetType() == typeof(Button))
+            {
+                if (size == null)
+                    size = (int)(@this as Button).Font.Size;
+                if (color == null)
+                    color = (@this as Button).ForeColor;
+                (@this as Button).Image = pictogram.GetIcon(type, size.Value, color.Value);
+            }
+        }
+
+        public static void SetImage(this Component @this, Support.Drawing.Pictogram pictogram, int type, int? size = null, System.Drawing.Color? color = null)
+        {
+            if (@this.GetType() == typeof(ToolStripItem) || 
+                @this.GetType() == typeof(ToolStripButton) || 
+                @this.GetType() == typeof(ToolStripDropDownButton) ||
+                @this.GetType() == typeof(ToolStripDropDown))
+            {
+                if (size == null)
+                    size = (int)(@this as ToolStripItem).Font.Size;
+                if (color == null)
+                    color = (@this as ToolStripItem).ForeColor;
+                (@this as ToolStripItem).Image = pictogram.GetIcon(type, size.Value, color.Value);
+            }
+        }
+
+
+
+        /* IMPLEMENTATIONS */
+
+        public static void SetIcon(this Control @this, Support.Drawing.Pictograms.FontAwesome.IconType type)
+        {
+            SetIcon(@this, Support.Drawing.Pictograms.FontAwesome.Instance, (int)type);
+        }
+
+        public static void SetIcon(this Component @this, Support.Drawing.Pictograms.FontAwesome.IconType type)
+        {
+            SetIcon(@this, Support.Drawing.Pictograms.FontAwesome.Instance, (int)type);
+        }
+
+
+
+        public static void SetImage(this Control @this, Support.Drawing.Pictograms.FontAwesome.IconType type, int? size = null, System.Drawing.Color? color = null)
+        {
+            SetImage(@this, Support.Drawing.Pictograms.FontAwesome.Instance, (int)type, size, color);
+        }
+
+        public static void SetImage(this Component @this, Support.Drawing.Pictograms.FontAwesome.IconType type, int? size = null, System.Drawing.Color? color = null)
+        {
+            SetImage(@this, Support.Drawing.Pictograms.FontAwesome.Instance, (int)type, size, color);
+        }
+
 
         #endregion
 
