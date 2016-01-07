@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<SKUID xmlns="http://www.w3.org/2015/brandingSchema">
+<SKUID xmlns="http://www.w3.org/2016/brandingSchema">
   <brand id="X000000000" value="DEMO" key="00000000-AAAA-BBBB-CCCC-000000000000" culture="es">
     <name>name1</name>
     <description>description1</description>
@@ -160,6 +160,9 @@
         KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//Z
       </logo>
     </logos>
+    <colors>
+      <color id="main">#70AC48</color>
+    </colors>
     <phones>
       <phone id="main">582617540406</phone>
       <phone id="mobile">584146328236</phone>

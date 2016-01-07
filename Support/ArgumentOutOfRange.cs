@@ -7,6 +7,8 @@ namespace Platform.Support
 {
 
     public delegate void ArgumentOutOfRangeEventHandler<T>(object sender, ArgumentOutOfRangeEventArgs<T> e);
+    public delegate void ArgumentOutOfRangeEventHandler(object sender, ArgumentOutOfRangeEventArgs<Object> e);
+
     public class ArgumentOutOfRangeEventArgs<T> : EventArgs
     {
 
@@ -27,7 +29,6 @@ namespace Platform.Support
     }
 
 
-    public delegate void ArgumentOutOfRangeEventHandler(object sender, ArgumentOutOfRangeEventArgs<Object> e);
     public class ArgumentOutOfRangeEventArgs : ArgumentOutOfRangeEventArgs<Object>
     {
 

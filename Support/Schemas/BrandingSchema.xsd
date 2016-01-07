@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema id="BrandingSchema"
-    targetNamespace="http://www.w3.org/2015/brandingSchema"
+    targetNamespace="http://www.w3.org/2016/brandingSchema"
     elementFormDefault="qualified"
-    xmlns="http://www.w3.org/2015/brandingSchema"
-    xmlns:mstns="http://www.w3.org/2015/brandingSchema"
+    xmlns="http://www.w3.org/2016/brandingSchema"
+    xmlns:mstns="http://www.w3.org/2016/brandingSchema"
     xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
   <xs:annotation>
     <xs:documentation>
-      Product Branding 1.5
-      (C) 2015 - Enner Pérez
+      Product Branding 1.6
+      (C) 2016 - Enner Pérez
     </xs:documentation>
   </xs:annotation>
 
@@ -61,6 +61,21 @@
               <xs:complexType>
                 <xs:simpleContent>
                   <xs:extension base="xs:base64Binary">
+                    <xs:attribute name="id" type="xs:string" default="main" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="colors" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="color">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:string">
                     <xs:attribute name="id" type="xs:string" default="main" />
                   </xs:extension>
                 </xs:simpleContent>

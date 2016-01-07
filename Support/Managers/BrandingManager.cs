@@ -15,6 +15,7 @@ namespace Platform.Support.Branding
         public BrandingManager()
         {
             this._Logos = new Dictionary<string, byte[]>();
+            this._Colors = new Dictionary<string, string>();
             this._PhonesNumbers = new Dictionary<string, string>();
             this._URLs = new Dictionary<string, Uri>();
             this._MailAddress = new Dictionary<string, System.Net.Mail.MailAddress>();
@@ -58,6 +59,12 @@ namespace Platform.Support.Branding
         public Dictionary<string, byte[]> Logos
         {
             get { return _Logos; }
+        }
+
+        private Dictionary<string, string> _Colors;
+        public Dictionary<string, string> Colors
+        {
+            get { return _Colors; }
         }
 
         private Dictionary<string, string> _PhonesNumbers;
@@ -127,7 +134,7 @@ namespace Platform.Support.Branding
             if (file != null)
             {
                 XDocument _XDocument;
-                XNamespace _ns = "http://www.w3.org/2015/brandingSchema";
+                XNamespace _ns = "http://www.w3.org/2016/brandingSchema";
 
                 _XDocument = XDocument.Load(file.FullName);
 
@@ -150,6 +157,15 @@ namespace Platform.Support.Branding
                             this._Logos.Add(item.Attribute("id").Value, System.Convert.FromBase64String(_prelogo));
                         }
                         catch (Exception) { }
+                    }
+                }
+
+                foreach (var item in brand.Elements(_ns + "colors").Elements())
+                {
+                    string _precolor = item.Value;
+                    if (!string.IsNullOrEmpty(_precolor))
+                    {
+                        this._Colors.Add(item.Attribute("id").Value, _precolor);
                     }
                 }
 
@@ -469,6 +485,51 @@ namespace Platform.Support.Branding
                 if (_Cache.Logos.ContainsKey(key))
                 {
                     return _Cache.Logos[key];
+                }
+            }
+
+            return null;
+
+        }
+
+        public static string BrandColor(this System.Reflection.Assembly assembly, string key = null)
+        {
+
+            if (_Cache == null)
+            {
+                if (IsBranded(assembly))
+                {
+                    if (key == null)
+                    {
+                        if (_Cache != null && _Cache.Colors.Count > 0)
+                        {
+                            var frist = _Cache.Colors.FirstOrDefault();
+                            return frist.Value;
+                        }
+                    }
+                    else
+                    {
+                        if (_Cache != null && _Cache.Colors.ContainsKey(key))
+                        {
+                            return _Cache.Colors[key];
+                        }
+                    }
+                }
+            }
+
+            if (key == null)
+            {
+                if (_Cache.Colors.Count > 0)
+                {
+                    var frist = _Cache.Colors.FirstOrDefault();
+                    return frist.Value;
+                }
+            }
+            else
+            {
+                if (_Cache.Colors.ContainsKey(key))
+                {
+                    return _Cache.Colors[key];
                 }
             }
 

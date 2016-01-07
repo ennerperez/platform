@@ -45,8 +45,8 @@
     <Compile Include="..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
-    <Compile Include="..\Support\ArgumentOutOfRangeEventArgs.cs">
-      <Link>ArgumentOutOfRangeEventArgs.cs</Link>
+    <Compile Include="..\Support\ArgumentOutOfRange.cs">
+      <Link>ArgumentOutOfRange.cs</Link>
     </Compile>
     <Compile Include="..\Support\Attributes\BuildDateAttribute.cs">
       <Link>Attributes\BuildDateAttribute.cs</Link>
@@ -87,14 +87,50 @@
     <Compile Include="..\Support\Collections\TypeListComparer.cs">
       <Link>Collections\TypeListComparer.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Extensions.cs">
-      <Link>Extensions.cs</Link>
+    <Compile Include="..\Support\Extensions\Dates.cs">
+      <Link>Extensions\Dates.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Helpers.cs">
-      <Link>Helpers.cs</Link>
+    <Compile Include="..\Support\Extensions\Enums.cs">
+      <Link>Extensions\Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Extensions\Numbers.cs">
+      <Link>Extensions\Numbers.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Extensions\Reflections.cs">
+      <Link>Extensions\Reflections.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Extensions\Strings.cs">
+      <Link>Extensions\Strings.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Extensions\Types.cs">
+      <Link>Extensions\Types.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Helpers\Dates.cs">
+      <Link>Helpers\Dates.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Helpers\Enums.cs">
+      <Link>Helpers\Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Helpers\Reflections.cs">
+      <Link>Helpers\Reflections.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Helpers\Registries.cs">
+      <Link>Helpers\Registries.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Helpers\Strings.cs">
+      <Link>Helpers\Strings.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Helpers\Types.cs">
+      <Link>Helpers\Types.cs</Link>
     </Compile>
     <Compile Include="..\Support\IsNull.cs">
       <Link>IsNull.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Maths\Helpers.cs">
+      <Link>Maths\Helpers.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Maths\Vector2.cs">
+      <Link>Maths\Vector2.cs</Link>
     </Compile>
     <Compile Include="..\Support\Text\Markdown.cs">
       <Link>Text\Markdown.cs</Link>

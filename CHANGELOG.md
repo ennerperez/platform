@@ -5,23 +5,36 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Version: major version.minor version.build number.revision
 * Order: Changed - Fixed - Added - Removed
 
-## UNRELEASED
+## [3.0.1.13] - 2016-01-07
 ### Changed
-- Fillbar ctor fix
+- Fill-bar ctr fix
 - VistaMenu as component
-- AppearenceContrl as AppearenceManager
-- Pictogram structure
-- FontAwesome 4.5 updated
+- AppearenceControl as AppearenceManager
+- Pictograph structure
+- FontAwesome 4.5
+- Branding Schema 1.6
+- Branding Colors Manager
+- HSL Color structure removed
+- Helpers & extensions
 
 ### Added
-- Interop User32
-- Interop Gdi32
+- Inter-op User32
+- Inter-op Gdi32
 - AnimatedBitmapControl
 - BlinkingImage
 - ImageComboBox
 - ImageCropControl
 - TextAndImageColumn
 - Foundation font integrated
+- Color Controls
+- HSB Color structure
+- CYMK Color structure
+
+### Removed
+- HSL Color
+
+### Fixed
+- NuGet packages
 
 ## [3.0.1.12] - 2015-10-19
 ### Changed
@@ -35,8 +48,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Timer in PCL
 - BCL references
 - Installer updated
-- Preliminar SPS Model
-- Preliminar SPS Model (Portable Plugin)
+- Preliminary SPS Model
+- Preliminary SPS Model (Portable Plug-in)
 - CRUD Model (Active Record)
 
 ## [3.0.1.10] - 2015-10-02
@@ -89,7 +102,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [3.0.0.6] - 2015-06-13
 ### Changed
 - Including .targets, .msbuild and .prop for building
-- Changelog file specification
+- Change log file specification
 - AssemblyInfoUltil updated [New features]
 
 ### Fixed

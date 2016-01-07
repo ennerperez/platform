@@ -39,6 +39,8 @@ namespace Platform.Support.OS
             }
         }
 
+#if (!PORTABLE)
+
         /// <summary>
         ///  returns 32 if windows has installed in 32 bit mode and 64 for 64 bit mode
         /// </summary>
@@ -57,6 +59,8 @@ namespace Platform.Support.OS
                 return 64;
             }
         }
+
+#endif
 
     }
 }

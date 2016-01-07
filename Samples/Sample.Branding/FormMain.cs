@@ -33,9 +33,10 @@ namespace Sample.Branding
                     richTextBoxEULA.Text = bproduct.EULA;
                 }
                 linkLabelURL.Text = assembly.BrandURL("main");
-                pictureBoxBrandBanner.Image = Helpers.FromBytes( assembly.BrandLogo("sidebar"));
+                pictureBoxBrandBanner.BackColor = Helpers.ToColor(assembly.BrandColor("main"));
+                pictureBoxBrandBanner.Image = Helpers.FromBytes(assembly.BrandLogo("sidebar"));
                 pictureBoxBrandLogo.Image = Helpers.FromBytes(assembly.BrandLogo("main"));
-                richTextBoxEULA.Text = richTextBoxEULA.Text+ Environment.NewLine + assembly.BrandEULA();
+                richTextBoxEULA.Text = richTextBoxEULA.Text + Environment.NewLine + assembly.BrandEULA();
             }
         }
     }

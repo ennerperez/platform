@@ -8,8 +8,6 @@ namespace Platform.Support
     public static class IsNull
     {
 
-        #region Nullable
-
         public static string Cast(object value, string replacement = "")
         {
             if (value != null && value.GetType() == typeof(DateTime))
@@ -34,6 +32,5 @@ namespace Platform.Support
             return Convert.ToDateTime(replacement).ToString("d");
         }
 
-        #endregion
     }
 }

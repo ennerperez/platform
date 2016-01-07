@@ -52,10 +52,15 @@
     <Compile Include="..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
+    <Compile Include="CMYK.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Helpers\Colors.cs" />
+    <Compile Include="Helpers\Geometrics.cs" />
+    <Compile Include="Helpers\Images.cs" />
+    <Compile Include="HEX.cs" />
+    <Compile Include="HSB.cs" />
     <Compile Include="Pictograms\FontAwesome.cs" />
-    <Compile Include="Helpers.cs" />
-    <Compile Include="HSLColor.cs" />
+    <Compile Include="Helpers\Reflections.cs" />
     <Compile Include="Pictogram.cs" />
     <Compile Include="Pictograms\Foundation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,6 +78,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Diagram.cd" />
     <None Include="Fonts\fontawesome-webfont.ttf" />
     <None Include="Fonts\general_foundicons.ttf" />
     <None Include="Package.nuspec" />

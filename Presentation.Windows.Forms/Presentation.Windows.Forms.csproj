@@ -75,6 +75,7 @@
     <Compile Include="Controls\BufferedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\ColorControls.cs" />
     <Compile Include="Controls\FillBar.cs">
       <SubType>Component</SubType>
     </Compile>

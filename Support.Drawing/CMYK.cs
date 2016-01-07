@@ -1,0 +1,239 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+
+namespace Platform.Support.Drawing
+{
+
+    public static partial class Helpers
+    {
+
+        public static Color ToColor(CMYK cmyk)
+        {
+            if (cmyk.Cyan == 0 && cmyk.Magenta == 0 && cmyk.Yellow == 0 && cmyk.Key == 1)
+            {
+                return Color.FromArgb(cmyk.Alpha, 0, 0, 0);
+            }
+
+            double c = cmyk.Cyan * (1 - cmyk.Key) + cmyk.Key;
+            double m = cmyk.Magenta * (1 - cmyk.Key) + cmyk.Key;
+            double y = cmyk.Yellow * (1 - cmyk.Key) + cmyk.Key;
+
+            int r = (int)Math.Round((1 - c) * 255);
+            int g = (int)Math.Round((1 - m) * 255);
+            int b = (int)Math.Round((1 - y) * 255);
+
+            return Color.FromArgb(cmyk.Alpha, r, g, b);
+        }
+
+        public static CMYK ToCMYK(Color color)
+        {
+            if (color.R == 0 && color.G == 0 && color.B == 0)
+            {
+                return new CMYK(0, 0, 0, 1, color.A);
+            }
+
+            double c = 1 - (color.R / 255d);
+            double m = 1 - (color.G / 255d);
+            double y = 1 - (color.B / 255d);
+            double k = Math.Min(c, Math.Min(m, y));
+
+            c = (c - k) / (1 - k);
+            m = (m - k) / (1 - k);
+            y = (y - k) / (1 - k);
+
+            return new CMYK(c, m, y, k, color.A);
+        }
+
+    }
+
+    public struct CMYK
+    {
+        private double cyan;
+        private double magenta;
+        private double yellow;
+        private double key;
+        private int alpha;
+
+        public double Cyan
+        {
+            get
+            {
+                return cyan;
+            }
+            set
+            {
+                cyan = Helpers.ValidColor(value);
+            }
+        }
+
+        public double Cyan100
+        {
+            get
+            {
+                return cyan * 100;
+            }
+            set
+            {
+                cyan = Helpers.ValidColor(value / 100);
+            }
+        }
+
+        public double Magenta
+        {
+            get
+            {
+                return magenta;
+            }
+            set
+            {
+                magenta = Helpers.ValidColor(value);
+            }
+        }
+
+        public double Magenta100
+        {
+            get
+            {
+                return magenta * 100;
+            }
+            set
+            {
+                magenta = Helpers.ValidColor(value / 100);
+            }
+        }
+
+        public double Yellow
+        {
+            get
+            {
+                return yellow;
+            }
+            set
+            {
+                yellow = Helpers.ValidColor(value);
+            }
+        }
+
+        public double Yellow100
+        {
+            get
+            {
+                return yellow * 100;
+            }
+            set
+            {
+                yellow = Helpers.ValidColor(value / 100);
+            }
+        }
+
+        public double Key
+        {
+            get
+            {
+                return key;
+            }
+            set
+            {
+                key = Helpers.ValidColor(value);
+            }
+        }
+
+        public double Key100
+        {
+            get
+            {
+                return key * 100;
+            }
+            set
+            {
+                key = Helpers.ValidColor(value / 100);
+            }
+        }
+
+        public int Alpha
+        {
+            get
+            {
+                return alpha;
+            }
+            set
+            {
+                alpha = Helpers.ValidColor(value);
+            }
+        }
+
+        public CMYK(double cyan, double magenta, double yellow, double key, int alpha = 255)
+            : this()
+        {
+            Cyan = cyan;
+            Magenta = magenta;
+            Yellow = yellow;
+            Key = key;
+            Alpha = alpha;
+        }
+
+        public CMYK(int cyan, int magenta, int yellow, int key, int alpha = 255)
+            : this()
+        {
+            Cyan100 = cyan;
+            Magenta100 = magenta;
+            Yellow100 = yellow;
+            Key100 = key;
+            Alpha = alpha;
+        }
+
+        public CMYK(Color color)
+        {
+            this = Helpers.ToCMYK(color);
+        }
+
+        public static implicit operator CMYK(Color color)
+        {
+            return Helpers.ToCMYK(color);
+        }
+
+        public static implicit operator Color(CMYK color)
+        {
+            return color.ToColor();
+        }
+
+        public static implicit operator HSB(CMYK color)
+        {
+            return color.ToColor();
+        }
+
+        public static bool operator ==(CMYK left, CMYK right)
+        {
+            return (left.Cyan == right.Cyan) && (left.Magenta == right.Magenta) && (left.Yellow == right.Yellow) && (left.Key == right.Key);
+        }
+
+        public static bool operator !=(CMYK left, CMYK right)
+        {
+            return !(left == right);
+        }
+
+        public override string ToString()
+        {
+            //return String.Format(Resources.CMYK_ToString_Cyan___0_0_0____Magenta___1_0_0____Yellow___2_0_0____Key___3_0_0__, Cyan100, Magenta100, Yellow100, Key100);
+            return string.Format("Cyan: {0:0.0}%, Magenta: {1:0.0}%, Yellow: {2:0.0}%, Key: {3:0.0}%", Cyan100, Magenta100, Yellow100, Key100);
+        }
+
+        public Color ToColor()
+        {
+            return Helpers.ToColor(this);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+    }
+}

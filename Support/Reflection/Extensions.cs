@@ -67,18 +67,6 @@ namespace Platform.Support.Reflection
             System.IO.FileInfo file = new System.IO.FileInfo(path);
             return file.Directory.FullName;
         }
-
-
-
-        //public static AssemblyInfo GetAssemblyInfo(this object source)
-        //{
-        //    return new AssemblyInfo(source.GetType());
-        //}
-
-        //public static AssemblyInfo GetAssemblyInfo(this Type source)
-        //{
-        //    return new AssemblyInfo(source);
-        //}
-
+        
     }
 }

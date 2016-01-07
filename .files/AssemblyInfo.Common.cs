@@ -7,7 +7,7 @@ using System.Security;
 
 [assembly: AssemblyCompany("Enner Pérez")]
 [assembly: Platform.Support.Attributes.AssemblyCompany.Id("J-18384909-0")]
-[assembly: AssemblyCopyright("© Enner Pérez. All rights reserved., 2015")]
+[assembly: AssemblyCopyright("© Enner Pérez. All rights reserved., 2016")]
 [assembly: AssemblyTrademark("© Enner Pérez")]
 
 [assembly: Platform.Support.Attributes.AssemblyCompany.Contact("Twitter", "@ennerperez")]
@@ -20,7 +20,7 @@ using System.Security;
 
 [assembly: AssemblyCompany("Argument")]
 [assembly: Platform.Support.Attributes.AssemblyCompany.Id("J-18384909-0")]
-[assembly: AssemblyCopyright("© Argument C.A. All rights reserved., 2015")]
+[assembly: AssemblyCopyright("© Argument C.A. All rights reserved., 2016")]
 [assembly: AssemblyTrademark("© Argument C.A.")]
 
 //[assembly: Platform.Support.Attributes.AssemblyCompany.Url("")]
