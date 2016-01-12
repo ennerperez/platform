@@ -20,7 +20,7 @@
   </xs:simpleType>
 
   <xs:complexType name="product">
-    <xs:sequence>
+    <xs:sequence minOccurs="0" >
       <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1" />
       <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
       <xs:element name="eula" type="xs:string" minOccurs="0" maxOccurs="1" />
@@ -134,7 +134,7 @@
       </xs:element>
       <xs:element name="products" minOccurs="0" maxOccurs="1" >
         <xs:complexType>
-          <xs:sequence minOccurs="1" maxOccurs="unbounded">
+          <xs:sequence minOccurs="0" maxOccurs="unbounded">
             <xs:element name="product" type="product" minOccurs="1" />
           </xs:sequence>
         </xs:complexType>

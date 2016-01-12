@@ -8,6 +8,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [3.0.1.14] - UNRELEASED
 ### Fixed
 - Audit object
+- Branding without products
+- ToColor() with Hex
+- ToolStripMenuItem in pictographs extensions
 
 ### Changed
 - Model entity & IRecord implementation

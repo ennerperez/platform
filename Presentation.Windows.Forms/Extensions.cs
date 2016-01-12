@@ -255,14 +255,15 @@ namespace Platform.Presentation.Windows.Forms
         {
 
             if (@this.GetType() == typeof(ToolStripItem) ||
+                @this.GetType() == typeof(ToolStripMenuItem) ||
                 @this.GetType() == typeof(ToolStripButton) ||
                 @this.GetType() == typeof(ToolStripDropDownButton) ||
                 @this.GetType() == typeof(ToolStripDropDown))
             {
                 (@this as ToolStripItem).Font = new System.Drawing.Font(pictogram.FontFamily, (@this as ToolStripItem).Font.Size, System.Drawing.GraphicsUnit.Point);
+                (@this as ToolStripItem).ToolTipText = (@this as ToolStripItem).Text;
                 (@this as ToolStripItem).Text = char.ConvertFromUtf32((int)type);
                 (@this as ToolStripItem).DisplayStyle = ToolStripItemDisplayStyle.Text;
-                (@this as ToolStripItem).ToolTipText = (@this as ToolStripItem).Text;
             }
 
         }
@@ -282,7 +283,8 @@ namespace Platform.Presentation.Windows.Forms
 
         public static void SetImage(this Component @this, Support.Drawing.Pictogram pictogram, int type, int? size = null, System.Drawing.Color? color = null)
         {
-            if (@this.GetType() == typeof(ToolStripItem) || 
+            if (@this.GetType() == typeof(ToolStripItem) ||
+                @this.GetType() == typeof(ToolStripMenuItem) ||
                 @this.GetType() == typeof(ToolStripButton) || 
                 @this.GetType() == typeof(ToolStripDropDownButton) ||
                 @this.GetType() == typeof(ToolStripDropDown))

@@ -28,6 +28,9 @@ namespace Platform.Support.Drawing
         {
             System.Drawing.Color _return;
 
+            if (source.StartsWith("#"))
+                return ToColor(source, 255);
+
             try
             {
                 int r;
