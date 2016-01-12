@@ -5,6 +5,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Version: major version.minor version.build number.revision
 * Order: Changed - Fixed - Added - Removed
 
+## [3.0.1.14] - UNRELEASED
+### Fixed
+- Audit object
+
+### Changed
+- Model entity & IRecord implementation
+- Data attributes similar to System.ComponentModel.DataAnnotations
+
 ## [3.0.1.13] - 2016-01-07
 ### Changed
 - Fill-bar ctr fix

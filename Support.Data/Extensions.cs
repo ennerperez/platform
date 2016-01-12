@@ -562,13 +562,13 @@ namespace Platform.Support.Data
                             IndexName = iname,
                             SchemaName = map.SchemaName,
                             TableName = map.GetTableName(false),
-                            Unique = i.Unique,
+                            Unique = i.IsUnique,
                             Columns = new List<IndexedColumn>()
                         };
                         indexes.Add(iname, iinfo);
                     }
 
-                    if (i.Unique != iinfo.Unique)
+                    if (i.IsUnique != iinfo.Unique)
                     {
                         throw new Exception("All the columns in an index must have the same value for their Unique property");
                     }

@@ -7,10 +7,10 @@ namespace Platform.Model
 {
     public interface IAuditable
     {
-        IEnumerable<Autid> Audits { get; set; }
+        IEnumerable<Audit> Audits { get; set; }
     }
 
-    public struct Autid
+    public struct Audit
     {
 
         System.DateTime Created { get; set; }

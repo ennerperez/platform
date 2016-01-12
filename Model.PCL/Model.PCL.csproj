@@ -37,10 +37,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\Model.CRUD.PCL\Model.CRUD.PCL.csproj">
-      <Project>{62521597-3b37-4cf9-80e4-1f2728d86f4b}</Project>
-      <Name>Model.CRUD.PCL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Support.PCL\Support.PCL.csproj">
       <Project>{18f0a51d-255e-4845-a724-b676d5fbbfbc}</Project>
       <Name>Support.PCL</Name>

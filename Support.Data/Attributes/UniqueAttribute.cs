@@ -1,17 +1,21 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Platform.Support.Data.Attributes
 {
-    [AttributeUsage(AttributeTargets.Property)]
+
+    #region Legacy
+
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = true), SuppressMessage("Microsoft.Performance", "CA1813:AvoidUnsealedAttributes"), SuppressMessage("Microsoft.Design", "CA1019:DefineAccessorsForAttributeArguments")]
     public class UniqueAttribute : IndexedAttribute
     {
-        public override bool Unique
+        public bool Unique
         {
-            get { return true; }
-            set
-            {
-                /* throw?  */
-            }
+            get { return IsUnique; }
+            set { IsUnique = value; }
         }
     }
+
+    #endregion
+
 }

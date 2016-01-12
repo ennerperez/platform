@@ -54,7 +54,7 @@ namespace Platform.Support.Data
             var cols = new List<Column>();
             foreach (PropertyInfo p in props)
             {
-                bool ignore = p.GetCustomAttributes(typeof(IgnoreAttribute), true).Any();
+                bool ignore = p.GetCustomAttributes(typeof(NotMappedAttribute), true).Any();
                 bool include = p.GetCustomAttributes(typeof(ColumnAttribute), true).Any();
 
                 if (p.CanWrite && !ignore && include)

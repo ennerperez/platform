@@ -61,17 +61,12 @@
     <Compile Include="Singleton.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model.CRUD\Model.CRUD.csproj">
-      <Project>{a57d24e5-511a-4db2-944e-fc9d7aa01b67}</Project>
-      <Name>Model.CRUD</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Support\Support.csproj">
       <Project>{25ab6bbf-a879-4570-9e0e-947d52ae7333}</Project>
       <Name>Support</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Diagram.cd" />
     <None Include="Package.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -65,6 +65,7 @@
     <Compile Include="Attributes\DeveloperAttribute.cs" />
     <Compile Include="Attributes\ContactAttribute.cs" />
     <Compile Include="Attributes\BuildDateAttribute.cs" />
+    <Compile Include="Check.cs" />
     <Compile Include="Extensions\Dates.cs" />
     <Compile Include="Extensions\Strings.cs" />
     <Compile Include="Extensions\Enums.cs" />

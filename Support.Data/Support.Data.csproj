@@ -33,7 +33,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ComponentModel.DataAnnotations, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -51,18 +53,23 @@
     <Compile Include="..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
+    <Compile Include="Attributes\AutoIncrementAttribute.cs" />
     <Compile Include="Attributes\CollationAttribute.cs" />
-    <Compile Include="Attributes\ColumnAttribute.cs" />
+    <Compile Include="Attributes\MinLengthAttribute.cs" />
+    <Compile Include="Attributes\Schema\ColumnAttribute.cs" />
     <Compile Include="Attributes\DefaultAttribute.cs" />
-    <Compile Include="Attributes\IgnoreAttribute.cs" />
+    <Compile Include="Attributes\Schema\ComplexTypeAttribute.cs" />
+    <Compile Include="Attributes\Schema\DatabaseGeneratedAttribute.cs" />
+    <Compile Include="Attributes\Schema\ForeignKeyAttribute.cs" />
+    <Compile Include="Attributes\Schema\InversePropertyAttribute.cs" />
+    <Compile Include="Attributes\Schema\NotMappedAttribute.cs" />
+    <Compile Include="Attributes\Schema\IndexAttribute.cs" />
+    <Compile Include="Attributes\MaxLengthAttribute.cs" />
     <Compile Include="Attributes\NotNullAttribute.cs" />
     <Compile Include="Attributes\PrimaryKeyAttribute.cs" />
     <Compile Include="Attributes\SchemaAttribute.cs" />
+    <Compile Include="Attributes\Schema\TableAttribute.cs" />
     <Compile Include="Attributes\UniqueAttribute.cs" />
-    <Compile Include="Attributes\IndexedAttribute.cs" />
-    <Compile Include="Attributes\MaxLengthAttribute.cs" />
-    <Compile Include="Attributes\AutoIncrementAttribute.cs" />
-    <Compile Include="Attributes\TableAttribute.cs" />
     <Compile Include="BaseTableQuery.cs" />
     <Compile Include="ColumnInfo.cs" />
     <Compile Include="Extensions.cs" />
@@ -88,6 +95,7 @@
     <None Include="Diagram.cd" />
     <None Include="Package.nuspec" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.files\Microsoft.Framework.props" Condition="Exists('$(SolutionDir)\.files\Microsoft.Framework.props')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
