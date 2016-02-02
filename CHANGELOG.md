@@ -6,15 +6,22 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Order: Changed - Fixed - Added - Removed
 
 ## [3.0.1.14] - UNRELEASED
+### Changed
+- Model entity & IRecord implementation
+- Data attributes similar to System.ComponentModel.DataAnnotations
+
 ### Fixed
 - Audit object
 - Branding without products
 - ToColor() with Hex
 - ToolStripMenuItem in pictographs extensions
 
-### Changed
-- Model entity & IRecord implementation
-- Data attributes similar to System.ComponentModel.DataAnnotations
+### Added
+- Tag attribute
+- Framework Build vars
+
+### Removed
+- Pictograms
 
 ## [3.0.1.13] - 2016-01-07
 ### Changed
@@ -27,6 +34,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Branding Colors Manager
 - HSL Color structure removed
 - Helpers & extensions
+
+### Fixed
+- NuGet packages
 
 ### Added
 - Inter-op User32
@@ -43,9 +53,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 - HSL Color
-
-### Fixed
-- NuGet packages
 
 ## [3.0.1.12] - 2015-10-19
 ### Changed

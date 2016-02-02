@@ -59,25 +59,5 @@ namespace Platform.Support.Drawing.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] fontawesome_webfont {
-            get {
-                object obj = ResourceManager.GetObject("fontawesome_webfont", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
-        internal static byte[] general_foundicons {
-            get {
-                object obj = ResourceManager.GetObject("general_foundicons", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

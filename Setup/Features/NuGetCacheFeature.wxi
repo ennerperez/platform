@@ -5,7 +5,7 @@
     <ComponentRef Id="NuGetCachenFiles" />
   </Feature>
 
-  <?define NuGetPackagesVersion = "3.0.1.11" ?>
+  <?define NuGetPackagesVersion = "3.0.1.14" ?>
   
   <!-- Components -->
   <Component Id="NuGetCachenFiles" Guid="F431A267-C2EF-4BD5-A2CE-D2D2F599F6AA" Directory="NuGetCacheDirProduct">
@@ -16,11 +16,11 @@
     <File Id="SUPPORT.WEB.nupkg" Name="Platform.Support.Web.$(var.NuGetPackagesVersion).nupkg" Source="$(var.SourcePath)Platform.Support.Web.$(var.NuGetPackagesVersion).nupkg" Checksum="yes" />
     <File Id="SUPPORT.WINDOWS.nupkg" Name="Platform.Support.Windows.$(var.NuGetPackagesVersion).nupkg" Source="$(var.SourcePath)Platform.Support.Windows.$(var.NuGetPackagesVersion).nupkg" Checksum="yes" />
     <File Id="MODEL.nupkg" Name="Platform.Model.$(var.NuGetPackagesVersion).nupkg" Source="$(var.SourcePath)Platform.Model.$(var.NuGetPackagesVersion).nupkg" />
-    <File Id="MODEL.MVC.nupkg" Name="Platform.Model.MVC.$(var.NuGetPackagesVersion).nupkg" Source="$(var.SourcePath)Platform.Model.MVC.$(var.NuGetPackagesVersion).nupkg" />
     <File Id="MODEL.CRUD.nupkg" Name="Platform.Model.CRUD.$(var.NuGetPackagesVersion).nupkg" Source="$(var.SourcePath)Platform.Model.MVC.$(var.NuGetPackagesVersion).nupkg" />
+    <File Id="MODEL.MVC.nupkg" Name="Platform.Model.MVC.$(var.NuGetPackagesVersion).nupkg" Source="$(var.SourcePath)Platform.Model.MVC.$(var.NuGetPackagesVersion).nupkg" />
     <File Id="MODEL.SPS.nupkg" Name="Platform.Model.SPS.$(var.NuGetPackagesVersion).nupkg" Source="$(var.SourcePath)Platform.Model.MVC.$(var.NuGetPackagesVersion).nupkg" />
-    <File Id="PRESENTATION.WINDOWS.FORMS.nupkg" Name="Platform.Presentation.Windows.Forms.$(var.NuGetPackagesVersion).nupkg" Source="$(var.SourcePath)Platform.Presentation.Windows.Forms.$(var.NuGetPackagesVersion).nupkg" Checksum="yes" />
     <File Id="PRESENTATION.REPORTING.nupkg" Name="Platform.Presentation.Reporting.$(var.NuGetPackagesVersion).nupkg" Source="$(var.SourcePath)Platform.Presentation.Reporting.$(var.NuGetPackagesVersion).nupkg" Checksum="yes" />
+    <File Id="PRESENTATION.WINDOWS.FORMS.nupkg" Name="Platform.Presentation.Windows.Forms.$(var.NuGetPackagesVersion).nupkg" Source="$(var.SourcePath)Platform.Presentation.Windows.Forms.$(var.NuGetPackagesVersion).nupkg" Checksum="yes" />
   </Component>
 
 </Include>

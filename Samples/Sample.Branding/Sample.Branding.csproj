@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -75,6 +76,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Model\Model.csproj">
+      <Project>{8e95a50b-545e-4092-94e3-7638d4c8a4f7}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Data\Support.Data.csproj">
+      <Project>{4ac6fa64-1c7e-4648-be3f-592dc9567401}</Project>
+      <Name>Support.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Support.Drawing\Support.Drawing.csproj">
       <Project>{d544e494-3925-4180-a4a8-26801118d527}</Project>
       <Name>Support.Drawing</Name>
@@ -89,6 +98,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

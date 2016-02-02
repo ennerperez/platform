@@ -4,9 +4,11 @@ using System.Linq;
 using System.Windows.Forms;
 using Platform.Support;
 using Platform.Support.Branding;
+using Platform.Support.Attributes;
 
 namespace Sample.Branding
 {
+    [Tag(Tags.Important, "Demo")]
     static class Program
     {
         /// <summary>
@@ -15,8 +17,6 @@ namespace Sample.Branding
         [STAThread]
         static void Main()
         {
-                      
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());

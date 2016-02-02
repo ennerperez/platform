@@ -7,13 +7,14 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/ennerperez/platform</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/ennerperez/platform/master/.editoricon.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Libset for agile software development</description>
     <summary />
     <releaseNotes />
-    <copyright>$copyright$</copyright>
     <language>en</language>
+    <copyright>$copyright$</copyright>
     <tags>.NET Framework Base Development Platform</tags>
     <dependencies />
   </metadata>

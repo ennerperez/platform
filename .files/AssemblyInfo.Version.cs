@@ -2,8 +2,8 @@ using System.Reflection;
 
 // <major version>.<minor version>.<build number>.<revision>
 
-[assembly: AssemblyVersion("3.0.1.13")]
-[assembly: AssemblyFileVersion("3.0.1.13")]
+[assembly: AssemblyVersion("3.0.1.14")]
+[assembly: AssemblyFileVersion("3.0.1.14")]
 
 [assembly: AssemblyInformationalVersion("3.0.1 RTM")]
 

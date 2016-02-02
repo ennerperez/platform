@@ -2,18 +2,19 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>$id$</id>
-    <version>3.0.1.13</version>
+    <version>3.0.1.14</version>
     <title>Platform Model Pattern (Portable)</title>
     <authors>Enner Pérez</authors>
     <owners>Enner Pérez</owners>
     <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/ennerperez/platform</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/ennerperez/platform/master/.editoricon.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Libset for agile software development</description>
     <summary />
     <releaseNotes />
-    <copyright>© Enner Pérez. All rights reserved., 2016</copyright>
     <language>en</language>
+    <copyright>© Enner Pérez. All rights reserved., 2016</copyright>
     <tags>.NET Framework Base Development Platform</tags>
     <dependencies />
   </metadata>

@@ -55,7 +55,9 @@
     </Compile>
     <Compile Include="Attributes\AutoIncrementAttribute.cs" />
     <Compile Include="Attributes\CollationAttribute.cs" />
+    <Compile Include="Attributes\DisplayAttribute.cs" />
     <Compile Include="Attributes\MinLengthAttribute.cs" />
+    <Compile Include="Attributes\RequiredAttribute.cs" />
     <Compile Include="Attributes\Schema\ColumnAttribute.cs" />
     <Compile Include="Attributes\DefaultAttribute.cs" />
     <Compile Include="Attributes\Schema\ComplexTypeAttribute.cs" />

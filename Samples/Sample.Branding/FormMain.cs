@@ -1,4 +1,5 @@
 ﻿using Platform.Support.Branding;
+using Platform.Support.Data.Attributes;
 using Platform.Support.Drawing;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,7 @@ namespace Sample.Branding
                 pictureBoxBrandLogo.Image = Helpers.FromBytes(assembly.BrandLogo("main"));
                 richTextBoxEULA.Text = richTextBoxEULA.Text + Environment.NewLine + assembly.BrandEULA();
             }
+
         }
     }
 }

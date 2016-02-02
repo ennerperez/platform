@@ -23,7 +23,7 @@
         LogoFile="Files\LogoSlide.png"
         ThemeFile="Theme\ClassicTheme.xml"
         ShowVersion="yes"
-        LicenseUrl="http://opensource.org/licenses/cpl1.0.txt"
+        LicenseUrl="https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE"
         LocalizationFile="Globalization\ClassicTheme.wxl" />
     </BootstrapperApplicationRef>
 

@@ -296,34 +296,7 @@ namespace Platform.Presentation.Windows.Forms
                 (@this as ToolStripItem).Image = pictogram.GetIcon(type, size.Value, color.Value);
             }
         }
-
-
-
-        /* IMPLEMENTATIONS */
-
-        public static void SetIcon(this Control @this, Support.Drawing.Pictograms.FontAwesome.IconType type)
-        {
-            SetIcon(@this, Support.Drawing.Pictograms.FontAwesome.Instance, (int)type);
-        }
-
-        public static void SetIcon(this Component @this, Support.Drawing.Pictograms.FontAwesome.IconType type)
-        {
-            SetIcon(@this, Support.Drawing.Pictograms.FontAwesome.Instance, (int)type);
-        }
-
-
-
-        public static void SetImage(this Control @this, Support.Drawing.Pictograms.FontAwesome.IconType type, int? size = null, System.Drawing.Color? color = null)
-        {
-            SetImage(@this, Support.Drawing.Pictograms.FontAwesome.Instance, (int)type, size, color);
-        }
-
-        public static void SetImage(this Component @this, Support.Drawing.Pictograms.FontAwesome.IconType type, int? size = null, System.Drawing.Color? color = null)
-        {
-            SetImage(@this, Support.Drawing.Pictograms.FontAwesome.Instance, (int)type, size, color);
-        }
-
-
+        
         #endregion
 
     }

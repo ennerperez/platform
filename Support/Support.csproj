@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="ArgumentOutOfRange.cs" />
     <Compile Include="Attributes\MadeIn.cs" />
+    <Compile Include="Attributes\TagAttribute.cs" />
     <Compile Include="Attributes\UrlAttribute.cs" />
     <Compile Include="Attributes\ThirdPartyAttribute.cs" />
     <Compile Include="Attributes\ProductLevelAttribute.cs" />
