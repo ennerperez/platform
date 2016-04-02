@@ -7,7 +7,7 @@ namespace Platform.Model
 {
     public interface IEntity : IEntity<long> 
     {
-        new long Id { get; set; }
+        //new long Id { get; set; }
     }
     public interface IEntity<T> 
     {

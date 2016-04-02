@@ -60,7 +60,6 @@
     <Compile Include="HEX.cs" />
     <Compile Include="HSB.cs" />
     <Compile Include="Helpers\Reflections.cs" />
-    <Compile Include="Pictogram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

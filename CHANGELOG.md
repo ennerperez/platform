@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Model entity & IRecord implementation
 - Data attributes similar to System.ComponentModel.DataAnnotations
+- Included .NET 4.6.2 in Framework Build Vars
 
 ### Fixed
 - Audit object
@@ -18,7 +19,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Tag attribute
-- Framework Build vars
+- Framework Build Vars
 
 ### Removed
 - Pictograms
