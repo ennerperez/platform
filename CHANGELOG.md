@@ -2,10 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-* Version: major version.minor version.build number.revision
+* Version: major.minor.{build}.revision
 * Order: Changed - Fixed - Added - Removed
 
-## [3.0.1.14] - UNRELEASED
+## [3.1.0.0] - [UNRELEASED]
 ### Changed
 - Model entity & IRecord implementation
 - Data attributes similar to System.ComponentModel.DataAnnotations
@@ -18,6 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ToolStripMenuItem in pictographs extensions
 
 ### Added
+- AppVeyor integration
 - Tag attribute
 - Framework Build Vars
 

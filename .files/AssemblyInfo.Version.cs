@@ -1,11 +1,16 @@
 using System.Reflection;
 
-// <major version>.<minor version>.<build number>.<revision>
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
 
-[assembly: AssemblyVersion("3.0.1.14")]
-[assembly: AssemblyFileVersion("3.0.1.14")]
-
-[assembly: AssemblyInformationalVersion("3.0.1 RTM")]
+[assembly: AssemblyVersion("3.1.0.0")]
+[assembly: AssemblyFileVersion("3.1.0.0")]
+[assembly: AssemblyInformationalVersion("3.1.0-master")]
 
 #if (!DEBUG)
 [assembly: Platform.Support.Attributes.AssemblyProduct.ProductLevel(Platform.Support.ProductLevels.RTW)]

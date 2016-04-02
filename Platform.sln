@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "Support\Support.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".files", ".files", "{8BE2B02F-E29C-4E9A-93FD-C8EEED874C90}"
 	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
 		.files\AssemblyInfo.Common.cs = .files\AssemblyInfo.Common.cs
 		.files\AssemblyInfo.Platform.cs = .files\AssemblyInfo.Platform.cs
 		.files\AssemblyInfo.Version.cs = .files\AssemblyInfo.Version.cs
