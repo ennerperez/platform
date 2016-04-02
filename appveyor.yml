@@ -10,8 +10,6 @@ assembly_info:
 build:
   publish_nuget: true
   verbosity: normal
-build_script:
-- nuget restore -Verbosity quiet
 notifications:
 - provider: Email
   to:
