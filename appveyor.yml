@@ -5,7 +5,7 @@ branches:
   - production
   except:
   - gh-pages
-os: Windows Server 2012
+skip_non_tags: true
 cache:
 - packages -> **\packages.config
 assembly_info:
@@ -14,24 +14,18 @@ assembly_info:
   assembly_version: '{version}'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}-{branch}'
-nuget:
-  account_feed: true
-  project_feed: true
 platform: Any CPU
 configuration: Release
-pull_requests:
-  do_not_increment_build_number: true
 build:
   parallel: true
   verbosity: detailed
-  publish_nuget: true
 artifacts:
-- path: out\*.nupkg
-notifications:
-- provider: Email
-  to:
-  - ennerperez@gmail.com
-  subject: Platform's AppVeyor Build
-  on_build_success: false
-  on_build_failure: false
-  on_build_status_changed: true
+- path: '**\*.nupkg'
+  name: nupkg
+deploy:
+- provider: GitHub
+  auth_token:
+    secure: UKi94d2MuFkTQQi/a/fCIk77vNm1Iqi90f7PkeJKs8HVvCuGGhxlqNKKblKL6iL+
+  artifact: nupkg
+  draft: false
+  force_update: true

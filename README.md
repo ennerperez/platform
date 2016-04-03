@@ -13,8 +13,5 @@ See the [changelog](CHANGELOG.md) for changes.
 - [ ] Hybrid EF integration
 - [ ] EF WinForms UI Generator
 
-## Features
-- TODO!
-
 ## License
 [The MIT License (MIT)](LICENSE)

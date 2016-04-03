@@ -5,7 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Version: major.minor.{build}.revision
 * Order: Changed - Fixed - Added - Removed
 
-## [3.1.0.0] - [UNRELEASED]
+## [3.1.1.0] - [UNRELEASED]
 ### Changed
 - Model entity & IRecord implementation
 - Data attributes similar to System.ComponentModel.DataAnnotations

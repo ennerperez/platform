@@ -10,7 +10,7 @@ using System.Reflection;
 
 [assembly: AssemblyVersion("3.1.0.0")]
 [assembly: AssemblyFileVersion("3.1.0.0")]
-[assembly: AssemblyInformationalVersion("3.1.0-master")]
+[assembly: AssemblyInformationalVersion("3.1.0.0")]
 
 #if (!DEBUG)
 [assembly: Platform.Support.Attributes.AssemblyProduct.ProductLevel(Platform.Support.ProductLevels.RTW)]
