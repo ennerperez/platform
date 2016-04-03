@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "Support\Support.csproj", "{25AB6BBF-A879-4570-9E0E-947D52AE7333}"
+	ProjectSection(ProjectDependencies) = postProject
+		{18F0A51D-255E-4845-A724-B676D5FBBFBC} = {18F0A51D-255E-4845-A724-B676D5FBBFBC}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".files", ".files", "{8BE2B02F-E29C-4E9A-93FD-C8EEED874C90}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".files", ".files", "{8BE2B0
 		.files\AssemblyInfo.Common.cs = .files\AssemblyInfo.Common.cs
 		.files\AssemblyInfo.Platform.cs = .files\AssemblyInfo.Platform.cs
 		.files\AssemblyInfo.Version.cs = .files\AssemblyInfo.Version.cs
-		.files\Microsoft.Framework.props = .files\Microsoft.Framework.props
+		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.PCL", "Support.PCL\Support.PCL.csproj", "{18F0A51D-255E-4845-A724-B676D5FBBFBC}"
@@ -26,6 +29,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Data", "Support.Data\Support.Data.csproj", "{4AC6FA64-1C7E-4648-BE3F-592DC9567401}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{8E95A50B-545E-4092-94E3-7638D4C8A4F7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{44448EE1-AE0E-4610-A6BE-208EB7FBCFFB} = {44448EE1-AE0E-4610-A6BE-208EB7FBCFFB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.PCL", "Model.PCL\Model.PCL.csproj", "{44448EE1-AE0E-4610-A6BE-208EB7FBCFFB}"
 EndProject
@@ -46,6 +52,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reporting", "Presentation.Reporting\Presentation.Reporting.csproj", "{EE7DA415-99ED-4E8A-B129-BE09F40ACB83}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.MVC", "Model.MVC\Model.MVC.csproj", "{8A7C7FBF-A028-4D54-8E92-6D8C4FC3A2FB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C4C6EA21-5740-42F0-990B-BE703B1F8B66} = {C4C6EA21-5740-42F0-990B-BE703B1F8B66}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.MVC.PCL", "Model.MVC.PCL\Model.MVC.PCL.csproj", "{C4C6EA21-5740-42F0-990B-BE703B1F8B66}"
 EndProject
@@ -63,6 +72,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Branding", "Samples\Sample.Branding\Sample.Branding.csproj", "{71174989-9F8D-4766-B487-015E8A7A61E0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.CRUD", "Model.CRUD\Model.CRUD.csproj", "{A57D24E5-511A-4DB2-944E-FC9D7AA01B67}"
+	ProjectSection(ProjectDependencies) = postProject
+		{62521597-3B37-4CF9-80E4-1F2728D86F4B} = {62521597-3B37-4CF9-80E4-1F2728D86F4B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.CRUD.PCL", "Model.CRUD.PCL\Model.CRUD.PCL.csproj", "{62521597-3B37-4CF9-80E4-1F2728D86F4B}"
 EndProject

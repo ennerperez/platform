@@ -1,15 +1,32 @@
 version: 3.1.{build}.0
-pull_requests:
-  do_not_increment_build_number: true
+branches:
+  only:
+  - master
+  - production
+  except:
+  - gh-pages
+os: Windows Server 2012
+cache:
+- packages -> **\packages.config
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.Version.*'
   assembly_version: '{version}'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}-{branch}'
+nuget:
+  account_feed: true
+  project_feed: true
+platform: Any CPU
+configuration: Release
+pull_requests:
+  do_not_increment_build_number: true
 build:
+  parallel: true
+  verbosity: detailed
   publish_nuget: true
-  verbosity: normal
+artifacts:
+- path: out\*.nupkg
 notifications:
 - provider: Email
   to:

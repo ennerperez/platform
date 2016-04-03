@@ -9,18 +9,16 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Model entity & IRecord implementation
 - Data attributes similar to System.ComponentModel.DataAnnotations
-- Included .NET 4.6.2 in Framework Build Vars
+- Following [SemVer](http://semver.org) properly with AppVeyor.
 
 ### Fixed
 - Audit object
 - Branding without products
 - ToColor() with Hex
-- ToolStripMenuItem in pictographs extensions
 
 ### Added
 - AppVeyor integration
 - Tag attribute
-- Framework Build Vars
 
 ### Removed
 - Pictograms
@@ -58,7 +56,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [3.0.1.12] - 2015-10-19
 ### Changed
-- DbNUll Fix
+- DbNull Fix
 
 ## [3.0.1.11] - 2015-10-08
 ### Changed

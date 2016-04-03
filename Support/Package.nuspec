@@ -1,22 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
-  <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$description$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
-    <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/ennerperez/platform</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/ennerperez/platform/master/.editoricon.png</iconUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>Libset for agile software development</description>
-    <summary />
-    <releaseNotes />
-    <language>en</language>
-    <copyright>$copyright$</copyright>
-    <tags>.NET Framework Base Development Platform</tags>
-    <dependencies />
-  </metadata>
-  <files />
+    <metadata>
+        <id>$id$</id>
+        <version>$version$</version>
+        <title>$description$</title>
+        <authors>$author$</authors>
+        <owners>$author$</owners>
+        <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/ennerperez/platform</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/ennerperez/platform/master/.editoricon.png</iconUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <description>Libset for agile software development</description>
+        <summary />
+        <releaseNotes />
+        <copyright>$copyright$</copyright>
+        <language>en</language>
+        <tags>.NET Framework Base Development Platform</tags>
+      <dependencies>
+        <group>
+          <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
+          <dependency id="Microsoft.Bcl" version="1.1.10" />
+        </group>
+      </dependencies>
+    </metadata>
+      <files>
+        <file src="..\Build\release\Platform.Support.Core.dll" target="lib\net40\Platform.Support.Core.dll" />
+        <file src="..\Build\release\Platform.Support.Core.PCL.dll" target="lib\portable4-net4+sl5+win8+wp8+wpa81\Platform.Support.Core.PCL.dll" />
+    </files>
 </package>

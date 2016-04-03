@@ -10,6 +10,8 @@
     <OutputType>Package</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -38,6 +40,7 @@
     <Content Include="Files\WixUIBanner.bmp" />
     <Content Include="Files\WixUIDialog.bmp" />
     <Content Include="Files\WixUILicense.rtf" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <WixExtension Include="WixUtilExtension">
@@ -68,5 +71,12 @@
     <CreateProperty Value="%(AssemblyVersions.Version)">
       <Output TaskParameter="Value" PropertyName="TargetVersion" />
     </CreateProperty>
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.3.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.3.0\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.3.0\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.3.0\build\Microsoft.Bcl.Build.Symbols.targets'))" />
   </Target>
 </Project>
