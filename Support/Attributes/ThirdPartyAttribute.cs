@@ -10,7 +10,7 @@ namespace Platform.Support
     {
 #endif
 
-        namespace Attributes.AssemblyProduct
+        namespace Attributes
         {
 
             [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
@@ -28,11 +28,11 @@ namespace Platform.Support
 
                 public virtual string ThirdParty
                 {
-                    get { return this.name; }
+                    get { return name; }
                 }
                 public virtual string Info
                 {
-                    get { return this.info; }
+                    get { return info; }
                 }
 
             }

@@ -9,7 +9,7 @@ namespace Platform.Support
     namespace Core
     {
 #endif
-        namespace Attributes.AssemblyCompany
+        namespace Attributes
         {
 
             /// <summary>

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Support.Drawing
 {
@@ -54,50 +51,50 @@ namespace Platform.Support.Drawing
             return hsb;
         }
 
-        public static Color ToColor(HSB hsb)
+        public static Color ToColor(HSB value)
         {
             int Mid;
-            int Max = (int)Math.Round(hsb.Brightness * 255);
-            int Min = (int)Math.Round((1.0 - hsb.Saturation) * (hsb.Brightness / 1.0) * 255);
+            int Max = (int)Math.Round(value.Brightness * 255);
+            int Min = (int)Math.Round((1.0 - value.Saturation) * (value.Brightness / 1.0) * 255);
             double q = (double)(Max - Min) / 255;
 
-            if (hsb.Hue >= 0 && hsb.Hue <= (double)1 / 6)
+            if (value.Hue >= 0 && value.Hue <= (double)1 / 6)
             {
-                Mid = (int)Math.Round(((hsb.Hue - 0) * q) * 1530 + Min);
-                return Color.FromArgb(hsb.Alpha, Max, Mid, Min);
+                Mid = (int)Math.Round(((value.Hue - 0) * q) * 1530 + Min);
+                return Color.FromArgb(value.Alpha, Max, Mid, Min);
             }
 
-            if (hsb.Hue <= (double)1 / 3)
+            if (value.Hue <= (double)1 / 3)
             {
-                Mid = (int)Math.Round(-((hsb.Hue - (double)1 / 6) * q) * 1530 + Max);
-                return Color.FromArgb(hsb.Alpha, Mid, Max, Min);
+                Mid = (int)Math.Round(-((value.Hue - (double)1 / 6) * q) * 1530 + Max);
+                return Color.FromArgb(value.Alpha, Mid, Max, Min);
             }
 
-            if (hsb.Hue <= 0.5)
+            if (value.Hue <= 0.5)
             {
-                Mid = (int)Math.Round(((hsb.Hue - (double)1 / 3) * q) * 1530 + Min);
-                return Color.FromArgb(hsb.Alpha, Min, Max, Mid);
+                Mid = (int)Math.Round(((value.Hue - (double)1 / 3) * q) * 1530 + Min);
+                return Color.FromArgb(value.Alpha, Min, Max, Mid);
             }
 
-            if (hsb.Hue <= (double)2 / 3)
+            if (value.Hue <= (double)2 / 3)
             {
-                Mid = (int)Math.Round(-((hsb.Hue - 0.5) * q) * 1530 + Max);
-                return Color.FromArgb(hsb.Alpha, Min, Mid, Max);
+                Mid = (int)Math.Round(-((value.Hue - 0.5) * q) * 1530 + Max);
+                return Color.FromArgb(value.Alpha, Min, Mid, Max);
             }
 
-            if (hsb.Hue <= (double)5 / 6)
+            if (value.Hue <= (double)5 / 6)
             {
-                Mid = (int)Math.Round(((hsb.Hue - (double)2 / 3) * q) * 1530 + Min);
-                return Color.FromArgb(hsb.Alpha, Mid, Min, Max);
+                Mid = (int)Math.Round(((value.Hue - (double)2 / 3) * q) * 1530 + Min);
+                return Color.FromArgb(value.Alpha, Mid, Min, Max);
             }
 
-            if (hsb.Hue <= 1.0)
+            if (value.Hue <= 1.0)
             {
-                Mid = (int)Math.Round(-((hsb.Hue - (double)5 / 6) * q) * 1530 + Max);
-                return Color.FromArgb(hsb.Alpha, Max, Min, Mid);
+                Mid = (int)Math.Round(-((value.Hue - (double)5 / 6) * q) * 1530 + Max);
+                return Color.FromArgb(value.Alpha, Max, Min, Mid);
             }
 
-            return Color.FromArgb(hsb.Alpha, 0, 0, 0);
+            return Color.FromArgb(value.Alpha, 0, 0, 0);
         }
 
     }
@@ -105,9 +102,9 @@ namespace Platform.Support.Drawing
     public static partial class Extensions
     {
 
-        public static void FromHSB(this Color @this, HSB hsb)
+        public static void FromHSB(this Color @this, HSB value)
         {
-            @this = Helpers.ToColor(hsb);
+            @this = Helpers.ToColor(value);
         }
 
         public static HSB ToHSB(this Color @this)
@@ -117,7 +114,7 @@ namespace Platform.Support.Drawing
 
     }
 
-    public struct HSB
+    public struct HSB 
     {
         private double hue;
         private double saturation;

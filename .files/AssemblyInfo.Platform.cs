@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Platform")]
 
 #if !PORTABLE
-[assembly: ComVisible(true)]
+[assembly: ComVisible(false)]
 #endif
 [assembly: CLSCompliant(false)]
 //[assembly: SecurityRules(SecurityRuleSet.Level2)] 

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Platform.Model.CRUD
 {
-    public abstract class Entity<TKey> : Platform.Model.Entity<TKey>, IRecord
+    public abstract class Entity<TKey> : Model.Entity<TKey>, IRecord
     {
         #region Basic CRUD
 

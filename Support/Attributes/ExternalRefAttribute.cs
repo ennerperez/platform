@@ -7,11 +7,10 @@ namespace Platform.Support
     {
 #endif
 
-        namespace Attributes.AssemblyProduct
+        namespace Attributes
         {
 
             [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
-
             public class ExternalRefAttribute : global::System.Attribute
             {
 

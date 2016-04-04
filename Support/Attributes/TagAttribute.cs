@@ -12,11 +12,6 @@ namespace Platform.Support
     namespace Attributes
     {
 
-        public class Tags
-        {
-            public const string Important = "Important";
-        }
-
         /// <summary>
         /// Tag
         /// </summary>
@@ -33,14 +28,19 @@ namespace Platform.Support
 
             public TagAttribute(string tag)
             {
-                this.tags = new string[] {tag};
+                tags = new string[] {tag};
             }
 
             public virtual string[] Tags
             {
-                get { return this.tags; }
+                get { return tags; }
             }
         }
+    }
+
+    public sealed class Tags
+    {
+        public const string Important = "Important";
     }
 }
 

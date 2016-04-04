@@ -1,13 +1,7 @@
 ﻿using Platform.Support.Branding;
-using Platform.Support.Data.Attributes;
 using Platform.Support.Drawing;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace Sample.Branding
@@ -21,9 +15,8 @@ namespace Sample.Branding
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            //BrandingManager brand = new BrandingManager();
-            //brand.Load(assembly.DirectoryPath(), assembly.GUID());
+            var assembly = Assembly.GetEntryAssembly();
+            Icon = Helpers.Icon();
 
             if (assembly.IsBranded())
             {

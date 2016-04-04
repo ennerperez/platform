@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace Platform.Support.Drawing
@@ -9,31 +9,7 @@ namespace Platform.Support.Drawing
 
     public static class Swatch
     {
-
-        #region Enums
-
-        public enum ColorSpace
-        {
-            Rgb = 0,
-
-            Hsb = 1,
-
-            Cmyk = 2,
-
-            Lab = 7,
-
-            Grayscale = 8
-        }
-
-        public enum FileVersion
-        {
-            Version1 = 1,
-
-            Version2
-        }
-
-        #endregion
-
+        
         #region Private Members
 
         private static int ReadInt16(Stream stream)
@@ -70,7 +46,7 @@ namespace Platform.Support.Drawing
             return Encoding.BigEndianUnicode.GetString(buffer);
         }
 
-        private static System.Drawing.Color ReadColor(byte[] data, int offset, int block)
+        private static Color ReadColor(byte[] data, int offset, int block)
         {
             UInt16 lengthName = ReadUInt16(data, offset);
             offset += sizeof(UInt16);
@@ -101,7 +77,7 @@ namespace Platform.Support.Drawing
             UInt16 colorType = ReadUInt16(data, offset);
             // I don't care about colorType either.  You might.  See the link at the top of this page.
 
-            return System.Drawing.Color.FromArgb(r, g, b);
+            return Color.FromArgb(r, g, b);
 
             //if (block > 0)
             //    Console.WriteLine(",");
@@ -112,18 +88,18 @@ namespace Platform.Support.Drawing
 
         #endregion
 
-        public static System.Drawing.Color[] ReadSwatchFile(string fileName)
+        public static Color[] ReadSwatchFile(string fileName)
         {
-            List<System.Drawing.Color> colorPalette;
+            List<Color> colorPalette;
 
             using (Stream stream = File.OpenRead(fileName))
             {
-                FileVersion version;
+                short version;
 
                 // read the version, which occupies two bytes
-                version = (FileVersion)ReadInt16(stream);
+                version = (short)ReadInt16(stream);
 
-                if (version != FileVersion.Version1 && version != FileVersion.Version2)
+                if (version != 1 && version != 2)
                     throw new InvalidDataException("Invalid version information.");
 
                 // the specification states that a version2 palette follows a version1
@@ -132,24 +108,24 @@ namespace Platform.Support.Drawing
                 // but we can't support them all anyway
                 // I noticed some files no longer include a version 1 palette
 
-                colorPalette = new List<System.Drawing.Color>( ReadSwatches(stream, version));
-                if (version == FileVersion.Version1)
+                colorPalette = new List<Color>( ReadSwatches(stream, version));
+                if (version == 1)
                 {
-                    version = (FileVersion)ReadInt16(stream);
-                    if (version == FileVersion.Version2)
-                        colorPalette = new List<System.Drawing.Color>( ReadSwatches(stream, version));
+                    version = (short)ReadInt16(stream);
+                    if (version == 2)
+                        colorPalette = new List<Color>( ReadSwatches(stream, version));
                 }
             }
 
             return colorPalette.ToArray();
         }
 
-        public static System.Drawing.Color[] ReadSwatches(Stream stream, FileVersion version)
+        public static Color[] ReadSwatches(Stream stream, short version )
         {
             int colorCount;
-            List<System.Drawing.Color> results;
+            List<Color> results;
 
-            results = new List<System.Drawing.Color>();
+            results = new List<Color>();
 
             // read the number of colors, which also occupies two bytes
             colorCount = ReadInt16(stream);
@@ -170,7 +146,7 @@ namespace Platform.Support.Drawing
                 value3 = ReadInt16(stream);
                 value4 = ReadInt16(stream);
 
-                if (version == FileVersion.Version2)
+                if (version == 2)
                 {
                     int length;
 
@@ -221,7 +197,7 @@ namespace Platform.Support.Drawing
 
                         gray = (int)(value1 / 39.0625); // 0-255
 
-                        results.Add(System.Drawing.Color.FromArgb(gray, gray, gray));
+                        results.Add(Color.FromArgb(gray, gray, gray));
                         break;
 
                     default:
@@ -232,7 +208,7 @@ namespace Platform.Support.Drawing
             return results.ToArray();
         }
 
-        public static System.Drawing.Color[] ReadExchangeFile(string fileName)
+        public static Color[] ReadExchangeFile(string fileName)
         {
             List<System.Drawing.Color> colorPalette = new List<System.Drawing.Color>();
 

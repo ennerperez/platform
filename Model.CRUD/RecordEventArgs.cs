@@ -14,12 +14,12 @@ namespace Platform.Model.CRUD
 
         public RecordEventArgs()
         {
-            Operation = Types.Operations.Unknow;
+            Operation = Operations.Unknow;
             Result = null;
             Argument = null;
         }
 
-        public RecordEventArgs(Types.Operations operation, object result = null, object argument = null)
+        public RecordEventArgs(Operations operation, object result = null, object argument = null)
         {
             Operation = operation;
             Result = result;
@@ -30,7 +30,7 @@ namespace Platform.Model.CRUD
 
         #region Properties
 
-        public Types.Operations Operation { get; set; }
+        public Operations Operation { get; set; }
         public object Result { get; set; }
         public object Argument { get; set; }
 

@@ -11,18 +11,15 @@ namespace Platform.Support.IO
         {
             this.path = path;
         }
-        [System.Runtime.InteropServices.DllImport("kernel32")]
-        private static extern long WritePrivateProfileString(string section, string key, string val, string filePath);
-        [System.Runtime.InteropServices.DllImport("kernel32")]
-        private static extern int GetPrivateProfileString(string section, string key, string def, System.Text.StringBuilder retVal, int size, string filePath);
+       
         public void IniWriteValue(string section, string key, string value)
         {
-            IniFile.WritePrivateProfileString(section, key, value, this.path);
+            NativeMethods.WritePrivateProfileString(section, key, value, this.path);
         }
         public string IniReadValue(string section, string key)
         {
             System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder(255);
-            IniFile.GetPrivateProfileString(section, key, "", stringBuilder, 255, this.path);
+            NativeMethods.GetPrivateProfileString(section, key, "", stringBuilder, 255, this.path);
             return stringBuilder.ToString();
         }
     }

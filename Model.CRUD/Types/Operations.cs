@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Platform.Model.CRUD.Types
+namespace Platform.Model.CRUD
 {
     public enum Operations
     {

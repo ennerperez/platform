@@ -9,29 +9,29 @@ namespace Platform.Support
     namespace Core
     {
 #endif
-        namespace Attributes.AssemblyProduct
+        namespace Attributes
         {
             /// <summary>
             /// Define the build <typeparamref name="datetime"/> for the project
             /// </summary>
             [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = false)]
 #if !CORE
-            internal class BuildDateAttribute : global::System.Attribute
+            internal sealed class BuildDateAttribute : global::System.Attribute
 #else
-            public class BuildDateAttribute : global::System.Attribute
+        public sealed class BuildDateAttribute : global::System.Attribute
 #endif
             {
-                private System.DateTime _AssemblyDate;
-                public System.DateTime AssemblyDate { get { return _AssemblyDate; } }
-
-                public BuildDateAttribute(System.String date)
+                private DateTime assemblyDate;
+                public DateTime AssemblyDate { get { return assemblyDate; } }
+                       
+                public BuildDateAttribute(String date)
                 {
-                    this._AssemblyDate = System.DateTime.Parse(date);
+                    assemblyDate = DateTime.Parse(date);
                 }
 
-                public BuildDateAttribute(System.DateTime date)
+                public BuildDateAttribute(DateTime date)
                 {
-                    this._AssemblyDate = date;
+                    assemblyDate = date;
                 }
 
             }

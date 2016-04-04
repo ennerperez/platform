@@ -7,7 +7,7 @@ namespace Platform.Support
     {
 #endif
 
-        namespace Attributes.AssemblyCompany
+        namespace Attributes
         {
 
             [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]

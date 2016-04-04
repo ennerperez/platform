@@ -10,24 +10,23 @@ namespace Platform.Model.MVC
     public class Controller<T> : IController<T> where T : IModel
     {
 
-        IView<T> _view;
-        IList _items;
-        T _selectedItem;
-
+        private IView<T> view;
+        private IList items;
+        private T selectedItem;
 
         public Controller(IView<T> view, IList items)
         {
-            _view = view;
-            _items = items;
+            this.view = view;
+            this.items = items;
             view.SetController(this);
         }
 
         public IList Items
         {
 #if PORTABLE
-            get { return new List<T>((IEnumerable<T>)_items); }
+            get { return new List<T>((IEnumerable<T>)items); }
 #else
-            get { return ArrayList.ReadOnly(_items); }
+            get { return ArrayList.ReadOnly(items); }
 #endif
         }
 
@@ -36,83 +35,57 @@ namespace Platform.Model.MVC
 
             foreach (var field in typeof(T).GetFields())
             {
-                var vfield = _view.GetType().GetField(field.Name);
+                var vfield = view.GetType().GetField(field.Name);
                 if (vfield != null)
-                {
-                    vfield.SetValue(_view, field.GetValue(item));
-                }
+                    vfield.SetValue(view, field.GetValue(item));
             }
 
             foreach (var prop in typeof(T).GetProperties())
             {
-                var vprop = _view.GetType().GetProperty(prop.Name);
-                if (vprop != null)
-                {
-                    if (vprop.CanWrite)
-                    {
-                        vprop.SetValue(_view, prop.GetValue(item, null), null);
-                    }
-                }
+                var vprop = view.GetType().GetProperty(prop.Name);
+                if (vprop != null && vprop.CanWrite)
+                    vprop.SetValue(view, prop.GetValue(item, null), null);
             }
-
-            //_view.FirstName   =  usr.FirstName;
-            //_view.LastName    =  usr.LastName;
-            //_view.ID          =  usr.ID;
-            //_view.Department  =  usr.Department;
-            //_view.Sex         =  usr.Sex;
         }
 
         private void updateItemWithViewValues(T item)
         {
 
-            foreach (var field in _view.GetType().GetFields())
+            foreach (var field in view.GetType().GetFields())
             {
                 var vfield = typeof(T).GetField(field.Name);
                 if (vfield != null)
-                {
-                    vfield.SetValue(_view, field.GetValue(item));
-                }
+                    vfield.SetValue(view, field.GetValue(item));
             }
 
-            foreach (var prop in _view.GetType().GetProperties())
+            foreach (var prop in view.GetType().GetProperties())
             {
                 var vprop = typeof(T).GetProperty(prop.Name);
-                if (vprop != null)
-                {
-                    if (vprop.CanWrite)
-                    {
-                        vprop.SetValue(_view, prop.GetValue(item, null), null);
-                    }
-                }
+                if (vprop != null && vprop.CanWrite)
+                    vprop.SetValue(view, prop.GetValue(item, null), null);
             }
 
-            //usr.FirstName     =  _view.FirstName;
-            //usr.LastName      =  _view.LastName;
-            //usr.ID            =  _view.ID;
-            //usr.Department    =  _view.Department;
-            //usr.Sex           =  _view.Sex;
         }
 
         public void LoadView()
         {
-            _view.ClearGrid();
-            foreach (T item in _items)
-                _view.AddItemToGrid(item);
+            view.ClearGrid();
+            foreach (T item in items)
+                view.AddItemToGrid(item);
 
-            _view.SetSelectedItemInGrid((T)_items[0]);
+            view.SetSelectedItemInGrid((T)items[0]);
 
         }
 
         public void SelectedItemChanged(T selectedItem)
         {
-            foreach (T item in this._items)
+            foreach (T item in items)
             {
                 if (item.Equals(selectedItem))
                 {
-                    _selectedItem = item;
+                    selectedItem = item;
                     updateItemDetailValues(item);
-                    _view.SetSelectedItemInGrid(item);
-                    //this._view.CanModifyID = false;
+                    view.SetSelectedItemInGrid(item);
                     break;
                 }
             }
@@ -121,19 +94,18 @@ namespace Platform.Model.MVC
         public void AddNewItem(object[] args)
         {
 
-            _selectedItem = (T)Activator.CreateInstance(typeof(T), args);
-            this.updateItemDetailValues(_selectedItem);
-            //this._view.CanModifyID = true;
+            selectedItem = (T)Activator.CreateInstance(typeof(T), args);
+            updateItemDetailValues(selectedItem);
         }
 
         public void RemoveItem()
         {
-            string id = this._view.GetIdOfSelectedItemInGrid();
+            string id = view.GetIdOfSelectedItemInGrid();
             T itemToRemove = default(T);
 
             if (id != "")
             {
-                foreach (T item in this._items)
+                foreach (T item in items)
                 {
                     if (item.Equals(id))
                     {
@@ -144,13 +116,13 @@ namespace Platform.Model.MVC
 
                 if (itemToRemove != null)
                 {
-                    int newSelectedIndex = this._items.IndexOf(itemToRemove);
-                    this._items.Remove(itemToRemove);
-                    this._view.RemoveItemFromGrid(itemToRemove);
+                    int newSelectedIndex = items.IndexOf(itemToRemove);
+                    items.Remove(itemToRemove);
+                    view.RemoveItemFromGrid(itemToRemove);
 
-                    if (newSelectedIndex > -1 && newSelectedIndex < _items.Count)
+                    if (newSelectedIndex > -1 && newSelectedIndex < items.Count)
                     {
-                        this._view.SetSelectedItemInGrid((T)_items[newSelectedIndex]);
+                        view.SetSelectedItemInGrid((T)items[newSelectedIndex]);
                     }
                 }
             }
@@ -158,20 +130,19 @@ namespace Platform.Model.MVC
 
         public void Save()
         {
-            updateItemWithViewValues(_selectedItem);
-            if (!this._items.Contains(_selectedItem))
+            updateItemWithViewValues(selectedItem);
+            if (!items.Contains(selectedItem))
             {
-                // Add new user
-                this._items.Add(_selectedItem);
-                this._view.AddItemToGrid(_selectedItem);
+                // Add new
+                items.Add(selectedItem);
+                view.AddItemToGrid(selectedItem);
             }
             else
             {
                 // Update existing
-                this._view.UpdateGridWithChangedItem(_selectedItem);
+                view.UpdateGridWithChangedItem(selectedItem);
             }
-            _view.SetSelectedItemInGrid(_selectedItem);
-            //this._view.CanModifyID = false;
+            view.SetSelectedItemInGrid(selectedItem);
 
         }
 

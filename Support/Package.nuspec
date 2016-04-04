@@ -3,7 +3,7 @@
   <metadata minClientVersion="2.8.1">
     <id>$id$</id>
     <version>$version$</version>
-    <title>$title$</title>
+    <title>$id$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
     <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
@@ -17,16 +17,14 @@
     <language>en</language>
     <tags>.NET Framework Base Development Platform</tags>
     <dependencies>
-      <group>
-        <dependency id="Microsoft.Bcl" version="1.1" />
-        <dependency id="Microsoft.Bcl.Async" version="1.0" />
-        <dependency id="Microsoft.Bcl.Build" version="1.0" />
-        <dependency id="Microsoft.Bcl.Build.Symbols" version="1.0" />
-      </group>
+      <dependency id="Microsoft.Bcl.Build" version="1.0" />
+      <dependency id="Microsoft.Bcl.Build.Symbols" version="1.0" />
+      <dependency id="Microsoft.Bcl" version="1.1" />
+      <dependency id="Microsoft.Bcl.Async" version="1.0" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\Build\release\Platform.Support.Core.dll" target="lib\net40\Platform.Support.Core.dll" />
-    <file src="..\Build\release\Platform.Support.Core.PCL.dll" target="lib\portable4-net4+sl5+win8+wp8+wpa81\Platform.Support.Core.PCL.dll" />
+    <file src="..\Build\release\$id$.dll" target="lib\net40\$id$.dll" />
+    <file src="..\Build\release\$id$.PCL.dll" target="lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\$id$.PCL.dll" />
   </files>
 </package>

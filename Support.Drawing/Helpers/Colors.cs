@@ -26,7 +26,7 @@ namespace Platform.Support.Drawing
 
         public static Color ToColor(string source)
         {
-            System.Drawing.Color _return;
+            Color _return;
 
             if (source.StartsWith("#"))
                 return ToColor(source, 255);
@@ -45,12 +45,12 @@ namespace Platform.Support.Drawing
 
                 if (_source.Length < 4)
                 {
-                    _return = System.Drawing.Color.FromArgb(r, g, b);
+                    _return = Color.FromArgb(r, g, b);
                 }
                 else
                 {
                     a = int.Parse(_source[3]);
-                    _return = System.Drawing.Color.FromArgb(a, r, g, b);
+                    _return = Color.FromArgb(a, r, g, b);
                 }
             }
             catch
@@ -185,7 +185,7 @@ namespace Platform.Support.Drawing
 
         public static int GetLuminosity(Color color)
         {
-            int num = System.Math.Max(System.Math.Max(color.R, color.G), color.B) + System.Math.Min(System.Math.Min(color.R, color.G), color.B);
+            int num = Math.Max(Math.Max(color.R, color.G), color.B) + Math.Min(Math.Min(color.R, color.G), color.B);
             return ((num * 240) + 0xff) / 510;
         }
 

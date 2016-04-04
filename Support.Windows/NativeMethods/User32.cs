@@ -6,79 +6,489 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Platform.Support.Windows
+namespace Platform.Support.Windows.User32
 {
+
+    #region Enums
+
+    public enum Win32Messages : uint
+    {
+        WM_NULL = 0x0,
+        WM_CREATE = 0x1,
+        WM_DESTROY = 0x2,
+        WM_MOVE = 0x3,
+        WM_SIZE = 0x5,
+        WM_ACTIVATE = 0x6,
+        WM_SETFOCUS = 0x7,
+        WM_KILLFOCUS = 0x8,
+        WM_ENABLE = 0xa,
+        WM_SETREDRAW = 0xb,
+        WM_SETTEXT = 0xc,
+        WM_GETTEXT = 0xd,
+        WM_GETTEXTLENGTH = 0xe,
+        WM_PAINT = 0xf,
+        WM_CLOSE = 0x10,
+        WM_QUERYENDSESSION = 0x11,
+        WM_QUERYOPEN = 0x13,
+        WM_ENDSESSION = 0x16,
+        WM_QUIT = 0x12,
+        WM_ERASEBKGND = 0x14,
+        WM_SYSCOLORCHANGE = 0x15,
+        WM_SHOWWINDOW = 0x18,
+        WM_WININICHANGE = 0x1a,
+        WM_SETTINGCHANGE = WM_WININICHANGE,
+        WM_DEVMODECHANGE = 0x1b,
+        WM_ACTIVATEAPP = 0x1c,
+        WM_FONTCHANGE = 0x1d,
+        WM_TIMECHANGE = 0x1e,
+        WM_CANCELMODE = 0x1f,
+        WM_SETCURSOR = 0x20,
+        WM_MOUSEACTIVATE = 0x21,
+        WM_CHILDACTIVATE = 0x22,
+        WM_QUEUESYNC = 0x23,
+        WM_GETMINMAXINFO = 0x24,
+        WM_PAINTICON = 0x26,
+        WM_ICONERASEBKGND = 0x27,
+        WM_NEXTDLGCTL = 0x28,
+        WM_SPOOLERSTATUS = 0x2a,
+        WM_DRAWITEM = 0x2b,
+        WM_MEASUREITEM = 0x2c,
+        WM_DELETEITEM = 0x2d,
+        WM_VKEYTOITEM = 0x2e,
+        WM_CHARTOITEM = 0x2f,
+        WM_SETFONT = 0x30,
+        WM_GETFONT = 0x31,
+        WM_SETHOTKEY = 0x32,
+        WM_GETHOTKEY = 0x33,
+        WM_QUERYDRAGICON = 0x37,
+        WM_COMPAREITEM = 0x39,
+        WM_GETOBJECT = 0x3d,
+        WM_COMPACTING = 0x41,
+        WM_COMMNOTIFY = 0x44,
+        WM_WINDOWPOSCHANGING = 0x46,
+        WM_WINDOWPOSCHANGED = 0x47,
+        WM_POWER = 0x48,
+        WM_COPYDATA = 0x4a,
+        WM_CANCELJOURNAL = 0x4b,
+        WM_NOTIFY = 0x4e,
+        WM_INPUTLANGCHANGEREQUEST = 0x50,
+        WM_INPUTLANGCHANGE = 0x51,
+        WM_TCARD = 0x52,
+        WM_HELP = 0x53,
+        WM_USERCHANGED = 0x54,
+        WM_NOTIFYFORMAT = 0x55,
+        WM_CONTEXTMENU = 0x7b,
+        WM_STYLECHANGING = 0x7c,
+        WM_STYLECHANGED = 0x7d,
+        WM_DISPLAYCHANGE = 0x7e,
+        WM_GETICON = 0x7f,
+        WM_SETICON = 0x80,
+        WM_NCCREATE = 0x81,
+        WM_NCDESTROY = 0x82,
+        WM_NCCALCSIZE = 0x83,
+        WM_NCHITTEST = 0x84,
+        WM_NCPAINT = 0x85,
+        WM_NCACTIVATE = 0x86,
+        WM_GETDLGCODE = 0x87,
+        WM_SYNCPAINT = 0x88,
+        WM_NCMOUSEMOVE = 0xa0,
+        WM_NCLBUTTONDOWN = 0xa1,
+        WM_NCLBUTTONUP = 0xa2,
+        WM_NCLBUTTONDBLCLK = 0xa3,
+        WM_NCRBUTTONDOWN = 0xa4,
+        WM_NCRBUTTONUP = 0xa5,
+        WM_NCRBUTTONDBLCLK = 0xa6,
+        WM_NCMBUTTONDOWN = 0xa7,
+        WM_NCMBUTTONUP = 0xa8,
+        WM_NCMBUTTONDBLCLK = 0xa9,
+        WM_NCXBUTTONDOWN = 0xab,
+        WM_NCXBUTTONUP = 0xac,
+        WM_NCXBUTTONDBLCLK = 0xad,
+        WM_INPUT = 0xff,
+        WM_KEYFIRST = 0x100,
+        WM_KEYDOWN = 0x100,
+        WM_KEYUP = 0x101,
+        WM_CHAR = 0x102,
+        WM_DEADCHAR = 0x103,
+        WM_SYSKEYDOWN = 0x104,
+        WM_SYSKEYUP = 0x105,
+        WM_SYSCHAR = 0x106,
+        WM_SYSDEADCHAR = 0x107,
+        WM_UNICHAR = 0x109,
+        WM_KEYLAST = 0x108,
+        WM_IME_STARTCOMPOSITION = 0x10d,
+        WM_IME_ENDCOMPOSITION = 0x10e,
+        WM_IME_COMPOSITION = 0x10f,
+        WM_IME_KEYLAST = 0x10f,
+        WM_INITDIALOG = 0x110,
+        WM_COMMAND = 0x111,
+        WM_SYSCOMMAND = 0x112,
+        WM_TIMER = 0x113,
+        WM_HSCROLL = 0x114,
+        WM_VSCROLL = 0x115,
+        WM_INITMENU = 0x116,
+        WM_INITMENUPOPUP = 0x117,
+        WM_MENUSELECT = 0x11f,
+        WM_MENUCHAR = 0x120,
+        WM_ENTERIDLE = 0x121,
+        WM_MENURBUTTONUP = 0x122,
+        WM_MENUDRAG = 0x123,
+        WM_MENUGETOBJECT = 0x124,
+        WM_UNINITMENUPOPUP = 0x125,
+        WM_MENUCOMMAND = 0x126,
+        WM_CHANGEUISTATE = 0x127,
+        WM_UPDATEUISTATE = 0x128,
+        WM_QUERYUISTATE = 0x129,
+        WM_CTLCOLOR = 0x19,
+        WM_CTLCOLORMSGBOX = 0x132,
+        WM_CTLCOLOREDIT = 0x133,
+        WM_CTLCOLORLISTBOX = 0x134,
+        WM_CTLCOLORBTN = 0x135,
+        WM_CTLCOLORDLG = 0x136,
+        WM_CTLCOLORSCROLLBAR = 0x137,
+        WM_CTLCOLORSTATIC = 0x138,
+        WM_MOUSEFIRST = 0x200,
+        WM_MOUSEMOVE = 0x200,
+        WM_LBUTTONDOWN = 0x201,
+        WM_LBUTTONUP = 0x202,
+        WM_LBUTTONDBLCLK = 0x203,
+        WM_RBUTTONDOWN = 0x204,
+        WM_RBUTTONUP = 0x205,
+        WM_RBUTTONDBLCLK = 0x206,
+        WM_MBUTTONDOWN = 0x207,
+        WM_MBUTTONUP = 0x208,
+        WM_MBUTTONDBLCLK = 0x209,
+        WM_MOUSEWHEEL = 0x20a,
+        WM_XBUTTONDOWN = 0x20b,
+        WM_XBUTTONUP = 0x20c,
+        WM_XBUTTONDBLCLK = 0x20d,
+        WM_MOUSELAST = 0x20d,
+        WM_PARENTNOTIFY = 0x210,
+        WM_ENTERMENULOOP = 0x211,
+        WM_EXITMENULOOP = 0x212,
+        WM_NEXTMENU = 0x213,
+        WM_SIZING = 0x214,
+        WM_CAPTURECHANGED = 0x215,
+        WM_MOVING = 0x216,
+        WM_POWERBROADCAST = 0x218,
+        WM_DEVICECHANGE = 0x219,
+        WM_MDICREATE = 0x220,
+        WM_MDIDESTROY = 0x221,
+        WM_MDIACTIVATE = 0x222,
+        WM_MDIRESTORE = 0x223,
+        WM_MDINEXT = 0x224,
+        WM_MDIMAXIMIZE = 0x225,
+        WM_MDITILE = 0x226,
+        WM_MDICASCADE = 0x227,
+        WM_MDIICONARRANGE = 0x228,
+        WM_MDIGETACTIVE = 0x229,
+        WM_MDISETMENU = 0x230,
+        WM_ENTERSIZEMOVE = 0x231,
+        WM_EXITSIZEMOVE = 0x232,
+        WM_DROPFILES = 0x233,
+        WM_MDIREFRESHMENU = 0x234,
+        WM_IME_SETCONTEXT = 0x281,
+        WM_IME_NOTIFY = 0x282,
+        WM_IME_CONTROL = 0x283,
+        WM_IME_COMPOSITIONFULL = 0x284,
+        WM_IME_SELECT = 0x285,
+        WM_IME_CHAR = 0x286,
+        WM_IME_REQUEST = 0x288,
+        WM_IME_KEYDOWN = 0x290,
+        WM_IME_KEYUP = 0x291,
+        WM_MOUSEHOVER = 0x2a1,
+        WM_MOUSELEAVE = 0x2a3,
+        WM_NCMOUSELEAVE = 0x2a2,
+        WM_WTSSESSION_CHANGE = 0x2b1,
+        WM_TABLET_FIRST = 0x2c0,
+        WM_TABLET_LAST = 0x2df,
+        WM_CUT = 0x300,
+        WM_COPY = 0x301,
+        WM_PASTE = 0x302,
+        WM_CLEAR = 0x303,
+        WM_UNDO = 0x304,
+        WM_RENDERFORMAT = 0x305,
+        WM_RENDERALLFORMATS = 0x306,
+        WM_DESTROYCLIPBOARD = 0x307,
+        WM_DRAWCLIPBOARD = 0x308,
+        WM_PAINTCLIPBOARD = 0x309,
+        WM_VSCROLLCLIPBOARD = 0x30a,
+        WM_SIZECLIPBOARD = 0x30b,
+        WM_ASKCBFORMATNAME = 0x30c,
+        WM_CHANGECBCHAIN = 0x30d,
+        WM_HSCROLLCLIPBOARD = 0x30e,
+        WM_QUERYNEWPALETTE = 0x30f,
+        WM_PALETTEISCHANGING = 0x310,
+        WM_PALETTECHANGED = 0x311,
+        WM_HOTKEY = 0x312,
+        WM_PRINT = 0x317,
+        WM_PRINTCLIENT = 0x318,
+        WM_APPCOMMAND = 0x319,
+        WM_THEMECHANGED = 0x31a,
+        WM_HANDHELDFIRST = 0x358,
+        WM_HANDHELDLAST = 0x35f,
+        WM_AFXFIRST = 0x360,
+        WM_AFXLAST = 0x37f,
+        WM_PENWINFIRST = 0x380,
+        WM_PENWINLAST = 0x38f,
+        WM_USER = 0x400,
+        WM_REFLECT = 0x2000,
+        WM_APP = 0x8000
+    }
+
+
+    [Flags]
+    public enum QS : uint
+    {
+        KEY = 0x0001,
+        MOUSEMOVE = 0x0002,
+        MOUSEBUTTON = 0x0004,
+        POSTMESSAGE = 0x0008,
+        TIMER = 0x0010,
+        PAINT = 0x0020,
+        SENDMESSAGE = 0x0040,
+        HOTKEY = 0x0080,
+        ALLPOSTMESSAGE = 0x0100,
+        RAWINPUT = 0x0400,
+        MOUSE = MOUSEMOVE | MOUSEBUTTON,
+        INPUT = MOUSE | KEY | RAWINPUT,
+        ALLEVENTS = INPUT | POSTMESSAGE | TIMER | PAINT | HOTKEY,
+        ALLINPUT = INPUT | POSTMESSAGE | TIMER | PAINT | HOTKEY | SENDMESSAGE
+    }
+
+    [Flags]
+    public enum AW : uint
+    {
+        HOR_POSITIVE = 0x00000001,
+        HOR_NEGATIVE = 0x00000002,
+        VER_POSITIVE = 0x00000004,
+        VER_NEGATIVE = 0x00000008,
+        CENTER = 0x00000010,
+        HIDE = 0x00010000,
+        ACTIVATE = 0x00020000,
+        SLIDE = 0x00040000,
+        BLEND = 0x00080000
+    }
+
+    public enum GA
+    {
+        PARENT = 1,
+        ROOT = 2,
+        ROOTOWNER = 3
+    }
+
+    /// <summary>
+    /// Modifiers for mouse-events
+    /// </summary>
+    [Flags]
+    public enum MK : uint
+    {
+        LBUTTON = 0x0001,
+        RBUTTON = 0x0002,
+        SHIFT = 0x0004,
+        CONTROL = 0x0008,
+        MBUTTON = 0x0010,
+        XBUTTON1 = 0x0020,
+        XBUTTON2 = 0x0040
+    }
+
+    /// <summary>
+    /// Enumeration for windows hook types
+    /// </summary>
+    public enum WH : int
+    {
+        MSGFILTER = -1,
+        JOURNALRECORD = 0,
+        JOURNALPLAYBACK = 1,
+        KEYBOARD = 2,
+        GETMESSAGE = 3,
+        CALLWNDPROC = 4,
+        CBT = 5,
+        SYSMSGFILTER = 6,
+        MOUSE = 7,
+        HARDWARE = 8,
+        DEBUG = 9,
+        SHELL = 10,
+        FOREGROUNDIDLE = 11,
+        CALLWNDPROCRET = 12,
+        KEYBOARD_LL = 13,
+        MOUSE_LL = 14
+    }
+
+    /// <summary>
+    /// Active Accessibilty event constants (note: only the constants we are
+    /// currently using are defined -- there are many more available in Winuser.h)
+    /// </summary>
+    public enum EVENT_SYSTEM : uint
+    {
+        /*
+         * EVENT_SYSTEM_CAPTURESTART
+         * EVENT_SYSTEM_CAPTUREEND
+         * Sent when a window takes the capture and releases the capture.
+         */
+        CAPTURESTART = 0x0008,
+        CAPTUREEND = 0x0009,
+
+        /*
+        * Drag & Drop
+        * EVENT_SYSTEM_DRAGDROPSTART
+        * EVENT_SYSTEM_DRAGDROPEND
+        * Send the START notification just before going into drag&drop loop.  Send
+        * the END notification just after canceling out.
+        * Note that it is up to apps and OLE to generate this, since the system
+        * doesn't know.  Like EVENT_SYSTEM_SOUND, it will be a while before this
+        * is prevalent.
+        */
+        DRAGDROPSTART = 0x000E,
+        DRAGDROPEND = 0x000F
+    }
+
+    [Flags]
+    public enum WINEVENT : uint
+    {
+        OUTOFCONTEXT = 0x0000,  // Events are ASYNC
+        SKIPOWNTHREAD = 0x0001,  // Don't call back for events on installer's thread
+        SKIPOWNPROCESS = 0x0002,  // Don't call back for events on installer's process
+        INCONTEXT = 0x0004   // Events are SYNC (invalid in .NET because it requires
+        // the client dll to be injected into every process)
+    }
+
+    public enum DT : uint
+    {
+        TOP = 0x00000000,
+        LEFT = 0x00000000,
+        CENTER = 0x00000001,
+        RIGHT = 0x00000002,
+        VCENTER = 0x00000004,
+        BOTTOM = 0x00000008,
+        WORDBREAK = 0x00000010,
+        SINGLELINE = 0x00000020,
+        EXPANDTABS = 0x00000040,
+        TABSTOP = 0x00000080,
+        NOCLIP = 0x00000100,
+        EXTERNALLEADING = 0x00000200,
+        CALCRECT = 0x00000400,
+        NOPREFIX = 0x00000800,
+        INTERNAL = 0x00001000,
+        EDITCONTROL = 0x00002000,
+        PATH_ELLIPSIS = 0x00004000,
+        END_ELLIPSIS = 0x00008000,
+        MODIFYSTRING = 0x00010000,
+        RTLREADING = 0x00020000,
+        WORD_ELLIPSIS = 0x00040000,
+        NOFULLWIDTHCHARBREAK = 0x00080000,
+        HIDEPREFIX = 0x00100000,
+        PREFIXONLY = 0x00200000
+    }
+
+    #endregion
+
 
     /// <summary>
     /// Imports from User32.dll
     /// </summary>
-    public class User32
+    public static partial class NativeMethods
     {
-        [DllImport("user32.dll", ExactSpelling = true)]
-        public static extern int GetKeyboardLayout(int dwLayout);
 
-        [DllImport("user32.dll")]
+        public const uint TME_NONCLIENT = 0x00000010;
+        public const uint TME_HOVER = 0x00000001;
+        public const uint TME_QUERY = 0x40000000;
+        public const uint TME_CANCEL = 0x80000000;
+        public const uint TME_LEAVE = 0x00000010;
+
+        public const int EM_GETTEXTEX = 0x0400 + 94;
+
+        public const int EM_GETTEXTLENGTHEX = 0x0400 + 95;
+
+        public const int GTL_DEFAULT = 0;	// Do default (return # of chars)
+        public const int GTL_USECRLF = 1;	// Compute answer using CRLFs for paragraphs
+        public const int GTL_PRECISE = 2;	// Compute a precise answer
+        public const int GTL_CLOSE = 4;	    // Fast computation of a "close" answer
+        public const int GTL_NUMCHARS = 8;	// Return number of characters
+        public const int GTL_NUMBYTES = 16;	// Return number of _bytes_
+
+        #region Keyboard Input Functions
+
+        /// <summary>
+        /// The return value is the input locale identifier for the thread. The low word contains a Language Identifier for the input language and the high word contains a device handle to the physical layout of the keyboard.
+        /// </summary>
+        /// <remarks>
+        /// The input locale identifier is a broader concept than a keyboard layout, since it can also encompass a speech-to-text converter, an Input Method Editor (IME), or any other form of input.
+        /// Since the keyboard layout can be dynamically changed, applications that cache information about the current keyboard layout should process the WM_INPUTLANGCHANGE message to be informed of changes in the input language.
+        /// To get the KLID(keyboard layout ID) of the currently active HKL, call the GetKeyboardLayoutName.
+        /// Beginning in Windows 8: The preferred method to retrieve the language associated with the current keyboard layout or input method is a call to Windows.Globalization.Language.CurrentInputMethodLanguageTag.If your app passes language tags from CurrentInputMethodLanguageTag to any National Language Support functions, it must first convert the tags by calling ResolveLocaleName.
+        /// </remarks>
+        /// <param name="dwLayout">The identifier of the thread to query, or 0 for the current thread.</param>
+        /// <returns></returns>
+        [DllImport(ExternDll.User32, ExactSpelling = true, CharSet = CharSet.Unicode)]
+        public static extern IntPtr GetKeyboardLayout(uint dwLayout);
+
+        /// <summary>
+        /// Retrieves the name of the active input locale identifier (formerly called the keyboard layout) for the system.
+        /// </summary>
+        /// <remarks>
+        /// The input locale identifier is a broader concept than a keyboard layout, since it can also encompass a speech-to-text converter, an Input Method Editor (IME), or any other form of input.
+        /// Beginning in Windows 8: The preferred method to retrieve the language associated with the current keyboard layout or input method is a call to Windows.Globalization.Language.CurrentInputMethodLanguageTag.If your app passes language tags from CurrentInputMethodLanguageTag to any National Language Support functions, it must first convert the tags by calling ResolveLocaleName.
+        /// </remarks>
+        /// <param name="lpString">The buffer (of at least KL_NAMELENGTH characters in length) that receives the name of the input locale identifier, including the terminating null character. This will be a copy of the string provided to the LoadKeyboardLayout function, unless layout substitution took place.</param>
+        /// <returns></returns>
+        [DllImport(ExternDll.User32, ExactSpelling = true, CharSet = CharSet.Unicode)]
+        public static extern bool GetKeyboardLayoutName([Out, MarshalAs(UnmanagedType.LPWStr)] string lpString);
+
+        #endregion
+
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
         public static extern bool SetMenu(IntPtr hWnd, IntPtr hMenu);
 
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
         public static extern IntPtr GetDC(IntPtr hWnd);
 
-        [DllImport("user32.dll")]
-        public static extern int GetClassName(IntPtr hWnd, [Out] StringBuilder lpClassName, int nMaxCount);
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
+        public static extern int GetClassName(IntPtr hWnd, [Out] StringBuilder lpClassName, uint nMaxCount);
 
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
         public static extern int GetIconInfo(IntPtr hIcon, out ICONINFO piconinfo);
 
-        [StructLayout(LayoutKind.Sequential)]
-        public struct ICONINFO
-        {
-            public bool fIcon;
-            public Int32 xHotspot;
-            public Int32 yHotspot;
-            public IntPtr hbmMask;
-            public IntPtr hbmColor;
-        }
-
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool ReleaseCapture();
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr GetCapture();
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr SetCapture(IntPtr hWnd);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool AttachThreadInput(uint idAttach, uint idAttachTo, bool fAttach);
 
-        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
         public static extern IntPtr LoadCursor(
             IntPtr hInstance,
             IntPtr lpCursorName
             );
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool OpenClipboard(IntPtr hWnd);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern int CountClipboardFormats();
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool EmptyClipboard();
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool CloseClipboard();
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool SetSystemCursor(IntPtr hcur, uint id);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr SetCursor(IntPtr hcur);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool EnableWindow(IntPtr hcur, bool bEnable);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern uint MsgWaitForMultipleObjects(
             uint nCount,
             IntPtr[] pHandles,
@@ -87,7 +497,7 @@ namespace Platform.Support.Windows
             QS dwWakeMask
         );
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool InvalidateRect(
             IntPtr hWnd,           // handle to window
             ref RECT lpRect,  // rectangle coordinates
@@ -95,7 +505,7 @@ namespace Platform.Support.Windows
             bool bErase          // erase state
             );
 
-        [DllImport("User32.dll", EntryPoint = "InvalidateRect")]
+        [DllImport(ExternDll.User32, EntryPoint = "InvalidateRect")]
         public static extern bool InvalidateWindow(
             IntPtr hWnd,           // handle to window
             IntPtr lpRect,       // pass IntPtr.Zero to invalidate entire window
@@ -103,12 +513,12 @@ namespace Platform.Support.Windows
             );
 
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool UpdateWindow(
             IntPtr hWnd   // handle to window
             );
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool UpdateLayeredWindow(
             IntPtr hwnd,
             IntPtr hdcDst,
@@ -120,91 +530,82 @@ namespace Platform.Support.Windows
             ref BLENDFUNCTION pblend,
             uint dwFlags);
 
-        [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        public struct BLENDFUNCTION
-        {
-            public byte BlendOp;
-            public byte BlendFlags;
-            public byte SourceConstantAlpha;
-            public byte AlphaFormat;
-        }
-
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool IsWindowVisible(IntPtr hWnd);
 
 
-        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
         public static extern bool SetWindowText(
             IntPtr hWnd,
-            [MarshalAs(UnmanagedType.LPTStr)] string lpString
+            [In, MarshalAs(UnmanagedType.LPWStr)] string lpString
             );
 
-        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
         public static extern uint RegisterWindowMessage(
-            [MarshalAs(UnmanagedType.LPTStr)] string lpString
+            [In, MarshalAs(UnmanagedType.LPWStr)] string lpString
             );
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool DestroyIcon(IntPtr hIcon);
 
-        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
         public static extern IntPtr FindWindowEx(
             IntPtr hwndParent, IntPtr hwndChildAfter,
-            [In, MarshalAs(UnmanagedType.LPTStr)] string lpszClass,
-            [In, MarshalAs(UnmanagedType.LPTStr)] string lpszWindow
+            [In, MarshalAs(UnmanagedType.LPWStr)] string lpszClass,
+            [In, MarshalAs(UnmanagedType.LPWStr)] string lpszWindow
             );
 
-        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
         public static extern IntPtr FindWindow(
-            [In, MarshalAs(UnmanagedType.LPTStr)] string lpszClass,
-            [In, MarshalAs(UnmanagedType.LPTStr)] string lpszWindow
+            [In, MarshalAs(UnmanagedType.LPWStr)] string lpszClass,
+            [In, MarshalAs(UnmanagedType.LPWStr)] string lpszWindow
             );
 
         /// <summary>
         /// Set's the input focus to the specified window.
         /// </summary>
-        [DllImport("User32.dll", SetLastError = true)]
+        [DllImport(ExternDll.User32, SetLastError = true)]
         public static extern IntPtr SetFocus(IntPtr hWnd);
 
         /// <summary>
         /// Changes the parent window of the specified child window.
         /// </summary>
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr SetActiveWindow(IntPtr hWnd);
 
         /// <summary>
         /// Returns the active window of the calling thread
         /// </summary>
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr GetActiveWindow();
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern Boolean SetForegroundWindow(IntPtr hWnd);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr GetForegroundWindow();
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool BringWindowToTop(IntPtr hWnd);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern Boolean GetWindowRect(IntPtr hWnd, ref RECT lpRect);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern Boolean SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter,
             int X, int Y, int cx, int cy, uint uFlags);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern Boolean ShowWindow(IntPtr hWnd, int nCmdShow);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool MoveWindow(
             IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool ScreenToClient(
             IntPtr hWnd,        // handle to window
             ref POINT lpPoint   // screen coordinates
@@ -221,7 +622,7 @@ namespace Platform.Support.Windows
         //If hWndFrom or hWndTo (or both) are mirrored windows (that is, have WS_EX_LAYOUTRTL extended style),
         //MapWindowPoints will automatically adjust mirrored coordinates
         //if you pass two or less points in lpPoints.
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport(ExternDll.User32, SetLastError = true)]
         public static extern int MapWindowPoints(
             IntPtr hwndFrom,  //handle to window mapping from
             IntPtr hwndTo,   //handle to window mapping to
@@ -232,13 +633,13 @@ namespace Platform.Support.Windows
         public static readonly int GWL_EXSTYLE = (-20);
         public const uint WS_EX_LAYOUTRTL = 0x00400000; // Right to left mirroring
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr GetParent(IntPtr hWnd);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr GetAncestor(IntPtr hWnd, GA gaFlags);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern Boolean AnimateWindow(IntPtr hWnd, uint dwTime, AW dwFlags);
 
         /// <summary>
@@ -252,13 +653,13 @@ namespace Platform.Support.Windows
         /// If the window handle identifies an existing window, the return value is nonzero.
         /// If the window handle does not identify an existing window, the return value is zero.
         /// </returns>
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern Boolean IsWindow(IntPtr hWnd);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern UInt32 WaitForInputIdle(IntPtr hProcess, UInt32 dwMilliseconds);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr GetWindowDC(IntPtr hWnd);
 
         /// <summary>
@@ -266,7 +667,7 @@ namespace Platform.Support.Windows
         /// area of a specified window or for the entire screen. You can use the returned handle in
         /// subsequent GDI functions to draw in the DC.
         /// </summary>
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr GetDCEx(IntPtr hWnd, IntPtr region, UInt32 dw);
 
         /// <summary>
@@ -274,7 +675,7 @@ namespace Platform.Support.Windows
         /// applications. The effect of the ReleaseDC function depends on the type of DC. It frees
         /// only common and window DCs. It has no effect on class or private DCs.
         /// </summary>
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool ReleaseDC(IntPtr hWnd, IntPtr dc);
 
         /// <summary>
@@ -282,36 +683,44 @@ namespace Platform.Support.Windows
         /// function also retrieves the 32-bit (long) value at the specified offset into the extra
         /// window memory.
         /// </summary>
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern UInt32 GetWindowLong(IntPtr hWnd, int nIndex);
 
         /// <summary>
         /// The SetWindowLong function changes an attribute of the specified window. The function
         /// also sets the 32-bit (long) value at the specified offset into the extra window memory.
         /// </summary>
-        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode, SetLastError = true)]
         public static extern int SetWindowLong(IntPtr hWnd, int nIndex, UInt32 dwNewLong);
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport(ExternDll.User32, SetLastError = true)]
         public static extern int GetWindowTextLength(IntPtr hWnd);
 
-        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode, SetLastError = true)]
         public static extern int GetWindowText(IntPtr hWnd, [Out] StringBuilder lpString, int nMaxCount);
 
-        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
         public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, UIntPtr wParam, IntPtr lParam);
 
-        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
         public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
+        public static extern IntPtr SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);
+
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
+        public static extern long SendMessage(IntPtr hWnd, int wMsg, int wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);
+
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
+        public static extern IntPtr SendMessage(IntPtr hWnd, Win32Messages messagetype, IntPtr wParam, IntPtr lParam);
+        
+        [DllImport(ExternDll.User32, SetLastError = true)]
         public static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport(ExternDll.User32, SetLastError = true)]
         public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
-
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool PeekMessage(out MSG lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax, uint wRemoveMsg);
 
         /// <summary>
@@ -319,13 +728,13 @@ namespace Platform.Support.Windows
         /// messages are posted to the calling thread's message queue, to be read
         /// the next time the thread calls the GetMessage or PeekMessage function.
         /// </summary>
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool TranslateMessage([In] ref MSG msg);
 
         /// <summary>
         /// Dispatches a message to a window procedure.
         /// </summary>
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr DispatchMessage([In] ref MSG msg);
 
         /// <summary>
@@ -337,23 +746,23 @@ namespace Platform.Support.Windows
         /// Installs a windows hook procedure (used for low level filtering of
         /// keyboard, mouse, events, etc.)
         /// </summary>
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr SetWindowsHookEx(
             WH hookType, HookDelegate lpfn, IntPtr hMod, uint dwThreadId);
 
         /// <summary>
         /// Uninstalls a windows hook procedure
         /// </summary>
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport(ExternDll.User32, SetLastError = true)]
         public static extern bool UnhookWindowsHookEx(IntPtr hhk);
 
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern int GetSystemMetrics(int nIndex);
 
         /// <summary>
         /// Calls the next hook in a hook chain
         /// </summary>
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr CallNextHookEx(
             IntPtr hhk, int nCode, UIntPtr wParam, IntPtr lParam);
 
@@ -361,7 +770,7 @@ namespace Platform.Support.Windows
         /// Retrieves the identifier of the thread that created the specified window
         /// and, optionally, the identifier of the process that created the window
         /// </summary>
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern uint GetWindowThreadProcessId(
             IntPtr hWnd, IntPtr lpdwProcessId);
 
@@ -370,16 +779,16 @@ namespace Platform.Support.Windows
         /// whether the key is up, down, or toggled (on, off—alternating each time
         /// the key is pressed).
         /// </summary>
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern short GetKeyState(int nVirtKey);
 
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr GetDesktopWindow();
 
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
 
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool PostMessage(
             IntPtr hWnd,
             uint Msg,
@@ -387,19 +796,13 @@ namespace Platform.Support.Windows
             IntPtr lParam
             );
 
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern uint GetMenuItemID(IntPtr hMenu, int nPos);
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport(ExternDll.User32, SetLastError = true)]
         public static extern bool TrackMouseEvent(ref TRACKMOUSEEVENT lpEventTrack);
 
-        public const uint TME_NONCLIENT = 0x00000010;
-        public const uint TME_HOVER = 0x00000001;
-        public const uint TME_QUERY = 0x40000000;
-        public const uint TME_CANCEL = 0x80000000;
-        public const uint TME_LEAVE = 0x00000010;
-
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern int TrackPopupMenu(
             IntPtr hMenu,
             uint uFlags,
@@ -409,13 +812,13 @@ namespace Platform.Support.Windows
             IntPtr hWnd,
             IntPtr prcRect);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
 
-        [DllImport("User32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool DeleteMenu(IntPtr hMenu, uint uPosition, uint uFlags);
 
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool EnableMenuItem(IntPtr hMenu, uint uIDEnableItem, uint uEnable);
 
 
@@ -423,156 +826,52 @@ namespace Platform.Support.Windows
         /// Registers a new clipboard format. This format can then be used as a valid
         /// clipboard format. Return value is an integer id representing the format.
         /// </summary>
-        [DllImport("User32.dll")]
-        public static extern uint RegisterClipboardFormat(string lpszFormat);
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
+        public static extern uint RegisterClipboardFormat([In, MarshalAs(UnmanagedType.LPWStr)] string lpszFormat);
 
-        [DllImport("user32.dll", EntryPoint = "SetWindowLong", CharSet = CharSet.Unicode)]
-        public static extern int SetWindowProc(IntPtr hWnd, int nIndex, WndProcDelegate lpWndProc);
+        //[DllImport(ExternDll.User32, EntryPoint = "SetWindowLong", CharSet = CharSet.Unicode)]
+        //public static extern int SetWindowProc(IntPtr hWnd, uint nIndex, WndProcDelegate lpWndProc);
 
         // SetWindowLong - Conventional declaration with integer value parameter
-        [DllImport("user32.dll", EntryPoint = "SetWindowLong", CharSet = CharSet.Unicode)]
+        [DllImport(ExternDll.User32, EntryPoint = "SetWindowLong", CharSet = CharSet.Unicode)]
         public static extern int SetWindowLong(IntPtr hWnd, int nIndex, int nValue);
 
         // CallWindowProc
-        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
         public static extern IntPtr CallWindowProc(IntPtr lpWndProc, IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam);
 
         //get a title bar structure for a given hWnd
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool GetTitleBarInfo(IntPtr hWnd, ref TITLEBARINFO pti);
 
         //get window info, such as border width, for a given hWnd
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool GetWindowInfo(IntPtr hWnd, ref WINDOWINFO pwi);
 
         // Gets the text from a text box
-        [DllImport("user32.dll", EntryPoint = "SendMessage", CharSet = CharSet.Auto)]
-        public static extern int GetText(IntPtr hWnd, int Msg, ref GETTEXTEX wParam, StringBuilder lParam);
+        [DllImport(ExternDll.User32, EntryPoint = "SendMessage", CharSet = CharSet.Unicode)]
+        public static extern IntPtr GetText(IntPtr hWnd, int Msg, ref GETTEXTEX wParam, StringBuilder lParam);
 
-        [StructLayout(LayoutKind.Sequential)]
-        public struct GETTEXTEX
-        {
-            public Int32 cb;
-            public Int32 flags;
-            public Int32 codepage;
-            public IntPtr lpDefaultChar;
-            public IntPtr lpUsedDefChar;
-        }
-
-        public const int EM_GETTEXTEX = 0x0400 + 94;
-
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool FlashWindow(IntPtr hwnd, Boolean bInvert);
 
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool FlashWindowEx(ref FLASHWINFO pfwi);
 
-        [StructLayout(LayoutKind.Sequential)]
-        public struct FLASHWINFO
-        {
-            public FLASHWINFO(IntPtr hwnd, Int32 dwFlags, Int32 uCount, Int32 dwTimeout)
-            {
-                this.hwnd = hwnd;
-                this.dwFlags = dwFlags;
-                this.uCount = uCount;
-                this.dwTimeout = dwTimeout;
-
-                // The size of the IntPtr + 4 Int32s
-                cbSize = IntPtr.Size + 16;
-            }
-
-            public Int32 cbSize;
-            public IntPtr hwnd;
-            public Int32 dwFlags;
-            public Int32 uCount;
-            public Int32 dwTimeout;
-        }
-
-        public struct TRACKMOUSEEVENT
-        {
-            public int cbSize;
-            public uint dwFlags;
-            public IntPtr hwndTrack;
-            public uint dwHoverTime;
-        }
-
-        public struct FlashStatus
-        {
-            public static Int32 FLASHW_STOP = 0;
-            public static Int32 FLASHW_CAPTION = 1;
-            public static Int32 FLASHW_TRAY = 2;
-            public static Int32 FLASHW_ALL = (FlashStatus.FLASHW_CAPTION | FlashStatus.FLASHW_TRAY);
-            public static Int32 FLASHW_TIMER = 4;
-            public static Int32 FLASHW_TIMERNOFG = 12;
-        };
-
         // declaration for EnumWindows
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool EnumWindows(EnumWindowsDelegate lpEnumFunc, GCHandle lParam);
 
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool EnumChildWindows(IntPtr hWndParent, EnumWindowsDelegate lpEnumFunc, GCHandle lParam);
 
         // Gets the text length from a text box
-        [DllImport("user32.dll", EntryPoint = "SendMessage", CharSet = CharSet.Auto)]
-        public static extern int GetTextLength(IntPtr hWnd, int Msg, ref GETTEXTLENGTHEX wParam, StringBuilder lParam);
+        [DllImport(ExternDll.User32, EntryPoint = "SendMessage", CharSet = CharSet.Unicode)]
+        public static extern IntPtr GetTextLength(IntPtr hWnd, int Msg, ref GETTEXTLENGTHEX wParam, StringBuilder lParam);
 
-        public struct GETTEXTLENGTHEX
-        {
-            public Int32 flags;
-            public Int32 codepage;
-        }
-
-        public const int EM_GETTEXTLENGTHEX = 0x0400 + 95;
-
-        public const int GTL_DEFAULT = 0;	// Do default (return # of chars)
-        public const int GTL_USECRLF = 1;	// Compute answer using CRLFs for paragraphs
-        public const int GTL_PRECISE = 2;	// Compute a precise answer
-        public const int GTL_CLOSE = 4;	// Fast computation of a "close" answer
-        public const int GTL_NUMCHARS = 8;	// Return number of characters
-        public const int GTL_NUMBYTES = 16;	// Return number of _bytes_
-
-        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
         public static extern int DrawTextEx(IntPtr hdc, StringBuilder lpchText, int cchText,
             ref RECT lprc, DT dwDTFormat, ref DRAWTEXTPARAMS lpDTParams);
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct DRAWTEXTPARAMS
-        {
-            public uint cbSize;
-            public int iTabLength;
-            public int iLeftMargin;
-            public int iRightMargin;
-            public uint uiLengthDrawn;
-        }
-
-        public enum DT : uint
-        {
-            TOP = 0x00000000,
-            LEFT = 0x00000000,
-            CENTER = 0x00000001,
-            RIGHT = 0x00000002,
-            VCENTER = 0x00000004,
-            BOTTOM = 0x00000008,
-            WORDBREAK = 0x00000010,
-            SINGLELINE = 0x00000020,
-            EXPANDTABS = 0x00000040,
-            TABSTOP = 0x00000080,
-            NOCLIP = 0x00000100,
-            EXTERNALLEADING = 0x00000200,
-            CALCRECT = 0x00000400,
-            NOPREFIX = 0x00000800,
-            INTERNAL = 0x00001000,
-            EDITCONTROL = 0x00002000,
-            PATH_ELLIPSIS = 0x00004000,
-            END_ELLIPSIS = 0x00008000,
-            MODIFYSTRING = 0x00010000,
-            RTLREADING = 0x00020000,
-            WORD_ELLIPSIS = 0x00040000,
-            NOFULLWIDTHCHARBREAK = 0x00080000,
-            HIDEPREFIX = 0x00100000,
-            PREFIXONLY = 0x00200000
-        }
 
         /////////////////////////////////////////////////////////////////////////////
         /// Active Accessiblity API -- Available in Win98, Win2K, and WinXP
@@ -591,7 +890,7 @@ namespace Platform.Support.Windows
         /// <summary>
         /// Sets an event hook function for a range of events.
         /// </summary>
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern IntPtr SetWinEventHook(
             EVENT_SYSTEM eventMin, EVENT_SYSTEM eventMax,
             IntPtr hmodWinEventProc, WinEventProc lpfnWinEventProc,
@@ -601,44 +900,197 @@ namespace Platform.Support.Windows
         /// <summary>
         /// Removes an event hook function created by a call to SetWinEventHook.
         /// </summary>
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool UnhookWinEvent(IntPtr hWinEventHook);
 
         /// <summary>
         /// Retrieves the time of the last input event.
         /// </summary>
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern bool GetLastInputInfo(out LASTINPUTINFO plii);
 
         //common dialogs
 
-        [DllImport("ComDlg32.dll", CharSet = CharSet.Unicode)]
-        public static extern bool GetOpenFileName(ref OpenFileName ofn);
 
-        [DllImport("ComDlg32.dll", CharSet = CharSet.Unicode)]
-        public static extern Int32 CommDlgExtendedError();
 
-        [DllImport("User32.dll", CharSet = CharSet.Unicode)]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
         public static extern IntPtr GetDlgItem(IntPtr hWndDlg, Int32 Id);
 
-        [DllImport("User32.dll", SetLastError = true)]
-        public static extern IntPtr GetDlgCtrlID(IntPtr hwndCtl);
+        [DllImport(ExternDll.User32, SetLastError = true)]
+        public static extern int GetDlgCtrlID(IntPtr hwndCtl);
 
-        [DllImport("User32.dll", SetLastError = true)]
+        [DllImport(ExternDll.User32, SetLastError = true)]
         public static extern bool AllowSetForegroundWindow(int procId);
 
         // We can overload this definition, since that's in effect what the unmanaged
         // API does anyway.
-        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+        [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
         public static extern int SystemParametersInfo(int uAction,
             int uParam, ref NONCLIENTMETRICS lpvParam, int fuWinIni);
 
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern int DrawMenuBar(IntPtr hwnd);
 
-        [DllImport("user32.dll")]
+        [DllImport(ExternDll.User32)]
         public static extern int SetMenuInfo(IntPtr hmenu, ref MENUINFO mi);
     }
+
+    #region Delegates
+
+    // delegate signagure for EnumWindows callback
+    public delegate bool EnumWindowsDelegate(IntPtr hwnd, GCHandle lParam);
+
+
+    #endregion
+
+    #region Objects
+
+    // cursor values
+    public class IDC
+    {
+        public static readonly IntPtr APPSTARTING = new IntPtr(32650);
+        public static readonly IntPtr ARROW = new IntPtr(32512);
+    }
+
+
+    /// <summary>
+    /// Values that can be placed in the OPENFILENAME structure, we don't use all of them
+    /// </summary>
+    public class OpenFileNameFlags
+    {
+        public const Int32 ReadOnly = 0x00000001;
+        public const Int32 OverWritePrompt = 0x00000002;
+        public const Int32 HideReadOnly = 0x00000004;
+        public const Int32 NoChangeDir = 0x00000008;
+        public const Int32 ShowHelp = 0x00000010;
+        public const Int32 EnableHook = 0x00000020;
+        public const Int32 EnableTemplate = 0x00000040;
+        public const Int32 EnableTemplateHandle = 0x00000080;
+        public const Int32 NoValidate = 0x00000100;
+        public const Int32 AllowMultiSelect = 0x00000200;
+        public const Int32 ExtensionDifferent = 0x00000400;
+        public const Int32 PathMustExist = 0x00000800;
+        public const Int32 FileMustExist = 0x00001000;
+        public const Int32 CreatePrompt = 0x00002000;
+        public const Int32 ShareAware = 0x00004000;
+        public const Int32 NoReadOnlyReturn = 0x00008000;
+        public const Int32 NoTestFileCreate = 0x00010000;
+        public const Int32 NoNetworkButton = 0x00020000;
+        public const Int32 NoLongNames = 0x00040000;
+        public const Int32 Explorer = 0x00080000;
+        public const Int32 NoDereferenceLinks = 0x00100000;
+        public const Int32 LongNames = 0x00200000;
+        public const Int32 EnableIncludeNotify = 0x00400000;
+        public const Int32 EnableSizing = 0x00800000;
+        public const Int32 DontAddToRecent = 0x02000000;
+        public const Int32 ForceShowHidden = 0x10000000;
+    };
+
+    /// <summary>
+    /// Values that can be placed in the FlagsEx field of the OPENFILENAME structure
+    /// </summary>
+    public class OpenFileNameFlagsEx
+    {
+        public const Int32 NoPlacesBar = 0x00000001;
+    };
+
+    /// <summary>
+    /// Win32 window style constants
+    /// We use them to set up our child window
+    /// </summary>
+    internal class DlgStyle
+    {
+        public const Int32 DsSetFont = 0x00000040;
+        public const Int32 Ds3dLook = 0x00000004;
+        public const Int32 DsControl = 0x00000400;
+        public const Int32 WsChild = 0x40000000;
+        public const Int32 WsClipSiblings = 0x04000000;
+        public const Int32 WsVisible = 0x10000000;
+        public const Int32 WsGroup = 0x00020000;
+        public const Int32 SsNotify = 0x00000100;
+    };
+
+    /// <summary>
+    /// Win32 "extended" window style constants
+    /// </summary>
+    internal class ExStyle
+    {
+        public const Int32 WsExNoParentNotify = 0x00000004;
+        public const Int32 WsExControlParent = 0x00010000;
+    };
+
+    /// <summary>
+    /// An in-memory Win32 dialog template
+    /// Note: this has a very specific structure with a single static "label" control
+    /// See documentation for DLGTEMPLATE and DLGITEMTEMPLATE
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public class DlgTemplate
+    {
+        // The dialog template - see documentation for DLGTEMPLATE
+        public Int32 style = DlgStyle.Ds3dLook | DlgStyle.DsControl | DlgStyle.WsChild | DlgStyle.WsClipSiblings | DlgStyle.SsNotify;
+        public Int32 extendedStyle = ExStyle.WsExControlParent;
+        public Int16 numItems = 1;
+        public Int16 x = 0;
+        public Int16 y = 0;
+        public Int16 cx = 0;
+        public Int16 cy = 0;
+        public Int16 reservedMenu = 0;
+        public Int16 reservedClass = 0;
+        public Int16 reservedTitle = 0;
+
+        // Single dlg item, must be dword-aligned - see documentation for DLGITEMTEMPLATE
+        public Int32 itemStyle = DlgStyle.WsChild;
+        public Int32 itemExtendedStyle = ExStyle.WsExNoParentNotify;
+        public Int16 itemX = 0;
+        public Int16 itemY = 0;
+        public Int16 itemCx = 0;
+        public Int16 itemCy = 0;
+        public Int16 itemId = 0;
+        public UInt16 itemClassHdr = 0xffff;	// we supply a constant to indicate the class of this control
+        public Int16 itemClass = 0x0082;	// static label control
+        public Int16 itemText = 0x0000;	// no text for this control
+        public Int16 itemData = 0x0000;	// no creation data for this control
+    };
+
+    /// <summary>
+    /// The possible notification messages that can be generated by the OpenFileDialog
+    /// We only look for CDN_SELCHANGE
+    /// </summary>
+    public class CommonDlgNotification
+    {
+        //this was original definition but it errors in corext due asmmeta storing it as negative value
+        //private const UInt16 First =			unchecked((UInt16)((UInt16)0 - (UInt16)601));
+        //this is the same value
+        private const Int16 First = -601;
+
+        public const Int16 InitDone = (First - 0x0000);
+        public const Int16 SelChange = (First - 0x0001);
+        public const Int16 FolderChange = (First - 0x0002);
+        public const Int16 ShareViolation = (First - 0x0003);
+        public const Int16 Help = (First - 0x0004);
+        public const Int16 FileOk = (First - 0x0005);
+        public const Int16 TypeChange = (First - 0x0006);
+        public const Int16 IncludeItem = (First - 0x0007);
+    }
+
+    /// <summary>
+    /// Messages that can be send to the common dialogs
+    /// We only use CDM_GETFILEPATH
+    /// </summary>
+    public class CommonDlgMessage
+    {
+        private const UInt16 User = 0x0400;
+        private const UInt16 First = User + 100;
+
+        public const UInt16 GetFilePath = First + 0x0001;
+        public const UInt16 GetFolderPath = First + 0x0002;
+    };
+
+
+    #endregion
+
+    #region Structures
 
     public struct SM
     {
@@ -671,7 +1123,7 @@ namespace Platform.Support.Windows
     }
 
     // A "logical font" used by old-school windows
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     public struct LOGFONT
     {
         public int lfHeight;
@@ -733,12 +1185,12 @@ namespace Platform.Support.Windows
         public LOGFONT lfMessageFont;
     }
 
-    /// <summary>
-    /// Delegate to which messages for subclassed control will be redirected.
-    /// redirected. The delegate should invoke CallBaseWindowProc when it
-    /// wishes to forward a message on to the underlying window.
-    /// </summary>
-    public delegate IntPtr WndProcDelegate(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam);
+    ///// <summary>
+    ///// Delegate to which messages for subclassed control will be redirected.
+    ///// redirected. The delegate should invoke CallBaseWindowProc when it
+    ///// wishes to forward a message on to the underlying window.
+    ///// </summary>
+    //public delegate int WndProcDelegate(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam);
 
 
     public struct WINDOWPLACEMENT
@@ -751,25 +1203,6 @@ namespace Platform.Support.Windows
         public RECT rcNormalPosition;
     };
 
-    [Flags]
-    public enum QS : uint
-    {
-        KEY = 0x0001,
-        MOUSEMOVE = 0x0002,
-        MOUSEBUTTON = 0x0004,
-        POSTMESSAGE = 0x0008,
-        TIMER = 0x0010,
-        PAINT = 0x0020,
-        SENDMESSAGE = 0x0040,
-        HOTKEY = 0x0080,
-        ALLPOSTMESSAGE = 0x0100,
-        RAWINPUT = 0x0400,
-        MOUSE = MOUSEMOVE | MOUSEBUTTON,
-        INPUT = MOUSE | KEY | RAWINPUT,
-        ALLEVENTS = INPUT | POSTMESSAGE | TIMER | PAINT | HOTKEY,
-        ALLINPUT = INPUT | POSTMESSAGE | TIMER | PAINT | HOTKEY | SENDMESSAGE
-    }
-
     public struct MF
     {
         public const uint BYCOMMAND = 0x00000000;
@@ -778,18 +1211,10 @@ namespace Platform.Support.Windows
         public const uint DISABLED = 0x00000002;
     }
 
-
     public struct PM
     {
         public const uint NOREMOVE = 0x0000;
         public const uint REMOVE = 0x0001;
-    }
-
-    // cursor values
-    public class IDC
-    {
-        public static readonly IntPtr APPSTARTING = new IntPtr(32650);
-        public static readonly IntPtr ARROW = new IntPtr(32512);
     }
 
     public struct OCR
@@ -906,9 +1331,6 @@ namespace Platform.Support.Windows
         public IntPtr lpData;
     }
 
-    // delegate signagure for EnumWindows callback
-    public delegate bool EnumWindowsDelegate(IntPtr hwnd, GCHandle lParam);
-
     /// <summary>
     /// Constants for window styles
     /// </summary>
@@ -985,26 +1407,6 @@ namespace Platform.Support.Windows
         public const int RESTORETOMAXIMIZED = 0x0002;
     }
 
-    [Flags]
-    public enum AW : uint
-    {
-        HOR_POSITIVE = 0x00000001,
-        HOR_NEGATIVE = 0x00000002,
-        VER_POSITIVE = 0x00000004,
-        VER_NEGATIVE = 0x00000008,
-        CENTER = 0x00000010,
-        HIDE = 0x00010000,
-        ACTIVATE = 0x00020000,
-        SLIDE = 0x00040000,
-        BLEND = 0x00080000
-    }
-
-    public enum GA
-    {
-        PARENT = 1,
-        ROOT = 2,
-        ROOTOWNER = 3
-    }
 
     /// <summary>
     /// Constants for SetWindowPos
@@ -1081,7 +1483,7 @@ namespace Platform.Support.Windows
         public const UInt32 SETSTYLE = 0x000000F4;
     }
 
-    public struct ButtonStyles
+    public struct BUTTONSTYLES
     {
         public const long BS_PUSHBUTTON = 0x00000000L;
         public const long BS_DEFPUSHBUTTON = 0x00000001L;
@@ -1287,43 +1689,7 @@ namespace Platform.Support.Windows
         public const short PRESSED = 0xF0;
     }
 
-    /// <summary>
-    /// Modifiers for mouse-events
-    /// </summary>
-    [Flags]
-    public enum MK : uint
-    {
-        LBUTTON = 0x0001,
-        RBUTTON = 0x0002,
-        SHIFT = 0x0004,
-        CONTROL = 0x0008,
-        MBUTTON = 0x0010,
-        XBUTTON1 = 0x0020,
-        XBUTTON2 = 0x0040
-    }
 
-    /// <summary>
-    /// Enumeration for windows hook types
-    /// </summary>
-    public enum WH : int
-    {
-        MSGFILTER = -1,
-        JOURNALRECORD = 0,
-        JOURNALPLAYBACK = 1,
-        KEYBOARD = 2,
-        GETMESSAGE = 3,
-        CALLWNDPROC = 4,
-        CBT = 5,
-        SYSMSGFILTER = 6,
-        MOUSE = 7,
-        HARDWARE = 8,
-        DEBUG = 9,
-        SHELL = 10,
-        FOREGROUNDIDLE = 11,
-        CALLWNDPROCRET = 12,
-        KEYBOARD_LL = 13,
-        MOUSE_LL = 14
-    }
 
     public struct HWND
     {
@@ -1369,43 +1735,7 @@ namespace Platform.Support.Windows
         public static readonly IntPtr UP = new IntPtr(0x8000);
     }
 
-    /// <summary>
-    /// Active Accessibilty event constants (note: only the constants we are
-    /// currently using are defined -- there are many more available in Winuser.h)
-    /// </summary>
-    public enum EVENT_SYSTEM : uint
-    {
-        /*
-         * EVENT_SYSTEM_CAPTURESTART
-         * EVENT_SYSTEM_CAPTUREEND
-         * Sent when a window takes the capture and releases the capture.
-         */
-        CAPTURESTART = 0x0008,
-        CAPTUREEND = 0x0009,
 
-        /*
-        * Drag & Drop
-        * EVENT_SYSTEM_DRAGDROPSTART
-        * EVENT_SYSTEM_DRAGDROPEND
-        * Send the START notification just before going into drag&drop loop.  Send
-        * the END notification just after canceling out.
-        * Note that it is up to apps and OLE to generate this, since the system
-        * doesn't know.  Like EVENT_SYSTEM_SOUND, it will be a while before this
-        * is prevalent.
-        */
-        DRAGDROPSTART = 0x000E,
-        DRAGDROPEND = 0x000F
-    }
-
-    [Flags]
-    public enum WINEVENT : uint
-    {
-        OUTOFCONTEXT = 0x0000,  // Events are ASYNC
-        SKIPOWNTHREAD = 0x0001,  // Don't call back for events on installer's thread
-        SKIPOWNPROCESS = 0x0002,  // Don't call back for events on installer's process
-        INCONTEXT = 0x0004   // Events are SYNC (invalid in .NET because it requires
-        // the client dll to be injected into every process)
-    }
 
     public struct TTM
     {
@@ -1480,172 +1810,7 @@ namespace Platform.Support.Windows
         public ushort wCreatorVersion;
     }
 
-    //for commong dialogs
-    /// <summary>
-    /// See the documentation for OPENFILENAME
-    /// </summary>
-    public struct OpenFileName
-    {
-        public Int32 lStructSize;
-        public IntPtr hwndOwner;
-        public IntPtr hInstance;
-        public IntPtr lpstrFilter;
-        public IntPtr lpstrCustomFilter;
-        public Int32 nMaxCustFilter;
-        public Int32 nFilterIndex;
-        public IntPtr lpstrFile;
-        public Int32 nMaxFile;
-        public IntPtr lpstrFileTitle;
-        public Int32 nMaxFileTitle;
-        public IntPtr lpstrInitialDir;
-        public IntPtr lpstrTitle;
-        public Int32 Flags;
-        public Int16 nFileOffset;
-        public Int16 nFileExtension;
-        public IntPtr lpstrDefExt;
-        public Int32 lCustData;
-        public OfnHookProc lpfnHook;
-        public IntPtr lpTemplateName;
-        public IntPtr pvReserved;
-        public Int32 dwReserved;
-        public Int32 FlagsEx;
-    };
 
-    public delegate IntPtr OfnHookProc(IntPtr hWnd, UInt32 msg, Int32 wParam, Int32 lParam);
-
-    /// <summary>
-    /// Values that can be placed in the OPENFILENAME structure, we don't use all of them
-    /// </summary>
-    public class OpenFileNameFlags
-    {
-        public const Int32 ReadOnly = 0x00000001;
-        public const Int32 OverWritePrompt = 0x00000002;
-        public const Int32 HideReadOnly = 0x00000004;
-        public const Int32 NoChangeDir = 0x00000008;
-        public const Int32 ShowHelp = 0x00000010;
-        public const Int32 EnableHook = 0x00000020;
-        public const Int32 EnableTemplate = 0x00000040;
-        public const Int32 EnableTemplateHandle = 0x00000080;
-        public const Int32 NoValidate = 0x00000100;
-        public const Int32 AllowMultiSelect = 0x00000200;
-        public const Int32 ExtensionDifferent = 0x00000400;
-        public const Int32 PathMustExist = 0x00000800;
-        public const Int32 FileMustExist = 0x00001000;
-        public const Int32 CreatePrompt = 0x00002000;
-        public const Int32 ShareAware = 0x00004000;
-        public const Int32 NoReadOnlyReturn = 0x00008000;
-        public const Int32 NoTestFileCreate = 0x00010000;
-        public const Int32 NoNetworkButton = 0x00020000;
-        public const Int32 NoLongNames = 0x00040000;
-        public const Int32 Explorer = 0x00080000;
-        public const Int32 NoDereferenceLinks = 0x00100000;
-        public const Int32 LongNames = 0x00200000;
-        public const Int32 EnableIncludeNotify = 0x00400000;
-        public const Int32 EnableSizing = 0x00800000;
-        public const Int32 DontAddToRecent = 0x02000000;
-        public const Int32 ForceShowHidden = 0x10000000;
-    };
-
-    /// <summary>
-    /// Values that can be placed in the FlagsEx field of the OPENFILENAME structure
-    /// </summary>
-    public class OpenFileNameFlagsEx
-    {
-        public const Int32 NoPlacesBar = 0x00000001;
-    };
-
-    /// <summary>
-    /// Win32 window style constants
-    /// We use them to set up our child window
-    /// </summary>
-    internal class DlgStyle
-    {
-        public const Int32 DsSetFont = 0x00000040;
-        public const Int32 Ds3dLook = 0x00000004;
-        public const Int32 DsControl = 0x00000400;
-        public const Int32 WsChild = 0x40000000;
-        public const Int32 WsClipSiblings = 0x04000000;
-        public const Int32 WsVisible = 0x10000000;
-        public const Int32 WsGroup = 0x00020000;
-        public const Int32 SsNotify = 0x00000100;
-    };
-
-    /// <summary>
-    /// Win32 "extended" window style constants
-    /// </summary>
-    internal class ExStyle
-    {
-        public const Int32 WsExNoParentNotify = 0x00000004;
-        public const Int32 WsExControlParent = 0x00010000;
-    };
-
-    /// <summary>
-    /// An in-memory Win32 dialog template
-    /// Note: this has a very specific structure with a single static "label" control
-    /// See documentation for DLGTEMPLATE and DLGITEMTEMPLATE
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public class DlgTemplate
-    {
-        // The dialog template - see documentation for DLGTEMPLATE
-        public Int32 style = DlgStyle.Ds3dLook | DlgStyle.DsControl | DlgStyle.WsChild | DlgStyle.WsClipSiblings | DlgStyle.SsNotify;
-        public Int32 extendedStyle = ExStyle.WsExControlParent;
-        public Int16 numItems = 1;
-        public Int16 x = 0;
-        public Int16 y = 0;
-        public Int16 cx = 0;
-        public Int16 cy = 0;
-        public Int16 reservedMenu = 0;
-        public Int16 reservedClass = 0;
-        public Int16 reservedTitle = 0;
-
-        // Single dlg item, must be dword-aligned - see documentation for DLGITEMTEMPLATE
-        public Int32 itemStyle = DlgStyle.WsChild;
-        public Int32 itemExtendedStyle = ExStyle.WsExNoParentNotify;
-        public Int16 itemX = 0;
-        public Int16 itemY = 0;
-        public Int16 itemCx = 0;
-        public Int16 itemCy = 0;
-        public Int16 itemId = 0;
-        public UInt16 itemClassHdr = 0xffff;	// we supply a constant to indicate the class of this control
-        public Int16 itemClass = 0x0082;	// static label control
-        public Int16 itemText = 0x0000;	// no text for this control
-        public Int16 itemData = 0x0000;	// no creation data for this control
-    };
-
-    /// <summary>
-    /// The possible notification messages that can be generated by the OpenFileDialog
-    /// We only look for CDN_SELCHANGE
-    /// </summary>
-    public class CommonDlgNotification
-    {
-        //this was original definition but it errors in corext due asmmeta storing it as negative value
-        //private const UInt16 First =			unchecked((UInt16)((UInt16)0 - (UInt16)601));
-        //this is the same value
-        private const Int16 First = -601;
-
-        public const Int16 InitDone = (First - 0x0000);
-        public const Int16 SelChange = (First - 0x0001);
-        public const Int16 FolderChange = (First - 0x0002);
-        public const Int16 ShareViolation = (First - 0x0003);
-        public const Int16 Help = (First - 0x0004);
-        public const Int16 FileOk = (First - 0x0005);
-        public const Int16 TypeChange = (First - 0x0006);
-        public const Int16 IncludeItem = (First - 0x0007);
-    }
-
-    /// <summary>
-    /// Messages that can be send to the common dialogs
-    /// We only use CDM_GETFILEPATH
-    /// </summary>
-    public class CommonDlgMessage
-    {
-        private const UInt16 User = 0x0400;
-        private const UInt16 First = User + 100;
-
-        public const UInt16 GetFilePath = First + 0x0001;
-        public const UInt16 GetFolderPath = First + 0x0002;
-    };
 
     /// <summary>
     /// Part of the notification messages sent by the common dialogs
@@ -1675,5 +1840,91 @@ namespace Platform.Support.Windows
         public IntPtr ipFile;
     };
 
+    [StructLayout(LayoutKind.Sequential)]
+    public struct ICONINFO
+    {
+        public bool fIcon;
+        public Int32 xHotspot;
+        public Int32 yHotspot;
+        public IntPtr hbmMask;
+        public IntPtr hbmColor;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct BLENDFUNCTION
+    {
+        public byte BlendOp;
+        public byte BlendFlags;
+        public byte SourceConstantAlpha;
+        public byte AlphaFormat;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct GETTEXTEX
+    {
+        public Int32 cb;
+        public Int32 flags;
+        public Int32 codepage;
+        public IntPtr lpDefaultChar;
+        public IntPtr lpUsedDefChar;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct FLASHWINFO
+    {
+        public FLASHWINFO(IntPtr hwnd, Int32 dwFlags, Int32 uCount, Int32 dwTimeout)
+        {
+            this.hwnd = hwnd;
+            this.dwFlags = dwFlags;
+            this.uCount = uCount;
+            this.dwTimeout = dwTimeout;
+
+            // The size of the IntPtr + 4 Int32s
+            cbSize = IntPtr.Size + 16;
+        }
+
+        public Int32 cbSize;
+        public IntPtr hwnd;
+        public Int32 dwFlags;
+        public Int32 uCount;
+        public Int32 dwTimeout;
+    }
+
+    public struct TRACKMOUSEEVENT
+    {
+        public int cbSize;
+        public uint dwFlags;
+        public IntPtr hwndTrack;
+        public uint dwHoverTime;
+    }
+
+    public struct FLASHSTATUS
+    {
+        public static Int32 FLASHW_STOP = 0;
+        public static Int32 FLASHW_CAPTION = 1;
+        public static Int32 FLASHW_TRAY = 2;
+        public static Int32 FLASHW_ALL = (FLASHSTATUS.FLASHW_CAPTION | FLASHSTATUS.FLASHW_TRAY);
+        public static Int32 FLASHW_TIMER = 4;
+        public static Int32 FLASHW_TIMERNOFG = 12;
+    };
+
+    public struct GETTEXTLENGTHEX
+    {
+        public Int32 flags;
+        public Int32 codepage;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct DRAWTEXTPARAMS
+    {
+        public uint cbSize;
+        public int iTabLength;
+        public int iLeftMargin;
+        public int iRightMargin;
+        public uint uiLengthDrawn;
+    }
+
+
+    #endregion
 
 }

@@ -1,5 +1,4 @@
 ﻿using Platform.Model.SPS.Attributes;
-using Platform.Model.SPS.Interfaces;
 using Platform.Support.Reflection;
 using System;
 using System.Collections.Generic;

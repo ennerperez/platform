@@ -10,14 +10,14 @@ namespace Platform.Support
     {
 #endif
 
-        namespace Attributes.AssemblyProduct
+        namespace Attributes
         {
 
             [AttributeUsage(AttributeTargets.Assembly)]
 #if !CORE
             internal class ProductLevelAttribute : global::System.Attribute
 #else
-            public class ProductLevelAttribute : global::System.Attribute
+        public class ProductLevelAttribute : global::System.Attribute
 #endif
             {
 
@@ -32,12 +32,12 @@ namespace Platform.Support
 
                 public virtual ProductLevels ProductLevel
                 {
-                    get { return this.productlevel; }
+                    get { return productlevel; }
                 }
 
                 public virtual int LevelNumber
                 {
-                    get { return this.levelnumber; }
+                    get { return levelnumber; }
                 }
 
             }

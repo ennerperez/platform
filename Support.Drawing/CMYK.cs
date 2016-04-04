@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Support.Drawing
 {
@@ -10,22 +7,22 @@ namespace Platform.Support.Drawing
     public static partial class Helpers
     {
 
-        public static Color ToColor(CMYK cmyk)
+        public static Color ToColor(CMYK value)
         {
-            if (cmyk.Cyan == 0 && cmyk.Magenta == 0 && cmyk.Yellow == 0 && cmyk.Key == 1)
+            if (value.Cyan == 0 && value.Magenta == 0 && value.Yellow == 0 && value.Key == 1)
             {
-                return Color.FromArgb(cmyk.Alpha, 0, 0, 0);
+                return Color.FromArgb(value.Alpha, 0, 0, 0);
             }
 
-            double c = cmyk.Cyan * (1 - cmyk.Key) + cmyk.Key;
-            double m = cmyk.Magenta * (1 - cmyk.Key) + cmyk.Key;
-            double y = cmyk.Yellow * (1 - cmyk.Key) + cmyk.Key;
+            double c = value.Cyan * (1 - value.Key) + value.Key;
+            double m = value.Magenta * (1 - value.Key) + value.Key;
+            double y = value.Yellow * (1 - value.Key) + value.Key;
 
             int r = (int)Math.Round((1 - c) * 255);
             int g = (int)Math.Round((1 - m) * 255);
             int b = (int)Math.Round((1 - y) * 255);
 
-            return Color.FromArgb(cmyk.Alpha, r, g, b);
+            return Color.FromArgb(value.Alpha, r, g, b);
         }
 
         public static CMYK ToCMYK(Color color)
@@ -45,6 +42,21 @@ namespace Platform.Support.Drawing
             y = (y - k) / (1 - k);
 
             return new CMYK(c, m, y, k, color.A);
+        }
+
+    }
+
+    public static partial class Extensions
+    {
+
+        public static void FromCMYK(this Color @this, CMYK value)
+        {
+            @this = Helpers.ToColor(value);
+        }
+
+        public static CMYK ToCMYK(this Color @this)
+        {
+            return Helpers.ToCMYK(@this);
         }
 
     }

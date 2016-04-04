@@ -13,9 +13,6 @@ namespace Platform.Support.Drawing
     public static partial class Helpers
     {
 
-        [DllImport("Kernel32.dll", EntryPoint = "CopyMemory")]
-        private extern static void CopyMemory(IntPtr dest, IntPtr src, uint length);
-
         public static Image FromFile(string filename, bool safe = true)
         {
             if (safe)
@@ -31,7 +28,7 @@ namespace Platform.Support.Drawing
                     var targetData = targetImage.LockBits(
                       new Rectangle(0, 0, sourceImage.Width, sourceImage.Height),
                       ImageLockMode.WriteOnly, targetImage.PixelFormat);
-                    CopyMemory(targetData.Scan0, sourceData.Scan0,
+                    NativeMethods.CopyMemory(targetData.Scan0, sourceData.Scan0,
                       (uint)sourceData.Stride * (uint)sourceData.Height);
                     sourceImage.UnlockBits(sourceData);
                     targetImage.UnlockBits(targetData);

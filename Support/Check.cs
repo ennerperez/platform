@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Platform.Support
@@ -25,14 +26,14 @@ namespace Platform.Support
             return value;
         }
 
-        public static string NotEmpty(string value, string parameterName)
+        public static string NotEmpty(string value, [CallerMemberName] string parameterName = "")
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                //Strings.ArgumentIsNullOrWhitespace(parameterName)
-                throw new ArgumentException(string.Format("The argument '{0}' cannot be null, empty or contain only white space."));
+                throw new ArgumentException(string.Format("The argument '{0}' cannot be null, empty or contain only white space.", parameterName));
             }
             return value;
         }
+
     }
 }

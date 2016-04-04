@@ -29,9 +29,7 @@ namespace Platform.Support.IO
                 bw.Write(data);
                 bw.Flush();
                 bw.Close();
-                fs.Close();
                 bw = null;
-                fs.Dispose();
 
             }
             catch
@@ -55,8 +53,6 @@ namespace Platform.Support.IO
                 _tempByte = _BinaryReader.ReadBytes(Convert.ToInt32(_NumBytes));
                 file = null;
                 _NumBytes = 0;
-                _FStream.Close();
-                _FStream.Dispose();
                 _BinaryReader.Close();
                 return _tempByte;
             }

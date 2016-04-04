@@ -4,32 +4,59 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+#if !(PORTABLE)
+using System.Collections.Specialized;
+#endif
 
 namespace Platform.Model
 {
 
-    public abstract partial class Entities<TEntity, TKey> :
+    public abstract class Entities<TEntity, TKey> :
 #if !(PORTABLE)
  ObservableCollection<TEntity>
 #else
- List<TEntity>
+ Collection<TEntity>
 #endif
  where TEntity : IEntity<TKey>
     {
 
 #if (!PORTABLE)
-        public Entities()
+        public Entities() : base()
         {
-            this.CollectionChanged += OnCollectionChanged;
         }
+
+        public virtual Dictionary<TKey, TEntity> ToDictionary()
+        {
+            Dictionary<TKey, TEntity> _return = new Dictionary<TKey, TEntity>();
+            foreach (TEntity item in this.ToList())
+            {
+                _return.Add(item.Id, item);
+            }
+            return _return;
+        }
+
+        public virtual void OnChanged()
+        {
+            if (Changed != null)
+                Changed(this, EventArgs.Empty);
+        }
+        public event EventHandler Changed;
+
+        protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+        {
+            base.OnCollectionChanged(e);
+            if (!disposedValue)
+                OnChanged();
+        }
+
 #endif
 
         public TEntity GetItem(TKey id)
         {
 #if (!PORTABLE)
-            return this.Items.Where(i => i.Id.Equals(id)).FirstOrDefault();
+            return this.Items.FirstOrDefault(i => i.Id.Equals(id));
 #else
-            return this.Where(i => i.Id.Equals(id)).FirstOrDefault();
+            return this.FirstOrDefault(i => i.Id.Equals(id));
 #endif
         }
 
@@ -42,7 +69,7 @@ namespace Platform.Model
         public virtual void OnLoad(object e)
         {
             IsLoaded = true;
-            if (Loaded != null) { Loaded(this, new EventArgs()); }
+            if (Loaded != null) { Loaded(this, EventArgs.Empty); }
             IsLoading = false;
         }
         public event EventHandler Loaded;
@@ -51,7 +78,7 @@ namespace Platform.Model
         public virtual void OnLoading(object e)
         {
             IsLoaded = false;
-            if (Loading != null) { Loading(this, new EventArgs()); }
+            if (Loading != null) { Loading(this, EventArgs.Empty); }
             IsLoading = true;
         }
         public event EventHandler Loading;
@@ -68,35 +95,8 @@ namespace Platform.Model
         public abstract void Load();
         public virtual void Load(bool async) { }
 
-#if (!PORTABLE)
+#region IDisposable Support
 
-        public virtual Dictionary<TKey, TEntity> ToDictionary()
-        {
-            Dictionary<TKey, TEntity> _return = new Dictionary<TKey, TEntity>();
-            foreach (TEntity item in this.ToList())
-            {
-                _return.Add(item.Id, item);
-            }
-            return _return;
-        }
-
-        public virtual void OnChanged()
-        {
-            if (Changed != null) { Changed(this, new EventArgs()); }
-        }
-        public event EventHandler Changed;
-
-        private void OnCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            if (!this.disposedValue)
-            {
-                this.OnChanged();
-            }
-        }
-
-#endif
-
-        #region IDisposable Support
         // Para detectar llamadas redundantes
         private bool disposedValue;
 
@@ -121,14 +121,6 @@ namespace Platform.Model
             this.disposedValue = true;
         }
 
-        // TODO: invalidar Finalize() sólo si la instrucción Dispose(ByVal disposing As Boolean) anterior tiene código para liberar recursos no administrados.
-        //Protected Overrides Sub Finalize()
-        //    ' No cambie este código. Ponga el código de limpieza en la instrucción Dispose(ByVal disposing As Boolean) anterior.
-        //    Dispose(False)
-        //    MyBase.Finalize()
-        //End Sub
-
-        // Visual Basic agregó este código para implementar correctamente el modelo descartable.
         public void Dispose()
         {
             // No cambie este código. Coloque el código de limpieza en Dispose(disposing As Boolean).
@@ -136,14 +128,13 @@ namespace Platform.Model
             GC.SuppressFinalize(this);
         }
 
-        #endregion
+#endregion
 
     }
 
-
-    public abstract partial class Entities<TEntity> : Entities<TEntity, long> where TEntity : IEntity<long>
+    public abstract class Entities<TEntity> : Entities<TEntity, long> where TEntity : IEntity<long>
     {
-        public Entities():base()
+        public Entities() : base()
         {
         }
     }

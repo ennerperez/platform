@@ -30,6 +30,7 @@
     <DefineConstants>TRACE;CORE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -92,6 +93,7 @@
     <Compile Include="Attributes\BuildDateAttribute.cs" />
     <Compile Include="Check.cs" />
     <Compile Include="Extensions\Dates.cs" />
+    <Compile Include="Extensions\Debug.cs" />
     <Compile Include="Extensions\Strings.cs" />
     <Compile Include="Extensions\Enums.cs" />
     <Compile Include="Extensions\Types.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\Reflections.cs" />
     <Compile Include="Helpers\Types.cs" />
+    <Compile Include="IO\NativeMethods.cs" />
     <Compile Include="IsNull.cs" />
     <Compile Include="Managers\BrandingManager.cs" />
     <Compile Include="Collections\Extensions.cs" />
@@ -147,9 +150,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.3.0\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.3.0\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.5.0\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.5.0\build\Microsoft.Bcl.Build.Symbols.targets'))" />
   </Target>
-  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.3.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.3.0\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.5.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.5.0\build\Microsoft.Bcl.Build.Symbols.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

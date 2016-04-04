@@ -10,6 +10,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Model entity & IRecord implementation
 - Data attributes similar to System.ComponentModel.DataAnnotations
 - Following [SemVer](http://semver.org) properly with AppVeyor.
+- Solution build process
+- Solution projects references
 
 ### Fixed
 - Audit object
@@ -19,6 +21,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - AppVeyor integration
 - Tag attribute
+- Initial Support Web PCL
 
 ### Removed
 - Pictograms

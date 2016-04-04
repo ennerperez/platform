@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
 using Platform.Support.Windows;
+using Platform.Support.Windows.Gdi32;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -865,16 +866,16 @@ namespace Platform.Presentation.Windows.Forms.Controls
             IntPtr hdc = args.Graphics.GetHdc();
             try
             {
-                Gdi32.GraphicsMode oldGraphicsMode = Gdi32.SetGraphicsMode(hdc, Gdi32.GraphicsMode.Advanced);
+                GraphicsMode oldGraphicsMode = NativeMethods.SetGraphicsMode(hdc, GraphicsMode.Advanced);
 
-                Gdi32.XFORM xformOrig;
-                Gdi32.GetWorldTransform(hdc, out xformOrig);
+                XFORM xformOrig;
+                NativeMethods.GetWorldTransform(hdc, out xformOrig);
                 try
                 {
-                    Gdi32.XFORM xform = xformOrig;
+                    XFORM xform = xformOrig;
                     xform.eDx -= relativeChildLocation.X;
                     xform.eDy -= relativeChildLocation.Y;
-                    Gdi32.SetWorldTransform(hdc, ref xform);
+                    NativeMethods.SetWorldTransform(hdc, ref xform);
 
                     using (Graphics g = Graphics.FromHdc(hdc))
                     {
@@ -883,8 +884,8 @@ namespace Platform.Presentation.Windows.Forms.Controls
                 }
                 finally
                 {
-                    Gdi32.SetWorldTransform(hdc, ref xformOrig);
-                    Gdi32.SetGraphicsMode(hdc, oldGraphicsMode);
+                    NativeMethods.SetWorldTransform(hdc, ref xformOrig);
+                    NativeMethods.SetGraphicsMode(hdc, oldGraphicsMode);
                 }
             }
             finally

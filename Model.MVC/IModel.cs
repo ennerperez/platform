@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Platform.Model.MVC
 {
-    public interface IModel//: ICloneable
+    public interface IModel
     {
     }
 }

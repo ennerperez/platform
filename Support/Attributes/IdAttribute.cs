@@ -10,14 +10,14 @@ namespace Platform.Support
     {
 #endif
 
-        namespace Attributes.AssemblyCompany
+        namespace Attributes
         {
 
             [AttributeUsage(AttributeTargets.Assembly)]
 #if !CORE
             internal class IdAttribute : global::System.Attribute
 #else
-            public class IdAttribute : global::System.Attribute
+        public class IdAttribute : global::System.Attribute
 #endif
             {
 

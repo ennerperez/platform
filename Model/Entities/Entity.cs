@@ -83,7 +83,7 @@ namespace Platform.Model
             return Id.GetHashCode();
         }
 
-#if (!PORTABLE)
+#if !PORTABLE
 
         public object Clone()
         {

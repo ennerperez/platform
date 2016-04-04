@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Platform.Model.SPS.Interfaces
+namespace Platform.Model.SPS
 {
     /// <summary>
     /// This interface is implemented all plugins.

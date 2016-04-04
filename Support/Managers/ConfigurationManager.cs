@@ -65,13 +65,14 @@ namespace Platform.Support.Configuration
         }
 
         #region IDisposable Support
+
         // Para detectar llamadas redundantes
         private bool disposedValue;
-
+        
         // IDisposable
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposedValue)
+            if (!disposedValue)
             {
                 if (disposing)
                 {
@@ -81,10 +82,10 @@ namespace Platform.Support.Configuration
                 // TODO: liberar recursos no administrados (objetos no administrados) e invalidar Finalize() below.
                 // TODO: Establecer campos grandes como Null.
             }
-            this.disposedValue = true;
+            disposedValue = true;
         }
 
-        void IDisposable.Dispose()
+        public void Dispose()
         {
             // No cambie este código. Coloque el código de limpieza en Dispose(disposing As Boolean).
             Dispose(true);

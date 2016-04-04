@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Windows.Forms
@@ -82,7 +83,7 @@ namespace Platform.Presentation.Windows.Forms
 
         public static bool IsInDesignMode(this Control @this)
         {
-            return System.Reflection.Assembly.GetEntryAssembly().Location.Contains("VisualStudio");
+            return Assembly.GetEntryAssembly().Location.Contains("VisualStudio");
         }
 
         #endregion

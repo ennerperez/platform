@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Platform.Model.SPS.Interfaces.Runnable
+namespace Platform.Model.SPS.Runnable
 {
     /// <summary>
     /// Interface to control modules that can run in self thread.

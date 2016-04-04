@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: AssemblyInformationalVersion("3.1.0.0")]
 
 #if (!DEBUG)
-[assembly: Platform.Support.Attributes.AssemblyProduct.ProductLevel(Platform.Support.ProductLevels.RTW)]
+[assembly: Platform.Support.Attributes.ProductLevel(Platform.Support.ProductLevels.RTW)]
 #else
-[assembly: Platform.Support.Attributes.AssemblyProduct.ProductLevel(Platform.Support.ProductLevels.Preview)]
+[assembly: Platform.Support.Attributes.ProductLevel(Platform.Support.ProductLevels.Preview)]
 #endif

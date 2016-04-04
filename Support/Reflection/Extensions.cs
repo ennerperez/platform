@@ -62,7 +62,7 @@ namespace Platform.Support.Reflection
 
         public static string GetDirectory(this Assembly assembly)
         {
-            if (assembly == null) assembly = Assembly.GetExecutingAssembly();
+            if (assembly == null) assembly = Assembly.GetEntryAssembly();
             string path = System.IO.Path.GetDirectoryName(assembly.GetName().CodeBase);
             System.IO.FileInfo file = new System.IO.FileInfo(path);
             return file.Directory.FullName;

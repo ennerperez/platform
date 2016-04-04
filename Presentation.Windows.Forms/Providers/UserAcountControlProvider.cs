@@ -1,4 +1,5 @@
 ﻿using Platform.Support.Windows;
+using Platform.Support.Windows.User32;
 using System;
 using System.Collections;
 using System.ComponentModel;

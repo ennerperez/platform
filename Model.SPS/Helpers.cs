@@ -47,7 +47,7 @@ namespace Platform.Model.SPS
         {
             try
             {
-                return (new FileInfo(Assembly.GetExecutingAssembly().Location)).Directory.FullName;
+                return (new FileInfo(Assembly.GetEntryAssembly().Location)).Directory.FullName;
             }
             catch (Exception)
             {

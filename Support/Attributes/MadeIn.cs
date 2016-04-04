@@ -9,7 +9,7 @@ namespace Platform.Support
     namespace Core
     {
 #endif
-    namespace Attributes.AssemblyProduct
+    namespace Attributes
     {
 
         /// <summary>
@@ -25,8 +25,8 @@ namespace Platform.Support
 
             public MadeInAttribute(string countryname, string countrycode = null)
             {
-                this.countryName = countryname;
-                this.countryCode = countrycode;
+                countryName = countryname;
+                countryCode = countrycode;
             }
 
             public virtual string CountryName

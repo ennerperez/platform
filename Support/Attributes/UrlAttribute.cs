@@ -9,7 +9,7 @@ namespace Platform.Support
     namespace Core
     {
 #endif
-        namespace Attributes.AssemblyCompany
+        namespace Attributes
         {
 
             [AttributeUsage(AttributeTargets.Assembly)]
@@ -28,7 +28,7 @@ namespace Platform.Support
 
                 public virtual Uri CompanyUrl
                 {
-                    get { return this.url; }
+                    get { return url; }
                 }
             }
 
