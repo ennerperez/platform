@@ -5,13 +5,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Version: major.minor.{build}.revision
 * Order: Changed - Fixed - Added - Removed
 
-## [3.1.1.0] - [UNRELEASED]
+## [3.1.1.0] - 2016-04-03
 ### Changed
 - Model entity & IRecord implementation
 - Data attributes similar to System.ComponentModel.DataAnnotations
 - Following [SemVer](http://semver.org) properly with AppVeyor.
 - Solution build process
 - Solution projects references
+- Windows API NativeMethods
 
 ### Fixed
 - Audit object
@@ -22,6 +23,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - AppVeyor integration
 - Tag attribute
 - Initial Support Web PCL
+- Debug extensions
 
 ### Removed
 - Pictograms

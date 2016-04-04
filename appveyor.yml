@@ -6,16 +6,15 @@ branches:
   except:
   - gh-pages
 skip_non_tags: true
-cache:
-- packages -> **\packages.config
+configuration: Release
+platform: Any CPU
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.Version.*'
   assembly_version: '{version}'
   assembly_file_version: '{version}'
-  assembly_informational_version: '{version}-{branch}'
-platform: Any CPU
-configuration: Release
+  assembly_informational_version: '{version}'
+cache: packages -> **\packages.config
 build:
   parallel: true
   verbosity: detailed
