@@ -13,11 +13,13 @@ namespace Platform.Support
             if (value != null && value.GetType() == typeof(DateTime))
             {
                 if (Convert.ToDateTime(value).ToString("d") != Convert.ToDateTime(null).ToString("d"))
-                {
                     return Convert.ToDateTime(value).ToString("d");
-                }
             }
-            return replacement;
+
+            if (value == null)
+                return replacement;
+
+            return value.ToString();
         }
 
         public static string Cast(DateTime? value, DateTime? replacement = null)
@@ -25,11 +27,16 @@ namespace Platform.Support
             if (value != null && value.GetType() == typeof(DateTime))
             {
                 if (Convert.ToDateTime(value).ToString("d") != Convert.ToDateTime(null).ToString("d"))
-                {
                     return Convert.ToDateTime(value).ToString("d");
-                }
             }
-            return Convert.ToDateTime(replacement).ToString("d");
+            
+            if (value != null)
+                return Convert.ToDateTime(value).ToString("d");
+            else if (replacement != null)
+                return Convert.ToDateTime(replacement).ToString("d");
+
+            return DateTime.MinValue.ToString("d");
+
         }
 
     }

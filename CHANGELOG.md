@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Version: major.minor.{build}.revision
 * Order: Changed - Fixed - Added - Removed
 
+## [3.1.7.0] - Unreleased
+### Fixed
+- IsNull Cast null handler
+
 ## [3.1.6.0] - 2016-04-04
 ### Changed
 - Model entity & IRecord implementation
