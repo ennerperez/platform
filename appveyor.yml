@@ -17,7 +17,7 @@ assembly_info:
 cache: packages -> **\packages.config
 build:
   parallel: true
-  verbosity: detailed
+  verbosity: normal
 artifacts:
 - path: '**\*.nupkg'
   name: nupkg
@@ -26,5 +26,4 @@ deploy:
   auth_token:
     secure: UKi94d2MuFkTQQi/a/fCIk77vNm1Iqi90f7PkeJKs8HVvCuGGhxlqNKKblKL6iL+
   artifact: nupkg
-  draft: false
   force_update: true
