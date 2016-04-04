@@ -24,5 +24,11 @@ See the [changelog](CHANGELOG.md) for changes.
 - [ ] Build tools
 - [x] Support Web PCL
 
+## Implementing in your application
+
+**Add the library to your project**
+
+Right click on your project and click 'Manage NuGet Packages...'. Search for 'Platform' and click on install. Once installed the library will be included in your project references.
+
 ## License
 [The MIT License (MIT)](LICENSE)
