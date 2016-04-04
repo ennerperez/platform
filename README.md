@@ -4,6 +4,9 @@
 Libset for agile software development
 
 [![Build status](https://ci.appveyor.com/api/projects/status/947d3r6vguorvwnt?svg=true)](https://ci.appveyor.com/project/ennerperez/platform)
+[![NuGet](http://img.shields.io/nuget/v/Platform.Support.Core.svg)](https://www.nuget.org/packages/Platform.Support.Core/)
+
+
 
 ---------------------------------------
 

@@ -8,9 +8,9 @@ using System.Reflection;
 //      Revision
 //
 
-[assembly: AssemblyVersion("3.1.3.0")]
-[assembly: AssemblyFileVersion("3.1.3.0")]
-[assembly: AssemblyInformationalVersion("3.1.3.0")]
+[assembly: AssemblyVersion("3.1.4.0")]
+[assembly: AssemblyFileVersion("3.1.4.0")]
+[assembly: AssemblyInformationalVersion("3.1.4.0")]
 
 #if (!DEBUG)
 [assembly: Platform.Support.Attributes.ProductLevel(Platform.Support.ProductLevels.RTW)]

@@ -56,10 +56,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reporting", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.MVC", "Model.MVC\Model.MVC.csproj", "{8A7C7FBF-A028-4D54-8E92-6D8C4FC3A2FB}"
 	ProjectSection(ProjectDependencies) = postProject
+		{8E95A50B-545E-4092-94E3-7638D4C8A4F7} = {8E95A50B-545E-4092-94E3-7638D4C8A4F7}
 		{C4C6EA21-5740-42F0-990B-BE703B1F8B66} = {C4C6EA21-5740-42F0-990B-BE703B1F8B66}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.MVC.PCL", "Model.MVC.PCL\Model.MVC.PCL.csproj", "{C4C6EA21-5740-42F0-990B-BE703B1F8B66}"
+	ProjectSection(ProjectDependencies) = postProject
+		{44448EE1-AE0E-4610-A6BE-208EB7FBCFFB} = {44448EE1-AE0E-4610-A6BE-208EB7FBCFFB}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".resources", ".resources", "{438EDCA0-3C84-4A67-903C-BC1E306C227D}"
 	ProjectSection(SolutionItems) = preProject

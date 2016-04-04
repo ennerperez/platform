@@ -15,13 +15,11 @@ assembly_info:
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
 cache: packages -> **\packages.config
-nuget:
-  account_feed: true
 build:
   parallel: true
   verbosity: normal
 artifacts:
-- path: '**\*.nupkg'
+- path: 'Build\**\*.nupkg'
   name: nupkg
 deploy:
 - provider: GitHub
