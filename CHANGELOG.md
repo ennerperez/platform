@@ -2,14 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-* Version: major.minor.{build}.revision
-* Order: Changed - Fixed - Added - Removed
-
-## [3.1.7.0] - Unreleased
+## [3.1.7] - 2016-04-22
 ### Fixed
 - IsNull Cast null handler
 
-## [3.1.6.0] - 2016-04-04
+## [3.1.6] - 2016-04-04
 ### Changed
 - Model entity & IRecord implementation
 - Data attributes similar to System.ComponentModel.DataAnnotations
