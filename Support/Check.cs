@@ -26,7 +26,11 @@ namespace Platform.Support
             return value;
         }
 
+#if NETFX_45
         public static string NotEmpty(string value, [CallerMemberName] string parameterName = "")
+#else
+        public static string NotEmpty(string value, string parameterName = "")
+#endif
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -34,6 +38,7 @@ namespace Platform.Support
             }
             return value;
         }
+
 
     }
 }

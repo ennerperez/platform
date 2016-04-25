@@ -1,9 +1,14 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
+
+#if NETFX_45 && !PORTABLE
 
 namespace Platform.Support.Web
 {
+
     public static class Helpers
     {
 
@@ -16,8 +21,8 @@ namespace Platform.Support.Web
 #endif
         {
 #if !PORTABLE
-             IPAddress result = IPAddress.Parse("127.0.0.1");
-            
+            IPAddress result = IPAddress.Parse("127.0.0.1");
+
 #else
             string result = "127.0.0.1";
 #endif
@@ -30,7 +35,7 @@ namespace Platform.Support.Web
                 {
                     string responseText = reader.ReadToEnd();
 #if !PORTABLE
-                    result =  IPAddress.Parse(responseText);
+                    result = IPAddress.Parse(responseText);
 #else
                     result = responseText;
 #endif
@@ -57,7 +62,7 @@ namespace Platform.Support.Web
                     var locs = responseText.Split(',');
                     return new double[] { double.Parse(locs[0]), double.Parse(locs[1]) };
                 }
-                
+
             }
             catch
             {
@@ -66,4 +71,7 @@ namespace Platform.Support.Web
         }
 
     }
+    
 }
+
+#endif

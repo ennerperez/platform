@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.1.9] - 2016-04-25
+### Added
+- NETFX_45 Profile78 Support
+
+### Removed
+- BCL references
+
 ## [3.1.7] - 2016-04-22
 ### Fixed
 - IsNull Cast null handler
