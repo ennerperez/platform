@@ -1,100 +1,105 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading;
+//using System.Threading.Tasks;
 
-namespace Platform.Support
-{
-    public class Timer
-    {
+//namespace Platform.Support
+//{
 
-        private int _interval;
+//    public class Timer
+//    {
 
-        public int Interval
-        {
-            get { return _interval; }
-            set { _interval = value; }
-        }
+//        private int _interval;
 
-        private bool _isRunning;
+//        public int Interval
+//        {
+//            get { return _interval; }
+//            set { _interval = value; }
+//        }
 
-        public bool IsRunning
-        {
-            get { return _isRunning; }
-            set { _isRunning = value; }
-        }
+//        private bool _isRunning;
 
-        public event ElapsedEventHandler Elapsed;
+//        public bool IsRunning
+//        {
+//            get { return _isRunning; }
+//            set { _isRunning = value; }
+//        }
 
-        protected virtual void OnTimerElapsed()
-        {
-            if (Elapsed != null)
-            {
-                Elapsed(this, new ElapsedEventArgs(DateTime.Now));
-            }
-        }
+//        public event ElapsedEventHandler Elapsed;
 
-        public Timer()
-        {
-        }
+//        protected virtual void OnTimerElapsed()
+//        {
+//            if (Elapsed != null)
+//            {
+//                Elapsed(this, new ElapsedEventArgs(DateTime.Now));
+//            }
+//        }
 
-        public Timer(int interval) : this()
-        {
-            Interval = interval;
-        }
+//        public Timer()
+//        {
+//        }
 
-        public async Task Start()
-        {
-            int seconds = 0;
-            IsRunning = true;
-            while (IsRunning)
-            {
-                if (seconds != 0 && seconds % Interval == 0)
-                {
-                    OnTimerElapsed();
-                }
-                await TaskEx.Delay(1000);
-                seconds++;
-            }
-        }
+//        public Timer(int interval) : this()
+//        {
+//            Interval = interval;
+//        }
 
-        public void Stop()
-        {
-            IsRunning = false;
-        }
+//        public async Task Start()
+//        {
+//            int seconds = 0;
+//            IsRunning = true;
+//            while (IsRunning)
+//            {
+//                if (seconds != 0 && seconds % Interval == 0)
+//                {
+//                    OnTimerElapsed();
+//                }
+//#if NETFX_45
+//                await Task.Delay(1000);
+//#else
+//                await TaskEx.Delay(1000);
+//#endif
+//                seconds++;
+//            }
+//        }
+
+//        public void Stop()
+//        {
+//            IsRunning = false;
+//        }
 
 
-        public bool AutoReset
-        {
-            get;
-            set;
-        }
+//        public bool AutoReset
+//        {
+//            get;
+//            set;
+//        }
 
-      
 
-    }
 
-    public delegate void ElapsedEventHandler(object sender, ElapsedEventArgs e);
+//    }
 
-    public class ElapsedEventArgs : EventArgs
-    {
-        //
-        // Properties
-        //
-        public DateTime SignalTime
-        {
-            get;
-        }
+//    public delegate void ElapsedEventHandler(object sender, ElapsedEventArgs e);
 
-        //
-        // Constructors
-        //
-        internal ElapsedEventArgs(DateTime time)
-        {
-            this.SignalTime = time;
-        }
-    }
+//    public class ElapsedEventArgs : EventArgs
+//    {
+//        //
+//        // Properties
+//        //
+//        public DateTime SignalTime
+//        {
+//            get;
+//        }
 
-}
+//        //
+//        // Constructors
+//        //
+//        internal ElapsedEventArgs(DateTime time)
+//        {
+//            this.SignalTime = time;
+//        }
+//    }
+
+//}
