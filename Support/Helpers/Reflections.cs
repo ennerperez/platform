@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Platform.Support
@@ -11,7 +12,11 @@ namespace Platform.Support
 #if (!PORTABLE)
         internal static System.Reflection.Assembly m_Assembly = System.Reflection.Assembly.GetEntryAssembly();
 #else
+#if NETFX_45
+        internal static System.Reflection.Assembly m_Assembly = typeof(Helpers).GetTypeInfo().Assembly;
+#else
         internal static System.Reflection.Assembly m_Assembly = System.Reflection.Assembly.GetCallingAssembly();
+#endif
 #endif
 
         public static T GetAttribute<T>(System.Reflection.Assembly assembly = null) where T : System.Attribute
@@ -31,12 +36,21 @@ namespace Platform.Support
         {
             if (assembly == null) { assembly = m_Assembly; }
 
+#if NETFX_45
+            var customAttributes = assembly.GetCustomAttributes(AttributeType);
+            if (customAttributes.Count() == 0)
+                return null;
+
+            return customAttributes.ToArray();
+
+#else
             object[] customAttributes = assembly.GetCustomAttributes(AttributeType, true);
             if (customAttributes.Length == 0)
-            {
                 return null;
-            }
+
             return customAttributes;
+#endif
+
         }
 
         public static String Title(System.Reflection.Assembly assembly = null)

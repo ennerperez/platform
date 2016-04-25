@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Platform.Model.MVC
@@ -32,17 +33,34 @@ namespace Platform.Model.MVC
 
         private void updateItemDetailValues(T item)
         {
-
-            foreach (var field in typeof(T).GetFields())
+#if NETFX_45
+            var fcollection = typeof(T).GetRuntimeFields();
+#else
+            var fcollection = typeof(T).GetFields();
+#endif
+            foreach (var field in fcollection)
             {
+#if NETFX_45
+                var vfield = view.GetType().GetRuntimeField(field.Name);
+#else
                 var vfield = view.GetType().GetField(field.Name);
+#endif
                 if (vfield != null)
                     vfield.SetValue(view, field.GetValue(item));
             }
 
-            foreach (var prop in typeof(T).GetProperties())
-            {
+#if NETFX_45
+            var pcollection = typeof(T).GetRuntimeProperties();
+#else
+            var pcollection = typeof(T).GetProperties();
+#endif
+                foreach (var prop in pcollection)
+                {
+#if NETFX_45
+                var vprop = view.GetType().GetRuntimeProperty(prop.Name);
+#else
                 var vprop = view.GetType().GetProperty(prop.Name);
+#endif
                 if (vprop != null && vprop.CanWrite)
                     vprop.SetValue(view, prop.GetValue(item, null), null);
             }
@@ -51,16 +69,35 @@ namespace Platform.Model.MVC
         private void updateItemWithViewValues(T item)
         {
 
-            foreach (var field in view.GetType().GetFields())
+#if NETFX_45
+            var fcollection = view.GetType().GetRuntimeFields();
+#else
+            var fcollection = view.GetType().GetFields();
+#endif
+
+            foreach (var field in fcollection)
             {
+#if NETFX_45
+                var vfield = typeof(T).GetRuntimeField(field.Name);
+#else
                 var vfield = typeof(T).GetField(field.Name);
+#endif
                 if (vfield != null)
                     vfield.SetValue(view, field.GetValue(item));
             }
 
-            foreach (var prop in view.GetType().GetProperties())
+#if NETFX_45
+            var pcollection = view.GetType().GetRuntimeProperties();
+#else
+            var pcollection = view.GetType().GetProperties();
+#endif
+            foreach (var prop in pcollection)
             {
+#if NETFX_45
+                var vprop = typeof(T).GetRuntimeProperty(prop.Name);
+#else
                 var vprop = typeof(T).GetProperty(prop.Name);
+#endif
                 if (vprop != null && vprop.CanWrite)
                     vprop.SetValue(view, prop.GetValue(item, null), null);
             }
