@@ -68,6 +68,7 @@
     <Compile Include="Attributes\ContactAttribute.cs" />
     <Compile Include="Attributes\BuildDateAttribute.cs" />
     <Compile Include="Check.cs" />
+    <Compile Include="Console\ConsoleEx.cs" />
     <Compile Include="Extensions\Dates.cs" />
     <Compile Include="Extensions\Debug.cs" />
     <Compile Include="Extensions\Strings.cs" />

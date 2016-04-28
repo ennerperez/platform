@@ -24,6 +24,11 @@ See the [changelog](CHANGELOG.md) for changes.
 - [ ] HTML Reporting engine
 - [ ] Build tools
 - [x] Support Web PCL
+- [ ] Console Extensions [WIP]
+
+## TODO
+- [ ] Extensions normalization
+- [ ] Installer + Bootstrapper
 
 ## Implementing in your application
 
