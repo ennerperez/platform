@@ -141,6 +141,9 @@
     <Compile Include="..\Support\Maths\Vector2.cs">
       <Link>Maths\Vector2.cs</Link>
     </Compile>
+    <Compile Include="..\Support\SemanticVersion.cs">
+      <Link>SemanticVersion.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Text\Markdown.cs">
       <Link>Text\Markdown.cs</Link>
     </Compile>

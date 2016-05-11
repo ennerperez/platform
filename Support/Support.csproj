@@ -107,6 +107,7 @@
     <Compile Include="Security\Extensions.cs" />
     <Compile Include="Security\Helpers.cs" />
     <Compile Include="Security\PasswordHash.cs" />
+    <Compile Include="SemanticVersion.cs" />
     <Compile Include="Text\Markdown.cs" />
   </ItemGroup>
   <ItemGroup>
