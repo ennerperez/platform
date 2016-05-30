@@ -11,18 +11,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Reflection GetVersion bug
 - Missed references
 
-## [3.1.9] - 2016-04-25
+## [3.1.9] - [2016-04-25]
 ### Added
 - NETFX_45 Profile78 Support
 
 ### Removed
 - BCL references
 
-## [3.1.7] - 2016-04-22
+## [3.1.7] - [2016-04-22]
 ### Fixed
 - IsNull Cast null handler
 
-## [3.1.6] - 2016-04-04
+## [3.1.6] - [2016-04-04]
 ### Changed
 - Model entity & IRecord implementation
 - Data attributes similar to System.ComponentModel.DataAnnotations
@@ -45,7 +45,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 - Pictograms
 
-## [3.0.1.13] - 2016-01-07
+## [3.0.1.13] - [2016-01-07]
 ### Changed
 - Fill-bar ctr fix
 - VistaMenu as component
@@ -76,11 +76,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 - HSL Color
 
-## [3.0.1.12] - 2015-10-19
+## [3.0.1.12] - [2015-10-19]
 ### Changed
 - DbNull Fix
 
-## [3.0.1.11] - 2015-10-08
+## [3.0.1.11] - [2015-10-08]
 ### Changed
 - IsNull parser
 - Markdown parser
@@ -92,7 +92,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Preliminary SPS Model (Portable Plug-in)
 - CRUD Model (Active Record)
 
-## [3.0.1.10] - 2015-10-02
+## [3.0.1.10] - [2015-10-02]
 ### Changed
 - Version
 - BrandingScheme
@@ -107,7 +107,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Samples projects
 
-## [3.0.0.9] - 2015-09-22
+## [3.0.0.9] - [2015-09-22]
 ### Changed
 - Solution tree clear
 - Build folder adjustments
@@ -119,7 +119,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 - Examples
 
-## [3.0.0.8] - 2015-09-09
+## [3.0.0.8] - [2015-09-09]
 ### Changed
 - GetDominantColor optimized
 - Branding Schema 1.5
@@ -132,14 +132,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 - Size for open URL in BrandManager
 
-## [3.0.0.7] - 2015-07-11
+## [3.0.0.7] - [2015-07-11]
 ### Changed
 - Target files optimized
 - Building process refresh
 - Size for open URL in BrandManager
 - GetDominantColor optimized
 
-## [3.0.0.6] - 2015-06-13
+## [3.0.0.6] - [2015-06-13]
 ### Changed
 - Including .targets, .msbuild and .prop for building
 - Change log file specification
@@ -151,19 +151,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - .editoricon.png for IDE icon recognition
 
-## [3.0.0.5] - 2015-06-05
+## [3.0.0.5] - [2015-06-05]
 ### Added
 - FontAwesome support
 
-## [3.0.0.4] [LOST]
-
-## [3.0.0.3] [LOST]
-
-## [3.0.0.2] [LOST]
-
-## [3.0.0.1] [LOST]
-
-## [3.0.0.0] - 2015-01-01 [INITIAL][RELEASE]
+## [3.0.0.0] - [2015-01-01]
 ### Changed
 - C# based release
 

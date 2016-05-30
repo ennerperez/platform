@@ -62,5 +62,25 @@ namespace Platform.Support.OS
 
 #endif
 
+        /// <summary>
+        /// Returns if 
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsWindows()
+        {
+            int p = (int)Environment.OSVersion.Platform;
+            return (p != 4) && (p != 6) && (p != 128);
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsLinux()
+        {
+            int p = (int)Environment.OSVersion.Platform;
+            return (p == 4) || (p == 6) || (p == 128);
+        }
+
     }
 }

@@ -12,12 +12,9 @@ using System.Runtime.InteropServices;
 //[assembly: SecurityRules(SecurityRuleSet.Level2)] 
 
 #if (DEBUG)
-[assembly: AssemblyConfiguration("Debug")]
+[assembly: AssemblyConfiguration("DEBUG")]
 #else
-[assembly: AssemblyConfiguration("Release")]
+[assembly: AssemblyConfiguration("RELEASE")]
 #endif
 
-//#if (NETFX_40 || NETFX_45 || NETFX_451)
-//[assembly: AllowPartiallyTrustedCallers()]
-//#endif
-[assembly: NeutralResourcesLanguageAttribute("en")]
+[assembly: NeutralResourcesLanguage("en")]
