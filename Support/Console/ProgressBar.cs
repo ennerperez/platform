@@ -1,112 +1,11 @@
-﻿#if DEBUG
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
 
-#if !NETFX_45
-namespace System
-{
-
-    using System.Runtime.InteropServices;
-
-#pragma warning disable 0436
-    internal interface IProgress<T>
-    {
-        void Report(T value);
-    }
-
-    public enum FileType : uint
-    {
-        FILE_TYPE_UNKNOWN = 0x0000,
-        FILE_TYPE_DISK = 0x0001,
-        FILE_TYPE_CHAR = 0x0002,
-        FILE_TYPE_PIPE = 0x0003,
-        FILE_TYPE_REMOTE = 0x8000,
-    }
-
-    public enum STDHandle : uint
-    {
-        STD_INPUT_HANDLE = unchecked((uint)-10),
-        STD_OUTPUT_HANDLE = unchecked((uint)-11),
-        STD_ERROR_HANDLE = unchecked((uint)-12),
-    }
-
-    internal static class Helpers
-    {
-
-        [DllImport("Kernel32.dll")]
-        static public extern UIntPtr GetStdHandle(STDHandle stdHandle);
-        [DllImport("Kernel32.dll")]
-        static public extern FileType GetFileType(UIntPtr hFile);
-
-        static public bool IsOutputRedirected()
-        {
-            UIntPtr hOutput = GetStdHandle(STDHandle.STD_OUTPUT_HANDLE);
-            FileType fileType = (FileType)GetFileType(hOutput);
-            if (fileType == FileType.FILE_TYPE_CHAR)
-                return false;
-            return true;
-        }
-
-    }
-
-}
-
-#endif
-
 namespace Platform.Support.ConsoleEx
 {
-
-    public class Spinner : IDisposable
-    {
-        private int counter;
-                
-        public void Dispose()
-        {
-        }
-
-        public void Turn()
-        {
-            counter++;
-            switch (counter % 4)
-            {
-                case 0: Console.Write("/"); counter = 0; break;
-                case 1: Console.Write("-"); break;
-                case 2: Console.Write("\\"); break;
-                case 3: Console.Write("|"); break;
-            }
-            Thread.Sleep(100);
-            Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
-        }
-
-        private static bool busy = true;
-        public static void StartSpinner()
-        {
-            var t = new ThreadStart(() =>
-            {
-                using (var spin = new Spinner())
-                {
-                    while (busy)
-                    {
-                        spin.Turn();
-                    }
-                }
-            });
-
-            t.Invoke();
-        }
-        public static void StopSpinner()
-        {
-            busy = false;
-            Thread.CurrentThread.Join();
-        }
-
-    }
-
     /// <summary>
     /// An ASCII progress bar
     /// Author: DanielSWolf
@@ -114,6 +13,7 @@ namespace Platform.Support.ConsoleEx
     /// </summary>
     public class ProgressBar : IDisposable, IProgress<double>
     {
+
         private const int blockCount = 10;
         private readonly TimeSpan animationInterval = TimeSpan.FromSeconds(1.0 / 8);
         private const string animation = @"|/-\";
@@ -125,6 +25,23 @@ namespace Platform.Support.ConsoleEx
         private bool disposed = false;
         private int animationIndex = 0;
 
+
+
+        internal static bool IsOutputRedirected()
+        {
+#if !NETFX_45
+            UIntPtr hOutput = NativeMethods.GetStdHandle(STDHandle.STD_OUTPUT_HANDLE);
+            FileType fileType = (FileType)NativeMethods.GetFileType(hOutput);
+            if (fileType == FileType.FILE_TYPE_CHAR)
+                return false;
+            return true;
+#else
+            return Console.IsOutputRedirected;
+#endif
+        }
+
+
+
         public ProgressBar()
         {
             timer = new Timer(TimerHandler);
@@ -132,11 +49,7 @@ namespace Platform.Support.ConsoleEx
             // A progress bar is only for temporary display in a console window.
             // If the console output is redirected to a file, draw nothing.
             // Otherwise, we'll end up with a lot of garbage in the target file.
-#if !NETFX_45
-            if (!System.Helpers.IsOutputRedirected())
-#else
-            if (!Console.IsOutputRedirected)
-#endif
+            if (!IsOutputRedirected())
                 ResetTimer();
         }
 
@@ -247,5 +160,3 @@ namespace Platform.Support.ConsoleEx
 
     }
 }
-
-#endif

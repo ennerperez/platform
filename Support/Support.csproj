@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CORE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -54,8 +54,7 @@
     <Compile Include="..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
-    <Compile Include="ArgumentOutOfRange.cs" />
-    <Compile Include="Attributes\MadeIn.cs" />
+    <Compile Include="Attributes\MadeInAttribute.cs" />
     <Compile Include="Attributes\TagAttribute.cs" />
     <Compile Include="Attributes\UrlAttribute.cs" />
     <Compile Include="Attributes\ThirdPartyAttribute.cs" />
@@ -68,7 +67,10 @@
     <Compile Include="Attributes\ContactAttribute.cs" />
     <Compile Include="Attributes\BuildDateAttribute.cs" />
     <Compile Include="Check.cs" />
-    <Compile Include="Console\ConsoleEx.cs" />
+    <Compile Include="Console\NativeMethods.cs" />
+    <Compile Include="Console\ProgressBar.cs" />
+    <Compile Include="Console\Spinner.cs" />
+    <Compile Include="Core.cs" />
     <Compile Include="Extensions\Dates.cs" />
     <Compile Include="Extensions\Debug.cs" />
     <Compile Include="Extensions\Strings.cs" />
@@ -112,7 +114,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Diagram.cd" />
     <None Include="Package.nuspec">
       <SubType>Designer</SubType>
     </None>
@@ -122,12 +123,12 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="$(SolutionDir).nuget\NuGet.targets" Condition="Exists('$(SolutionDir).nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir).nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir).nuget\NuGet.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets')" />

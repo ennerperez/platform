@@ -5,21 +5,17 @@ using System.Text;
 
 namespace Platform.Support
 {
-#if !CORE
+#if PORTABLE
     namespace Core
     {
 #endif
-        namespace Attributes
+    namespace Attributes
         {
             /// <summary>
             /// Define the build <typeparamref name="datetime"/> for the project
             /// </summary>
             [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = false)]
-#if !CORE
-            internal sealed class BuildDateAttribute : global::System.Attribute
-#else
         public sealed class BuildDateAttribute : global::System.Attribute
-#endif
             {
                 private DateTime assemblyDate;
                 public DateTime AssemblyDate { get { return assemblyDate; } }
@@ -37,7 +33,7 @@ namespace Platform.Support
             }
 
         }
-#if !CORE
+#if PORTABLE
     }
 #endif
 

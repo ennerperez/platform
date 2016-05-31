@@ -9,7 +9,6 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 #endif
 [assembly: CLSCompliant(false)]
-//[assembly: SecurityRules(SecurityRuleSet.Level2)] 
 
 #if (DEBUG)
 [assembly: AssemblyConfiguration("DEBUG")]
@@ -17,4 +16,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("RELEASE")]
 #endif
 
+[assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]

@@ -2,21 +2,32 @@
 
 namespace Platform.Support
 {
-#if !CORE
+#if PORTABLE
     namespace Core
     {
 #endif
 
-        namespace Attributes
+    namespace Attributes
+    {
+
+        [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
+        public class MailAttribute : global::System.Attribute
         {
 
-            [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
-            public class MailAttribute : global::System.Attribute
-            {
+#if PORTABLE
+                private string email;
 
-#if (!PORTABLE)
+                public MailAttribute(string email)
+                {
+                    this.email = email;
+                }
 
+                public virtual string CompanyEmail
+                {
+                    get { return this.email; }
+                }
 
+#else
             private System.Net.Mail.MailAddress email;
 
             public MailAttribute(System.Net.Mail.MailAddress email)
@@ -33,28 +44,14 @@ namespace Platform.Support
                 get { return this.email; }
             }
 
-#else
-
-                private string email;
-
-                public MailAttribute(string email)
-                {
-                    this.email = email;
-                }
-
-                public virtual string CompanyEmail
-                {
-                    get { return this.email; }
-                }
-
 
 #endif
 
-            }
         }
+    }
 
 
-#if !CORE
+#if PORTABLE
     }
 #endif
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Platform.Support
 {
-#if !CORE
+#if PORTABLE
     namespace Core
     {
 #endif
@@ -16,7 +16,6 @@ namespace Platform.Support
         /// Developer information
         /// </summary>
         [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = false)]
-
         public class MadeInAttribute : global::System.Attribute
         {
 
@@ -41,7 +40,7 @@ namespace Platform.Support
         }
     }
 
-#if !CORE
+#if PORTABLE
     }
 #endif
 

@@ -169,7 +169,11 @@ namespace Platform.Support
             {
                 return false;
             }
+#if PORTABLE
+            Match match = new Regex(regex, RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture).Match(version.Trim());
+#else
             Match match = new Regex(regex, RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture | RegexOptions.Compiled).Match(version.Trim());
+#endif
             Version version2;
             if (!match.Success || !Version.TryParse(match.Groups["Version"].Value, out version2))
             {

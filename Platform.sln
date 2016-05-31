@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "Support\Support.csproj", "{25AB6BBF-A879-4570-9E0E-947D52AE7333}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -96,7 +96,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.SPS.Plugin", "Model.S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A4E49E51-DBBC-4588-BA35-FBC70397D8D4}"
 	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.config = .nuget\NuGet.config
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
@@ -115,6 +115,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.MVC.PCL", "Model.MVC.PCL.Net45\Model.MVC.PCL.csproj", "{3E47685A-B432-4E64-A78C-212A46502083}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Web.PCL", "Support.Web.PCL.Net45\Support.Web.PCL.csproj", "{57C69E0A-B6FC-454B-AFE5-9282CB2C1F5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Console", "Samples\Sample.Console\Sample.Console.csproj", "{BD0B53C6-7C65-4E17-AB2C-AD3641A891DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -220,6 +222,10 @@ Global
 		{57C69E0A-B6FC-454B-AFE5-9282CB2C1F5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57C69E0A-B6FC-454B-AFE5-9282CB2C1F5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57C69E0A-B6FC-454B-AFE5-9282CB2C1F5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD0B53C6-7C65-4E17-AB2C-AD3641A891DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD0B53C6-7C65-4E17-AB2C-AD3641A891DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD0B53C6-7C65-4E17-AB2C-AD3641A891DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD0B53C6-7C65-4E17-AB2C-AD3641A891DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -241,5 +247,6 @@ Global
 		{C8D8ADA5-5C79-429A-9000-08018BDB4EC5} = {989FFC57-46D2-4C73-BFA9-97EBFFA1960B}
 		{3E47685A-B432-4E64-A78C-212A46502083} = {989FFC57-46D2-4C73-BFA9-97EBFFA1960B}
 		{57C69E0A-B6FC-454B-AFE5-9282CB2C1F5E} = {989FFC57-46D2-4C73-BFA9-97EBFFA1960B}
+		{BD0B53C6-7C65-4E17-AB2C-AD3641A891DD} = {B2DE59C7-C6E5-46E1-873E-D711546443EF}
 	EndGlobalSection
 EndGlobal
