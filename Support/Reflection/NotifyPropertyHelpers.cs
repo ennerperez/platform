@@ -17,6 +17,20 @@ namespace Platform.Support.Reflection
     public static class NotifyPropertyHelpers
     {
 
+        public static bool SetField(this INotifyPropertyChanged self, ref object field, object value, string propertyName = "")
+        {
+            if (field.Equals(value))
+                return false;
+
+            field = value;
+
+            var mi = self.GetType().GetEvent("PropertyChanged").GetAddMethod();
+            mi.Invoke(self, new object[] { new PropertyChangedEventArgs(propertyName) });
+
+            return true;
+
+        }
+
         public static bool SetField<T>(this INotifyPropertyChanged self, ref T field, T value, string propertyName = "")
         {
             if (EqualityComparer<T>.Default.Equals(field, value))
@@ -26,7 +40,7 @@ namespace Platform.Support.Reflection
 
             var mi = self.GetType().GetEvent("PropertyChanged").GetAddMethod();
             mi.Invoke(self, new object[] { new PropertyChangedEventArgs(propertyName) });
-            
+
             return true;
         }
 
