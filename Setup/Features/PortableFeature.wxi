@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!--<?xml version="1.0" encoding="utf-8"?>
 <Include>
 
   <Feature Id="PortableFeature" Level="1" Title="!(loc.PortableFeatureTitle)" Description="!(loc.PortableFeatureDescription)">
@@ -8,21 +8,21 @@
     </Feature>
   </Feature>
 
-  <!-- Components -->
+  --><!-- Components --><!--
   <Component Id="ApplicationPortableFiles" Guid="A7CB9DFB-5E3C-4A42-8EE2-571AB270FE35" Directory="PortableFolder">
     <File Id="SUPPORT.CORE.PCL.DLL" Name="Platform.Support.Core.PCL.dll" Source="$(var.SolutionDir)Support.PCL\Bin\$(var.Configuration)\Platform.Support.Core.PCL.dll" Vital="yes" Checksum="yes" />
     <File Id="MODEL.PCL.DLL" Name="Model.PCL.dll" Source="$(var.SolutionDir)Model.PCL\Bin\$(var.Configuration)\Model.PCL.dll" Vital="yes" Checksum="yes" />
     <File Id="MODEL.CRUD.PCL.DLL" Name="Model.CRUD.PCL.dll" Source="$(var.SolutionDir)Model.CRUD.PCL\Bin\$(var.Configuration)\Model.CRUD.PCL.dll" Vital="yes" Checksum="yes" />
-    <!--<File Id="SUPPORT.DATA.PCL.DLL" Name="Platform.Support.Data.PCL.dll" Source="$(var.SolutionDir)Support.Data.PCL\Bin\$(var.Configuration)\Platform.Support.Data.PCL.dll" Vital="yes" Checksum="yes" />-->
-    <!--<File Id="MODEL.PCL.DLL" Name="Platform.Model.PCL.dll" Source="$(var.SolutionDir)Model.PCL\Bin\$(var.Configuration)\Platform.Model.PCL.dll" Vital="yes" Checksum="yes" />-->
+    --><!--<File Id="SUPPORT.DATA.PCL.DLL" Name="Platform.Support.Data.PCL.dll" Source="$(var.SolutionDir)Support.Data.PCL\Bin\$(var.Configuration)\Platform.Support.Data.PCL.dll" Vital="yes" Checksum="yes" />--><!--
+    --><!--<File Id="MODEL.PCL.DLL" Name="Platform.Model.PCL.dll" Source="$(var.SolutionDir)Model.PCL\Bin\$(var.Configuration)\Platform.Model.PCL.dll" Vital="yes" Checksum="yes" />--><!--
   </Component>
 
   <Component Id="ApplicationPortableDebugFiles" Guid="01473191-F0A1-4FD9-AB92-AFCB16DA0659" Directory="PortableFolder">
     <File Id="SUPPORT.CORE.PCL.PDB" Name="Platform.Support.Core.PCL.pdb" Source="$(var.SolutionDir)Support.PCL\Bin\$(var.Configuration)\Platform.Support.Core.PCL.pdb" Vital="yes" Checksum="yes" />
     <File Id="MODEL.PCL.PDB" Name="Model.PCL.pdb" Source="$(var.SolutionDir)Model.PCL\Bin\$(var.Configuration)\Model.PCL.pdb" Vital="yes" Checksum="yes" />
     <File Id="MODEL.CRUD.PCL.PDB" Name="Model.CRUD.PCL.pdb" Source="$(var.SolutionDir)Model.CRUD.PCL\Bin\$(var.Configuration)\Model.CRUD.PCL.pdb" Vital="yes" Checksum="yes" />
-    <!--<File Id="SUPPORT.DATA.PCL.PDB" Name="Platform.Support.Data.PCL.pdb" Source="$(var.SolutionDir)Support.Data.PCL\Bin\$(var.Configuration)\Platform.Support.Data.PCL.pdb" Vital="yes" Checksum="yes" />-->
-    <!--<File Id="MODEL.PCL.PDB" Name="Platform.Model.PCL.pdb" Source="$(var.SolutionDir)Model.PCL\Bin\$(var.Configuration)\Platform.Model.PCL.pdb" Vital="yes" Checksum="yes" />-->
+    --><!--<File Id="SUPPORT.DATA.PCL.PDB" Name="Platform.Support.Data.PCL.pdb" Source="$(var.SolutionDir)Support.Data.PCL\Bin\$(var.Configuration)\Platform.Support.Data.PCL.pdb" Vital="yes" Checksum="yes" />--><!--
+    --><!--<File Id="MODEL.PCL.PDB" Name="Platform.Model.PCL.pdb" Source="$(var.SolutionDir)Model.PCL\Bin\$(var.Configuration)\Platform.Model.PCL.pdb" Vital="yes" Checksum="yes" />--><!--
   </Component>
 
-</Include>
+</Include>-->

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Platform.Support.Drawing
+internal static class ExternDll
 {
-    internal static class NativeMethods
-    {
+    internal const string Kernel32 = "kernel32.dll";
+}
 
-        [DllImport("Kernel32.dll", CharSet = CharSet.Unicode, EntryPoint = "CopyMemory")]
-        internal extern static void CopyMemory(IntPtr dest, IntPtr src, uint length);
-    }
+internal static class NativeMethods
+{
+
+    [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, EntryPoint = "CopyMemory")]
+    internal extern static void CopyMemory(IntPtr dest, IntPtr src, uint length);
 }

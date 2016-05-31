@@ -5,6 +5,3 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Model MVC Portable")]
 [assembly: AssemblyDescription("Platform Model MVC Pattern (Portable)")]
-
-[assembly: AssemblyCulture("")]
-

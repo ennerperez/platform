@@ -1,4 +1,11 @@
 using System.Reflection;
+#if PORTABLE
+using Platform.Support.Core;
+using Platform.Support.Core.Attributes;
+#else
+using Platform.Support;
+using Platform.Support.Attributes;
+#endif
 
 // Version information for an assembly consists of the following four values:
 //
@@ -13,7 +20,7 @@ using System.Reflection;
 //[assembly: AssemblyInformationalVersion("3.1.0-master")]
 
 #if (!DEBUG)
-[assembly: Platform.Support.Attributes.ProductLevel(Platform.Support.ProductLevels.RTW)]
+[assembly: ProductLevel(ProductLevels.RTW)]
 #else
-[assembly: Platform.Support.Attributes.ProductLevel(Platform.Support.ProductLevels.Preview)]
+[assembly: ProductLevel(ProductLevels.Preview)]
 #endif

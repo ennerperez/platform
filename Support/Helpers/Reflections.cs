@@ -86,7 +86,15 @@ namespace Platform.Support
         public static Version Version(System.Reflection.Assembly assembly = null)
         {
             if (assembly == null) { assembly = m_Assembly; }
-            return new Version(GetAttribute<System.Reflection.AssemblyVersionAttribute>(assembly).Version);
+            var version = GetAttribute<System.Reflection.AssemblyVersionAttribute>(assembly).Version;
+#if !PORTABLE
+            if (string.IsNullOrEmpty(version))
+                return assembly.GetName().Version;
+#endif
+            if (!string.IsNullOrEmpty(version))
+                return new Version(version);
+            else
+                return null;
         }
         public static Version FileVersion(System.Reflection.Assembly assembly = null)
         {

@@ -16,15 +16,9 @@ namespace Platform.Model
             get
             {
                 if (_instance == null)
-                {
                     lock (_syncobj)
-                    {
                         if (_instance == null)
-                        {
                             _instance = new T();
-                        }
-                    }
-                }
                 return _instance;
             }
         }

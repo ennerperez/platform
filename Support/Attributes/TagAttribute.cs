@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Platform.Support
 {
-#if !CORE
+#if PORTABLE
     namespace Core
     {
 #endif
@@ -18,7 +18,7 @@ namespace Platform.Support
         [AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = true)]
         public class TagAttribute : global::System.Attribute
         {
-            
+
             private string[] tags;
 
             public TagAttribute(params string[] tags)
@@ -28,7 +28,7 @@ namespace Platform.Support
 
             public TagAttribute(string tag)
             {
-                tags = new string[] {tag};
+                tags = new string[] { tag };
             }
 
             public virtual string[] Tags
@@ -42,8 +42,10 @@ namespace Platform.Support
     {
         public const string Important = "Important";
     }
-}
 
-#if !CORE
+#if PORTABLE
     }
 #endif
+
+}
+

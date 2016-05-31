@@ -5,38 +5,34 @@ using System.Text;
 
 namespace Platform.Support
 {
-#if !CORE
+#if PORTABLE
     namespace Core
     {
 #endif
 
-        namespace Attributes
+    namespace Attributes
+    {
+
+        [AttributeUsage(AttributeTargets.Assembly)]
+        public class IdAttribute : global::System.Attribute
         {
 
-            [AttributeUsage(AttributeTargets.Assembly)]
-#if !CORE
-            internal class IdAttribute : global::System.Attribute
-#else
-        public class IdAttribute : global::System.Attribute
-#endif
+            private string companyid;
+
+            public IdAttribute(string id)
             {
-
-                private string companyid;
-
-                public IdAttribute(string id)
-                {
-                    this.companyid = id;
-                }
-
-                public virtual string CompanyID
-                {
-                    get { return this.companyid; }
-                }
+                this.companyid = id;
             }
 
+            public virtual string CompanyID
+            {
+                get { return this.companyid; }
+            }
         }
 
-#if !CORE
+    }
+
+#if PORTABLE
     }
 #endif
 

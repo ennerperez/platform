@@ -1,6 +1,7 @@
 ![logo](https://raw.githubusercontent.com/ennerperez/platform/master/.editoricon.png)
 
 # .NET Framework Base Development Platform
+
 Libset for agile software development
 
 [![Build status](https://ci.appveyor.com/api/projects/status/947d3r6vguorvwnt?svg=true)](https://ci.appveyor.com/project/ennerperez/platform)
@@ -24,12 +25,33 @@ See the [changelog](CHANGELOG.md) for changes.
 - [ ] HTML Reporting engine
 - [ ] Build tools
 - [x] Support Web PCL
+- [ ] Console Extensions [WIP]
 
-## Implementing in your application
+## TODO
+- [ ] Extensions normalization
+- [ ] Installer + Bootstrapper
+
+## Table of contents
+
+* [Implementing](#implementing)
+* [Bugs and feature requests](#bugs-and-feature-requests)
+* [Documentation](#documentation)
+* [License](#license)
+
+### Implementing
 
 **Add the library to your project**
 
-Right click on your project and click 'Manage NuGet Packages...'. Search for 'Platform' and click on install. Once installed the library will be included in your project references.
+Add the [NuGet Package](https://www.nuget.org/packages/{NAME}/). Right click on your project and click 'Manage NuGet Packages...'. Search for '{NAME}' and click on install. Once installed the library will be included in your project references. (Or install it through the package manager console: PM> Install-Package {NAME}).
 
-## License
-[The MIT License (MIT)](LICENSE)
+### Bugs and feature requests
+
+Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/{OWNER}/{NAME}/issues/new).
+
+### Documentation
+
+No more documentation required for now.
+
+### License
+
+Code released under [The MIT License](LICENSE)

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!--<?xml version="1.0" encoding="utf-8"?>
 <Include>
 
   <Feature Id="NuGetCacheFeature" Level="1" Title="!(loc.NuGetCacheFeatureTitle)" Description="!(loc.NuGetCacheFeatureDescription)">
@@ -7,7 +7,7 @@
 
   <?define NuGetPackagesVersion = "3.0.1.14" ?>
   
-  <!-- Components -->
+  --><!-- Components --><!--
   <Component Id="NuGetCachenFiles" Guid="F431A267-C2EF-4BD5-A2CE-D2D2F599F6AA" Directory="NuGetCacheDirProduct">
     <File Id="SUPPORT.CORE.nupkg" Name="Platform.Support.Core.$(var.NuGetPackagesVersion).nupkg" Source="$(var.SourcePath)Platform.Support.Core.$(var.NuGetPackagesVersion).nupkg" Vital="yes" Checksum="yes" />
     <File Id="SUPPORT.CORE.PCL.nupkg" Name="Platform.Support.Core.PCL.$(var.NuGetPackagesVersion).nupkg" Source="$(var.SourcePath)Platform.Support.Core.PCL.$(var.NuGetPackagesVersion).nupkg" Vital="yes" Checksum="yes" />
@@ -23,4 +23,4 @@
     <File Id="PRESENTATION.WINDOWS.FORMS.nupkg" Name="Platform.Presentation.Windows.Forms.$(var.NuGetPackagesVersion).nupkg" Source="$(var.SourcePath)Platform.Presentation.Windows.Forms.$(var.NuGetPackagesVersion).nupkg" Checksum="yes" />
   </Component>
 
-</Include>
+</Include>-->

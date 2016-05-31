@@ -5,20 +5,16 @@ using System.Text;
 
 namespace Platform.Support
 {
-#if !CORE
+#if PORTABLE
     namespace Core
     {
 #endif
 
-        namespace Attributes
+    namespace Attributes
         {
 
             [AttributeUsage(AttributeTargets.Assembly)]
-#if !CORE
-            internal class ProductLevelAttribute : global::System.Attribute
-#else
         public class ProductLevelAttribute : global::System.Attribute
-#endif
             {
 
                 private ProductLevels productlevel;
@@ -61,7 +57,7 @@ namespace Platform.Support
             GA = 1
         }
 
-#if !CORE
+#if PORTABLE
     }
 #endif
 

@@ -2,12 +2,12 @@
 
 namespace Platform.Support
 {
-#if !CORE
+#if PORTABLE
     namespace Core
     {
 #endif
 
-        namespace Attributes
+    namespace Attributes
         {
 
             [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = true)]
@@ -48,7 +48,7 @@ namespace Platform.Support
 
         }
 
-#if !CORE
+#if PORTABLE
     }
 #endif
 

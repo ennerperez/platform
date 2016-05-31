@@ -5,5 +5,3 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Model CRUD Portable")]
 [assembly: AssemblyDescription("Platform Model CRUD Pattern (Portable)")]
-
-[assembly: AssemblyCulture("")]

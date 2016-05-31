@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;PORTABLE,CORE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;CORE;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -45,9 +45,6 @@
     <Compile Include="..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
-    <Compile Include="..\Support\ArgumentOutOfRange.cs">
-      <Link>ArgumentOutOfRange.cs</Link>
-    </Compile>
     <Compile Include="..\Support\Attributes\BuildDateAttribute.cs">
       <Link>Attributes\BuildDateAttribute.cs</Link>
     </Compile>
@@ -66,8 +63,8 @@
     <Compile Include="..\Support\Attributes\IdAttribute.cs">
       <Link>Attributes\IdAttribute.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Attributes\MadeIn.cs">
-      <Link>Attributes\MadeIn.cs</Link>
+    <Compile Include="..\Support\Attributes\MadeInAttribute.cs">
+      <Link>Attributes\MadeInAttribute.cs</Link>
     </Compile>
     <Compile Include="..\Support\Attributes\MailAddressAttribute.cs">
       <Link>Attributes\MailAddressAttribute.cs</Link>
@@ -75,17 +72,26 @@
     <Compile Include="..\Support\Attributes\ProductLevelAttribute.cs">
       <Link>Attributes\ProductLevelAttribute.cs</Link>
     </Compile>
+    <Compile Include="..\Support\Attributes\TagAttribute.cs">
+      <Link>Attributes\TagAttribute.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Attributes\ThirdPartyAttribute.cs">
       <Link>Attributes\ThirdPartyAttribute.cs</Link>
     </Compile>
     <Compile Include="..\Support\Attributes\UrlAttribute.cs">
       <Link>Attributes\UrlAttribute.cs</Link>
     </Compile>
+    <Compile Include="..\Support\Check.cs">
+      <Link>Check.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Collections\Extensions.cs">
       <Link>Collections\Extensions.cs</Link>
     </Compile>
     <Compile Include="..\Support\Collections\TypeListComparer.cs">
       <Link>Collections\TypeListComparer.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Core.cs">
+      <Link>Core.cs</Link>
     </Compile>
     <Compile Include="..\Support\Extensions\Dates.cs">
       <Link>Extensions\Dates.cs</Link>
@@ -135,27 +141,28 @@
     <Compile Include="..\Support\Maths\Vector2.cs">
       <Link>Maths\Vector2.cs</Link>
     </Compile>
+    <Compile Include="..\Support\SemanticVersion.cs">
+      <Link>SemanticVersion.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Text\Markdown.cs">
       <Link>Text\Markdown.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Structures\Timer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="$(SolutionDir).nuget\NuGet.targets" Condition="Exists('$(SolutionDir).nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir).nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir).nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets'))" />
   </Target>
-  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

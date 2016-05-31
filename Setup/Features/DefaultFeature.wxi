@@ -24,12 +24,13 @@
     <!--<File Id="SUPPORT.NET.DLL" Name="Platform.Support.Net.dll" Source="$(var.SourcePath)Platform.Support.Net.dll" Checksum="yes" />-->
     <File Id="SUPPORT.WEB.DLL" Name="Platform.Support.Web.dll" Source="$(var.SourcePath)Platform.Support.Web.dll" Checksum="yes" />
     <File Id="SUPPORT.WINDOWS.DLL" Name="Platform.Support.Windows.dll" Source="$(var.SourcePath)Platform.Support.Windows.dll" Checksum="yes" />
-    <File Id="MODEL.DLL" Name="Platform.Model.dll" Source="$(var.SourcePath)Platform.Model.dll" />
+    <File Id="MODEL.CORE.DLL" Name="Platform.Model.Core.dll" Source="$(var.SourcePath)Platform.Model.Core.dll" />
     <File Id="MODEL.CRUD.DLL" Name="Platform.Model.CRUD.dll" Source="$(var.SourcePath)Platform.Model.CRUD.dll" />
     <File Id="MODEL.MVC.DLL" Name="Platform.Model.MVC.dll" Source="$(var.SourcePath)Platform.Model.MVC.dll" />
     <File Id="MODEL.SPS.DLL" Name="Platform.Model.SPS.dll" Source="$(var.SourcePath)Platform.Model.SPS.dll" />
-    <File Id="PRESENTATION.REPORTING.DLL" Name="Platform.Presentation.Reporting.dll" Source="$(var.SourcePath)Platform.Presentation.Reporting.dll" Checksum="yes" />
-    <File Id="PRESENTATION.WINDOWS.FORMS.DLL" Name="Platform.Presentation.Windows.Forms.dll" Source="$(var.SourcePath)Platform.Presentation.Windows.Forms.dll" Checksum="yes" />
+    <File Id="MODEL.SPS.PLUGIN.DLL" Name="Platform.Model.SPS.Plugin.dll" Source="$(var.SourcePath)Platform.Model.SPS.Plugin.dll" />
+    <File Id="PRESENTATION.REPORTS.DLL" Name="Platform.Presentation.Reports.dll" Source="$(var.SourcePath)Platform.Presentation.Reports.dll" Checksum="yes" />
+    <File Id="PRESENTATION.FORMS.DLL" Name="Platform.Presentation.Forms.dll" Source="$(var.SourcePath)Platform.Presentation.Forms.dll" Checksum="yes" />
     <!--<File Id="SERVICES.SOCIALS.DLL" Name="Services.Socials.dll" Source="$(var.SourcePath)Services.Socials.dll" Vital="yes" Checksum="yes" />
       <File Id="SERVICES.WEATHER.DLL" Name="Services.Weather.dll" Source="$(var.SourcePath)Services.Weather.dll" Vital="yes" Checksum="yes" />
       <File Id="SERVICES.TAXES.DLL" Name="Services.Taxes.dll" Source="$(var.SourcePath)Services.Taxes.dll" Vital="yes" Checksum="yes" />-->
@@ -49,12 +50,13 @@
     <!--<File Id="SUPPORT.NET.PDB" Name="Platform.Support.Net.pdb" Source="$(var.SourcePath)Platform.Support.Net.pdb" Checksum="yes" />-->
     <File Id="SUPPORT.WEB.PDB" Name="Platform.Support.Web.pdb" Source="$(var.SourcePath)Platform.Support.Web.pdb" Checksum="yes" />
     <File Id="SUPPORT.WINDOWS.PDB" Name="Platform.Support.Windows.pdb" Source="$(var.SourcePath)Platform.Support.Windows.pdb" Checksum="yes" />
-    <File Id="MODEL.PDB" Name="Platform.Model.pdb" Source="$(var.SourcePath)Platform.Model.pdb" />
+    <File Id="MODEL.CORE.PDB" Name="Platform.Model.Core.pdb" Source="$(var.SourcePath)Platform.Model.Core.pdb" />
     <File Id="MODEL.CRUD.PDB" Name="Platform.Model.CRUD.pdb" Source="$(var.SourcePath)Platform.Model.CRUD.pdb" />
     <File Id="MODEL.MVC.PDB" Name="Platform.Model.MVC.pdb" Source="$(var.SourcePath)Platform.Model.MVC.pdb" />
     <File Id="MODEL.SPS.PDB" Name="Platform.Model.SPS.pdb" Source="$(var.SourcePath)Platform.Model.SPS.pdb" />
-    <File Id="PRESENTATION.REPORTING.PDB" Name="Platform.Presentation.Reporting.pdb" Source="$(var.SourcePath)Platform.Presentation.Reporting.pdb" Checksum="yes" />
-    <File Id="PRESENTATION.WINDOWS.FORMS.PDB" Name="Platform.Presentation.Windows.Forms.pdb" Source="$(var.SourcePath)Platform.Presentation.Windows.Forms.pdb" Checksum="yes" />
+    <File Id="MODEL.SPS.PLUGIN.PDB" Name="Platform.Model.SPS.Plugin.pdb" Source="$(var.SourcePath)Platform.Model.SPS.Plugin.pdb" />
+    <File Id="PRESENTATION.REPORTS.PDB" Name="Platform.Presentation.Reports.pdb" Source="$(var.SourcePath)Platform.Presentation.Reports.pdb" Checksum="yes" />
+    <File Id="PRESENTATION.FORMS.PDB" Name="Platform.Presentation.Forms.pdb" Source="$(var.SourcePath)Platform.Presentation.Forms.pdb" Checksum="yes" />
     <!--<File Id="SERVICES.SOCIALS.PDB" Name="Services.Socials.pdb" Source="$(var.SourcePath)Services.Socials.pdb" Vital="yes" Checksum="yes" />
       <File Id="SERVICES.WEATHER.PDB" Name="Services.Weather.pdb" Source="$(var.SourcePath)Services.Weather.pdb" Vital="yes" Checksum="yes" />
       <File Id="SERVICES.TAXES.PDB" Name="Services.Taxes.pdb" Source="$(var.SourcePath)Services.Taxes.pdb" Vital="yes" Checksum="yes" />-->

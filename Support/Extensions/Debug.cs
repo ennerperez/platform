@@ -7,10 +7,16 @@ using System.Text;
 
 namespace Platform.Support
 {
+
+#if PORTABLE
+    namespace Core
+    {
+#endif
+
     /// <summary>
     /// Class DebugExtensions.
     /// </summary>
-    public static class DebugExtensions
+    public static partial class Extensions
     {
 
         [Conditional("DEBUG")]
@@ -38,4 +44,9 @@ namespace Platform.Support
 
 
     }
+
+#if PORTABLE
+    }
+#endif
+
 }
