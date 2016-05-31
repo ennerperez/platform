@@ -55,7 +55,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Forms", "Prese
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Windows", "Support.Windows\Support.Windows.csproj", "{3441E7A2-F6D5-4E34-ABD6-86B131105C29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reporting", "Presentation.Reporting\Presentation.Reporting.csproj", "{EE7DA415-99ED-4E8A-B129-BE09F40ACB83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reports", "Presentation.Reports\Presentation.Reports.csproj", "{EE7DA415-99ED-4E8A-B129-BE09F40ACB83}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.MVC", "Model.MVC\Model.MVC.csproj", "{8A7C7FBF-A028-4D54-8E92-6D8C4FC3A2FB}"
 	ProjectSection(ProjectDependencies) = postProject
