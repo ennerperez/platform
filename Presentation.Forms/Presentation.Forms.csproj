@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AED11B6C-B7D8-48F8-B19F-DA6B8D72D89F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Platform.Presentation.Forms</RootNamespace>
+    <AssemblyName>Platform.Presentation.Forms</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Build\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\.files\AssemblyInfo.Common.cs">
+      <Link>Properties\AssemblyInfo.Common.cs</Link>
+    </Compile>
+    <Compile Include="..\.files\AssemblyInfo.Platform.cs">
+      <Link>Properties\AssemblyInfo.Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\.files\AssemblyInfo.Version.cs">
+      <Link>Properties\AssemblyInfo.Version.cs</Link>
+    </Compile>
+    <Compile Include="Components\AppearanceManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\Extender.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\Literals.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\AnimatedBitmapControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\BlinkingImage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\BlinkingImage.designer.cs">
+      <DependentUpon>BlinkingImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BufferedPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FillBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageCropControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageCropControl.designer.cs">
+      <DependentUpon>ImageCropControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LinkLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SplitButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TaskBar.cs" />
+    <Compile Include="Controls\TextAndImageColumn.cs" />
+    <Compile Include="Components\VistaMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customs\ContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customs\MenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customs\StatusStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Customs\ToolStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Designers\CustomAppearancePropertyEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Components\CultureManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\CueProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Providers\UserAcountControlProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Renderes\ColorTables\CustomColorTable.cs" />
+    <Compile Include="Renderes\ColorTables\Office\OfficeClassicColorTable.cs" />
+    <Compile Include="Renderes\ColorTables\Office\Office2003OliveColorTable.cs" />
+    <Compile Include="Renderes\ColorTables\Office\Office2003SilverColorTable.cs" />
+    <Compile Include="Renderes\ColorTables\Office\Office2003BlueColorTable.cs" />
+    <Compile Include="Renderes\ColorTables\Office\Office2007ColorTable.cs" />
+    <Compile Include="Renderes\ColorTables\Office\OfficeXPColorTable.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Support.Drawing\Support.Drawing.csproj">
+      <Project>{d544e494-3925-4180-a4a8-26801118d527}</Project>
+      <Name>Support.Drawing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Support\Support.csproj">
+      <Project>{25ab6bbf-a879-4570-9e0e-947d52ae7333}</Project>
+      <Name>Support</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\AnimatedBitmapControl.resx">
+      <DependentUpon>AnimatedBitmapControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\BlinkingImage.resx">
+      <DependentUpon>BlinkingImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designers\CustomAppearancePropertyEditor.resx">
+      <DependentUpon>CustomAppearancePropertyEditor.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Package.nuspec" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="$(SolutionDir).nuget\NuGet.targets" Condition="Exists('$(SolutionDir).nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir).nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir).nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

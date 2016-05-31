@@ -67,7 +67,7 @@
     <Compile Include="Attributes\ContactAttribute.cs" />
     <Compile Include="Attributes\BuildDateAttribute.cs" />
     <Compile Include="Check.cs" />
-    <Compile Include="Console\NativeMethods.cs" />
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="Console\ProgressBar.cs" />
     <Compile Include="Console\Spinner.cs" />
     <Compile Include="Core.cs" />
@@ -84,7 +84,6 @@
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\Reflections.cs" />
     <Compile Include="Helpers\Types.cs" />
-    <Compile Include="IO\NativeMethods.cs" />
     <Compile Include="IsNull.cs" />
     <Compile Include="Managers\BrandingManager.cs" />
     <Compile Include="Collections\Extensions.cs" />

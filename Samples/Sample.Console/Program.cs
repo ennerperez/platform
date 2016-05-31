@@ -22,6 +22,7 @@ namespace Sample.Console
             if (Platform.Support.OS.Helpers.IsLinux())
                 System.Console.WriteLine("Running Linux");
 
+
             System.Console.ReadKey();
 
         }

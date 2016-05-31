@@ -1,52 +1,54 @@
-﻿using System;
+﻿#if PORTABLE
+using Platform.Support.Core;
+#else
+using Platform.Support;
+#endif
+using System;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-
-#if NETFX_45 && !PORTABLE
 
 namespace Platform.Support.Web
 {
+
+#if !PORTABLE
 
     public static class Helpers
     {
 
         internal const string iphost = "http://ipinfo.io/";
 
-#if !PORTABLE
-        public static async Task<IPAddress> GetExternalIPAsync()
-#else
-        public static async Task<string> GetExternalIPAsync()
-#endif
+        public static IPAddress GetExternalIP()
         {
-#if !PORTABLE
             IPAddress result = IPAddress.Parse("127.0.0.1");
-
-#else
-            string result = "127.0.0.1";
-#endif
             try
             {
-                var request = WebRequest.Create(iphost + "ip") as HttpWebRequest;
-                var response = await request.GetResponseAsync();
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(iphost + "ip") as HttpWebRequest;
+                var response = request.GetResponse();
 
-                using (var reader = new StreamReader(response.GetResponseStream(), true))
+                using (var reader = new StreamReader(response.GetResponseStream(), System.Text.Encoding.UTF8))
                 {
+
                     string responseText = reader.ReadToEnd();
-#if !PORTABLE
+                    responseText = responseText.Replace("\n", "");
                     result = IPAddress.Parse(responseText);
-#else
-                    result = responseText;
-#endif
+
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
+                ex.DebugThis();
             }
+
             return result;
+
         }
+
+
+#if NETFX_45 && !PORTABLE
 
         public static async Task<double[]> GetExternalLocationAsync()
         {
@@ -70,8 +72,10 @@ namespace Platform.Support.Web
             }
         }
 
-    }
-    
-}
 
 #endif
+    }
+
+#endif
+
+}

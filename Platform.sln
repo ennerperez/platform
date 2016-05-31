@@ -51,7 +51,7 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup", "Setup\Setup.wixpro
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Bootstrapper", "Bootstrapper\Bootstrapper.wixproj", "{B9AD2AB2-C519-4EF3-B4C6-9934C149CA15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Windows.Forms", "Presentation.Windows.Forms\Presentation.Windows.Forms.csproj", "{AED11B6C-B7D8-48F8-B19F-DA6B8D72D89F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Forms", "Presentation.Forms\Presentation.Forms.csproj", "{AED11B6C-B7D8-48F8-B19F-DA6B8D72D89F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Windows", "Support.Windows\Support.Windows.csproj", "{3441E7A2-F6D5-4E34-ABD6-86B131105C29}"
 EndProject
