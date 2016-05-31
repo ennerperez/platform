@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3E47685A-B432-4E64-A78C-212A46502083}</ProjectGuid>
+    <ProjectGuid>{1E1A1127-1ECC-4A97-8D28-6DF0139436B1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Platform.Model.MVC</RootNamespace>
-    <AssemblyName>Platform.Model.MVC.PCL</AssemblyName>
+    <RootNamespace>Platform.Model.SPS.Plugin</RootNamespace>
+    <AssemblyName>Platform.Model.SPS.Plugin.PCL</AssemblyName>
     <DefaultLanguage>es-ES</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;PORTABLE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -36,56 +36,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\.files\AssemblyInfo.Common.cs">
-      <Link>Properties\AssemblyInfo.Common.cs</Link>
-    </Compile>
-    <Compile Include="..\.files\AssemblyInfo.Platform.cs">
-      <Link>Properties\AssemblyInfo.Platform.cs</Link>
-    </Compile>
-    <Compile Include="..\.files\AssemblyInfo.Version.cs">
-      <Link>Properties\AssemblyInfo.Version.cs</Link>
-    </Compile>
-    <Compile Include="..\Model.MVC.PCL\Properties\AssemblyInfo.cs">
-      <Link>Properties\AssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\Model.MVC\Controller.cs">
-      <Link>Controller.cs</Link>
-    </Compile>
-    <Compile Include="..\Model.MVC\IController.cs">
-      <Link>IController.cs</Link>
-    </Compile>
-    <Compile Include="..\Model.MVC\IModel.cs">
-      <Link>IModel.cs</Link>
-    </Compile>
-    <Compile Include="..\Model.MVC\IView.cs">
-      <Link>IView.cs</Link>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model.PCL.Net45\Model.PCL.csproj">
-      <Project>{f141c367-11e3-4e5f-a089-95173b4029d3}</Project>
-      <Name>Model.PCL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Support.PCL.Net45\Support.PCL.csproj">
-      <Project>{b0bc9452-381f-4bf7-8e3c-382635a14187}</Project>
-      <Name>Support.PCL</Name>
-    </ProjectReference>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="$(SolutionDir).nuget\NuGet.targets" Condition="Exists('$(SolutionDir).nuget\NuGet.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir).nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir).nuget\NuGet.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets'))" />
   </Target>
-  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.15.0\build\Microsoft.Bcl.Build.Symbols.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

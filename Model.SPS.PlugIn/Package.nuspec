@@ -20,5 +20,8 @@
       <dependency id="Platform.Support.Core" version="$version$" />
     </dependencies>
   </metadata>
-  <files />
+  <files>
+    <file src="..\Model.SPS.Plugin.PCL\bin\release\$id$.PCL.dll" target="lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\$id$.PCL.dll" />
+    <file src="..\Model.SPS.Plugin.PCL.Net45\bin\release\$id$.PCL.dll" target="lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\$id$.PCL.dll" />
+  </files>
 </package>
