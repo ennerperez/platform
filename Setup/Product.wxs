@@ -79,7 +79,7 @@
       <!-- Features -->
       <?include Features\DefaultFeature.wxi?>
       <!--<?include Features\PortableFeature.wxi?>-->
-      <?include Features\NuGetCacheFeature.wxi?>
+      <!--<?include Features\NuGetCacheFeature.wxi?>-->
 
     </Product>
 
