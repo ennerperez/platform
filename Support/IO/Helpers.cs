@@ -43,6 +43,35 @@ namespace Platform.Support.IO
 
         }
 
+        public static string GetCRC32(string source)
+        {
+            return GetCRC32(new System.IO.FileInfo(source));
+        }
+
+        public static string GetCRC32(System.IO.FileInfo source)
+        {
+            var crc32 = new Platform.Support.Security.Cryptography.CRC32();
+            String hash = String.Empty;
+            if (System.IO.File.Exists(source.FullName))
+            {
+                try
+                {
+                    using (System.IO.FileStream fs = System.IO.File.Open(source.FullName, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
+                    {
+                        foreach (byte b in crc32.ComputeHash(fs))
+                        {
+                            hash += b.ToString("x2").ToLower();
+                        }
+                    }
+                }
+                catch
+                {
+                }
+            }
+
+            return hash;
+        }
+
     }
 
 }

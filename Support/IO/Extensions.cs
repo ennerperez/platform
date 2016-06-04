@@ -62,6 +62,11 @@ namespace Platform.Support.IO
             }
         }
 
+        public static string GetCRC32(this System.IO.FileInfo source)
+        {
+            return Helpers.GetCRC32(source);
+        }
+
         public static System.IO.MemoryStream ToStream(this System.IO.FileInfo file, string filepath)
         {
             if (string.IsNullOrEmpty(filepath) == true)

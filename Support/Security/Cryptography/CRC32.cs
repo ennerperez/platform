@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Platform.Support.IO
+namespace Platform.Support.Security.Cryptography
 {
    
 	public class CRC32 : HashAlgorithm
@@ -118,34 +118,7 @@ namespace Platform.Support.IO
 				(byte)(x & 0xff)
 			};
 		}
-
-
-		public static string Get(string source)
-		{
-			return Get(new System.IO.FileInfo(source));
-		}
-
-		public static string Get(System.IO.FileInfo source)
-		{
-			CRC32 crc32 = new CRC32();
-			String hash = String.Empty;
-			if (System.IO.File.Exists(source.FullName)) {
-				try {
-					using (System.IO.FileStream fs = System.IO.File.Open(source.FullName, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read)) {
-						foreach (byte b in crc32.ComputeHash(fs)) {
-							hash += b.ToString("x2").ToLower();
-						}
-					}
-				} catch {
-				}
-			}
-
-			return hash;
-		}
-
-
-
-
+        
 	}
 
 }

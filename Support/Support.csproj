@@ -88,7 +88,6 @@
     <Compile Include="Managers\BrandingManager.cs" />
     <Compile Include="Collections\Extensions.cs" />
     <Compile Include="Collections\TypeListComparer.cs" />
-    <Compile Include="IO\CRC32.cs" />
     <Compile Include="IO\Extensions.cs" />
     <Compile Include="IO\Helpers.cs" />
     <Compile Include="IO\IniFile.cs" />
@@ -103,6 +102,9 @@
     <Compile Include="Reflection\NotifyPropertyHelpers.cs" />
     <Compile Include="Reflection\ReflectionService.cs" />
     <Compile Include="Reflection\ReflectOn.cs" />
+    <Compile Include="Security\Cryptography\CRC32.cs" />
+    <Compile Include="Security\Cryptography\Encryption\Data.cs" />
+    <Compile Include="Security\Cryptography\Encryption\Hash.cs" />
     <Compile Include="Security\Cryptography\Extensions.cs" />
     <Compile Include="Security\Cryptography\Helpers.cs" />
     <Compile Include="Security\Extensions.cs" />

@@ -57,8 +57,8 @@
       <HintPath>..\..\packages\System.Data.SQLite.Linq.1.0.101.0\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Data.SqlLocalDb, Version=1.14.0.0, Culture=neutral, PublicKeyToken=9a192a7522c9e1a0, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Data.SqlLocalDb.1.14.0\lib\net20\System.Data.SqlLocalDb.dll</HintPath>
+    <Reference Include="System.Data.SqlLocalDb, Version=1.15.0.0, Culture=neutral, PublicKeyToken=9a192a7522c9e1a0, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Data.SqlLocalDb.1.15.0\lib\net40\System.Data.SqlLocalDb.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net" />
