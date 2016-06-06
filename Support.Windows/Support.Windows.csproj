@@ -54,6 +54,7 @@
     <Compile Include="..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
+    <Compile Include="Helpers.cs" />
     <Compile Include="ExternDll.cs" />
     <Compile Include="NativeMethods\ComDlg32.cs" />
     <Compile Include="NativeMethods\Gdi32.cs" />

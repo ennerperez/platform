@@ -67,6 +67,9 @@
     <Compile Include="Controls\AnimatedBitmapControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\AutoHeightLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\BlinkingImage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -74,6 +77,12 @@
       <DependentUpon>BlinkingImage.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\BufferedPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CommandLink.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DataGridViewExtended.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\FillBar.cs">
@@ -163,9 +172,12 @@
     <None Include="Package.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Controls\AutoHeightLinkLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

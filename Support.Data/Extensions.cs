@@ -11,7 +11,7 @@ using System.Threading;
 
 namespace Platform.Support.Data
 {
-    public static class Extensions
+    public static partial class Extensions
     {
 
         #region IDbConnection
@@ -799,6 +799,32 @@ namespace Platform.Support.Data
             }
         }
 
+        public static IDbDataAdapter CreateAdapter(this IDbConnection conn)
+        {
+            string _type = null;
+            switch (conn.GetEngine())
+            {
+                case Engines.Sql:
+                    _type = "SqlDataAdapter";
+                    break;
+                case Engines.SqlCE:
+                    _type = "SqlCeDataAdapter";
+                    break;
+                case Engines.MySql:
+                    _type = "MySqlDataAdapter";
+                    break;
+                case Engines.SQLite:
+                    _type = "SQLiteDataAdapter";
+                    break;
+                default:
+                    _type = "OleDbDataAdapter";
+                    break;
+            }
+
+            IDbDataAdapter _return = (IDbDataAdapter)conn.CreateObject(_type);
+            
+            return _return;
+        }
 
         public static IDbDataParameter CreateParameter(this IDbConnection conn, string name, object value)
         {
@@ -1150,6 +1176,49 @@ namespace Platform.Support.Data
             cmd.Connection.Close();
             T _result = (T)_return; //.CType<T>();
             return _result;
+        }
+
+        public static DataSet Fill(this IDbConnection conn, string query, IDbDataParameter[] args)
+        {
+
+            if (string.IsNullOrEmpty(query))
+                return null;
+
+            IDbCommand cmd = conn.CreateCommand(query, args);
+            IDbDataAdapter adapter = conn.CreateAdapter();
+
+#if DEBUG
+            if (TimeExecution)
+            {
+                _Stopwatch.Reset();
+                _Stopwatch.Start();
+            }
+#endif
+            cmd.Connection.Open();
+            var _result = new DataSet();
+            adapter.Fill(_result);
+            cmd.Connection.Close();
+
+#if DEBUG
+            if (TimeExecution)
+            {
+                _Stopwatch.Stop();
+                _ElapsedMilliseconds += _Stopwatch.ElapsedMilliseconds;
+                Debug.WriteLine("Finished in {0} ms ({1:0.0} s total)", _Stopwatch.ElapsedMilliseconds, _ElapsedMilliseconds / 1000.0);
+            }
+#endif
+
+            return _result;
+        }
+
+        public static DataSet Fill(this IDbConnection conn, string query, params object[] args)
+        {
+            return Fill(conn, query, conn.GenerateParameters(args).ToArray());
+        }
+
+        public static DataSet Fill(this IDbCommand cmd)
+        {
+            return Fill(cmd.Connection, cmd.CommandText, cmd.Parameters);
         }
 
         /// <summary>

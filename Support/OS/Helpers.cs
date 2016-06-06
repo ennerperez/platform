@@ -15,52 +15,22 @@ namespace Platform.Support.OS
         /// <returns></returns>
         /// <remarks></remarks>
         [DebuggerStepThrough()]
-        public static int ArchitectureLegacy()
+        public static int EnvironmentArchitecture()
         {
             string pa = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
             return (string.IsNullOrEmpty(pa) | string.Compare(pa, 0, "x86", 0, 3, true) == 0 ? 32 : 64);
         }
 
         /// <summary>
-        ///  returns 32 if windows runs in 32 bit mode and 64 for 64 bit mode
+        ///  returns 32 if runs in 32 bit mode and 64 for 64 bit mode
         /// </summary>
         /// <returns></returns>
         /// <remarks></remarks>
         [DebuggerStepThrough()]
-        public static int RunningMode()
+        public static int Architecture()
         {
-            if (IntPtr.Size == 8)
-            {
-                return 64;
-            }
-            else
-            {
-                return 32;
-            }
+            return (IntPtr.Size == 8 ? 64 : 32);
         }
-
-#if (!PORTABLE)
-
-        /// <summary>
-        ///  returns 32 if windows has installed in 32 bit mode and 64 for 64 bit mode
-        /// </summary>
-        /// <returns></returns>
-        /// <remarks></remarks>
-        [DebuggerStepThrough()]
-        public static int WindowsArchitecture()
-        {
-            Microsoft.Win32.RegistryKey rk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("Hardware\\Description\\System\\CentralProcessor\\0");
-            if (rk.GetValue("Identifier", "x86").ToString().Contains("x86"))
-            {
-                return 32;
-            }
-            else
-            {
-                return 64;
-            }
-        }
-
-#endif
 
         /// <summary>
         /// Returns if running OS is Windows

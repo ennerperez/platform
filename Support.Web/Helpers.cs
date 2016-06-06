@@ -48,6 +48,14 @@ namespace Platform.Support.Web
         }
 
 
+        internal static bool hasInternetConnection;
+
+        public static bool HasInternetConnection()
+        {
+            hasInternetConnection = GetExternalIP().Equals(IPAddress.Parse("127.0.0.1"));
+            return hasInternetConnection;
+        }
+
 #if NETFX_45 && !PORTABLE
 
         public static async Task<double[]> GetExternalLocationAsync()

@@ -2,12 +2,22 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.1.11] - [UNRELEASED]
+### Added
+- Encryption Hash Class
+- Windows Forms CommandLink Control
+- Secure Local User AppDataPath
+- AutoHeightLabel + AutoHeightLinkLabel
+- ORM Data Fill
+
+### Changed
+- CRC32 Algorithm
+
 ## [3.1.10] - [2016-05-31]
 ### Added
 - Console extensions
 - SemanticVersion type
 - OS Detection
-- Encryption Hash Class
 
 ### Fixed
 - Reflection GetVersion bug
@@ -15,7 +25,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Namespaces simplification
-- CRC32 Algorithm
 
 ## [3.1.9] - [2016-04-25]
 ### Added
