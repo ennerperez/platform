@@ -1046,7 +1046,7 @@ namespace Platform.Presentation.Forms.Controls
         }
     }
     
-    class MathHelper
+    internal class MathHelper
     {
         public static int Max(params int[] values)
         {

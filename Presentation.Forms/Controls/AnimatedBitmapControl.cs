@@ -276,7 +276,7 @@ namespace Platform.Presentation.Forms.Controls
 
     #region Bidi
 
-    public class BidiGraphics
+    internal class BidiGraphics
     {
         private readonly Graphics g;
         private readonly Rectangle containerBounds;
@@ -644,12 +644,12 @@ namespace Platform.Presentation.Forms.Controls
         }
     }
 
-    public interface IRtlAware
+    internal interface IRtlAware
     {
         void Layout();
     }
 
-    public class BidiHelper
+    internal class BidiHelper
     {
         public static bool IsRightToLeft
         {
@@ -812,12 +812,12 @@ namespace Platform.Presentation.Forms.Controls
 
     #region VirtualTransparency
 
-    public interface IVirtualTransparencyHost
+    internal interface IVirtualTransparencyHost
     {
         void Paint(PaintEventArgs args);
     }
 
-    public class VirtualTransparency
+    internal class VirtualTransparency
     {
         public static IVirtualTransparencyHost VirtualParent(Control child)
         {
