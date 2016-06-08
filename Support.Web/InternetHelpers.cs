@@ -22,7 +22,7 @@ namespace Platform.Support
 
 #if !PORTABLE
 
-        public static class Helpers
+        public static class InternetHelpers
         {
 
             internal const string iphost = "http://ipinfo.io/";
