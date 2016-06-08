@@ -5,8 +5,6 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-namespace Platform.Support.Windows
-{
     internal static class ExternDll
     {
 
@@ -85,5 +83,4 @@ namespace Platform.Support.Windows
         internal const string OraMtsDll = "oramts.dll";
 #endif //!FEATURE_PAL
     }
-}
 
