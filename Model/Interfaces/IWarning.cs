@@ -5,11 +5,17 @@ using System.Text;
 
 namespace Platform.Model
 {
-
-    delegate void OnWarning(EventArgs e);
-
-    public interface IWarning
+#if PORTABLE
+    namespace Core
     {
-        event EventHandler<EventArgs> Warning;
+#endif
+        delegate void OnWarning(EventArgs e);
+
+        public interface IWarning
+        {
+            event EventHandler<EventArgs> Warning;
+        }
+#if PORTABLE
     }
+#endif
 }

@@ -3,9 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Platform.Model.MVC
+namespace Platform.Model
 {
-    public interface IModel
+#if PORTABLE
+    namespace Core
     {
+#endif
+        namespace MVC
+        {
+            public interface IModel
+            {
+            }
+        }
+#if PORTABLE
     }
+#endif
 }

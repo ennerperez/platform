@@ -3,18 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Platform.Model.SPS
+namespace Platform.Model
 {
-    /// <summary>
-    /// This interface is implemented all plugins.
-    /// PlugIns does not directly implement this interface, but they implement by inheriting PlugIn class.
-    /// </summary>
-    public interface IPlugIn : IPluggable
+
+#if PORTABLE
+    namespace Core
+    {
+#endif
+
+        namespace SPS
     {
         /// <summary>
-        /// Name of the plugin.
+        /// This interface is implemented all plugins.
+        /// PlugIns does not directly implement this interface, but they implement by inheriting PlugIn class.
         /// </summary>
-        string Name { get; }
+        public interface IPlugIn : IPluggable
+        {
+            /// <summary>
+            /// Name of the plugin.
+            /// </summary>
+            string Name { get; }
+        }
+
     }
 
+#if PORTABLE
 }
+#endif
+
+    }

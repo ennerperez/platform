@@ -3,15 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Platform.Model.CRUD
+namespace Platform.Model
 {
-    public enum Operations
+
+#if PORTABLE
+    namespace Core
     {
-        Unknow = -1,
-        None = 0,
-        Create = 1,
-        Read = 2,
-        Update = 3, 
-        Delete = 4
+#endif
+
+        namespace CRUD
+        {
+            public enum Operations
+            {
+                Unknow = -1,
+                None = 0,
+                Create = 1,
+                Read = 2,
+                Update = 3,
+                Delete = 4
+            }
+        }
+
+#if PORTABLE
     }
+#endif
 }

@@ -3,27 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Platform.Model.SPS.Runnable
+namespace Platform.Model
 {
-    /// <summary>
-    /// Interface to control modules that can run in self thread.
-    /// </summary>
-    public interface IRunnable
+
+#if PORTABLE
+    namespace Core
     {
-        /// <summary>
-        /// Starts the module.
-        /// </summary>
-        void Start();
+#endif
 
-        /// <summary>
-        /// Stops the module.
-        /// </summary>
-        void Stop();
+        namespace SPS.Runnable
+        {
+            /// <summary>
+            /// Interface to control modules that can run in self thread.
+            /// </summary>
+            public interface IRunnable
+            {
+                /// <summary>
+                /// Starts the module.
+                /// </summary>
+                void Start();
 
-        /// <summary>
-        /// Waits the module to stop.
-        /// </summary>
-        void WaitToStop();
+                /// <summary>
+                /// Stops the module.
+                /// </summary>
+                void Stop();
+
+                /// <summary>
+                /// Waits the module to stop.
+                /// </summary>
+                void WaitToStop();
+            }
+
+        }
+
+#if PORTABLE
     }
+#endif
 
 }

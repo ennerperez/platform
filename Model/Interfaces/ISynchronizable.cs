@@ -63,11 +63,19 @@ namespace System.Data
 
 namespace Platform.Model
 {
-    public class ISynchronizable
+
+#if PORTABLE
+    namespace Core
     {
+#endif
+        public class ISynchronizable
+        {
 
-        DataRowVersion RowVersion { get; set; }
-        DataRowState RowState { get; set; }
+            DataRowVersion RowVersion { get; set; }
+            DataRowState RowState { get; set; }
 
+        }
+#if PORTABLE
     }
+#endif
 }

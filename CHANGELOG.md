@@ -13,6 +13,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Support Standardization
 - CRC32 Algorithm
+- Portable Core Isolation
 
 ## [3.1.10] - [2016-05-31]
 ### Added

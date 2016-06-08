@@ -10,51 +10,58 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Platform.Support.Web
+namespace Platform.Support
 {
+#if PORTABLE
+    namespace Core
+    {
+#endif
+
+    namespace Web
+    {
 
 #if !PORTABLE
 
-    public static class Helpers
-    {
-
-        internal const string iphost = "http://ipinfo.io/";
-
-        public static IPAddress GetExternalIP()
+        public static class Helpers
         {
-            IPAddress result = IPAddress.Parse("127.0.0.1");
-            try
+
+            internal const string iphost = "http://ipinfo.io/";
+
+            public static IPAddress GetExternalIP()
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(iphost + "ip") as HttpWebRequest;
-                var response = request.GetResponse();
-
-                using (var reader = new StreamReader(response.GetResponseStream(), System.Text.Encoding.UTF8))
+                IPAddress result = IPAddress.Parse("127.0.0.1");
+                try
                 {
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(iphost + "ip") as HttpWebRequest;
+                    var response = request.GetResponse();
 
-                    string responseText = reader.ReadToEnd();
-                    responseText = responseText.Replace("\n", "");
-                    result = IPAddress.Parse(responseText);
+                    using (var reader = new StreamReader(response.GetResponseStream(), System.Text.Encoding.UTF8))
+                    {
+
+                        string responseText = reader.ReadToEnd();
+                        responseText = responseText.Replace("\n", "");
+                        result = IPAddress.Parse(responseText);
+
+                    }
 
                 }
+                catch (Exception ex)
+                {
+                    ex.DebugThis();
+                }
+
+                return result;
 
             }
-            catch (Exception ex)
+
+
+            internal static bool hasInternetConnection;
+
+            public static bool HasInternetConnection()
             {
-                ex.DebugThis();
+                hasInternetConnection = GetExternalIP().Equals(IPAddress.Parse("127.0.0.1"));
+                return hasInternetConnection;
             }
-
-            return result;
-
-        }
-
-
-        internal static bool hasInternetConnection;
-
-        public static bool HasInternetConnection()
-        {
-            hasInternetConnection = GetExternalIP().Equals(IPAddress.Parse("127.0.0.1"));
-            return hasInternetConnection;
-        }
 
 #if NETFX_45 && !PORTABLE
 
@@ -82,8 +89,14 @@ namespace Platform.Support.Web
 
 
 #endif
+        }
+
+#endif
+
     }
 
+#if PORTABLE
+    }
 #endif
 
 }

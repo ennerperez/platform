@@ -5,11 +5,18 @@ using System.Text;
 
 namespace Platform.Model
 {
-    public interface IEntity<T> 
+#if PORTABLE
+    namespace Core
     {
-        T Id { get; set; }
+#endif
+        public interface IEntity<T>
+        {
+            T Id { get; set; }
+        }
+        public interface IEntity : IEntity<long>
+        {
+        }
+#if PORTABLE
     }
-    public interface IEntity : IEntity<long>
-    {
-    }
+#endif
 }
