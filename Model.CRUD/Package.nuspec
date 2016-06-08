@@ -17,8 +17,8 @@
     <language>en</language>
     <tags>.NET Framework Base Development Platform</tags>
     <dependencies>
-      <dependency id="Platform.Support.Core" version="3.1" />
-      <dependency id="Platform.Model.Core" version="3.1" />
+      <dependency id="Platform.Support.Core" version="3.2" />
+      <dependency id="Platform.Model.Core" version="3.2" />
     </dependencies>
   </metadata>
   <files>

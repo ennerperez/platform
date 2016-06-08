@@ -76,11 +76,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Presentation.Forms\Presentation.Forms.csproj">
+    <ProjectReference Include="..\..\Presentation.Forms\Presentation.Forms.csproj">
       <Project>{aed11b6c-b7d8-48f8-b19f-da6b8d72d89f}</Project>
       <Name>Presentation.Forms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Support\Support.csproj">
+    <ProjectReference Include="..\..\Support\Support.csproj">
       <Project>{25ab6bbf-a879-4570-9e0e-947d52ae7333}</Project>
       <Name>Support</Name>
     </ProjectReference>
