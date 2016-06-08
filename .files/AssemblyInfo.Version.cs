@@ -7,11 +7,6 @@ using Platform.Support;
 using Platform.Support.Attributes;
 #endif
 
-[assembly: AssemblyVersion("3.1.11.*")]
-[assembly: AssemblyFileVersion("3.1")]
+[assembly: AssemblyVersion("3.2.11.*")]
+[assembly: AssemblyFileVersion("3.2")]
 
-#if (!DEBUG)
-[assembly: ProductLevel(ProductLevels.RTW)]
-#else
-[assembly: ProductLevel(ProductLevels.Preview)]
-#endif

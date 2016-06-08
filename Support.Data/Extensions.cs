@@ -1,4 +1,5 @@
 ﻿using Platform.Support.Data.Attributes;
+using Platform.Support.Reflection;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -91,7 +92,7 @@ namespace Platform.Support.Data
 
         internal static Assembly GetAssembly(this IDbConnection conn)
         {
-            System.Reflection.Assembly _return = null;
+            Assembly _return = null;
             string _file = string.Empty;
             string _asm = string.Empty;
             switch (conn.GetEngine())
@@ -107,25 +108,25 @@ namespace Platform.Support.Data
                     break;
                 default:
                     _asm = "System.Data";
-                    //_return = System.Reflection.Assembly.LoadWithPartialName(_asm)
-                    _return = System.Reflection.Assembly.Load("System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089");
+                    //_return = Assembly.LoadWithPartialName(_asm)
+                    _return = Assembly.Load("System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089");
                     return _return;
             }
 
-            _file = System.IO.Path.Combine(new string[] { Helpers.DirectoryPath(), _asm });
+            _file = System.IO.Path.Combine(new string[] { Assembly.GetEntryAssembly().DirectoryPath(), _asm });
 
             if (!string.IsNullOrEmpty(_file) && System.IO.File.Exists(_file))
             {
-                _return = System.Reflection.Assembly.LoadFile(_file);
+                _return = Assembly.LoadFile(_file);
             }
             else
             {
-                if (System.Reflection.Assembly.GetEntryAssembly() != null)
+                if (Assembly.GetEntryAssembly() != null)
                 {
-                    _file = System.IO.Path.Combine(new string[] { Helpers.DirectoryPath(), _asm });
+                    _file = System.IO.Path.Combine(new string[] { Assembly.GetEntryAssembly().DirectoryPath(), _asm });
                     if (System.IO.File.Exists(_file))
                     {
-                        _return = System.Reflection.Assembly.LoadFile(_file);
+                        _return = Assembly.LoadFile(_file);
                     }
                 }
             }
@@ -1962,7 +1963,7 @@ namespace Platform.Support.Data
 
             if (map.PK != null && map.PK.IsAutoGuid)
             {
-                System.Reflection.PropertyInfo prop = objType.GetProperty(map.PK.PropertyName);
+                PropertyInfo prop = objType.GetProperty(map.PK.PropertyName);
                 if (prop != null)
                 {
                     if (prop.GetValue(obj, null).Equals(Guid.Empty))

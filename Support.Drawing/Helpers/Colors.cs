@@ -63,7 +63,7 @@ namespace Platform.Support.Drawing
 
         public static Color RandomColor()
         {
-            return Color.FromArgb(Maths.Helpers.Random(255), Maths.Helpers.Random(255), Maths.Helpers.Random(255));
+            return Color.FromArgb(Maths.MathHelpers.Random(255), Maths.MathHelpers.Random(255), Maths.MathHelpers.Random(255));
         }
 
         public static Color ParseColor(string color)
@@ -139,9 +139,9 @@ namespace Platform.Support.Drawing
 
         public static Color Lerp(Color from, Color to, float amount)
         {
-            return Color.FromArgb((int)Maths.Helpers.Lerp(from.R, to.R, amount),
-                (int)Maths.Helpers.Lerp(from.G, to.G, amount),
-                (int)Maths.Helpers.Lerp(from.B, to.B, amount));
+            return Color.FromArgb((int)Maths.MathHelpers.Lerp(from.R, to.R, amount),
+                (int)Maths.MathHelpers.Lerp(from.G, to.G, amount),
+                (int)Maths.MathHelpers.Lerp(from.B, to.B, amount));
         }
         
         public static Color RGB(int r, int g, int b)

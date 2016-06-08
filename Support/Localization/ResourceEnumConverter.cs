@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
 using System.ComponentModel;
+using System.Globalization;
 using System.Resources;
 using System.Runtime.InteropServices;
 

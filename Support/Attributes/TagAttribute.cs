@@ -13,14 +13,12 @@ namespace Platform.Support
     {
 
         /// <summary>
-        /// Tag
+        /// Tags
         /// </summary>
-        [AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = true)]
-        public class TagAttribute : global::System.Attribute
+        [AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
+        public sealed class TagAttribute : global::System.Attribute
         {
-
-            private string[] tags;
-
+            
             public TagAttribute(params string[] tags)
             {
                 this.tags = tags;
@@ -31,10 +29,8 @@ namespace Platform.Support
                 tags = new string[] { tag };
             }
 
-            public virtual string[] Tags
-            {
-                get { return tags; }
-            }
+            private string[] tags;
+            public string[] Tags { get { return tags; } }
         }
     }
 

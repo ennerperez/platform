@@ -25,9 +25,7 @@ namespace Platform.Support.ConsoleEx
         private string currentText = string.Empty;
         private bool disposed = false;
         private int animationIndex = 0;
-
-
-
+        
         internal static bool IsOutputRedirected()
         {
 #if !NETFX_45
@@ -40,9 +38,7 @@ namespace Platform.Support.ConsoleEx
             return Console.IsOutputRedirected;
 #endif
         }
-
-
-
+        
         public ProgressBar()
         {
             timer = new Timer(TimerHandler);

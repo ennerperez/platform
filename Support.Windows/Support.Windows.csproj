@@ -54,12 +54,13 @@
     <Compile Include="..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
-    <Compile Include="Helpers.cs" />
+    <Compile Include="OSHelpers.cs" />
     <Compile Include="ExternDll.cs" />
     <Compile Include="NativeMethods\ComDlg32.cs" />
     <Compile Include="NativeMethods\Gdi32.cs" />
     <Compile Include="NativeMethods\Kernel32.cs" />
-    <Compile Include="UAC.cs" />
+    <Compile Include="RegistryHelpers.cs" />
+    <Compile Include="UACHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NativeMethods\User32.cs" />
   </ItemGroup>

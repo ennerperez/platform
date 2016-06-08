@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [3.1.11] - [UNRELEASED]
+## [3.2.11] - [UNRELEASED]
 ### Added
 - Encryption Hash Class
 - Windows Forms CommandLink Control
@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ORM Data Fill
 
 ### Changed
+- Support Standardization
 - CRC32 Algorithm
 
 ## [3.1.10] - [2016-05-31]
