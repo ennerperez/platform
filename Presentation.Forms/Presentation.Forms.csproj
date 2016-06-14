@@ -100,6 +100,9 @@
     <Compile Include="Controls\LinkLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\MessagePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\ProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>

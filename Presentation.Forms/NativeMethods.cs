@@ -378,4 +378,6 @@ internal static class NativeMethods
     internal const uint BCM_SETSHIELD = 0x0000160C;
     internal const int BM_SETIMAGE = 0x00F7;
 
+    
+
 }

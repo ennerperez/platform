@@ -62,6 +62,7 @@
     <Compile Include="HEX.cs" />
     <Compile Include="HSB.cs" />
     <Compile Include="Helpers\Reflections.cs" />
+    <Compile Include="IconExtractor.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Palette.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
