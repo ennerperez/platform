@@ -1197,6 +1197,7 @@ namespace Platform.Support.Data
 #endif
             cmd.Connection.Open();
             var _result = new DataSet();
+            adapter.SelectCommand = cmd;
             adapter.Fill(_result);
             cmd.Connection.Close();
 

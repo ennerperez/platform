@@ -81,75 +81,90 @@ namespace Platform.Presentation.Forms.Controls
             }
         }
 
+
+        private int gradientWidth = 20;
+
+        [DefaultValue(20), Category("Appearance")]
+        public int GradientWidth
+        {
+            get
+            {
+                return gradientWidth;
+            }
+            set
+            {
+                gradientWidth = value;
+                Invalidate();
+            }
+        }
+
         #endregion
+
+        private Image imageIcon = null;
+        private Color[] gradientColors = null;
 
         private Dictionary<MessageStyle, Color[]> colors;
 
         protected override void OnPaint(PaintEventArgs e)
         {
 
-            Image imageIcon = null;
-            int gradientRectangleWidth = 20;
-            Color[] gradientColors = null;
+            base.OnPaint(e);
 
-            var gradientRectangle = new Rectangle(new Point(0, 0), new Size(gradientRectangleWidth, Height));
-
-            int _m = (IconSize == IconSize.Small ? 30 : 50);
-
-            if (Height < _m)
-                Size = new Size(Width, _m);
-
-            if (ShowIcon && Style != MessageStyle.None)
-                imageIcon = IconExtractor.Extract("imageres.dll", (int)Style, IconSize == IconSize.Large).ToBitmap();
+            var gradientRectangle = new Rectangle(new Point(0, 0), new Size(GradientWidth, Height));
+            var paddingLeft = GradientWidth + DefaultMargin.Left;
 
             if (colors.ContainsKey(Style))
                 gradientColors = colors[Style];
             else
                 gradientColors = colors[MessageStyle.None];
-
-
+            
             if (!e.ClipRectangle.IsEmpty)
-            {
                 using (LinearGradientBrush lgb = new LinearGradientBrush(gradientRectangle, gradientColors[0], gradientColors[1], 90))
                 {
                     lgb.WrapMode = WrapMode.TileFlipXY;
                     e.Graphics.FillRectangle(lgb, gradientRectangle);
                 }
-            }
 
+            if (ShowIcon && Style != MessageStyle.None)
+                imageIcon = IconExtractor.Extract("imageres.dll", (int)Style, IconSize == IconSize.Large).ToBitmap();
 
-            if (imageIcon != null)
+            if (ShowIcon && imageIcon != null)
             {
-                e.Graphics.DrawImage(imageIcon, new Point(gradientRectangleWidth + 3, 3));
+                
+                if (Height < imageIcon.Height + (Padding.Top + Padding.Bottom))
+                    Size = new Size(Width, imageIcon.Height + (Padding.Top + Padding.Bottom));
 
-                if (Padding.Left < gradientRectangleWidth + 3 + imageIcon.Width)
-                    Padding = new Padding(gradientRectangleWidth + 3 + imageIcon.Width, Padding.Top, Padding.Right, Padding.Bottom);
+                // Draw icon
+                var point = new Point(GradientWidth + DefaultMargin.Left, Padding.Top);
+                e.Graphics.DrawImage(imageIcon, point);
 
-                //AjustControls
-                foreach (Control item in Controls.OfType<Control>().Where(c => c.Location.X < gradientRectangleWidth + 3 + imageIcon.Width))
-                    item.Location = new Point(gradientRectangleWidth + 3 + imageIcon.Width + 3, item.Location.Y);
+                // Padding left
+                paddingLeft = GradientWidth + DefaultMargin.Left + imageIcon.Width + DefaultMargin.Left;
+                //if (Padding.Left < paddingLeft)
+                    Padding = new Padding(
+                        paddingLeft,
+                        Padding.Top,
+                        Padding.Right,
+                        Padding.Bottom);
+
             }
-            else
-            {
-                //AjustControls
-                foreach (Control item in Controls.OfType<Control>().Where(c => c.Location.X < Padding.Left))
-                    item.Location = new Point(gradientRectangleWidth + 3, item.Location.Y);
-            }
 
-            base.OnPaint(e);
+            //AjustControls
+            foreach (Control item in Controls.OfType<Control>().Where(c => c.Location.X < paddingLeft))
+                item.Location = new Point(paddingLeft, item.Location.Y);
 
         }
 
         private void MessagePanel_Resize(object sender, System.EventArgs e)
         {
-            int _m = (IconSize == IconSize.Small ? 30 : 50);
-            if (Height < _m)
-                Size = new Size(Width, _m);
+            if (ShowIcon && imageIcon != null)
+                if (Height < imageIcon.Height + (Padding.Top + Padding.Bottom))
+                    Size = new Size(Width, imageIcon.Height + (Padding.Top + Padding.Bottom));
         }
 
     }
 
-    public enum IconSize
+    public enum IconSize : short
     {
         Small = 16,
         Large = 32
@@ -159,7 +174,7 @@ namespace Platform.Presentation.Forms.Controls
     {
         None = MessageBoxIcon.None,
         Question = 99,
-        Error = 100, 
+        Error = 100,
         Success = 101,
         Warning = 102,
         UAC = 73,
