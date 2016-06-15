@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Encryption Hash Class
 - Windows Forms CommandLink Control
+- Windows Forms Message Panel
 - Secure Local User AppDataPath
 - AutoHeightLabel + AutoHeightLinkLabel
 - ORM Data Fill
