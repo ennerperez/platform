@@ -14,9 +14,9 @@ namespace Platform.Support
     {
 #endif
     public static class AttributeHelpers
-        {
+    {
 
-            #region Assembly
+        #region Assembly
 
 #if (!PORTABLE)
         internal static Assembly _assembly = Assembly.GetEntryAssembly();
@@ -26,24 +26,26 @@ namespace Platform.Support
             internal static Assembly _assembly = Assembly.GetCallingAssembly();
 #endif
 
-            #endregion
+        #endregion
 
-            public static T GetAttribute<T>(Assembly assembly = null) where T : System.Attribute
-            {
-                return (T)GetAttribute(typeof(T), assembly);
-            }
-            public static T[] GetAttributes<T>(Assembly assembly = null) where T : System.Attribute
-            {
-                return (T[])GetAttributes(typeof(T), assembly);
-            }
+        public static T GetAttribute<T>(Assembly assembly = null) where T : System.Attribute
+        {
+            return (T)GetAttribute(typeof(T), assembly);
+        }
+        public static T[] GetAttributes<T>(Assembly assembly = null) where T : System.Attribute
+        {
+            return (T[])GetAttributes(typeof(T), assembly);
+        }
 
-            public static object GetAttribute(Type AttributeType, Assembly assembly = null)
-            {
-                return GetAttributes(AttributeType, assembly)[0];
-            }
-            public static object[] GetAttributes(Type AttributeType, Assembly assembly = null)
-            {
-                if (assembly == null) { assembly = _assembly; }
+        public static object GetAttribute(Type AttributeType, Assembly assembly = null)
+        {
+            var result = GetAttributes(AttributeType, assembly);
+            if (result != null) return result.FirstOrDefault();
+            return null;
+        }
+        public static object[] GetAttributes(Type AttributeType, Assembly assembly = null)
+        {
+            if (assembly == null) { assembly = _assembly; }
 
 #if NETFX_45
             var customAttributes = assembly.GetCustomAttributes(AttributeType);
@@ -53,15 +55,15 @@ namespace Platform.Support
             return customAttributes.ToArray();
 
 #else
-                object[] customAttributes = assembly.GetCustomAttributes(AttributeType, true);
-                if (customAttributes.Length == 0)
-                    return null;
+            object[] customAttributes = assembly.GetCustomAttributes(AttributeType, true);
+            if (customAttributes.Length == 0)
+                return null;
 
-                return customAttributes;
+            return customAttributes;
 #endif
-            }
-
         }
+
+    }
 #if PORTABLE
     }
 #endif

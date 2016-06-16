@@ -89,42 +89,42 @@ namespace Platform.Support
             public static string Title(this Assembly assembly)
             {
                 var result = Helpers.GetAttribute<AssemblyTitleAttribute>(assembly);
-                if (result != null)
+                if (result != null && !string.IsNullOrEmpty(result.Title))
                     return result.Title;
                 return null;
             }
             public static string Description(this Assembly assembly)
             {
                 var result = Helpers.GetAttribute<AssemblyDescriptionAttribute>(assembly);
-                if (result != null)
+                if (result != null && !string.IsNullOrEmpty(result.Description))
                     return result.Description;
                 return null;
             }
             public static string Company(this Assembly assembly)
             {
                 var result = Helpers.GetAttribute<AssemblyCompanyAttribute>(assembly);
-                if (result != null)
+                if (result != null && !string.IsNullOrEmpty(result.Company))
                     return result.Company;
                 return null;
             }
             public static string Product(this Assembly assembly)
             {
                 var result = Helpers.GetAttribute<AssemblyProductAttribute>(assembly);
-                if (result != null)
+                if (result != null && !string.IsNullOrEmpty(result.Product))
                     return result.Product;
                 return null;
             }
             public static string Copyright(this Assembly assembly)
             {
                 var result = Helpers.GetAttribute<AssemblyCopyrightAttribute>(assembly);
-                if (result != null)
+                if (result != null && !string.IsNullOrEmpty(result.Copyright))
                     return result.Copyright;
                 return null;
             }
             public static string Trademark(this Assembly assembly)
             {
                 var result = Helpers.GetAttribute<AssemblyTrademarkAttribute>(assembly);
-                if (result != null)
+                if (result != null && !string.IsNullOrEmpty(result.Trademark))
                     return result.Trademark;
                 return null;
             }
@@ -141,6 +141,11 @@ namespace Platform.Support
 #endif
                     if (!string.IsNullOrEmpty(version))
                         return new Version(version);
+                }
+                else
+                {
+                    var assemblyName = new AssemblyName(assembly.FullName);
+                    return assemblyName.Version;
                 }
 
                 return null;
@@ -174,7 +179,7 @@ namespace Platform.Support
             public static Guid? GUID(this Assembly assembly)
             {
                 var result = Helpers.GetAttribute<GuidAttribute>(assembly);
-                if (result != null)
+                if (result != null && !string.IsNullOrEmpty(result.Value) && new Guid(result.Value) != Guid.Empty)
                     return new Guid(result.Value);
                 return null;
             }
@@ -208,14 +213,14 @@ namespace Platform.Support
             public static string CompanyId(this Assembly assembly)
             {
                 var result = Helpers.GetAttribute<AssemblyCompanyIdAttribute>(assembly);
-                if (result != null)
+                if (result != null && !string.IsNullOrEmpty(result.Id))
                     return result.Id;
                 return null;
             }
             public static string CompanyUrl(this Assembly assembly)
             {
                 var result = Helpers.GetAttribute<AssemblyCompanyUrlAttribute>(assembly);
-                if (result != null)
+                if (result != null && !string.IsNullOrEmpty(result.Url))
                     return result.Url;
                 return null;
             }
@@ -232,7 +237,7 @@ namespace Platform.Support
             public static IEnumerable<Process> ExternalReferences(this Assembly assembly)
             {
                 var result = Helpers.GetAttributes<AssemblyExternalRefAttribute>(assembly);
-                if (result != null)
+                if (result != null && result.Count() > 0)
                     return result.Select(d => new Process() { StartInfo = new ProcessStartInfo(d.FileName, d.Arguments) }).AsEnumerable();
                 return null;
             }
@@ -240,7 +245,7 @@ namespace Platform.Support
                 public static IEnumerable<IEnumerable<string>> ExternalReferences(this Assembly assembly)
                 {
                     var result = Helpers.GetAttributes<AssemblyExternalRefAttribute>(assembly);
-                    if (result != null)
+                    if (result != null && result.Count() > 0)
                         return result.Select(d => new string[] { d.FileName, d.Arguments }).AsEnumerable();
                     return null;
                 }
@@ -250,20 +255,23 @@ namespace Platform.Support
             {
                 var result = Helpers.GetAttribute<AssemblyLicenseAttribute>(assembly);
                 if (result != null)
-                    return result.Name;
+                    if (!string.IsNullOrEmpty(result.Name))
+                        return result.Name;
+                    else if (!string.IsNullOrEmpty(result.Url))
+                        return result.Url;
                 return null;
             }
             public static string MadeIn(this Assembly assembly)
             {
                 var result = Helpers.GetAttribute<AssemblyMadeInAttribute>(assembly);
-                if (result != null)
+                if (result != null && !string.IsNullOrEmpty(result.Name))
                     return result.Name + (!string.IsNullOrEmpty(result.CountryCode) ? string.Format(" ({0})", result.CountryCode) : "");
                 return null;
             }
             public static string Owner(this Assembly assembly)
             {
                 var result = Helpers.GetAttribute<AssemblyOwnerAttribute>(assembly);
-                if (result != null)
+                if (result != null && !string.IsNullOrEmpty(result.Name))
                     return result.Name;
                 return null;
             }
@@ -291,7 +299,7 @@ namespace Platform.Support
             public static IEnumerable<IEnumerable<string>> ContactInformation(this Assembly assembly)
             {
                 var result = Helpers.GetAttributes<ContactInformationAttribute>(assembly);
-                if (result != null)
+                if (result != null && result.Count() > 0)
                     return result.Select(item => item.Contact).AsEnumerable();
                 return null;
             }
