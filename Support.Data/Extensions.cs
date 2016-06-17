@@ -538,6 +538,19 @@ namespace Platform.Support.Data
                     }
 
                     break;
+                case Engines.OleDb:
+                    try
+                    {
+                        decl = string.Join(",", decls.ToArray());
+                        query = string.Format("CREATE TABLE '{0}' ({1});", map.TableName, decl);
+                        count = conn.Execute(query);
+                    }
+                    catch (System.Data.OleDb.OleDbException e)
+                    {
+                        if (e.ErrorCode != 3010 && e.ErrorCode != 3012)
+                            throw e;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -676,6 +689,20 @@ namespace Platform.Support.Data
                     columns = string.Join(", ", columnNames.Select(C => string.Format("[{0}]", C)).ToArray());
                     tsql = string.Format(sqlFormat, tableName, columns, unique ? "UNIQUE" : "", indexName);
                     count = conn.Execute(tsql);
+                    break;
+                case Engines.OleDb:
+                    try
+                    {
+                        sqlFormat = "CREATE {2} INDEX '{3}' ON '{0}'({1});";
+                        columns = string.Join(", ", columnNames.Select(C => string.Format("'{0}'", C)).ToArray());
+                        tsql = string.Format(sqlFormat, tableName, columns, unique ? "UNIQUE" : "", indexName);
+                        count = conn.Execute(tsql);
+                    }
+                    catch (System.Data.OleDb.OleDbException e)
+                    {
+                        if (e.ErrorCode != 3010 && e.ErrorCode != 3012)
+                            throw e;
+                    }
                     break;
                 default:
                     throw new NotSupportedException("Operation is not supported in the selected data engine.");
@@ -823,7 +850,7 @@ namespace Platform.Support.Data
             }
 
             IDbDataAdapter _return = (IDbDataAdapter)conn.CreateObject(_type);
-            
+
             return _return;
         }
 
@@ -1093,7 +1120,7 @@ namespace Platform.Support.Data
             try
             {
 #endif
-                _return = cmd.ExecuteNonQuery();
+            _return = cmd.ExecuteNonQuery();
 #if DEBUG
             }
             catch (Exception ex)
@@ -2286,7 +2313,7 @@ namespace Platform.Support.Data
                         try
                         {
 #endif
-                            Item.SetValue(obj, val);
+                        Item.SetValue(obj, val);
 #if DEBUG
                         }
                         catch (Exception ex)
@@ -2361,6 +2388,25 @@ namespace Platform.Support.Data
 
             return obj;
         }
+
+        #region DataSets && DataTables
+
+        public static bool HasTables(this DataSet ds)
+        {
+            return ds != null && ds.Tables.Count > 0;
+        }
+
+        public static bool HasRows(this DataTable dt)
+        {
+            return dt != null && dt.Rows.Count > 0;
+        }
+
+        public static bool HasTablesWithRows(this DataSet ds)
+        {
+            return ds != null && ds.Tables.OfType<DataTable>().Count(item => item.HasRows()) > 0;
+        }
+
+        #endregion
 
     }
 }

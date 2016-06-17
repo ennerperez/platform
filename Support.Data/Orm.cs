@@ -57,8 +57,9 @@ namespace Platform.Support.Data
         {
             Type clrType = p.ColumnType;
             object interfaces = clrType.GetInterfaces().ToList();
+            var engine = conn.GetEngine();
 
-            switch (conn.GetEngine())
+            switch (engine)
             {
                 case Engines.Sql:
                 case Engines.SqlCE:
@@ -68,44 +69,84 @@ namespace Platform.Support.Data
                         return "REAL";
                     if (object.ReferenceEquals(clrType, typeof(Decimal)))
                         return "DECIMAL";
+                    if (object.ReferenceEquals(clrType, typeof(Byte)) ||
+                        object.ReferenceEquals(clrType, typeof(UInt16)) ||
+                        object.ReferenceEquals(clrType, typeof(SByte)) ||
+                        object.ReferenceEquals(clrType, typeof(Int16)) ||
+                        object.ReferenceEquals(clrType, typeof(Int32)))
+                        return "INTEGER";
+                    break;
+                case Engines.OleDb:
+                    if (object.ReferenceEquals(clrType, typeof(Boolean)))
+                        return "BIT";
+                    if (object.ReferenceEquals(clrType, typeof(Double)) ||
+                        object.ReferenceEquals(clrType, typeof(Decimal)))
+                        return "DOUBLE";
+                    if (object.ReferenceEquals(clrType, typeof(Int32)))
+                        return "COUNTER";
+                    if (object.ReferenceEquals(clrType, typeof(Byte)) ||
+                        object.ReferenceEquals(clrType, typeof(SByte)) ||
+                        object.ReferenceEquals(clrType, typeof(Int16)) ||
+                        object.ReferenceEquals(clrType, typeof(UInt16)) ||
+                        clrType.IsEnum)
+                        return "SHORT";
+                    if (object.ReferenceEquals(clrType, typeof(Single)))
+                        return "SINGLE";
+                    if (object.ReferenceEquals(clrType, typeof(TimeSpan)) ||
+                        object.ReferenceEquals(clrType, typeof(DateTime)) ||
+                        object.ReferenceEquals(clrType, typeof(DateTimeOffset)))
+                        return "DATETIME";
                     break;
                 default:
-                    if (object.ReferenceEquals(clrType, typeof(Boolean)))
+                    if (object.ReferenceEquals(clrType, typeof(Boolean)) ||
+                        object.ReferenceEquals(clrType, typeof(Byte)) ||
+                        object.ReferenceEquals(clrType, typeof(UInt16)) ||
+                        object.ReferenceEquals(clrType, typeof(SByte)) ||
+                        object.ReferenceEquals(clrType, typeof(Int16)) ||
+                        object.ReferenceEquals(clrType, typeof(Int32)))
                         return "INTEGER";
-                    if (object.ReferenceEquals(clrType, typeof(Double)) | object.ReferenceEquals(clrType, typeof(Decimal)))
+                    if (object.ReferenceEquals(clrType, typeof(Double)) ||
+                        object.ReferenceEquals(clrType, typeof(Decimal)))
                         return "FLOAT";
                     break;
             }
-            if (object.ReferenceEquals(clrType, typeof(Byte)) || object.ReferenceEquals(clrType, typeof(UInt16)) || object.ReferenceEquals(clrType, typeof(SByte)) || object.ReferenceEquals(clrType, typeof(Int16)) || object.ReferenceEquals(clrType, typeof(Int32)))
-                return "INTEGER";
+
+
             if (object.ReferenceEquals(clrType, typeof(UInt32)) || object.ReferenceEquals(clrType, typeof(Int64)))
-
-                if (conn.GetEngine() == Engines.SQLite && p.IsAutoInc)
-                {
+                if (engine == Engines.SQLite && p.IsAutoInc)
                     return "INTEGER";
-                }
+                else if (engine == Engines.OleDb)
+                    if (p.IsAutoInc)
+                        return "NUMERIC";
+                    else
+                        return "LONG";
                 else
-                {
                     return "BIGINT";
-                }
 
-                
+
             if (object.ReferenceEquals(clrType, typeof(Single)))
                 return "FLOAT";
+
             if (object.ReferenceEquals(clrType, typeof(String)))
             {
                 System.Nullable<int> len = p.MaxStringLength;
-                switch (conn.GetEngine())
+                switch (engine)
                 {
                     case Engines.Sql:
                     case Engines.SqlCE:
+                        if (len.HasValue)
+                            if (len > 200)
+                                return "VARCHAR(" + len.Value + ")";
+                            else if (len > 400)
+                                return "VARCHAR(MAX)";
                         return "VARCHAR(200)";
+                    case Engines.OleDb:
+                        if (len.HasValue && len > 200)
+                            return "LONGTEXT";
+                        return "VARCHAR";
                     default:
                         if (len.HasValue)
-                        {
                             return "VARCHAR(" + len.Value + ")";
-                        }
-
                         return "VARCHAR";
                 }
 
@@ -120,7 +161,7 @@ namespace Platform.Support.Data
                 return "INTEGER";
             if (object.ReferenceEquals(clrType, typeof(byte[])))
             {
-                switch (conn.GetEngine())
+                switch (engine)
                 {
                     case Engines.Sql:
                     case Engines.SqlCE:
@@ -130,6 +171,8 @@ namespace Platform.Support.Data
                             return "VARBINARY(" + len.Value + ")";
                         }
                         return "VARBINARY(MAX)";
+                    case Engines.OleDb:
+                        return "VARBINARY";
                     default:
                         return "BLOB";
                 }
@@ -137,11 +180,13 @@ namespace Platform.Support.Data
             //OrElse interfaces.Contains(GetType(ISerializable(Of Guid))) Then
             if (object.ReferenceEquals(clrType, typeof(Guid)))
             {
-                switch (conn.GetEngine())
+                switch (engine)
                 {
                     case Engines.Sql:
                     case Engines.SqlCE:
                         return "UNIQUEIDENTIFIER";
+                    case Engines.OleDb:
+                        return "GUID";
                     default:
                         return "VARCHAR(36)";
                 }
@@ -149,11 +194,13 @@ namespace Platform.Support.Data
 
             if (object.ReferenceEquals(clrType, typeof(Version)))
             {
-                switch (conn.GetEngine())
+                switch (engine)
                 {
                     case Engines.Sql:
                     case Engines.SqlCE:
                         return "NVARCHAR(400)";
+                    case Engines.OleDb:
+                        return "LONGTEXT";
                     default:
                         return "VARCHAR(200)";
                 }
@@ -193,7 +240,7 @@ namespace Platform.Support.Data
         {
             foreach (CustomAttributeData attribute in p.GetCustomAttributesData().Where(a => object.ReferenceEquals(a.GetType(), typeof(MaxLengthAttribute))))
             {
-                return (int) attribute.ConstructorArguments[0].Value;
+                return (int)attribute.ConstructorArguments[0].Value;
             }
             return null;
         }
