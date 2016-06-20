@@ -113,6 +113,10 @@
     <Compile Include="Security\PasswordHash.cs" />
     <Compile Include="SemanticVersion.cs" />
     <Compile Include="Text\Markdown.cs" />
+    <Compile Include="Threading\FuncAwaitable.cs" />
+    <Compile Include="Threading\FuncAwaiter.cs" />
+    <Compile Include="Threading\FuncExtensions.cs" />
+    <Compile Include="Threading\IAwaitable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
