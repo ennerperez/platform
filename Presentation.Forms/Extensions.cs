@@ -65,7 +65,7 @@ namespace Platform.Presentation.Forms
         {
             return System.Windows.Forms.Screen.FromRectangle(new System.Drawing.Rectangle(@this.Location, @this.Size));
         }
-        
+
         #region Designer
 
         public static bool IsDesignerHosted(this Control @this)
@@ -80,11 +80,25 @@ namespace Platform.Presentation.Forms
             }
             return false;
         }
+        
+        #region TODO: Convertir a Helper
 
-        public static bool IsInDesignMode(this Control @this)
+        public static bool IsDesignMode(this Control @this)
         {
             return Assembly.GetEntryAssembly().Location.Contains("VisualStudio");
         }
+
+        public static bool IsDesigntime(this Control @this)
+        {
+            return (LicenseManager.UsageMode == LicenseUsageMode.Designtime);
+        }
+
+        public static bool IsRuntime(this Control @this)
+        {
+            return (LicenseManager.UsageMode == LicenseUsageMode.Runtime);
+        }
+
+        #endregion
 
         #endregion
 
