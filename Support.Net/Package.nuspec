@@ -25,7 +25,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\Support.Web.PCL\bin\release\$id$.PCL.dll" target="lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\$id$.PCL.dll" />
-    <file src="..\Support.Web.PCL.Net45\bin\release\$id$.PCL.dll" target="lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\$id$.PCL.dll" />
+    <!--<file src="..\Support.Web.PCL\bin\release\$id$.PCL.dll" target="lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\$id$.PCL.dll" />
+    <file src="..\Support.Web.PCL.Net45\bin\release\$id$.PCL.dll" target="lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\$id$.PCL.dll" />-->
   </files>
 </package>

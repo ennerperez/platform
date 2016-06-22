@@ -40,7 +40,7 @@ namespace Platform.Support.Data
         private static Assembly _assembly;
         public static Assembly DataEngineAssembly(IDbConnection conn)
         {
-            //if (_assembly == null) 
+            //if (_assembly == null)
             _assembly = conn.GetAssembly();
             return _assembly;
         }
@@ -1120,7 +1120,7 @@ namespace Platform.Support.Data
             try
             {
 #endif
-            _return = cmd.ExecuteNonQuery();
+                _return = cmd.ExecuteNonQuery();
 #if DEBUG
             }
             catch (Exception ex)
@@ -1529,9 +1529,9 @@ namespace Platform.Support.Data
         /// <example cref="System.InvalidOperationException">Throws if a transaction has already begun.</example>
         public static void BeginTransaction(this IDbConnection conn)
         {
-            // The BEGIN command only works if the transaction stack is empty, 
-            //    or in other words if there are no pending transactions. 
-            // If the transaction stack is not empty when the BEGIN command is invoked, 
+            // The BEGIN command only works if the transaction stack is empty,
+            //    or in other words if there are no pending transactions.
+            // If the transaction stack is not empty when the BEGIN command is invoked,
             //    then the command fails with an error.
             // Rather than crash with an error, we will just ignore calls to BeginTransaction
             //    that would result in an error.
@@ -1546,7 +1546,7 @@ namespace Platform.Support.Data
                     //var sqlExp = ex as Exception;
                     //if (sqlExp != null)
                     //{
-                    //    // It is recommended that applications respond to the errors listed below 
+                    //    // It is recommended that applications respond to the errors listed below
                     //    //    by explicitly issuing a ROLLBACK command.
                     //    // TODO: This rollback failsafe should be localized to all throw sites.
                     //    switch (sqlExp.Result)
@@ -1562,7 +1562,7 @@ namespace Platform.Support.Data
                     //}
                     //else
                     //{
-                    // Call decrement and not VolatileWrite in case we've already 
+                    // Call decrement and not VolatileWrite in case we've already
                     //    created a transaction point in SaveTransactionPoint since the catch.
                     Interlocked.Decrement(ref _transactionDepth);
                     //}
@@ -1599,7 +1599,7 @@ namespace Platform.Support.Data
                 var sqlExp = ex as Exception;
                 //if (sqlExp != null)
                 //{
-                //    // It is recommended that applications respond to the errors listed below 
+                //    // It is recommended that applications respond to the errors listed below
                 //    //    by explicitly issuing a ROLLBACK command.
                 //    // TODO: This rollback failsafe should be localized to all throw sites.
                 //    switch (sqlExp.Result)
@@ -1652,8 +1652,8 @@ namespace Platform.Support.Data
         /// <param name="noThrow">true to avoid throwing exceptions, false otherwise</param>
         private static void RollbackTo(this IDbConnection conn, string savepoint, bool noThrow)
         {
-            // Rolling back without a TO clause rolls backs all transactions 
-            //    and leaves the transaction stack empty.   
+            // Rolling back without a TO clause rolls backs all transactions
+            //    and leaves the transaction stack empty.
             try
             {
                 if (String.IsNullOrEmpty(savepoint))
@@ -1874,7 +1874,7 @@ namespace Platform.Support.Data
 
         /// <summary>
         ///     Inserts all specified objects.
-        ///     For each insertion, if a UNIQUE 
+        ///     For each insertion, if a UNIQUE
         ///     constraint violation occurs with
         ///     some pre-existing object, this function
         ///     deletes the old object.
@@ -1939,7 +1939,7 @@ namespace Platform.Support.Data
 
         /// <summary>
         ///     Inserts all specified objects.
-        ///     For each insertion, if a UNIQUE 
+        ///     For each insertion, if a UNIQUE
         ///     constraint violation occurs with
         ///     some pre-existing object, this function
         ///     deletes the old object.
@@ -2313,7 +2313,7 @@ namespace Platform.Support.Data
                         try
                         {
 #endif
-                        Item.SetValue(obj, val);
+                            Item.SetValue(obj, val);
 #if DEBUG
                         }
                         catch (Exception ex)

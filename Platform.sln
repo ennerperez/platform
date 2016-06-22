@@ -122,6 +122,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.SPS.Plugin.PCL", "Mod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Application", "Samples\Sample.Application\Sample.Application.csproj", "{19D05955-5523-4F6E-88BA-B47ECE3F0E4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Net", "Support.Net\Support.Net.csproj", "{F8245D33-07F5-4B29-80E0-99AD7CC9BCB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -236,6 +238,10 @@ Global
 		{19D05955-5523-4F6E-88BA-B47ECE3F0E4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19D05955-5523-4F6E-88BA-B47ECE3F0E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19D05955-5523-4F6E-88BA-B47ECE3F0E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8245D33-07F5-4B29-80E0-99AD7CC9BCB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8245D33-07F5-4B29-80E0-99AD7CC9BCB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8245D33-07F5-4B29-80E0-99AD7CC9BCB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8245D33-07F5-4B29-80E0-99AD7CC9BCB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
