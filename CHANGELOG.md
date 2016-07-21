@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Secure Local User AppDataPath
 - AutoHeightLabel + AutoHeightLinkLabel
 - ORM Data Fill
+- DynamicInvoke Class
 
 ### Changed
 - Support Standardization
