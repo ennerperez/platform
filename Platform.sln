@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "Support\Support.csproj", "{25AB6BBF-A879-4570-9E0E-947D52AE7333}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -265,5 +265,11 @@ Global
 		{1E1A1127-1ECC-4A97-8D28-6DF0139436B1} = {989FFC57-46D2-4C73-BFA9-97EBFFA1960B}
 		{4FC3D191-70EB-46D4-B471-C550DA3B842A} = {0897EA21-1224-4433-AD2D-030419B8BED7}
 		{19D05955-5523-4F6E-88BA-B47ECE3F0E4F} = {B2DE59C7-C6E5-46E1-873E-D711546443EF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
+		BuildVersion_StartDate = 2016/1/1
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_BuildVersioningStyle = None.None.None.Increment
 	EndGlobalSection
 EndGlobal

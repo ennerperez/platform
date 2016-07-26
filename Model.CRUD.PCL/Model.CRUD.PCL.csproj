@@ -84,6 +84,11 @@
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties BuildVersion_StartDate="2000/1/1" />
+    </VisualStudio>
+  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
