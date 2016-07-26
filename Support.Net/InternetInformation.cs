@@ -26,6 +26,21 @@ namespace Platform.Support
         public static class InternetInformation
         {
 
+
+#if !PORTABLE
+
+            private static IPAddress externalIP;
+            public static IPAddress ExternalIP
+            {
+                get
+                {
+                    IPAddress.TryParse(GetExternalIP(), out externalIP);
+                    return externalIP;
+                }
+            }
+
+#endif
+
             internal const string pingHost = "http://google.com/";
             internal const string ipHost = "http://ipinfo.io/";
 
