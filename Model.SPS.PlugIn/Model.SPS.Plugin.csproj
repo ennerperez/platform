@@ -57,22 +57,19 @@
     <Compile Include="..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
-    <Compile Include="..\Model.SPS\Interfaces\IPluggable.cs">
-      <Link>Interfaces\IPluggable.cs</Link>
+    <Compile Include="..\Model.SPS\Helpers.cs">
+      <Link>Helpers.cs</Link>
     </Compile>
-    <Compile Include="..\Model.SPS\Interfaces\IPlugIn.cs">
-      <Link>Interfaces\IPlugIn.cs</Link>
-    </Compile>
-    <Compile Include="..\Model.SPS\Interfaces\IPlugInBasedApplication.cs">
-      <Link>Interfaces\IPlugInBasedApplication.cs</Link>
-    </Compile>
-    <Compile Include="..\Model.SPS\Interfaces\Runnable\IRunnable.cs">
-      <Link>Runnable\IRunnable.cs</Link>
-    </Compile>
-    <Compile Include="..\Model.SPS\Interfaces\Runnable\IRunnablePlugIn.cs">
-      <Link>Runnable\IRunnablePlugIn.cs</Link>
-    </Compile>
+    <Compile Include="Interfaces\IPlugInApplication.cs" />
+    <Compile Include="Attributes\PlugInAttribute.cs" />
+    <Compile Include="Interfaces\IPluggable.cs" />
+    <Compile Include="Interfaces\IPlugIn.cs" />
+    <Compile Include="Interfaces\Runnable\IRunnable.cs" />
+    <Compile Include="Interfaces\Runnable\IRunnablePlugIn.cs" />
+    <Compile Include="PlugIn.cs" />
+    <Compile Include="PlugInApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runnable\RunnablePlugIn.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

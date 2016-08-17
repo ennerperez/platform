@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Model.SPS
 {
-    
+
     /// <summary>
     /// Implementation of IApplicationPlugIn interface.
     /// </summary>
@@ -43,6 +40,5 @@ namespace Platform.Model.SPS
             Name = ((IPlugIn)PlugInProxy).Name;
         }
     }
-
 
 }

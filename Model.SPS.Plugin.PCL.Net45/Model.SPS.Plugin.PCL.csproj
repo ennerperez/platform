@@ -48,20 +48,35 @@
     <Compile Include="..\Model.SPS.Plugin.PCL\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Model.SPS\Interfaces\IPluggable.cs">
+    <Compile Include="..\Model.SPS.PlugIn\Attributes\PlugInAttribute.cs">
+      <Link>Attributes\PlugInAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS.PlugIn\Interfaces\IPluggable.cs">
       <Link>Interfaces\IPluggable.cs</Link>
     </Compile>
-    <Compile Include="..\Model.SPS\Interfaces\IPlugIn.cs">
+    <Compile Include="..\Model.SPS.PlugIn\Interfaces\IPlugIn.cs">
       <Link>Interfaces\IPlugIn.cs</Link>
     </Compile>
-    <Compile Include="..\Model.SPS\Interfaces\IPlugInBasedApplication.cs">
-      <Link>Interfaces\IPlugInBasedApplication.cs</Link>
+    <Compile Include="..\Model.SPS.PlugIn\Interfaces\IPlugInApplication.cs">
+      <Link>Interfaces\IPlugInApplication.cs</Link>
     </Compile>
-    <Compile Include="..\Model.SPS\Interfaces\Runnable\IRunnable.cs">
-      <Link>Runnable\IRunnable.cs</Link>
+    <Compile Include="..\Model.SPS.PlugIn\Interfaces\Runnable\IRunnable.cs">
+      <Link>Interfaces\Runnable\IRunnable.cs</Link>
     </Compile>
-    <Compile Include="..\Model.SPS\Interfaces\Runnable\IRunnablePlugIn.cs">
-      <Link>Runnable\IRunnablePlugIn.cs</Link>
+    <Compile Include="..\Model.SPS.PlugIn\Interfaces\Runnable\IRunnablePlugIn.cs">
+      <Link>Interfaces\Runnable\IRunnablePlugIn.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS.PlugIn\PlugIn.cs">
+      <Link>PlugIn.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS.PlugIn\PlugInApplication.cs">
+      <Link>PlugInApplication.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS.PlugIn\Runnable\RunnablePlugIn.cs">
+      <Link>Runnable\RunnablePlugIn.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS\Helpers.cs">
+      <Link>Helpers.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>
