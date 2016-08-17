@@ -4,7 +4,7 @@ using System.Drawing;
 namespace Platform.Support.Drawing
 {
 
-    public static partial class Helpers
+    public static partial class ColorHelpers
     {
 
         public static Color ToColor(CMYK value)
@@ -46,17 +46,17 @@ namespace Platform.Support.Drawing
 
     }
 
-    public static partial class Extensions
+    public static partial class ColorExtensions
     {
 
         public static void FromCMYK(this Color @this, CMYK value)
         {
-            @this = Helpers.ToColor(value);
+            @this = ColorHelpers.ToColor(value);
         }
 
         public static CMYK ToCMYK(this Color @this)
         {
-            return Helpers.ToCMYK(@this);
+            return ColorHelpers.ToCMYK(@this);
         }
 
     }
@@ -77,7 +77,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                cyan = Helpers.ValidColor(value);
+                cyan = ColorHelpers.ValidColor(value);
             }
         }
 
@@ -89,7 +89,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                cyan = Helpers.ValidColor(value / 100);
+                cyan = ColorHelpers.ValidColor(value / 100);
             }
         }
 
@@ -101,7 +101,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                magenta = Helpers.ValidColor(value);
+                magenta = ColorHelpers.ValidColor(value);
             }
         }
 
@@ -113,7 +113,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                magenta = Helpers.ValidColor(value / 100);
+                magenta = ColorHelpers.ValidColor(value / 100);
             }
         }
 
@@ -125,7 +125,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                yellow = Helpers.ValidColor(value);
+                yellow = ColorHelpers.ValidColor(value);
             }
         }
 
@@ -137,7 +137,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                yellow = Helpers.ValidColor(value / 100);
+                yellow = ColorHelpers.ValidColor(value / 100);
             }
         }
 
@@ -149,7 +149,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                key = Helpers.ValidColor(value);
+                key = ColorHelpers.ValidColor(value);
             }
         }
 
@@ -161,7 +161,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                key = Helpers.ValidColor(value / 100);
+                key = ColorHelpers.ValidColor(value / 100);
             }
         }
 
@@ -173,7 +173,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                alpha = Helpers.ValidColor(value);
+                alpha = ColorHelpers.ValidColor(value);
             }
         }
 
@@ -199,12 +199,12 @@ namespace Platform.Support.Drawing
 
         public CMYK(Color color)
         {
-            this = Helpers.ToCMYK(color);
+            this = ColorHelpers.ToCMYK(color);
         }
 
         public static implicit operator CMYK(Color color)
         {
-            return Helpers.ToCMYK(color);
+            return ColorHelpers.ToCMYK(color);
         }
 
         public static implicit operator Color(CMYK color)
@@ -235,7 +235,7 @@ namespace Platform.Support.Drawing
 
         public Color ToColor()
         {
-            return Helpers.ToColor(this);
+            return ColorHelpers.ToColor(this);
         }
 
         public override int GetHashCode()

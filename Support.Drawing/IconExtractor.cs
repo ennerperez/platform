@@ -25,5 +25,6 @@ namespace Platform.Support.Drawing
             }
 
         }
+
     }
 }

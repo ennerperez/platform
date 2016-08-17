@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Platform.Support.Drawing
 {
-    public static partial class Helpers
+    public static partial class GeometricHelpers
     {
 
         public static bool IsPointInRectangle(Point p, Rectangle r)

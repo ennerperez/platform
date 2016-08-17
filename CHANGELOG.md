@@ -15,12 +15,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ImageFilter Control
 - SmoothPanel Control
 - DateTime Extensions UnixTime & ElapsedTime
+- ConvertToIcon Methods
 
 ### Changed
 - Support Standardization
 - CRC32 Algorithm
 - Portable Core Isolation
 - SPS Model Namespaces Arrange
+- Drawing Namespace Arrange
 
 ## Fixed
 - ApplicationDataPath in Reflection Extensions

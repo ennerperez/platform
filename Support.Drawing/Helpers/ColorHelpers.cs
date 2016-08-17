@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Platform.Support.Drawing
 {
-    public static partial class Helpers
+    public static partial class ColorHelpers
     {
         
         public static double ValidColor(double number)
@@ -224,4 +224,5 @@ namespace Platform.Support.Drawing
 
 
     }
+
 }
