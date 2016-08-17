@@ -97,6 +97,18 @@
     <Compile Include="Controls\ImageCropControl.designer.cs">
       <DependentUpon>ImageCropControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ImageCropper.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageCropper.Designer.cs">
+      <DependentUpon>ImageCropper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImageFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageFilter.Designer.cs">
+      <DependentUpon>ImageFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\LinkLabel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -104,6 +116,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\ProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SmoothPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\SplitButton.cs">
