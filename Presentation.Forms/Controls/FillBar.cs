@@ -16,6 +16,7 @@ namespace Platform.Presentation.Forms.Controls
     /// </summary>
 
     [ToolboxBitmap(typeof(System.Windows.Forms.ProgressBar))]
+    [ToolboxItem(true)]
     public class FillBar : Control
     {
 

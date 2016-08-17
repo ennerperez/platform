@@ -6,7 +6,8 @@ using System.Windows.Forms;
 namespace Platform.Presentation.Forms.Controls
 {
 
-    [ToolboxBitmap(typeof(System.Windows.Forms.PictureBox))]
+    [ToolboxBitmap(typeof(System.Windows.Forms.ImageList))]  
+    [ToolboxItem(true)]
     public partial class BlinkingImage : PictureBox
     {
          

@@ -19,6 +19,7 @@ namespace Platform.Presentation.Forms.Controls
     /// Provides an animated bitmap control.
     /// </summary>
     [ToolboxBitmap(typeof(System.Windows.Forms.PictureBox))]
+    [ToolboxItem(true)]
     public class AnimatedBitmapControl : Control
     {
         #region Private Member Variables

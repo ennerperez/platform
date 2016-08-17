@@ -10,6 +10,9 @@ using System.Drawing.Drawing2D;
 
 namespace Platform.Presentation.Forms.Controls
 {
+
+    [ToolboxBitmap(typeof(System.Windows.Forms.PictureBox))]
+    [ToolboxItem(true)]
     public partial class ImageCropper : UserControl
     {
         public ImageCropper()

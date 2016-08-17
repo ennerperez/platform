@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using System.ComponentModel;
 
 namespace Platform.Presentation.Forms.Controls
 {
 
+    [ToolboxBitmap(typeof(System.Windows.Forms.DataGridViewTextBoxColumn))]
+    [ToolboxItem(false)]
     public class TextAndImageColumn : DataGridViewTextBoxColumn
     {
 

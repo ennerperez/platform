@@ -18,6 +18,7 @@ namespace Platform.Presentation.Forms
         /// https://blogs.msdn.microsoft.com/knom/2007/03/12/vista-command-link-control-with-c-windows-forms/
         /// </summary>
         [ToolboxBitmap(typeof(System.Windows.Forms.Button))]
+        [ToolboxItem(true)]
         public class CommandLink : Button
         {
 

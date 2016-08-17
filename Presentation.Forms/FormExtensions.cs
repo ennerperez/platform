@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms
 {
-    public static class Extensions
+    public static class FormExtensions
     {
 
         public static void ShowIn(this Form form, Form parent, EventHandler shown, params object[] param)
@@ -65,42 +65,7 @@ namespace Platform.Presentation.Forms
         {
             return System.Windows.Forms.Screen.FromRectangle(new System.Drawing.Rectangle(@this.Location, @this.Size));
         }
-
-        #region Designer
-
-        public static bool IsDesignerHosted(this Control @this)
-        {
-            Control ctrl = @this;
-            while (ctrl != null)
-            {
-                if (ctrl.Site != null && ctrl.Site.DesignMode)
-                    return true;
-                else
-                    ctrl = ctrl.Parent;
-            }
-            return false;
-        }
         
-        #region TODO: Convertir a Helper
-
-        public static bool IsDesignMode(this Control @this)
-        {
-            return Assembly.GetEntryAssembly().Location.Contains("VisualStudio");
-        }
-
-        public static bool IsDesigntime(this Control @this)
-        {
-            return (LicenseManager.UsageMode == LicenseUsageMode.Designtime);
-        }
-
-        public static bool IsRuntime(this Control @this)
-        {
-            return (LicenseManager.UsageMode == LicenseUsageMode.Runtime);
-        }
-
-        #endregion
-
-        #endregion
 
     }
 }

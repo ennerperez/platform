@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Providers
 {
-    [ProvideProperty("Shield", typeof(Button)), ToolboxItem(true), System.Drawing.ToolboxBitmap(typeof(UserAcountControlProvider), "UserAcountControl.bmp")]
+    [ProvideProperty("Shield", typeof(Button))]
+    [ToolboxBitmap(typeof(System.IO.FileSystemWatcher))]
+    [ToolboxItem(true)]
     public sealed class UserAcountControlProvider : System.ComponentModel.Component, IExtenderProvider
     {
 

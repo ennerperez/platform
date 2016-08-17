@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -8,6 +9,8 @@ using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Controls
 {
+    [ToolboxBitmap(typeof(System.Windows.Forms.FlowLayoutPanel))]
+    [ToolboxItem(true)]
     public class SmoothPanel : FlowLayoutPanel
     {
 

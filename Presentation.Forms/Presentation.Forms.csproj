@@ -64,6 +64,7 @@
     <Compile Include="Components\Literals.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ControlExtensions.cs" />
     <Compile Include="Controls\AnimatedBitmapControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -144,7 +145,7 @@
     <Compile Include="Designers\CustomAppearancePropertyEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Extensions.cs" />
+    <Compile Include="FormExtensions.cs" />
     <Compile Include="Components\CultureManager.cs">
       <SubType>Component</SubType>
     </Compile>

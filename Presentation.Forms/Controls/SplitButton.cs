@@ -7,6 +7,9 @@ using System.Windows.Forms.VisualStyles;
 
 namespace Platform.Presentation.Forms.Controls
 {
+
+    [ToolboxBitmap(typeof(System.Windows.Forms.Button))]
+    [ToolboxItem(true)]
     public class SplitButton : Button
     {
         PushButtonState _state;

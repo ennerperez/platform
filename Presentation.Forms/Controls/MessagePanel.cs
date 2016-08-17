@@ -11,7 +11,7 @@ using Platform.Support.Drawing;
 namespace Platform.Presentation.Forms.Controls
 {
 
-    [ToolboxBitmap(typeof(MessagePanel), "MessagePanel.bmp")]
+    [ToolboxBitmap(typeof(System.Windows.Forms.Panel))]
     [ToolboxItem(true)]
     public class MessagePanel : Panel
     {

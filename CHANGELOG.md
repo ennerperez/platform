@@ -24,6 +24,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Portable Core Isolation
 - SPS Model Namespaces Arrange
 - Drawing Namespace Arrange
+- ToolboxItems for WinForms Controls
 
 ## Fixed
 - ApplicationDataPath in Reflection Extensions

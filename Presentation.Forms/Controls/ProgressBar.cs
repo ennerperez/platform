@@ -37,6 +37,7 @@ namespace Platform.Presentation.Forms
         /// A Windows progress bar control with Windows Vista & 7 functionality.
         /// </summary>
         [ToolboxBitmap(typeof(System.Windows.Forms.ProgressBar))]
+        [ToolboxItem(true)]
         public class ProgressBar : System.Windows.Forms.ProgressBar
         {
             bool showInTaskbar;

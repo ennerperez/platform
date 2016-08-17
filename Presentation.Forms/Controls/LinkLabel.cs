@@ -9,6 +9,7 @@ using System.Windows.Forms;
 namespace Platform.Presentation.Forms.Controls
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.LinkLabel))]
+    [ToolboxItem(true)]
     public class LinkLabel : Control
     {
         private Font hoverFont;
