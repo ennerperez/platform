@@ -267,9 +267,18 @@ Global
 		{19D05955-5523-4F6E-88BA-B47ECE3F0E4F} = {B2DE59C7-C6E5-46E1-873E-D711546443EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
-		BuildVersion_StartDate = 2016/1/1
-		BuildVersion_UpdateAssemblyVersion = True
 		BuildVersion_BuildVersioningStyle = None.None.None.Increment
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_StartDate = 2016/1/1
+		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
+	EndGlobalSection
+	GlobalSection(AutomaticVersions) = postSolution
+		AssemblyInfoFilePath.Release|Any CPU = D:\Developments\GitHub\platform\.files\AssemblyInfo.Version.cs
+		UpdateAssemblyVersion.Release|Any CPU = True
+		UpdateAssemblyFileVersion.Release|Any CPU = True
+		UpdateAssemblyInfoVersion.Release|Any CPU = True
+		AssemblyVersionSettings.Release|Any CPU = None.None.None.Increment
+		AssemblyFileVersionSettings.Release|Any CPU = None.None.None.Increment
+		AssemblyInfoVersionSettings.Release|Any CPU = None.None.None.Increment
 	EndGlobalSection
 EndGlobal

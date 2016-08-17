@@ -11,11 +11,19 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - AutoHeightLabel + AutoHeightLinkLabel
 - ORM Data Fill
 - DynamicInvoke Class
+- ImageCropper Control
+- ImageFilter Control
+- SmoothPanel Control
+- DateTime Extensions UnixTime & ElapsedTime
 
 ### Changed
 - Support Standardization
 - CRC32 Algorithm
 - Portable Core Isolation
+- SPS Model Namespaces Arrange
+
+## Fixed
+- ApplicationDataPath in Reflection Extensions
 
 ## [3.1.10] - [2016-05-31]
 ### Added
