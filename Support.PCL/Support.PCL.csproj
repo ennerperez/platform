@@ -111,6 +111,9 @@
     <Compile Include="..\Support\Obsolete.cs">
       <Link>Obsolete.cs</Link>
     </Compile>
+    <Compile Include="..\Support\Reflection\ApplicationInfo.cs">
+      <Link>Reflection\ApplicationInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Reflection\AssemblyBuildDateAttribute.cs">
       <Link>Reflection\AssemblyBuildDateAttribute.cs</Link>
     </Compile>

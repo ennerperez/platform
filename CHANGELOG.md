@@ -16,6 +16,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - SmoothPanel Control
 - DateTime Extensions UnixTime & ElapsedTime
 - ConvertToIcon Methods
+- ApplicationInfo Reflection
 
 ### Changed
 - Support Standardization

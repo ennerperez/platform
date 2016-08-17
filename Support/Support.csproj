@@ -56,6 +56,7 @@
     </Compile>
     <Compile Include="IO\StreamExtensions.cs" />
     <Compile Include="IO\StreamHelpers.cs" />
+    <Compile Include="Reflection\ApplicationInfo.cs" />
     <Compile Include="Reflection\AssemblyLicenseAttribute.cs" />
     <Compile Include="Reflection\AssemblyOwnerAttribute.cs" />
     <Compile Include="Reflection\AssemblyMadeInAttribute.cs" />

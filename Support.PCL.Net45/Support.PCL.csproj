@@ -117,6 +117,9 @@
     <Compile Include="..\Support\OS\OSHelpers.cs">
       <Link>OS\OSHelpers.cs</Link>
     </Compile>
+    <Compile Include="..\Support\Reflection\ApplicationInfo.cs">
+      <Link>Reflection\ApplicationInfo.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Reflection\AssemblyBuildDateAttribute.cs">
       <Link>Reflection\AssemblyBuildDateAttribute.cs</Link>
     </Compile>
