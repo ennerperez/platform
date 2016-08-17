@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+#if !PORTABLE
+using System.Security.Cryptography;
+#endif
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -59,7 +62,46 @@ namespace Platform.Support
             }
         }
 
-    }
+#if !PORTABLE
+        public static string SHA256(string str, string key = null)
+        {
+            string result;
+            var expr_05 = new UTF8Encoding();
+            byte[] bytes2 = expr_05.GetBytes(str);
+            var hMAC = new HMACSHA256();
+            if (!string.IsNullOrEmpty(key))
+            {
+                byte[] bytes = expr_05.GetBytes(key);
+                hMAC = new HMACSHA256(bytes);
+            }
+
+            result = BitConverter.ToString(hMAC.ComputeHash(bytes2)).Replace("-", "").ToLower();
+
+            hMAC.Dispose();
+
+            return result;
+        }
+        public static string MD5(string str, string key = null)
+        {
+            string result;
+            var expr_05 = new UTF8Encoding();
+            byte[] bytes2 = expr_05.GetBytes(str);
+            var hMAC = new HMACMD5();
+            if (!string.IsNullOrEmpty(key))
+            {
+                byte[] bytes = expr_05.GetBytes(key);
+                hMAC = new HMACMD5(bytes);
+            }
+
+            result = BitConverter.ToString(hMAC.ComputeHash(bytes2)).Replace("-", "").ToLower();
+
+            hMAC.Dispose();
+
+            return result;
+        }
+#endif
+
+        }
 #if PORTABLE
     }
 #endif

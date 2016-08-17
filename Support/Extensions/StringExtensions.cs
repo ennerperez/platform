@@ -17,7 +17,7 @@ namespace Platform.Support
 #endif
     public static class StringExtensions
     {
-                
+
         public static bool IsNumeric(this string expression)
         {
             return Helpers.IsNumeric(expression);
@@ -62,6 +62,19 @@ namespace Platform.Support
         {
             return Regex.Matches(text, ".{1," + lineLength + "}").Cast<Match>().Select(m => m.Value).ToArray();
         }
+
+#if !PORTABLE
+
+        public static string SHA256(this string source, string key = null)
+        {
+            return Helpers.SHA256(source, key);
+        }
+        public static string MD5(this string source, string key = null)
+        {
+            return Helpers.MD5(source, key);
+        }
+
+#endif
 
     }
 #if PORTABLE

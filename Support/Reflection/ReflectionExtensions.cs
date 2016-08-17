@@ -195,10 +195,12 @@ namespace Platform.Support
 
             public static string ApplicationDataPath(this Assembly assembly)
             {
-                var companyName = assembly.Company();
-                var productName = assembly.Title();
-                var version = assembly.Version();
-                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), companyName, productName, version.ToString(3));
+                var parts = new List<string>();
+                parts.Add(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+                parts.Add(assembly.Company());
+                parts.Add(assembly.Title());
+                parts.Add(assembly.Version().ToString(3));
+                return Path.Combine(parts.Where(p => !string.IsNullOrEmpty(p)).ToArray());
             }
 
 #endif
