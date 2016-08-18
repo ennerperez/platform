@@ -17,6 +17,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - DateTime Extensions UnixTime & ElapsedTime
 - ConvertToIcon Methods
 - ApplicationInfo Reflection
+- NumericUpDown Leaver Extension
 
 ### Changed
 - Support Standardization

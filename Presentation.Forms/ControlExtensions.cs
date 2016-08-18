@@ -41,5 +41,32 @@ namespace Platform.Presentation.Forms
             return (LicenseManager.UsageMode == LicenseUsageMode.Runtime);
         }
 
+
+        public static void SetLeave(this System.Windows.Forms.NumericUpDown @this, Boolean disposing = false)
+        {
+            if (!disposing)
+                @this.Leave += numericUpDownLeave;
+            else
+                @this.Leave -= numericUpDownLeave;
+        }
+
+        internal static void numericUpDownLeave(object sender, EventArgs e)
+        {
+            var ctrl = (NumericUpDown)sender;
+            {
+                if (ctrl != null)
+                  {
+                    if (ctrl.IsDisposed)
+                        if (ctrl.Controls[1].Text == "")
+                        {
+                            ctrl.Text = ctrl.Minimum.ToString();
+                            ctrl.Value = ctrl.Minimum;
+                        }
+                        else
+                            ctrl.Leave -= numericUpDownLeave;
+                  }
+            }
+        }
+
     }
 }
