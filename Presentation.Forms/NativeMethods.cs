@@ -11,7 +11,7 @@ internal static class ExternDll
     internal const string User32 = "user32.dll";
 }
 
-internal static class NativeMethods
+internal static partial class NativeMethods
 {
 
     internal enum GraphicsMode : int
@@ -377,7 +377,5 @@ internal static class NativeMethods
     internal const uint BCM_GETNOTELENGTH = 0x0000160B;
     internal const uint BCM_SETSHIELD = 0x0000160C;
     internal const int BM_SETIMAGE = 0x00F7;
-
-    
-
+        
 }

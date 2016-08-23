@@ -9,11 +9,6 @@ namespace Platform.Support.ConsoleEx
     public class Spinner : IDisposable
     {
         private int counter;
-
-        public void Dispose()
-        {
-        }
-
         public void Turn()
         {
             counter++;
@@ -49,6 +44,42 @@ namespace Platform.Support.ConsoleEx
             busy = false;
             Thread.CurrentThread.Join();
         }
+
+
+        #region IDisposable
+
+
+        private bool disposed = false;
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        // NOTE: Leave out the finalizer altogether if this class doesn't 
+        // own unmanaged resources itself, but leave the other methods
+        // exactly as they are. 
+        ~Spinner()
+        {
+            // Finalizer calls Dispose(false)
+            Dispose(false);
+        }
+        // The bulk of the clean-up code is implemented in Dispose(bool)
+        protected virtual void Dispose(bool disposing)
+        {
+
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    disposed = true;
+                }
+            }
+
+        }
+
+        #endregion
 
     }
 }

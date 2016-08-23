@@ -59,13 +59,7 @@ namespace Platform.Presentation.Forms.Controls
 
         public Color RegularColor { get; set; }
         public Color HoverColor { get; set; }
-
-
-        [DllImport("user32.dll")]
-        public static extern int LoadCursor(int hInstance, int lpCursorName);
-
-        [DllImport("user32.dll")]
-        public static extern int SetCursor(int hCursor);
+               
 
         public override string Text
         {
@@ -251,7 +245,7 @@ namespace Platform.Presentation.Forms.Controls
             if (m.Msg == 32)
             {
                 //IDC_HAND == 32649
-                SetCursor(LoadCursor(0, 32649));
+                NativeMethods.SetCursor(NativeMethods.LoadCursor(0, 32649));
 
                 //the message has been handled
                 m.Result = IntPtr.Zero;
@@ -261,4 +255,13 @@ namespace Platform.Presentation.Forms.Controls
             base.WndProc(ref m);
         }
     }
+}
+
+internal static partial class NativeMethods
+{
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
+    internal static extern int LoadCursor(int hInstance, int lpCursorName);
+
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
+    internal static extern int SetCursor(int hCursor);
 }

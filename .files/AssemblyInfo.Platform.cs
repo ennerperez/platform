@@ -12,7 +12,7 @@ using Platform.Support.Core.Reflection;
 
 [assembly: AssemblyProduct("Platform")]
 
-#if !PORTABLE
+#if !PORTABLE || PROFILE_78
 [assembly: ComVisible(false)]
 #endif
 [assembly: CLSCompliant(false)]

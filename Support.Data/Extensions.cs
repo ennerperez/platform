@@ -548,7 +548,7 @@ namespace Platform.Support.Data
                     catch (System.Data.OleDb.OleDbException e)
                     {
                         if (e.ErrorCode != 3010 && e.ErrorCode != 3012)
-                            throw e;
+                            throw new Exception("Unable to create the table.", e);
                     }
                     break;
                 default:
@@ -701,7 +701,7 @@ namespace Platform.Support.Data
                     catch (System.Data.OleDb.OleDbException e)
                     {
                         if (e.ErrorCode != 3010 && e.ErrorCode != 3012)
-                            throw e;
+                            throw new Exception("Unable to create the index.", e);
                     }
                     break;
                 default:
@@ -1983,6 +1983,7 @@ namespace Platform.Support.Data
         /// <returns>
         ///     The number of rows added to the table.
         /// </returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2100:Review SQL queries for security vulnerabilities")]
         public static int Insert(this IDbConnection conn, object obj, string extra, Type objType)
         {
             if (obj == null || objType == null) return 0;

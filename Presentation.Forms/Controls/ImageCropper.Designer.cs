@@ -20,6 +20,11 @@ namespace Platform.Presentation.Forms.Controls
         {
             if (disposing && (components != null))
             {
+                if (cImage != null)
+                {
+                    cImage.Dispose();
+                    cImage = null;
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);

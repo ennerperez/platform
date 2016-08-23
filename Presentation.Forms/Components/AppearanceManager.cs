@@ -366,6 +366,7 @@ namespace Platform.Presentation.Forms
                         this._Highlight = pct.ButtonSelectedHighlight;
                     }
 
+                    [NonSerialized]
                     private AppearanceManager ap;
                     public SelectedButtonAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
@@ -525,6 +526,8 @@ namespace Platform.Presentation.Forms
                         this._Highlight = pct.ButtonPressedHighlight;
 
                     }
+
+                    [NonSerialized]
                     private AppearanceManager ap;
                     public PressedButtonAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
@@ -686,6 +689,8 @@ namespace Platform.Presentation.Forms
                         this._PressedBackrgound = pct.CheckPressedBackground;
                         this._SelectedBackground = pct.CheckSelectedBackground;
                     }
+
+                    [NonSerialized]
                     private AppearanceManager ap;
                     public CheckedButtonAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
@@ -883,6 +888,8 @@ namespace Platform.Presentation.Forms
                         this._Light = pct.GripLight;
 
                     }
+
+                    [NonSerialized]
                     private AppearanceManager ap;
                     public GripAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
@@ -955,6 +962,8 @@ namespace Platform.Presentation.Forms
                         this._GradientEnd = pct.ButtonSelectedGradientEnd;
 
                     }
+
+                    [NonSerialized]
                     private AppearanceManager ap;
                     public MenuStripAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
@@ -1052,6 +1061,8 @@ namespace Platform.Presentation.Forms
                         this._SelectedGradientEnd = pct.MenuItemSelectedGradientEnd;
 
                     }
+
+                    [NonSerialized]
                     private AppearanceManager ap;
                     public MenuItemAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
@@ -1228,6 +1239,8 @@ namespace Platform.Presentation.Forms
                         this._GradientEnd = pct.RaftingContainerGradientEnd;
 
                     }
+
+                    [NonSerialized]
                     private AppearanceManager ap;
                     public RaftingContainerAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
@@ -1300,6 +1313,8 @@ namespace Platform.Presentation.Forms
                         this._GradientEnd = pct.StatusStripGradientEnd;
 
                     }
+
+                    [NonSerialized]
                     private AppearanceManager ap;
                     public StatusStripAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
@@ -1372,6 +1387,8 @@ namespace Platform.Presentation.Forms
                         this._Light = pct.SeparatorLight;
 
                     }
+
+                    [NonSerialized]
                     private AppearanceManager ap;
                     public SeparatorAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
@@ -1453,6 +1470,7 @@ namespace Platform.Presentation.Forms
 
                     }
 
+                    [NonSerialized]
                     private AppearanceManager ap;
                     public ToolStripAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
@@ -1674,6 +1692,8 @@ namespace Platform.Presentation.Forms
                         this._GradientMiddle = pct.OverflowButtonGradientMiddle;
 
                     }
+
+                    [NonSerialized]
                     private AppearanceManager ap;
                     public OverflowButtonAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
@@ -1768,6 +1788,8 @@ namespace Platform.Presentation.Forms
                         this._GradientMiddle = pct.ImageMarginGradientMiddle;
 
                     }
+
+                    [NonSerialized]
                     private AppearanceManager ap;
                     public ImageMarginNormalAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
@@ -1862,6 +1884,8 @@ namespace Platform.Presentation.Forms
                         this._GradientMiddle = pct.ImageMarginRevealedGradientMiddle;
 
                     }
+
+                    [NonSerialized]
                     private AppearanceManager ap;
                     public ImageMarginRevealedAppearanceProperties(AppearanceManager appearanceControl)
                         : this()

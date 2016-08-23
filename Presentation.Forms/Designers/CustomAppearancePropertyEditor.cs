@@ -12,7 +12,7 @@ using System.Windows.Forms.Design;
 using System.Xml.Serialization;
 
 namespace Platform.Presentation.Forms.Designers
-{   
+{
 
     public class AppearanceEditor : System.Windows.Forms.Form
     {
@@ -223,7 +223,7 @@ namespace Platform.Presentation.Forms.Designers
             // 
             // Panel1
             // 
-            this.Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Panel1.Controls.Add(this.CustomizableToolStrip1);
@@ -778,8 +778,8 @@ namespace Platform.Presentation.Forms.Designers
             // 
             // PropertyGrid1
             // 
-            this.PropertyGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.PropertyGrid1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertyGrid1.Location = new System.Drawing.Point(15, 119);
             this.PropertyGrid1.Name = "PropertyGrid1";
@@ -906,8 +906,8 @@ namespace Platform.Presentation.Forms.Designers
             this.CustomizableMenuStrip1.Appearance.CustomAppearance = ap;
             this.CustomizableStatusStrip1.Appearance.CustomAppearance = ap;
             this.CustomizableToolStrip1.Appearance.CustomAppearance = ap;
-            this.PropertyGrid1.SelectedObject = ap;         
-            
+            this.PropertyGrid1.SelectedObject = ap;
+
         }
 
         public AppearanceManager.AppearanceProperties CustomAppearance
@@ -930,7 +930,7 @@ namespace Platform.Presentation.Forms.Designers
                 ofd.Title = "Select XML File.";
                 ofd.Filter = "XML Files (*.xml)|*.xml|All Files|*.*";
 
-                if (ofd.ShowDialog() ==  System.Windows.Forms.DialogResult.OK)
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     this.LoadAppearance(ofd.FileName);
                     CustomizableMenuStrip1.Invalidate();
@@ -1002,12 +1002,12 @@ namespace Platform.Presentation.Forms.Designers
         {
             try
             {
-                using (FileStream fs = new FileStream(xmlFile, FileMode.Create, FileAccess.Write, FileShare.None))
-                {
-                    XmlSerializer ser = new XmlSerializer(typeof(AppearanceManager.AppearanceProperties));
-                    ser.Serialize(fs, ac.CustomAppearance);
-                    fs.Close();
-                }
+                var fs = new FileStream(xmlFile, FileMode.Create, FileAccess.Write, FileShare.None);
+
+                XmlSerializer ser = new XmlSerializer(typeof(AppearanceManager.AppearanceProperties));
+                ser.Serialize(fs, ac.CustomAppearance);
+                fs.Close();
+
             }
             catch (Exception ex)
             {
@@ -1025,7 +1025,7 @@ namespace Platform.Presentation.Forms.Designers
 
     }
 
-    public class CustomAppearancePropertyEditor : System.Drawing.Design.UITypeEditor
+    public class CustomAppearancePropertyEditor : System.Drawing.Design.UITypeEditor, IDisposable
     {
         private AppearanceEditor _appearanceEditor;
         protected IWindowsFormsEditorService IEditorService;
@@ -1094,6 +1094,42 @@ namespace Platform.Presentation.Forms.Designers
                 return _appearanceEditor.CustomAppearance;
             }
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    if (_appearanceEditor  != null)
+                    {
+                        _appearanceEditor.Dispose();
+                        _appearanceEditor = null;
+                    }
+                }
+                
+                disposedValue = true;
+            }
+        }
+
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        // ~CustomAppearancePropertyEditor() {
+        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        //   Dispose(false);
+        // }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 
 }

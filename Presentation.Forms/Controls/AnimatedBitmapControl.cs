@@ -602,12 +602,7 @@ namespace Platform.Presentation.Forms.Controls
         public const int DI_COMPAT = 0x0004;
         public const int DI_DEFAULTSIZE = 0x0008;
         public const int DI_NOMIRROR = 0x0010;
-
-        [DllImport("User32.dll", SetLastError = true)]
-        private static extern bool DrawIconEx(IntPtr hdc, int xLeft, int yTop, IntPtr hIcon,
-            int cxWidth, int cyHeight, int istepIfAniCur, IntPtr hbrFlickerFreeDraw,
-            int diFlags);
-
+        
         public void FillPolygon(Brush b, Point[] points)
         {
             for (int i = 0; i < points.Length; i++)
@@ -904,4 +899,13 @@ namespace Platform.Presentation.Forms.Controls
 
     #endregion
 
+}
+
+
+internal static partial class NativeMethods
+{
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto, SetLastError = true)]
+    internal static extern bool DrawIconEx(IntPtr hdc, int xLeft, int yTop, IntPtr hIcon,
+            int cxWidth, int cyHeight, int istepIfAniCur, IntPtr hbrFlickerFreeDraw,
+            int diFlags);
 }

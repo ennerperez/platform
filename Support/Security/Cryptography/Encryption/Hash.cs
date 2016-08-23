@@ -13,7 +13,7 @@ namespace Platform.Support.Security.Cryptography.Encryption
     /// infeasible to find two distinct inputs that hash to the same value. Hash functions 
     /// are commonly used with digital signatures and for data integrity.
     /// </summary>
-    public class Hash
+    public class Hash : IDisposable
     {
 
         /// <summary>
@@ -128,6 +128,47 @@ namespace Platform.Support.Security.Cryptography.Encryption
             _HashValue.Bytes = _Hash.ComputeHash(b);
             return _HashValue;
         }
+
+        #region IDisposable
+
+
+        private bool disposed = false;
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        // NOTE: Leave out the finalizer altogether if this class doesn't 
+        // own unmanaged resources itself, but leave the other methods
+        // exactly as they are. 
+        ~Hash()
+        {
+            // Finalizer calls Dispose(false)
+            Dispose(false);
+        }
+        // The bulk of the clean-up code is implemented in Dispose(bool)
+        protected virtual void Dispose(bool disposing)
+        {
+
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    if (_Hash != null)
+                    {
+                        _Hash.Dispose();
+                        _Hash = null;
+                    }
+                    _HashValue = null;
+                    disposed = true;
+                }
+            }
+
+        }
+
+        #endregion
 
     }
 }
