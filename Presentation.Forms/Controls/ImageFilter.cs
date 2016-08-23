@@ -10,8 +10,11 @@ using System.Drawing.Imaging;
 
 namespace Platform.Presentation.Forms.Controls
 {
+
+    //TODO: WIP
+
     [ToolboxBitmap(typeof(System.Windows.Forms.PictureBox))]
-    [ToolboxItem(true)]
+    [ToolboxItem(false)]
     public partial class ImageFilter : UserControl
     {
         public IGFilter iFilter;

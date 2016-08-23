@@ -11,8 +11,9 @@ using System.Drawing.Drawing2D;
 namespace Platform.Presentation.Forms.Controls
 {
 
+    [Obsolete("Considerate ImageCropControl instead")]
     [ToolboxBitmap(typeof(System.Windows.Forms.PictureBox))]
-    [ToolboxItem(true)]
+    [ToolboxItem(false)]
     public partial class ImageCropper : UserControl
     {
         public ImageCropper()

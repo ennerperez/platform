@@ -10,6 +10,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
+//TODO: Fix behavior
+
 namespace Platform.Presentation.Forms.Components
 {
     [System.Drawing.ToolboxBitmap(typeof(System.Windows.Forms.Form))]
@@ -300,14 +302,14 @@ namespace Platform.Presentation.Forms.Components
 
             if (value)
             {
-                //AddHandler b.MouseDown, AddressOf Form_MouseDown
-                //AddHandler b.MouseUp, AddressOf Form_MouseUp
+                b.MouseDown += Form_MouseDown;
+                b.MouseUp += Form_MouseUp;
                 b.MouseMove += Form_MouseMove;
             }
             else
             {
-                //RemoveHandler b.MouseDown, AddressOf Form_MouseDown
-                //RemoveHandler b.MouseUp, AddressOf Form_MouseUp
+                b.MouseDown -= Form_MouseDown;
+                b.MouseUp -= Form_MouseUp;
                 b.MouseMove -= Form_MouseMove;
             }
 

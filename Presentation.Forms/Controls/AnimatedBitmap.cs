@@ -20,7 +20,7 @@ namespace Platform.Presentation.Forms.Controls
     /// </summary>
     [ToolboxBitmap(typeof(System.Windows.Forms.PictureBox))]
     [ToolboxItem(true)]
-    public class AnimatedBitmapControl : Control
+    public class AnimatedBitmap : Control
     {
         #region Private Member Variables
 
@@ -53,7 +53,7 @@ namespace Platform.Presentation.Forms.Controls
         /// <summary>
         /// Initializes a new instance of the AnimatedBitmapControl class.
         /// </summary>
-        public AnimatedBitmapControl()
+        public AnimatedBitmap()
         {
             // This call is required by the Windows.Forms Form Designer.
             InitializeComponent();

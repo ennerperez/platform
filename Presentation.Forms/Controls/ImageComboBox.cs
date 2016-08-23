@@ -18,10 +18,14 @@ namespace Platform.Presentation.Forms.Controls
         /// </summary>
         private Container components = null;
 
-        public ImageComboBox(Size imageSize)
+        public ImageComboBox() :base()
         {
             DropDownStyle = ComboBoxStyle.DropDownList;
             DrawMode = DrawMode.OwnerDrawFixed;
+        }
+
+        public ImageComboBox(Size imageSize) : this()
+        {
             ItemHeight = CalculateItemHeight(imageSize);
         }
 

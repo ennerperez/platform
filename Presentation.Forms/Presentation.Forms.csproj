@@ -65,7 +65,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ControlExtensions.cs" />
-    <Compile Include="Controls\AnimatedBitmapControl.cs">
+    <Compile Include="Controls\AnimatedBitmap.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\AutoHeightLabel.cs">
@@ -176,8 +176,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\AnimatedBitmapControl.resx">
-      <DependentUpon>AnimatedBitmapControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\AnimatedBitmap.resx">
+      <DependentUpon>AnimatedBitmap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BlinkingImage.resx">
       <DependentUpon>BlinkingImage.cs</DependentUpon>
