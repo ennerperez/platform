@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - XMLViewer Control
 - CharacterEncoder
 - ToBase64ImageTag
+- VariantType Enum
 
 ### Changed
 - Support Standardization
@@ -34,6 +35,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Fixed
 - ApplicationDataPath in Reflection Extensions
+- SetField & RaisePropertyChanged
 
 ## [3.1.10] - [2016-05-31]
 ### Added
