@@ -19,14 +19,20 @@ namespace Platform.Support.Reflection
 
         public static bool SetField(this INotifyPropertyChanged self, ref object field, object value, string propertyName = "")
         {
-            if (field.Equals(value))
+            if (field == null && value == null || field.Equals(value))
                 return false;
 
             field = value;
 
-            var mi = self.GetType().GetEvent("PropertyChanged").GetAddMethod();
-            mi.Invoke(self, new object[] { new PropertyChangedEventArgs(propertyName) });
-
+            var addEventMethodInfo = self.GetType().GetMethod("OnPropertyChanged", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+            if (addEventMethodInfo != null)
+                if (addEventMethodInfo.GetParameters().Count() == 1)
+                    addEventMethodInfo.Invoke(self, new object[] { new PropertyChangedEventArgs(propertyName) });
+                else
+                    addEventMethodInfo.Invoke(self, new object[] { self, new PropertyChangedEventArgs(propertyName) });
+            else
+                self.RaisePropertyChanged(propertyName);
+            
             return true;
 
         }
@@ -38,8 +44,14 @@ namespace Platform.Support.Reflection
 
             field = value;
 
-            var mi = self.GetType().GetEvent("PropertyChanged").GetAddMethod();
-            mi.Invoke(self, new object[] { new PropertyChangedEventArgs(propertyName) });
+            var addEventMethodInfo = self.GetType().GetMethod("OnPropertyChanged", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+            if (addEventMethodInfo != null)
+                if (addEventMethodInfo.GetParameters().Count() == 1)
+                    addEventMethodInfo.Invoke(self, new object[] { new PropertyChangedEventArgs(propertyName) });
+                else
+                    addEventMethodInfo.Invoke(self, new object[] { self, new PropertyChangedEventArgs(propertyName) });
+            else
+                self.RaisePropertyChanged(propertyName);
 
             return true;
         }
