@@ -21,6 +21,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - RichTextBox Extensions
 - XMLViewer Control
 - CharacterEncoder
+- ToBase64ImageTag
 
 ### Changed
 - Support Standardization
@@ -29,6 +30,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - SPS Model Namespaces Arrange
 - Drawing Namespace Arrange
 - ToolboxItems for WinForms Controls
+- ImageExtensions Name
 
 ## Fixed
 - ApplicationDataPath in Reflection Extensions

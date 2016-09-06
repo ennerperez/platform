@@ -100,13 +100,6 @@ namespace Platform.Support.Drawing
 
             return _return;
         }
-        public static Image FromBase64(string source)
-        {
-            System.IO.MemoryStream memStream = new System.IO.MemoryStream(Convert.FromBase64String(source));
-            Image result = Image.FromStream(memStream);
-            memStream.Close();
-            return result;
-        }
 
         public static byte[] ToBytes(Image source)
         {
@@ -121,6 +114,17 @@ namespace Platform.Support.Drawing
                 return null;
             }
         }
+
+        #region Base64
+        
+        public static Image FromBase64(string source)
+        {
+            System.IO.MemoryStream memStream = new System.IO.MemoryStream(Convert.FromBase64String(source));
+            Image result = Image.FromStream(memStream);
+            memStream.Close();
+            memStream = null;
+            return result;
+        }
         public static string ToBase64(Image source, ImageFormat imageFormat = null)
         {
             System.IO.MemoryStream memStream = new System.IO.MemoryStream();
@@ -129,8 +133,27 @@ namespace Platform.Support.Drawing
             source.Save(memStream, imageFormat);
             string result = Convert.ToBase64String(memStream.ToArray());
             memStream.Close();
+            memStream = null;
             return result;
         }
+
+        public static string ToBase64ImageTag(Image source, ImageFormat imageFormat = null)
+        {
+            string imgTag = string.Empty;
+            string base64String = string.Empty;
+
+            base64String = source.ToBase64(imageFormat);
+
+            imgTag = "<img src=\"data:image/" + imageFormat.ToString() + ";base64,";
+            imgTag += base64String + "\" ";
+            imgTag += "width=\"" + source.Width.ToString() + "\" ";
+            imgTag += "height=\"" + source.Height.ToString() + "\" />";
+
+            return imgTag;
+        }
+
+
+        #endregion
 
         public static Color GetDominantColor(Image source)
         {

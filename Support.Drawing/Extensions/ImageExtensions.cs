@@ -10,8 +10,7 @@ using System.Text;
 
 namespace Platform.Support.Drawing
 {
-
-    public static partial class ImagesExtensions
+    public static partial class ImageExtensions
     {
 
         #region Image
@@ -50,7 +49,10 @@ namespace Platform.Support.Drawing
         {
             return ImageHelpers.ToBase64(@this, imageFormat);
         }
-
+        public static string ToBase64ImageTag(this Image @this, ImageFormat imageFormat = null)
+        {
+            return ImageHelpers.ToBase64ImageTag(@this, imageFormat);
+        }
         public static bool DrawAdjustedImage(this Image @this, ColorMatrix cm)
         {
             return ImageHelpers.DrawAdjustedImage(@this, cm);
