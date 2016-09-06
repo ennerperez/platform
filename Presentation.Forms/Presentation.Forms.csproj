@@ -130,6 +130,12 @@
     <Compile Include="Components\VistaMenu.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\XMLViewer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\XMLViewer.Designer.cs">
+      <DependentUpon>XMLViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customs\ContextMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -164,6 +170,7 @@
     <Compile Include="Renderes\ColorTables\Office\Office2003BlueColorTable.cs" />
     <Compile Include="Renderes\ColorTables\Office\Office2007ColorTable.cs" />
     <Compile Include="Renderes\ColorTables\Office\OfficeXPColorTable.cs" />
+    <Compile Include="RichTextExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Support.Drawing\Support.Drawing.csproj">
@@ -181,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BlinkingImage.resx">
       <DependentUpon>BlinkingImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\XMLViewer.resx">
+      <DependentUpon>XMLViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Designers\CustomAppearancePropertyEditor.resx">
       <DependentUpon>CustomAppearancePropertyEditor.cs</DependentUpon>

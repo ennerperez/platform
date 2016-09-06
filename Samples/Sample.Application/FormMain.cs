@@ -14,6 +14,8 @@ namespace Sample
         public FormMain()
         {
             InitializeComponent();
+
+            xmlViewer1.Load(System.IO.File.ReadAllText("System.Net.Http.xml"));
         }
     }
 }

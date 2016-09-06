@@ -114,6 +114,7 @@
     <Compile Include="Security\SecurityHelpers.cs" />
     <Compile Include="Security\PasswordHash.cs" />
     <Compile Include="SemanticVersion.cs" />
+    <Compile Include="Text\CharacterEncoder.cs" />
     <Compile Include="Text\Markdown.cs" />
     <Compile Include="Threading\FuncAwaitable.cs" />
     <Compile Include="Threading\FuncAwaiter.cs" />

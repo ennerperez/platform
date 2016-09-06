@@ -18,6 +18,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ConvertToIcon Methods
 - ApplicationInfo Reflection
 - NumericUpDown Leaver Extension
+- RichTextBox Extensions
+- XMLViewer Control
+- CharacterEncoder
 
 ### Changed
 - Support Standardization
