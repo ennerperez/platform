@@ -28,33 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Platform.Presentation.Forms.Controls.XMLViewer.XMLViewerSettings xmlViewerSettings1 = new Platform.Presentation.Forms.Controls.XMLViewer.XMLViewerSettings();
-            this.xmlViewer1 = new Platform.Presentation.Forms.Controls.XMLViewer();
             this.SuspendLayout();
-            // 
-            // xmlViewer1
-            // 
-            this.xmlViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xmlViewer1.Location = new System.Drawing.Point(0, 0);
-            this.xmlViewer1.Name = "xmlViewer1";
-            this.xmlViewer1.ReadOnly = true;
-            xmlViewerSettings1.AttributeKey = System.Drawing.Color.Red;
-            xmlViewerSettings1.AttributeValue = System.Drawing.Color.Blue;
-            xmlViewerSettings1.Element = System.Drawing.Color.DarkRed;
-            xmlViewerSettings1.Tag = System.Drawing.Color.Blue;
-            xmlViewerSettings1.Value = System.Drawing.Color.Black;
-            this.xmlViewer1.Settings = xmlViewerSettings1;
-            this.xmlViewer1.Size = new System.Drawing.Size(624, 441);
-            this.xmlViewer1.TabIndex = 0;
-            this.xmlViewer1.Text = "";
-            this.xmlViewer1.WordWrap = false;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
-            this.Controls.Add(this.xmlViewer1);
             this.Name = "FormMain";
             this.Text = "Sample";
             this.ResumeLayout(false);
@@ -62,8 +42,6 @@
         }
 
         #endregion
-
-        private Platform.Presentation.Forms.Controls.XMLViewer xmlViewer1;
     }
 }
 

@@ -86,6 +86,12 @@
     <Compile Include="Controls\DataGridViewExtended.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\DynamicControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DynamicControl.Designer.cs">
+      <DependentUpon>DynamicControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FillBar.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -188,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BlinkingImage.resx">
       <DependentUpon>BlinkingImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DynamicControl.resx">
+      <DependentUpon>DynamicControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\XMLViewer.resx">
       <DependentUpon>XMLViewer.cs</DependentUpon>

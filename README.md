@@ -28,6 +28,7 @@ See the [changelog](CHANGELOG.md) for changes.
 - [x] Console Extensions
 
 ## TODO
+- [ ] DynamicControl
 - [ ] Extensions normalization
 - [ ] Windows Forms extended controls
 - [ ] Xamarin extended controls

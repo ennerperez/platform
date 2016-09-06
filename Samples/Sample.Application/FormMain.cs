@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Platform.Support;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,8 +15,6 @@ namespace Sample
         public FormMain()
         {
             InitializeComponent();
-
-            xmlViewer1.Load(System.IO.File.ReadAllText("System.Net.Http.xml"));
         }
     }
 }
