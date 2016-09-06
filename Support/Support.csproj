@@ -120,6 +120,7 @@
     <Compile Include="Threading\FuncAwaiter.cs" />
     <Compile Include="Threading\FuncExtensions.cs" />
     <Compile Include="Threading\IAwaitable.cs" />
+    <Compile Include="VariantType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
