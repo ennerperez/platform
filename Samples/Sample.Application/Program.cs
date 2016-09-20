@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Platform.Support.Reflection;
+using System.IO;
+using Platform.Support.Drawing;
 
 namespace Sample
 {
@@ -20,12 +22,18 @@ namespace Sample
 
     static class Program
     {
+
+        public static Palette Palette { get; set; }
+
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         [STAThread]
         static void Main()
         {
+
+            if (File.Exists("Palettes\\colors_blue_indigo.xml"))
+                Palette = Palette.ReadFrom("Palettes\\colors_blue_indigo.xml");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

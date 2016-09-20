@@ -36,6 +36,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## Fixed
 - ApplicationDataPath in Reflection Extensions
 - SetField & RaisePropertyChanged
+- Palette Reader
 
 ## [3.1.10] - [2016-05-31]
 ### Added

@@ -94,11 +94,14 @@ namespace Platform.Support.Drawing
                 var colors = (from XElement item in xdoc.Descendants("color")
                               select new string[] { item.Attribute("name").Value.ToString(), item.Value }).ToDictionary(key => key[0], value => value[1]);
 
-                foreach (var item in result.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where((f) => f.IsAssembly))
+                foreach (var item in result.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where((f) => f.MemberType == MemberTypes.Field))
                 {
-                    var hex = colors[item.Name];
-                    var color = ColorTranslator.FromHtml(hex);
-                    item.SetValue(result, color);
+                    if (colors.ContainsKey(item.Name))
+                    {
+                        var hex = colors[item.Name];
+                        var color = ColorTranslator.FromHtml(hex);
+                        item.SetValue(result, color);
+                    }
                 }
 
                 target = result;

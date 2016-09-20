@@ -125,6 +125,10 @@
       <Project>{aed11b6c-b7d8-48f8-b19f-da6b8d72d89f}</Project>
       <Name>Presentation.Forms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Support.Drawing\Support.Drawing.csproj">
+      <Project>{D544E494-3925-4180-A4A8-26801118D527}</Project>
+      <Name>Support.Drawing</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Support.Net\Support.Net.csproj">
       <Project>{f8245d33-07f5-4b29-80e0-99ad7cc9bcb2}</Project>
       <Name>Support.Net</Name>
@@ -137,6 +141,14 @@
       <Project>{25ab6bbf-a879-4570-9e0e-947d52ae7333}</Project>
       <Name>Support</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Palettes\colors_blue_indigo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Palettes\colors_green_teal.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
