@@ -38,6 +38,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - SetField & RaisePropertyChanged
 - Palette Reader
 
+## [3.1.11] - [2016-12-09]
+### Added
+- CRC32 Stream Extension
+
+### Fixed
+- CRC32 HashAlgorim Definition
+
 ## [3.1.10] - [2016-05-31]
 ### Added
 - Console extensions
