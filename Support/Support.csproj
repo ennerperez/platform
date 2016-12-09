@@ -116,7 +116,6 @@
     <None Include="Package.nuspec">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
     <None Include="Schemas\BrandingSchema.xsd">
       <SubType>Designer</SubType>
     </None>
