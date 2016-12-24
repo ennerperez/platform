@@ -510,5 +510,31 @@ namespace Platform.Support.Drawing
             }
         }
 
+        public static Bitmap CopyToSquareCanvas(Bitmap sourceBitmap, Color canvasBackground)
+        {
+            int maxSide = sourceBitmap.Width > sourceBitmap.Height ? sourceBitmap.Width : sourceBitmap.Height;
+            Bitmap bitmapResult = new Bitmap(maxSide, maxSide, PixelFormat.Format32bppArgb);
+            using (Graphics graphicsResult = Graphics.FromImage(bitmapResult))
+            {
+                graphicsResult.Clear(canvasBackground);
+                int xOffset = (sourceBitmap.Width - maxSide) / 2;
+                int yOffset = (sourceBitmap.Height - maxSide) / 2;
+                graphicsResult.DrawImage(sourceBitmap, new Point(xOffset, xOffset));
+            }
+            return bitmapResult;
+        }
+
+        public static Icon CreateIcon(Bitmap sourceBitmap, int iconSize)
+        {
+            Bitmap squareCanvas = CopyToSquareCanvas(sourceBitmap, Color.Transparent);
+            squareCanvas = (Bitmap)squareCanvas.GetThumbnailImage(iconSize, iconSize, null, new IntPtr());
+
+
+            Icon iconResult = Icon.FromHandle(squareCanvas.GetHicon());
+
+
+            return iconResult;
+        }
+
     }
 }
