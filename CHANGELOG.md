@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [3.2.11] - [UNRELEASED]
+## [3.2.*] - [UNRELEASED]
 ### Added
 - Encryption Hash Class
 - Windows Forms CommandLink Control
@@ -37,6 +37,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ApplicationDataPath in Reflection Extensions
 - SetField & RaisePropertyChanged
 - Palette Reader
+
+## [3.1.11] - [2016-12-09]
+### Added
+- CRC32 Stream Extension
+
+### Fixed
+- CRC32 HashAlgorim Definition
 
 ## [3.1.10] - [2016-05-31]
 ### Added
