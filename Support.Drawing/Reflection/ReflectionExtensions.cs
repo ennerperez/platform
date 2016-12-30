@@ -12,7 +12,7 @@ namespace Platform.Support.Drawing
 
         public static Icon Icon(this Assembly assembly)
         {
-            return ReflectionHelpers.Icon(assembly.Location);
+            return ReflectionHelper.Icon(assembly.Location);
         }
 
     }

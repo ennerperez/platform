@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 
 namespace Platform.Support.Security
 {
-    public static class SecurityHelpers
+    public static class SecurityHelper
     {
 
         public static int CalculateStrength(string password, int min = 6)

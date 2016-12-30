@@ -1,7 +1,7 @@
 ﻿#if PORTABLE
-using Helpers = Platform.Support.Core.EnumHelpers;
+using Helpers = Platform.Support.Core.EnumHelper;
 #else
-using Helpers = Platform.Support.EnumHelpers;
+using Helpers = Platform.Support.EnumHelper;
 #endif
 
 namespace Platform.Support

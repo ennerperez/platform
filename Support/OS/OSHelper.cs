@@ -16,7 +16,7 @@ namespace Platform.Support
     {
 
         [DebuggerStepThrough()]
-        public static class OSHelpers
+        public static class OSHelper
         {
 
             /// <summary>

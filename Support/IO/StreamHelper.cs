@@ -12,7 +12,7 @@ namespace Platform.Support
 #endif
         namespace IO
         {
-            public static class StreamHelpers
+            public static class StreamHelper
             {
 
                 public static void CopyStream(Stream input, Stream output)

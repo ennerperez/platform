@@ -10,7 +10,7 @@ namespace Platform.Support
     {
 #endif
 
-        public static class EnumHelpers
+        public static class EnumHelper
         {
 
 #if (!PORTABLE)

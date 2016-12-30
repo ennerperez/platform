@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using Helpers = Platform.Support.IO.FileInfoHelpers;
+using Helpers = Platform.Support.IO.FileInfoHelper;
 
 namespace Platform.Support.IO
 {

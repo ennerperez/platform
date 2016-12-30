@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Platform.Support.Windows
 {
-    public static class UACHelpers
+    public static class UACHelper
     {
 
         public static void RestartElevated()

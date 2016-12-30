@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Platform.Support.Drawing
 {
-    public static partial class ReflectionHelpers
+    public static partial class ReflectionHelper
     {
         public static Icon Icon(string path)
         {

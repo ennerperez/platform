@@ -23,6 +23,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - CharacterEncoder
 - ToBase64ImageTag
 - VariantType Enum
+- String Last Chars
+- RGB Color Space Methods & Extensions
+- Color Inverter
+- CreateIcon method
 
 ### Changed
 - Support Standardization

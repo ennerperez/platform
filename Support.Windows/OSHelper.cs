@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Platform.Support.Windows
 {
-    public static class OSHelpers
+    public static class OSHelper
     {
 
 #if (!PORTABLE)

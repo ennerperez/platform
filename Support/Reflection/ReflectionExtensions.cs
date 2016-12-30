@@ -7,9 +7,9 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.InteropServices;
 #if PORTABLE
-using Helpers = Platform.Support.Core.AttributeHelpers;
+using Helpers = Platform.Support.Core.AttributeHelper;
 #else
-using Helpers = Platform.Support.AttributeHelpers;
+using Helpers = Platform.Support.AttributeHelper;
 #endif
 
 namespace Platform.Support

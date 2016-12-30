@@ -7,13 +7,13 @@ using System.Text;
 namespace Platform.Support.Drawing
 {
 
-    public static partial class ColorHelpers
+    public static partial class ColorHelper
     {
-        public static string ToHex(Color source)
+        public static string ToHEX(Color source)
         {
-            return ToHex(source.R, source.G, source.B);
+            return ToHEX(source.R, source.G, source.B);
         }
-        public static string ToHex(int r, int g, int b)
+        public static string ToHEX(int r, int g, int b)
         {
             return "#" + System.Drawing.ColorTranslator.FromHtml(string.Format("#{0:X2}{1:X2}{2:X2}", r, g, b)).Name.Remove(0, 2);
         }
@@ -34,24 +34,24 @@ namespace Platform.Support.Drawing
             return _return;
         }
 
-        public static Color Hex(string val)
-        {
-            return ToColor(val);
-        }
+        //public static Color HEX(string val)
+        //{
+        //    return ToColor(val);
+        //}
 
     }
 
     public static partial class ColorExtensions
     {
 
-        public static void FromHex(this Color @this, string hex, int alpha = 255)
+        public static void FromHEX(this Color @this, string hex, int alpha = 255)
         {
-            @this = ColorHelpers.ToColor(hex, alpha);
+            @this = ColorHelper.ToColor(hex, alpha);
         }
 
-        public static string ToHex(this Color @this)
+        public static string ToHEX(this Color @this)
         {
-            return ColorHelpers.ToHex(@this);
+            return ColorHelper.ToHEX(@this);
         }
 
     }

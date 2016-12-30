@@ -13,7 +13,7 @@ namespace Platform.Support
     namespace Core
     {
 #endif
-    public static class StringHelpers
+    public static class StringHelper
     {
 
         public static bool IsNumeric(string expression)

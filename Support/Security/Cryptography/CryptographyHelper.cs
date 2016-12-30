@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Platform.Support.Security.Cryptography
 {
-    public static class CryptographyHelpers
+    public static class CryptographyHelper
     {
 
         public const string PublicKey = "!#$a54?3";

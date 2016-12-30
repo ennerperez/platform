@@ -1,8 +1,8 @@
 ﻿using System;
 #if PORTABLE
-using Helpers = Platform.Support.Core.DateTimeHelpers;
+using Helpers = Platform.Support.Core.DateTimeHelper;
 #else
-using Helpers = Platform.Support.DateTimeHelpers;
+using Helpers = Platform.Support.DateTimeHelper;
 #endif
 
 namespace Platform.Support

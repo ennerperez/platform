@@ -4,7 +4,7 @@ using System.IO;
 namespace Platform.Support.IO
 {
 
-    public static class FileInfoHelpers
+    public static class FileInfoHelper
     {
 
         public static string GetCRC32(string source)

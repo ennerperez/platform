@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Platform.Support.Drawing
 {
-    public static partial class ColorHelpers
+    public static partial class ColorHelper
     {
         
         public static double ValidColor(double number)
@@ -63,7 +63,7 @@ namespace Platform.Support.Drawing
 
         public static Color RandomColor()
         {
-            return Color.FromArgb(Maths.MathHelpers.Random(255), Maths.MathHelpers.Random(255), Maths.MathHelpers.Random(255));
+            return Color.FromArgb(Maths.MathHelper.Random(255), Maths.MathHelper.Random(255), Maths.MathHelper.Random(255));
         }
 
         public static Color ParseColor(string color)
@@ -139,16 +139,11 @@ namespace Platform.Support.Drawing
 
         public static Color Lerp(Color from, Color to, float amount)
         {
-            return Color.FromArgb((int)Maths.MathHelpers.Lerp(from.R, to.R, amount),
-                (int)Maths.MathHelpers.Lerp(from.G, to.G, amount),
-                (int)Maths.MathHelpers.Lerp(from.B, to.B, amount));
+            return Color.FromArgb((int)Maths.MathHelper.Lerp(from.R, to.R, amount),
+                (int)Maths.MathHelper.Lerp(from.G, to.G, amount),
+                (int)Maths.MathHelper.Lerp(from.B, to.B, amount));
         }
         
-        public static Color RGB(int r, int g, int b)
-        {
-            return Color.FromArgb(r, g, b);
-        }
-
         public static Color GetDarkColor(Color c, byte d)
         {
             byte r = 0;
@@ -220,6 +215,11 @@ namespace Platform.Support.Drawing
         public static Color DarkenBy(Color color, int percent)
         {
             return ChangeColorBrightness(color, (float)(-1 * percent / 100.0));
+        }
+
+        public static Color Invert(Color color)
+        {
+            return Color.FromArgb(color.ToArgb() ^ 0xffffff);
         }
 
 

@@ -1,4 +1,4 @@
-﻿using Helpers = Platform.Support.Security.Cryptography.CryptographyHelpers;
+﻿using Helpers = Platform.Support.Security.Cryptography.CryptographyHelper;
 
 namespace Platform.Support.Security.Cryptography
 {

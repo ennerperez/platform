@@ -48,8 +48,8 @@
     <Compile Include="..\Support.PCL\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Attributes\AttributesHelpers.cs">
-      <Link>Attributes\AttributesHelpers.cs</Link>
+    <Compile Include="..\Support\Attributes\AttributesHelper.cs">
+      <Link>Attributes\AttributesHelper.cs</Link>
     </Compile>
     <Compile Include="..\Support\Attributes\TagAttribute.cs">
       <Link>Attributes\TagAttribute.cs</Link>
@@ -84,29 +84,29 @@
     <Compile Include="..\Support\Extensions\TypeExtensions.cs">
       <Link>Extensions\TypeExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Helpers\DateTimeHelpers.cs">
-      <Link>Helpers\DateTimeHelpers.cs</Link>
+    <Compile Include="..\Support\Helpers\DateTimeHelper.cs">
+      <Link>Helpers\DateTimeHelper.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Helpers\EnumHelpers.cs">
-      <Link>Helpers\EnumHelpers.cs</Link>
+    <Compile Include="..\Support\Helpers\EnumHelper.cs">
+      <Link>Helpers\EnumHelper.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Helpers\StringHelpers.cs">
-      <Link>Helpers\StringHelpers.cs</Link>
+    <Compile Include="..\Support\Helpers\StringHelper.cs">
+      <Link>Helpers\StringHelper.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Helpers\TypeHelpers.cs">
-      <Link>Helpers\TypeHelpers.cs</Link>
+    <Compile Include="..\Support\Helpers\TypeHelper.cs">
+      <Link>Helpers\TypeHelper.cs</Link>
     </Compile>
     <Compile Include="..\Support\IO\StreamExtensions.cs">
       <Link>IO\StreamExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Support\IO\StreamHelpers.cs">
-      <Link>IO\StreamHelpers.cs</Link>
+    <Compile Include="..\Support\IO\StreamHelper.cs">
+      <Link>IO\StreamHelper.cs</Link>
     </Compile>
     <Compile Include="..\Support\IsNull.cs">
       <Link>IsNull.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Maths\MathHelpers.cs">
-      <Link>Maths\MathHelpers.cs</Link>
+    <Compile Include="..\Support\Maths\MathHelper.cs">
+      <Link>Maths\MathHelper.cs</Link>
     </Compile>
     <Compile Include="..\Support\Maths\Vector2.cs">
       <Link>Maths\Vector2.cs</Link>
@@ -114,8 +114,8 @@
     <Compile Include="..\Support\Obsolete.cs">
       <Link>Obsolete.cs</Link>
     </Compile>
-    <Compile Include="..\Support\OS\OSHelpers.cs">
-      <Link>OS\OSHelpers.cs</Link>
+    <Compile Include="..\Support\OS\OSHelper.cs">
+      <Link>OS\OSHelper.cs</Link>
     </Compile>
     <Compile Include="..\Support\Reflection\ApplicationInfo.cs">
       <Link>Reflection\ApplicationInfo.cs</Link>
@@ -174,14 +174,14 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.21.0\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.21.0\build\Microsoft.Bcl.Build.Symbols.targets'))" />
   </Target>
-  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets')" />
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties BuildVersion_StartDate="2000/1/1" />
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.21.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.21.0\build\Microsoft.Bcl.Build.Symbols.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

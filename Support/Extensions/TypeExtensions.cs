@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 #if PORTABLE
-using Helpers = Platform.Support.Core.TypeHelpers;
+using Helpers = Platform.Support.Core.TypeHelper;
 #else
-using Helpers = Platform.Support.TypeHelpers;
+using Helpers = Platform.Support.TypeHelper;
 #endif
 
 namespace Platform.Support

@@ -13,7 +13,7 @@ namespace Platform.Support
     namespace Core
     {
 #endif
-    public static class AttributeHelpers
+    public static class AttributeHelper
     {
 
         #region Assembly
@@ -21,7 +21,7 @@ namespace Platform.Support
 #if (!PORTABLE)
         internal static Assembly _assembly = Assembly.GetEntryAssembly();
 #elif NETFX_45
-        internal static Assembly _assembly = typeof(AttributeHelpers).GetTypeInfo().Assembly;
+        internal static Assembly _assembly = typeof(AttributeHelper).GetTypeInfo().Assembly;
 #else
             internal static Assembly _assembly = Assembly.GetCallingAssembly();
 #endif

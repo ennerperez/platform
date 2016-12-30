@@ -11,7 +11,7 @@ using System.Text;
 namespace Platform.Support.Drawing
 {
 
-    public static partial class ImageHelpers
+    public static partial class ImageHelper
     {
 
         public static Image FromFile(string filename, bool safe = true)

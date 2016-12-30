@@ -75,7 +75,7 @@ namespace Platform.Support
 
         public static int RandomAdd(this int num, int min, int max)
         {
-            return num + Maths.MathHelpers.Random(min, max);
+            return num + Maths.MathHelper.Random(min, max);
         }
 
         private static readonly string[] suffixDecimal = new[] { "B", "KB", "MB", "GB", "TB", "PB", "EB" };

@@ -15,7 +15,7 @@ namespace Platform.Model
 
         namespace SPS
         {
-            internal static class Helpers
+            internal static class Helper
             {
 
 #if !PORTABLE

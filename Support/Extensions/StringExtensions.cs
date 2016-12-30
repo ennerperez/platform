@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 #if PORTABLE
-using Helpers = Platform.Support.Core.StringHelpers;
+using Helpers = Platform.Support.Core.StringHelper;
 #else
-using Helpers = Platform.Support.StringHelpers;
+using Helpers = Platform.Support.StringHelper;
 #endif
 
 namespace Platform.Support
@@ -61,6 +61,11 @@ namespace Platform.Support
         public static IEnumerable<String> SpliceText(this string text, int lineLength)
         {
             return Regex.Matches(text, ".{1," + lineLength + "}").Cast<Match>().Select(m => m.Value).ToArray();
+        }
+
+        public static string Last(this string text, int chars = 1)
+        {
+            return text.Substring(text.Length - chars, chars);
         }
 
 #if !PORTABLE

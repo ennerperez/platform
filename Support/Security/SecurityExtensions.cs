@@ -1,4 +1,4 @@
-﻿using Helpers = Platform.Support.Security.SecurityHelpers;
+﻿using Helpers = Platform.Support.Security.SecurityHelper;
 
 namespace Platform.Support.Security
 {

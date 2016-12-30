@@ -9,7 +9,7 @@ namespace Platform.Support
     namespace Core
     {
 #endif
-        public static class TypeHelpers
+        public static class TypeHelper
         {
 
             public static object IsNull(object value, object replacement = null)

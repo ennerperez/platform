@@ -8,7 +8,7 @@ using System.Text;
 namespace Platform.Support.Windows
 {
 
-    public static class RegistryHelpers
+    public static class RegistryHelper
     {
 
 #if (!PORTABLE)

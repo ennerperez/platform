@@ -16,7 +16,7 @@ namespace Sample.Branding
         private void FormMain_Load(object sender, EventArgs e)
         {
             var assembly = Assembly.GetEntryAssembly();
-            Icon = Helpers.Icon();
+            Icon = ReflectionHelper.Icon();
 
             if (assembly.IsBranded())
             {
@@ -27,9 +27,9 @@ namespace Sample.Branding
                     richTextBoxEULA.Text = bproduct.EULA;
                 }
                 linkLabelURL.Text = assembly.BrandURL("main");
-                pictureBoxBrandBanner.BackColor = Helpers.ToColor(assembly.BrandColor("main"));
-                pictureBoxBrandBanner.Image = Helpers.FromBytes(assembly.BrandLogo("sidebar"));
-                pictureBoxBrandLogo.Image = Helpers.FromBytes(assembly.BrandLogo("main"));
+                pictureBoxBrandBanner.BackColor = ColorHelper.ToColor(assembly.BrandColor("main"));
+                pictureBoxBrandBanner.Image = ImageHelper.FromBytes(assembly.BrandLogo("sidebar"));
+                pictureBoxBrandLogo.Image = ImageHelper.FromBytes(assembly.BrandLogo("main"));
                 richTextBoxEULA.Text = richTextBoxEULA.Text + Environment.NewLine + assembly.BrandEULA();
             }
 

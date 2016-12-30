@@ -9,7 +9,7 @@ namespace Platform.Support.Drawing
 
         public static bool IsPointInRectangle(this Rectangle @this, Point point)
         {
-            return GeometricHelpers.IsPointInRectangle(point, @this);
+            return GeometricHelper.IsPointInRectangle(point, @this);
         }
         
     }

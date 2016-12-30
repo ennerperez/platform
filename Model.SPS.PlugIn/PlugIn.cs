@@ -42,7 +42,7 @@ namespace Platform.Model
 
                     //Get Name from PlugIn attribute.
                     var thisPlugInType = GetType();
-                    var plugInAttribute = Helpers.GetAttribute<PlugInAttribute>(thisPlugInType);
+                    var plugInAttribute = Helper.GetAttribute<PlugInAttribute>(thisPlugInType);
                     Name = plugInAttribute == null ? thisPlugInType.Name : plugInAttribute.Name;
                 }
             }

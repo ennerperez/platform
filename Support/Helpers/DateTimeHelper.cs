@@ -10,7 +10,7 @@ namespace Platform.Support
     {
 #endif
 
-    public static class DateTimeHelpers
+    public static class DateTimeHelper
     {
         public static string ISO8601(DateTime date)
         {

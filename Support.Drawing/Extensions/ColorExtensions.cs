@@ -9,38 +9,42 @@ namespace Platform.Support.Drawing
 
         public static void FromString(this Color @this, string @string)
         {
-            @this = ColorHelpers.ToColor(@string);
+            @this = ColorHelper.ToColor(@string);
         }
 
         public static Color GetDarkColor(this Color @this, byte d)
         {
-            return ColorHelpers.GetDarkColor(@this, d);
+            return ColorHelper.GetDarkColor(@this, d);
         }
         public static Color GetLightColor(this Color @this, byte d)
         {
-            return ColorHelpers.GetLightColor(@this, d);
+            return ColorHelper.GetLightColor(@this, d);
         }
 
         public static int GetLuminosity(this Color @this)
         {
-            return ColorHelpers.GetLuminosity(@this);
+            return ColorHelper.GetLuminosity(@this);
         }
 
         public static Color ChangeColorBrightness(this Color @this, float correctionFactor)
         {
-            return ColorHelpers.ChangeColorBrightness(@this, correctionFactor);
+            return ColorHelper.ChangeColorBrightness(@this, correctionFactor);
         }
 
         public static Color LightenBy(this Color @this, int percent)
         {
-            return ColorHelpers.LightenBy(@this, percent);
+            return ColorHelper.LightenBy(@this, percent);
         }
 
         public static Color DarkenBy(this Color @this, int percent)
         {
-            return ColorHelpers.DarkenBy(@this, percent);
+            return ColorHelper.DarkenBy(@this, percent);
         }
 
+        public static Color Invert(this Color @this)
+        {
+            return ColorHelper.Invert(@this);
+        }
 
 
     }

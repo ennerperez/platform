@@ -79,8 +79,8 @@
     <Compile Include="..\Model.SPS.PlugIn\Runnable\RunnablePlugIn.cs">
       <Link>Runnable\RunnablePlugIn.cs</Link>
     </Compile>
-    <Compile Include="..\Model.SPS\Helpers.cs">
-      <Link>Helpers.cs</Link>
+    <Compile Include="..\Model.SPS\Helper.cs">
+      <Link>Helper.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -88,18 +88,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.20.0\build\Microsoft.Bcl.Build.Symbols.targets'))" />
-  </Target>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties BuildVersion_StartDate="2000/1/1" />
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.21.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.21.0\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.21.0\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.21.0\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

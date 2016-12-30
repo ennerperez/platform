@@ -14,7 +14,7 @@ namespace Platform.Support.Reflection
     /// This class provides a couple of extension methods for raising property change notifications.
     /// These allow easy implementation of INotifyPropertyChanged without deriving from a specific base class.
     /// </summary>
-    public static class NotifyPropertyHelpers
+    public static class NotifyPropertyHelper
     {
 
         public static bool SetField(this INotifyPropertyChanged self, ref object field, object value, string propertyName = "")

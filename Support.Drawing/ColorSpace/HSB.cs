@@ -4,7 +4,7 @@ using System.Drawing;
 namespace Platform.Support.Drawing
 {
 
-    public static partial class ColorHelpers
+    public static partial class ColorHelper
     {
         public static HSB ToHSB(Color color)
         {
@@ -97,6 +97,14 @@ namespace Platform.Support.Drawing
             return Color.FromArgb(value.Alpha, 0, 0, 0);
         }
 
+        public static string HSB(HSB source, bool relative = true)
+        {
+            if (relative)
+                return string.Join(",", new string[] { Math.Round(source.Hue360, 0).ToString(), Math.Round(source.Saturation100, 0).ToString(), Math.Round(source.Brightness100, 0).ToString() });
+            else
+                return string.Join(",", new string[] { source.Hue.ToString(), source.Saturation.ToString(), source.Brightness.ToString() });
+        }
+
     }
 
     public static partial class ColorExtensions
@@ -104,12 +112,12 @@ namespace Platform.Support.Drawing
 
         public static void FromHSB(this Color @this, HSB value)
         {
-            @this = ColorHelpers.ToColor(value);
+            @this = ColorHelper.ToColor(value);
         }
 
         public static HSB ToHSB(this Color @this)
         {
-            return ColorHelpers.ToHSB(@this);
+            return ColorHelper.ToHSB(@this);
         }
 
     }
@@ -129,7 +137,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                hue = ColorHelpers.ValidColor(value);
+                hue = ColorHelper.ValidColor(value);
             }
         }
 
@@ -141,7 +149,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                hue = ColorHelpers.ValidColor(value / 360);
+                hue = ColorHelper.ValidColor(value / 360);
             }
         }
 
@@ -153,7 +161,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                saturation = ColorHelpers.ValidColor(value);
+                saturation = ColorHelper.ValidColor(value);
             }
         }
 
@@ -165,7 +173,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                saturation = ColorHelpers.ValidColor(value / 100);
+                saturation = ColorHelper.ValidColor(value / 100);
             }
         }
 
@@ -177,7 +185,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                brightness = ColorHelpers.ValidColor(value);
+                brightness = ColorHelper.ValidColor(value);
             }
         }
 
@@ -189,7 +197,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                brightness = ColorHelpers.ValidColor(value / 100);
+                brightness = ColorHelper.ValidColor(value / 100);
             }
         }
 
@@ -201,7 +209,7 @@ namespace Platform.Support.Drawing
             }
             set
             {
-                alpha = ColorHelpers.ValidColor(value);
+                alpha = ColorHelper.ValidColor(value);
             }
         }
 
@@ -225,12 +233,12 @@ namespace Platform.Support.Drawing
 
         public HSB(Color color)
         {
-            this = ColorHelpers.ToHSB(color);
+            this = ColorHelper.ToHSB(color);
         }
 
         public static implicit operator HSB(Color color)
         {
-            return ColorHelpers.ToHSB(color);
+            return ColorHelper.ToHSB(color);
         }
 
         public static implicit operator Color(HSB color)
@@ -261,7 +269,7 @@ namespace Platform.Support.Drawing
 
         public Color ToColor()
         {
-            return ColorHelpers.ToColor(this);
+            return ColorHelper.ToColor(this);
         }
 
         public override int GetHashCode()

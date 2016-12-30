@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 #if PORTABLE
-using Helpers = Platform.Support.Core.IO.StreamHelpers;
+using Helpers = Platform.Support.Core.IO.StreamHelper;
 #else
-using Helpers = Platform.Support.IO.StreamHelpers;
+using Helpers = Platform.Support.IO.StreamHelper;
 #endif
 
 namespace Platform.Support
