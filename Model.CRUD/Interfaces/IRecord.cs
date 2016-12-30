@@ -4,43 +4,51 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace Platform.Model.CRUD
+namespace Platform.Model
 {
-
-    delegate void ChangedDelegate(RecordEventArgs e);
-    delegate void ErrorDelegate(RecordEventArgs e);
-
-    public interface IRecord
+#if PORTABLE
+    namespace Core
     {
+#endif
+        namespace CRUD
+        {
+            delegate void ChangedDelegate(RecordEventArgs e);
+            delegate void ErrorDelegate(RecordEventArgs e);
 
-        #region Public data access
+            public interface IRecord
+            {
 
-        void Load();
-        void Save();
-        void Erase();
+                #region Public data access
 
-        #endregion
+                void Load();
+                void Save();
+                void Erase();
 
-        #region Private data access
+                #endregion
 
-        Object Create();
+                #region Private data access
 
-        Object Read();
+                Object Create();
 
-        Object Update();
-        
-        Object Delete();
+                Object Read();
 
-        #endregion
+                Object Update();
 
-        event EventHandler<RecordEventArgs> Changed;
-        void OnChanged(RecordEventArgs e);
+                Object Delete();
 
-        event EventHandler<RecordEventArgs> Error;
-        void OnError(RecordEventArgs e);
+                #endregion
 
+                event EventHandler<RecordEventArgs> Changed;
+                void OnChanged(RecordEventArgs e);
+
+                event EventHandler<RecordEventArgs> Error;
+                void OnError(RecordEventArgs e);
+
+            }
+
+        }
+#if PORTABLE
     }
+#endif
 
-  
-
-}
+        }

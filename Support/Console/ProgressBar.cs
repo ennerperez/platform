@@ -23,10 +23,7 @@ namespace Platform.Support.ConsoleEx
 
         private double currentProgress = 0;
         private string currentText = string.Empty;
-        private bool disposed = false;
         private int animationIndex = 0;
-
-
 
         internal static bool IsOutputRedirected()
         {
@@ -40,8 +37,6 @@ namespace Platform.Support.ConsoleEx
             return Console.IsOutputRedirected;
 #endif
         }
-
-
 
         public ProgressBar()
         {
@@ -63,20 +58,21 @@ namespace Platform.Support.ConsoleEx
 
         private void TimerHandler(object state)
         {
-            lock (timer)
-            {
-                if (disposed) return;
+            //CA2002
+            //lock (timer)
+            //{
+            if (disposed) return;
 
-                int progressBlockCount = (int)(currentProgress * blockCount);
-                int percent = (int)(currentProgress * 100);
-                string text = string.Format("[{0}{1}] {2,3}% {3}",
-                    new string('#', progressBlockCount), new string('-', blockCount - progressBlockCount),
-                    percent,
-                    animation[animationIndex++ % animation.Length]);
-                UpdateText(text);
+            int progressBlockCount = (int)(currentProgress * blockCount);
+            int percent = (int)(currentProgress * 100);
+            string text = string.Format("[{0}{1}] {2,3}% {3}",
+                new string('#', progressBlockCount), new string('-', blockCount - progressBlockCount),
+                percent,
+                animation[animationIndex++ % animation.Length]);
+            UpdateText(text);
 
-                ResetTimer();
-            }
+            ResetTimer();
+            //}
         }
 
         private void UpdateText(string text)
@@ -150,14 +146,48 @@ namespace Platform.Support.ConsoleEx
 
 #endif
 
+        #region IDisposable
+
+
+        private bool disposed = false;
+
         public void Dispose()
         {
-            lock (timer)
-            {
-                disposed = true;
-                UpdateText(string.Empty);
-            }
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
+
+        // NOTE: Leave out the finalizer altogether if this class doesn't 
+        // own unmanaged resources itself, but leave the other methods
+        // exactly as they are. 
+        ~ProgressBar()
+        {
+            // Finalizer calls Dispose(false)
+            Dispose(false);
+        }
+        // The bulk of the clean-up code is implemented in Dispose(bool)
+        protected virtual void Dispose(bool disposing)
+        {
+
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    //CA2002
+                    //lock (this.timer)
+                    //{
+                    timer.Dispose();
+                    UpdateText(string.Empty);
+                    //}
+
+                    disposed = true;
+                }
+            }
+
+        }
+
+        #endregion
+
 
     }
 }

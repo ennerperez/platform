@@ -15,7 +15,7 @@ using System.Resources;
 
 namespace Platform.Presentation.Forms.Components
 {
-    
+
     /// <summary>
     /// Defines a component for managing the User Interface culture for
     /// a form (or control) and allows the <see cref="UICulture"/> of an individual form 
@@ -89,12 +89,38 @@ namespace Platform.Presentation.Forms.Components
 
         #endregion
 
+        public class CultureChangeEventArgs : EventArgs
+        {
+            private CultureInfo culture;
+            public CultureInfo Culture { get { return culture; } }
+            public CultureChangeEventArgs(CultureInfo newCulture)
+            {
+                culture = newCulture;
+            }
+        }
+
+        public class ExcludedResourceEventArgs : EventArgs
+        {
+
+            private string componentName;
+            private string propertyName;
+
+            public string ComponentName { get { return componentName; } }
+            public string PropertyName { get { return propertyName; } }
+
+            public ExcludedResourceEventArgs(string componentName, string propertyName)
+            {
+                this.componentName = componentName;
+                this.propertyName = propertyName;
+            }
+        }
+
         #region Public Static Methods
 
         /// <summary>
         /// Represents the method that will handle the <see cref="UICultureChanged"/> event   
         /// </summary>
-        public delegate void CultureChangedHandler(CultureInfo newCulture);
+        public delegate void CultureChangedHandler(object sender, CultureChangeEventArgs e);
 
         /// <summary>
         /// Raised when the <see cref="ApplicationUICulture"/> is changed  
@@ -129,7 +155,7 @@ namespace Platform.Presentation.Forms.Components
                     SetThreadUICulture(SynchronizeThreadCulture);
                     if (ApplicationUICultureChanged != null)
                     {
-                        ApplicationUICultureChanged(value);
+                        ApplicationUICultureChanged(null, new CultureChangeEventArgs(value));
                     }
                 }
             }
@@ -188,7 +214,7 @@ namespace Platform.Presentation.Forms.Components
         /// <summary>
         /// Represents the method that will handle the <see cref="ExcludeResource"/> event   
         /// </summary>
-        public delegate bool ExcludedResourceHandler(string componentName, string propertyName);
+        public delegate void ExcludedResourceHandler(object sender, ExcludedResourceEventArgs e);
 
         /// <summary>
         /// Raised for each resource to check if it should be excluded from updating
@@ -207,7 +233,7 @@ namespace Platform.Presentation.Forms.Components
         /// Create a new instance of the component
         /// </summary>
         public CultureManager(IContainer container)
-            : this()
+                    : this()
         {
             container.Add(this);
         }
@@ -356,11 +382,11 @@ namespace Platform.Presentation.Forms.Components
         /// Handle a change to <see cref="ApplicationUICulture"/>
         /// </summary>
         /// <param name="newCulture"></param>
-        protected virtual void OnApplicationUICultureChanged(CultureInfo newCulture)
+        protected virtual void OnApplicationUICultureChanged(object sender, CultureChangeEventArgs e)
         {
             if (SynchronizeUICulture)
             {
-                ChangeUICulture(newCulture);
+                ChangeUICulture(e.Culture);
             }
         }
 
@@ -372,7 +398,7 @@ namespace Platform.Presentation.Forms.Components
         {
             if (UICultureChanged != null)
             {
-                UICultureChanged(newCulture);
+                UICultureChanged(this, new CultureChangeEventArgs(newCulture));
             }
         }
 
@@ -657,7 +683,8 @@ namespace Platform.Presentation.Forms.Components
             }
             if (ExcludeResource != null)
             {
-                return ExcludeResource(componentName, propertyName);
+                ExcludeResource(this, new ExcludedResourceEventArgs(componentName, propertyName));
+                return true;
             }
             return false;
         }

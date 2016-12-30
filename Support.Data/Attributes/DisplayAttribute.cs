@@ -144,11 +144,7 @@ namespace Platform.Support.Data.Attributes
             {
                 if (!this._autoGenerateField.HasValue)
                 {
-                    throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "DataAnnotationsResources.DisplayAttribute_PropertyNotSet", new object[]
-                    {
-                        "AutoGenerateField",
-                        "GetAutoGenerateField"
-                    }));
+                    throw new InvalidOperationException(string.Format("Property {0} not set in {1}", "AutoGenerateField", "GetAutoGenerateField"));
                 }
                 return this._autoGenerateField.Value;
             }
@@ -167,11 +163,7 @@ namespace Platform.Support.Data.Attributes
             {
                 if (!this._autoGenerateFilter.HasValue)
                 {
-                    throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "DataAnnotationsResources.DisplayAttribute_PropertyNotSet", new object[]
-                    {
-                        "AutoGenerateFilter",
-                        "GetAutoGenerateFilter"
-                    }));
+                    throw new InvalidOperationException(string.Format("Property {0} not set in {1}", "AutoGenerateFilter", "GetAutoGenerateFilter"));
                 }
                 return this._autoGenerateFilter.Value;
             }
@@ -189,11 +181,7 @@ namespace Platform.Support.Data.Attributes
             {
                 if (!this._order.HasValue)
                 {
-                    throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "DataAnnotationsResources.DisplayAttribute_PropertyNotSet", new object[]
-                    {
-                        "Order",
-                        "GetOrder"
-                    }));
+                    throw new InvalidOperationException(string.Format("Property {0} not set in {1}", "Order", "GetOrder"));
                 }
                 return this._order.Value;
             }

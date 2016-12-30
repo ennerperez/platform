@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
 namespace Platform.Support.Configuration
@@ -9,28 +9,28 @@ namespace Platform.Support.Configuration
     public class ConfigurationManager : IDisposable
     {
 
-        public Dictionary<String, String> ConnectionStrings { get; set; }
+        public Dictionary<string, string> Connectionstrings { get; set; }
 
-        private System.IO.DirectoryInfo _Folder = new System.IO.DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
-        private String _File = System.IO.Path.Combine(new System.IO.DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).Parent.FullName, ".config");
+        private DirectoryInfo _Folder = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+        private string _File = Path.Combine(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).Parent.FullName, ".config");
 
         public ConfigurationManager()
         {
-            this.ConnectionStrings = new Dictionary<String, String>();
+            this.Connectionstrings = new Dictionary<string, string>();
         }
 
         public void Load()
         {
 
             XDocument _XDocument;
-            if (!System.IO.File.Exists(_File))
+            if (!File.Exists(_File))
                 this.Save();
 
             _XDocument = XDocument.Load(_File);
 
-            foreach (XElement item in _XDocument.Element("configuration").Elements("connectionStrings").Where(x=> x.HasAttributes))
+            foreach (XElement item in _XDocument.Element("configuration").Elements("connectionstrings").Where(x=> x.HasAttributes))
             {
-                    this.ConnectionStrings.Add(item.Element("name").Value, item.Element("@connectionString").Value);
+                    this.Connectionstrings.Add(item.Element("name").Value, item.Element("@connectionstring").Value);
             }
 
         }
@@ -46,16 +46,16 @@ namespace Platform.Support.Configuration
 
             _XDocument = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
             XElement _configuration = new XElement("configuration");
-            XElement _connectionStrings = new XElement("connectionStrings");
+            XElement _connectionstrings = new XElement("connectionstrings");
 
-            if (this.ConnectionStrings != null)
+            if (this.Connectionstrings != null)
             {
-                foreach (KeyValuePair<string, string> item in this.ConnectionStrings)
+                foreach (KeyValuePair<string, string> item in this.Connectionstrings)
                 {
-                    _connectionStrings.Add(new XElement("add", new object[] { new XAttribute("name", item.Key), new XAttribute("connectionString", item.Value), new XAttribute("providerName", "System.Data.SqlClient") }));
+                    _connectionstrings.Add(new XElement("add", new object[] { new XAttribute("name", item.Key), new XAttribute("connectionstring", item.Value), new XAttribute("providerName", "System.Data.SqlClient") }));
                 }
 
-                _configuration.Add(_connectionStrings);
+                _configuration.Add(_connectionstrings);
 
             }
 

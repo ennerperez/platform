@@ -6,8 +6,11 @@ using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+
+//TODO: Fix behavior
 
 namespace Platform.Presentation.Forms.Components
 {
@@ -150,17 +153,11 @@ namespace Platform.Presentation.Forms.Components
 
         const int WM_SYSCOMMAND = 0x112;
         const int MOUSE_MOVE = 0xF012;
-
-        [System.Runtime.InteropServices.DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-
-        [System.Runtime.InteropServices.DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-        
+                
         private void MoveForm()
         {
-            ReleaseCapture();
-            SendMessage(this.ContainerControl.FindForm().Handle, WM_SYSCOMMAND, MOUSE_MOVE, 0);
+            NativeMethods.ReleaseCapture();
+            NativeMethods.SendMessage(this.ContainerControl.FindForm().Handle, WM_SYSCOMMAND, MOUSE_MOVE, 0);
         }
 
 
@@ -305,14 +302,14 @@ namespace Platform.Presentation.Forms.Components
 
             if (value)
             {
-                //AddHandler b.MouseDown, AddressOf Form_MouseDown
-                //AddHandler b.MouseUp, AddressOf Form_MouseUp
+                b.MouseDown += Form_MouseDown;
+                b.MouseUp += Form_MouseUp;
                 b.MouseMove += Form_MouseMove;
             }
             else
             {
-                //RemoveHandler b.MouseDown, AddressOf Form_MouseDown
-                //RemoveHandler b.MouseUp, AddressOf Form_MouseUp
+                b.MouseDown -= Form_MouseDown;
+                b.MouseUp -= Form_MouseUp;
                 b.MouseMove -= Form_MouseMove;
             }
 
@@ -328,4 +325,14 @@ namespace Platform.Presentation.Forms.Components
         #endregion
 
     }
+}
+
+
+internal static partial class NativeMethods
+{
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto, EntryPoint = "ReleaseCapture")]
+    internal static extern void ReleaseCapture();
+
+    //[DllImport(ExternDll.User32, CharSet = CharSet.Auto, EntryPoint = "SendMessage")]
+    //internal static extern void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 }

@@ -1,4 +1,5 @@
 ﻿using Platform.Support.Data.Attributes;
+using Platform.Support.Reflection;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading;
 
 namespace Platform.Support.Data
 {
-    public static class Extensions
+    public static partial class Extensions
     {
 
         #region IDbConnection
@@ -39,7 +40,7 @@ namespace Platform.Support.Data
         private static Assembly _assembly;
         public static Assembly DataEngineAssembly(IDbConnection conn)
         {
-            //if (_assembly == null) 
+            //if (_assembly == null)
             _assembly = conn.GetAssembly();
             return _assembly;
         }
@@ -91,7 +92,7 @@ namespace Platform.Support.Data
 
         internal static Assembly GetAssembly(this IDbConnection conn)
         {
-            System.Reflection.Assembly _return = null;
+            Assembly _return = null;
             string _file = string.Empty;
             string _asm = string.Empty;
             switch (conn.GetEngine())
@@ -107,25 +108,25 @@ namespace Platform.Support.Data
                     break;
                 default:
                     _asm = "System.Data";
-                    //_return = System.Reflection.Assembly.LoadWithPartialName(_asm)
-                    _return = System.Reflection.Assembly.Load("System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089");
+                    //_return = Assembly.LoadWithPartialName(_asm)
+                    _return = Assembly.Load("System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089");
                     return _return;
             }
 
-            _file = System.IO.Path.Combine(new string[] { Helpers.DirectoryPath(), _asm });
+            _file = System.IO.Path.Combine(new string[] { Assembly.GetEntryAssembly().DirectoryPath(), _asm });
 
             if (!string.IsNullOrEmpty(_file) && System.IO.File.Exists(_file))
             {
-                _return = System.Reflection.Assembly.LoadFile(_file);
+                _return = Assembly.LoadFile(_file);
             }
             else
             {
-                if (System.Reflection.Assembly.GetEntryAssembly() != null)
+                if (Assembly.GetEntryAssembly() != null)
                 {
-                    _file = System.IO.Path.Combine(new string[] { Helpers.DirectoryPath(), _asm });
+                    _file = System.IO.Path.Combine(new string[] { Assembly.GetEntryAssembly().DirectoryPath(), _asm });
                     if (System.IO.File.Exists(_file))
                     {
-                        _return = System.Reflection.Assembly.LoadFile(_file);
+                        _return = Assembly.LoadFile(_file);
                     }
                 }
             }
@@ -537,6 +538,19 @@ namespace Platform.Support.Data
                     }
 
                     break;
+                case Engines.OleDb:
+                    try
+                    {
+                        decl = string.Join(",", decls.ToArray());
+                        query = string.Format("CREATE TABLE '{0}' ({1});", map.TableName, decl);
+                        count = conn.Execute(query);
+                    }
+                    catch (System.Data.OleDb.OleDbException e)
+                    {
+                        if (e.ErrorCode != 3010 && e.ErrorCode != 3012)
+                            throw new Exception("Unable to create the table.", e);
+                    }
+                    break;
                 default:
                     break;
             }
@@ -676,6 +690,20 @@ namespace Platform.Support.Data
                     tsql = string.Format(sqlFormat, tableName, columns, unique ? "UNIQUE" : "", indexName);
                     count = conn.Execute(tsql);
                     break;
+                case Engines.OleDb:
+                    try
+                    {
+                        sqlFormat = "CREATE {2} INDEX '{3}' ON '{0}'({1});";
+                        columns = string.Join(", ", columnNames.Select(C => string.Format("'{0}'", C)).ToArray());
+                        tsql = string.Format(sqlFormat, tableName, columns, unique ? "UNIQUE" : "", indexName);
+                        count = conn.Execute(tsql);
+                    }
+                    catch (System.Data.OleDb.OleDbException e)
+                    {
+                        if (e.ErrorCode != 3010 && e.ErrorCode != 3012)
+                            throw new Exception("Unable to create the index.", e);
+                    }
+                    break;
                 default:
                     throw new NotSupportedException("Operation is not supported in the selected data engine.");
             }
@@ -799,6 +827,32 @@ namespace Platform.Support.Data
             }
         }
 
+        public static IDbDataAdapter CreateAdapter(this IDbConnection conn)
+        {
+            string _type = null;
+            switch (conn.GetEngine())
+            {
+                case Engines.Sql:
+                    _type = "SqlDataAdapter";
+                    break;
+                case Engines.SqlCE:
+                    _type = "SqlCeDataAdapter";
+                    break;
+                case Engines.MySql:
+                    _type = "MySqlDataAdapter";
+                    break;
+                case Engines.SQLite:
+                    _type = "SQLiteDataAdapter";
+                    break;
+                default:
+                    _type = "OleDbDataAdapter";
+                    break;
+            }
+
+            IDbDataAdapter _return = (IDbDataAdapter)conn.CreateObject(_type);
+
+            return _return;
+        }
 
         public static IDbDataParameter CreateParameter(this IDbConnection conn, string name, object value)
         {
@@ -1152,6 +1206,50 @@ namespace Platform.Support.Data
             return _result;
         }
 
+        public static DataSet Fill(this IDbConnection conn, string query, IDbDataParameter[] args)
+        {
+
+            if (string.IsNullOrEmpty(query))
+                return null;
+
+            IDbCommand cmd = conn.CreateCommand(query, args);
+            IDbDataAdapter adapter = conn.CreateAdapter();
+
+#if DEBUG
+            if (TimeExecution)
+            {
+                _Stopwatch.Reset();
+                _Stopwatch.Start();
+            }
+#endif
+            cmd.Connection.Open();
+            var _result = new DataSet();
+            adapter.SelectCommand = cmd;
+            adapter.Fill(_result);
+            cmd.Connection.Close();
+
+#if DEBUG
+            if (TimeExecution)
+            {
+                _Stopwatch.Stop();
+                _ElapsedMilliseconds += _Stopwatch.ElapsedMilliseconds;
+                Debug.WriteLine("Finished in {0} ms ({1:0.0} s total)", _Stopwatch.ElapsedMilliseconds, _ElapsedMilliseconds / 1000.0);
+            }
+#endif
+
+            return _result;
+        }
+
+        public static DataSet Fill(this IDbConnection conn, string query, params object[] args)
+        {
+            return Fill(conn, query, conn.GenerateParameters(args).ToArray());
+        }
+
+        public static DataSet Fill(this IDbCommand cmd)
+        {
+            return Fill(cmd.Connection, cmd.CommandText, cmd.Parameters);
+        }
+
         /// <summary>
         ///     Creates a SQLiteCommand given the command text (SQL) with arguments. Place a '?'
         ///     in the command text for each of the arguments and then executes that command.
@@ -1431,9 +1529,9 @@ namespace Platform.Support.Data
         /// <example cref="System.InvalidOperationException">Throws if a transaction has already begun.</example>
         public static void BeginTransaction(this IDbConnection conn)
         {
-            // The BEGIN command only works if the transaction stack is empty, 
-            //    or in other words if there are no pending transactions. 
-            // If the transaction stack is not empty when the BEGIN command is invoked, 
+            // The BEGIN command only works if the transaction stack is empty,
+            //    or in other words if there are no pending transactions.
+            // If the transaction stack is not empty when the BEGIN command is invoked,
             //    then the command fails with an error.
             // Rather than crash with an error, we will just ignore calls to BeginTransaction
             //    that would result in an error.
@@ -1448,7 +1546,7 @@ namespace Platform.Support.Data
                     //var sqlExp = ex as Exception;
                     //if (sqlExp != null)
                     //{
-                    //    // It is recommended that applications respond to the errors listed below 
+                    //    // It is recommended that applications respond to the errors listed below
                     //    //    by explicitly issuing a ROLLBACK command.
                     //    // TODO: This rollback failsafe should be localized to all throw sites.
                     //    switch (sqlExp.Result)
@@ -1464,7 +1562,7 @@ namespace Platform.Support.Data
                     //}
                     //else
                     //{
-                    // Call decrement and not VolatileWrite in case we've already 
+                    // Call decrement and not VolatileWrite in case we've already
                     //    created a transaction point in SaveTransactionPoint since the catch.
                     Interlocked.Decrement(ref _transactionDepth);
                     //}
@@ -1501,7 +1599,7 @@ namespace Platform.Support.Data
                 var sqlExp = ex as Exception;
                 //if (sqlExp != null)
                 //{
-                //    // It is recommended that applications respond to the errors listed below 
+                //    // It is recommended that applications respond to the errors listed below
                 //    //    by explicitly issuing a ROLLBACK command.
                 //    // TODO: This rollback failsafe should be localized to all throw sites.
                 //    switch (sqlExp.Result)
@@ -1554,8 +1652,8 @@ namespace Platform.Support.Data
         /// <param name="noThrow">true to avoid throwing exceptions, false otherwise</param>
         private static void RollbackTo(this IDbConnection conn, string savepoint, bool noThrow)
         {
-            // Rolling back without a TO clause rolls backs all transactions 
-            //    and leaves the transaction stack empty.   
+            // Rolling back without a TO clause rolls backs all transactions
+            //    and leaves the transaction stack empty.
             try
             {
                 if (String.IsNullOrEmpty(savepoint))
@@ -1776,7 +1874,7 @@ namespace Platform.Support.Data
 
         /// <summary>
         ///     Inserts all specified objects.
-        ///     For each insertion, if a UNIQUE 
+        ///     For each insertion, if a UNIQUE
         ///     constraint violation occurs with
         ///     some pre-existing object, this function
         ///     deletes the old object.
@@ -1841,7 +1939,7 @@ namespace Platform.Support.Data
 
         /// <summary>
         ///     Inserts all specified objects.
-        ///     For each insertion, if a UNIQUE 
+        ///     For each insertion, if a UNIQUE
         ///     constraint violation occurs with
         ///     some pre-existing object, this function
         ///     deletes the old object.
@@ -1885,6 +1983,7 @@ namespace Platform.Support.Data
         /// <returns>
         ///     The number of rows added to the table.
         /// </returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2100:Review SQL queries for security vulnerabilities")]
         public static int Insert(this IDbConnection conn, object obj, string extra, Type objType)
         {
             if (obj == null || objType == null) return 0;
@@ -1893,7 +1992,7 @@ namespace Platform.Support.Data
 
             if (map.PK != null && map.PK.IsAutoGuid)
             {
-                System.Reflection.PropertyInfo prop = objType.GetProperty(map.PK.PropertyName);
+                PropertyInfo prop = objType.GetProperty(map.PK.PropertyName);
                 if (prop != null)
                 {
                     if (prop.GetValue(obj, null).Equals(Guid.Empty))
@@ -2290,6 +2389,25 @@ namespace Platform.Support.Data
 
             return obj;
         }
+
+        #region DataSets && DataTables
+
+        public static bool HasTables(this DataSet ds)
+        {
+            return ds != null && ds.Tables.Count > 0;
+        }
+
+        public static bool HasRows(this DataTable dt)
+        {
+            return dt != null && dt.Rows.Count > 0;
+        }
+
+        public static bool HasTablesWithRows(this DataSet ds)
+        {
+            return ds != null && ds.Tables.OfType<DataTable>().Count(item => item.HasRows()) > 0;
+        }
+
+        #endregion
 
     }
 }

@@ -6,25 +6,31 @@ using System.Threading;
 
 namespace Platform.Model
 {
-    public class Singleton<T> where T : class, new()
+#if PORTABLE
+    namespace Core
     {
-
-        private static object _syncobj = new object();
-        private static volatile T _instance = null;
-        public static T Instance
+#endif
+        public class Singleton<T> where T : class, new()
         {
-            get
+
+            private static object _syncobj = new object();
+            private static volatile T _instance = null;
+            public static T Instance
             {
-                if (_instance == null)
-                    lock (_syncobj)
-                        if (_instance == null)
-                            _instance = new T();
-                return _instance;
+                get
+                {
+                    if (_instance == null)
+                        lock (_syncobj)
+                            if (_instance == null)
+                                _instance = new T();
+                    return _instance;
+                }
             }
+
+            public Singleton()
+            { }
         }
-
-        public Singleton()
-        { }
-
+#if PORTABLE
     }
+#endif
 }

@@ -4,37 +4,49 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace Platform.Model.CRUD
+namespace Platform.Model
 {
-    [DebuggerStepThrough()]
-    public class RecordEventArgs : System.EventArgs
+
+#if PORTABLE
+    namespace Core
     {
-
-        #region  Constructors
-
-        public RecordEventArgs()
+#endif
+        namespace CRUD
         {
-            Operation = Operations.Unknow;
-            Result = null;
-            Argument = null;
+            [DebuggerStepThrough()]
+            public class RecordEventArgs : System.EventArgs
+            {
+
+                #region  Constructors
+
+                public RecordEventArgs()
+                {
+                    Operation = Operations.Unknow;
+                    Result = null;
+                    Argument = null;
+                }
+
+                public RecordEventArgs(Operations operation, object result = null, object argument = null)
+                {
+                    Operation = operation;
+                    Result = result;
+                    Argument = argument;
+                }
+
+                #endregion
+
+                #region Properties
+
+                public Operations Operation { get; set; }
+                public object Result { get; set; }
+                public object Argument { get; set; }
+
+                #endregion
+
+            }
         }
 
-        public RecordEventArgs(Operations operation, object result = null, object argument = null)
-        {
-            Operation = operation;
-            Result = result;
-            Argument = argument;
-        }
-
-        #endregion
-
-        #region Properties
-
-        public Operations Operation { get; set; }
-        public object Result { get; set; }
-        public object Argument { get; set; }
-
-        #endregion
-
+#if PORTABLE
     }
+#endif
 }

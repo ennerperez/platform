@@ -1,6 +1,7 @@
 ﻿using Platform.Presentation.Forms.Components;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Windows.Forms;
 namespace Platform.Presentation.Forms.Customs
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.MenuStrip))]
+    [ToolboxItem(true)]
     public class MenuStrip : System.Windows.Forms.MenuStrip
     {
 

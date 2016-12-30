@@ -17,6 +17,7 @@ namespace Platform.Presentation.Forms.Controls
 {
 
     [ToolboxBitmap(typeof(System.Windows.Forms.PictureBox))]
+    [ToolboxItem(true)]
     public partial class ImageCropControl : UserControl
     {
         private const AnchorStyles ANCHOR_ALL = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
@@ -1046,7 +1047,7 @@ namespace Platform.Presentation.Forms.Controls
         }
     }
     
-    class MathHelper
+    internal class MathHelper
     {
         public static int Max(params int[] values)
         {

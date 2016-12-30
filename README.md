@@ -25,11 +25,13 @@ See the [changelog](CHANGELOG.md) for changes.
 - [ ] HTML Reporting engine
 - [ ] Build tools
 - [x] Support Web PCL
-- [ ] Console Extensions [WIP]
+- [x] Console Extensions
 
 ## TODO
+- [ ] DynamicControl
 - [ ] Extensions normalization
-- [ ] Installer + Bootstrapper
+- [ ] Windows Forms extended controls
+- [ ] Xamarin extended controls
 
 ## Table of contents
 
@@ -42,11 +44,11 @@ See the [changelog](CHANGELOG.md) for changes.
 
 **Add the library to your project**
 
-Add the [NuGet Package](https://www.nuget.org/packages/{NAME}/). Right click on your project and click 'Manage NuGet Packages...'. Search for '{NAME}' and click on install. Once installed the library will be included in your project references. (Or install it through the package manager console: PM> Install-Package {NAME}).
+Add the [NuGet Package](https://www.nuget.org/packages/Platform.Support.Core/). Right click on your project and click 'Manage NuGet Packages...'. Search for 'Platform.Support.Core' and click on install. Once installed the library will be included in your project references. (Or install it through the package manager console: PM> Install-Package Platform.Support.Core).
 
 ### Bugs and feature requests
 
-Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/{OWNER}/{NAME}/issues/new).
+Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/{OWNER}/Platform.Support.Core/issues/new).
 
 ### Documentation
 

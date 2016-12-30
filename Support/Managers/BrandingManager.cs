@@ -1,10 +1,8 @@
-﻿using System;
+﻿using Platform.Support.Reflection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Xml;
 using System.Xml.Linq;
-using Platform.Support.Reflection;
 
 namespace Platform.Support.Branding
 {
@@ -312,7 +310,7 @@ namespace Platform.Support.Branding
             System.IO.FileInfo _file = Brand.GetBrandFiles(assembly).FirstOrDefault();
             if (_file != null && _file.Exists)
             {
-                cache = new BrandingManager(_file, assembly.GUID());
+                cache = new BrandingManager(_file, assembly.GUID().Value);
             }
             else
             {

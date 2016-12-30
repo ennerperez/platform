@@ -11,7 +11,7 @@ internal static class ExternDll
     internal const string User32 = "user32.dll";
 }
 
-internal static class NativeMethods
+internal static partial class NativeMethods
 {
 
     internal enum GraphicsMode : int
@@ -323,19 +323,19 @@ internal static class NativeMethods
     [DllImport(ExternDll.Gdi32, SetLastError = true)]
     internal static extern bool SetWorldTransform(IntPtr hdc, [In] ref XFORM lpXform);
 
-    [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
     internal static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, UIntPtr wParam, IntPtr lParam);
 
-    [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
     internal static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
-    [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
     internal static extern IntPtr SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);
 
-    [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
     internal static extern long SendMessage(IntPtr hWnd, int wMsg, int wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);
 
-    [DllImport(ExternDll.User32, CharSet = CharSet.Unicode)]
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
     internal static extern IntPtr SendMessage(IntPtr hWnd, Win32Messages messagetype, IntPtr wParam, IntPtr lParam);
 
     [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
@@ -347,7 +347,35 @@ internal static class NativeMethods
     [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
     internal static extern bool SetMenuInfo(HandleRef hMenu, MENUINFO lpcmi);
 
-    [DllImport(ExternDll.Gdi32)]
+    [DllImport(ExternDll.Gdi32, CharSet = CharSet.Auto)]
     internal static extern bool DeleteObject(IntPtr hObject);
 
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
+    internal static extern int SendMessage(HandleRef hWnd, UInt32 Msg, ref int wParam, StringBuilder lParam);
+
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
+    internal static extern int SendMessage(HandleRef hWnd, UInt32 Msg, IntPtr wParam, string lParam);
+
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
+    internal static extern int SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, string lParam);
+
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
+    internal static extern int SendMessage(HandleRef hWnd, UInt32 Msg, IntPtr wParam, bool lParam);
+
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
+    internal static extern int SendMessage(HandleRef hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
+
+    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
+    internal static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
+
+    //[DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
+    //internal static extern IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
+
+    internal const int BS_COMMANDLINK = 0x0000000E;
+    internal const uint BCM_SETNOTE = 0x00001609;
+    internal const uint BCM_GETNOTE = 0x0000160A;
+    internal const uint BCM_GETNOTELENGTH = 0x0000160B;
+    internal const uint BCM_SETSHIELD = 0x0000160C;
+    internal const int BM_SETIMAGE = 0x00F7;
+        
 }

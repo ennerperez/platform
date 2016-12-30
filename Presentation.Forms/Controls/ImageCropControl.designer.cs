@@ -15,7 +15,19 @@ namespace Platform.Presentation.Forms.Controls
 		{
 			if (disposing && (components != null))
 			{
-				components.Dispose();
+                if (crbGrayed != null)
+                {
+                    crbGrayed.Dispose();
+                    crbGrayed = null;
+                }
+
+                if (crbNormal != null)
+                {
+                    crbNormal.Dispose();
+                    crbNormal = null;
+                }
+
+                components.Dispose();
 			}
 			base.Dispose(disposing);
 		}

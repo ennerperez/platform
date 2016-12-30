@@ -9,7 +9,8 @@ namespace Platform.Presentation.Forms.Providers
 
     [ProvideProperty("HasCue", typeof(System.Windows.Forms.Control))]
     [ProvideProperty("CueText", typeof(System.Windows.Forms.Control))]
-    [ToolboxBitmap(typeof(TextBox))]
+    [ToolboxBitmap(typeof(System.Windows.Forms.TextBox))]
+    [ToolboxItem(true)]
     public class CueProvider : System.ComponentModel.Component, IExtenderProvider
     {
 

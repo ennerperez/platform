@@ -42,7 +42,7 @@ namespace Platform.Model.SPS
         public PlugInBasedApplication()
         {
             Initialize();
-            PlugInFolder = Helpers.GetCurrentDirectory();
+            PlugInFolder = Helper.GetCurrentDirectory();
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Platform.Model.SPS
                 throw new ApplicationException("PlugInFoler must be a valid folder path");
             }
 
-            var assemblyFiles = Helpers.FindAssemblyFiles(PlugInFolder);
+            var assemblyFiles = Helper.FindAssemblyFiles(PlugInFolder);
             var plugInType = typeof(TPlugIn);
             foreach (var assemblyFile in assemblyFiles)
             {
@@ -87,7 +87,7 @@ namespace Platform.Model.SPS
         /// </summary>
         private void Initialize()
         {
-            var plugInApplicationAttribute = Helpers.GetAttribute<PlugInApplicationAttribute>(GetType());
+            var plugInApplicationAttribute = Helper.GetAttribute<PlugInApplicationAttribute>(GetType());
             Name = plugInApplicationAttribute == null ? GetType().Name : plugInApplicationAttribute.Name;
             PlugIns = new List<IApplicationPlugIn<TPlugIn>>();
         }

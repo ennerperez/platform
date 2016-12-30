@@ -49,47 +49,17 @@
     <Compile Include="..\Support.PCL\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Attributes\BuildDateAttribute.cs">
-      <Link>Attributes\BuildDateAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\ContactAttribute.cs">
-      <Link>Attributes\ContactAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\DeveloperAttribute.cs">
-      <Link>Attributes\DeveloperAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\Extensions.cs">
-      <Link>Attributes\Extensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\ExternalRefAttribute.cs">
-      <Link>Attributes\ExternalRefAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\IdAttribute.cs">
-      <Link>Attributes\IdAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\MadeInAttribute.cs">
-      <Link>Attributes\MadeInAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\MailAddressAttribute.cs">
-      <Link>Attributes\MailAddressAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\ProductLevelAttribute.cs">
-      <Link>Attributes\ProductLevelAttribute.cs</Link>
+    <Compile Include="..\Support\Attributes\AttributesHelper.cs">
+      <Link>Attributes\AttributesHelper.cs</Link>
     </Compile>
     <Compile Include="..\Support\Attributes\TagAttribute.cs">
       <Link>Attributes\TagAttribute.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Attributes\ThirdPartyAttribute.cs">
-      <Link>Attributes\ThirdPartyAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Attributes\UrlAttribute.cs">
-      <Link>Attributes\UrlAttribute.cs</Link>
-    </Compile>
     <Compile Include="..\Support\Check.cs">
       <Link>Check.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Collections\Extensions.cs">
-      <Link>Collections\Extensions.cs</Link>
+    <Compile Include="..\Support\Collections\CollectionExtensions.cs">
+      <Link>Collections\CollectionExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Support\Collections\TypeListComparer.cs">
       <Link>Collections\TypeListComparer.cs</Link>
@@ -97,53 +67,95 @@
     <Compile Include="..\Support\Core.cs">
       <Link>Core.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Extensions\Dates.cs">
-      <Link>Extensions\Dates.cs</Link>
+    <Compile Include="..\Support\Extensions\DateTimeExtensions.cs">
+      <Link>Extensions\DateTimeExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Extensions\Debug.cs">
-      <Link>Extensions\Debug.cs</Link>
+    <Compile Include="..\Support\Extensions\DebugExtensions.cs">
+      <Link>Extensions\DebugExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Extensions\Enums.cs">
-      <Link>Extensions\Enums.cs</Link>
+    <Compile Include="..\Support\Extensions\EnumExtensions.cs">
+      <Link>Extensions\EnumExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Extensions\Numbers.cs">
-      <Link>Extensions\Numbers.cs</Link>
+    <Compile Include="..\Support\Extensions\NumberExtensions.cs">
+      <Link>Extensions\NumberExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Extensions\Reflections.cs">
-      <Link>Extensions\Reflections.cs</Link>
+    <Compile Include="..\Support\Extensions\StringExtensions.cs">
+      <Link>Extensions\StringExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Extensions\Strings.cs">
-      <Link>Extensions\Strings.cs</Link>
+    <Compile Include="..\Support\Extensions\TypeExtensions.cs">
+      <Link>Extensions\TypeExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Extensions\Types.cs">
-      <Link>Extensions\Types.cs</Link>
+    <Compile Include="..\Support\Helpers\DateTimeHelper.cs">
+      <Link>Helpers\DateTimeHelper.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Helpers\Dates.cs">
-      <Link>Helpers\Dates.cs</Link>
+    <Compile Include="..\Support\Helpers\EnumHelper.cs">
+      <Link>Helpers\EnumHelper.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Helpers\Enums.cs">
-      <Link>Helpers\Enums.cs</Link>
+    <Compile Include="..\Support\Helpers\StringHelper.cs">
+      <Link>Helpers\StringHelper.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Helpers\Reflections.cs">
-      <Link>Helpers\Reflections.cs</Link>
+    <Compile Include="..\Support\Helpers\TypeHelper.cs">
+      <Link>Helpers\TypeHelper.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Helpers\Registries.cs">
-      <Link>Helpers\Registries.cs</Link>
+    <Compile Include="..\Support\IO\StreamExtensions.cs">
+      <Link>IO\StreamExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Helpers\Strings.cs">
-      <Link>Helpers\Strings.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Helpers\Types.cs">
-      <Link>Helpers\Types.cs</Link>
+    <Compile Include="..\Support\IO\StreamHelper.cs">
+      <Link>IO\StreamHelper.cs</Link>
     </Compile>
     <Compile Include="..\Support\IsNull.cs">
       <Link>IsNull.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Maths\Helpers.cs">
-      <Link>Maths\Helpers.cs</Link>
+    <Compile Include="..\Support\Maths\MathHelper.cs">
+      <Link>Maths\MathHelper.cs</Link>
     </Compile>
     <Compile Include="..\Support\Maths\Vector2.cs">
       <Link>Maths\Vector2.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Obsolete.cs">
+      <Link>Obsolete.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\OS\OSHelper.cs">
+      <Link>OS\OSHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\ApplicationInfo.cs">
+      <Link>Reflection\ApplicationInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyBuildDateAttribute.cs">
+      <Link>Reflection\AssemblyBuildDateAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyCompanyIdAttribute.cs">
+      <Link>Reflection\AssemblyCompanyIdAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyCompanyUrlAttribute.cs">
+      <Link>Reflection\AssemblyCompanyUrlAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyDeveloperAttribute.cs">
+      <Link>Reflection\AssemblyDeveloperAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyExternalRefAttribute.cs">
+      <Link>Reflection\AssemblyExternalRefAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyLicenseAttribute.cs">
+      <Link>Reflection\AssemblyLicenseAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyMadeInAttribute.cs">
+      <Link>Reflection\AssemblyMadeInAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyOwnerAttribute.cs">
+      <Link>Reflection\AssemblyOwnerAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyProductLevelAttribute.cs">
+      <Link>Reflection\AssemblyProductLevelAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyThirdPartyAttribute.cs">
+      <Link>Reflection\AssemblyThirdPartyAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\ContactInformationAttribute.cs">
+      <Link>Reflection\ContactInformationAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\ReflectionExtensions.cs">
+      <Link>Reflection\ReflectionExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Support\SemanticVersion.cs">
       <Link>SemanticVersion.cs</Link>
@@ -157,14 +169,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="$(SolutionDir).nuget\NuGet.targets" Condition="Exists('$(SolutionDir).nuget\NuGet.targets')" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir).nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir).nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.21.0\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.0.21.0\build\Microsoft.Bcl.Build.Symbols.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
   </Target>
   <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.0.21.0\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.0.21.0\build\Microsoft.Bcl.Build.Symbols.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -6,12 +6,15 @@ using System.Windows.Forms;
 namespace Platform.Presentation.Forms.Controls
 {
 
-    [ToolboxBitmap(typeof(System.Windows.Forms.PictureBox))]
+    [ToolboxBitmap(typeof(System.Windows.Forms.ImageList))]
+    [ToolboxItem(true)]
     public partial class BlinkingImage : PictureBox
     {
-         
+
 
         public const int BLINK_INTERVAL_DEFAULT_VALUE = 300;
+
+        private bool _BlinkEnabled = true;
 
         [Description("Active or desactivate the \"blinking\" effect.")]
         [Category("Blinking effect")]
@@ -21,16 +24,15 @@ namespace Platform.Presentation.Forms.Controls
         {
             get
             {
-                return timer1.Enabled;
+                return _BlinkEnabled;
             }
             set
             {
+                _BlinkEnabled = value;
                 if (!DesignMode)
                 {
-                    if (value != timer1.Enabled && !value) 
-                    {
+                    if (value != timer1.Enabled && !value)
                         this.Visible = true;
-                    }
                     timer1.Enabled = value;
                 }
             }

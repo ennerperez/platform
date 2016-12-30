@@ -3,26 +3,43 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using System.ComponentModel;
 
 namespace Platform.Presentation.Forms.Controls
 {
 
-    public class TextAndImageColumn : DataGridViewTextBoxColumn
+    [ToolboxBitmap(typeof(System.Windows.Forms.DataGridViewTextBoxColumn))]
+    [ToolboxItem(false)]
+    public class DataGridViewTextAndImageColumn : DataGridViewTextBoxColumn
     {
 
         private Image imageValue;
         private Size imageSize;
 
-        public TextAndImageColumn()
+        public DataGridViewTextAndImageColumn()
         {
-            this.CellTemplate = new TextAndImageCell();
+        }
+
+        private DataGridViewCell cellTemplate = new TextAndImageCell();
+
+        public override DataGridViewCell CellTemplate
+        {
+            get
+            {
+                return cellTemplate;
+            }
+
+            set
+            {
+                cellTemplate = value;
+            }
         }
 
 
 
         public override object Clone()
         {
-            TextAndImageColumn c = base.Clone() as TextAndImageColumn;
+            DataGridViewTextAndImageColumn c = base.Clone() as DataGridViewTextAndImageColumn;
             c.imageValue = this.imageValue;
             c.imageSize = this.imageSize;
             return c;
@@ -133,9 +150,9 @@ namespace Platform.Presentation.Forms.Controls
             }
         }
 
-        private TextAndImageColumn OwningTextAndImageColumn
+        private DataGridViewTextAndImageColumn OwningTextAndImageColumn
         {
-            get { return this.OwningColumn as TextAndImageColumn; }
+            get { return this.OwningColumn as DataGridViewTextAndImageColumn; }
         }
 
     }

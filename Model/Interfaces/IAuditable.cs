@@ -5,21 +5,27 @@ using System.Text;
 
 namespace Platform.Model
 {
-    public interface IAuditable
+#if PORTABLE
+    namespace Core
     {
-        IEnumerable<Audit> Audits { get; set; }
+#endif
+        public interface IAuditable
+        {
+            IEnumerable<Audit> Audits { get; set; }
+        }
+
+        public struct Audit
+        {
+
+            System.DateTime Created { get; set; }
+            System.DateTime Modified { get; set; }
+            IEntity Owner { get; set; }
+
+            string Property { get; set; }
+            object Value { get; set; }
+
+        }
+#if PORTABLE
     }
-
-    public struct Audit
-    {
-
-        System.DateTime Created { get; set; }
-        System.DateTime Modified { get; set; }
-        IEntity Owner { get; set; }
-
-        string Property { get; set; }
-        object Value { get; set; }
-
-    }
-
+#endif
 }

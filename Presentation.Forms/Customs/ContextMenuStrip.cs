@@ -10,6 +10,7 @@ using System.Windows.Forms;
 namespace Platform.Presentation.Forms.Customs
 {
     [ToolboxBitmap(typeof(System.Windows.Forms.ContextMenuStrip))]
+    [ToolboxItem(true)]
     public class ContextMenuStrip : System.Windows.Forms.ContextMenuStrip
     {
 

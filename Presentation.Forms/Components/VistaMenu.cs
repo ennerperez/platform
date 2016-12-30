@@ -12,7 +12,7 @@ namespace Platform.Presentation.Forms.Components
 {
     
     [ProvideProperty("Image", typeof(MenuItem))]
-    public partial class VistaMenu : Component, IExtenderProvider, ISupportInitialize
+    public sealed partial class VistaMenu : Component, IExtenderProvider, ISupportInitialize
     {
         Container components;
         readonly Hashtable properties = new Hashtable();

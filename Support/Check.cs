@@ -6,39 +6,46 @@ using System.Text;
 
 namespace Platform.Support
 {
-    public class Check
+#if PORTABLE
+    namespace Core
     {
-        public static T NotNull<T>(T value, string parameterName) where T : class
+#endif
+        public class Check
         {
-            if (value == null)
+            public static T NotNull<T>(T value, string parameterName) where T : class
             {
-                throw new ArgumentNullException(parameterName);
+                if (value == null)
+                {
+                    throw new ArgumentNullException(parameterName);
+                }
+                return value;
             }
-            return value;
-        }
 
-        public static T? NotNull<T>(T? value, string parameterName) where T : struct
-        {
-            if (!value.HasValue)
+            public static T? NotNull<T>(T? value, string parameterName) where T : struct
             {
-                throw new ArgumentNullException(parameterName);
+                if (!value.HasValue)
+                {
+                    throw new ArgumentNullException(parameterName);
+                }
+                return value;
             }
-            return value;
-        }
 
 #if NETFX_45
         public static string NotEmpty(string value, [CallerMemberName] string parameterName = "")
 #else
-        public static string NotEmpty(string value, string parameterName = "")
+            public static string NotEmpty(string value, string parameterName = "")
 #endif
-        {
-            if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException(string.Format("The argument '{0}' cannot be null, empty or contain only white space.", parameterName));
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException(string.Format("The argument '{0}' cannot be null, empty or contain only white space.", parameterName));
+                }
+                return value;
             }
-            return value;
+
+
         }
-
-
+#if PORTABLE
     }
+#endif
 }

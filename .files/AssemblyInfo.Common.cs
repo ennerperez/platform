@@ -1,38 +1,25 @@
-﻿using System;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Security;
+﻿using System.Reflection;
 #if PORTABLE
 using Platform.Support.Core;
+using Platform.Support.Core.Reflection;
 using Platform.Support.Core.Attributes;
 #else
 using Platform.Support;
+using Platform.Support.Reflection;
 using Platform.Support.Attributes;
 #endif
 
-#if (!COMPANY)
-
 [assembly: AssemblyCompany("Enner Pérez")]
-[assembly: Id("J-18384909-0")]
 [assembly: AssemblyCopyright("Copyright © Enner Pérez")]
 [assembly: AssemblyTrademark("Enner Pérez")]
 
-[assembly: Contact("Twitter", "@ennerperez")]
-[assembly: Contact("584146328236")]
-[assembly: Mail("ennerperez@gmail.com")]
+[assembly: AssemblyCompanyId("J-18384909-0")]
+[assembly: AssemblyCompanyUrl("http://www.ennerperez.com.ve/")]
 
-//[assembly: Url("")]
+[assembly: AssemblyMadeIn("Venezuela", "VE")]
+[assembly: AssemblyDeveloper("Enner Pérez", "@ennerperez")]
+[assembly: AssemblyLicense("The MIT License (MIT)")]
 
-#else
-
-[assembly: AssemblyCompany("Argument")]
-[assembly: Id("J-18384909-0")]
-[assembly: AssemblyCopyright("Copyright © Argument C.A.")]
-[assembly: AssemblyTrademark("Argument C.A.")]
-
-//[assembly: Url("")]
-
-#endif
-
-[assembly: MadeIn("Venezuela", "VE")]
-[assembly: Developer("Enner Pérez", "@ennerperez")]
+[assembly: ContactInformation("twitter", "@ennerperez")]
+[assembly: ContactInformation("584146328236")]
+[assembly: ContactInformation("ennerperez@gmail.com")]

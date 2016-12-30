@@ -24,14 +24,15 @@ namespace Platform.Presentation.Forms
                 {
                     if (_taskbarList == null)
                     {
-                        lock (typeof(TaskBar))
+                        //CA2002
+                        //lock (typeof(TaskBar))
+                        //{
+                        if (_taskbarList == null)
                         {
-                            if (_taskbarList == null)
-                            {
-                                _taskbarList = (ITaskbarList3)new CTaskbarList();
-                                _taskbarList.HrInit();
-                            }
+                            _taskbarList = (ITaskbarList3)new CTaskbarList();
+                            _taskbarList.HrInit();
                         }
+                        //}
                     }
                     return _taskbarList;
                 }
@@ -138,5 +139,5 @@ namespace Platform.Presentation.Forms
     [ClassInterface(ClassInterfaceType.None)]
     [ComImport()]
     internal class CTaskbarList { }
-    
+
 }

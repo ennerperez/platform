@@ -16,10 +16,10 @@ namespace Sample.Console
             if (Platform.Support.Core.Library.IsPortable())
                 System.Console.WriteLine("Platform PCL");
 
-            if (Platform.Support.OS.Helpers.IsWindows())
+            if (Platform.Support.OS.OSHelper.IsWindows())
                 System.Console.WriteLine("Running Windows");
 
-            if (Platform.Support.OS.Helpers.IsLinux())
+            if (Platform.Support.OS.OSHelper.IsLinux())
                 System.Console.WriteLine("Running Linux");
 
 

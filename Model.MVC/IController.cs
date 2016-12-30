@@ -4,22 +4,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Platform.Model.MVC
+namespace Platform.Model
 {
-    public interface IController<T> where T : IModel
+#if PORTABLE
+    namespace Core
     {
+#endif
+        namespace MVC
+        {
+            public interface IController<T> where T : IModel
+            {
 
-        IList Items { get; }
+                IList Items { get; }
 
-        void LoadView();
+                void LoadView();
 
-        void SelectedItemChanged(T selectedItem);
+                void SelectedItemChanged(T selectedItem);
 
-        void AddNewItem(object[] args);
+                void AddNewItem(object[] args);
 
-        void RemoveItem();
+                void RemoveItem();
 
-        void Save();
+                void Save();
 
+            }
+        }
+#if PORTABLE
     }
+#endif
 }

@@ -2,6 +2,46 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.2.*] - [UNRELEASED]
+### Added
+- Encryption Hash Class
+- Windows Forms CommandLink Control
+- Windows Forms Message Panel
+- Secure Local User AppDataPath
+- AutoHeightLabel + AutoHeightLinkLabel
+- ORM Data Fill
+- DynamicInvoke Class
+- ImageCropper Control
+- ImageFilter Control
+- SmoothPanel Control
+- DateTime Extensions UnixTime & ElapsedTime
+- ConvertToIcon Methods
+- ApplicationInfo Reflection
+- NumericUpDown Leaver Extension
+- RichTextBox Extensions
+- XMLViewer Control
+- CharacterEncoder
+- ToBase64ImageTag
+- VariantType Enum
+- String Last Chars
+- RGB Color Space Methods & Extensions
+- Color Inverter
+- CreateIcon method
+
+### Changed
+- Support Standardization
+- CRC32 Algorithm
+- Portable Core Isolation
+- SPS Model Namespaces Arrange
+- Drawing Namespace Arrange
+- ToolboxItems for WinForms Controls
+- ImageExtensions Name
+
+## Fixed
+- ApplicationDataPath in Reflection Extensions
+- SetField & RaisePropertyChanged
+- Palette Reader
+
 ## [3.1.21] - [2016-12-09]
 ### Added
 - CRC32 Stream Extension
