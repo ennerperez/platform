@@ -54,6 +54,7 @@
     <Compile Include="..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
+    <Compile Include="Helpers\StreamHelper.cs" />
     <Compile Include="IO\StreamExtensions.cs" />
     <Compile Include="IO\StreamHelper.cs" />
     <Compile Include="Reflection\ApplicationInfo.cs" />
