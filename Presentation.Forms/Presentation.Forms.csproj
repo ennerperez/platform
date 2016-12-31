@@ -65,6 +65,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ControlExtensions.cs" />
+    <Compile Include="Components\ToolTipExtended.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\AnimatedBitmap.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [3.2.*] - [UNRELEASED]
 ### Added
 - StreamHelper 
+- ToolTipExtended 
+
+## [3.2.32] - [2016-12-31]
+### Added
 - Encryption Hash Class
 - Windows Forms CommandLink Control
 - Windows Forms Message Panel
