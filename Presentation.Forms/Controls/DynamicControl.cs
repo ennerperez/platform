@@ -137,10 +137,10 @@ namespace Platform.Presentation.Forms.Controls
         //   T:System.ComponentModel.InvalidEnumArgumentException:
         //     The specified value is not one of the values of System.Windows.Forms.AutoCompleteSource.
         [Browsable(true)]
-        [DefaultValue(AutoCompleteSource.None)]
+        [DefaultValue(System.Windows.Forms.AutoCompleteSource.None)]
         [EditorBrowsable(EditorBrowsableState.Always)]
         [Category("TextBox")]
-        public AutoCompleteSource AutoCompleteSource { get; set; } = AutoCompleteSource.None;
+        public System.Windows.Forms.AutoCompleteSource AutoCompleteSource { get; set; } = System.Windows.Forms.AutoCompleteSource.None;
         //
         // Summary:
         //     Gets or sets whether the System.Windows.Forms.TextBox control modifies the case
