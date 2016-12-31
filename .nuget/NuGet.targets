@@ -21,23 +21,21 @@
     <BuildPackage Condition=" '$(BuildPackage)' == '' ">true</BuildPackage>
 
     <!-- Determines if package restore consent is required to restore packages -->
-    <RequireRestoreConsent Condition=" '$(RequireRestoreConsent)' != 'false' ">true</RequireRestoreConsent>
+    <RequireRestoreConsent Condition=" '$(RequireRestoreConsent)' != 'false' ">false</RequireRestoreConsent>
 
     <!-- Download NuGet.exe if it does not already exist -->
     <DownloadNuGetExe Condition=" '$(DownloadNuGetExe)' == '' ">true</DownloadNuGetExe>
 
     <!-- Exclude files in BuildPackage command -->
     <ExcludeFiles Condition="'$(BuildPackage)' "></ExcludeFiles>
-
+    
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(PackageSources)' == '' ">
     <!-- Package sources used to restore packages. By default, registered sources under %APPDATA%\NuGet\NuGet.Config will be used -->
     <!-- The official NuGet package source (https://www.nuget.org/api/v2/) will be excluded if package sources are specified and it does not appear in the list -->
-    <!--
-            <PackageSource Include="https://www.nuget.org/api/v2/" />
-            <PackageSource Include="https://my-nuget-source/nuget/" />
-        -->
+    <PackageSource Include="https://www.nuget.org/api/v2/" />
+    <!--<PackageSource Include="https://api.nuget.org/v3/index.json" />-->
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(OS)' == 'Windows_NT'">

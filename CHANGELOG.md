@@ -42,7 +42,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - SetField & RaisePropertyChanged
 - Palette Reader
 
-## [3.1.11] - [2016-12-09]
+## [3.1.21] - [2016-12-09]
 ### Added
 - CRC32 Stream Extension
 
