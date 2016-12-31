@@ -53,18 +53,18 @@
     <Compile Include="..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
-    <Compile Include="ColorSpace\RGB.cs" />
+    <Compile Include="ColorSpaces\RGB.cs" />
     <Compile Include="Extensions\GeometricExtensions.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Reflection\ReflectionExtensions.cs" />
-    <Compile Include="ColorSpace\CMYK.cs" />
+    <Compile Include="ColorSpaces\CMYK.cs" />
     <Compile Include="ColorSpace.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\GeometricHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
-    <Compile Include="ColorSpace\HEX.cs" />
-    <Compile Include="ColorSpace\HSB.cs" />
+    <Compile Include="ColorSpaces\HEX.cs" />
+    <Compile Include="ColorSpaces\HSB.cs" />
     <Compile Include="Reflection\ReflectionHelper.cs" />
     <Compile Include="IconExtractor.cs" />
     <Compile Include="NativeMethods.cs" />

@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - StreamHelper 
 - ToolTipExtended 
+- ColorSpaces
 
 ## [3.2.32] - [2016-12-31]
 ### Added
