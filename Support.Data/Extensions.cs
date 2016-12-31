@@ -2050,12 +2050,12 @@ namespace Platform.Support.Data
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //If Platform.SQLiteApi.ExtendedErrCode(Me.Handle) = ExtendedResult.ConstraintNotNull Then
                 //    Throw NotNullConstraintViolationException.[New](ex.Result, ex.Message, map, obj)
                 //End If
-                throw ex;
+                throw; //CA2200
             }
             finally
             {
@@ -2136,14 +2136,14 @@ namespace Platform.Support.Data
             {
                 rowsAffected = conn.Execute(q, ps.ToArray());
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //if (ex.Result == Result.Constraint && Platform.SQLiteApi.ExtendedErrCode(Handle) == ExtendedResult.ConstraintNotNull)
                 //{
                 //    throw NotNullConstraintViolationException.New(ex, map, obj);
                 //}
 
-                throw ex;
+                throw; //CA2200
             }
 
             return rowsAffected;
@@ -2328,12 +2328,10 @@ namespace Platform.Support.Data
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-#if DEBUG
-                Console.WriteLine(ex.Message);
-#endif
-                throw ex;
+
+                throw; //CA2200
             }
             finally
             {
