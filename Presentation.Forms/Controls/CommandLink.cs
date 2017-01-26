@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Platform.Support.Windows;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -40,7 +41,7 @@ namespace Platform.Presentation.Forms
                 get
                 {
                     CreateParams cParams = base.CreateParams;
-                    cParams.Style |= NativeMethods.BS_COMMANDLINK;
+                    cParams.Style |= User32.BS_COMMANDLINK;
                     return cParams;
                 }
             }
@@ -56,7 +57,7 @@ namespace Platform.Presentation.Forms
                 set
                 {
                     useElevationIcon = value;
-                    NativeMethods.SendMessage(new HandleRef(this, this.Handle), NativeMethods.BCM_SETSHIELD, IntPtr.Zero,
+                    User32.SendMessage(new HandleRef(this, this.Handle), User32.BCM_SETSHIELD, IntPtr.Zero,
                         useElevationIcon);
                 }
             }
@@ -81,21 +82,21 @@ namespace Platform.Presentation.Forms
 
             private void SetNoteText(string value)
             {
-                NativeMethods.SendMessage(new HandleRef(this, this.Handle),
-                    NativeMethods.BCM_SETNOTE,
+                User32.SendMessage(new HandleRef(this, this.Handle),
+                    User32.BCM_SETNOTE,
                     IntPtr.Zero, value);
             }
 
             private string GetNoteText()
             {
-                int length = NativeMethods.SendMessage(new HandleRef(this, this.Handle),
-                    NativeMethods.BCM_GETNOTELENGTH,
+                int length = User32.SendMessage(new HandleRef(this, this.Handle),
+                    User32.BCM_GETNOTELENGTH,
                     IntPtr.Zero, IntPtr.Zero) + 1;
 
                 StringBuilder sb = new StringBuilder(length);
 
-                NativeMethods.SendMessage(new HandleRef(this, this.Handle),
-                    NativeMethods.BCM_GETNOTE,
+                User32.SendMessage(new HandleRef(this, this.Handle),
+                    User32.BCM_GETNOTE,
                     ref length, sb);
 
                 return sb.ToString();

@@ -5,8 +5,8 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-    internal static class ExternDll
-    {
+internal static class ExternDll
+{
 
 #if FEATURE_PAL && !SILVERLIGHT
 
@@ -40,47 +40,61 @@
  
  
 #else
-        public const string Activeds = "activeds.dll";
-        public const string Advapi32 = "advapi32.dll";
-        public const string Comctl32 = "comctl32.dll";
-        public const string Comdlg32 = "comdlg32.dll";
-        public const string Gdi32 = "gdi32.dll";
-        public const string Gdiplus = "gdiplus.dll";
-        public const string Hhctrl = "hhctrl.ocx";
-        public const string Imm32 = "imm32.dll";
-        public const string Kernel32 = "kernel32.dll";
-        public const string Loadperf = "Loadperf.dll";
-        public const string Mscoree = "mscoree.dll";
-        public const string Clr = "clr.dll";
-        public const string Msi = "msi.dll";
-        public const string Mqrt = "mqrt.dll";
-        public const string Ntdll = "ntdll.dll";
-        public const string Ole32 = "ole32.dll";
-        public const string Oleacc = "oleacc.dll";
-        public const string Oleaut32 = "oleaut32.dll";
-        public const string Olepro32 = "olepro32.dll";
-        public const string PerfCounter = "perfcounter.dll";
-        public const string Powrprof = "Powrprof.dll";
-        public const string Psapi = "psapi.dll";
-        public const string Shell32 = "shell32.dll";
-        public const string User32 = "user32.dll";
-        public const string Uxtheme = "uxtheme.dll";
-        public const string WinMM = "winmm.dll";
-        public const string Winspool = "winspool.drv";
-        public const string Wtsapi32 = "wtsapi32.dll";
-        public const string Version = "version.dll";
-        public const string Vsassert = "vsassert.dll";
-        public const string Fxassert = "Fxassert.dll";
-        public const string Shlwapi = "shlwapi.dll";
-        public const string Crypt32 = "crypt32.dll";
 
-        // system.data specific
-        internal const string Odbc32 = "odbc32.dll";
-        internal const string SNI = "System.Data.dll";
+    public const string Activeds = "activeds.dll";
+    public const string Advapi32 = "advapi32.dll";
+    public const string ComCtl32 = "comctl32.dll";
+    public const string ComDlg32 = "comdlg32.dll";
+    public const string Crypt32 = "crypt32.dll";
+    public const string DbgHelp = "dbghelp.dll";
+    public const string Dwmapi = "dwmapi.dll";
+    public const string Gdi32 = "gdi32.dll";
+    public const string GdiPlus = "gdiplus.dll";
+    public const string Kernel32 = "kernel32.dll";
+    public const string Mapi32 = "mapi32.dll";
+    public const string Mpr = "mpr.dll";
+    public const string Ole32 = "ole32.dll";
+    public const string OleAut32 = "oleaut32.dll";
+    public const string Propsys = "propsys.dll";
+    public const string Psapi = "psapi.dll";
+    public const string Shell32 = "shell32.dll";
+    public const string Shlwapi = "shlwapi.dll";
+    public const string UrlMon = "urlmon.dll";
+    public const string User32 = "user32.dll";
+    public const string Uxtheme = "uxtheme.dll";
+    public const string WinInet = "WinInet.dll";
+    public const string WinMM = "winmm.dll";
 
-        // system.data.oracleclient specific
-        internal const string OciDll = "oci.dll";
-        internal const string OraMtsDll = "oramts.dll";
-#endif //!FEATURE_PAL
-    }
+    public const string Hhctrl = "hhctrl.ocx";
+    public const string Imm32 = "imm32.dll";
+    
+    public const string Loadperf = "Loadperf.dll";
+    public const string Mscoree = "mscoree.dll";
+    public const string Clr = "clr.dll";
+    public const string Msi = "msi.dll";
+    public const string Mqrt = "mqrt.dll";
+    public const string Ntdll = "ntdll.dll";
+    
+    public const string Oleacc = "oleacc.dll";
+    
+    public const string Olepro32 = "olepro32.dll";
+    public const string PerfCounter = "perfcounter.dll";
+    public const string Powrprof = "Powrprof.dll";
+    
+    public const string Winspool = "winspool.drv";
+    public const string Wtsapi32 = "wtsapi32.dll";
+    public const string Version = "version.dll";
+    public const string Vsassert = "vsassert.dll";
+    public const string Fxassert = "Fxassert.dll";
+    
+    // system.data specific
+    internal const string Odbc32 = "odbc32.dll";
+    internal const string SNI = "System.Data.dll";
+
+    // system.data.oracleclient specific
+    internal const string OciDll = "oci.dll";
+    internal const string OraMtsDll = "oramts.dll";
+
+#endif
+}
 

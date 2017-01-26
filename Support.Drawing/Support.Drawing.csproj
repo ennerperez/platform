@@ -53,9 +53,37 @@
     <Compile Include="..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
+    <Compile Include="..\Support.Windows\Errors.cs">
+      <Link>NativeMethods\Errors.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\ExternDll.cs">
+      <Link>NativeMethods\ExternDll.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Gdi32.cs">
+      <Link>NativeMethods\Gdi32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Kernel32.cs">
+      <Link>NativeMethods\Kernel32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Ole32.cs">
+      <Link>NativeMethods\Ole32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\OleAut32.cs">
+      <Link>NativeMethods\OleAut32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Propsys.cs">
+      <Link>NativeMethods\Propsys.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Shell32.cs">
+      <Link>NativeMethods\Shell32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\User32.cs">
+      <Link>NativeMethods\User32.cs</Link>
+    </Compile>
     <Compile Include="ColorSpaces\RGB.cs" />
     <Compile Include="Extensions\GeometricExtensions.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
+    <Compile Include="Helpers\RectangleHelper.cs" />
     <Compile Include="Reflection\ReflectionExtensions.cs" />
     <Compile Include="ColorSpaces\CMYK.cs" />
     <Compile Include="ColorSpace.cs" />
@@ -83,6 +111,7 @@
     <None Include="Package.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

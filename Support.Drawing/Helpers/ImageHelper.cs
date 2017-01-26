@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Platform.Support.Windows;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -29,7 +30,7 @@ namespace Platform.Support.Drawing
                     var targetData = targetImage.LockBits(
                       new Rectangle(0, 0, sourceImage.Width, sourceImage.Height),
                       ImageLockMode.WriteOnly, targetImage.PixelFormat);
-                    NativeMethods.CopyMemory(targetData.Scan0, sourceData.Scan0,
+                    Kernel32.CopyMemory(targetData.Scan0, sourceData.Scan0,
                       (uint)sourceData.Stride * (uint)sourceData.Height);
                     sourceImage.UnlockBits(sourceData);
                     targetImage.UnlockBits(targetData);
@@ -116,7 +117,7 @@ namespace Platform.Support.Drawing
         }
 
         #region Base64
-        
+
         public static Image FromBase64(string source)
         {
             System.IO.MemoryStream memStream = new System.IO.MemoryStream(Convert.FromBase64String(source));

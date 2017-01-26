@@ -1,3 +1,4 @@
+using Platform.Support.Windows;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -244,8 +245,7 @@ namespace Platform.Presentation.Forms.Controls
             //WM_SETCURSOR == 32
             if (m.Msg == 32)
             {
-                //IDC_HAND == 32649
-                NativeMethods.SetCursor(NativeMethods.LoadCursor(0, 32649));
+                User32.SetCursor(User32.LoadCursor(0, User32.IDC_HAND));
 
                 //the message has been handled
                 m.Result = IntPtr.Zero;
@@ -257,11 +257,11 @@ namespace Platform.Presentation.Forms.Controls
     }
 }
 
-internal static partial class NativeMethods
-{
-    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
-    internal static extern int LoadCursor(int hInstance, int lpCursorName);
+//internal static partial class NativeMethods
+//{
+//    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
+//    internal static extern int LoadCursor(int hInstance, int lpCursorName);
 
-    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
-    internal static extern int SetCursor(int hCursor);
-}
+//    [DllImport(ExternDll.User32, CharSet = CharSet.Auto)]
+//    internal static extern int SetCursor(int hCursor);
+//}

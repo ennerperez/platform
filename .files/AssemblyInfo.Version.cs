@@ -7,6 +7,6 @@ using Platform.Support;
 using Platform.Support.Attributes;
 #endif
 
-[assembly: AssemblyVersion("3.2.*")]
-[assembly: AssemblyFileVersion("3.2")]
+[assembly: AssemblyVersion("3.3.*")]
+[assembly: AssemblyFileVersion("3.3")]
 

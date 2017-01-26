@@ -4,24 +4,23 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Platform.Support.Windows.ComDlg32
+namespace Platform.Support.Windows
 {
-    public static partial class NativeMethods
+
+#if !INTEROP
+    internal class ComDlg32
+#else
+    public class ComDlg32
+#endif
     {
 
-        [DllImport(ExternDll.Comdlg32, CharSet = CharSet.Unicode)]
+        [DllImport(ExternDll.ComDlg32, CharSet = CharSet.Unicode)]
         public static extern bool GetOpenFileName(ref OPENFILENAME ofn);
 
-        [DllImport(ExternDll.Comdlg32, CharSet = CharSet.Unicode)]
+        [DllImport(ExternDll.ComDlg32, CharSet = CharSet.Unicode)]
         public static extern Int32 CommDlgExtendedError();
 
     }
-
-    #region Delegates
-
-    public delegate IntPtr OfnHookProc(IntPtr hWnd, UInt32 msg, Int32 wParam, Int32 lParam);
-
-    #endregion
 
     #region Structures
 
@@ -29,7 +28,11 @@ namespace Platform.Support.Windows.ComDlg32
     /// <summary>
     /// See the documentation for OPENFILENAME
     /// </summary>
+#if !INTEROP
+    internal struct OPENFILENAME
+#else
     public struct OPENFILENAME
+#endif
     {
         public Int32 lStructSize;
         public IntPtr hwndOwner;
@@ -56,6 +59,6 @@ namespace Platform.Support.Windows.ComDlg32
         public Int32 FlagsEx;
     };
 
-    #endregion
+#endregion
 
 }

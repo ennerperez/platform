@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Platform.Support.Windows;
+using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
 using System.Security;
@@ -121,9 +122,7 @@ namespace Platform.Presentation.Forms.Providers
 
     public static class CueProviderActions
     {
-
-        private const int EM_SETCUEBANNER = 0x1501;
-
+        
         /// <summary>
         /// Sets a text box's cue text.
         /// </summary>
@@ -131,7 +130,7 @@ namespace Platform.Presentation.Forms.Providers
         /// <param name="cue">The cue text.</param>
         public static void SetCue(TextBox textBox, string cue)
         {
-            NativeMethods.SendMessage(textBox.Handle, EM_SETCUEBANNER, 0, cue);
+            User32.SendMessage(textBox.Handle, User32.EM_SETCUEBANNER, 0, cue);
         }
 
         /// <summary>
@@ -141,7 +140,7 @@ namespace Platform.Presentation.Forms.Providers
         [SecurityCritical()]
         public static void ClearCue(TextBox textBox)
         {
-            NativeMethods.SendMessage(textBox.Handle, EM_SETCUEBANNER, 0, string.Empty);
+            User32.SendMessage(textBox.Handle, User32.EM_SETCUEBANNER, 0, string.Empty);
         }
 
     }

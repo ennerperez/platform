@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Platform.Support.Windows;
 
 namespace Platform.Presentation.Forms.Components
 {
@@ -55,7 +56,7 @@ namespace Platform.Presentation.Forms.Components
                 foreach (DictionaryEntry de in properties)
                 {
                     if (((Properties)de.Value).renderBmpHbitmap != IntPtr.Zero)
-                        NativeMethods.DeleteObject(((Properties)de.Value).renderBmpHbitmap);
+                        Gdi32.DeleteObject(((Properties)de.Value).renderBmpHbitmap);
                 }
 
 
@@ -119,7 +120,7 @@ namespace Platform.Presentation.Forms.Components
                 //Destroy old bitmap object
                 if (prop.renderBmpHbitmap != IntPtr.Zero)
                 {
-                    NativeMethods.DeleteObject(prop.renderBmpHbitmap);
+                    Gdi32.DeleteObject(prop.renderBmpHbitmap);
                     prop.renderBmpHbitmap = IntPtr.Zero;
                 }
 
@@ -152,7 +153,7 @@ namespace Platform.Presentation.Forms.Components
 
         void ISupportInitialize.BeginInit() { }
 
-        readonly NativeMethods.MENUINFO mnuInfo = new NativeMethods.MENUINFO();
+        readonly MENUINFO mnuInfo = new MENUINFO();
 
         void AddVistaMenuItem(MenuItem mnuItem)
         {
@@ -165,7 +166,7 @@ namespace Platform.Presentation.Forms.Components
                     ((MenuItem)mnuItem.Parent).Popup += MenuItem_Popup;
 
                 //intialize all the topmost menus to be of type "MNS_CHECKORBMP" (for Vista classic theme)
-                NativeMethods.SetMenuInfo(new HandleRef(null, mnuItem.Parent.Handle), mnuInfo);
+                User32.SetMenuInfo(new HandleRef(null, mnuItem.Parent.Handle), mnuInfo);
 
                 menuParents[mnuItem.Parent] = true;
             }
@@ -238,7 +239,7 @@ namespace Platform.Presentation.Forms.Components
 
         void MenuItem_Popup(object sender, EventArgs e)
         {
-            NativeMethods.MENUITEMINFO_T_RW menuItemInfo = new NativeMethods.MENUITEMINFO_T_RW();
+            var menuItemInfo = new MENUITEMINFO_T_RW();
 
             // get the menu items collection
             Menu.MenuItemCollection mi = sender.GetType() == typeof(ContextMenu) ? ((ContextMenu)sender).MenuItems : ((MenuItem)sender).MenuItems;
@@ -258,7 +259,7 @@ namespace Platform.Presentation.Forms.Components
                         menuItemInfo.hbmpItem = p.renderBmpHbitmap;
 
                         //refresh the menu item where ((Menu)sender).Handle is the parent handle
-                        NativeMethods.SetMenuItemInfo(new HandleRef(null, ((Menu)sender).Handle),
+                        User32.SetMenuItemInfo(new HandleRef(null, ((Menu)sender).Handle),
                                         miOn,
                                         true,
                                         menuItemInfo);

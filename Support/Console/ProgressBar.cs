@@ -1,12 +1,18 @@
-﻿using System;
+﻿using Platform.Support.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using static NativeMethods;
 
 namespace Platform.Support.ConsoleEx
 {
+
+    internal interface IProgress<T>
+    {
+        void Report(T value);
+    }
+
     /// <summary>
     /// An ASCII progress bar
     /// Author: DanielSWolf
@@ -28,8 +34,8 @@ namespace Platform.Support.ConsoleEx
         internal static bool IsOutputRedirected()
         {
 #if !NETFX_45
-            UIntPtr hOutput = NativeMethods.GetStdHandle(STDHandle.STD_OUTPUT_HANDLE);
-            FileType fileType = (FileType)NativeMethods.GetFileType(hOutput);
+            UIntPtr hOutput = Kernel32.GetStdHandle(STDHandle.STD_OUTPUT_HANDLE);
+            FileType fileType = (FileType)Kernel32.GetFileType(hOutput);
             if (fileType == FileType.FILE_TYPE_CHAR)
                 return false;
             return true;

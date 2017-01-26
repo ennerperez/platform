@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Platform.Support.Windows;
+using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
@@ -11,11 +12,7 @@ namespace Platform.Presentation.Forms.Providers
     [ToolboxItem(true)]
     public sealed class UserAcountControlProvider : System.ComponentModel.Component, IExtenderProvider
     {
-
-        //Private Declare Ansi Function SendMessage Lib "user32.dll" Alias "SendMessageA" ( hwnd As Integer,  wMsg As Integer,  wParam As Integer,  lParam As String) As Integer
-        private const uint BCM_FIRST = 0x1600;
-
-        private const uint BCM_SETSHIELD = (BCM_FIRST + 0xc);
+        
 
         private Hashtable m_properties = new Hashtable();
         public bool CanExtend(object sender)
@@ -66,12 +63,12 @@ namespace Platform.Presentation.Forms.Providers
             if (ctrlProperties.Shield)
             {
                 _Button.FlatStyle = FlatStyle.System;
-                NativeMethods.SendMessage(_Button.Handle, BCM_SETSHIELD, (System.IntPtr)0, (System.IntPtr)1);
+                User32.SendMessage(_Button.Handle, User32.BCM_SETSHIELD, (System.IntPtr)0, (System.IntPtr)1);
             }
             else
             {
                 _Button.FlatStyle = FlatStyle.System;
-                NativeMethods.SendMessage(_Button.Handle, BCM_SETSHIELD, (System.IntPtr)0, (System.IntPtr)0);
+                User32.SendMessage(_Button.Handle, User32.BCM_SETSHIELD, (System.IntPtr)0, (System.IntPtr)0);
             }
         }
 
@@ -87,7 +84,7 @@ namespace Platform.Presentation.Forms.Providers
         public static void AddShieldToButton(ref Button b)
         {
             b.FlatStyle = FlatStyle.System;
-            NativeMethods.SendMessage(b.Handle, BCM_SETSHIELD, (System.IntPtr)0, (System.IntPtr)0xffffffff);
+            User32.SendMessage(b.Handle, User32.BCM_SETSHIELD, (System.IntPtr)0, (System.IntPtr)0xffffffff);
         }
 
     }

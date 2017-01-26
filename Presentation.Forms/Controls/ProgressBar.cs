@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Platform.Support.Windows;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
@@ -180,7 +181,7 @@ namespace Platform.Presentation.Forms
                         Style = System.Windows.Forms.ProgressBarStyle.Blocks;
 
                     // set the progress bar state (Normal, Error, Paused)
-                    NativeMethods.SendMessage(Handle, 0x410, (int)value, 0);
+                    User32.SendMessage(Handle, 0x410, (int)value, 0);
 
 
                     if (wasMarquee)

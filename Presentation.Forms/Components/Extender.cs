@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Platform.Support.Windows;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -147,17 +148,11 @@ namespace Platform.Presentation.Forms.Components
         #endregion
 
         #region  Mouse Move
-
-        //private const long WM_SYSCOMMAND = 0x112L;
-        //private const long MOUSE_MOVE = 0xf012L;
-
-        const int WM_SYSCOMMAND = 0x112;
-        const int MOUSE_MOVE = 0xF012;
                 
         private void MoveForm()
         {
-            NativeMethods.ReleaseCapture();
-            NativeMethods.SendMessage(this.ContainerControl.FindForm().Handle, WM_SYSCOMMAND, MOUSE_MOVE, 0);
+            User32.ReleaseCapture();
+            User32.SendMessage(this.ContainerControl.FindForm().Handle, User32.WM_SYSCOMMAND, User32.MOUSE_MOVE, 0);
         }
 
 
@@ -328,11 +323,11 @@ namespace Platform.Presentation.Forms.Components
 }
 
 
-internal static partial class NativeMethods
-{
-    [DllImport(ExternDll.User32, CharSet = CharSet.Auto, EntryPoint = "ReleaseCapture")]
-    internal static extern void ReleaseCapture();
+//internal static partial class NativeMethods
+//{
+//    [DllImport(ExternDll.User32, CharSet = CharSet.Auto, EntryPoint = "ReleaseCapture")]
+//    internal static extern void ReleaseCapture();
 
-    //[DllImport(ExternDll.User32, CharSet = CharSet.Auto, EntryPoint = "SendMessage")]
-    //internal static extern void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-}
+//    //[DllImport(ExternDll.User32, CharSet = CharSet.Auto, EntryPoint = "SendMessage")]
+//    //internal static extern void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+//}

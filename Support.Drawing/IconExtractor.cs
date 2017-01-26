@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Platform.Support.Windows;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Platform.Support.Drawing
         {
             IntPtr large;
             IntPtr small;
-            NativeMethods.ExtractIconEx(file, number, out large, out small, 1);
+            Shell32.ExtractIconExW(file, number, out large, out small, 1);
             try
             {
                 return Icon.FromHandle(largeIcon ? large : small);
