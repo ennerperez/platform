@@ -64,7 +64,7 @@ namespace Platform.Support
                 return (T)item.Clone();
             }
 #endif
-                public static T As<T>(this object source)
+                public static T As<T>(this object source, bool strict = false)
                 {
 
 #if NETFX_45
@@ -79,13 +79,30 @@ namespace Platform.Support
 
                     var properties = from s_item in p_source
                                      join t_item in p_target on s_item.Name equals t_item.Name
-                                     where s_item.PropertyType == t_item.PropertyType
+                                     where (!strict) || (strict && s_item.PropertyType == t_item.PropertyType)
                                      select new { source = s_item, target = t_item };
 
                     if (target == null) target = Activator.CreateInstance<T>();
 
                     foreach (var item in properties)
-                        item.target.SetValue(target, item.source.GetValue(source, null), null);
+                    {
+                        var input = item.source.GetValue(source, null);
+                        try
+                        {
+                            if (item.source.PropertyType != item.target.PropertyType)
+                                input = Convert.ChangeType(input, item.target.PropertyType, null);
+                            item.target.SetValue(target, input, null);
+                        }
+                        catch (Exception ex)
+                        {
+                            //input = input == null ? null : input.ToString();
+                            ex.DebugThis();
+                        }
+                        finally
+                        {
+                            item.target.SetValue(target, input, null);
+                        }
+                    }
 
                     return target;
 
