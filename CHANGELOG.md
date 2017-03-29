@@ -4,10 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [3.3.*] - [UNRELEASED]
 ### Added
-- DialogHelper
-- StreamHelper 
-- ToolTipExtended 
-- ColorSpaces
+- Dialog Helper
+- Stream Helper 
+- ToolTip Extended 
+- Color Spaces
+- AsType Extensions
+- NotifyProperty Extensions
 
 ## [3.2.32] - [2016-12-31]
 ### Added
