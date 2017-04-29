@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Color Spaces
 - AsType Extensions
 - NotifyProperty Extensions
+- ListBox for Console
 
 ## [3.2.32] - [2016-12-31]
 ### Added

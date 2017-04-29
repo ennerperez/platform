@@ -63,6 +63,7 @@
     <Compile Include="..\Support.Windows\NativeMethods\Kernel32.cs">
       <Link>NativeMethods\Kernel32.cs</Link>
     </Compile>
+    <Compile Include="Console\ListBox.cs" />
     <Compile Include="Helpers\StreamHelper.cs" />
     <Compile Include="IO\StreamExtensions.cs" />
     <Compile Include="IO\StreamHelper.cs" />
