@@ -531,7 +531,7 @@ namespace Platform.Support.Windows
             if (pData == IntPtr.Zero)
             {
                 throw new Win32Exception(Marshal.GetLastWin32Error(),
-                    "Error occurred while tyring to lock global memory");
+                    "Error occurred while trying to lock global memory");
             }
         }
 
@@ -579,7 +579,7 @@ namespace Platform.Support.Windows
         private IntPtr hGlobal = IntPtr.Zero;
 
         /// <summary>
-        /// Pointer to data (aquired by locking the HGLOBAL)
+        /// Pointer to data (acquired by locking the HGLOBAL)
         /// </summary>
         private IntPtr pData = IntPtr.Zero;
     }
