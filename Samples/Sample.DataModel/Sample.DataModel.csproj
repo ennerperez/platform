@@ -34,23 +34,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Platform.Model.Core">
+    <Reference Include="Platform.Model.Core, Version=3.3.33.2418, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Platform.Model.Core.3.3.33.3768\lib\net40\Platform.Model.Core.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="Platform.Model.Core.PCL, Version=3.3.33.26072, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Platform.Model.Core.3.3.33.9853\lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Model.Core.PCL.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.Support.Core">
+    <Reference Include="Platform.Support.Core, Version=3.3.33.2418, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Platform.Support.Core.3.3.33.3768\lib\net40\Platform.Support.Core.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="Platform.Support.Core.PCL, Version=3.3.33.26071, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Platform.Support.Core.3.3.33.9853\lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Support.Core.PCL.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.Support.Data">
+    <Reference Include="Platform.Support.Data, Version=3.3.33.2419, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Platform.Support.Data.3.3.33.3768\lib\net40\Platform.Support.Data.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -83,11 +74,11 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\System.Data.SQLite.Core.1.0.105.2\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\System.Data.SQLite.Core.1.0.105.2\build\net40\System.Data.SQLite.Core.targets'))" />
     <Error Condition="!Exists('..\..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+    <Error Condition="!Exists('..\..\packages\System.Data.SQLite.Core.1.0.105.2\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\System.Data.SQLite.Core.1.0.105.2\build\net40\System.Data.SQLite.Core.targets'))" />
   </Target>
-  <Import Project="..\..\packages\System.Data.SQLite.Core.1.0.105.2\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\..\packages\System.Data.SQLite.Core.1.0.105.2\build\net40\System.Data.SQLite.Core.targets')" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <Import Project="..\..\packages\System.Data.SQLite.Core.1.0.105.2\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\..\packages\System.Data.SQLite.Core.1.0.105.2\build\net40\System.Data.SQLite.Core.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

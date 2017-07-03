@@ -80,7 +80,7 @@
     <Compile Include="Reflection\AssemblyExternalRefAttribute.cs" />
     <Compile Include="Attributes\AttributesHelper.cs" />
     <Compile Include="Reflection\AssemblyDeveloperAttribute.cs" />
-    <Compile Include="Reflection\ContactInformationAttribute.cs" />
+    <Compile Include="Reflection\AssemblyContactInformationAttribute.cs" />
     <Compile Include="Reflection\AssemblyBuildDateAttribute.cs" />
     <Compile Include="Check.cs" />
     <Compile Include="NativeMethods.cs" />

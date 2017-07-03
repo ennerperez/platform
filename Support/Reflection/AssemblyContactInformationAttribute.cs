@@ -16,16 +16,16 @@ namespace Platform.Support
         /// Contact information
         /// </summary>
         [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true, Inherited = false)]
-        public sealed class ContactInformationAttribute : global::System.Attribute
+        public sealed class AssemblyContactInformationAttribute : global::System.Attribute
         {
 
-            public ContactInformationAttribute(string description, string value)
+            public AssemblyContactInformationAttribute(string description, string value)
             {
                 this.description = description;
                 this.value = value;
             }
 
-            public ContactInformationAttribute(string value)
+            public AssemblyContactInformationAttribute(string value)
             {
                 if (value.IsNumeric()) { this.description = "number"; }
                 if (value.IsEmail()) { this.description = "email"; }

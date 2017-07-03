@@ -343,7 +343,7 @@ namespace Platform.Support
                 }
                 public static IEnumerable<IEnumerable<string>> ContactInformation(this Assembly assembly)
                 {
-                    var result = Helpers.GetAttributes<ContactInformationAttribute>(assembly);
+                    var result = Helpers.GetAttributes<AssemblyContactInformationAttribute>(assembly);
                     if (result != null && result.Count() > 0)
                         return result.Select(item => item.Contact).AsEnumerable();
                     return null;

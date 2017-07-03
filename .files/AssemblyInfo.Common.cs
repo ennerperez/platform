@@ -20,6 +20,6 @@ using Platform.Support.Attributes;
 [assembly: AssemblyDeveloper("Enner Pérez", "@ennerperez")]
 [assembly: AssemblyLicense("The MIT License (MIT)")]
 
-[assembly: ContactInformation("twitter", "@ennerperez")]
-[assembly: ContactInformation("584146328236")]
-[assembly: ContactInformation("ennerperez@gmail.com")]
+[assembly: AssemblyContactInformation("twitter", "@ennerperez")]
+[assembly: AssemblyContactInformation("584146328236")]
+[assembly: AssemblyContactInformation("ennerperez@gmail.com")]
