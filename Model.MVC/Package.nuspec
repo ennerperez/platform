@@ -3,7 +3,7 @@
   <metadata minClientVersion="2.8.1">
     <id>$id$</id>
     <version>$version$</version>
-    <title>$id$</title>
+    <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
     <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
@@ -17,12 +17,13 @@
     <language>en</language>
     <tags>.NET Framework Base Development Platform</tags>
     <dependencies>
-      <dependency id="Platform.Support.Core" version="3.2" />
-      <dependency id="Platform.Model.Core" version="3.2" />
+      <dependency id="Platform.Support.Core" version="3.3" />
+      <dependency id="Platform.Model.Core" version="3.3" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\Model.MVC.PCL\bin\release\$id$.PCL.dll" target="lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\$id$.PCL.dll" />
-    <file src="..\Model.MVC.PCL.Net45\bin\release\$id$.PCL.dll" target="lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\$id$.PCL.dll" />
+    <file src="..\Model.MVC\bin\release\Platform.Model.MVC.dll" target="lib\net40\Platform.Model.MVC.dll" />
+    <file src="..\Model.MVC.PCL\bin\release\Platform.Model.MVC.PCL.dll" target="lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Model.MVC.PCL.dll" />
+    <file src="..\Model.MVC.PCL.Net45\bin\release\Platform.Model.MVC.PCL.dll" target="lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Model.MVC.PCL.dll" />
   </files>
 </package>

@@ -3,7 +3,7 @@
   <metadata minClientVersion="2.8.1">
     <id>$id$</id>
     <version>$version$</version>
-    <title>$id$</title>
+    <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
     <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
@@ -17,9 +17,11 @@
     <language>en</language>
     <tags>.NET Framework Base Development Platform</tags>
     <dependencies>
-      <dependency id="Platform.Support.Core" version="3.2" />
-      <dependency id="Platform.Support.Drawing" version="3.2" />
+      <dependency id="Platform.Support.Core" version="3.3" />
+      <dependency id="Platform.Support.Drawing" version="3.3" />
     </dependencies>
   </metadata>
-  <files />
+  <files>
+    <file src="..\Presentation.Forms\bin\release\Platform.Presentation.Forms.dll" target="lib\net40\Platform.Presentation.Forms.dll" />
+  </files>
 </package>

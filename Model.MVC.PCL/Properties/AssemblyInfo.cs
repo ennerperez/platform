@@ -1,7 +1,4 @@
-﻿using System.Resources;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿using System.Reflection;
 
-[assembly: AssemblyTitle("Model MVC Portable")]
+[assembly: AssemblyTitle("Platform Model MVC PCL")]
 [assembly: AssemblyDescription("Platform Model MVC Pattern (Portable)")]

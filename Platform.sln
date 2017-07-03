@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "Support\Support.csproj", "{25AB6BBF-A879-4570-9E0E-947D52AE7333}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -9,23 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "Support\Support.
 		{B0BC9452-381F-4BF7-8E3C-382635A14187} = {B0BC9452-381F-4BF7-8E3C-382635A14187}
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".files", ".files", "{8BE2B02F-E29C-4E9A-93FD-C8EEED874C90}"
-	ProjectSection(SolutionItems) = preProject
-		.editoricon.png = .editoricon.png
-		.gitignore = .gitignore
-		.files\AssemblyInfo.Common.cs = .files\AssemblyInfo.Common.cs
-		.files\AssemblyInfo.Platform.cs = .files\AssemblyInfo.Platform.cs
-		.files\AssemblyInfo.Version.cs = .files\AssemblyInfo.Version.cs
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.PCL", "Support.PCL\Support.PCL.csproj", "{18F0A51D-255E-4845-A724-B676D5FBBFBC}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{64E2131D-CEDC-4D5A-AC73-CE9C0EDB8CAD}"
-	ProjectSection(SolutionItems) = preProject
-		CHANGELOG.md = CHANGELOG.md
-		LICENSE = LICENSE
-		README.md = README.md
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Data", "Support.Data\Support.Data.csproj", "{4AC6FA64-1C7E-4648-BE3F-592DC9567401}"
 EndProject
@@ -95,7 +79,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A4E49E51-DBBC-4588-BA35-FBC70397D8D4}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.config = .nuget\NuGet.config
-		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Web.PCL", "Support.Web.PCL\Support.Web.PCL.csproj", "{9767D236-D9E5-4ECC-A649-EF9391963F84}"
@@ -123,6 +106,21 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Application", "Samples\Sample.Application\Sample.Application.csproj", "{19D05955-5523-4F6E-88BA-B47ECE3F0E4F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Net", "Support.Net\Support.Net.csproj", "{F8245D33-07F5-4B29-80E0-99AD7CC9BCB2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E9E411D7-1044-4839-A1D4-59C45956314A}"
+	ProjectSection(SolutionItems) = preProject
+		.editoricon.png = .editoricon.png
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		.files\AssemblyInfo.Common.cs = .files\AssemblyInfo.Common.cs
+		.files\AssemblyInfo.Platform.cs = .files\AssemblyInfo.Platform.cs
+		.files\AssemblyInfo.Version.cs = .files\AssemblyInfo.Version.cs
+		build.cake = build.cake
+		build.ps1 = build.ps1
+		CHANGELOG.md = CHANGELOG.md
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -250,9 +248,11 @@ Global
 		{18F0A51D-255E-4845-A724-B676D5FBBFBC} = {0897EA21-1224-4433-AD2D-030419B8BED7}
 		{44448EE1-AE0E-4610-A6BE-208EB7FBCFFB} = {0897EA21-1224-4433-AD2D-030419B8BED7}
 		{C4C6EA21-5740-42F0-990B-BE703B1F8B66} = {0897EA21-1224-4433-AD2D-030419B8BED7}
+		{438EDCA0-3C84-4A67-903C-BC1E306C227D} = {E9E411D7-1044-4839-A1D4-59C45956314A}
 		{AA133076-D483-496E-866F-06E83E58A05A} = {B2DE59C7-C6E5-46E1-873E-D711546443EF}
 		{71174989-9F8D-4766-B487-015E8A7A61E0} = {B2DE59C7-C6E5-46E1-873E-D711546443EF}
 		{62521597-3B37-4CF9-80E4-1F2728D86F4B} = {0897EA21-1224-4433-AD2D-030419B8BED7}
+		{A4E49E51-DBBC-4588-BA35-FBC70397D8D4} = {E9E411D7-1044-4839-A1D4-59C45956314A}
 		{9767D236-D9E5-4ECC-A649-EF9391963F84} = {0897EA21-1224-4433-AD2D-030419B8BED7}
 		{989FFC57-46D2-4C73-BFA9-97EBFFA1960B} = {E2558961-1D89-4AC7-840E-F57D987E8173}
 		{0897EA21-1224-4433-AD2D-030419B8BED7} = {E2558961-1D89-4AC7-840E-F57D987E8173}
@@ -267,10 +267,10 @@ Global
 		{19D05955-5523-4F6E-88BA-B47ECE3F0E4F} = {B2DE59C7-C6E5-46E1-873E-D711546443EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_BuildVersioningStyle = None.None.None.Increment
-		BuildVersion_UpdateAssemblyVersion = True
-		BuildVersion_StartDate = 2016/1/1
 		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
+		BuildVersion_StartDate = 2016/1/1
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_BuildVersioningStyle = None.None.None.Increment
 	EndGlobalSection
 	GlobalSection(AutomaticVersions) = postSolution
 		AssemblyInfoFilePath.Release|Any CPU = D:\Developments\GitHub\platform\.files\AssemblyInfo.Version.cs

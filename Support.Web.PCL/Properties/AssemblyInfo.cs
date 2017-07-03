@@ -1,6 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Support Web Portable")]
+[assembly: AssemblyTitle("Platform Support Web PCL")]
 [assembly: AssemblyDescription("Platform Support for Web (Portable)")]

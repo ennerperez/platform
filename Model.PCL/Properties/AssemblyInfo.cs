@@ -1,7 +1,4 @@
-﻿using System.Resources;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿using System.Reflection;
 
-[assembly: AssemblyTitle("Model Portable")]
+[assembly: AssemblyTitle("Platform Model PCL")]
 [assembly: AssemblyDescription("Platform Model Pattern (Portable)")]
