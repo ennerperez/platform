@@ -1,29 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Platform.Model
+﻿namespace Platform.Model
 {
 #if PORTABLE
     namespace Core
     {
 #endif
 
-        namespace SPS
+    namespace SPS
+    {
+        /// <summary>
+        /// All plugin-based applications implements this interface.
+        /// Applications does not directly implement this interface, but they implement by inheriting PlugInBasedApplication class.
+        /// </summary>
+        public interface IPlugInBasedApplication : IPluggable
         {
             /// <summary>
-            /// All plugin-based applications implements this interface.
-            /// Applications does not directly implement this interface, but they implement by inheriting PlugInBasedApplication class.
+            /// Gets the name of this Application.
             /// </summary>
-            public interface IPlugInBasedApplication : IPluggable
-            {
-                /// <summary>
-                /// Gets the name of this Application.
-                /// </summary>
-                string Name { get; }
-            }
+            string Name { get; }
         }
+    }
 
 #if PORTABLE
     }

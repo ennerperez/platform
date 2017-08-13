@@ -7,17 +7,16 @@ using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Providers
 {
-
     [ProvideProperty("HasCue", typeof(System.Windows.Forms.Control))]
     [ProvideProperty("CueText", typeof(System.Windows.Forms.Control))]
     [ToolboxBitmap(typeof(System.Windows.Forms.TextBox))]
     [ToolboxItem(true)]
     public class CueProvider : System.ComponentModel.Component, IExtenderProvider
     {
-
         private Hashtable m_properties = new Hashtable();
 
         protected System.Windows.Forms.Control m_activecontrol;
+
         private class Properties
         {
             public bool HasCue { get; set; }
@@ -97,7 +96,6 @@ namespace Platform.Presentation.Forms.Providers
             }
 
             b.Invalidate();
-
         }
 
         //Private Sub Control_GotFocus(sender As Object, e As EventArgs)
@@ -117,12 +115,10 @@ namespace Platform.Presentation.Forms.Providers
         //        sender.ForeColor = System.Drawing.SystemColors.ScrollBar
         //    End If
         //End Sub
-
     }
 
     public static class CueProviderActions
     {
-        
         /// <summary>
         /// Sets a text box's cue text.
         /// </summary>
@@ -142,7 +138,5 @@ namespace Platform.Presentation.Forms.Providers
         {
             User32.SendMessage(textBox.Handle, User32.EM_SETCUEBANNER, 0, string.Empty);
         }
-
     }
-
 }

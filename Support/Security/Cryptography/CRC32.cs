@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace Platform.Support.Security.Cryptography
 {
-
     public class CRC32 : SHA1
     {
-
         public const UInt32 DefaultPolynomial = 0xedb88320u;
 
         public const UInt32 DefaultSeed = 0xffffffffu;
@@ -18,6 +13,7 @@ namespace Platform.Support.Security.Cryptography
         private UInt32[] _table;
 
         private static UInt32[] defaultTable;
+
         public CRC32()
         {
             _table = InitializeTable(DefaultPolynomial);
@@ -167,8 +163,5 @@ namespace Platform.Support.Security.Cryptography
 
             return hash;
         }
-
     }
-
 }
-

@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Model
 {
-
 #if PORTABLE
+
     namespace Core
     {
 #endif
 
     namespace SPS.Attributes
     {
-
         /// <summary>
         /// This attribute is used to mark a class as a PlugIn.
         /// </summary>
@@ -34,11 +30,10 @@ namespace Platform.Model
                 Name = name;
             }
         }
-
     }
 
 #if PORTABLE
     }
-#endif
 
+#endif
 }

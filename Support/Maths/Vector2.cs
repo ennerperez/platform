@@ -1,17 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
+
 #if (!PORTABLE)
+
 using System.Drawing;
+
 #endif
-using System.Linq;
-using System.Text;
 
 namespace Platform.Support
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
+
         namespace Maths
         {
             public struct Vector2
@@ -108,21 +110,22 @@ namespace Platform.Support
 
 #if (!PORTABLE)
 
-        public static explicit operator Point(Vector2 u)
-        {
-            return new Point((int)Math.Round(u.x), (int)Math.Round(u.y));
-        }
+            public static explicit operator Point(Vector2 u)
+            {
+                return new Point((int)Math.Round(u.x), (int)Math.Round(u.y));
+            }
 
-        public static implicit operator Vector2(Point p)
-        {
-            return new Vector2(p.X, p.Y);
-        }
+            public static implicit operator Vector2(Point p)
+            {
+                return new Vector2(p.X, p.Y);
+            }
 
 #endif
-
             }
         }
+
 #if PORTABLE
     }
+
 #endif
 }

@@ -1,23 +1,19 @@
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
+using Platform.Support.Windows;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
-using System.Data;
 using System.Globalization;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Platform.Support.Windows;
 
 namespace Platform.Presentation.Forms.Controls
 {
     public partial class AutoCompleteTextbox : TextBox
     {
-
         private readonly AutoCompleteForm tagSuggestForm;
         private AutoCompleteSource tagSource;
         private Button button;
@@ -34,10 +30,10 @@ namespace Platform.Presentation.Forms.Controls
 
             GotFocus += new EventHandler(AutoCompleteTextbox_Enter);
             LostFocus += new EventHandler(AutoCompleteTextbox_Leave);
-
         }
 
         private bool rtlFixedUp = false;
+
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
@@ -57,7 +53,7 @@ namespace Platform.Presentation.Forms.Controls
             }
         }
 
-        void AutoCompleteTextbox_Leave(object sender, EventArgs e)
+        private void AutoCompleteTextbox_Leave(object sender, EventArgs e)
         {
             if (Text == String.Empty)
             {
@@ -67,7 +63,7 @@ namespace Platform.Presentation.Forms.Controls
             tagSuggestForm.Dismissed = false;
         }
 
-        void AutoCompleteTextbox_Enter(object sender, EventArgs e)
+        private void AutoCompleteTextbox_Enter(object sender, EventArgs e)
         {
             if (!_isDirty)
             {
@@ -89,8 +85,10 @@ namespace Platform.Presentation.Forms.Controls
                 button.Visible = value;
             }
         }
+
         private const int BUTTON_WIDTH = 16;
         private const int BUTTON_RIGHT_OFFSET = 8;
+
         private void CreateButton()
         {
             button = new Button();
@@ -104,6 +102,7 @@ namespace Platform.Presentation.Forms.Controls
 
         private bool _isDirty = false;
         public string _defaultText;
+
         public string DefaultText
         {
             get
@@ -185,6 +184,7 @@ namespace Platform.Presentation.Forms.Controls
         }
 
         public event EventHandler DirtyChanged;
+
         public void FireDirtyChanged()
         {
             if (DirtyChanged != null)
@@ -286,14 +286,17 @@ namespace Platform.Presentation.Forms.Controls
                 case Keys.Up:
                     tagSuggestForm.MoveSelectionUp();
                     return true;
+
                 case Keys.Down:
                     tagSuggestForm.MoveSelectionDown();
                     return true;
+
                 case Keys.Escape:
                     if (!tagSuggestForm.Visible)
                         break;
                     tagSuggestForm.Dismissed = true;
                     return true;
+
                 case Keys.Enter:
                 case Keys.Tab:
                     if (tagSuggestForm.CanAcceptSelection)
@@ -302,10 +305,12 @@ namespace Platform.Presentation.Forms.Controls
                         return true;
                     }
                     break;
+
                 case Keys.Control | Keys.Space:
                     tagSuggestForm.Dismissed = false;
                     ShowSuggestionForm();
                     return true;
+
                 case Keys.Control | Keys.A:
                     SelectAll();
                     return true;
@@ -375,9 +380,7 @@ namespace Platform.Presentation.Forms.Controls
                 if (str.ToLower(CultureInfo.CurrentUICulture).StartsWith(prefix, StringComparison.CurrentCulture))
                     tagList.Add(str);
             }
-
         }
-
     }
 
     public class AutoCompleteForm : Form
@@ -403,7 +406,7 @@ namespace Platform.Presentation.Forms.Controls
             RightToLeft = BidiHelper.IsRightToLeft ? RightToLeft.Yes : RightToLeft.No;
         }
 
-        void lstSuggest_Resize(object sender, EventArgs e)
+        private void lstSuggest_Resize(object sender, EventArgs e)
         {
             Size = lstSuggest.Size;
         }
@@ -451,7 +454,6 @@ namespace Platform.Presentation.Forms.Controls
                         Show(owner);
 
                     lstSuggest.SelectedIndex = 0;
-
                 }
             }
             finally
@@ -563,7 +565,6 @@ namespace Platform.Presentation.Forms.Controls
                 if (Owner != null)
                     Owner.LocationChanged += ParentForm_LocationChanged;
             }
-
         }
 
         protected override void OnLocationChanged(EventArgs e)
@@ -630,12 +631,10 @@ namespace Platform.Presentation.Forms.Controls
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "TagSuggestForm";
             this.ResumeLayout(false);
-
         }
 
-        #endregion
+        #endregion Windows Form Designer generated code
 
         private System.Windows.Forms.ListBox lstSuggest;
     }
 }
-

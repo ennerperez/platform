@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Platform.Support
 {
-
 #if PORTABLE
+
     namespace Core
     {
 #endif
@@ -21,13 +19,12 @@ namespace Platform.Support
                     get
                     {
 #if !PORTABLE
-                        return Assembly.GetCallingAssembly().GetName().Version;
+                    return Assembly.GetCallingAssembly().GetName().Version;
 #elif !PROFILE_78
                         return new AssemblyName(Assembly.GetCallingAssembly().FullName).Version;
 #else
                         return new AssemblyName(typeof(ApplicationInfo).GetTypeInfo().Assembly.FullName).Version;
 #endif
-
                     }
                 }
 
@@ -46,7 +43,7 @@ namespace Platform.Support
                             if (titleAttribute.Title.Length > 0) return titleAttribute.Title;
                         }
 #if !PORTABLE
-                        return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
+                    return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
 #elif !PROFILE_78
                         return new AssemblyName(Assembly.GetCallingAssembly().FullName).Name;
 #else
@@ -106,13 +103,11 @@ namespace Platform.Support
                         return attributes.Length == 0 ? "" : ((AssemblyCompanyAttribute)attributes[0]).Company;
                     }
                 }
-
             }
-
         }
 
 #if PORTABLE
     }
-#endif
 
+#endif
 }

@@ -1,14 +1,13 @@
 ﻿#if PORTABLE
 using Platform.Support.Core;
 #else
-using Platform.Support;
 #endif
+
 using System;
 using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Platform.Support
@@ -20,16 +19,14 @@ namespace Platform.Support
 
     namespace Net
     {
-
 #if !PORTABLE
 
         public static class InternetInformation
         {
-
-
 #if !PORTABLE
 
             private static IPAddress externalIP;
+
             public static IPAddress ExternalIP
             {
                 get
@@ -59,6 +56,7 @@ namespace Platform.Support
                 }
                 return pingable;
             }
+
             public static async Task<bool> PingHostAsync(string hostname)
             {
                 bool pingable = false;
@@ -80,6 +78,7 @@ namespace Platform.Support
                 var isConnected = PingHost(pingHost);
                 return isConnected;
             }
+
             public static async Task<bool> CheckConnectionAsync()
             {
                 var isConnected = await PingHostAsync(pingHost);
@@ -88,7 +87,6 @@ namespace Platform.Support
 
             public static string GetExternalIP()
             {
-
                 try
                 {
                     var url = new UriBuilder(ipHost);
@@ -110,11 +108,10 @@ namespace Platform.Support
                 }
 
                 return string.Empty;
-
             }
+
             public static async Task<string> GetExternalIPAsync()
             {
-
                 try
                 {
                     var url = new UriBuilder(ipHost);
@@ -136,17 +133,13 @@ namespace Platform.Support
                 }
 
                 return string.Empty;
-
             }
-
         }
 
 #endif
-
     }
 
 #if PORTABLE
     }
 #endif
-
 }

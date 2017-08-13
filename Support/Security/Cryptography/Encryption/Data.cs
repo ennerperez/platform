@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Support.Security.Cryptography.Encryption
 {
     /// <summary>
     /// represents Hex, Byte, Base64, or String data to encrypt/decrypt;
-    /// use the .Text property to set/get a string representation 
-    /// use the .Hex property to set/get a string-based Hexadecimal representation 
-    /// use the .Base64 to set/get a string-based Base64 representation 
+    /// use the .Text property to set/get a string representation
+    /// use the .Hex property to set/get a string-based Hexadecimal representation
+    /// use the .Base64 to set/get a string-based Base64 representation
     /// </summary>
     public class Data
     {
@@ -28,6 +25,7 @@ namespace Platform.Support.Security.Cryptography.Encryption
         /// </summary>
 
         public System.Text.Encoding Encoding = DefaultEncoding;
+
         /// <summary>
         /// Creates new, empty encryption data
         /// </summary>
@@ -44,7 +42,7 @@ namespace Platform.Support.Security.Cryptography.Encryption
         }
 
         /// <summary>
-        /// Creates new encryption data with the specified string; 
+        /// Creates new encryption data with the specified string;
         /// will be converted to byte array using default encoding
         /// </summary>
         public Data(string s)
@@ -53,7 +51,7 @@ namespace Platform.Support.Security.Cryptography.Encryption
         }
 
         /// <summary>
-        /// Creates new encryption data using the specified string and the 
+        /// Creates new encryption data using the specified string and the
         /// specified encoding to convert the string to a byte array.
         /// </summary>
         public Data(string s, System.Text.Encoding encoding)
@@ -136,7 +134,7 @@ namespace Platform.Support.Security.Cryptography.Encryption
         }
 
         /// <summary>
-        /// Returns the byte representation of the data; 
+        /// Returns the byte representation of the data;
         /// This will be padded to MinBytes and trimmed to MaxBytes as necessary!
         /// </summary>
         public byte[] Bytes
@@ -237,6 +235,5 @@ namespace Platform.Support.Security.Cryptography.Encryption
         {
             return this.Hex;
         }
-
     }
 }

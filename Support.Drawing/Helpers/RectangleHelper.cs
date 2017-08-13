@@ -184,24 +184,31 @@ namespace Platform.Support.Drawing
             {
                 case RotateFlipType.RotateNoneFlipNone:
                     return rect;
+
                 case RotateFlipType.RotateNoneFlipX:
                     flipX = true;
                     break;
+
                 case RotateFlipType.RotateNoneFlipXY:
                     flipX = flipY = true;
                     break;
+
                 case RotateFlipType.RotateNoneFlipY:
                     flipY = true;
                     break;
+
                 case RotateFlipType.Rotate90FlipNone:
                     rotate = true;
                     break;
+
                 case RotateFlipType.Rotate90FlipX:
                     rotate = flipX = true;
                     break;
+
                 case RotateFlipType.Rotate90FlipXY:
                     rotate = flipX = flipY = true;
                     break;
+
                 case RotateFlipType.Rotate90FlipY:
                     rotate = flipY = true;
                     break;
@@ -230,24 +237,31 @@ namespace Platform.Support.Drawing
             {
                 case RotateFlipType.RotateNoneFlipNone:
                     return rect;
+
                 case RotateFlipType.RotateNoneFlipX:
                     rotateFlip = RotateFlipType.RotateNoneFlipX;
                     break;
+
                 case RotateFlipType.RotateNoneFlipXY:
                     rotateFlip = RotateFlipType.RotateNoneFlipXY;
                     break;
+
                 case RotateFlipType.RotateNoneFlipY:
                     rotateFlip = RotateFlipType.RotateNoneFlipY;
                     break;
+
                 case RotateFlipType.Rotate90FlipNone:
                     rotateFlip = RotateFlipType.Rotate270FlipNone;
                     break;
+
                 case RotateFlipType.Rotate90FlipX:
                     rotateFlip = RotateFlipType.Rotate270FlipX;
                     break;
+
                 case RotateFlipType.Rotate90FlipXY:
                     rotateFlip = RotateFlipType.Rotate270FlipXY;
                     break;
+
                 case RotateFlipType.Rotate90FlipY:
                     rotateFlip = RotateFlipType.Rotate270FlipY;
                     break;
@@ -308,7 +322,5 @@ namespace Platform.Support.Drawing
 
         public int Width { get { return right - left; } }
         public int Height { get { return bottom - top; } }
-
     }
-
 }

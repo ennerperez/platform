@@ -15,11 +15,11 @@ namespace Platform.Support.Windows
         // in Microsoft Knowledge Base Article Q315653, SAMPLE: SimpleMAPIAssembly
         // Demonstrates Use of Simple MAPI from a .NET Application at:
         //	http://support.microsoft.com/default.aspx?scid=kb;EN-US;Q315653
-        
+
         /// <summary>
         /// Begins a Simple MAPI session, loading the default message store provider
         /// </summary>
-        [DllImport(ExternDll.Mapi32, CharSet=CharSet.Ansi)]
+        [DllImport(ExternDll.Mapi32, CharSet = CharSet.Ansi)]
         public static extern int MAPILogon(
             int ulUIParam,
             string lpszProfileName,
@@ -31,7 +31,7 @@ namespace Platform.Support.Windows
         /// <summary>
         /// Ends a session with the messaging system.
         /// </summary>
-        [DllImport(ExternDll.Mapi32, CharSet=CharSet.Ansi)]
+        [DllImport(ExternDll.Mapi32, CharSet = CharSet.Ansi)]
         public static extern int MAPILogoff(
             int lhSession,
             int ulUIParam,
@@ -41,14 +41,13 @@ namespace Platform.Support.Windows
         /// <summary>
         /// Sends a message using the messaging system.
         /// </summary>
-        [DllImport(ExternDll.Mapi32, CharSet=CharSet.Ansi)]
+        [DllImport(ExternDll.Mapi32, CharSet = CharSet.Ansi)]
         public static extern int MAPISendMail(
             int lhSession,
             int ulUIParam,
             IntPtr /*MapiMessage*/ lpMessage,
             int flFlags,
             int ulReserved);
-
     }
 
     /// <summary>

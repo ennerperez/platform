@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Model
 {
-
 #if PORTABLE
+
     namespace Core
     {
 #endif
 
     namespace SPS.Runnable
     {
-
         /// <summary>
         /// This class is used to make possible to create a plugin that implements
         /// IRunnablePlugInApplication interface. A plugin must inherit this class to be used by
@@ -91,10 +87,10 @@ namespace Platform.Model
                 //No default action
             }
         }
-
     }
 
 #if PORTABLE
     }
+
 #endif
 }

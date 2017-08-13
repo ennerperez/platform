@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace Platform.Support.Extensions
 {
-
     internal struct FuncAwaitable<TResult> : IAwaitable<TResult>
     {
         private readonly Func<TResult> function;
@@ -26,7 +25,6 @@ namespace Platform.Support.Extensions
             return new FuncAwaiter<TResult>(this.function);
         }
     }
-        
 }
 
 #endif

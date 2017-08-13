@@ -5,8 +5,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Runtime.CompilerServices;
 
 namespace Platform.Support.Reflection
 {
@@ -16,7 +14,6 @@ namespace Platform.Support.Reflection
     /// </summary>
     public static class NotifyPropertyHelper
     {
-
         public static bool SetField(this INotifyPropertyChanged self, ref object field, object value, string propertyName = "")
         {
             if (field == null && value == null || field.Equals(value))
@@ -32,9 +29,8 @@ namespace Platform.Support.Reflection
                     addEventMethodInfo.Invoke(self, new object[] { self, new PropertyChangedEventArgs(propertyName) });
             else
                 self.RaisePropertyChanged(propertyName);
-            
-            return true;
 
+            return true;
         }
 
         public static bool SetField<T>(this INotifyPropertyChanged self, ref T field, T value, string propertyName = "")

@@ -83,7 +83,6 @@ namespace Platform.Support.Windows
             [In, Out] ref uint pcchUrl,
             [In] uint dwReserved);
 
-
         /// <summary>
         /// Searches for and retrieves a file association-related string from the registry.
         /// </summary>
@@ -279,5 +278,4 @@ namespace Platform.Support.Windows
         /// </summary>
         public const int E_POINTER = unchecked((int)0x80004003);
     }
-
 }

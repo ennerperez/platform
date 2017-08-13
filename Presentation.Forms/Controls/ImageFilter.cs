@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Controls
 {
-
     //TODO: WIP
 
     [ToolboxBitmap(typeof(System.Windows.Forms.PictureBox))]
@@ -42,6 +37,7 @@ namespace Platform.Presentation.Forms.Controls
             {
                 case 0:
                     return croppedOriginal;
+
                 case 1:
                     {
                         Bitmap bitmap = (Bitmap)Image.FromFile(filterPath);
@@ -140,10 +136,12 @@ namespace Platform.Presentation.Forms.Controls
             EventArgs e2 = new EventArgs();
             this.filterClicked(this, e2);
         }
+
         private void fImage_Click(object sender, EventArgs e)
         {
             this.imgFilter_Click(sender, e);
         }
+
         private void fName_Click(object sender, EventArgs e)
         {
             this.imgFilter_Click(sender, e);
@@ -167,6 +165,5 @@ namespace Platform.Presentation.Forms.Controls
                 this.filterPath = fpath;
             }
         }
-
     }
 }

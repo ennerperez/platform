@@ -4,7 +4,6 @@
 //using System.Runtime.InteropServices;
 //using System.Text;
 
-
 //internal static class ExternDll
 //{
 //    internal const string Gdi32 = "gdi32.dll";
@@ -13,7 +12,6 @@
 
 //internal static partial class NativeMethods
 //{
-
 //    internal enum GraphicsMode : int
 //    {
 //        Compatible = 1,
@@ -346,7 +344,7 @@
 //        internal const UInt32 EX_TOOLWINDOW = 0x00000080;
 //        internal const UInt32 EX_APPWINDOW = 0x00040000;
 //        internal const UInt32 EX_TOPMOST = 0x00000008;
-        
+
 //        internal const UInt32 BORDER = 0x00800000;
 //        internal const UInt32 THICKFRAME = 0x00040000;
 //        internal const UInt32 SYSMENU = 0x00080000;

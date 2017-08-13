@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using Platform.Support.Data;
+﻿using Platform.Support.Data;
+using System;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 
 namespace Sample.DataModel
 {
     public class Program
     {
-
         public static System.Data.IDbConnection SourceConnection;
         public static System.Data.IDbConnection TargetConnection;
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
             System.Data.Common.DbConnectionStringBuilder csb;
             if (System.Data.SqlLocalDb.SqlLocalDbApi.IsLocalDBInstalled())
             {
@@ -48,12 +43,10 @@ namespace Sample.DataModel
             CopyDatabase();
 
             Console.ReadKey();
-
         }
 
-        static void CopyDatabase()
+        private static void CopyDatabase()
         {
-
             var csb = new SQLiteConnectionStringBuilder();
             csb.DataSource = "database2.db";
             csb.Pooling = true;
@@ -65,11 +58,10 @@ namespace Sample.DataModel
 
             TargetConnection.DropDatabase();
             SourceConnection.CopyTo<Models.LibraryModel>(TargetConnection, CreateFlags.AllImplicit);
-
         }
-        static void GenerateData()
-        {
 
+        private static void GenerateData()
+        {
             SourceConnection.CreateTable<Models.LibraryModel>(CreateFlags.AllImplicit);
 
             var item1 = new Models.LibraryModel();
@@ -78,8 +70,6 @@ namespace Sample.DataModel
             item1.Version = new Version(1, 0, 0, 0);
 
             SourceConnection.Insert(item1);
-
         }
-
     }
 }

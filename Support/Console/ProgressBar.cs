@@ -1,13 +1,10 @@
 ﻿using Platform.Support.Windows;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading;
 
 namespace Platform.Support.ConsoleEx
 {
-
     internal interface IProgress<T>
     {
         void Report(T value);
@@ -20,7 +17,6 @@ namespace Platform.Support.ConsoleEx
     /// </summary>
     public class ProgressBar : IDisposable, IProgress<double>
     {
-
         private const int blockCount = 10;
         private readonly TimeSpan animationInterval = TimeSpan.FromSeconds(1.0 / 8);
         private const string animation = @"|/-\";
@@ -154,7 +150,6 @@ namespace Platform.Support.ConsoleEx
 
         #region IDisposable
 
-
         private bool disposed = false;
 
         public void Dispose()
@@ -163,18 +158,18 @@ namespace Platform.Support.ConsoleEx
             GC.SuppressFinalize(this);
         }
 
-        // NOTE: Leave out the finalizer altogether if this class doesn't 
+        // NOTE: Leave out the finalizer altogether if this class doesn't
         // own unmanaged resources itself, but leave the other methods
-        // exactly as they are. 
+        // exactly as they are.
         ~ProgressBar()
         {
             // Finalizer calls Dispose(false)
             Dispose(false);
         }
+
         // The bulk of the clean-up code is implemented in Dispose(bool)
         protected virtual void Dispose(bool disposing)
         {
-
             if (!disposed)
             {
                 if (disposing)
@@ -189,11 +184,8 @@ namespace Platform.Support.ConsoleEx
                     disposed = true;
                 }
             }
-
         }
 
-        #endregion
-
-
+        #endregion IDisposable
     }
 }

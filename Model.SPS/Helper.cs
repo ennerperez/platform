@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Platform.Model
 {
-
 #if PORTABLE
+
     namespace Core
     {
 #endif
 
-        namespace SPS
+    namespace SPS
+    {
+        internal static class Helper
         {
-            internal static class Helper
-            {
-
 #if !PORTABLE
 
             /// <summary>
@@ -65,7 +63,9 @@ namespace Platform.Model
                     return Directory.GetCurrentDirectory();
                 }
             }
+
 #else
+
                 /// <summary>
                 /// Gets an attribute from a MemberInfo object.
                 /// </summary>
@@ -85,12 +85,13 @@ namespace Platform.Model
 
                     return attributes.FirstOrDefault() as T;
                 }
+
 #endif
-            }
         }
+    }
 
 #if PORTABLE
     }
-#endif
 
+#endif
 }

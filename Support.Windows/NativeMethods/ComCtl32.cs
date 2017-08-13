@@ -52,5 +52,4 @@ namespace Platform.Support.Windows
         public const UInt32 NODIVIDER = 0x00000040;
         public const UInt32 NOPARENTALIGN = 0x00000008;
     }
-
 }

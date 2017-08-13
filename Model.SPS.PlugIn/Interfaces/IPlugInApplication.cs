@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Platform.Model
+﻿namespace Platform.Model
 {
-
 #if PORTABLE
+
     namespace Core
     {
 #endif
 
     namespace SPS
     {
-
         /// <summary>
         /// Represents a plugin-based application from perspective of plugins.
         /// </summary>
@@ -30,11 +24,10 @@ namespace Platform.Model
             /// </summary>
             string Name { get; }
         }
-
     }
 
 #if PORTABLE
     }
-#endif
 
+#endif
 }

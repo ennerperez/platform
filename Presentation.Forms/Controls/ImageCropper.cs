@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Controls
 {
-
     [Obsolete("Considerate ImageCropControl instead")]
     [ToolboxBitmap(typeof(System.Windows.Forms.PictureBox))]
     [ToolboxItem(false)]
@@ -20,6 +15,7 @@ namespace Platform.Presentation.Forms.Controls
         {
             this.InitializeComponent();
         }
+
         public ImageCropper(Bitmap img, Color bgColor)
         {
             this.InitializeComponent();
@@ -103,6 +99,7 @@ namespace Platform.Presentation.Forms.Controls
             graphics.FillRectangle(new SolidBrush(Color.Blue), this.rcRB);
             base.OnPaint(e);
         }
+
         private void cropBox_MouseMove(object sender, MouseEventArgs e)
         {
             Point pt = new Point(e.X, e.Y);
@@ -367,6 +364,7 @@ namespace Platform.Presentation.Forms.Controls
             }
             base.OnMouseMove(e);
         }
+
         private void cropBox_MouseDown(object sender, MouseEventArgs e)
         {
             new Point(e.X, e.Y);
@@ -376,10 +374,12 @@ namespace Platform.Presentation.Forms.Controls
             this.points.Y = e.Y - this.CropRect.Y;
             this.IsDraging = true;
         }
+
         private void cropBox_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
         }
+
         private void cropBox_MouseUp(object sender, MouseEventArgs e)
         {
             this.IsDraging = false;
@@ -446,6 +446,7 @@ namespace Platform.Presentation.Forms.Controls
             bitmap.Dispose();
             return expr_298;
         }
+
         private Rectangle getCropBounds()
         {
             int num = this.CropRect.X;
@@ -473,6 +474,7 @@ namespace Platform.Presentation.Forms.Controls
             this.cropBox.Update();
             this.cropBox.Refresh();
         }
+
         public void setBGType(int bgType)
         {
             if (bgType == 1)
@@ -510,6 +512,5 @@ namespace Platform.Presentation.Forms.Controls
             this.cropBox.Update();
             this.cropBox.Refresh();
         }
-
     }
 }

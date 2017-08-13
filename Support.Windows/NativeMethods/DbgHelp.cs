@@ -6,7 +6,6 @@ using System.Runtime.InteropServices;
 
 namespace Platform.Support.Windows
 {
-
     /// <summary>
     /// Imports from DbgHelp.dll
     /// </summary>

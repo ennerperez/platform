@@ -7,8 +7,10 @@ using System.Runtime.InteropServices;
 namespace Platform.Support.Windows
 {
 #if !INTEROP
+
     internal static class Propsys
 #else
+
     public static class Propsys
 #endif
     {
@@ -105,9 +107,11 @@ namespace Platform.Support.Windows
     /// and modified to support additional types including vectors and ability to set values
     /// </remarks>
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential)]
     internal struct PropVariant
 #else
+
     [StructLayout(LayoutKind.Sequential)]
     public struct PropVariant
 #endif
@@ -125,12 +129,13 @@ namespace Platform.Support.Windows
 
         // This is actually a VarEnum value, but the VarEnum type
         // requires 4 bytes instead of the expected 2.
-        ushort valueType;
+        private ushort valueType;
 
         // Reserved Fields
-        ushort wReserved1;
-        ushort wReserved2;
-        ushort wReserved3;
+        private ushort wReserved1;
+
+        private ushort wReserved2;
+        private ushort wReserved3;
 
         // In order to allow x64 compat, we need to allow for
         // expansion of the IntPtr. However, the BLOB struct
@@ -140,9 +145,11 @@ namespace Platform.Support.Windows
         // pointer. The valueDataExt field provides this, as well as
         // the last 4-bytes of an 8-byte value on 32-bit
         // architectures.
-        IntPtr valueData;
-        Int32 valueDataExt;
-        #endregion // struct fields
+        private IntPtr valueData;
+
+        private Int32 valueDataExt;
+
+        #endregion Fields
 
         #region public Methods
 
@@ -408,7 +415,6 @@ namespace Platform.Support.Windows
             PropVariant propVar;
             Propsys.InitPropVariantFromStringVector(value, (uint)value.Length, out propVar);
             CopyData(propVar);
-
         }
 
         /// <summary>
@@ -716,7 +722,7 @@ namespace Platform.Support.Windows
             }
         }
 
-        #endregion
+        #endregion public Methods
 
         #region public Properties
 
@@ -740,72 +746,105 @@ namespace Platform.Support.Windows
                 {
                     case VarEnum.VT_I1:
                         return cVal;
+
                     case VarEnum.VT_UI1:
                         return bVal;
+
                     case VarEnum.VT_I2:
                         return iVal;
+
                     case VarEnum.VT_UI2:
                         return uiVal;
+
                     case VarEnum.VT_I4:
                     case VarEnum.VT_INT:
                         return lVal;
+
                     case VarEnum.VT_UI4:
                     case VarEnum.VT_UINT:
                         return ulVal;
+
                     case VarEnum.VT_I8:
                         return hVal;
+
                     case VarEnum.VT_UI8:
                         return uhVal;
+
                     case VarEnum.VT_R4:
                         return fltVal;
+
                     case VarEnum.VT_R8:
                         return dblVal;
+
                     case VarEnum.VT_BOOL:
                         return boolVal;
+
                     case VarEnum.VT_ERROR:
                         return scode;
+
                     case VarEnum.VT_CY:
                         return cyVal;
+
                     case VarEnum.VT_DATE:
                         return date;
+
                     case VarEnum.VT_FILETIME:
                         return DateTime.FromFileTime(hVal);
+
                     case VarEnum.VT_BSTR:
                         return Marshal.PtrToStringBSTR(valueData);
+
                     case VarEnum.VT_BLOB:
                         return GetBlobData();
+
                     case VarEnum.VT_LPSTR:
                         return Marshal.PtrToStringAnsi(valueData);
+
                     case VarEnum.VT_LPWSTR:
                         return Marshal.PtrToStringUni(valueData);
+
                     case VarEnum.VT_UNKNOWN:
                         return Marshal.GetObjectForIUnknown(valueData);
+
                     case VarEnum.VT_DISPATCH:
                         return Marshal.GetObjectForIUnknown(valueData);
+
                     case VarEnum.VT_DECIMAL:
                         return decVal;
+
                     case VarEnum.VT_ARRAY | VarEnum.VT_UNKNOWN:
                         return CrackSingleDimSafeArray(valueData);
+
                     case (VarEnum.VT_VECTOR | VarEnum.VT_LPWSTR):
                         return GetStringVector();
+
                     case (VarEnum.VT_VECTOR | VarEnum.VT_I2):
                         return GetVector<Int16>();
+
                     case (VarEnum.VT_VECTOR | VarEnum.VT_UI2):
                         return GetVector<UInt16>();
+
                     case (VarEnum.VT_VECTOR | VarEnum.VT_I4):
                         return GetVector<Int32>();
+
                     case (VarEnum.VT_VECTOR | VarEnum.VT_UI4):
                         return GetVector<UInt32>();
+
                     case (VarEnum.VT_VECTOR | VarEnum.VT_I8):
                         return GetVector<Int64>();
+
                     case (VarEnum.VT_VECTOR | VarEnum.VT_UI8):
                         return GetVector<UInt64>();
+
                     case (VarEnum.VT_VECTOR | VarEnum.VT_R8):
                         return GetVector<Double>();
+
                     case (VarEnum.VT_VECTOR | VarEnum.VT_BOOL):
                         return GetVector<Boolean>();
+
                     case (VarEnum.VT_VECTOR | VarEnum.VT_FILETIME):
                         return GetVector<DateTime>();
+
                     default:
                         // if the value cannot be marshaled
                         return null;
@@ -813,7 +852,7 @@ namespace Platform.Support.Windows
             }
         }
 
-        #endregion
+        #endregion public Properties
 
         #region PropVariant Simple Data types
 
@@ -900,7 +939,7 @@ namespace Platform.Support.Windows
             }
         }
 
-        #endregion
+        #endregion PropVariant Simple Data types
 
         #region Private Methods
 
@@ -1071,7 +1110,7 @@ namespace Platform.Support.Windows
             return ret;
         }
 
-        Array CrackSingleDimSafeArray(IntPtr psa)
+        private Array CrackSingleDimSafeArray(IntPtr psa)
         {
             uint cDims = OleAut32.SafeArrayGetDim(psa);
             if (cDims != 1)
@@ -1115,14 +1154,15 @@ namespace Platform.Support.Windows
             }
         }
 
-        #endregion
-
+        #endregion Private Methods
     }
 
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential)]
     internal class PropVariantRef
 #else
+
     [StructLayout(LayoutKind.Sequential)]
     public class PropVariantRef
 #endif
@@ -1137,5 +1177,4 @@ namespace Platform.Support.Windows
             return obj;
         }
     }
-
 }

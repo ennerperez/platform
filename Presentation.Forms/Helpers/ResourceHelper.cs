@@ -1,16 +1,14 @@
 ﻿// Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
+using Platform.Support;
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Drawing.Imaging;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Diagnostics;
-using System.Drawing;
 using System.Reflection;
-using System.Collections;
-using Platform.Support;
 using System.Resources;
 
 namespace Platform.Presentation.Forms
@@ -105,7 +103,6 @@ namespace Platform.Presentation.Forms
                     {
                         if (stream != null)
                         {
-
                             //	Load the bitmap.
                             // Bitmaps require their underlying streams to remain open
                             // for as long as their bitmaps are in use.  We don't want to hold open the

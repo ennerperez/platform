@@ -1,12 +1,9 @@
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
-using System;
 using System.Collections;
-using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms
@@ -106,6 +103,7 @@ namespace Platform.Presentation.Forms
                                 case DockStyle.Left:
                                     childControl.Dock = DockStyle.Right;
                                     break;
+
                                 case DockStyle.Right:
                                     childControl.Dock = DockStyle.Left;
                                     break;
@@ -119,10 +117,12 @@ namespace Platform.Presentation.Forms
                                         childControl.Anchor &= ~AnchorStyles.Left;
                                         childControl.Anchor |= AnchorStyles.Right;
                                         break;
+
                                     case AnchorStyles.Right:
                                         childControl.Anchor &= ~AnchorStyles.Right;
                                         childControl.Anchor |= AnchorStyles.Left;
                                         break;
+
                                     case AnchorStyles.Left | AnchorStyles.Right:
                                         // do nothing
                                         break;
@@ -171,7 +171,5 @@ namespace Platform.Presentation.Forms
             mirrored.RotateFlip(RotateFlipType.RotateNoneFlipX);
             return mirrored;
         }
-
     }
 }
-

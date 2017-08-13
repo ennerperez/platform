@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ComponentModel;
-using System.Runtime.InteropServices;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Controls
 {
-
     /// <summary>
     /// TODO: Fix, render problems when scrollings.
     /// </summary>
@@ -19,15 +14,15 @@ namespace Platform.Presentation.Forms.Controls
     [ToolboxItem(true)]
     public class FillBar : Control
     {
-
         public FillBar()
         {
             Invalidate();
         }
 
-        #region  Events
+        #region Events
 
         public event EventHandler<EventArgs> ValueChanged;
+
         public void OnValueChanged(EventArgs e)
         {
             if (ValueChanged != null)
@@ -36,11 +31,12 @@ namespace Platform.Presentation.Forms.Controls
             }
         }
 
-        #endregion
+        #endregion Events
 
         #region Properties
 
         private float _Value = 0;
+
         [DefaultValue(0)]
         public float Value
         {
@@ -60,6 +56,7 @@ namespace Platform.Presentation.Forms.Controls
         }
 
         private float _MaxValue = 100;
+
         [DefaultValue(100)]
         public float MaxValue
         {
@@ -80,6 +77,7 @@ namespace Platform.Presentation.Forms.Controls
         }
 
         private float _MinValue = 0;
+
         [DefaultValue(0)]
         public float MinValue
         {
@@ -100,6 +98,7 @@ namespace Platform.Presentation.Forms.Controls
         }
 
         private Color _FillColor = SystemColors.Highlight;
+
         [DefaultValue(typeof(System.Drawing.Color), "SystemColors.Highlight")]
         public Color FillColor
         {
@@ -118,6 +117,7 @@ namespace Platform.Presentation.Forms.Controls
         public Brush CustomBrush { get; set; }
 
         private int _BorderWidth = 2;
+
         [DefaultValue(2)]
         public int BorderWidth
         {
@@ -132,8 +132,8 @@ namespace Platform.Presentation.Forms.Controls
             }
         }
 
-
         private Color _BorderColor = SystemColors.ControlDark;
+
         [DefaultValue(typeof(Color), "SystemColors.ControlDark")]
         public Color BorderColor
         {
@@ -146,6 +146,7 @@ namespace Platform.Presentation.Forms.Controls
         }
 
         private Orientation _Orientation = Orientation.Horizontal;
+
         [DefaultValue(typeof(Orientation), "Orientation.Horizontal")]
         public Orientation Orientation
         {
@@ -157,11 +158,10 @@ namespace Platform.Presentation.Forms.Controls
             }
         }
 
-        #endregion
+        #endregion Properties
 
         protected override void OnPaint(PaintEventArgs e)
         {
-
             e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
             e.Graphics.InterpolationMode = InterpolationMode.Low;
 
@@ -202,7 +202,6 @@ namespace Platform.Presentation.Forms.Controls
 
             e.Graphics.FillRectangle(_bsh, _recFill);
             e.Graphics.DrawRectangle(new Pen(this.BorderColor, this.BorderWidth), e.ClipRectangle);
-
         }
 
         protected override void OnSizeChanged(EventArgs e)
@@ -210,7 +209,5 @@ namespace Platform.Presentation.Forms.Controls
             base.OnSizeChanged(e);
             this.Invalidate();
         }
-
     }
-
 }

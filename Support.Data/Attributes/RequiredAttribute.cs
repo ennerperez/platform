@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace Platform.Support.Data.Attributes
 {
@@ -34,14 +30,14 @@ namespace Platform.Support.Data.Attributes
         }
 
         /// <summary>Inicializa una nueva instancia de la clase <see cref="T:System.ComponentModel.DataAnnotations.RequiredAttribute" />.</summary>
-        public RequiredAttribute():base()
+        public RequiredAttribute() : base()
         {
-   //         Func<string> arg_20_1;
-   //         if ((arg_20_1 = RequiredAttribute.<> c.<> 9__0_0) == null)
-			//{
-   //             arg_20_1 = (RequiredAttribute.<> c.<> 9__0_0 = new Func<string>(RequiredAttribute.<> c.<> 9.<.ctor > b__0_0));
-   //         }
-   //         base..ctor(arg_20_1);
+            //         Func<string> arg_20_1;
+            //         if ((arg_20_1 = RequiredAttribute.<> c.<> 9__0_0) == null)
+            //{
+            //             arg_20_1 = (RequiredAttribute.<> c.<> 9__0_0 = new Func<string>(RequiredAttribute.<> c.<> 9.<.ctor > b__0_0));
+            //         }
+            //         base..ctor(arg_20_1);
         }
 
         /// <summary>Comprueba si el valor del campo de datos necesario no está vacío.</summary>

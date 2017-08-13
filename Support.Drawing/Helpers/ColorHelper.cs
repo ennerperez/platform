@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 
 namespace Platform.Support.Drawing
 {
     public static partial class ColorHelper
     {
-        
         public static double ValidColor(double number)
         {
             return number.Between(0, 1);
@@ -143,7 +141,7 @@ namespace Platform.Support.Drawing
                 (int)Maths.MathHelper.Lerp(from.G, to.G, amount),
                 (int)Maths.MathHelper.Lerp(from.B, to.B, amount));
         }
-        
+
         public static Color GetDarkColor(Color c, byte d)
         {
             byte r = 0;
@@ -221,8 +219,5 @@ namespace Platform.Support.Drawing
         {
             return Color.FromArgb(color.ToArgb() ^ 0xffffff);
         }
-
-
     }
-
 }

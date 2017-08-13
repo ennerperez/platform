@@ -9,15 +9,16 @@ using System.Text;
 
 namespace Platform.Support.Windows
 {
-
 #pragma warning disable CS0649
 
     /// <summary>
     /// Imports from Shell32.dll
     /// </summary>
 #if !INTEROP
+
     internal class Shell32
 #else
+
     public class Shell32
 #endif
     {
@@ -467,6 +468,7 @@ namespace Platform.Support.Windows
 
         // IID GUID strings for relevant Shell COM interfaces.
         public const string IShellItem = "43826D1E-E718-42EE-BC55-A1E261C37BFE";
+
         public const string IShellItem2 = "7E9FB0D3-919F-4307-AB2E-9B1860310C93";
         internal const string IShellFolder = "000214E6-0000-0000-C000-000000000046";
         internal const string IShellFolder2 = "93F2F68C-1D1B-11D3-A30E-00C04F79ABD1";
@@ -478,12 +480,13 @@ namespace Platform.Support.Windows
 
         [DllImport(ExternDll.Shell32, EntryPoint = "ExtractIconExW", CharSet = CharSet.Unicode, ExactSpelling = true, CallingConvention = CallingConvention.StdCall)]
         public extern static int ExtractIconExW(string sFile, int iIndex, out IntPtr piLargeVersion, out IntPtr piSmallVersion, int amountIcons);
-
     }
 
 #if !INTEROP
+
     internal struct SHARD
 #else
+
     public struct SHARD
 #endif
     {
@@ -493,8 +496,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct CSIDL
 #else
+
     public struct CSIDL
 #endif
     {
@@ -502,12 +507,13 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct FILEDESCRIPTOR_HEADER
 #else
+
     public struct FILEDESCRIPTOR_HEADER
 #endif
     {
-
         public int dwFlags;
         public Guid clsid;
         public SIZEL sizel;
@@ -518,12 +524,13 @@ namespace Platform.Support.Windows
         public System.Runtime.InteropServices.ComTypes.FILETIME ftLastWriteTime;
         public int nFileSizeHigh;
         public int nFileSizeLow;
-
     }
 
 #if !INTEROP
+
     internal struct SHGFI
 #else
+
     public struct SHGFI
 #endif
     {
@@ -535,11 +542,12 @@ namespace Platform.Support.Windows
         public const uint LINKOVERLAY = 0x000008000; // Show shortcut overlay
     }
 
-
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential)]
     internal struct SHFILEINFO
 #else
+
     [StructLayout(LayoutKind.Sequential)]
     public struct SHFILEINFO
 #endif
@@ -547,32 +555,38 @@ namespace Platform.Support.Windows
         public IntPtr hIcon;
         public IntPtr iIcon;
         public uint dwAttributes;
+
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]
         public string szDisplayName;
+
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 80)]
         public string szTypeName;
     };
 
 #if !INTEROP
+
     internal struct DROPFILES
 #else
+
     public struct DROPFILES
 #endif
     {
-
         public uint pFiles;
         public POINT pt;
+
         [MarshalAs(UnmanagedType.Bool)]
         public bool fNC;
+
         [MarshalAs(UnmanagedType.Bool)]
         public bool fWide;
-
     };
 
     // ShellExecute and FindExecutable error codes
 #if !INTEROP
+
     internal struct SE_ERR
 #else
+
     public struct SE_ERR
 #endif
     {
@@ -585,8 +599,10 @@ namespace Platform.Support.Windows
     /// Flags controlling the appearance of a window
     /// </summary>
 #if !INTEROP
+
     internal enum WindowShowCommand : uint
 #else
+
     public enum WindowShowCommand : uint
 #endif
     {
@@ -660,11 +676,13 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     [ComImport,
     Guid(Shell32.IShellItem2),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     internal interface IShellItem2 : IShellItem
 #else
+
     [ComImport,
     Guid(Shell32.IShellItem2),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -722,11 +740,13 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     [ComImport,
     Guid(Shell32.IShellItem),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     internal interface IShellItem
 #else
+
     [ComImport,
     Guid(Shell32.IShellItem),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -763,11 +783,13 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     [ComImport,
   Guid(Shell32.IPropertyStore),
   InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     internal interface IPropertyStore
 #else
+
     [ComImport,
        Guid(Shell32.IPropertyStore),
        InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -796,9 +818,11 @@ namespace Platform.Support.Windows
     /// Defines a unique key for a Shell Property
     /// </summary>
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
     internal struct PropertyKey : IEquatable<PropertyKey>
 #else
+
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public struct PropertyKey : IEquatable<PropertyKey>
 #endif
@@ -808,9 +832,10 @@ namespace Platform.Support.Windows
         private Guid formatId;
         private Int32 propertyId;
 
-        #endregion
+        #endregion Private Fields
 
         #region Public Properties
+
         /// <summary>
         /// A unique GUID for the property
         /// </summary>
@@ -833,7 +858,7 @@ namespace Platform.Support.Windows
             }
         }
 
-        #endregion
+        #endregion Public Properties
 
         #region Public Construction
 
@@ -866,7 +891,7 @@ namespace Platform.Support.Windows
             this.propertyId = Convert.ToInt32(id);
         }
 
-        #endregion
+        #endregion Public Construction
 
         #region IEquatable<PropertyKey> Members
 
@@ -880,7 +905,7 @@ namespace Platform.Support.Windows
             return other.Equals((object)this);
         }
 
-        #endregion
+        #endregion IEquatable<PropertyKey> Members
 
         #region equality and hashing
 
@@ -944,10 +969,11 @@ namespace Platform.Support.Windows
             return String.Format("{0}, {1}", formatId.ToString("B"), propertyId);
         }
 
-        #endregion
+        #endregion equality and hashing
 
-        static System.Collections.Generic.Dictionary<PropertyKey, GCHandle> s_pinnedCache =
+        private static System.Collections.Generic.Dictionary<PropertyKey, GCHandle> s_pinnedCache =
             new System.Collections.Generic.Dictionary<PropertyKey, GCHandle>(16);
+
         public IntPtr ToPointer()
         {
             if (!s_pinnedCache.ContainsKey(this))
@@ -960,9 +986,11 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential)]
     internal class PropertyKeyRef
 #else
+
     [StructLayout(LayoutKind.Sequential)]
     public class PropertyKeyRef
 #endif
@@ -978,12 +1006,14 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     [ComImport,
     Guid(Shell32.IShellFolder),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
     ComConversionLoss]
     internal interface IShellFolder
 #else
+
     [ComImport,
     Guid(Shell32.IShellFolder),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
@@ -1018,5 +1048,4 @@ namespace Platform.Support.Windows
     }
 
 #pragma warning restore
-
 }

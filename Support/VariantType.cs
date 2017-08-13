@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Platform.Support
+﻿namespace Platform.Support
 {
     public enum VariantType
     {
@@ -28,5 +23,4 @@ namespace Platform.Support
         UserDefinedType = 36,
         Array = 8192,
     }
-
 }

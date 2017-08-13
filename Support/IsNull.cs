@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Support
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
+
         public static class IsNull
         {
-
             public static string Cast(object value, string replacement = "")
             {
                 if (value != null && value.GetType() == typeof(DateTime))
@@ -40,11 +38,11 @@ namespace Platform.Support
                     return Convert.ToDateTime(replacement).ToString("d");
 
                 return DateTime.MinValue.ToString("d");
-
             }
-
         }
+
 #if PORTABLE
     }
+
 #endif
 }

@@ -6,8 +6,8 @@ namespace Platform.Presentation.Forms.Components
     [System.Drawing.ToolboxBitmap(typeof(System.Windows.Forms.Label))]
     public class Literals : System.ComponentModel.Component
     {
-
         private List<string> _Items = new List<string>();
+
         public string this[int index]
         {
             get { return this._Items[index]; }
@@ -36,6 +36,5 @@ namespace Platform.Presentation.Forms.Components
                 parentContainer.Add(this);
             }
         }
-
     }
 }

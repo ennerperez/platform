@@ -7,10 +7,11 @@ using System.Runtime.InteropServices.ComTypes;
 
 namespace Platform.Support.Windows
 {
-
 #if !INTEROP
+
     internal class Ole32
 #else
+
     public class Ole32
 #endif
 
@@ -115,9 +116,11 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     [Flags]
     internal enum CLSCTX : uint
 #else
+
     [Flags]
     public enum CLSCTX : uint
 #endif
@@ -148,11 +151,13 @@ namespace Platform.Support.Windows
     /// implementors can return the appropriate values
     /// </summary>
 #if !INTEROP
+
     [ComImport]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [Guid("0000010e-0000-0000-C000-000000000046")]
     internal interface IOleDataObject
 #else
+
     [ComImport]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [Guid("0000010e-0000-0000-C000-000000000046")]
@@ -305,11 +310,13 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     [ComImport]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [Guid("00000121-0000-0000-C000-000000000046")]
     internal interface IDropSource
 #else
+
     [ComImport]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [Guid("00000121-0000-0000-C000-000000000046")]
@@ -349,9 +356,11 @@ namespace Platform.Support.Windows
     /// enumeration
     /// </summary>
 #if !INTEROP
+
     [Flags]
     internal enum DROPEFFECT : uint
 #else
+
     [Flags]
     public enum DROPEFFECT : uint
 #endif
@@ -385,11 +394,13 @@ namespace Platform.Support.Windows
     };
 
 #if !INTEROP
+
     [ComImport]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [Guid("00000122-0000-0000-C000-000000000046")]
     internal interface IDropTarget
 #else
+
     [ComImport]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [Guid("00000122-0000-0000-C000-000000000046")]
@@ -416,5 +427,4 @@ namespace Platform.Support.Windows
             [In] POINT pt,
             [Out, In] ref DROPEFFECT pdwEffect);
     }
-
 }

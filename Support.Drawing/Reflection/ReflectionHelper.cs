@@ -19,6 +19,5 @@ namespace Platform.Support.Drawing
         {
             return Icon(Assembly.GetEntryAssembly());
         }
-
     }
 }

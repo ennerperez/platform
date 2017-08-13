@@ -1,11 +1,8 @@
 ﻿using Platform.Model.SPS.Attributes;
-using Platform.Support.Reflection;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Platform.Model.SPS
 {
@@ -92,5 +89,4 @@ namespace Platform.Model.SPS
             PlugIns = new List<IApplicationPlugIn<TPlugIn>>();
         }
     }
-
 }

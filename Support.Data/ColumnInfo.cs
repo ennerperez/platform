@@ -1,8 +1,4 @@
 ﻿using Platform.Support.Data.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Support.Data
 {
@@ -10,7 +6,9 @@ namespace Platform.Support.Data
     {
         [Column("name")]
         public string Name { get; set; }
+
         public int NotNull { get; set; }
+
         public override string ToString()
         {
             return Name;

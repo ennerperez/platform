@@ -5,21 +5,16 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace Platform.Support.Drawing
 {
-
     public static partial class ImageHelper
     {
-
         public static Image FromFile(string filename, bool safe = true)
         {
             if (safe)
             {
-
                 using (var sourceImage = (Bitmap)Image.FromFile(filename))
                 {
                     var targetImage = new Bitmap(sourceImage.Width, sourceImage.Height,
@@ -68,20 +63,20 @@ namespace Platform.Support.Drawing
                 _HttpWebResponse = (System.Net.HttpWebResponse)_HttpWebRequest.GetResponse();
                 _Stream = _HttpWebResponse.GetResponseStream();
                 _return = Image.FromStream(_Stream);
-
             }
             finally
             {
                 _Stream.Close();
                 _HttpWebResponse.Close();
-
             }
             return _return;
         }
+
         public static Image FromURL(string url)
         {
             return FromURI(new Uri(url));
         }
+
         public static Image FromBytes(byte[] data)
         {
             Image _return;
@@ -126,6 +121,7 @@ namespace Platform.Support.Drawing
             memStream = null;
             return result;
         }
+
         public static string ToBase64(Image source, ImageFormat imageFormat = null)
         {
             System.IO.MemoryStream memStream = new System.IO.MemoryStream();
@@ -153,8 +149,7 @@ namespace Platform.Support.Drawing
             return imgTag;
         }
 
-
-        #endregion
+        #endregion Base64
 
         public static Color GetDominantColor(Image source)
         {
@@ -181,9 +176,9 @@ namespace Platform.Support.Drawing
             int averageb = totalB / totalPixels;
             return Color.FromArgb(averageR, averageg, averageb);
         }
+
         public static Color[] GetPalette(Image image)
         {
-
             List<Color> colors;
             using (var b = new Bitmap(image))
             {
@@ -201,17 +196,14 @@ namespace Platform.Support.Drawing
             }
 
             return colors.ToArray();
-
         }
 
         public static bool DrawAdjustedImage(Image img, ColorMatrix cm)
         {
-
-
             try
             {
                 Bitmap bmp = new Bitmap(img);
-                // create a copy of the source image 
+                // create a copy of the source image
                 ImageAttributes imgattr = new ImageAttributes();
                 Rectangle rc = new Rectangle(0, 0, img.Width, img.Height);
                 Graphics g = Graphics.FromImage(img);
@@ -219,24 +211,22 @@ namespace Platform.Support.Drawing
                 // associate the ColorMatrix object with an ImageAttributes object
                 imgattr.SetColorMatrix(cm);
 
-                // draw the copy of the source image back over the original image, 
+                // draw the copy of the source image back over the original image,
                 //applying the ColorMatrix
                 g.DrawImage(bmp, rc, 0, 0, img.Width, img.Height, GraphicsUnit.Pixel, imgattr);
 
                 g.Dispose();
 
                 return true;
-
             }
             catch
             {
                 return false;
             }
-
         }
+
         public static void GrayScale(Image img)
         {
-
             ColorMatrix cm = new ColorMatrix(new float[][] {
             new float[] {
                 0.299F,
@@ -275,13 +265,11 @@ namespace Platform.Support.Drawing
             }
         });
 
-
             DrawAdjustedImage(img, cm);
-
         }
+
         public static void Translate(Image img, float red, float green, float blue, float alpha = 0)
         {
-
             float sr;
             float sg;
             float sb;
@@ -334,8 +322,8 @@ namespace Platform.Support.Drawing
 
             // apply the matrix to the image
             DrawAdjustedImage(img, cm);
-
         }
+
         public static void Negative(Image img)
         {
             ColorMatrix cm = new ColorMatrix(new float[][] {
@@ -377,7 +365,6 @@ namespace Platform.Support.Drawing
         });
 
             DrawAdjustedImage(img, cm);
-
         }
 
         public static Image ResizeImage(Image image, Size size, bool preserveAspectRatio = true)
@@ -408,7 +395,6 @@ namespace Platform.Support.Drawing
                 graphicsHandle.DrawImage(image, 0, 0, newWidth, newHeight);
             }
             return newImage;
-
         }
 
         /// <summary>
@@ -530,12 +516,9 @@ namespace Platform.Support.Drawing
             Bitmap squareCanvas = CopyToSquareCanvas(sourceBitmap, Color.Transparent);
             squareCanvas = (Bitmap)squareCanvas.GetThumbnailImage(iconSize, iconSize, null, new IntPtr());
 
-
             Icon iconResult = Icon.FromHandle(squareCanvas.GetHicon());
-
 
             return iconResult;
         }
-
     }
 }

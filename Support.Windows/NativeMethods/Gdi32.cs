@@ -7,15 +7,16 @@ using System.Runtime.InteropServices;
 
 namespace Platform.Support.Windows
 {
-
 #pragma warning disable CS0649
 
     /// <summary>
     /// Imports from Gdi32.dll
     /// </summary>
 #if !INTEROP
+
     internal class Gdi32
 #else
+
     public class Gdi32
 #endif
     {
@@ -139,14 +140,12 @@ namespace Platform.Support.Windows
 
         public struct XFORM
         {
-
             public float eM11;
             public float eM12;
             public float eM21;
             public float eM22;
             public float eDx;
             public float eDy;
-
         }
 
         [DllImport(ExternDll.Gdi32, SetLastError = true)]
@@ -182,13 +181,14 @@ namespace Platform.Support.Windows
             IntPtr hdc,
             POINT[] lpPoints,
             int nCounts);
-        
     }
 
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     internal struct SIZEL
 #else
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     public struct SIZEL
 #endif
@@ -198,9 +198,11 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     internal struct POINTL
 #else
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     public struct POINTL
 #endif
@@ -211,8 +213,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct DEVICECAPS
 #else
+
     public struct DEVICECAPS
 #endif
     {
@@ -221,9 +225,11 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     internal struct BITMAP
 #else
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     public struct BITMAP
 #endif
@@ -239,5 +245,4 @@ namespace Platform.Support.Windows
     }
 
 #pragma warning restore
-
 }

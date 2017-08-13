@@ -17,6 +17,7 @@ namespace Platform.Presentation.Forms
             public int BUTTON_FACE_DROP_DOWN_LEFT_INSET = 1;
             public int DROP_DOWN_BUTTON_WIDTH = 15;
         }
+
         private static readonly ButtonSettings DefaultButtonSettings = new ButtonSettings();
 
         public const int SMALL_BUTTON_IMAGE_SIZE = 16;
@@ -31,6 +32,7 @@ namespace Platform.Presentation.Forms
         {
             DrawSystemButtonFace(graphics, DropDownContextMenuUserInterface, contextMenuShowing, clientRectangle, isLargeButton, DefaultButtonSettings);
         }
+
         private static void DrawSystemButtonFace(BidiGraphics graphics, bool DropDownContextMenuUserInterface, bool contextMenuShowing, Rectangle VirtualClientRectangle, bool isLargeButton, ButtonSettings settings)
         {
             // calculate bitmaps
@@ -108,12 +110,14 @@ namespace Platform.Presentation.Forms
         /// Button face.
         /// </summary>
         public static Bitmap buttonFaceBitmap;
+
         public static Bitmap buttonFaceBitmapLarge;
 
         /// <summary>
         /// Pushed button face.
         /// </summary>
         public static Bitmap buttonFacePushedBitmap;
+
         public static Bitmap buttonFacePushedBitmapLarge;
 
         /// <summary>

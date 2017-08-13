@@ -8,7 +8,6 @@ using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Controls
 {
-
     [ToolboxBitmap(typeof(System.Windows.Forms.ComboBox))]
     [ToolboxItem(true)]
     public class ImageComboBox : ComboBox
@@ -18,7 +17,7 @@ namespace Platform.Presentation.Forms.Controls
         /// </summary>
         private Container components = null;
 
-        public ImageComboBox() :base()
+        public ImageComboBox() : base()
         {
             DropDownStyle = ComboBoxStyle.DropDownList;
             DrawMode = DrawMode.OwnerDrawFixed;
@@ -134,6 +133,7 @@ namespace Platform.Presentation.Forms.Controls
 
         // item metrics
         private const int TOP_INSET = 2;
+
         private const int BOTTOM_INSET = 2;
         private const int IMAGE_INSET = 3;
         private const int TEXT_INSET = 5;

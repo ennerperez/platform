@@ -3,14 +3,10 @@
 
 using Platform.Support.Windows;
 using System;
-using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-using System.Globalization;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Controls
@@ -92,6 +88,7 @@ namespace Platform.Presentation.Forms.Controls
         #endregion Class Initialization & Termination
 
         #region Component Designer generated code
+
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -109,9 +106,9 @@ namespace Platform.Presentation.Forms.Controls
             //
             this.Name = "AnimatedBitmapControl";
             this.Size = new System.Drawing.Size(64, 48);
-
         }
-        #endregion
+
+        #endregion Component Designer generated code
 
         #region Public Properties
 
@@ -175,7 +172,7 @@ namespace Platform.Presentation.Forms.Controls
             set { useVirtualTransparency = value; }
         }
 
-        #endregion
+        #endregion Public Properties
 
         #region Public Methods
 
@@ -251,7 +248,7 @@ namespace Platform.Presentation.Forms.Controls
             Update();
         }
 
-        #endregion
+        #endregion Private Event Handlers
 
         #region Private Methods
 
@@ -602,7 +599,7 @@ namespace Platform.Presentation.Forms.Controls
     //    public const int DI_COMPAT = 0x0004;
     //    public const int DI_DEFAULTSIZE = 0x0008;
     //    public const int DI_NOMIRROR = 0x0010;
-        
+
     //    public void FillPolygon(Brush b, Point[] points)
     //    {
     //        for (int i = 0; i < points.Length; i++)
@@ -801,7 +798,6 @@ namespace Platform.Presentation.Forms.Controls
     //        return mirrored;
     //    }
 
-
     //}
 
     //#endregion
@@ -890,10 +886,8 @@ namespace Platform.Presentation.Forms.Controls
         }
     }
 
-    #endregion
-
+    #endregion VirtualTransparency
 }
-
 
 //internal static partial class NativeMethods
 //{

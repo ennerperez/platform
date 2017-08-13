@@ -1,10 +1,7 @@
 ﻿using Platform.Presentation.Forms.Components;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Customs
@@ -13,7 +10,6 @@ namespace Platform.Presentation.Forms.Customs
     [ToolboxItem(true)]
     public class ToolStrip : System.Windows.Forms.ToolStrip
     {
-
         public event EventHandler AppearanceControlChanged;
 
         public ToolStrip() : base()
@@ -22,6 +18,7 @@ namespace Platform.Presentation.Forms.Customs
         }
 
         private AppearanceManager _Appearance;
+
         public AppearanceManager Appearance
         {
             get { return _Appearance; }
@@ -38,6 +35,7 @@ namespace Platform.Presentation.Forms.Customs
         }
 
         private bool _RoundedEdges;
+
         public bool RoundedEdges
         {
             get { return _RoundedEdges; }
@@ -76,6 +74,5 @@ namespace Platform.Presentation.Forms.Customs
             ((ToolStripProfessionalRenderer)this.Renderer).RoundedEdges = _RoundedEdges;
             this.Invalidate();
         }
-
     }
 }

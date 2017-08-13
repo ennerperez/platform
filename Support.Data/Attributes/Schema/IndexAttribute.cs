@@ -4,17 +4,16 @@ using System.Runtime.CompilerServices;
 
 namespace Platform.Support.Data.Attributes
 {
-
     /// <summary>
-	/// When this attribute is placed on a property it indicates that the database column to which the
-	/// property is mapped has an index.
-	/// </summary>
-	/// <remarks>
-	/// This attribute is used by Entity Framework Migrations to create indexes on mapped database columns.
-	/// Multi-column indexes are created by using the same index name in multiple attributes. The information
-	/// in these attributes is then merged together to specify the actual database index.
-	/// </remarks>
-	[AttributeUsage(AttributeTargets.Property, AllowMultiple = true), SuppressMessage("Microsoft.Performance", "CA1813:AvoidUnsealedAttributes"), SuppressMessage("Microsoft.Design", "CA1019:DefineAccessorsForAttributeArguments")]
+    /// When this attribute is placed on a property it indicates that the database column to which the
+    /// property is mapped has an index.
+    /// </summary>
+    /// <remarks>
+    /// This attribute is used by Entity Framework Migrations to create indexes on mapped database columns.
+    /// Multi-column indexes are created by using the same index name in multiple attributes. The information
+    /// in these attributes is then merged together to specify the actual database index.
+    /// </remarks>
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = true), SuppressMessage("Microsoft.Performance", "CA1813:AvoidUnsealedAttributes"), SuppressMessage("Microsoft.Design", "CA1019:DefineAccessorsForAttributeArguments")]
     public class IndexAttribute : Attribute
     {
         private string _name;
@@ -69,7 +68,7 @@ namespace Platform.Support.Data.Attributes
         }
 
         /// <summary>
-        /// Set this property to true to define a clustered index. Set this property to false to define a 
+        /// Set this property to true to define a clustered index. Set this property to false to define a
         /// non-clustered index.
         /// </summary>
         /// <remarks>
@@ -100,7 +99,7 @@ namespace Platform.Support.Data.Attributes
         }
 
         /// <summary>
-        /// Set this property to true to define a unique index. Set this property to false to define a 
+        /// Set this property to true to define a unique index. Set this property to false to define a
         /// non-unique index.
         /// </summary>
         /// <remarks>
@@ -162,7 +161,7 @@ namespace Platform.Support.Data.Attributes
         }
 
         /// <summary>
-        /// Creates a <see cref="T:System.ComponentModel.DataAnnotations.Schema.IndexAttribute" /> instance for an index with the given name and column order, 
+        /// Creates a <see cref="T:System.ComponentModel.DataAnnotations.Schema.IndexAttribute" /> instance for an index with the given name and column order,
         /// but with no clustering or uniqueness specified.
         /// </summary>
         /// <remarks>
@@ -247,6 +246,5 @@ namespace Platform.Support.Data.Attributes
         //public virtual bool Unique { get; set; }
     }
 
-    #endregion
-
+    #endregion Legacy
 }

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using Platform.Support.Reflection;
+﻿using Platform.Support.Drawing;
+using System;
 using System.IO;
-using Platform.Support.Drawing;
+using System.Windows.Forms;
 
 namespace Sample
 {
-
     public class RootObject
     {
         public string ip { get; set; }
@@ -20,18 +16,16 @@ namespace Sample
         public string org { get; set; }
     }
 
-    static class Program
+    internal static class Program
     {
-
         public static Palette Palette { get; set; }
 
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
-
             if (File.Exists("Palettes\\colors_blue_indigo.xml"))
                 Palette = Palette.ReadFrom("Palettes\\colors_blue_indigo.xml");
 

@@ -11,7 +11,6 @@
 
 //internal static class NativeMethods
 //{
-
 //#pragma warning disable 0436
 //    internal interface IProgress<T>
 //    {

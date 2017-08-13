@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 
 namespace Platform.Support.Text
 {
@@ -22,38 +19,42 @@ namespace Platform.Support.Text
                     case '"':
                         encodedText.Append("&quot;");
                         break;
+
                     case '&':
                         encodedText.Append(@"&amp;");
                         break;
+
                     case '\'':
                         encodedText.Append(@"&apos;");
                         break;
+
                     case '<':
                         encodedText.Append(@"&lt;");
                         break;
+
                     case '>':
                         encodedText.Append(@"&gt;");
                         break;
 
-                    // The character '\' should be converted to @"\\" or "\\\\" 
+                    // The character '\' should be converted to @"\\" or "\\\\"
                     case '\\':
                         encodedText.Append(@"\\");
                         break;
 
-                    // The character '{' should be converted to @"\{" or "\\{" 
+                    // The character '{' should be converted to @"\{" or "\\{"
                     case '{':
                         encodedText.Append(@"\{");
                         break;
 
-                    // The character '}' should be converted to @"\}" or "\\}" 
+                    // The character '}' should be converted to @"\}" or "\\}"
                     case '}':
                         encodedText.Append(@"\}");
                         break;
+
                     default:
                         encodedText.Append(originalText[i]);
                         break;
                 }
-
             }
             return encodedText.ToString();
         }

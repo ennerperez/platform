@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Platform.Model
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
+
         namespace MVC
         {
             public class Controller<T> : IController<T> where T : IModel
             {
-
                 private IView<T> view;
                 private IList items;
                 private T selectedItem;
@@ -32,7 +31,7 @@ namespace Platform.Model
 #if PORTABLE
                     get { return new List<T>((IEnumerable<T>)items); }
 #else
-            get { return ArrayList.ReadOnly(items); }
+                get { return ArrayList.ReadOnly(items); }
 #endif
                 }
 
@@ -41,14 +40,14 @@ namespace Platform.Model
 #if NETFX_45
                     var fcollection = typeof(T).GetRuntimeFields();
 #else
-            var fcollection = typeof(T).GetFields();
+                    var fcollection = typeof(T).GetFields();
 #endif
                     foreach (var field in fcollection)
                     {
 #if NETFX_45
                         var vfield = view.GetType().GetRuntimeField(field.Name);
 #else
-                var vfield = view.GetType().GetField(field.Name);
+                        var vfield = view.GetType().GetField(field.Name);
 #endif
                         if (vfield != null)
                             vfield.SetValue(view, field.GetValue(item));
@@ -57,14 +56,14 @@ namespace Platform.Model
 #if NETFX_45
                     var pcollection = typeof(T).GetRuntimeProperties();
 #else
-            var pcollection = typeof(T).GetProperties();
+                    var pcollection = typeof(T).GetProperties();
 #endif
                     foreach (var prop in pcollection)
                     {
 #if NETFX_45
                         var vprop = view.GetType().GetRuntimeProperty(prop.Name);
 #else
-                var vprop = view.GetType().GetProperty(prop.Name);
+                        var vprop = view.GetType().GetProperty(prop.Name);
 #endif
                         if (vprop != null && vprop.CanWrite)
                             vprop.SetValue(view, prop.GetValue(item, null), null);
@@ -73,11 +72,10 @@ namespace Platform.Model
 
                 private void updateItemWithViewValues(T item)
                 {
-
 #if NETFX_45
                     var fcollection = view.GetType().GetRuntimeFields();
 #else
-            var fcollection = view.GetType().GetFields();
+                    var fcollection = view.GetType().GetFields();
 #endif
 
                     foreach (var field in fcollection)
@@ -85,7 +83,7 @@ namespace Platform.Model
 #if NETFX_45
                         var vfield = typeof(T).GetRuntimeField(field.Name);
 #else
-                var vfield = typeof(T).GetField(field.Name);
+                        var vfield = typeof(T).GetField(field.Name);
 #endif
                         if (vfield != null)
                             vfield.SetValue(view, field.GetValue(item));
@@ -94,19 +92,18 @@ namespace Platform.Model
 #if NETFX_45
                     var pcollection = view.GetType().GetRuntimeProperties();
 #else
-            var pcollection = view.GetType().GetProperties();
+                    var pcollection = view.GetType().GetProperties();
 #endif
                     foreach (var prop in pcollection)
                     {
 #if NETFX_45
                         var vprop = typeof(T).GetRuntimeProperty(prop.Name);
 #else
-                var vprop = typeof(T).GetProperty(prop.Name);
+                        var vprop = typeof(T).GetProperty(prop.Name);
 #endif
                         if (vprop != null && vprop.CanWrite)
                             vprop.SetValue(view, prop.GetValue(item, null), null);
                     }
-
                 }
 
                 public void LoadView()
@@ -116,7 +113,6 @@ namespace Platform.Model
                         view.AddItemToGrid(item);
 
                     view.SetSelectedItemInGrid((T)items[0]);
-
                 }
 
                 public void SelectedItemChanged(T selectedItem)
@@ -135,7 +131,6 @@ namespace Platform.Model
 
                 public void AddNewItem(object[] args)
                 {
-
                     selectedItem = (T)Activator.CreateInstance(typeof(T), args);
                     updateItemDetailValues(selectedItem);
                 }
@@ -185,15 +180,12 @@ namespace Platform.Model
                         view.UpdateGridWithChangedItem(selectedItem);
                     }
                     view.SetSelectedItemInGrid(selectedItem);
-
                 }
-
             }
         }
 
 #if PORTABLE
     }
+
 #endif
-
 }
-

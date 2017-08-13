@@ -1,25 +1,19 @@
-﻿using System;
+﻿using Platform.Support.Drawing;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
 using System.ComponentModel;
-using System.Windows.Forms;
+using System.Drawing;
 using System.Drawing.Drawing2D;
-using Platform.Support.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Controls
 {
-
     [ToolboxBitmap(typeof(System.Windows.Forms.Panel))]
     [ToolboxItem(true)]
     public class MessagePanel : Panel
     {
-
-
         public MessagePanel() : base()
         {
-
             Resize += MessagePanel_Resize;
 
             colors = new Dictionary<MessageStyle, Color[]>();
@@ -81,7 +75,6 @@ namespace Platform.Presentation.Forms.Controls
             }
         }
 
-
         private int gradientWidth = 20;
 
         [DefaultValue(20), Category("Appearance")]
@@ -98,7 +91,7 @@ namespace Platform.Presentation.Forms.Controls
             }
         }
 
-        #endregion
+        #endregion Properties
 
         private Image imageIcon = null;
         private Color[] gradientColors = null;
@@ -107,7 +100,6 @@ namespace Platform.Presentation.Forms.Controls
 
         protected override void OnPaint(PaintEventArgs e)
         {
-
             base.OnPaint(e);
 
             var gradientRectangle = new Rectangle(new Point(0, 0), new Size(GradientWidth, Height));
@@ -117,7 +109,7 @@ namespace Platform.Presentation.Forms.Controls
                 gradientColors = colors[Style];
             else
                 gradientColors = colors[MessageStyle.None];
-            
+
             if (!e.ClipRectangle.IsEmpty)
                 using (LinearGradientBrush lgb = new LinearGradientBrush(gradientRectangle, gradientColors[0], gradientColors[1], 90))
                 {
@@ -130,7 +122,6 @@ namespace Platform.Presentation.Forms.Controls
 
             if (ShowIcon && imageIcon != null)
             {
-                
                 if (Height < imageIcon.Height + (Padding.Top + Padding.Bottom))
                     Size = new Size(Width, imageIcon.Height + (Padding.Top + Padding.Bottom));
 
@@ -141,18 +132,16 @@ namespace Platform.Presentation.Forms.Controls
                 // Padding left
                 paddingLeft = GradientWidth + DefaultMargin.Left + imageIcon.Width + DefaultMargin.Left;
                 //if (Padding.Left < paddingLeft)
-                    Padding = new Padding(
-                        paddingLeft,
-                        Padding.Top,
-                        Padding.Right,
-                        Padding.Bottom);
-
+                Padding = new Padding(
+                    paddingLeft,
+                    Padding.Top,
+                    Padding.Right,
+                    Padding.Bottom);
             }
 
             //AjustControls
             foreach (Control item in Controls.OfType<Control>().Where(c => c.Location.X < paddingLeft))
                 item.Location = new Point(paddingLeft, item.Location.Y);
-
         }
 
         private void MessagePanel_Resize(object sender, System.EventArgs e)
@@ -161,7 +150,6 @@ namespace Platform.Presentation.Forms.Controls
                 if (Height < imageIcon.Height + (Padding.Top + Padding.Bottom))
                     Size = new Size(Width, imageIcon.Height + (Padding.Top + Padding.Bottom));
         }
-
     }
 
     public enum IconSize : short
@@ -184,5 +172,4 @@ namespace Platform.Presentation.Forms.Controls
         Information = 76,
         Exclamation = 79,
     }
-
 }

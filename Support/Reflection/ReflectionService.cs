@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 
 namespace Platform.Support.Reflection
 {
-
     public class ReflectionService : IReflectionService
     {
         public IEnumerable<PropertyInfo> GetPublicInstanceProperties(Type mappedType)
         {
-            return mappedType.GetProperties(  BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetProperty);
+            return mappedType.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetProperty);
         }
+
         public IEnumerable<PropertyInfo> GetNonPublicInstanceProperties(Type mappedType)
         {
             return mappedType.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty);
         }
+
         public IEnumerable<PropertyInfo> GetStaticInstanceProperties(Type mappedType)
         {
             return mappedType.GetProperties(BindingFlags.Static | BindingFlags.Instance | BindingFlags.SetProperty);
         }
+
         public IEnumerable<PropertyInfo> GetInstanceProperties(Type mappedType)
         {
             return mappedType.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty);

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Drawing;
-using System.Drawing.Imaging;
+﻿using System.Drawing;
 
 namespace Platform.Support.Drawing
 {
     public static partial class ColorExtensions
     {
-
         public static void FromString(this Color @this, string @string)
         {
             @this = ColorHelper.ToColor(@string);
@@ -16,6 +13,7 @@ namespace Platform.Support.Drawing
         {
             return ColorHelper.GetDarkColor(@this, d);
         }
+
         public static Color GetLightColor(this Color @this, byte d)
         {
             return ColorHelper.GetLightColor(@this, d);
@@ -45,7 +43,5 @@ namespace Platform.Support.Drawing
         {
             return ColorHelper.Invert(@this);
         }
-
-
     }
 }

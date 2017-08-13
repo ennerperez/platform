@@ -1,30 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Platform.Support.Text;
+using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
 using System.Text;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 using System.Xml.Linq;
-using System.Xml;
-using Platform.Support.Text;
 
 namespace Platform.Presentation.Forms.Controls
 {
-
     /// <summary>
     /// Editor that does Xml formatting and syntax highlighting.
     /// </summary>
     [ToolboxBitmap(typeof(RichTextBox))]
     public partial class XMLViewer : RichTextBox
     {
-
         public XMLViewer()
         {
             InitializeComponent();
-            
+
             // Initialize the XMLViewerSettings.
             XMLViewerSettings viewerSetting = new XMLViewerSettings
             {
@@ -36,7 +29,6 @@ namespace Platform.Presentation.Forms.Controls
             };
 
             this.Settings = viewerSetting;
-
         }
 
         public void Load(string xml)
@@ -48,6 +40,7 @@ namespace Platform.Presentation.Forms.Controls
         }
 
         private XMLViewerSettings settings;
+
         /// <summary>
         /// The format settings.
         /// </summary>
@@ -96,7 +89,7 @@ namespace Platform.Presentation.Forms.Controls
                 string rtfFormat = @"{{\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe2052
 {{\fonttbl{{\f0\fnil Courier New;}}}}
 {{\colortbl ;{0}}}
-\viewkind4\uc1\pard\lang1033\f0 
+\viewkind4\uc1\pard\lang1033\f0
 {1}}}";
 
                 // Get the XDocument from the Text property.
@@ -108,11 +101,10 @@ namespace Platform.Presentation.Forms.Controls
                 // then add the declaration to the content.
                 if (includeDeclaration && xmlDoc.Declaration != null)
                 {
-
-                    // The constants in XMLViewerSettings are used to specify the order 
+                    // The constants in XMLViewerSettings are used to specify the order
                     // in colortbl of the Rtf.
                     xmlRtfContent.AppendFormat(@"
-\cf{0} <?\cf{1} xml \cf{2} version\cf{0} =\cf0 ""\cf{3} {4}\cf0 "" 
+\cf{0} <?\cf{1} xml \cf{2} version\cf{0} =\cf0 ""\cf{3} {4}\cf0 ""
 \cf{2} encoding\cf{0} =\cf0 ""\cf{3} {5}\cf0 ""\cf{0} ?>\par",
                         XMLViewerSettings.TagID,
                         XMLViewerSettings.ElementID,
@@ -130,8 +122,6 @@ namespace Platform.Presentation.Forms.Controls
                 // Construct the completed Rtf, and set the Rtf property to this value.
                 this.Rtf = string.Format(rtfFormat, Settings.ToRtfFormatString(),
                     xmlRtfContent.ToString());
-
-
             }
             catch (System.Xml.XmlException xmlException)
             {
@@ -148,7 +138,6 @@ namespace Platform.Presentation.Forms.Controls
         // Get the Rtf of the xml element.
         private string ProcessElement(XElement element, int level)
         {
-
             // This viewer does not support the Xml file that has Namespace.
             if (!string.IsNullOrEmpty(element.Name.Namespace.NamespaceName))
             {
@@ -163,7 +152,7 @@ namespace Platform.Presentation.Forms.Controls
             // Construct the indent.
             string indent = new string(' ', 4 * level);
 
-            // If the element has child elements or value, then add the element to the 
+            // If the element has child elements or value, then add the element to the
             // Rtf. {{0}} will be replaced with the attributes and {{1}} will be replaced
             // with the child elements or value.
             if (element.HasElements || !string.IsNullOrWhiteSpace(element.Value))
@@ -188,7 +177,7 @@ namespace Platform.Presentation.Forms.Controls
                     }
                 }
 
-                // If !string.IsNullOrWhiteSpace(element.Value), then construct the Rtf 
+                // If !string.IsNullOrWhiteSpace(element.Value), then construct the Rtf
                 // of the value.
                 else
                 {
@@ -286,11 +275,7 @@ namespace Platform.Presentation.Forms.Controls
                 rtfFormatString.AppendFormat(format, Tag.R, Tag.G, Tag.B);
 
                 return rtfFormatString.ToString();
-
             }
         }
-
     }
-
-
 }

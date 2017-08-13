@@ -18,6 +18,5 @@ namespace Platform.Support.Data.Attributes
         {
             this.Value = value;
         }
-
     }
 }

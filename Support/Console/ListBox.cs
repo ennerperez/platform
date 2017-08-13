@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Support.ConsoleEx
 {
-
     /// <summary>
     /// Extracted from http://www.c-sharpcorner.com/uploadfile/b942f9/creating-a-console-listbox-in-C-Sharp/
     /// </summary>
     public static class ListBox
     {
-
         public static int ChooseListBoxItem(string[] items, int ucol, int urow, ConsoleColor back, ConsoleColor fore)
         {
-
             Console.TreatControlCAsInput = false;
             Console.CancelKeyPress += new ConsoleCancelEventHandler(BreakHandler);
             //Console.Clear();
@@ -50,7 +44,7 @@ namespace Platform.Support.ConsoleEx
             {
                 cki = Console.ReadKey(true);
                 key = cki.KeyChar;
-                if (key == '\r') // enter 
+                if (key == '\r') // enter
                 {
                     return choice;
                 }
@@ -82,6 +76,7 @@ namespace Platform.Support.ConsoleEx
                 }
             }
         }
+
         public static void DrawBox(int ucol, int urow, int lcol, int lrow, ConsoleColor back, ConsoleColor fore, bool fill)
         {
             const char Horizontal = '\u2500';
@@ -92,7 +87,7 @@ namespace Platform.Support.ConsoleEx
             const char LowerRightCorner = '\u2518';
             string fillLine = fill ? new string(' ', lcol - ucol - 1) : "";
             SetColors(back, fore);
-            // draw top edge 
+            // draw top edge
             Console.SetCursorPosition(ucol, urow);
             Console.Write(UpperLeftCorner);
             for (int i = ucol + 1; i < lcol; i++)
@@ -100,7 +95,7 @@ namespace Platform.Support.ConsoleEx
                 Console.Write(Horizontal);
             }
             Console.Write(UpperRightCorner);
-            // draw sides 
+            // draw sides
             for (int i = urow + 1; i < lrow; i++)
             {
                 Console.SetCursorPosition(ucol, i);
@@ -109,7 +104,7 @@ namespace Platform.Support.ConsoleEx
                 Console.SetCursorPosition(lcol, i);
                 Console.Write(Vertical);
             }
-            // draw bottom edge 
+            // draw bottom edge
             Console.SetCursorPosition(ucol, lrow);
             Console.Write(LowerLeftCorner);
             for (int i = ucol + 1; i < lcol; i++)
@@ -118,29 +113,32 @@ namespace Platform.Support.ConsoleEx
             }
             Console.Write(LowerRightCorner);
         }
+
         public static void WriteColorString(string s, int col, int row, ConsoleColor back, ConsoleColor fore)
         {
             SetColors(back, fore);
-            // write string 
+            // write string
             Console.SetCursorPosition(col, row);
             Console.Write(s);
         }
+
         public static void SetColors(ConsoleColor back, ConsoleColor fore)
         {
             Console.BackgroundColor = back;
             Console.ForegroundColor = fore;
         }
+
         public static void CleanUp()
         {
             Console.ResetColor();
             Console.CursorVisible = true;
             Console.Clear();
         }
+
         public static void BreakHandler(object sender, ConsoleCancelEventArgs args)
         {
-            // exit gracefully if Control-C or Control-Break pressed 
+            // exit gracefully if Control-C or Control-Break pressed
             CleanUp();
         }
-
     }
 }

@@ -1,68 +1,73 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 #if !PORTABLE
+
 using System.Security.Cryptography;
+
 #endif
+
 using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Platform.Support
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
-    public static class StringHelper
-    {
 
-        public static bool IsNumeric(string expression)
+        public static class StringHelper
         {
-            bool hasDecimal = false;
-            for (int i = 0; i < expression.Length; i++)
+            public static bool IsNumeric(string expression)
             {
-                // Check for decimal
-                if (expression[i] == '.')
+                bool hasDecimal = false;
+                for (int i = 0; i < expression.Length; i++)
                 {
-                    if (hasDecimal) // 2nd decimal
-                        return false;
-                    else // 1st decimal
+                    // Check for decimal
+                    if (expression[i] == '.')
                     {
-                        // inform loop decimal found and continue 
-                        hasDecimal = true;
-                        continue;
+                        if (hasDecimal) // 2nd decimal
+                            return false;
+                        else // 1st decimal
+                        {
+                            // inform loop decimal found and continue
+                            hasDecimal = true;
+                            continue;
+                        }
                     }
+                    // check if number
+                    if (!char.IsNumber(expression[i]))
+                        return false;
                 }
-                // check if number
-                if (!char.IsNumber(expression[i]))
-                    return false;
+                return true;
             }
-            return true;
-        }
 
-        public static bool IsEmail(string expression)
-        {
-            return Regex.IsMatch(expression, @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
-        }
-
-        public static string ToSentence(string obj, bool capitalize = false)
-        {
-            if (capitalize)
+            public static bool IsEmail(string expression)
             {
-                List<string> _return = new List<string>();
-                foreach (string Item in obj.Split(' '))
+                return Regex.IsMatch(expression, @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+            }
+
+            public static string ToSentence(string obj, bool capitalize = false)
+            {
+                if (capitalize)
                 {
-                    _return.Add(Item.ToSentence());
+                    List<string> _return = new List<string>();
+                    foreach (string Item in obj.Split(' '))
+                    {
+                        _return.Add(Item.ToSentence());
+                    }
+                    return String.Join(" ", _return);
                 }
-                return String.Join(" ", _return);
+                else
+                {
+                    return obj.Substring(0, 1).ToUpper() + obj.Substring(1).ToLower();
+                }
             }
-            else
-            {
-                return obj.Substring(0, 1).ToUpper() + obj.Substring(1).ToLower();
-            }
-        }
 
 #if !PORTABLE
+
         public static string SHA256(string str, string key = null)
         {
             string result;
@@ -81,6 +86,7 @@ namespace Platform.Support
 
             return result;
         }
+
         public static string MD5(string str, string key = null)
         {
             string result;
@@ -99,10 +105,12 @@ namespace Platform.Support
 
             return result;
         }
-#endif
 
+#endif
         }
+
 #if PORTABLE
     }
+
 #endif
 }

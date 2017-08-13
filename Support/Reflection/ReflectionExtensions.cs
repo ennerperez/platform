@@ -6,41 +6,51 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.InteropServices;
+
 #if PORTABLE
+
 using Helpers = Platform.Support.Core.AttributeHelper;
+
 #else
+
 using Helpers = Platform.Support.AttributeHelper;
+
 #endif
 
 namespace Platform.Support
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
+
         namespace Reflection
         {
             public static class ReflectionExtensions
             {
-
-                #region  ReflectionService
+                #region ReflectionService
 
 #if !PORTABLE
+
             public static IEnumerable<PropertyInfo> GetPublicInstanceProperties(this Type typ)
             {
                 ReflectionService _return = new ReflectionService();
                 return _return.GetPublicInstanceProperties(typ);
             }
+
             public static IEnumerable<PropertyInfo> GetNonPublicInstanceProperties(this Type typ)
             {
                 ReflectionService _return = new ReflectionService();
                 return _return.GetNonPublicInstanceProperties(typ);
             }
+
             public static IEnumerable<PropertyInfo> GetStaticInstanceProperties(this Type typ)
             {
                 ReflectionService _return = new ReflectionService();
                 return _return.GetStaticInstanceProperties(typ);
             }
+
             public static IEnumerable<PropertyInfo> GetInstanceProperties(this Type typ)
             {
                 ReflectionService _return = new ReflectionService();
@@ -52,24 +62,27 @@ namespace Platform.Support
                 ReflectionService _return = new ReflectionService();
                 return _return.GetMemberValue(typ, expr, member);
             }
+
 #endif
 
-                #endregion
+                #endregion ReflectionService
 
                 #region Generics
 
 #if !PORTABLE
+
             public static T Clone<T>(this T item) where T : ICloneable
             {
                 return (T)item.Clone();
             }
+
 #endif
+
                 public static T As<T>(this object source, bool strict = false)
                 {
-
 #if NETFX_45
-                var p_source = source.GetType().GetRuntimeProperties();
-                var p_target = typeof(T).GetRuntimeProperties();
+                    var p_source = source.GetType().GetRuntimeProperties();
+                    var p_target = typeof(T).GetRuntimeProperties();
 #else
                     var p_source = source.GetType().GetProperties();
                     var p_target = typeof(T).GetProperties();
@@ -105,10 +118,9 @@ namespace Platform.Support
                     }
 
                     return target;
-
                 }
 
-                #endregion
+                #endregion Generics
 
                 public static string GetNameSafe(this Assembly assembly)
                 {
@@ -118,6 +130,7 @@ namespace Platform.Support
                 }
 
 #if !PORTABLE
+
             public static string GetDirectory(this Assembly assembly)
             {
                 if (assembly == null) assembly = Assembly.GetEntryAssembly();
@@ -125,6 +138,7 @@ namespace Platform.Support
                 System.IO.FileInfo file = new System.IO.FileInfo(path);
                 return file.Directory.FullName;
             }
+
 #endif
 
                 #region AssemblyInfo
@@ -136,6 +150,7 @@ namespace Platform.Support
                         return result.Title;
                     return null;
                 }
+
                 public static string Description(this Assembly assembly)
                 {
                     var result = Helpers.GetAttribute<AssemblyDescriptionAttribute>(assembly);
@@ -143,6 +158,7 @@ namespace Platform.Support
                         return result.Description;
                     return null;
                 }
+
                 public static string Company(this Assembly assembly)
                 {
                     var result = Helpers.GetAttribute<AssemblyCompanyAttribute>(assembly);
@@ -150,6 +166,7 @@ namespace Platform.Support
                         return result.Company;
                     return null;
                 }
+
                 public static string Product(this Assembly assembly)
                 {
                     var result = Helpers.GetAttribute<AssemblyProductAttribute>(assembly);
@@ -157,6 +174,7 @@ namespace Platform.Support
                         return result.Product;
                     return null;
                 }
+
                 public static string Copyright(this Assembly assembly)
                 {
                     var result = Helpers.GetAttribute<AssemblyCopyrightAttribute>(assembly);
@@ -164,6 +182,7 @@ namespace Platform.Support
                         return result.Copyright;
                     return null;
                 }
+
                 public static string Trademark(this Assembly assembly)
                 {
                     var result = Helpers.GetAttribute<AssemblyTrademarkAttribute>(assembly);
@@ -192,8 +211,8 @@ namespace Platform.Support
                     }
 
                     return null;
-
                 }
+
                 public static Version FileVersion(this Assembly assembly)
                 {
                     var result = Helpers.GetAttribute<AssemblyFileVersionAttribute>(assembly);
@@ -201,6 +220,7 @@ namespace Platform.Support
                         return new Version(result.Version);
                     return null;
                 }
+
                 public static Version InformationalVersion(this Assembly assembly)
                 {
                     var result = Helpers.GetAttribute<AssemblyInformationalVersionAttribute>(assembly);
@@ -231,6 +251,7 @@ namespace Platform.Support
             {
                 return new FileInfo(assembly.Location).Directory.FullName;
             }
+
             public static string ExecutablePath(this Assembly assembly)
             {
                 return assembly.Location;
@@ -255,6 +276,7 @@ namespace Platform.Support
                         return result.Date;
                     return null;
                 }
+
                 public static string CompanyId(this Assembly assembly)
                 {
                     var result = Helpers.GetAttribute<AssemblyCompanyIdAttribute>(assembly);
@@ -262,6 +284,7 @@ namespace Platform.Support
                         return result.Id;
                     return null;
                 }
+
                 public static string CompanyUrl(this Assembly assembly)
                 {
                     var result = Helpers.GetAttribute<AssemblyCompanyUrlAttribute>(assembly);
@@ -269,6 +292,7 @@ namespace Platform.Support
                         return result.Url;
                     return null;
                 }
+
                 public static IEnumerable<string> DevelopersNames(this Assembly assembly)
                 {
                     var result = Helpers.GetAttributes<AssemblyDeveloperAttribute>(assembly);
@@ -277,8 +301,8 @@ namespace Platform.Support
                     return null;
                 }
 
-
 #if (!PORTABLE)
+
             public static IEnumerable<Process> ExternalReferences(this Assembly assembly)
             {
                 var result = Helpers.GetAttributes<AssemblyExternalRefAttribute>(assembly);
@@ -286,7 +310,9 @@ namespace Platform.Support
                     return result.Select(d => new Process() { StartInfo = new ProcessStartInfo(d.FileName, d.Arguments) }).AsEnumerable();
                 return null;
             }
+
 #else
+
                 public static IEnumerable<IEnumerable<string>> ExternalReferences(this Assembly assembly)
                 {
                     var result = Helpers.GetAttributes<AssemblyExternalRefAttribute>(assembly);
@@ -294,6 +320,7 @@ namespace Platform.Support
                         return result.Select(d => new string[] { d.FileName, d.Arguments }).AsEnumerable();
                     return null;
                 }
+
 #endif
 
                 public static string License(this Assembly assembly)
@@ -306,6 +333,7 @@ namespace Platform.Support
                             return result.Url;
                     return null;
                 }
+
                 public static string MadeIn(this Assembly assembly)
                 {
                     var result = Helpers.GetAttribute<AssemblyMadeInAttribute>(assembly);
@@ -313,6 +341,7 @@ namespace Platform.Support
                         return result.Name + (!string.IsNullOrEmpty(result.CountryCode) ? string.Format(" ({0})", result.CountryCode) : "");
                     return null;
                 }
+
                 public static string Owner(this Assembly assembly)
                 {
                     var result = Helpers.GetAttribute<AssemblyOwnerAttribute>(assembly);
@@ -320,6 +349,7 @@ namespace Platform.Support
                         return result.Name;
                     return null;
                 }
+
                 public static ProductLevels? ProductLevel(this Assembly assembly)
                 {
                     var result = Helpers.GetAttribute<AssemblyProductLevelAttribute>(assembly);
@@ -327,6 +357,7 @@ namespace Platform.Support
                         return result.Level;
                     return null;
                 }
+
                 public static short? ProductLevelNumber(this Assembly assembly)
                 {
                     var result = Helpers.GetAttribute<AssemblyProductLevelAttribute>(assembly);
@@ -334,6 +365,7 @@ namespace Platform.Support
                         return result.Number;
                     return null;
                 }
+
                 public static IEnumerable<string> ThirdParties(this Assembly assembly)
                 {
                     var result = Helpers.GetAttributes<AssemblyThirdPartyAttribute>(assembly);
@@ -341,6 +373,7 @@ namespace Platform.Support
                         return result.Select(item => item.Name + ": " + item.Info).AsEnumerable();
                     return null;
                 }
+
                 public static IEnumerable<IEnumerable<string>> ContactInformation(this Assembly assembly)
                 {
                     var result = Helpers.GetAttributes<AssemblyContactInformationAttribute>(assembly);
@@ -349,12 +382,12 @@ namespace Platform.Support
                     return null;
                 }
 
-                #endregion
-
+                #endregion AssemblyInfo
             }
         }
 
 #if PORTABLE
     }
+
 #endif
 }

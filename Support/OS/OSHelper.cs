@@ -1,33 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Support
 {
-
 #if PORTABLE
+
     namespace Core
     {
 #endif
 
-    namespace OS
-    {
-
-        [DebuggerStepThrough()]
-        public static class OSHelper
+        namespace OS
         {
-
-            /// <summary>
-            ///  returns 32 if runs in 32 bit mode and 64 for 64 bit mode
-            /// </summary>
-            /// <returns></returns>
-            /// <remarks></remarks>
-            public static int Architecture()
+            [DebuggerStepThrough()]
+            public static class OSHelper
             {
-                return (IntPtr.Size == 8 ? 64 : 32);
-            }
+                /// <summary>
+                ///  returns 32 if runs in 32 bit mode and 64 for 64 bit mode
+                /// </summary>
+                /// <returns></returns>
+                /// <remarks></remarks>
+                public static int Architecture()
+                {
+                    return (IntPtr.Size == 8 ? 64 : 32);
+                }
 
 #if !PORTABLE
 
@@ -63,13 +58,11 @@ namespace Platform.Support
             }
 
 #endif
-
+            }
         }
-
-    }
 
 #if PORTABLE
     }
-#endif
 
+#endif
 }

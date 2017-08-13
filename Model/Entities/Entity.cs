@@ -7,18 +7,22 @@ using System.Linq;
 namespace Platform.Model
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
+
         public abstract class Entity<TKey> : IEntity<TKey>, INotifyPropertyChanged
 #if !PORTABLE
 , ICloneable, INotifyPropertyChanging
 #endif
         {
-
             public event PropertyChangedEventHandler PropertyChanged;
+
 #if !PORTABLE
+
         public event PropertyChangingEventHandler PropertyChanging;
+
 #endif
 
             protected internal void SetField<U>(ref U field, U value)
@@ -40,6 +44,7 @@ namespace Platform.Model
             }
 #endif
             }
+
             protected internal void SetField(ref object field, object value)
             {
 #if (!PORTABLE)
@@ -64,7 +69,7 @@ namespace Platform.Model
 
             public virtual TKey Id { get; set; }
 
-            #endregion
+            #endregion Properties
 
             #region Operators
 
@@ -77,11 +82,17 @@ namespace Platform.Model
                 return (Id.Equals(p.Id));
             }
 
-            #endregion
+            #endregion Operators
 
-            public virtual void Refresh(object e) { }
+            public virtual void Refresh(object e)
+            {
+            }
 
-            public virtual IEnumerable AsEnumerable() { return null; }
+            public virtual IEnumerable AsEnumerable()
+            {
+                return null;
+            }
+
             public override int GetHashCode()
             {
                 return Id.GetHashCode();
@@ -96,6 +107,7 @@ namespace Platform.Model
             CopyTo(_object);
             return _object;
         }
+
         public void CopyTo(Entity<TKey> target)
         {
             if (object.ReferenceEquals(GetType(), target.GetType()))
@@ -123,9 +135,10 @@ namespace Platform.Model
         }
 
 #endif
-
         }
+
 #if PORTABLE
     }
+
 #endif
 }

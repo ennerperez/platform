@@ -2,8 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
 using System;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace Platform.Support.Windows
@@ -14,6 +12,7 @@ namespace Platform.Support.Windows
     public sealed class Crypt32
     {
         #region Obsolete
+
         ///// <summary>
         ///// Encrypt a string into a byte array using the Windows Cryto API. This
         ///// method provides a high-level wrapper for the use of CryptProtectData
@@ -159,7 +158,8 @@ namespace Platform.Support.Windows
         //    Debug.Assert(description == extractedDescription);
         //    Debug.Assert(data == decryptedData);
         //}
-        #endregion
+
+        #endregion Obsolete
 
         [DllImport(ExternDll.Crypt32, SetLastError = true)]
         public static extern bool CryptProtectData(
@@ -182,8 +182,6 @@ namespace Platform.Support.Windows
             uint dwFlags,
             ref DATA_BLOB pDataOut
             );
-
-        
     }
 
     /// <summary>
@@ -232,8 +230,8 @@ namespace Platform.Support.Windows
         public uint cbSize;
         public uint dwPromptFlags;
         public IntPtr hwndApp;
+
         [MarshalAs(UnmanagedType.LPWStr)]
         public string szPrompt;
     }
-
 }

@@ -3,10 +3,8 @@ using System.Drawing;
 
 namespace Platform.Support.Drawing
 {
-
     public static partial class ColorHelper
     {
-
         public static Color ToColor(CMYK value)
         {
             if (value.Cyan == 0 && value.Magenta == 0 && value.Yellow == 0 && value.Key == 1)
@@ -43,12 +41,10 @@ namespace Platform.Support.Drawing
 
             return new CMYK(c, m, y, k, color.A);
         }
-
     }
 
     public static partial class ColorExtensions
     {
-
         public static void FromCMYK(this Color @this, CMYK value)
         {
             @this = ColorHelper.ToColor(value);
@@ -58,7 +54,6 @@ namespace Platform.Support.Drawing
         {
             return ColorHelper.ToCMYK(@this);
         }
-
     }
 
     public struct CMYK

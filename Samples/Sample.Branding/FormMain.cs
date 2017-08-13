@@ -32,7 +32,6 @@ namespace Sample.Branding
                 pictureBoxBrandLogo.Image = ImageHelper.FromBytes(assembly.BrandLogo("main"));
                 richTextBoxEULA.Text = richTextBoxEULA.Text + Environment.NewLine + assembly.BrandEULA();
             }
-
         }
     }
 }

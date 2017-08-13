@@ -263,6 +263,7 @@ namespace Platform.Support.Data
                             cmdText += " OFFSET " + _offset.Value;
                         }
                         break;
+
                     default:
                         if (_limit.HasValue)
                         {
@@ -272,13 +273,12 @@ namespace Platform.Support.Data
                         break;
                 }
 
-                return Connection.CreateCommand( cmdText, args.ToArray());
+                return Connection.CreateCommand(cmdText, args.ToArray());
             }
         }
 
         private CompileResult CompileExpr(Expression expr, List<IDbDataParameter> queryArgs)
         {
-
             if (expr == null)
             {
                 throw new NotSupportedException("Expression is NULL");
@@ -330,7 +330,6 @@ namespace Platform.Support.Data
                 {
                     sqlCall = string.Format("([{0}] LIKE @{1})", args[0].CommandText, args[0].CommandText);
                     queryArgs.Add(Connection.CreateParameter(args[0].CommandText, args[1].Value));
-
                 }
                 else if (call.Method.Name == "CONTAINS" && args.Count == 2)
                 {
@@ -347,6 +346,7 @@ namespace Platform.Support.Data
                                 queryArgs.Add(Connection.CreateParameter(obj.CommandText, args[0].Value));
                                 sqlCall = string.Format("(CONTAINS([{0}], @{0}))", obj.CommandText);
                                 break;
+
                             default:
                                 sqlCall = string.Format("([{0}] LIKE '%{1}%')", obj.CommandText, args[0].CommandText);
                                 break;
@@ -356,7 +356,6 @@ namespace Platform.Support.Data
                     {
                         sqlCall = string.Format("([{0}] IN '{1}')", args[0].CommandText, obj.CommandText);
                     }
-
                 }
                 else if (call.Method.Name == "StartsWith" && args.Count == 1)
                 {
@@ -371,9 +370,7 @@ namespace Platform.Support.Data
                     object val = args[0].Value;
                     queryArgs.Add(Connection.CreateParameter(obj.CommandText, args[0].Value));
                     sqlCall = string.Format("([{0}] = @{0})", obj.CommandText);
-
                 }
-
 
                 return new CompileResult(sqlCall);
             }
@@ -492,7 +489,7 @@ namespace Platform.Support.Data
             {
                 //if (Connection.GetEngine() == Engines.Sql || Connection.GetEngine() == Engines.SqlCE)
                 //{
-                    return "and";
+                return "and";
                 //}
                 //else
                 //{
@@ -564,7 +561,6 @@ namespace Platform.Support.Data
                 CommandText = c;
                 Value = v;
             }
-
         }
     }
 }

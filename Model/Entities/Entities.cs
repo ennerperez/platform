@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
+
 #if !(PORTABLE)
+
 using System.Collections.Specialized;
+
 #endif
 
 namespace Platform.Model
 {
-
 #if PORTABLE
+
     namespace Core
     {
 #endif
@@ -24,8 +25,8 @@ namespace Platform.Model
 #endif
  where TEntity : IEntity<TKey>
         {
-
 #if (!PORTABLE)
+
         public Entities() : base()
         {
         }
@@ -45,6 +46,7 @@ namespace Platform.Model
             if (Changed != null)
                 Changed(this, EventArgs.Empty);
         }
+
         public event EventHandler Changed;
 
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
@@ -71,21 +73,25 @@ namespace Platform.Model
             }
 
             protected internal bool IsLoaded;
+
             public virtual void OnLoad(object e)
             {
                 IsLoaded = true;
                 if (Loaded != null) { Loaded(this, EventArgs.Empty); }
                 IsLoading = false;
             }
+
             public event EventHandler Loaded;
 
             protected internal bool IsLoading;
+
             public virtual void OnLoading(object e)
             {
                 IsLoaded = false;
                 if (Loading != null) { Loading(this, EventArgs.Empty); }
                 IsLoading = true;
             }
+
             public event EventHandler Loading;
 
             public virtual void Refresh(object e)
@@ -98,7 +104,10 @@ namespace Platform.Model
             }
 
             public abstract void Load();
-            public virtual void Load(bool async) { }
+
+            public virtual void Load(bool async)
+            {
+            }
 
             #region IDisposable Support
 
@@ -133,8 +142,7 @@ namespace Platform.Model
                 GC.SuppressFinalize(this);
             }
 
-            #endregion
-
+            #endregion IDisposable Support
         }
 
         public abstract class Entities<TEntity> : Entities<TEntity, long> where TEntity : IEntity<long>
@@ -146,6 +154,6 @@ namespace Platform.Model
 
 #if PORTABLE
     }
-#endif
 
+#endif
 }

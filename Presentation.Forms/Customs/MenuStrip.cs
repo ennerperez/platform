@@ -1,10 +1,7 @@
 ﻿using Platform.Presentation.Forms.Components;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Customs
@@ -13,14 +10,14 @@ namespace Platform.Presentation.Forms.Customs
     [ToolboxItem(true)]
     public class MenuStrip : System.Windows.Forms.MenuStrip
     {
-
         public event EventHandler AppearanceControlChanged;
 
-        public MenuStrip(): base()
+        public MenuStrip() : base()
         {
         }
 
         private AppearanceManager _Appearance;
+
         public AppearanceManager Appearance
         {
             get { return _Appearance; }
@@ -67,7 +64,5 @@ namespace Platform.Presentation.Forms.Customs
             this.Renderer = this.Appearance.Renderer;
             this.Invalidate();
         }
-
     }
-
 }

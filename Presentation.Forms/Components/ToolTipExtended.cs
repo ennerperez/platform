@@ -28,7 +28,7 @@ namespace Platform.Presentation.Forms.Components
             }
         }
 
-        static void ToolTipExtended_Draw(object sender, DrawToolTipEventArgs e)
+        private static void ToolTipExtended_Draw(object sender, DrawToolTipEventArgs e)
         {
             Debug.Assert(BidiHelper.IsRightToLeft, "ToolTipExtended should only be ownerdraw when running RTL");
             e.DrawBackground();
@@ -42,6 +42,5 @@ namespace Platform.Presentation.Forms.Components
             if (OwnerDraw)
                 Draw -= ToolTipExtended_Draw;
         }
-
     }
 }

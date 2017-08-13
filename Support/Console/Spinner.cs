@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 
 namespace Platform.Support.ConsoleEx
@@ -9,6 +6,7 @@ namespace Platform.Support.ConsoleEx
     public class Spinner : IDisposable
     {
         private int counter;
+
         public void Turn()
         {
             counter++;
@@ -24,6 +22,7 @@ namespace Platform.Support.ConsoleEx
         }
 
         private static bool busy = true;
+
         public static void StartSpinner()
         {
             var t = new ThreadStart(() =>
@@ -39,15 +38,14 @@ namespace Platform.Support.ConsoleEx
 
             t.Invoke();
         }
+
         public static void StopSpinner()
         {
             busy = false;
             Thread.CurrentThread.Join();
         }
 
-
         #region IDisposable
-
 
         private bool disposed = false;
 
@@ -57,18 +55,18 @@ namespace Platform.Support.ConsoleEx
             GC.SuppressFinalize(this);
         }
 
-        // NOTE: Leave out the finalizer altogether if this class doesn't 
+        // NOTE: Leave out the finalizer altogether if this class doesn't
         // own unmanaged resources itself, but leave the other methods
-        // exactly as they are. 
+        // exactly as they are.
         ~Spinner()
         {
             // Finalizer calls Dispose(false)
             Dispose(false);
         }
+
         // The bulk of the clean-up code is implemented in Dispose(bool)
         protected virtual void Dispose(bool disposing)
         {
-
             if (!disposed)
             {
                 if (disposing)
@@ -76,10 +74,8 @@ namespace Platform.Support.ConsoleEx
                     disposed = true;
                 }
             }
-
         }
 
-        #endregion
-
+        #endregion IDisposable
     }
 }

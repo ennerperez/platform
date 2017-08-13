@@ -8,15 +8,16 @@ using System.Text;
 
 namespace Platform.Support.Windows
 {
-
 #pragma warning disable CS0649
 
     /// <summary>
     /// Imports from User32.dll
     /// </summary>
 #if !INTEROP
+
     internal class User32
 #else
+
     public class User32
 #endif
     {
@@ -439,18 +440,22 @@ namespace Platform.Support.Windows
         public const UInt32 SCF_SELECTION = 0x0001;
 
         #region CFE_
-        // CHARFORMAT effects 
+
+        // CHARFORMAT effects
         public const UInt32 CFE_BOLD = 0x0001;
+
         public const UInt32 CFE_ITALIC = 0x0002;
         public const UInt32 CFE_UNDERLINE = 0x0004;
         public const UInt32 CFE_STRIKEOUT = 0x0008;
         public const UInt32 CFE_PROTECTED = 0x0010;
         public const UInt32 CFE_LINK = 0x0020;
-        public const UInt32 CFE_AUTOCOLOR = 0x40000000;            // NOTE: this corresponds to 
-                                                                   // CFM_COLOR, which controls it 
-                                                                   // Masks and effects defined for CHARFORMAT2 -- an (*) indicates
-                                                                   // that the data is stored by RichEdit 2.0/3.0, but not displayed
+        public const UInt32 CFE_AUTOCOLOR = 0x40000000;            // NOTE: this corresponds to
+
+        // CFM_COLOR, which controls it
+        // Masks and effects defined for CHARFORMAT2 -- an (*) indicates
+        // that the data is stored by RichEdit 2.0/3.0, but not displayed
         public const UInt32 CFE_SMALLCAPS = CFM_SMALLCAPS;
+
         public const UInt32 CFE_ALLCAPS = CFM_ALLCAPS;
         public const UInt32 CFE_HIDDEN = CFM_HIDDEN;
         public const UInt32 CFE_OUTLINE = CFM_OUTLINE;
@@ -463,43 +468,47 @@ namespace Platform.Support.Windows
         // CFE_AUTOCOLOR and CFE_AUTOBACKCOLOR correspond to CFM_COLOR and
         // CFM_BACKCOLOR, respectively, which control them
         public const UInt32 CFE_AUTOBACKCOLOR = CFM_BACKCOLOR;
-        #endregion
+
+        #endregion CFE_
+
         #region CFM_
-        // CHARFORMAT masks 
+
+        // CHARFORMAT masks
         public const UInt32 CFM_BOLD = 0x00000001;
+
         public const UInt32 CFM_ITALIC = 0x00000002;
         public const UInt32 CFM_UNDERLINE = 0x00000004;
         public const UInt32 CFM_STRIKEOUT = 0x00000008;
         public const UInt32 CFM_PROTECTED = 0x00000010;
-        public const UInt32 CFM_LINK = 0x00000020;         // Exchange hyperlink extension 
+        public const UInt32 CFM_LINK = 0x00000020;         // Exchange hyperlink extension
         public const UInt32 CFM_SIZE = 0x80000000;
         public const UInt32 CFM_COLOR = 0x40000000;
         public const UInt32 CFM_FACE = 0x20000000;
         public const UInt32 CFM_OFFSET = 0x10000000;
         public const UInt32 CFM_CHARSET = 0x08000000;
 
-        public const UInt32 CFM_SMALLCAPS = 0x0040;            // (*)	
-        public const UInt32 CFM_ALLCAPS = 0x0080;          // Displayed by 3.0	
-        public const UInt32 CFM_HIDDEN = 0x0100;           // Hidden by 3.0 
-        public const UInt32 CFM_OUTLINE = 0x0200;          // (*)	
-        public const UInt32 CFM_SHADOW = 0x0400;           // (*)	
-        public const UInt32 CFM_EMBOSS = 0x0800;           // (*)	
-        public const UInt32 CFM_IMPRINT = 0x1000;          // (*)	
+        public const UInt32 CFM_SMALLCAPS = 0x0040;            // (*)
+        public const UInt32 CFM_ALLCAPS = 0x0080;          // Displayed by 3.0
+        public const UInt32 CFM_HIDDEN = 0x0100;           // Hidden by 3.0
+        public const UInt32 CFM_OUTLINE = 0x0200;          // (*)
+        public const UInt32 CFM_SHADOW = 0x0400;           // (*)
+        public const UInt32 CFM_EMBOSS = 0x0800;           // (*)
+        public const UInt32 CFM_IMPRINT = 0x1000;          // (*)
         public const UInt32 CFM_DISABLED = 0x2000;
         public const UInt32 CFM_REVISED = 0x4000;
 
         public const UInt32 CFM_BACKCOLOR = 0x04000000;
         public const UInt32 CFM_LCID = 0x02000000;
-        public const UInt32 CFM_UNDERLINETYPE = 0x00800000;        // Many displayed by 3.0 
+        public const UInt32 CFM_UNDERLINETYPE = 0x00800000;        // Many displayed by 3.0
         public const UInt32 CFM_WEIGHT = 0x00400000;
-        public const UInt32 CFM_SPACING = 0x00200000;      // Displayed by 3.0	
-        public const UInt32 CFM_KERNING = 0x00100000;      // (*)	
-        public const UInt32 CFM_STYLE = 0x00080000;        // (*)	
-        public const UInt32 CFM_ANIMATION = 0x00040000;        // (*)	
+        public const UInt32 CFM_SPACING = 0x00200000;      // Displayed by 3.0
+        public const UInt32 CFM_KERNING = 0x00100000;      // (*)
+        public const UInt32 CFM_STYLE = 0x00080000;        // (*)
+        public const UInt32 CFM_ANIMATION = 0x00040000;        // (*)
         public const UInt32 CFM_REVAUTHOR = 0x00008000;
 
-        public const UInt32 CFE_SUBSCRIPT = 0x00010000;        // Superscript and subscript are 
-        public const UInt32 CFE_SUPERSCRIPT = 0x00020000;      //  mutually exclusive			 
+        public const UInt32 CFE_SUBSCRIPT = 0x00010000;        // Superscript and subscript are
+        public const UInt32 CFE_SUPERSCRIPT = 0x00020000;      //  mutually exclusive
 
         public const UInt32 CFM_SUBSCRIPT = (CFE_SUBSCRIPT | CFE_SUPERSCRIPT);
         public const UInt32 CFM_SUPERSCRIPT = CFM_SUBSCRIPT;
@@ -507,6 +516,7 @@ namespace Platform.Support.Windows
         // CHARFORMAT "ALL" masks
         public const UInt32 CFM_EFFECTS = (CFM_BOLD | CFM_ITALIC | CFM_UNDERLINE | CFM_COLOR |
                              CFM_STRIKEOUT | CFE_PROTECTED | CFM_LINK);
+
         public const UInt32 CFM_ALL = (CFM_EFFECTS | CFM_SIZE | CFM_FACE | CFM_OFFSET | CFM_CHARSET);
 
         public const UInt32 CFM_EFFECTS2 = (CFM_EFFECTS | CFM_DISABLED | CFM_SMALLCAPS | CFM_ALLCAPS
@@ -517,7 +527,8 @@ namespace Platform.Support.Windows
         public const UInt32 CFM_ALL2 = (CFM_ALL | CFM_EFFECTS2 | CFM_BACKCOLOR | CFM_LCID
                             | CFM_UNDERLINETYPE | CFM_WEIGHT | CFM_REVAUTHOR
                             | CFM_SPACING | CFM_KERNING | CFM_STYLE | CFM_ANIMATION);
-        #endregion
+
+        #endregion CFM_
 
         public const int WM_SYSCOMMAND = 0x112;
         public const int MOUSE_MOVE = 0xF012;
@@ -535,7 +546,6 @@ namespace Platform.Support.Windows
         //public const uint BCM_SETSHIELD = (BCM_FIRST + 0xc);
 
         public const int IDC_HAND = 32649;
-
 
         [DllImport(ExternDll.User32)]
         public static extern int TrackPopupMenu(
@@ -784,8 +794,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct SM
 #else
+
     public struct SM
 #endif
 
@@ -798,15 +810,16 @@ namespace Platform.Support.Windows
     /// The MENUINFO structure contains information about a menu.
     /// </summary>
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     internal class MENUINFO
 #else
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     public class MENUINFO
 #endif
 
     {
-
         public int cbSize = Marshal.SizeOf(typeof(MENUINFO));
         public int fMask = 0x00000010; //MIM_STYLE;
         public int dwStyle = 0x04000000; //MNS_CHECKORBMP;
@@ -822,21 +835,25 @@ namespace Platform.Support.Windows
         //public IntPtr hbrBack;
         //public int dwContextHelpID;
         //public int dwMenuData;
-
     }
 
 #if !INTEROP
+
     internal struct MIM
 #else
+
     public struct MIM
 #endif
 
     {
         public const int BACKGROUND = 0x2;
     }
+
 #if !INTEROP
+
     internal struct SPI
 #else
+
     public struct SPI
 #endif
 
@@ -846,9 +863,11 @@ namespace Platform.Support.Windows
 
     // A "logical font" used by old-school windows
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     internal struct LOGFONT
 #else
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     public struct LOGFONT
 #endif
@@ -876,6 +895,7 @@ namespace Platform.Support.Windows
         /// That works out to 31 characters.
         /// </summary>
         private const int LF_FACESIZE = 32;
+
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = LF_FACESIZE)]
         public string lfFaceName;
 
@@ -888,26 +908,30 @@ namespace Platform.Support.Windows
                 = lfClipPrecision = lfQuality = lfPitchAndFamily = 0;
         }
     }
+
 #if !INTEROP
+
     internal struct NONCLIENTMETRICS
 #else
+
     public struct NONCLIENTMETRICS
 #endif
 
     {
-
         public int cbSize;
         public int iBorderWidth;
         public int iScrollWidth;
         public int iScrollHeight;
         public int iCaptionWidth;
         public int iCaptionHeight;
+
         /// <summary>
         /// Since <see cref="LOGFONT"/> is a struct instead of a class,
         /// we don't have to do any special marshalling here.  Much
         /// simpler this way.
         /// </summary>
         public LOGFONT lfCaptionFont;
+
         public int iSMCaptionWidth;
         public int iSMCaptionHeight;
         public LOGFONT lfSMCaptionFont;
@@ -916,7 +940,6 @@ namespace Platform.Support.Windows
         public LOGFONT lfMenuFont;
         public LOGFONT lfStatusFont;
         public LOGFONT lfMessageFont;
-
     }
 
     /// <summary>
@@ -925,15 +948,20 @@ namespace Platform.Support.Windows
     /// wishes to forward a message on to the underlying window.
     /// </summary>
 #if !INTEROP
+
     internal delegate IntPtr WndProcDelegate(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam);
+
 #else
+
     public delegate IntPtr WndProcDelegate(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam);
+
 #endif
 
-
 #if !INTEROP
+
     internal struct WINDOWPLACEMENT
 #else
+
     public struct WINDOWPLACEMENT
 #endif
 
@@ -947,9 +975,11 @@ namespace Platform.Support.Windows
     };
 
 #if !INTEROP
+
     [Flags]
     internal enum QS : uint
 #else
+
     [Flags]
     public enum QS : uint
 #endif
@@ -972,8 +1002,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct MF
 #else
+
     public struct MF
 #endif
 
@@ -985,8 +1017,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct PM
 #else
+
     public struct PM
 #endif
 
@@ -997,8 +1031,10 @@ namespace Platform.Support.Windows
 
     // cursor values
 #if !INTEROP
+
     internal class IDC
 #else
+
     public class IDC
 #endif
 
@@ -1008,8 +1044,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct OCR
 #else
+
     public struct OCR
 #endif
 
@@ -1021,13 +1059,14 @@ namespace Platform.Support.Windows
     /// A structure representing a windows message
     /// </summary>
 #if !INTEROP
+
     internal struct MSG
 #else
+
     public struct MSG
 #endif
 
     {
-
         /// <summary>
         /// The handle of the window receiving the message
         /// </summary>
@@ -1058,7 +1097,6 @@ namespace Platform.Support.Windows
         /// at the time the message was posted
         /// </summary>
         public POINT pt;
-
     }
 
     /// <summary>
@@ -1066,13 +1104,14 @@ namespace Platform.Support.Windows
     /// </summary>
 
 #if !INTEROP
+
     internal struct POINT
 #else
+
     public struct POINT
 #endif
 
     {
-
         /// <summary>
         /// x-coordinate
         /// </summary>
@@ -1082,15 +1121,16 @@ namespace Platform.Support.Windows
         /// y-coordinate
         /// </summary>
         public Int32 y;
-
     }
 
     /// <summary>
     /// Windows RECT structure
     /// </summary>
 #if !INTEROP
+
     internal struct RECT
 #else
+
     public struct RECT
 #endif
 
@@ -1117,15 +1157,16 @@ namespace Platform.Support.Windows
 
         public int Width { get { return right - left; } }
         public int Height { get { return bottom - top; } }
-
     }
 
     /// <summary>
     /// Windows SIZE structure
     /// </summary>
 #if !INTEROP
+
     internal struct SIZE
 #else
+
     public struct SIZE
 #endif
 
@@ -1145,8 +1186,10 @@ namespace Platform.Support.Windows
     /// Structure used with COPYDATASTRUCT
     /// </summary>
 #if !INTEROP
+
     internal struct COPYDATASTRUCT
 #else
+
     public struct COPYDATASTRUCT
 #endif
 
@@ -1158,18 +1201,23 @@ namespace Platform.Support.Windows
 
     // delegate signagure for EnumWindows callback
 #if !INTEROP
-    internal delegate bool EnumWindowsDelegate(IntPtr hwnd, GCHandle lParam);
-#else
-    public delegate bool EnumWindowsDelegate(IntPtr hwnd, GCHandle lParam);
-#endif
 
+    internal delegate bool EnumWindowsDelegate(IntPtr hwnd, GCHandle lParam);
+
+#else
+
+    public delegate bool EnumWindowsDelegate(IntPtr hwnd, GCHandle lParam);
+
+#endif
 
     /// <summary>
     /// Constants for window styles
     /// </summary>
 #if !INTEROP
+
     internal struct WS
 #else
+
     public struct WS
 #endif
 
@@ -1194,8 +1242,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct MOD
 #else
+
     public struct MOD
 #endif
 
@@ -1210,8 +1260,10 @@ namespace Platform.Support.Windows
     /// Constants for ShowWindow
     /// </summary>
 #if !INTEROP
+
     internal struct SW
 #else
+
     public struct SW
 #endif
 
@@ -1237,8 +1289,10 @@ namespace Platform.Support.Windows
     /// MessageBox return codes
     /// </summary>
 #if !INTEROP
+
     internal struct MSGBOX_ID
 #else
+
     public struct MSGBOX_ID
 #endif
 
@@ -1255,8 +1309,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct WPF
 #else
+
     public struct WPF
 #endif
 
@@ -1265,9 +1321,11 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     [Flags]
     internal enum AW : uint
 #else
+
     [Flags]
     public enum AW : uint
 #endif
@@ -1285,8 +1343,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal enum GA
 #else
+
     public enum GA
 #endif
 
@@ -1300,8 +1360,10 @@ namespace Platform.Support.Windows
     /// Constants for SetWindowPos
     /// </summary>
 #if !INTEROP
+
     internal struct SWP
 #else
+
     public struct SWP
 #endif
 
@@ -1321,8 +1383,10 @@ namespace Platform.Support.Windows
     /// TrackPopupMenu flags
     /// </summary>
 #if !INTEROP
+
     internal struct TPM
 #else
+
     public struct TPM
 #endif
 
@@ -1338,13 +1402,14 @@ namespace Platform.Support.Windows
         public const uint LAYOUTRTL = 0x8000;
     }
 
-
     /// <summary>
     /// Window field offsets for GetWindowLong().
     /// </summary>
 #if !INTEROP
+
     internal struct GWL
 #else
+
     public struct GWL
 #endif
 
@@ -1362,8 +1427,10 @@ namespace Platform.Support.Windows
     /// GetDCEx() flags.
     /// </summary>
 #if !INTEROP
+
     internal struct DCX
 #else
+
     public struct DCX
 #endif
 
@@ -1386,8 +1453,10 @@ namespace Platform.Support.Windows
     /// Constants for button messages
     /// </summary>
 #if !INTEROP
+
     internal struct BM
 #else
+
     public struct BM
 #endif
 
@@ -1396,8 +1465,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct ButtonStyles
 #else
+
     public struct ButtonStyles
 #endif
 
@@ -1410,8 +1481,10 @@ namespace Platform.Support.Windows
     /// Constants for combo box notifications
     /// </summary>
 #if !INTEROP
+
     internal struct CBN
 #else
+
     public struct CBN
 #endif
 
@@ -1423,8 +1496,10 @@ namespace Platform.Support.Windows
     /// Constants for window messages
     /// </summary>
 #if !INTEROP
+
     internal struct WM
 #else
+
     public struct WM
 #endif
 
@@ -1503,8 +1578,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct EC
 #else
+
     public struct EC
 #endif
 
@@ -1514,8 +1591,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct UIS
 #else
+
     public struct UIS
 #endif
 
@@ -1526,8 +1605,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct UISF
 #else
+
     public struct UISF
 #endif
 
@@ -1541,8 +1622,10 @@ namespace Platform.Support.Windows
     /// Constants for return value from NCHITTEST
     /// </summary>
 #if !INTEROP
+
     internal struct HT
 #else
+
     public struct HT
 #endif
 
@@ -1582,8 +1665,10 @@ namespace Platform.Support.Windows
     /// Constants for WM_SYSCOMMAND
     /// </summary>
 #if !INTEROP
+
     internal struct SC
 #else
+
     public struct SC
 #endif
 
@@ -1614,8 +1699,10 @@ namespace Platform.Support.Windows
     /// Constants for virtual key codes
     /// </summary>
 #if !INTEROP
+
     internal struct VK
 #else
+
     public struct VK
 #endif
 
@@ -1642,8 +1729,10 @@ namespace Platform.Support.Windows
     /// Constants used for testing values returned from GetKeyState
     /// </summary>
 #if !INTEROP
+
     internal struct VK_STATE
 #else
+
     public struct VK_STATE
 #endif
 
@@ -1656,9 +1745,11 @@ namespace Platform.Support.Windows
     /// </summary>
 
 #if !INTEROP
+
     [Flags]
     internal enum MK : uint
 #else
+
     [Flags]
     public enum MK : uint
 #endif
@@ -1677,8 +1768,10 @@ namespace Platform.Support.Windows
     /// Enumeration for windows hook types
     /// </summary>
 #if !INTEROP
+
     internal enum WH : int
 #else
+
     public enum WH : int
 #endif
 
@@ -1702,8 +1795,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct HWND
 #else
+
     public struct HWND
 #endif
 
@@ -1720,8 +1815,10 @@ namespace Platform.Support.Windows
     /// Hook codes passed to HookDelegate
     /// </summary>
 #if !INTEROP
+
     internal struct HC
 #else
+
     public struct HC
 #endif
 
@@ -1735,8 +1832,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct ENDSESSION
 #else
+
     public struct ENDSESSION
 #endif
     {
@@ -1749,8 +1848,10 @@ namespace Platform.Support.Windows
     /// Key flags used to extract extended key information from lParam
     /// </summary>
 #if !INTEROP
+
     internal struct KF
 #else
+
     public struct KF
 #endif
 
@@ -1768,8 +1869,10 @@ namespace Platform.Support.Windows
     /// currently using are defined -- there are many more available in Winuser.h)
     /// </summary>
 #if !INTEROP
+
     internal enum EVENT_SYSTEM : uint
 #else
+
     public enum EVENT_SYSTEM : uint
 #endif
 
@@ -1797,9 +1900,11 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     [Flags]
     internal enum WINEVENT : uint
 #else
+
     [Flags]
     public enum WINEVENT : uint
 #endif
@@ -1813,8 +1918,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct TTM
 #else
+
     public struct TTM
 #endif
 
@@ -1825,8 +1932,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct TTF
 #else
+
     public struct TTF
 #endif
 
@@ -1836,8 +1945,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct TTS
 #else
+
     public struct TTS
 #endif
 
@@ -1847,8 +1958,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct TOOLINFO
 #else
+
     public struct TOOLINFO
 #endif
 
@@ -1859,14 +1972,18 @@ namespace Platform.Support.Windows
         public UIntPtr uId;
         public RECT rect;
         public IntPtr hinst;
+
         [MarshalAs(UnmanagedType.LPTStr)]
         public string lpszText;
+
         public IntPtr lParam;
     }
 
 #if !INTEROP
+
     internal struct WINDOW_CLASS
 #else
+
     public struct WINDOW_CLASS
 #endif
 
@@ -1875,9 +1992,11 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential)]
     internal struct LASTINPUTINFO
 #else
+
     [StructLayout(LayoutKind.Sequential)]
     public struct LASTINPUTINFO
 #endif
@@ -1887,15 +2006,18 @@ namespace Platform.Support.Windows
 
         [MarshalAs(UnmanagedType.U4)]
         public int cbSize;
+
         [MarshalAs(UnmanagedType.U4)]
         public int dwTime;
     }
 
     //title bar structure with size info
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential)]
     internal struct TITLEBARINFO
 #else
+
     [StructLayout(LayoutKind.Sequential)]
     public struct TITLEBARINFO
 #endif
@@ -1903,14 +2025,17 @@ namespace Platform.Support.Windows
     {
         public uint cbSize;
         public RECT rcTitleBar;
+
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 5 + 1)]
         public uint[] rgstate;
     }
 
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential)]
     internal struct WINDOWINFO
 #else
+
     [StructLayout(LayoutKind.Sequential)]
     public struct WINDOWINFO
 #endif
@@ -1933,8 +2058,10 @@ namespace Platform.Support.Windows
     /// See the documentation for OPENFILENAME
     /// </summary>
 #if !INTEROP
+
     internal struct OpenFileName
 #else
+
     public struct OpenFileName
 #endif
 
@@ -1965,18 +2092,23 @@ namespace Platform.Support.Windows
     };
 
 #if !INTEROP
-    internal delegate IntPtr OfnHookProc(IntPtr hWnd, UInt32 msg, Int32 wParam, Int32 lParam);
-#else
-    public delegate IntPtr OfnHookProc(IntPtr hWnd, UInt32 msg, Int32 wParam, Int32 lParam);
-#endif
 
+    internal delegate IntPtr OfnHookProc(IntPtr hWnd, UInt32 msg, Int32 wParam, Int32 lParam);
+
+#else
+
+    public delegate IntPtr OfnHookProc(IntPtr hWnd, UInt32 msg, Int32 wParam, Int32 lParam);
+
+#endif
 
     /// <summary>
     /// Values that can be placed in the OPENFILENAME structure, we don't use all of them
     /// </summary>
 #if !INTEROP
+
     internal class OpenFileNameFlags
 #else
+
     public class OpenFileNameFlags
 #endif
 
@@ -2013,8 +2145,10 @@ namespace Platform.Support.Windows
     /// Values that can be placed in the FlagsEx field of the OPENFILENAME structure
     /// </summary>
 #if !INTEROP
+
     internal class OpenFileNameFlagsEx
 #else
+
     public class OpenFileNameFlagsEx
 #endif
 
@@ -2027,8 +2161,10 @@ namespace Platform.Support.Windows
     /// We use them to set up our child window
     /// </summary>
 #if !INTEROP
+
     internal class DlgStyle
 #else
+
     public class DlgStyle
 #endif
     {
@@ -2046,8 +2182,10 @@ namespace Platform.Support.Windows
     /// Win32 "extended" window style constants
     /// </summary>
 #if !INTEROP
+
     internal class ExStyle
 #else
+
     public class ExStyle
 #endif
     {
@@ -2061,9 +2199,11 @@ namespace Platform.Support.Windows
     /// See documentation for DLGTEMPLATE and DLGITEMTEMPLATE
     /// </summary>
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential)]
     internal class DlgTemplate
 #else
+
     [StructLayout(LayoutKind.Sequential)]
     public class DlgTemplate
 #endif
@@ -2071,6 +2211,7 @@ namespace Platform.Support.Windows
     {
         // The dialog template - see documentation for DLGTEMPLATE
         public Int32 style = DlgStyle.Ds3dLook | DlgStyle.DsControl | DlgStyle.WsChild | DlgStyle.WsClipSiblings | DlgStyle.SsNotify;
+
         public Int32 extendedStyle = ExStyle.WsExControlParent;
         public Int16 numItems = 1;
         public Int16 x = 0;
@@ -2083,6 +2224,7 @@ namespace Platform.Support.Windows
 
         // Single dlg item, must be dword-aligned - see documentation for DLGITEMTEMPLATE
         public Int32 itemStyle = DlgStyle.WsChild;
+
         public Int32 itemExtendedStyle = ExStyle.WsExNoParentNotify;
         public Int16 itemX = 0;
         public Int16 itemY = 0;
@@ -2100,8 +2242,10 @@ namespace Platform.Support.Windows
     /// We only look for CDN_SELCHANGE
     /// </summary>
 #if !INTEROP
+
     internal class CommonDlgNotification
 #else
+
     public class CommonDlgNotification
 #endif
 
@@ -2126,8 +2270,10 @@ namespace Platform.Support.Windows
     /// We only use CDM_GETFILEPATH
     /// </summary>
 #if !INTEROP
+
     internal class CommonDlgMessage
 #else
+
     public class CommonDlgMessage
 #endif
     {
@@ -2142,17 +2288,21 @@ namespace Platform.Support.Windows
     /// Part of the notification messages sent by the common dialogs
     /// </summary>
 #if !INTEROP
+
     [StructLayout(LayoutKind.Explicit)]
     internal struct NMHDR
 #else
+
     [StructLayout(LayoutKind.Explicit)]
     public struct NMHDR
 #endif
     {
         [FieldOffset(0)]
         public IntPtr hWndFrom;
+
         [FieldOffset(4)]
         public UInt16 idFrom;
+
         [FieldOffset(8)]
         public UInt16 code;
     };
@@ -2161,25 +2311,31 @@ namespace Platform.Support.Windows
     /// Part of the notification messages sent by the common dialogs
     /// </summary>
 #if !INTEROP
+
     [StructLayout(LayoutKind.Explicit)]
     internal struct OfNotify
 #else
+
     [StructLayout(LayoutKind.Explicit)]
     public struct OfNotify
 #endif
     {
         [FieldOffset(0)]
         public NMHDR hdr;
+
         [FieldOffset(12)]
         public IntPtr ipOfn;
+
         [FieldOffset(16)]
         public IntPtr ipFile;
     };
 
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential, Pack = 4, CharSet = CharSet.Auto)]
     internal struct CHARFORMAT2
 #else
+
     [StructLayout(LayoutKind.Sequential, Pack = 4, CharSet = CharSet.Auto)]
     public struct CHARFORMAT2
 #endif
@@ -2192,8 +2348,10 @@ namespace Platform.Support.Windows
         public int crTextColor;
         public byte bCharSet;
         public byte bPitchAndFamily;
+
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
         public string szFaceName;
+
         public short wWeight;
         public short sSpacing;
         public int crBackColor;
@@ -2208,9 +2366,11 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     internal class MENUITEMINFO_T_RW
 #else
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     public class MENUITEMINFO_T_RW
 #endif
@@ -2229,7 +2389,5 @@ namespace Platform.Support.Windows
         public IntPtr hbmpItem = IntPtr.Zero;
     }
 
-
 #pragma warning restore
-
 }

@@ -12,9 +12,8 @@ namespace Platform.Presentation.Forms.Providers
     [ToolboxItem(true)]
     public sealed class UserAcountControlProvider : System.ComponentModel.Component, IExtenderProvider
     {
-        
-
         private Hashtable m_properties = new Hashtable();
+
         public bool CanExtend(object sender)
         {
             return sender is Button;
@@ -24,6 +23,7 @@ namespace Platform.Presentation.Forms.Providers
         {
             public bool Shield { get; set; }
         }
+
         private Properties EnsurePropertiesExists(object key)
         {
             Properties p = (Properties)m_properties[key];
@@ -37,13 +37,11 @@ namespace Platform.Presentation.Forms.Providers
             return p;
         }
 
-
         [DefaultValue(false)]
         public bool GetShield(Button b)
         {
             return EnsurePropertiesExists(b).Shield;
         }
-
 
         public void SetShield(Button b, bool value)
         {
@@ -72,7 +70,6 @@ namespace Platform.Presentation.Forms.Providers
             }
         }
 
-
         public static bool IsAdmin()
         {
             System.Security.Principal.WindowsIdentity id = System.Security.Principal.WindowsIdentity.GetCurrent();
@@ -80,12 +77,10 @@ namespace Platform.Presentation.Forms.Providers
             return p.IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
         }
 
-
         public static void AddShieldToButton(ref Button b)
         {
             b.FlatStyle = FlatStyle.System;
             User32.SendMessage(b.Handle, User32.BCM_SETSHIELD, (System.IntPtr)0, (System.IntPtr)0xffffffff);
         }
-
     }
 }

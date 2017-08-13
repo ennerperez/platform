@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Support.Windows
 {
     public static class OSHelper
     {
-
 #if (!PORTABLE)
 
         /// <summary>
@@ -54,6 +50,5 @@ namespace Platform.Support.Windows
                     return true;
             }
         }
-
     }
 }

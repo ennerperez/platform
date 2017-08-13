@@ -1,18 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
-using System.Drawing;
 using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Controls
 {
-
     [ToolboxBitmap(typeof(System.Windows.Forms.DataGridViewTextBoxColumn))]
     [ToolboxItem(false)]
     public class DataGridViewTextAndImageColumn : DataGridViewTextBoxColumn
     {
-
         private Image imageValue;
         private Size imageSize;
 
@@ -35,8 +30,6 @@ namespace Platform.Presentation.Forms.Controls
             }
         }
 
-
-
         public override object Clone()
         {
             DataGridViewTextAndImageColumn c = base.Clone() as DataGridViewTextAndImageColumn;
@@ -44,8 +37,6 @@ namespace Platform.Presentation.Forms.Controls
             c.imageSize = this.imageSize;
             return c;
         }
-
-
 
         public Image Image
         {
@@ -102,7 +93,6 @@ namespace Platform.Presentation.Forms.Controls
                 {
                     return imageValue;
                 }
-
                 else if (this.imageValue != null)
                 {
                     return this.imageValue;
@@ -154,7 +144,5 @@ namespace Platform.Presentation.Forms.Controls
         {
             get { return this.OwningColumn as DataGridViewTextAndImageColumn; }
         }
-
     }
-
 }

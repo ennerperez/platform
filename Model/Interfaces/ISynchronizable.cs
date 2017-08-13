@@ -1,6 +1,7 @@
 ﻿using System.Data;
 
 #if PORTABLE
+
 namespace System.Data
 {
     //
@@ -12,14 +13,17 @@ namespace System.Data
         // Resumen:
         //     La fila contiene sus valores originales.
         Original = 256,
+
         //
         // Resumen:
         //     La fila contiene valores actuales.
         Current = 512,
+
         //
         // Resumen:
         //     La fila contiene un valor propuesto.
         Proposed = 1024,
+
         //
         // Resumen:
         //     La versión predeterminada de System.Data.DataRowState.Para un valor de DataRowState
@@ -40,42 +44,48 @@ namespace System.Data
         //     se encuentra en este estado inmediatamente después de haber sido creado y antes
         //     de que se agregue a una colección, o bien si se ha quitado de una colección.
         Detached = 1,
+
         //
         // Resumen:
         //     La fila no ha cambiado desde que se llamó a System.Data.DataRow.AcceptChanges
         //     por última vez.
         Unchanged = 2,
+
         //
         // Resumen:
         //     La fila se ha agregado a System.Data.DataRowCollection y no se ha llamado a System.Data.DataRow.AcceptChanges.
         Added = 4,
+
         //
         // Resumen:
         //     La fila se ha eliminado mediante el método System.Data.DataRow.Delete del System.Data.DataRow.
         Deleted = 8,
+
         //
         // Resumen:
         //     La fila se ha modificado y no se ha llamado a System.Data.DataRow.AcceptChanges.
         Modified = 16
     }
 }
+
 #endif
 
 namespace Platform.Model
 {
-
 #if PORTABLE
+
     namespace Core
     {
 #endif
+
         public class ISynchronizable
         {
-
-            DataRowVersion RowVersion { get; set; }
-            DataRowState RowState { get; set; }
-
+            private DataRowVersion RowVersion { get; set; }
+            private DataRowState RowState { get; set; }
         }
+
 #if PORTABLE
     }
+
 #endif
 }

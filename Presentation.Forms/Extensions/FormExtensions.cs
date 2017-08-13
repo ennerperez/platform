@@ -1,13 +1,10 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Reflection;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms
 {
     public static class FormExtensions
     {
-
         public static void ShowIn(this Form form, Form parent, EventHandler shown, params object[] param)
         {
             System.Type _t = form.GetType();
@@ -65,7 +62,5 @@ namespace Platform.Presentation.Forms
         {
             return System.Windows.Forms.Screen.FromRectangle(new System.Drawing.Rectangle(@this.Location, @this.Size));
         }
-        
-
     }
 }

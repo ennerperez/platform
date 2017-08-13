@@ -6,19 +6,16 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-
 namespace Platform.Presentation.Forms
 {
-
     public sealed class DisplayHelper
     {
-        const int DEFAULT_DPI = 96;
-        const int TWIPS_PER_INCH = 1440;
+        private const int DEFAULT_DPI = 96;
+        private const int TWIPS_PER_INCH = 1440;
 
         public static float TwipsToPixelsX(int twips)
         {
@@ -51,6 +48,7 @@ namespace Platform.Presentation.Forms
         }
 
         private static int? _pixelsPerLogicalInchX;
+
         public static int PixelsPerLogicalInchX
         {
             get
@@ -67,6 +65,7 @@ namespace Platform.Presentation.Forms
         }
 
         public static int? _pixelsPerLogicalInchY;
+
         public static int PixelsPerLogicalInchY
         {
             get
@@ -337,7 +336,7 @@ namespace Platform.Presentation.Forms
             Refresh();
         }
 
-        static void Refresh()
+        private static void Refresh()
         {
             lock (lockObj)
             {
@@ -369,7 +368,7 @@ namespace Platform.Presentation.Forms
                 }
             }
         }
-        
+
         public static bool GetCompositionEnabled(bool flush)
         {
             if (flush)

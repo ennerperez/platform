@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
 namespace Platform.Support
 {
-
 #if PORTABLE
     namespace Core
     {
@@ -14,10 +12,8 @@ namespace Platform.Support
 
     namespace Web
     {
-
         public abstract class RSS
         {
-
             public class Channel
             {
                 public string Title { get; set; }
@@ -32,6 +28,7 @@ namespace Platform.Support
 
                 public IEnumerable<Item> Items { get; set; }
             }
+
             public class Item
             {
                 public string Title { get; set; }
@@ -52,7 +49,6 @@ namespace Platform.Support
 
             public static IEnumerable<Channel> GetChannel(XDocument xdoc)
             {
-
                 IEnumerable<Channel> _return = from channels in xdoc.Descendants("channel")
                                                select new Channel
                                                {
@@ -74,9 +70,7 @@ namespace Platform.Support
                                                            }
                                                };
 
-
                 return _return;
-
             }
 
             public static DateTime GetDate(string v)
@@ -85,12 +79,10 @@ namespace Platform.Support
                 DateTime.TryParse(v, out _value);
                 return _value;
             }
-
         }
     }
 
 #if PORTABLE
     }
 #endif
-
 }

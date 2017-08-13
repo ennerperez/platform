@@ -1,16 +1,10 @@
-﻿using Platform.Presentation.Forms.Components;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Renderers.ColorTables
 {
     public class Office2007ColorTable : ProfessionalColorTable
     {
-
         public override Color ButtonSelectedHighlight
         {
             get { return Color.White; }
@@ -289,7 +283,5 @@ namespace Platform.Presentation.Forms.Renderers.ColorTables
         {
             get { return Color.FromArgb(111, 157, 217); }
         }
-
     }
-
 }

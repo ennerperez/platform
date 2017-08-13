@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Platform.Support.Reflection
 {
@@ -13,9 +11,8 @@ namespace Platform.Support.Reflection
     /// </summary>
     public class DynamicInvoke
     {
-
         /// <summary>
-        /// Now do it the efficient way by holding references to the assembly 
+        /// Now do it the efficient way by holding references to the assembly
         /// and the class this is an inner class which holds the class instance info
         /// </summary>
         internal class DynamicClassInfo

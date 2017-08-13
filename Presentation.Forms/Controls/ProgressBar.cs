@@ -1,15 +1,10 @@
 ﻿using Platform.Support.Windows;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Presentation.Forms
 {
-
     /// <summary>
     /// The progress bar state for Windows Vista & 7
     /// </summary>
@@ -33,7 +28,6 @@ namespace Platform.Presentation.Forms
 
     namespace Controls
     {
-
         /// <summary>
         /// A Windows progress bar control with Windows Vista & 7 functionality.
         /// </summary>
@@ -41,16 +35,19 @@ namespace Platform.Presentation.Forms
         [ToolboxItem(true)]
         public class ProgressBar : System.Windows.Forms.ProgressBar
         {
-            bool showInTaskbar;
+            private bool showInTaskbar;
             private ProgressBarState m_State = ProgressBarState.Normal;
-            System.Windows.Forms.ContainerControl ownerForm;
+            private System.Windows.Forms.ContainerControl ownerForm;
 
-            public ProgressBar() { }
+            public ProgressBar()
+            {
+            }
 
             public ProgressBar(System.Windows.Forms.ContainerControl parentControl)
             {
                 ContainerControl = parentControl;
             }
+
             public System.Windows.Forms.ContainerControl ContainerControl
             {
                 get { return ownerForm; }
@@ -62,6 +59,7 @@ namespace Platform.Presentation.Forms
                         ((System.Windows.Forms.Form)ownerForm).Shown += Windows7ProgressBar_Shown;
                 }
             }
+
             public override ISite Site
             {
                 set
@@ -77,7 +75,7 @@ namespace Platform.Presentation.Forms
                 }
             }
 
-            void Windows7ProgressBar_Shown(object sender, System.EventArgs e)
+            private void Windows7ProgressBar_Shown(object sender, System.EventArgs e)
             {
                 if (ShowInTaskbar)
                 {
@@ -89,8 +87,6 @@ namespace Platform.Presentation.Forms
 
                 ((System.Windows.Forms.Form)ownerForm).Shown -= Windows7ProgressBar_Shown;
             }
-
-
 
             /// <summary>
             /// Show progress in taskbar
@@ -119,7 +115,6 @@ namespace Platform.Presentation.Forms
                     }
                 }
             }
-
 
             /// <summary>
             /// Gets or sets the current position of the progress bar.
@@ -162,7 +157,6 @@ namespace Platform.Presentation.Forms
                 }
             }
 
-
             /// <summary>
             /// The progress bar state for Windows Vista & 7
             /// </summary>
@@ -182,7 +176,6 @@ namespace Platform.Presentation.Forms
 
                     // set the progress bar state (Normal, Error, Paused)
                     User32.SendMessage(Handle, 0x410, (int)value, 0);
-
 
                     if (wasMarquee)
                         // the Taskbar PB value needs to be reset
@@ -245,7 +238,5 @@ namespace Platform.Presentation.Forms
                 TaskBar.SetProgressState(ownerForm.Handle, thmState);
             }
         }
-
-
     }
 }

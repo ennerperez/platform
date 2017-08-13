@@ -3,7 +3,6 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Platform.Support.Data.Attributes
 {
-
     #region Legacy
 
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = true), SuppressMessage("Microsoft.Performance", "CA1813:AvoidUnsealedAttributes"), SuppressMessage("Microsoft.Design", "CA1019:DefineAccessorsForAttributeArguments")]
@@ -16,6 +15,5 @@ namespace Platform.Support.Data.Attributes
         }
     }
 
-    #endregion
-
+    #endregion Legacy
 }

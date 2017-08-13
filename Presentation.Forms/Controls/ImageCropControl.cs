@@ -7,15 +7,13 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Media;
-using System.Text;
 using System.Windows.Forms;
+
 //using OpenLiveWriter.CoreServices;
 //using OpenLiveWriter.Localization;
 
 namespace Platform.Presentation.Forms.Controls
 {
-
     [ToolboxBitmap(typeof(System.Windows.Forms.PictureBox))]
     [ToolboxItem(true)]
     public partial class ImageCropControl : UserControl
@@ -58,6 +56,7 @@ namespace Platform.Presentation.Forms.Controls
         }
 
         public event EventHandler CropRectangleChanged;
+
         private void OnCropRectangleChanged()
         {
             if (CropRectangleChanged != null)
@@ -65,6 +64,7 @@ namespace Platform.Presentation.Forms.Controls
         }
 
         public event EventHandler AspectRatioChanged;
+
         private void OnAspectRatioChanged()
         {
             if (AspectRatioChanged != null)
@@ -286,19 +286,25 @@ namespace Platform.Presentation.Forms.Controls
                 case AnchorStyles.Left:
                 case AnchorStyles.Right:
                     return Cursors.SizeWE;
+
                 case AnchorStyles.Top:
                 case AnchorStyles.Bottom:
                     return Cursors.SizeNS;
+
                 case AnchorStyles.Top | AnchorStyles.Left:
                 case AnchorStyles.Bottom | AnchorStyles.Right:
                     return Cursors.SizeNWSE;
+
                 case AnchorStyles.Top | AnchorStyles.Right:
                 case AnchorStyles.Bottom | AnchorStyles.Left:
                     return Cursors.SizeNESW;
+
                 case AnchorStyles.None:
                     return Cursors.Default;
+
                 case ANCHOR_ALL:
                     return Cursors.SizeAll;
+
                 default:
                     Debug.Fail("Unexpected anchor: " + anchor);
                     return Cursors.Default;
@@ -329,21 +335,28 @@ namespace Platform.Presentation.Forms.Controls
                 case Keys.Up | Keys.Control:
                 case Keys.Up:
                     return AdjustCropRectangle(0, -1, 0, 0);
+
                 case Keys.Down | Keys.Control:
                 case Keys.Down:
                     return AdjustCropRectangle(0, 1, 0, 0);
+
                 case Keys.Left | Keys.Control:
                 case Keys.Left:
                     return AdjustCropRectangle(-1, 0, 0, 0);
+
                 case Keys.Right | Keys.Control:
                 case Keys.Right:
                     return AdjustCropRectangle(1, 0, 0, 0);
+
                 case Keys.Left | Keys.Shift:
                     return AdjustCropRectangle(0, 0, -1, 0);
+
                 case Keys.Right | Keys.Shift:
                     return AdjustCropRectangle(0, 0, 1, 0);
+
                 case Keys.Up | Keys.Shift:
                     return AdjustCropRectangle(0, 0, 0, -1);
+
                 case Keys.Down | Keys.Shift:
                     return AdjustCropRectangle(0, 0, 0, 1);
             }
@@ -608,8 +621,15 @@ namespace Platform.Presentation.Forms.Controls
 
             public abstract Rectangle AdjustRectangle(Rectangle cont, Rectangle rect, int xOffset, int yOffset, int xGrow, int yGrow);
 
-            protected static int Round(double dblVal) { return (int)Math.Round(dblVal); }
-            protected static int Round(float fltVal) { return (int)Math.Round(fltVal); }
+            protected static int Round(double dblVal)
+            {
+                return (int)Math.Round(dblVal);
+            }
+
+            protected static int Round(float fltVal)
+            {
+                return (int)Math.Round(fltVal);
+            }
 
             protected virtual Rectangle DoMove(Point newLoc)
             {
@@ -687,28 +707,36 @@ namespace Platform.Presentation.Forms.Controls
                 {
                     case HT.Left:
                         return AnchorStyles.Left;
+
                     case HT.Top:
                         return AnchorStyles.Top;
+
                     case HT.Right:
                         return AnchorStyles.Right;
+
                     case HT.Bottom:
                         return AnchorStyles.Bottom;
+
                     case HT.Left | HT.Top:
                     case HT.Left | HT.AlmostTop:
                     case HT.Top | HT.AlmostLeft:
                         return AnchorStyles.Top | AnchorStyles.Left;
+
                     case HT.Right | HT.Top:
                     case HT.Right | HT.AlmostTop:
                     case HT.Top | HT.AlmostRight:
                         return AnchorStyles.Top | AnchorStyles.Right;
+
                     case HT.Right | HT.Bottom:
                     case HT.Right | HT.AlmostBottom:
                     case HT.Bottom | HT.AlmostRight:
                         return AnchorStyles.Bottom | AnchorStyles.Right;
+
                     case HT.Left | HT.Bottom:
                     case HT.Left | HT.AlmostBottom:
                     case HT.Bottom | HT.AlmostLeft:
                         return AnchorStyles.Bottom | AnchorStyles.Left;
+
                     default:
                         return ANCHOR_ALL;
                 }
@@ -906,6 +934,7 @@ namespace Platform.Presentation.Forms.Controls
                         newRect.Width -= deltaX;
                         newRect.Offset(deltaX, 0);
                         break;
+
                     case AnchorStyles.Right:
                         if (MIN_WIDTH >= initialBounds.Width + deltaX)
                             deltaX = -initialBounds.Width + MIN_WIDTH;
@@ -921,6 +950,7 @@ namespace Platform.Presentation.Forms.Controls
                         newRect.Height -= deltaY;
                         newRect.Offset(0, deltaY);
                         break;
+
                     case AnchorStyles.Bottom:
                         if (MIN_HEIGHT >= initialBounds.Height + deltaY)
                             deltaY = -initialBounds.Height + MIN_HEIGHT;
@@ -1046,7 +1076,7 @@ namespace Platform.Presentation.Forms.Controls
             }
         }
     }
-    
+
     internal class MathHelper
     {
         public static int Max(params int[] values)
@@ -1073,5 +1103,4 @@ namespace Platform.Presentation.Forms.Controls
             return min;
         }
     }
-
 }

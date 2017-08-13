@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Platform.Model.SPS
+﻿namespace Platform.Model.SPS
 {
     /// <summary>
     /// Represents a plugin from application perspective.

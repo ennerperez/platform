@@ -67,6 +67,7 @@ namespace Platform.Presentation.Forms
                 VisibleOnly = visibleOnly;
                 CustomParam = customParam;
             }
+
             public readonly EnumerateChildWindowsDelegate EnumDelegate;
             public readonly bool VisibleOnly;
             public readonly object CustomParam;
@@ -90,9 +91,5 @@ namespace Platform.Presentation.Forms
             // call the underlying delegate
             return param.EnumDelegate(hWnd, param.CustomParam);
         }
-
     }
-
-    
-
 }

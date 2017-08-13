@@ -15,12 +15,12 @@
 
   <xs:simpleType name="guid">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\b[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}\b"/>
+      <xs:pattern value="\b[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}\b" />
     </xs:restriction>
   </xs:simpleType>
 
   <xs:complexType name="product">
-    <xs:sequence minOccurs="0" >
+    <xs:sequence minOccurs="0">
       <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1" />
       <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
       <xs:element name="eula" type="xs:string" minOccurs="0" maxOccurs="1" />
@@ -48,7 +48,7 @@
       </xs:simpleType>
     </xs:attribute>
   </xs:complexType>-->
-  
+
   <xs:complexType name="brand">
     <xs:sequence>
       <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
@@ -132,7 +132,7 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="products" minOccurs="0" maxOccurs="1" >
+      <xs:element name="products" minOccurs="0" maxOccurs="1">
         <xs:complexType>
           <xs:sequence minOccurs="0" maxOccurs="unbounded">
             <xs:element name="product" type="product" minOccurs="1" />
@@ -167,9 +167,8 @@
   <xs:element name="SKUID">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="brand" type="brand" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="brand" type="brand" minOccurs="1" maxOccurs="1" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-
 </xs:schema>

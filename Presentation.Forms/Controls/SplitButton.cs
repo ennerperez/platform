@@ -4,31 +4,27 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-
 namespace Platform.Presentation.Forms.Controls
 {
-
     [ToolboxBitmap(typeof(System.Windows.Forms.Button))]
     [ToolboxItem(true)]
     public class SplitButton : Button
     {
-        PushButtonState _state;
+        private PushButtonState _state;
 
+        private const int SplitSectionWidth = 18;
 
-        const int SplitSectionWidth = 18;
+        private static int BorderSize = SystemInformation.Border3DSize.Width * 2;
+        private bool skipNextOpen;
+        private Rectangle dropDownRectangle;
+        private bool showSplit;
 
-        static int BorderSize = SystemInformation.Border3DSize.Width * 2;
-        bool skipNextOpen;
-        Rectangle dropDownRectangle;
-        bool showSplit;
+        private bool isSplitMenuVisible;
 
-        bool isSplitMenuVisible;
+        private ContextMenuStrip m_SplitMenuStrip;
+        private ContextMenu m_SplitMenu;
 
-
-        ContextMenuStrip m_SplitMenuStrip;
-        ContextMenu m_SplitMenu;
-
-        TextFormatFlags textFormatFlags = TextFormatFlags.Default;
+        private TextFormatFlags textFormatFlags = TextFormatFlags.Default;
 
         public SplitButton()
         {
@@ -101,7 +97,6 @@ namespace Platform.Presentation.Forms.Controls
                 else
                     ShowSplit = false;
 
-
                 m_SplitMenuStrip = value;
             }
         }
@@ -170,7 +165,6 @@ namespace Platform.Presentation.Forms.Controls
                 {
                     ShowContextMenuStrip();
                 }
-
                 else if (kevent.KeyCode.Equals(Keys.Space) && kevent.Modifiers == Keys.None)
                 {
                     State = PushButtonState.Pressed;
@@ -221,7 +215,7 @@ namespace Platform.Presentation.Forms.Controls
             }
         }
 
-        bool isMouseEntered;
+        private bool isMouseEntered;
 
         protected override void OnMouseEnter(EventArgs e)
         {
@@ -237,7 +231,6 @@ namespace Platform.Presentation.Forms.Controls
             {
                 State = PushButtonState.Hot;
             }
-               
         }
 
         protected override void OnMouseLeave(EventArgs e)
@@ -339,7 +332,6 @@ namespace Platform.Presentation.Forms.Controls
 
             bool drawSplitLine = (State == PushButtonState.Hot || State == PushButtonState.Pressed || !Application.RenderWithVisualStyles);
 
-
             if (RightToLeft == RightToLeft.Yes)
             {
                 dropDownRectangle.X = bounds.Left + 1;
@@ -432,7 +424,7 @@ namespace Platform.Presentation.Forms.Controls
             {
                 if (AutoSize)
                     return CalculateButtonAutoSize();
-                
+
                 if (!string.IsNullOrEmpty(Text) && TextRenderer.MeasureText(Text, Font).Width + SplitSectionWidth > preferredSize.Width)
                     return preferredSize + new Size(SplitSectionWidth + BorderSize * 2, 0);
             }
@@ -459,11 +451,13 @@ namespace Platform.Presentation.Forms.Controls
                     ret_size.Height = Math.Max(Text.Length == 0 ? 0 : text_size.Height, image_size.Height);
                     ret_size.Width = Math.Max(text_size.Width, image_size.Width);
                     break;
+
                 case TextImageRelation.ImageAboveText:
                 case TextImageRelation.TextAboveImage:
                     ret_size.Height = text_size.Height + image_size.Height;
                     ret_size.Width = Math.Max(text_size.Width, image_size.Width);
                     break;
+
                 case TextImageRelation.ImageBeforeText:
                 case TextImageRelation.TextBeforeImage:
                     ret_size.Height = Math.Max(text_size.Height, image_size.Height);
@@ -484,8 +478,8 @@ namespace Platform.Presentation.Forms.Controls
 
         #region Button Layout Calculations
 
-        //The following layout functions were taken from Mono's Windows.Forms 
-        //implementation, specifically "ThemeWin32Classic.cs", 
+        //The following layout functions were taken from Mono's Windows.Forms
+        //implementation, specifically "ThemeWin32Classic.cs",
         //then modified to fit the context of this splitButton
 
         private void CalculateButtonTextAndImageLayout(ref Rectangle content_rect, out Rectangle textRectangle, out Rectangle imageRectangle)
@@ -511,18 +505,22 @@ namespace Platform.Presentation.Forms.Controls
                         imageRectangle = OverlayObjectRect(ref content_rect, ref image_size, ImageAlign);
 
                     break;
+
                 case TextImageRelation.ImageAboveText:
                     content_rect.Inflate(-4, -4);
                     LayoutTextAboveOrBelowImage(content_rect, false, text_size, image_size, out textRectangle, out imageRectangle);
                     break;
+
                 case TextImageRelation.TextAboveImage:
                     content_rect.Inflate(-4, -4);
                     LayoutTextAboveOrBelowImage(content_rect, true, text_size, image_size, out textRectangle, out imageRectangle);
                     break;
+
                 case TextImageRelation.ImageBeforeText:
                     content_rect.Inflate(-4, -4);
                     LayoutTextBeforeOrAfterImage(content_rect, false, text_size, image_size, out textRectangle, out imageRectangle);
                     break;
+
                 case TextImageRelation.TextBeforeImage:
                     content_rect.Inflate(-4, -4);
                     LayoutTextBeforeOrAfterImage(content_rect, true, text_size, image_size, out textRectangle, out imageRectangle);
@@ -540,38 +538,47 @@ namespace Platform.Presentation.Forms.Controls
                     x = 4;
                     y = 4;
                     break;
+
                 case System.Drawing.ContentAlignment.TopCenter:
                     x = (container.Width - sizeOfObject.Width) / 2;
                     y = 4;
                     break;
+
                 case System.Drawing.ContentAlignment.TopRight:
                     x = container.Width - sizeOfObject.Width - 4;
                     y = 4;
                     break;
+
                 case System.Drawing.ContentAlignment.MiddleLeft:
                     x = 4;
                     y = (container.Height - sizeOfObject.Height) / 2;
                     break;
+
                 case System.Drawing.ContentAlignment.MiddleCenter:
                     x = (container.Width - sizeOfObject.Width) / 2;
                     y = (container.Height - sizeOfObject.Height) / 2;
                     break;
+
                 case System.Drawing.ContentAlignment.MiddleRight:
                     x = container.Width - sizeOfObject.Width - 4;
                     y = (container.Height - sizeOfObject.Height) / 2;
                     break;
+
                 case System.Drawing.ContentAlignment.BottomLeft:
                     x = 4;
                     y = container.Height - sizeOfObject.Height - 4;
                     break;
+
                 case System.Drawing.ContentAlignment.BottomCenter:
                     x = (container.Width - sizeOfObject.Width) / 2;
                     y = container.Height - sizeOfObject.Height - 4;
                     break;
+
                 case System.Drawing.ContentAlignment.BottomRight:
                     x = container.Width - sizeOfObject.Width - 4;
                     y = container.Height - sizeOfObject.Height - 4;
                     break;
+
                 default:
                     x = 4;
                     y = 4;
@@ -691,10 +698,12 @@ namespace Platform.Presentation.Forms.Controls
                 case System.Drawing.ContentAlignment.MiddleLeft:
                 case System.Drawing.ContentAlignment.TopLeft:
                     return HorizontalAlignment.Left;
+
                 case System.Drawing.ContentAlignment.BottomCenter:
                 case System.Drawing.ContentAlignment.MiddleCenter:
                 case System.Drawing.ContentAlignment.TopCenter:
                     return HorizontalAlignment.Center;
+
                 case System.Drawing.ContentAlignment.BottomRight:
                 case System.Drawing.ContentAlignment.MiddleRight:
                 case System.Drawing.ContentAlignment.TopRight:
@@ -712,10 +721,12 @@ namespace Platform.Presentation.Forms.Controls
                 case System.Drawing.ContentAlignment.TopCenter:
                 case System.Drawing.ContentAlignment.TopRight:
                     return VerticalAlignment.Top;
+
                 case System.Drawing.ContentAlignment.MiddleLeft:
                 case System.Drawing.ContentAlignment.MiddleCenter:
                 case System.Drawing.ContentAlignment.MiddleRight:
                     return VerticalAlignment.Center;
+
                 case System.Drawing.ContentAlignment.BottomLeft:
                 case System.Drawing.ContentAlignment.BottomCenter:
                 case System.Drawing.ContentAlignment.BottomRight:
@@ -748,7 +759,6 @@ namespace Platform.Presentation.Forms.Controls
 
         #endregion Button Layout Calculations
 
-
         private void ShowContextMenuStrip()
         {
             if (skipNextOpen)
@@ -771,12 +781,12 @@ namespace Platform.Presentation.Forms.Controls
             }
         }
 
-        void SplitMenuStrip_Opening(object sender, CancelEventArgs e)
+        private void SplitMenuStrip_Opening(object sender, CancelEventArgs e)
         {
             isSplitMenuVisible = true;
         }
 
-        void SplitMenuStrip_Closing(object sender, ToolStripDropDownClosingEventArgs e)
+        private void SplitMenuStrip_Closing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             isSplitMenuVisible = false;
 
@@ -788,8 +798,7 @@ namespace Platform.Presentation.Forms.Controls
             }
         }
 
-
-        void SplitMenu_Popup(object sender, EventArgs e)
+        private void SplitMenu_Popup(object sender, EventArgs e)
         {
             isSplitMenuVisible = true;
         }

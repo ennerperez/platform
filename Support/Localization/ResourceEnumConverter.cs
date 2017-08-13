@@ -7,15 +7,14 @@ using System.Runtime.InteropServices;
 
 namespace Platform.Support.Localization
 {
-
     /// <summary>
-    /// Defines a type converter for enum values that converts enum values to 
+    /// Defines a type converter for enum values that converts enum values to
     /// and from string representations using resources
     /// </summary>
     /// <remarks>
     /// This class makes localization of display values for enums in a project easy.  Simply
-    /// derive a class from this class and pass the ResourceManagerin the constructor.  
-    /// 
+    /// derive a class from this class and pass the ResourceManagerin the constructor.
+    ///
     /// <code lang="C#" escaped="true" >
     /// class LocalizedEnumConverter : ResourceEnumConverter
     /// {
@@ -23,19 +22,19 @@ namespace Platform.Support.Localization
     ///        : base(type, Properties.Resources.ResourceManager)
     ///    {
     ///    }
-    /// }    
+    /// }
     /// </code>
-    /// 
+    ///
     /// <code lang="Visual Basic" escaped="true" >
     /// Public Class LocalizedEnumConverter
-    /// 
+    ///
     ///    Inherits ResourceEnumConverter
     ///    Public Sub New(ByVal sType as Type)
     ///        MyBase.New(sType, My.Resources.ResourceManager)
     ///    End Sub
-    /// End Class    
+    /// End Class
     /// </code>
-    /// 
+    ///
     /// Then define the enum values in the resource editor.   The names of
     /// the resources are simply the enum value prefixed by the enum type name with an
     /// underscore separator eg MyEnum_MyValue.  You can then use the TypeConverter attribute
@@ -43,11 +42,13 @@ namespace Platform.Support.Localization
     /// project.
     /// </remarks>
 #if !PORTABLE
+
     [ComVisible(false)]
 #endif
     public class ResourceEnumConverter : EnumConverter
     {
         private class LookupTable : Dictionary<string, object> { }
+
         private Dictionary<CultureInfo, LookupTable> _lookupTables = new Dictionary<CultureInfo, LookupTable>();
         private ResourceManager _resourceManager;
         private bool _isFlagEnum = false;
@@ -107,6 +108,7 @@ namespace Platform.Support.Localization
             {
                 case 0:
                     return false;
+
                 case 1:
                     return true;
             }
@@ -283,10 +285,10 @@ namespace Platform.Support.Localization
         /// A list of KeyValuePairs where the key is the enum value and the value is the text to display
         /// </returns>
         /// <remarks>
-        /// This method can be used to provide localized binding to enums in ASP.NET applications.   Unlike 
+        /// This method can be used to provide localized binding to enums in ASP.NET applications.   Unlike
         /// windows forms the standard ASP.NET controls do not use TypeConverters to convert from enum values
         /// to the displayed text.   You can bind an ASP.NET control to the list returned by this method by setting
-        /// the DataValueField to "Key" and theDataTextField to "Value". 
+        /// the DataValueField to "Key" and theDataTextField to "Value".
         /// </remarks>
         static public List<KeyValuePair<Enum, string>> GetValues(Type enumType, CultureInfo culture)
         {
@@ -308,15 +310,14 @@ namespace Platform.Support.Localization
         /// A list of KeyValuePairs where the key is the enum value and the value is the text to display
         /// </returns>
         /// <remarks>
-        /// This method can be used to provide localized binding to enums in ASP.NET applications.   Unlike 
+        /// This method can be used to provide localized binding to enums in ASP.NET applications.   Unlike
         /// windows forms the standard ASP.NET controls do not use TypeConverters to convert from enum values
         /// to the displayed text.   You can bind an ASP.NET control to the list returned by this method by setting
-        /// the DataValueField to "Key" and theDataTextField to "Value". 
+        /// the DataValueField to "Key" and theDataTextField to "Value".
         /// </remarks>
         static public List<KeyValuePair<Enum, string>> GetValues(Type enumType)
         {
             return GetValues(enumType, CultureInfo.CurrentUICulture);
         }
     }
-
 }

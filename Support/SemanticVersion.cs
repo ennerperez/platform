@@ -5,12 +5,15 @@ using System.Text.RegularExpressions;
 namespace Platform.Support
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
 #if !PORTABLE
+
     [Serializable]
 #endif
+
         public sealed class SemanticVersion : IComparable, IComparable<SemanticVersion>, IEquatable<SemanticVersion>
         {
             private const string SemanticVersionRegex = "^(?<Version>\\d+(\\s*\\.\\s*\\d+){0,3})(?<Release>-[a-z][0-9a-z-]*)?$";
@@ -264,7 +267,9 @@ namespace Platform.Support
                 return 0;
             }
         }
+
 #if PORTABLE
     }
+
 #endif
 }

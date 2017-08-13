@@ -13,7 +13,8 @@ namespace Platform.Support.Windows
 #if !INTEROP
     internal class UrlMon
 #else
-public class UrlMon
+
+    public class UrlMon
 #endif
 
     {
@@ -37,6 +38,7 @@ public class UrlMon
             uint dwReserved,
             [In] IBindStatusCallback lpfnCB
             );
+
         [DllImport(ExternDll.UrlMon, CharSet = CharSet.Auto)]
         public static extern int URLOpenBlockingStream([In] IntPtr pCaller,
         [In, MarshalAs(UnmanagedType.LPTStr)] string szURL,
@@ -50,10 +52,12 @@ public class UrlMon
             [In] int dwFlags,
             [In] bool fEnable);
     }
+
 #if !INTEROP
     internal struct FEATURE
 #else
-public struct FEATURE
+
+    public struct FEATURE
 #endif
 
     {
@@ -86,12 +90,13 @@ public struct FEATURE
         public const int FEEDS = 26;
         public const int BLOCK_INPUT_PROMPTS = 27;
         public const int ENTRY_COUNT = 28;
-
     }
+
 #if !INTEROP
     internal struct INTERNETSETFEATURE
 #else
-public struct INTERNETSETFEATURE
+
+    public struct INTERNETSETFEATURE
 #endif
 
     {
@@ -111,7 +116,8 @@ public struct INTERNETSETFEATURE
     [Guid("79eac9c1-baf9-11ce-8c82-00aa004ba90b")]
     internal interface IBindStatusCallback
 #else
-[ComImport]
+
+    [ComImport]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [Guid("79eac9c1-baf9-11ce-8c82-00aa004ba90b")]
     public interface IBindStatusCallback
@@ -161,7 +167,8 @@ public struct INTERNETSETFEATURE
 #if !INTEROP
     internal enum BINDSTATUS : uint
 #else
-public enum BINDSTATUS : uint
+
+    public enum BINDSTATUS : uint
 #endif
 
     {
@@ -456,7 +463,8 @@ public enum BINDSTATUS : uint
 #if !INTEROP
     internal struct BINDINFO
 #else
-public struct BINDINFO
+
+    public struct BINDINFO
 #endif
 
     {
@@ -569,7 +577,8 @@ public struct BINDINFO
     [Flags]
     internal enum BSCF : uint
 #else
-[Flags]
+
+    [Flags]
     public enum BSCF : uint
 #endif
 
@@ -607,7 +616,8 @@ public struct BINDINFO
 #if !INTEROP
     internal enum BINDINFOF : uint
 #else
-public enum BINDINFOF : uint
+
+    public enum BINDINFOF : uint
 #endif
 
     {
@@ -631,7 +641,8 @@ public enum BINDINFOF : uint
 #if !INTEROP
     internal enum BINDVERB : uint
 #else
- public enum BINDVERB : uint
+
+    public enum BINDVERB : uint
 #endif
 
     {
@@ -662,5 +673,4 @@ public enum BINDINFOF : uint
         /// </summary>
         CUSTOM = 0x00000003
     }
-
 }

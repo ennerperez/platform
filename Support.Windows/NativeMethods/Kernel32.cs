@@ -1,12 +1,12 @@
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
+using Microsoft.Win32.SafeHandles;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
-using Microsoft.Win32.SafeHandles;
 
 namespace Platform.Support.Windows
 {
@@ -14,8 +14,10 @@ namespace Platform.Support.Windows
     /// Imports from Kernel32.dll
     /// </summary>
 #if !INTEROP
+
     internal class Kernel32
 #else
+
     public class Kernel32
 #endif
     {
@@ -399,12 +401,13 @@ namespace Platform.Support.Windows
 
         [DllImport(ExternDll.Kernel32, CharSet = CharSet.Auto, EntryPoint = "CopyMemory")]
         public extern static void CopyMemory(IntPtr dest, IntPtr src, uint length);
-
     }
 
 #if !INTEROP
+
     internal enum STDHandle : uint
 #else
+
     public enum STDHandle : uint
 #endif
     {
@@ -412,9 +415,12 @@ namespace Platform.Support.Windows
         STD_OUTPUT_HANDLE = unchecked((uint)-11),
         STD_ERROR_HANDLE = unchecked((uint)-12),
     }
+
 #if !INTEROP
+
     internal enum FileType : uint
 #else
+
     public enum FileType : uint
 #endif
     {
@@ -424,9 +430,12 @@ namespace Platform.Support.Windows
         FILE_TYPE_PIPE = 0x0003,
         FILE_TYPE_REMOTE = 0x8000,
     }
+
 #if !INTEROP
+
     internal class GlobalMemoryStatus
 #else
+
     public class GlobalMemoryStatus
 #endif
     {
@@ -460,7 +469,7 @@ namespace Platform.Support.Windows
         }
 
         [DllImport(ExternDll.Kernel32, SetLastError = true)]
-        static extern bool GlobalMemoryStatusEx(ref MEMORYSTATUSEX lpBuffer);
+        private static extern bool GlobalMemoryStatusEx(ref MEMORYSTATUSEX lpBuffer);
 
         private MEMORYSTATUSEX _memoryStatus = new MEMORYSTATUSEX();
     }
@@ -469,8 +478,10 @@ namespace Platform.Support.Windows
     /// Disposable wrapper class for getting access to the contents of an HGLOBAL
     /// </summary>
 #if !INTEROP
+
     internal class HGlobalLock : IDisposable
 #else
+
     public class HGlobalLock : IDisposable
 #endif
     {
@@ -588,8 +599,10 @@ namespace Platform.Support.Windows
     /// SetErrorMode flags
     /// </summary>
 #if !INTEROP
+
     internal struct SEM
 #else
+
     public struct SEM
 #endif
     {
@@ -603,8 +616,10 @@ namespace Platform.Support.Windows
     /// ReplaceFile flags
     /// </summary>
 #if !INTEROP
+
     internal struct REPLACEFILE
 #else
+
     public struct REPLACEFILE
 #endif
     {
@@ -616,8 +631,10 @@ namespace Platform.Support.Windows
     /// Thread priority constants
     /// </summary>
 #if !INTEROP
+
     internal struct THREAD_PRIORITY
 #else
+
     public struct THREAD_PRIORITY
 #endif
     {
@@ -625,8 +642,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct GMEM
 #else
+
     public struct GMEM
 #endif
     {
@@ -637,8 +656,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct PAGE
 #else
+
     public struct PAGE
 #endif
     {
@@ -648,8 +669,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct SEC
 #else
+
     public struct SEC
 #endif
     {
@@ -660,8 +683,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct FILE_MAP
 #else
+
     public struct FILE_MAP
 #endif
     {
@@ -671,8 +696,10 @@ namespace Platform.Support.Windows
     }
 
 #if !INTEROP
+
     internal struct FILE_ATTRIBUTE
 #else
+
     public struct FILE_ATTRIBUTE
 #endif
     {
@@ -692,12 +719,15 @@ namespace Platform.Support.Windows
     /// structure is inheritable
     /// </summary>
 #if !INTEROP
+
     internal struct SECURITY_ATTRIBUTES
 #else
+
     public struct SECURITY_ATTRIBUTES
 #endif
     {
 #pragma warning disable CS0649
+
         /// <summary>
         /// Specifies the size, in bytes, of this structure. Set this value to
         /// the size of the SECURITY_ATTRIBUTES structure.
@@ -718,6 +748,7 @@ namespace Platform.Support.Windows
         /// </summary>
         [MarshalAs(UnmanagedType.Bool)]
         public bool bInheritHandle;
+
 #pragma warning restore CS0649
     }
 
@@ -725,8 +756,10 @@ namespace Platform.Support.Windows
     /// Wait constants used in synchronization functions
     /// </summary>
 #if !INTEROP
+
     internal struct WAIT
 #else
+
     public struct WAIT
 #endif
     {
@@ -740,8 +773,10 @@ namespace Platform.Support.Windows
     /// Constants used for getting access to synchronization events
     /// </summary>
 #if !INTEROP
+
     internal struct EVENT
 #else
+
     public struct EVENT
 #endif
     {

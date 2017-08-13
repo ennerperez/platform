@@ -26,7 +26,7 @@
                 return this.tablixHeader == null ? new Inch(0) : this.tablixHeader.Size;
             }
         }
-        
+
         public XElement Element
         {
             get

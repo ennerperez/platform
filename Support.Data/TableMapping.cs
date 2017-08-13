@@ -12,13 +12,13 @@ namespace Platform.Support.Data
     {
         private readonly Column _autoPk;
         private Column[] _insertColumns;
+
         //private IDbCommand _insertCommand;
         //private string _insertCommandExtra;
         private Column[] _insertOrReplaceColumns;
 
         public TableMapping(System.Data.IDbConnection conn, Type type, CreateFlags createFlags = CreateFlags.None, BindingFlags bindinFlags = BindingFlags.Public)
         {
-
             MappedType = type;
 
             IEnumerable<CustomAttributeData> _cad = type.GetCustomAttributesData();
@@ -40,12 +40,15 @@ namespace Platform.Support.Data
                 case BindingFlags.Default:
                     props = MappedType.GetInstanceProperties();
                     break;
+
                 case BindingFlags.NonPublic:
                     props = MappedType.GetNonPublicInstanceProperties();
                     break;
+
                 case BindingFlags.Static:
                     props = MappedType.GetStaticInstanceProperties();
                     break;
+
                 default:
                     props = MappedType.GetPublicInstanceProperties();
                     break;
@@ -102,13 +105,12 @@ namespace Platform.Support.Data
                     case Engines.MySql:
                         GetByPrimaryKeySql = string.Format("SELECT {0} FROM {1} LIMIT 1", string.Join(", ", ((List<Column>)cols).Select(c => string.Format("[{0}]", c.Name)).ToArray()), TableName);
                         break;
+
                     default:
                         GetByPrimaryKeySql = string.Format("SELECT TOP 1 {0} FROM {1} ", string.Join(", ", ((List<Column>)cols).Select(c => string.Format("[{0}]", c.Name)).ToArray()), TableName);
                         break;
                 }
-
             }
-
         }
 
         public Type MappedType { get; private set; }
@@ -125,7 +127,6 @@ namespace Platform.Support.Data
             {
                 return this.TableName;
             }
-
         }
 
         public string SchemaName { get; private set; }
@@ -315,57 +316,57 @@ namespace Platform.Support.Data
                 try
                 {
 #endif
-                    if (propType.IsGenericType && propType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                if (propType.IsGenericType && propType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                {
+                    Type[] typeCol = propType.GetGenericArguments();
+                    if (typeCol.Length > 0)
                     {
-                        Type[] typeCol = propType.GetGenericArguments();
-                        if (typeCol.Length > 0)
+                        Type nullableType = typeCol[0];
+                        if (object.ReferenceEquals(nullableType.BaseType, typeof(Enum)))
                         {
-                            Type nullableType = typeCol[0];
-                            if (object.ReferenceEquals(nullableType.BaseType, typeof(Enum)))
-                            {
-                                object result = val == null ? null : Enum.Parse(nullableType, val.ToString(), false);
-                                _prop.SetValue(obj, result, null);
-                            }
-                            else
-                            {
-                                _prop.SetValue(obj, val, null);
-                            }
+                            object result = val == null ? null : Enum.Parse(nullableType, val.ToString(), false);
+                            _prop.SetValue(obj, result, null);
+                        }
+                        else
+                        {
+                            _prop.SetValue(obj, val, null);
                         }
                     }
-                    else if (propType.IsEnum)
+                }
+                else if (propType.IsEnum)
+                {
+                    _prop.SetValue(obj, Enum.Parse(propType, val.ToString()), null);
+                }
+                else if (val == null || val.GetType() == typeof(System.DBNull))
+                {
+                    _prop.SetValue(obj, null, null);
+                }
+                else if (object.ReferenceEquals(propType, typeof(Int32)) & object.ReferenceEquals(val.GetType(), typeof(Int64)))
+                {
+                    if (Convert.ToInt32(val) <= Int32.MaxValue)
                     {
-                        _prop.SetValue(obj, Enum.Parse(propType, val.ToString()), null);
+                        _prop.SetValue(obj, Convert.ToInt32(val), null);
                     }
-                    else if (val == null || val.GetType() == typeof(System.DBNull))
-                    {
-                        _prop.SetValue(obj, null, null);
-                    }
-                    else if (object.ReferenceEquals(propType, typeof(Int32)) & object.ReferenceEquals(val.GetType(), typeof(Int64)))
-                    {
-                        if (Convert.ToInt32(val) <= Int32.MaxValue)
-                        {
-                            _prop.SetValue(obj, Convert.ToInt32(val), null);
-                        }
-                    }
-                    else
-                    {
-                        if (object.ReferenceEquals(propType, typeof(bool)))
-                            val = Convert.ToInt32(val) == 1;
-                        if (object.ReferenceEquals(propType, typeof(int)))
-                            val = Convert.ToInt32(val);
-                        //if (object.ReferenceEquals(val.GetType(), typeof(byte[])))
-                        //    val = BitConverter.ToInt64((byte[])val, 0);
-                        if (object.ReferenceEquals(propType, typeof(TimeSpan)))
-                            val = TimeSpan.Parse(val.ToString());
+                }
+                else
+                {
+                    if (object.ReferenceEquals(propType, typeof(bool)))
+                        val = Convert.ToInt32(val) == 1;
+                    if (object.ReferenceEquals(propType, typeof(int)))
+                        val = Convert.ToInt32(val);
+                    //if (object.ReferenceEquals(val.GetType(), typeof(byte[])))
+                    //    val = BitConverter.ToInt64((byte[])val, 0);
+                    if (object.ReferenceEquals(propType, typeof(TimeSpan)))
+                        val = TimeSpan.Parse(val.ToString());
 
-                        if (object.ReferenceEquals(propType, typeof(Guid)))
-                            val = Guid.Parse(val.ToString());
+                    if (object.ReferenceEquals(propType, typeof(Guid)))
+                        val = Guid.Parse(val.ToString());
 
-                        if (object.ReferenceEquals(propType, typeof(Version)))
-                            val = Version.Parse(val.ToString());
+                    if (object.ReferenceEquals(propType, typeof(Version)))
+                        val = Version.Parse(val.ToString());
 
-                        _prop.SetValue(obj, val, null);
-                    }
+                    _prop.SetValue(obj, val, null);
+                }
 
 #if DEBUG
                 }

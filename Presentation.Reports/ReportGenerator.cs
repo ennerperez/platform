@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using Microsoft.Reporting.Common;
 
 namespace Platform.Presentation.Reports
 {
     namespace Windows.Forms
     {
-        
         using Microsoft.Reporting.WinForms;
+
         public class ReportGenerator
         {
             protected readonly RDLC.Report Report = new RDLC.Report();
@@ -49,8 +45,8 @@ namespace Platform.Presentation.Reports
 
     namespace Web.Forms
     {
-
         using Microsoft.Reporting.WebForms;
+
         public class ReportGenerator
         {
             protected readonly RDLC.Report Report = new RDLC.Report();
@@ -86,5 +82,4 @@ namespace Platform.Presentation.Reports
             }
         }
     }
-
 }

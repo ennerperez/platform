@@ -6,10 +6,8 @@ using System.Xml.Linq;
 
 namespace Platform.Support.Branding
 {
-
     public class BrandingManager : IDisposable
     {
-
         public BrandingManager()
         {
             logos = new Dictionary<string, byte[]>();
@@ -30,90 +28,104 @@ namespace Platform.Support.Branding
         #region Properties
 
         private string id;
+
         public string Id
         {
             get { return id; }
         }
 
         private string name;
+
         public string Name
         {
             get { return name; }
         }
 
         private string description;
+
         public string Description
         {
             get { return description; }
         }
 
         private Guid key;
+
         public Guid Key
         {
             get { return key; }
         }
 
         private Dictionary<string, byte[]> logos;
+
         public Dictionary<string, byte[]> Logos
         {
             get { return logos; }
         }
 
         private Dictionary<string, string> colors;
+
         public Dictionary<string, string> Colors
         {
             get { return colors; }
         }
 
         private Dictionary<string, string> phonesNumbers;
+
         public Dictionary<string, string> PhonesNumbers
         {
             get { return phonesNumbers; }
         }
 
         private Dictionary<string, Uri> urls;
+
         public Dictionary<string, Uri> URLs
         {
             get { return urls; }
         }
 
         private Dictionary<Guid, BrandedProduct> products;
+
         public Dictionary<Guid, BrandedProduct> Products
         {
             get { return products; }
         }
 
         private Dictionary<string, System.Net.Mail.MailAddress> mailAdress;
+
         public Dictionary<string, System.Net.Mail.MailAddress> MailAddress
         {
             get { return mailAdress; }
         }
 
         private string productName;
+
         public string ProductName
         {
             get { return productName; }
         }
 
         private string productDescription;
+
         public string ProductDescription
         {
             get { return productDescription; }
         }
 
         private string productEULA;
+
         public string ProductEULA
         {
             get { return productEULA; }
         }
 
         private string eula;
+
         public string EULA
         {
             get { return eula; }
         }
 
-        #endregion
+        #endregion Properties
 
         public void Load(string directory, Guid guid)
         {
@@ -128,7 +140,6 @@ namespace Platform.Support.Branding
 
         public void Load(System.IO.FileInfo file, Guid guid)
         {
-
             if (file != null)
             {
                 XDocument _XDocument;
@@ -231,7 +242,6 @@ namespace Platform.Support.Branding
                 XElement product = brand.Element(_ns + "products").Elements().Where<XElement>((x) => x.Attribute("guid").Value.ToLower() == guid.ToString().ToLower()).FirstOrDefault();
                 if (product != null)
                 {
-
                     if (product.Element(_ns + "name") != null)
                         this.productName = product.Element(_ns + "name").Value;
                     if (product.Element(_ns + "description") != null)
@@ -239,13 +249,11 @@ namespace Platform.Support.Branding
                     if (product.Element(_ns + "eula") != null)
                         this.productEULA = product.Element(_ns + "eula").Value;
                 }
-
             }
-
         }
 
         #region IDisposable Support
-        
+
         // Para detectar llamadas redundantes
         private bool disposedValue;
 
@@ -272,13 +280,11 @@ namespace Platform.Support.Branding
             GC.SuppressFinalize(this);
         }
 
-        #endregion
-
+        #endregion IDisposable Support
     }
 
     public struct BrandedProduct
     {
-
         public BrandedProduct(Guid g, string n, string d, string e = null)
         {
             GUID = g;
@@ -291,12 +297,10 @@ namespace Platform.Support.Branding
         public String Name { get; set; }
         public String Description { get; set; }
         public String EULA { get; set; }
-
     }
 
     public static class Brand
     {
-
         private static BrandingManager cache;
 
         private static IEnumerable<System.IO.FileInfo> GetBrandFiles(System.Reflection.Assembly assembly)
@@ -396,7 +400,6 @@ namespace Platform.Support.Branding
 
         public static BrandedProduct? BrandProduct(this System.Reflection.Assembly assembly, Guid? key = null)
         {
-
             if (key == null)
             {
                 key = assembly.GUID();
@@ -445,7 +448,6 @@ namespace Platform.Support.Branding
 
         public static byte[] BrandLogo(this System.Reflection.Assembly assembly, string key = null)
         {
-
             if (cache == null)
             {
                 if (IsBranded(assembly))
@@ -485,12 +487,10 @@ namespace Platform.Support.Branding
             }
 
             return null;
-
         }
 
         public static string BrandColor(this System.Reflection.Assembly assembly, string key = null)
         {
-
             if (cache == null)
             {
                 if (IsBranded(assembly))
@@ -530,9 +530,6 @@ namespace Platform.Support.Branding
             }
 
             return null;
-
         }
-
     }
-
 }

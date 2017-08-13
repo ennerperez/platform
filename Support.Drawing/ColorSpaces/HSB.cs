@@ -3,7 +3,6 @@ using System.Drawing;
 
 namespace Platform.Support.Drawing
 {
-
     public static partial class ColorHelper
     {
         public static HSB ToHSB(Color color)
@@ -104,12 +103,10 @@ namespace Platform.Support.Drawing
             else
                 return string.Join(",", new string[] { source.Hue.ToString(), source.Saturation.ToString(), source.Brightness.ToString() });
         }
-
     }
 
     public static partial class ColorExtensions
     {
-
         public static void FromHSB(this Color @this, HSB value)
         {
             @this = ColorHelper.ToColor(value);
@@ -119,10 +116,9 @@ namespace Platform.Support.Drawing
         {
             return ColorHelper.ToHSB(@this);
         }
-
     }
 
-    public struct HSB 
+    public struct HSB
     {
         private double hue;
         private double saturation;
@@ -245,7 +241,7 @@ namespace Platform.Support.Drawing
         {
             return color.ToColor();
         }
-        
+
         public static implicit operator CMYK(HSB color)
         {
             return color.ToColor();

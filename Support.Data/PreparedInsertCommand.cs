@@ -12,7 +12,7 @@
 //        //private readonly ISQLitePlatform _sqlitePlatform;
 //        public bool Initialized { get; set; }
 //        protected IDbConnection Connection { get; set; }
-        
+
 //        public string CommandText {get;set;}
 
 //        //protected IDbStatement Statement { get; set; }

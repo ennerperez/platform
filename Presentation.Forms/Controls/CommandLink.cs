@@ -1,19 +1,15 @@
 ﻿using Platform.Support.Windows;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms
 {
-
     namespace Controls
     {
-
         /// <summary>
         /// Vista Command Link Control with C# / Windows Forms
         /// https://blogs.msdn.microsoft.com/knom/2007/03/12/vista-command-link-control-with-c-windows-forms/
@@ -22,7 +18,6 @@ namespace Platform.Presentation.Forms
         [ToolboxItem(true)]
         public class CommandLink : Button
         {
-
             public CommandLink()
             {
                 this.FlatStyle = FlatStyle.System;
@@ -101,9 +96,6 @@ namespace Platform.Presentation.Forms
 
                 return sb.ToString();
             }
-
         }
-
     }
-    
 }

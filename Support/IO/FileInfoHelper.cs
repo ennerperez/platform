@@ -3,10 +3,8 @@ using System.IO;
 
 namespace Platform.Support.IO
 {
-
     public static class FileInfoHelper
     {
-
         public static string GetCRC32(string source)
         {
             return GetCRC32(new FileInfo(source));
@@ -32,7 +30,5 @@ namespace Platform.Support.IO
 
             return hash;
         }
-
     }
-
 }

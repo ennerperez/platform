@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Net;
-//using System.Net.Http;
+﻿//using System.Net.Http;
 //using System.Net.Http.Headers;
-using System.IO;
-using System.ComponentModel;
-using System.Reflection;
-using Platform.Support.Reflection;
 
 namespace Platform.Support
 {
@@ -18,15 +7,15 @@ namespace Platform.Support
     name Core
     {
 #endif
+
     namespace Web
     {
-
         public static class Methods
         {
-
             // Due compatibility build error: Can't use with .NET 4.0 target
-            
+
             #region Deprecated
+
             //[DefaultValue(DecompressionMethods.GZip)]
             //public static DecompressionMethods AutomaticDecompression { get; set; } = DecompressionMethods.GZip;
 
@@ -137,7 +126,6 @@ namespace Platform.Support
             //{
             //    try
             //    {
-
             //        var client = getHttpClient(token);
             //        var response = await client.PutAsync(url, content);
             //        return await processHttpResponseMessage<R>(response);
@@ -172,11 +160,11 @@ namespace Platform.Support
             //{
             //    return await DeleteAsync<T, T>(url, token);
             //}
-            #endregion
 
+            #endregion Deprecated
         }
-
     }
+
 #if PORTABLE
     }
 #endif

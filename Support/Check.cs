@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace Platform.Support
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
+
         public class Check
         {
             public static T NotNull<T>(T value, string parameterName) where T : class
@@ -31,8 +30,10 @@ namespace Platform.Support
             }
 
 #if NETFX_45
-        public static string NotEmpty(string value, [CallerMemberName] string parameterName = "")
+
+            public static string NotEmpty(string value, [CallerMemberName] string parameterName = "")
 #else
+
             public static string NotEmpty(string value, string parameterName = "")
 #endif
             {
@@ -42,10 +43,10 @@ namespace Platform.Support
                 }
                 return value;
             }
-
-
         }
+
 #if PORTABLE
     }
+
 #endif
 }

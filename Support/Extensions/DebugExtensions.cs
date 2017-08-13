@@ -3,8 +3,8 @@ using System.Diagnostics;
 
 namespace Platform.Support
 {
-
 #if PORTABLE
+
     namespace Core
     {
 #endif
@@ -14,7 +14,6 @@ namespace Platform.Support
         /// </summary>
         public static class DebugExtensions
         {
-
             [Conditional("DEBUG")]
 #if NETFX_45 && !PORTABLE
         public static void DebugThis(this string str, [CallerMemberName] string callername = "", [CallerFilePath] string filename = "")
@@ -37,12 +36,10 @@ namespace Platform.Support
             {
                 DebugThis(ex.Message, callername, filename);
             }
-
-
         }
 
 #if PORTABLE
     }
-#endif
 
+#endif
 }

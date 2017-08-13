@@ -3,9 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
-
 
 namespace Platform.Presentation.Forms.Controls
 {
@@ -15,22 +13,20 @@ namespace Platform.Presentation.Forms.Controls
     {
         private Font hoverFont;
 
-        Rectangle textRect;
-        
-        bool isHovered;
-        bool keyAlreadyProcessed;
+        private Rectangle textRect;
 
-        Image image;
-        int imageRightPad = 8;
+        private bool isHovered;
+        private bool keyAlreadyProcessed;
 
-
+        private Image image;
+        private int imageRightPad = 8;
 
         [DefaultValue(8)]
         public int ImageRightPad
         {
             get { return imageRightPad; }
-            set 
-            { 
+            set
+            {
                 imageRightPad = value;
 
                 RefreshTextRect();
@@ -42,8 +38,8 @@ namespace Platform.Presentation.Forms.Controls
         public Image Image
         {
             get { return image; }
-            set 
-            { 
+            set
+            {
                 image = value;
 
                 RefreshTextRect();
@@ -57,10 +53,8 @@ namespace Platform.Presentation.Forms.Controls
         [DefaultValue(true)]
         public bool UseSystemColor { get; set; }
 
-
         public Color RegularColor { get; set; }
         public Color HoverColor { get; set; }
-               
 
         public override string Text
         {
@@ -158,8 +152,6 @@ namespace Platform.Presentation.Forms.Controls
             base.OnLostFocus(e);
         }
 
-
-
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (!keyAlreadyProcessed && e.KeyCode == Keys.Enter)
@@ -218,7 +210,7 @@ namespace Platform.Presentation.Forms.Controls
         private void RefreshTextRect()
         {
             textRect = new Rectangle(Point.Empty, TextRenderer.MeasureText(Text, Font, Size, TextFormatFlags.SingleLine | TextFormatFlags.NoPrefix));
-            int width = textRect.Width + 1, 
+            int width = textRect.Width + 1,
                 height = textRect.Height + 1;
 
             if (image != null)

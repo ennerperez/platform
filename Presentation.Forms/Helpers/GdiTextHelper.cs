@@ -5,7 +5,6 @@ using Platform.Support.Windows;
 using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -54,7 +53,6 @@ namespace Platform.Presentation.Forms
             {
                 User32.ReleaseDC(context.Handle, hdc);
             }
-
         }
 
         public static void DrawString(Control context, Font font, string text, Rectangle textBounds, bool useMnemonics, GdiTextDrawMode textMode)
@@ -105,7 +103,6 @@ namespace Platform.Presentation.Forms
             {
                 User32.ReleaseDC(context.Handle, hdc);
             }
-
         }
     }
 

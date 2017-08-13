@@ -1,19 +1,23 @@
 ﻿#if PORTABLE
+
 using Helpers = Platform.Support.Core.EnumHelper;
+
 #else
+
 using Helpers = Platform.Support.EnumHelper;
+
 #endif
 
 namespace Platform.Support
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
+
         public static class EnumExtensions
         {
-
-
 #if (!PORTABLE)
 
         /// <summary>
@@ -50,9 +54,10 @@ namespace Platform.Support
         }
 
 #endif
-
         }
+
 #if PORTABLE
     }
+
 #endif
 }

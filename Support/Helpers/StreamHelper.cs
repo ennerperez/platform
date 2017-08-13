@@ -12,6 +12,7 @@ namespace Platform.Support
     namespace Core
     {
 #endif
+
     public class StreamHelper
     {
         private StreamHelper()
@@ -217,6 +218,7 @@ namespace Platform.Support
             return memStream.ToArray();
         }
     }
+
 #if PORTABLE
     }
 #endif

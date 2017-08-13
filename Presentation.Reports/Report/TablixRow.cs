@@ -13,7 +13,7 @@
         }
 
         public Inch Height { get; private set; }
-        
+
         public XElement Element
         {
             get

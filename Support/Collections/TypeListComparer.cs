@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Platform.Support
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
+
         namespace Collections
         {
             public class TypeListComparer<T> : IEqualityComparer<IEnumerable<T>> where T : class
@@ -17,6 +18,7 @@ namespace Platform.Support
                 {
                     return x.SetEqual(y);
                 }
+
                 public int GetHashCode(IEnumerable<T> obj)
                 {
                     if (obj == null)
@@ -31,7 +33,9 @@ namespace Platform.Support
                 }
             }
         }
+
 #if PORTABLE
     }
+
 #endif
 }

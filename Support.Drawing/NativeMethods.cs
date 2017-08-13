@@ -9,7 +9,6 @@
 
 //internal static class NativeMethods
 //{
-
 //    [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, EntryPoint = "CopyMemory")]
 //    internal extern static void CopyMemory(IntPtr dest, IntPtr src, uint length);
 

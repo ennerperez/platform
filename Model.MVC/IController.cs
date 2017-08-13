@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 
 namespace Platform.Model
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
+
         namespace MVC
         {
             public interface IController<T> where T : IModel
             {
-
                 IList Items { get; }
 
                 void LoadView();
@@ -26,10 +23,11 @@ namespace Platform.Model
                 void RemoveItem();
 
                 void Save();
-
             }
         }
+
 #if PORTABLE
     }
+
 #endif
 }

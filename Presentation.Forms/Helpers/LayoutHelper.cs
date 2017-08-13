@@ -2,10 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
 using System;
-using System.Collections;
-using System.Diagnostics;
-using System.Drawing;
-using System.Globalization;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms

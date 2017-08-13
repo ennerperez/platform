@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Support.Reflection
 {
     public static class NotifyPropertyExtensions
     {
-
         public static void SetField<U>(this object obj, ref U field, U value)
         {
 #if (!PORTABLE)
@@ -30,6 +26,7 @@ namespace Platform.Support.Reflection
             }
 #endif
         }
+
         public static void SetField(this object obj, ref object field, object value)
         {
 #if (!PORTABLE)
@@ -51,6 +48,5 @@ namespace Platform.Support.Reflection
             }
 #endif
         }
-
     }
 }

@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Platform.Support
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
 
         public static class EnumHelper
         {
-
 #if (!PORTABLE)
 
         /// <summary>
@@ -65,16 +63,16 @@ namespace Platform.Support
                     // Found it!
                     return (T)System.Enum.Parse(enumType, name, true);
                 }
-
             }
             // No such description in this enum
             throw new ArgumentException("The string is not a description or value of the specified enum.");
         }
 
 #endif
-
         }
+
 #if PORTABLE
     }
+
 #endif
 }

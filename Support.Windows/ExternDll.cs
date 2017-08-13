@@ -1,5 +1,4 @@
-﻿
-//------------------------------------------------------------------------------
+﻿//------------------------------------------------------------------------------
 // <copyright file="ExternDll.cs" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
@@ -7,7 +6,6 @@
 
 internal static class ExternDll
 {
-
 #if FEATURE_PAL && !SILVERLIGHT
 
 #if !PLATFORM_UNIX
@@ -32,13 +30,12 @@ internal static class ExternDll
         public const string Kernel32 = DLLPREFIX + "rotor_pal" + DLLSUFFIX;
         public const string User32 = DLLPREFIX + "rotor_pal" + DLLSUFFIX;
         public const string Mscoree  = DLLPREFIX + "sscoree" + DLLSUFFIX;
- 
+
 #elif FEATURE_PAL && SILVERLIGHT
 
         public const string Kernel32 = "coreclr";
         public const string User32 = "coreclr";
- 
- 
+
 #else
 
     public const string Activeds = "activeds.dll";
@@ -67,34 +64,35 @@ internal static class ExternDll
 
     public const string Hhctrl = "hhctrl.ocx";
     public const string Imm32 = "imm32.dll";
-    
+
     public const string Loadperf = "Loadperf.dll";
     public const string Mscoree = "mscoree.dll";
     public const string Clr = "clr.dll";
     public const string Msi = "msi.dll";
     public const string Mqrt = "mqrt.dll";
     public const string Ntdll = "ntdll.dll";
-    
+
     public const string Oleacc = "oleacc.dll";
-    
+
     public const string Olepro32 = "olepro32.dll";
     public const string PerfCounter = "perfcounter.dll";
     public const string Powrprof = "Powrprof.dll";
-    
+
     public const string Winspool = "winspool.drv";
     public const string Wtsapi32 = "wtsapi32.dll";
     public const string Version = "version.dll";
     public const string Vsassert = "vsassert.dll";
     public const string Fxassert = "Fxassert.dll";
-    
+
     // system.data specific
     internal const string Odbc32 = "odbc32.dll";
+
     internal const string SNI = "System.Data.dll";
 
     // system.data.oracleclient specific
     internal const string OciDll = "oci.dll";
+
     internal const string OraMtsDll = "oramts.dll";
 
 #endif
 }
-

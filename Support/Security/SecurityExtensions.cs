@@ -4,7 +4,6 @@ namespace Platform.Support.Security
 {
     public static class SecurityExtensions
     {
-
         public static int CalculateStrength(this string password, int min = 6)
         {
             return Helpers.CalculateStrength(password, min);
@@ -14,6 +13,5 @@ namespace Platform.Support.Security
         {
             return Helpers.CalculateSHA1(input);
         }
-
     }
 }

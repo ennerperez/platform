@@ -1,40 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Support
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
-    namespace Reflection
-    {
 
-        /// <summary>
-        /// Developer information
-        /// </summary>
-        [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true, Inherited = false)]
-        public sealed class AssemblyDeveloperAttribute : global::System.Attribute
+        namespace Reflection
         {
-
-            public AssemblyDeveloperAttribute(string name, object info = null) : base()
+            /// <summary>
+            /// Developer information
+            /// </summary>
+            [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true, Inherited = false)]
+            public sealed class AssemblyDeveloperAttribute : global::System.Attribute
             {
-                this.name = name;
-                this.info = info;
+                public AssemblyDeveloperAttribute(string name, object info = null) : base()
+                {
+                    this.name = name;
+                    this.info = info;
+                }
+
+                private string name;
+                public string Name { get { return name; } }
+                private object info;
+                public string Info { get { return info.ToString(); } }
             }
-
-            private string name;
-            public string Name { get { return name; } }
-            private object info;
-            public string Info { get { return info.ToString(); } }
-
         }
-    }
 
 #if PORTABLE
     }
-#endif
 
+#endif
 }

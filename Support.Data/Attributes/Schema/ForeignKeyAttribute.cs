@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Support.Data.Attributes
 {
     /// <summary>
     /// Denotes a property used as a foreign key in a relationship.
-    /// The annotation may be placed on the foreign key property and specify the associated navigation property name, 
+    /// The annotation may be placed on the foreign key property and specify the associated navigation property name,
     /// or placed on a navigation property and specify the associated foreign key name.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false), SuppressMessage("Microsoft.Design", "CA1019:DefineAccessorsForAttributeArguments"), SuppressMessage("Microsoft.Performance", "CA1813:AvoidUnsealedAttributes", Justification = "We want users to be able to extend this class")]

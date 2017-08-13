@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Platform.Support.Reflection;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Xml.Linq;
-using Platform.Support.Reflection;
 
 namespace Platform.Support.Drawing
 {
@@ -68,7 +66,7 @@ namespace Platform.Support.Drawing
                 PropertyChanged(this, e);
         }
 
-        #endregion
+        #endregion INotifyPropertyChanged
 
         public static Palette ReadFrom(MemoryStream stream)
         {
@@ -76,10 +74,12 @@ namespace Platform.Support.Drawing
             ReadFrom(stream, out result);
             return result;
         }
+
         public static Palette ReadFrom(byte[] buffer)
         {
             return ReadFrom(new MemoryStream(buffer));
         }
+
         public static Palette ReadFrom(string path)
         {
             return ReadFrom(File.ReadAllBytes(path));
@@ -105,21 +105,21 @@ namespace Platform.Support.Drawing
                 }
 
                 target = result;
-
             }
             catch (Exception ex)
             {
                 throw new InvalidDataException(ex.Message, ex);
             }
         }
+
         public static void ReadFrom(byte[] buffer, out Palette target)
         {
             ReadFrom(new MemoryStream(buffer), out target);
         }
+
         public static void ReadFrom(string path, out Palette target)
         {
             ReadFrom(File.ReadAllBytes(path), out target);
         }
-
     }
 }

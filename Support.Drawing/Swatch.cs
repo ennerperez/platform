@@ -6,16 +6,15 @@ using System.Text;
 
 namespace Platform.Support.Drawing
 {
-
     public static class Swatch
     {
-        
         #region Private Members
 
         private static int ReadInt16(Stream stream)
         {
             return (stream.ReadByte() << 8) | (stream.ReadByte() << 0);
         }
+
         private static int ReadInt32(Stream stream)
         {
             return ((byte)stream.ReadByte() << 24) | ((byte)stream.ReadByte() << 16) | ((byte)stream.ReadByte() << 8) | ((byte)stream.ReadByte() << 0);
@@ -26,6 +25,7 @@ namespace Platform.Support.Drawing
             if (BitConverter.IsLittleEndian) Array.Reverse(data, offset, sizeof(UInt16));
             return BitConverter.ToUInt16(data, offset);
         }
+
         private static UInt32 ReadUInt32(byte[] data, int offset)
         {
             if (BitConverter.IsLittleEndian) Array.Reverse(data, offset, sizeof(UInt32));
@@ -82,11 +82,9 @@ namespace Platform.Support.Drawing
             //if (block > 0)
             //    Console.WriteLine(",");
             //Console.Write("   { name: \"" + Name + "\", color: 0x" + r.ToString("X2") + g.ToString("X2") + b.ToString("X2") + " }");
-
-
         }
 
-        #endregion
+        #endregion Private Members
 
         public static Color[] ReadSwatchFile(string fileName)
         {
@@ -103,24 +101,24 @@ namespace Platform.Support.Drawing
                     throw new InvalidDataException("Invalid version information.");
 
                 // the specification states that a version2 palette follows a version1
-                // the only difference between version1 and version2 is the inclusion 
+                // the only difference between version1 and version2 is the inclusion
                 // of a name property. Perhaps there's addtional color spaces as well
                 // but we can't support them all anyway
                 // I noticed some files no longer include a version 1 palette
 
-                colorPalette = new List<Color>( ReadSwatches(stream, version));
+                colorPalette = new List<Color>(ReadSwatches(stream, version));
                 if (version == 1)
                 {
                     version = (short)ReadInt16(stream);
                     if (version == 2)
-                        colorPalette = new List<Color>( ReadSwatches(stream, version));
+                        colorPalette = new List<Color>(ReadSwatches(stream, version));
                 }
             }
 
             return colorPalette.ToArray();
         }
 
-        public static Color[] ReadSwatches(Stream stream, short version )
+        public static Color[] ReadSwatches(Stream stream, short version)
         {
             int colorCount;
             List<Color> results;
@@ -179,7 +177,7 @@ namespace Platform.Support.Drawing
                         double brightness;
 
                         // HSB.
-                        // The first three values in the color data are hue , saturation , and brightness . They are full 
+                        // The first three values in the color data are hue , saturation , and brightness . They are full
                         // unsigned 16-bit values as in Apple's HSVColor data structure. Pure red = 0,65535, 65535.
 
                         hue = value1 / 182.04; // 0-359
@@ -212,13 +210,11 @@ namespace Platform.Support.Drawing
         {
             List<System.Drawing.Color> colorPalette = new List<System.Drawing.Color>();
 
-
             byte[] data;
             data = File.ReadAllBytes(fileName);
 
             if (data.Length < 12 || data[0] != 'A' || data[1] != 'S' || data[2] != 'E' || data[3] != 'F')
                 throw new InvalidDataException("The file \"" + fileName + "\" doesn't appear to be in Adobe Swatch Exchange format.");
-
 
             UInt16 versionHigh = ReadUInt16(data, 4);
             UInt16 versionLow = ReadUInt16(data, 6);
@@ -258,8 +254,5 @@ namespace Platform.Support.Drawing
 
             return colorPalette.ToArray();
         }
-
-
     }
-
 }

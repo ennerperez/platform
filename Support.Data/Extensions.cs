@@ -14,16 +14,18 @@ namespace Platform.Support.Data
 {
     public static partial class Extensions
     {
-
         #region IDbConnection
 
 #if DEBUG
+
         #region Timing
+
         public static bool TimeExecution { get; set; }
         private static Stopwatch _Stopwatch = new Stopwatch();
         private static long _ElapsedMilliseconds;
 
-        #endregion
+        #endregion Timing
+
 #endif
 
         private static readonly Random _rand = new Random();
@@ -38,6 +40,7 @@ namespace Platform.Support.Data
         #region Reflection
 
         private static Assembly _assembly;
+
         public static Assembly DataEngineAssembly(IDbConnection conn)
         {
             //if (_assembly == null)
@@ -51,12 +54,16 @@ namespace Platform.Support.Data
             {
                 case Engines.Sql:
                     return "System.Data.SqlClient";
+
                 case Engines.SqlCE:
                     return "System.Data.SqlServerCe";
+
                 case Engines.MySql:
                     return "MySql.Data.MySqlClient";
+
                 case Engines.SQLite:
                     return "System.Data.SQLite";
+
                 default:
                     return "System.Data.OleDb";
             }
@@ -68,6 +75,7 @@ namespace Platform.Support.Data
             _type = DataEngineAssembly(conn).GetType(string.Format("{0}.{1}", GetNamespace(conn), type));
             return Activator.CreateInstance(_type, args);
         }
+
         internal static Engines GetEngine(this IDbConnection conn)
         {
             switch (conn.GetType().ToString().Split('.').Last())
@@ -75,15 +83,19 @@ namespace Platform.Support.Data
                 case "SqlConnection":
                     //Return "Sql"
                     return Engines.Sql;
+
                 case "SqlCeConnection":
                     //Return "SqlCe"
                     return Engines.SqlCE;
+
                 case "MySqlConnection":
                     //Return "MySql"
                     return Engines.MySql;
+
                 case "SQLiteConnection":
                     //Return "SQLite"
                     return Engines.SQLite;
+
                 default:
                     //Return "OleDb"
                     return Engines.OleDb;
@@ -100,12 +112,15 @@ namespace Platform.Support.Data
                 case Engines.SqlCE:
                     _asm = "System.Data.SqlServerCe.dll";
                     break;
+
                 case Engines.MySql:
                     _asm = "MySql.Data.dll";
                     break;
+
                 case Engines.SQLite:
                     _asm = "System.Data.SQLite.dll";
                     break;
+
                 default:
                     _asm = "System.Data";
                     //_return = Assembly.LoadWithPartialName(_asm)
@@ -132,7 +147,6 @@ namespace Platform.Support.Data
             }
 
             return _return;
-
         }
 
         public static DbType GetDbType(this Type typ)
@@ -184,8 +198,8 @@ namespace Platform.Support.Data
             {
                 return DbType.Binary;
             }
-
         }
+
         public static object GetMaxValue(this Type typ)
         {
             Dictionary<Type, object> typeMap = new Dictionary<Type, object>();
@@ -214,8 +228,7 @@ namespace Platform.Support.Data
             }
         }
 
-        #endregion
-
+        #endregion Reflection
 
         /// <summary>
         ///     Returns the mappings from types to tables that the connection
@@ -270,7 +283,6 @@ namespace Platform.Support.Data
             return GetMapping(conn, typeof(T));
         }
 
-
         /// <summary>
         ///     Executes a "drop schema" on the database.  This is non-recoverable.
         /// </summary>
@@ -283,6 +295,7 @@ namespace Platform.Support.Data
                 case Engines.SqlCE:
                     _tsql = string.Format("IF EXISTS (Select schema_name FROM information_schema.schemata WHERE schema_name = '{0}' ) EXEC sp_executesql N'DROP SCHEMA {0}'", map.SchemaName);
                     break;
+
                 default:
                     throw new NotSupportedException("Operation is not supported in the selected data engine.");
             }
@@ -328,9 +341,11 @@ namespace Platform.Support.Data
                         }
                     }
                     break;
+
                 case Engines.MySql:
                     _tsql = String.Format("DROP DATABASE IF EXISTS {0}", conn.Database);
                     break;
+
                 case Engines.Sql:
                     csb = (System.Data.Common.DbConnectionStringBuilder)conn.CreateObject("SqlConnectionStringBuilder", new object[] { conn.ConnectionString });
                     if (csb.ContainsKey("Initial Catalog")) csb.Remove("Initial Catalog");
@@ -342,6 +357,7 @@ namespace Platform.Support.Data
                     _tsql = string.Format(_tsql, database);
 
                     break;
+
                 default:
                     throw new NotSupportedException("Operation is not supported in the selected data engine.");
             }
@@ -360,10 +376,12 @@ namespace Platform.Support.Data
                     _tsql = string.Format("IF OBJECT_ID('{0}', 'U') IS NOT NULL DROP TABLE [{0}]", map.TableName);
 
                     break;
+
                 case Engines.SQLite:
                 case Engines.MySql:
                     _tsql = string.Format("DROP TABLE IF EXISTS '{0}'", map.TableName);
                     break;
+
                 default:
                     _tsql = string.Format("DROP TABLE [{0}]", map.TableName);
                     break;
@@ -394,7 +412,6 @@ namespace Platform.Support.Data
             return conn.DropTable(conn.GetMapping(typeof(T)), schema);
         }
 
-
         /// <summary>
         ///     Executes a "create schema if not exists" on the database.
         /// </summary>
@@ -410,6 +427,7 @@ namespace Platform.Support.Data
                 case Engines.SqlCE:
                     _tsql = string.Format("IF NOT EXISTS (Select schema_name FROM information_schema.schemata WHERE schema_name = '{0}' ) EXEC sp_executesql N'CREATE SCHEMA [{0}]'", map.SchemaName);
                     break;
+
                 default:
                     throw new NotSupportedException("Operation is not supported in the selected data engine.");
             }
@@ -464,9 +482,11 @@ namespace Platform.Support.Data
                         }
                     }
                     break;
+
                 case Engines.MySql:
                     _tsql = String.Format("CREATE DATABASE IF NOT EXISTS [{0}]", conn.Database);
                     break;
+
                 case Engines.Sql:
                     csb = (System.Data.Common.DbConnectionStringBuilder)conn.CreateObject("SqlConnectionStringBuilder", new object[] { conn.ConnectionString });
                     if (csb.ContainsKey("Initial Catalog")) csb.Remove("Initial Catalog");
@@ -487,6 +507,7 @@ namespace Platform.Support.Data
                     _tsql = string.Format(_tsql, database, datapath);
 
                     break;
+
                 default:
                     throw new NotSupportedException("Operation is not supported in the selected data engine.");
             }
@@ -521,6 +542,7 @@ namespace Platform.Support.Data
                     conn.Execute(query);
                     count = conn.ExecuteScalar<int>(String.Format("SELECT COUNT(1) FROM sqlite_master WHERE type='table' AND name='{0}';", map.TableName));
                     break;
+
                 case Engines.Sql:
                 case Engines.SqlCE:
                     decl = string.Join(",", decls.ToArray());
@@ -538,6 +560,7 @@ namespace Platform.Support.Data
                     }
 
                     break;
+
                 case Engines.OleDb:
                     try
                     {
@@ -551,6 +574,7 @@ namespace Platform.Support.Data
                             throw new Exception("Unable to create the table.", e);
                     }
                     break;
+
                 default:
                     break;
             }
@@ -646,7 +670,6 @@ namespace Platform.Support.Data
             return conn.CreateTable(typeof(T), createFlags);
         }
 
-
         /// <summary>
         /// Creates an index for the specified table and columns.
         /// </summary>
@@ -681,6 +704,7 @@ namespace Platform.Support.Data
                     conn.Execute(tsql);
                     count = conn.ExecuteScalar<int>(String.Format("SELECT COUNT(1) FROM sqlite_master WHERE type='index' AND name='{0}';", indexName));
                     break;
+
                 case Engines.Sql:
                 case Engines.SqlCE:
                     if (!string.IsNullOrEmpty(schemaName))
@@ -690,6 +714,7 @@ namespace Platform.Support.Data
                     tsql = string.Format(sqlFormat, tableName, columns, unique ? "UNIQUE" : "", indexName);
                     count = conn.Execute(tsql);
                     break;
+
                 case Engines.OleDb:
                     try
                     {
@@ -704,12 +729,12 @@ namespace Platform.Support.Data
                             throw new Exception("Unable to create the index.", e);
                     }
                     break;
+
                 default:
                     throw new NotSupportedException("Operation is not supported in the selected data engine.");
             }
 
             return count;
-
         }
 
         /// <summary>
@@ -778,7 +803,6 @@ namespace Platform.Support.Data
             conn.CreateIndex(map.TableName, map.SchemaName, colName, unique, nonclustered);
         }
 
-
         public static List<ColumnInfo> GetTableInfo(this IDbConnection conn, string tableName)
         {
             string tsql = null;
@@ -787,9 +811,11 @@ namespace Platform.Support.Data
                 case Engines.Sql:
                     tsql = "SELECT COLUMN_NAME AS name FROM INFORMATION_SCHEMA.COLUMNS WHERE  TABLE_NAME = '" + tableName + "'";
                     break;
+
                 case Engines.SQLite:
                     tsql = "pragma table_info('" + tableName + "')";
                     break;
+
                 default:
                     throw new NotSupportedException("Operation is not supported in the selected data engine.");
             }
@@ -835,15 +861,19 @@ namespace Platform.Support.Data
                 case Engines.Sql:
                     _type = "SqlDataAdapter";
                     break;
+
                 case Engines.SqlCE:
                     _type = "SqlCeDataAdapter";
                     break;
+
                 case Engines.MySql:
                     _type = "MySqlDataAdapter";
                     break;
+
                 case Engines.SQLite:
                     _type = "SQLiteDataAdapter";
                     break;
+
                 default:
                     _type = "OleDbDataAdapter";
                     break;
@@ -862,15 +892,19 @@ namespace Platform.Support.Data
                 case Engines.Sql:
                     _type = "SqlParameter";
                     break;
+
                 case Engines.SqlCE:
                     _type = "SqlCeParameter";
                     break;
+
                 case Engines.MySql:
                     _type = "MySqlParameter";
                     break;
+
                 case Engines.SQLite:
                     _type = "SQLiteParameter";
                     break;
+
                 default:
                     _type = "OleDbParameter";
                     break;
@@ -895,7 +929,6 @@ namespace Platform.Support.Data
                     //if (_return.Precision == 0) _return.Precision = System.Globalization.NumberFormatInfo.CurrentInfo.NumberDecimalDigits;
                     _return.Precision = 18;
                     _return.Scale = 8;
-
                 }
                 else if (object.ReferenceEquals(value.GetType(), typeof(Int64)) || object.ReferenceEquals(value.GetType(), typeof(UInt64)))
                 {
@@ -952,7 +985,6 @@ namespace Platform.Support.Data
             return _params.ToArray();
         }
 
-
         /// <summary>
         ///     Creates a new SQLiteCommand given the command text with arguments. Place a '?'
         ///     in the command text for each of the arguments.
@@ -975,15 +1007,19 @@ namespace Platform.Support.Data
                 case Engines.Sql:
                     _type = "SqlCommand";
                     break;
+
                 case Engines.SqlCE:
                     _type = "SqlCeCommand";
                     break;
+
                 case Engines.MySql:
                     _type = "MySqlCommand";
                     break;
+
                 case Engines.SQLite:
                     _type = "SQLiteCommand";
                     break;
+
                 default:
                     _type = "OleDbCommand";
                     break;
@@ -1020,7 +1056,6 @@ namespace Platform.Support.Data
             return conn.CreateCommand(cmdText, conn.GenerateParameters(args).ToArray());
         }
 
-
         public static object LastInsertRowPK(this IDbConnection conn, TableMapping map)
         {
             object _return = 0;
@@ -1056,12 +1091,15 @@ namespace Platform.Support.Data
                 case Engines.Sql:
                     _tsql = "SELECT SCOPE_IDENTITY()";
                     break;
+
                 case Engines.SQLite:
                     _tsql = "SELECT last_insert_rowid()";
                     break;
+
                 case Engines.MySql:
                     _tsql = "SELECT LAST_INSERT_ID()";
                     break;
+
                 default:
                     throw new NotSupportedException("Operation is not supported in the selected data engine.");
             }
@@ -1070,7 +1108,6 @@ namespace Platform.Support.Data
 
             return _return;
         }
-
 
         /// <summary>
         ///     Creates a SQLiteCommand given the command text (SQL) with arguments. Place a '?'
@@ -1091,7 +1128,6 @@ namespace Platform.Support.Data
         /// </returns>
         public static int Execute(this IDbConnection conn, string query, IDbDataParameter[] args)
         {
-
             if (string.IsNullOrEmpty(query))
                 return 0;
 
@@ -1120,7 +1156,7 @@ namespace Platform.Support.Data
             try
             {
 #endif
-                _return = cmd.ExecuteNonQuery();
+            _return = cmd.ExecuteNonQuery();
 #if DEBUG
             }
             catch (Exception ex)
@@ -1164,7 +1200,6 @@ namespace Platform.Support.Data
 
         public static T ExecuteScalar<T>(this IDbConnection conn, string query, IDbDataParameter[] args)
         {
-
             if (string.IsNullOrEmpty(query))
                 return default(T);
 
@@ -1208,7 +1243,6 @@ namespace Platform.Support.Data
 
         public static DataSet Fill(this IDbConnection conn, string query, IDbDataParameter[] args)
         {
-
             if (string.IsNullOrEmpty(query))
                 return null;
 
@@ -1340,6 +1374,7 @@ namespace Platform.Support.Data
             IDbCommand cmd = conn.CreateCommand(query, args);
             return cmd.ExecuteQuery<object>(map);
         }
+
         /// <summary>
         ///     Creates a SQLiteCommand given the command text (SQL) with arguments. Place a '?'
         ///     in the command text for each of the arguments and then executes that command.
@@ -1420,7 +1455,6 @@ namespace Platform.Support.Data
             return conn.DeferredQuery(map, query, conn.GenerateParameters(args).ToArray());
         }
 
-
         /// <summary>
         ///     Returns a queryable interface to the table represented by the given type.
         /// </summary>
@@ -1432,7 +1466,6 @@ namespace Platform.Support.Data
         {
             return new TableQuery<T>(conn);
         }
-
 
         /// <summary>
         ///     Attempts to retrieve an object with the given primary key from the table
@@ -1521,7 +1554,6 @@ namespace Platform.Support.Data
         {
             return Table<T>(conn).Where(predicate).FirstOrDefault();
         }
-
 
         /// <summary>
         ///     Begins a new transaction. Call <see cref="Commit" /> to end the transaction.
@@ -1757,7 +1789,6 @@ namespace Platform.Support.Data
             }
         }
 
-
         /// <summary>
         ///     Inserts all specified objects.
         /// </summary>
@@ -1829,7 +1860,6 @@ namespace Platform.Support.Data
             });
             return c;
         }
-
 
         /// <summary>
         ///     Inserts the given object and retrieves its
@@ -1966,7 +1996,6 @@ namespace Platform.Support.Data
             return c;
         }
 
-
         /// <summary>
         ///     Inserts the given object and retrieves its
         ///     auto incremented primary key if it has one.
@@ -2048,7 +2077,6 @@ namespace Platform.Support.Data
                     var id = conn.LastInsertRowPK(map);
                     map.SetAutoIncPK(obj, id);
                 }
-
             }
             catch (Exception)
             {
@@ -2086,7 +2114,6 @@ namespace Platform.Support.Data
             }
             return conn.Insert(obj, extra, obj.GetType());
         }
-
 
         /// <summary>
         ///     Updates all of the columns of a table using the specified object
@@ -2191,7 +2218,6 @@ namespace Platform.Support.Data
             return c;
         }
 
-
         /// <summary>
         ///     Deletes the given object from the database using its primary key.
         /// </summary>
@@ -2255,7 +2281,7 @@ namespace Platform.Support.Data
             return conn.Execute(query);
         }
 
-        #endregion
+        #endregion IDbConnection
 
         public static void CopyTo<T>(this IDbConnection conn, IDbConnection target, CreateFlags createFlags = CreateFlags.AllImplicit)
         {
@@ -2267,8 +2293,6 @@ namespace Platform.Support.Data
             {
                 target.Insert(item);
             }
-
-
         }
 
         #region IDbCommand
@@ -2292,7 +2316,6 @@ namespace Platform.Support.Data
         /// </returns>
         public static IEnumerable<T> ExecuteDeferredQuery<T>(this IDbCommand cmd, TableMapping map)
         {
-
             List<T> _return = new List<T>();
             IDataReader reader = null;
 
@@ -2305,7 +2328,6 @@ namespace Platform.Support.Data
                 {
                     T obj = (T)Activator.CreateInstance(map.MappedType);
 
-
                     foreach (TableMapping.Column Item in map.Columns)
                     {
                         Type colType = Item.ColumnType;
@@ -2314,7 +2336,7 @@ namespace Platform.Support.Data
                         try
                         {
 #endif
-                            Item.SetValue(obj, val);
+                        Item.SetValue(obj, val);
 #if DEBUG
                         }
                         catch (Exception ex)
@@ -2325,12 +2347,10 @@ namespace Platform.Support.Data
                     }
                     //OnInstanceCreated(obj)
                     _return.Add(obj);
-
                 }
             }
             catch (Exception)
             {
-
                 throw; //CA2200
             }
             finally
@@ -2341,7 +2361,6 @@ namespace Platform.Support.Data
             }
 
             return _return.ToArray();
-
         }
 
         /// <summary>
@@ -2370,13 +2389,13 @@ namespace Platform.Support.Data
         {
             return ExecuteDeferredQuery<T>(cmd, cmd.Connection.GetMapping(typeof(T))).ToList();
         }
+
         public static List<T> ExecuteQuery<T>(this IDbCommand cmd, TableMapping map)
         {
             return ExecuteDeferredQuery<T>(cmd, map).ToList();
         }
 
-
-        #endregion
+        #endregion IDbCommand
 
         private static object Value(this object obj)
         {
@@ -2405,7 +2424,6 @@ namespace Platform.Support.Data
             return ds != null && ds.Tables.OfType<DataTable>().Count(item => item.HasRows()) > 0;
         }
 
-        #endregion
-
+        #endregion DataSets && DataTables
     }
 }

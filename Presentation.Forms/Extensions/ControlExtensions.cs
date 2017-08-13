@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms
 {
     public static class ControlExtensions
     {
-
         //TODO: Crear Helpers
 
         public static bool IsDesignerHosted(this Control @this)
@@ -41,7 +37,6 @@ namespace Platform.Presentation.Forms
             return (LicenseManager.UsageMode == LicenseUsageMode.Runtime);
         }
 
-
         public static void SetLeave(this System.Windows.Forms.NumericUpDown @this, Boolean disposing = false)
         {
             if (!disposing)
@@ -55,7 +50,7 @@ namespace Platform.Presentation.Forms
             var ctrl = (NumericUpDown)sender;
             {
                 if (ctrl != null)
-                  {
+                {
                     if (ctrl.IsDisposed)
                         if (ctrl.Controls[1].Text == "")
                         {
@@ -64,9 +59,8 @@ namespace Platform.Presentation.Forms
                         }
                         else
                             ctrl.Leave -= numericUpDownLeave;
-                  }
+                }
             }
         }
-
     }
 }

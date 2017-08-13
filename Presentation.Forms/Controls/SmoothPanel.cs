@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Controls
@@ -13,7 +9,6 @@ namespace Platform.Presentation.Forms.Controls
     [ToolboxItem(true)]
     public class SmoothPanel : FlowLayoutPanel
     {
-
         private Timer scroller;
 
         private int t;

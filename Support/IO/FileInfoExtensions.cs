@@ -6,10 +6,8 @@ namespace Platform.Support.IO
 {
     public static class FileInfoExtensions
     {
-        
         public static void FromBytes(this FileInfo file, byte[] data)
         {
-
             if (data == null)
             {
                 throw new ArgumentNullException("Binary Data Cannot be Null or Empty", "data");
@@ -23,7 +21,6 @@ namespace Platform.Support.IO
                 bw.Flush();
                 bw.Close();
                 bw = null;
-
             }
             catch
             {
@@ -69,6 +66,5 @@ namespace Platform.Support.IO
             }
             return new MemoryStream(ToBytes(file));
         }
-
     }
 }

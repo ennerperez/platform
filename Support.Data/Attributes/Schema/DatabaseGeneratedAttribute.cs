@@ -1,25 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Support.Data.Attributes
 {
-
     /// <summary>
-	/// The pattern used to generate values for a property in the database.
-	/// </summary>
-	public enum DatabaseGeneratedOption
+    /// The pattern used to generate values for a property in the database.
+    /// </summary>
+    public enum DatabaseGeneratedOption
     {
         /// <summary>
         /// The database does not generate values.
         /// </summary>
         None,
+
         /// <summary>
         /// The database generates a value when a row is inserted.
         /// </summary>
         Identity,
+
         /// <summary>
         /// The database generates a value when a row is inserted or updated.
         /// </summary>
@@ -27,9 +25,9 @@ namespace Platform.Support.Data.Attributes
     }
 
     /// <summary>
-	/// Specifies how the database generates values for a property.
-	/// </summary>
-	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false), SuppressMessage("Microsoft.Performance", "CA1813:AvoidUnsealedAttributes")]
+    /// Specifies how the database generates values for a property.
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false), SuppressMessage("Microsoft.Performance", "CA1813:AvoidUnsealedAttributes")]
     public class DatabaseGeneratedAttribute : Attribute
     {
         /// <summary>

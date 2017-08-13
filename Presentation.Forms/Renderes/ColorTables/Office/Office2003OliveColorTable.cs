@@ -1,9 +1,4 @@
-﻿using Platform.Presentation.Forms.Components;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Renderers.ColorTables
@@ -289,8 +284,5 @@ namespace Platform.Presentation.Forms.Renderers.ColorTables
         {
             get { return Color.FromArgb(96, 119, 107); }
         }
-
-
     }
-
 }

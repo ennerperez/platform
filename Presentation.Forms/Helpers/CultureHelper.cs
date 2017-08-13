@@ -4,9 +4,7 @@
 using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
@@ -22,6 +20,7 @@ namespace Platform.Presentation.Forms
                 return _gdiPlusLineCenteringBroken;
             }
         }
+
         private static bool _gdiPlusLineCenteringBroken = false;
 
         /// <summary>
@@ -51,7 +50,6 @@ namespace Platform.Presentation.Forms
                 CultureInfo ci = (CultureInfo)Thread.CurrentThread.CurrentCulture.Clone();
                 ci.DateTimeFormat.ShortDatePattern = Regex.Replace(ci.DateTimeFormat.ShortDatePattern, "[Mdy]+", "\u200F$0");
                 Thread.CurrentThread.CurrentCulture = ci;
-
             }
         }
 
@@ -64,10 +62,13 @@ namespace Platform.Presentation.Forms
                 {
                     case ("ML"):
                         return CultureInfo.CreateSpecificCulture("ml-in");
+
                     case ("PT"):
                         return CultureInfo.CreateSpecificCulture("pt-pt");
+
                     case ("SR-CYRL"):
                         return CultureInfo.CreateSpecificCulture("sr-cyrl-CS");
+
                     case ("SR-LATN-CS"):
                         try
                         {
@@ -136,7 +137,6 @@ namespace Platform.Presentation.Forms
             {
                 return CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern;
             }
-
         }
 
         [Obsolete("NOT FULLY TESTED")]
@@ -167,7 +167,6 @@ namespace Platform.Presentation.Forms
                 Trace.Fail("Failed to check if IME is active: " + ex);
                 return isActive;
             }
-
         }
 
         [Obsolete("NOT FULLY TESTED")]

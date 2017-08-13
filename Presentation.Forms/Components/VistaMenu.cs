@@ -1,27 +1,24 @@
-﻿using System.ComponentModel.Design;
-using System.Drawing.Drawing2D;
+﻿using Platform.Support.Windows;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Platform.Support.Windows;
 
 namespace Platform.Presentation.Forms.Components
 {
-    
     [ProvideProperty("Image", typeof(MenuItem))]
     public sealed partial class VistaMenu : Component, IExtenderProvider, ISupportInitialize
     {
-        Container components;
-        readonly Hashtable properties = new Hashtable();
-        readonly Hashtable menuParents = new Hashtable();
+        private Container components;
+        private readonly Hashtable properties = new Hashtable();
+        private readonly Hashtable menuParents = new Hashtable();
 
-        bool formHasBeenIntialized;
-        readonly bool isVistaOrLater;
-        
+        private bool formHasBeenIntialized;
+        private readonly bool isVistaOrLater;
 
         public VistaMenu()
         {
@@ -40,12 +37,12 @@ namespace Platform.Presentation.Forms.Components
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        void InitializeComponent()
+        private void InitializeComponent()
         {
             components = new Container();
         }
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         protected override void Dispose(bool disposing)
@@ -58,7 +55,6 @@ namespace Platform.Presentation.Forms.Components
                     if (((Properties)de.Value).renderBmpHbitmap != IntPtr.Zero)
                         Gdi32.DeleteObject(((Properties)de.Value).renderBmpHbitmap);
                 }
-
 
                 if (components != null)
                     components.Dispose();
@@ -85,7 +81,7 @@ namespace Platform.Presentation.Forms.Components
             return false;
         }
 
-        Properties EnsurePropertiesExists(MenuItem key)
+        private Properties EnsurePropertiesExists(MenuItem key)
         {
             Properties p = (Properties)properties[key];
 
@@ -98,7 +94,6 @@ namespace Platform.Presentation.Forms.Components
 
             return p;
         }
-
 
         [DefaultValue(null)]
         [Description("The Image for the MenuItem")]
@@ -141,7 +136,6 @@ namespace Platform.Presentation.Forms.Components
                     AddVistaMenuItem(mnuItem);
             }
 
-
             //for every Pre-Vista Windows, add the parent of the menu item to the list of parents
             if (!DesignMode && !isVistaOrLater && formHasBeenIntialized)
             {
@@ -149,13 +143,13 @@ namespace Platform.Presentation.Forms.Components
             }
         }
 
+        void ISupportInitialize.BeginInit()
+        {
+        }
 
+        private readonly MENUINFO mnuInfo = new MENUINFO();
 
-        void ISupportInitialize.BeginInit() { }
-
-        readonly MENUINFO mnuInfo = new MENUINFO();
-
-        void AddVistaMenuItem(MenuItem mnuItem)
+        private void AddVistaMenuItem(MenuItem mnuItem)
         {
             //get the bitmap children of the parent
             if (menuParents[mnuItem.Parent] == null)
@@ -172,7 +166,7 @@ namespace Platform.Presentation.Forms.Components
             }
         }
 
-        void AddPreVistaMenuItem(MenuItem mnuItem)
+        private void AddPreVistaMenuItem(MenuItem mnuItem)
         {
             if (menuParents[mnuItem.Parent] == null)
             {
@@ -204,14 +198,13 @@ namespace Platform.Presentation.Forms.Components
                 }
                 else // Pre-Vista menus
                 {
-                    // Declare the fonts once: 
-                    //    If the user changes the menu fonts while your program is 
+                    // Declare the fonts once:
+                    //    If the user changes the menu fonts while your program is
                     //    running, it's tough luck for the user.
                     //
-                    //    This keeps a cap on the memory by avoiding unnecessary Font object 
+                    //    This keeps a cap on the memory by avoiding unnecessary Font object
                     //    creation/destruction on every MenuItem .Measure() and .Draw()
                     menuBoldFont = new Font(SystemFonts.MenuFont, FontStyle.Bold);
-
 
                     if (ownerForm != null)
                         ownerForm.ChangeUICues += ownerForm_ChangeUICues;
@@ -237,7 +230,7 @@ namespace Platform.Presentation.Forms.Components
             }
         }
 
-        void MenuItem_Popup(object sender, EventArgs e)
+        private void MenuItem_Popup(object sender, EventArgs e)
         {
             var menuItemInfo = new MENUITEMINFO_T_RW();
 
@@ -271,7 +264,6 @@ namespace Platform.Presentation.Forms.Components
         }
     }
 
-
     //Properties for the MenuItem
     internal class Properties
     {
@@ -279,27 +271,27 @@ namespace Platform.Presentation.Forms.Components
         public IntPtr renderBmpHbitmap = IntPtr.Zero;
     }
 
-
     public partial class VistaMenu
     {
-        ContainerControl ownerForm;
+        private ContainerControl ownerForm;
 
         //conditionally draw the little lines under menu items with keyboard accelators on Win 2000+
         private bool isUsingKeyboardAccel;
 
-
-        static Font menuBoldFont;
+        private static Font menuBoldFont;
 
         public VistaMenu(ContainerControl parentControl)
             : this()
         {
             ownerForm = parentControl;
         }
+
         public ContainerControl ContainerControl
         {
             get { return ownerForm; }
             set { ownerForm = value; }
         }
+
         public override ISite Site
         {
             set
@@ -314,23 +306,20 @@ namespace Platform.Presentation.Forms.Components
             }
         }
 
-
-        void ownerForm_ChangeUICues(object sender, UICuesEventArgs e)
+        private void ownerForm_ChangeUICues(object sender, UICuesEventArgs e)
         {
             isUsingKeyboardAccel = e.ShowKeyboard;
         }
 
+        private const int SEPARATOR_HEIGHT = 9;
+        private const int BORDER_VERTICAL = 4;
+        private const int LEFT_MARGIN = 4;
+        private const int RIGHT_MARGIN = 6;
+        private const int SHORTCUT_MARGIN = 20;
+        private const int ARROW_MARGIN = 12;
+        private const int ICON_SIZE = 16;
 
-        const int SEPARATOR_HEIGHT = 9;
-        const int BORDER_VERTICAL = 4;
-        const int LEFT_MARGIN = 4;
-        const int RIGHT_MARGIN = 6;
-        const int SHORTCUT_MARGIN = 20;
-        const int ARROW_MARGIN = 12;
-        const int ICON_SIZE = 16;
-
-
-        static void MenuItem_MeasureItem(object sender, MeasureItemEventArgs e)
+        private static void MenuItem_MeasureItem(object sender, MeasureItemEventArgs e)
         {
             Font font = ((MenuItem)sender).DefaultItem
                             ? menuBoldFont
@@ -357,7 +346,7 @@ namespace Platform.Presentation.Forms.Components
             }
         }
 
-        void MenuItem_DrawItem(object sender, DrawItemEventArgs e)
+        private void MenuItem_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.Graphics.CompositingQuality = CompositingQuality.HighSpeed;
             e.Graphics.InterpolationMode = InterpolationMode.Low;
@@ -430,7 +419,6 @@ namespace Platform.Presentation.Forms.Components
             }
         }
 
-
         private static string ShortcutToString(Shortcut shortcut)
         {
             if (shortcut != Shortcut.None)
@@ -476,14 +464,11 @@ namespace Platform.Presentation.Forms.Components
                 ((MenuItem)sender).Enabled ? (isSelected ? SystemColors.HighlightText : SystemColors.MenuText) : SystemColors.GrayText,
                 TextFormatFlags.SingleLine | (isUsingKeyboardAccel ? 0 : TextFormatFlags.HidePrefix) | TextFormatFlags.NoClipping);
 
-
-
             //Draw the shortcut text
             if (shortcutText != null)
             {
                 textSize = TextRenderer.MeasureText(shortcutText,
                                   font, Size.Empty, TextFormatFlags.SingleLine | TextFormatFlags.NoClipping);
-
 
                 textRect = new Rectangle(e.Bounds.Width - textSize.Width - ARROW_MARGIN, yPos, textSize.Width,
                                          textSize.Height);
@@ -507,5 +492,4 @@ namespace Platform.Presentation.Forms.Components
             }
         }
     }
-
 }

@@ -7,7 +7,6 @@ namespace Platform.Support.Windows
 {
     public static class UACHelper
     {
-
         public static void RestartElevated()
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
@@ -17,22 +16,17 @@ namespace Platform.Support.Windows
             startInfo.Verb = "runas";
             startInfo.Arguments = Environment.CommandLine;
 
-
             try
             {
                 global::System.Diagnostics.Process p = global::System.Diagnostics.Process.Start(startInfo);
-
-
             }
             catch //(Exception ex)
             {
                 return;
                 //If cancelled, do nothing
-
             }
 
             System.Environment.Exit(0);
-
         }
 
         public static void RestartNonElevated()
@@ -47,22 +41,17 @@ namespace Platform.Support.Windows
 
             //startInfo.Verb = "runas"
 
-
             try
             {
                 global::System.Diagnostics.Process p = global::System.Diagnostics.Process.Start(startInfo);
-
-
             }
             catch //(Exception ex)
             {
                 return;
                 //If cancelled, do nothing
-
             }
 
             System.Environment.Exit(0);
-
         }
 
         public static void StartElevated(string varExecutablePath, ProcessWindowStyle varWindowStyle, string varArguments = "", bool varWait = true, bool varCreateNoWindow = false)
@@ -76,7 +65,6 @@ namespace Platform.Support.Windows
                 startInfo.FileName = varExecutablePath;
                 startInfo.CreateNoWindow = varCreateNoWindow;
                 startInfo.ErrorDialog = true;
-
             }
 
             try
@@ -92,8 +80,6 @@ namespace Platform.Support.Windows
                 //My.Application.Log.WriteException(ex);
                 //If cancelled, do nothing
             }
-
         }
-
     }
 }

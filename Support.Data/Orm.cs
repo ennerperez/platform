@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Platform.Support.Data.Attributes;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
-using Platform.Support.Data.Attributes;
-using System.Data;
 
 namespace Platform.Support.Data
 {
@@ -22,6 +22,7 @@ namespace Platform.Support.Data
                 case Engines.SqlCE:
                     decl = "[" + p.Name + "] ";
                     break;
+
                 default:
                     decl = "'" + p.Name + "' ";
                     break;
@@ -39,6 +40,7 @@ namespace Platform.Support.Data
                     if (p.IsAutoInc)
                         decl += "IDENTITY(1,1) ";
                     break;
+
                 default:
                     if (p.IsAutoInc)
                         decl += "AUTOINCREMENT ";
@@ -51,8 +53,8 @@ namespace Platform.Support.Data
                 decl += "NOT NULL ";
 
             return decl;
-
         }
+
         public static string SqlType(IDbConnection conn, TableMapping.Column p, bool storeDateTimeAsTicks) //, IDictionary<Type, string> extraTypeMappings)
         {
             Type clrType = p.ColumnType;
@@ -76,6 +78,7 @@ namespace Platform.Support.Data
                         object.ReferenceEquals(clrType, typeof(Int32)))
                         return "INTEGER";
                     break;
+
                 case Engines.OleDb:
                     if (object.ReferenceEquals(clrType, typeof(Boolean)))
                         return "BIT";
@@ -97,6 +100,7 @@ namespace Platform.Support.Data
                         object.ReferenceEquals(clrType, typeof(DateTimeOffset)))
                         return "DATETIME";
                     break;
+
                 default:
                     if (object.ReferenceEquals(clrType, typeof(Boolean)) ||
                         object.ReferenceEquals(clrType, typeof(Byte)) ||
@@ -111,7 +115,6 @@ namespace Platform.Support.Data
                     break;
             }
 
-
             if (object.ReferenceEquals(clrType, typeof(UInt32)) || object.ReferenceEquals(clrType, typeof(Int64)))
                 if (engine == Engines.SQLite && p.IsAutoInc)
                     return "INTEGER";
@@ -122,7 +125,6 @@ namespace Platform.Support.Data
                         return "LONG";
                 else
                     return "BIGINT";
-
 
             if (object.ReferenceEquals(clrType, typeof(Single)))
                 return "FLOAT";
@@ -140,16 +142,17 @@ namespace Platform.Support.Data
                             else if (len > 400)
                                 return "VARCHAR(MAX)";
                         return "VARCHAR(200)";
+
                     case Engines.OleDb:
                         if (len.HasValue && len > 200)
                             return "LONGTEXT";
                         return "VARCHAR";
+
                     default:
                         if (len.HasValue)
                             return "VARCHAR(" + len.Value + ")";
                         return "VARCHAR";
                 }
-
             }
             if (object.ReferenceEquals(clrType, typeof(TimeSpan)))
                 return "BIGINT";
@@ -171,8 +174,10 @@ namespace Platform.Support.Data
                             return "VARBINARY(" + len.Value + ")";
                         }
                         return "VARBINARY(MAX)";
+
                     case Engines.OleDb:
                         return "VARBINARY";
+
                     default:
                         return "BLOB";
                 }
@@ -185,8 +190,10 @@ namespace Platform.Support.Data
                     case Engines.Sql:
                     case Engines.SqlCE:
                         return "UNIQUEIDENTIFIER";
+
                     case Engines.OleDb:
                         return "GUID";
+
                     default:
                         return "VARCHAR(36)";
                 }
@@ -199,8 +206,10 @@ namespace Platform.Support.Data
                     case Engines.Sql:
                     case Engines.SqlCE:
                         return "NVARCHAR(400)";
+
                     case Engines.OleDb:
                         return "LONGTEXT";
+
                     default:
                         return "VARCHAR(200)";
                 }
@@ -216,20 +225,22 @@ namespace Platform.Support.Data
             IEnumerable<PrimaryKeyAttribute> _return = (IEnumerable<PrimaryKeyAttribute>)p.GetCustomAttributes(typeof(PrimaryKeyAttribute), true);
             return _return.Any<PrimaryKeyAttribute>();
         }
+
         public static string Collation(MemberInfo p)
         {
-
             foreach (CustomAttributeData attribute in p.GetCustomAttributesData().Where(a => object.ReferenceEquals(a.GetType(), typeof(CollationAttribute))))
             {
                 return (string)attribute.ConstructorArguments[0].Value;
             }
             return string.Empty;
         }
+
         public static bool IsAutoInc(MemberInfo p)
         {
             IEnumerable<AutoIncrementAttribute> _return = (IEnumerable<AutoIncrementAttribute>)p.GetCustomAttributes(typeof(AutoIncrementAttribute), true);
             return _return.Any<AutoIncrementAttribute>();
         }
+
         public static IEnumerable<IndexedAttribute> GetIndices(MemberInfo p)
         {
             IEnumerable<IndexedAttribute> _return = (IEnumerable<IndexedAttribute>)p.GetCustomAttributes(typeof(IndexedAttribute), true);
@@ -307,6 +318,5 @@ namespace Platform.Support.Data
             IEnumerable<NotNullAttribute> _return = (IEnumerable<NotNullAttribute>)p.GetCustomAttributes(typeof(NotNullAttribute), true);
             return _return.Any<NotNullAttribute>();
         }
-
     }
 }

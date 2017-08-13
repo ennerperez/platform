@@ -3,11 +3,10 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Platform.Support.Data.Attributes
 {
-    
     /// <summary>
-	/// Specifies the database column that a property is mapped to.
-	/// </summary>
-	[AttributeUsage(AttributeTargets.Property, AllowMultiple = false), SuppressMessage("Microsoft.Performance", "CA1813:AvoidUnsealedAttributes")]
+    /// Specifies the database column that a property is mapped to.
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false), SuppressMessage("Microsoft.Performance", "CA1813:AvoidUnsealedAttributes")]
     public class ColumnAttribute : Attribute
     {
         private readonly string _name;
@@ -79,5 +78,4 @@ namespace Platform.Support.Data.Attributes
             this._name = name;
         }
     }
-    
 }

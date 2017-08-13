@@ -9,9 +9,9 @@ namespace Platform.Support.Windows
 {
     public class Mpr
     {
-        public const int UNIVERSAL_NAME_INFO_LEVEL =   0x00000001;
+        public const int UNIVERSAL_NAME_INFO_LEVEL = 0x00000001;
 
-        [DllImport(ExternDll.Mpr, CharSet=CharSet.Auto)]
+        [DllImport(ExternDll.Mpr, CharSet = CharSet.Auto)]
         public static extern int WNetGetUniversalName(
             [In, MarshalAs(UnmanagedType.LPTStr)] string lpLocalPath,
             [In] int dwInfoLevel,
@@ -34,10 +34,10 @@ namespace Platform.Support.Windows
 
         protected static string GetUniversalName(string path, int bufferSize)
         {
-            IntPtr buffer = IntPtr.Zero ;
+            IntPtr buffer = IntPtr.Zero;
             try
             {
-                buffer = Marshal.AllocHGlobal(bufferSize) ;
+                buffer = Marshal.AllocHGlobal(bufferSize);
 
                 int oldBufferSize = bufferSize;
 
@@ -48,16 +48,16 @@ namespace Platform.Support.Windows
                 {
                     // all clear
                     UNIVERSAL_NAME_INFO uni =
-                        (UNIVERSAL_NAME_INFO) Marshal.PtrToStructure( buffer, typeof(UNIVERSAL_NAME_INFO) ) ;
+                        (UNIVERSAL_NAME_INFO)Marshal.PtrToStructure(buffer, typeof(UNIVERSAL_NAME_INFO));
 
-                    return uni.lpUniversalName ;
+                    return uni.lpUniversalName;
                 }
                 else if (errorCode == ERROR.MORE_DATA)
                 {
-                    Debug.Assert( bufferSize > oldBufferSize ) ;
+                    Debug.Assert(bufferSize > oldBufferSize);
 
                     // more data avilable....
-                    return GetUniversalName(path,bufferSize);
+                    return GetUniversalName(path, bufferSize);
                 }
                 else
                 {
@@ -66,10 +66,11 @@ namespace Platform.Support.Windows
                     // Call Debug.Fail on unexpected errors
                     switch (errorCode)
                     {
-                            // these two errors are expected
+                        // these two errors are expected
                         case ERROR.BAD_DEVICE:
                         case ERROR.NOT_CONNECTED:
                             break;
+
                         default:
                             Debug.WriteLine("Encountered error " + errorCode + " while trying to get universal name for " + path);
                             break;

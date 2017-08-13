@@ -7,8 +7,10 @@ using System.Runtime.InteropServices;
 namespace Platform.Support.Windows
 {
 #if !INTEROP
+
     internal static class OleAut32
 #else
+
     public static class OleAut32
 #endif
     {

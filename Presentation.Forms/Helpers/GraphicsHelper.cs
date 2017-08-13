@@ -5,7 +5,6 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 
 namespace Platform.Presentation.Forms
 {
@@ -150,7 +149,6 @@ namespace Platform.Presentation.Forms
                                        new Rectangle(x, rectangle.Y, Math.Min(srcRectangle.Width, rectangle.Right - x), rectangle.Height),
                                        srcRectangle,
                                        GraphicsUnit.Pixel);
-
         }
 
         public static Rectangle[] SliceCompositedImageBorder(Size imgSize, int vert1, int vert2, int horiz1, int horiz2)

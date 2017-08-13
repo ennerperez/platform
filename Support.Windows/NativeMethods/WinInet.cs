@@ -348,7 +348,6 @@ namespace Platform.Support.Windows
         /// <returns></returns>
         public static Win32_Find_Data[] FtpFind(IntPtr hConnect, string search)
         {
-
             ArrayList list = new ArrayList();
             Win32_Find_Data findData = new Win32_Find_Data();
 
@@ -396,7 +395,6 @@ namespace Platform.Support.Windows
                 stringBuffer,
                 ref bufferLength))
             {
-
                 // If the buffer wasn't large enough
                 int error = Marshal.GetLastWin32Error();
                 if (error == ERROR.INSUFFICIENT_BUFFER)
@@ -414,7 +412,6 @@ namespace Platform.Support.Windows
                     Debug.Assert(false, "Error getting current directory");
                     return "/";
                 }
-
             }
             return stringBuffer.ToString();
         }
@@ -441,7 +438,6 @@ namespace Platform.Support.Windows
                 stringBuffer,
                 ref bufferLength))
             {
-
                 // If the buffer wasn't large enough
                 int error = Marshal.GetLastWin32Error();
                 if (error == ERROR.INSUFFICIENT_BUFFER)
@@ -453,18 +449,15 @@ namespace Platform.Support.Windows
                         out errorCode,
                         stringBuffer,
                         ref bufferLength);
-
                 }
                 else
                 {
                     Debug.Assert(false, "Error getting extended info");
                 }
-
             }
 
             return stringBuffer.ToString();
         }
-
     }
 
     public struct FLAG_ICC
@@ -516,12 +509,13 @@ namespace Platform.Support.Windows
         public int nFileSizeLow;
         public int dwReserved0;
         public int dwReserved1;
+
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]
         public string cFileName;
+
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 14)]
         public string cAlternateFileName;
     }
-
 
     /// <summary>
     /// Enumeration of WinInet option flags
@@ -855,7 +849,6 @@ namespace Platform.Support.Windows
         /// prevent using java/script/INS
         /// </summary>
         public const int TYPE_PRECONFIG_WITH_NO_AUTOPROXY = 4;
-
     }
 
     /// <summary>

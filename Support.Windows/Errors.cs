@@ -3,14 +3,15 @@
 
 namespace Platform.Support.Windows
 {
-
     /// <summary>
     /// Error codes that can be returned from Win32 functions
     /// Use kernel32 GetLastError() to get the last error on the thread
     /// </summary>
 #if !INTEROP
+
     internal struct ERROR
 #else
+
     public struct ERROR
 #endif
     {
@@ -22,7 +23,7 @@ namespace Platform.Support.Windows
         public const int ALREADY_EXISTS = 183;
         public const int MORE_DATA = 234;
 
-#region registry-related errors
+        #region registry-related errors
 
         //  The configuration registry database is corrupt.
         public const int BADDB = 1009;
@@ -66,7 +67,7 @@ namespace Platform.Support.Windows
         //  A notify change request is being completed and the information is not being returned in the caller's buffer. The caller now needs to enumerate the files to find the changes.
         public const int NOTIFY_ENUM_DIR = 1022;
 
-#endregion
+        #endregion registry-related errors
 
         public const int NO_ASSOCIATION = 1155;
         public const int UNABLE_TO_REMOVE_REPLACED = 1175;

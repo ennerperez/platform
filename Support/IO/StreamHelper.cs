@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 
 namespace Platform.Support
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
+
         namespace IO
         {
             public static class StreamHelper
             {
-
                 public static void CopyStream(Stream input, Stream output)
                 {
                     //' assert these are the right kind of streams
@@ -45,13 +42,12 @@ namespace Platform.Support
                         output.Write(buf, 0, bytesRead);
                         bytesRead = input.Read(buf, 0, bufSize);
                     }
-
-
                 }
-
             }
         }
+
 #if PORTABLE
     }
+
 #endif
 }

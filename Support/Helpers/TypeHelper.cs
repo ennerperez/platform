@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace Platform.Support
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
+
         public static class TypeHelper
         {
-
             public static object IsNull(object value, object replacement = null)
             {
                 if (value == null)
@@ -19,6 +18,7 @@ namespace Platform.Support
                 else
                     return value;
             }
+
             public static object IsNull<T>(T value, object replacement = null)
             {
                 if (value == null)
@@ -132,9 +132,10 @@ namespace Platform.Support
                 SemanticVersion.TryParse(version.ToString(), out value);
                 return value != null;
             }
-
         }
+
 #if PORTABLE
     }
+
 #endif
 }

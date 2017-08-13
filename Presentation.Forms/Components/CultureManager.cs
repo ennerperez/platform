@@ -1,35 +1,31 @@
-﻿
-using System;
-using System.ComponentModel;
+﻿using System;
 using System.Collections;
-using System.Reflection;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-using System.Threading;
-using System.Globalization;
-using System.Windows.Forms;
+using System.ComponentModel;
 using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
+using System.Reflection;
 using System.Resources;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Components
 {
-
     /// <summary>
     /// Defines a component for managing the User Interface culture for
-    /// a form (or control) and allows the <see cref="UICulture"/> of an individual form 
+    /// a form (or control) and allows the <see cref="UICulture"/> of an individual form
     /// or entire application be changed dynamically.
     /// </summary>
     /// <remarks>
-    /// This handles forms and components developed in C# and VB.NET but may or may not 
-    /// work for components/forms developed in other languages depending on how the language 
+    /// This handles forms and components developed in C# and VB.NET but may or may not
+    /// work for components/forms developed in other languages depending on how the language
     /// handles resource naming and serialization.
     /// </remarks>
     [ToolboxItem(true)]
     public class CultureManager : Component
     {
-
         #region Static/Constant Member Variables
 
         private const AnchorStyles anchorLeftRight = AnchorStyles.Left | AnchorStyles.Right;
@@ -47,7 +43,7 @@ namespace Platform.Presentation.Forms.Components
         /// </summary>
         private static bool _synchronizeThreadCulture = true;
 
-        #endregion
+        #endregion Static/Constant Member Variables
 
         #region Member Variables
 
@@ -77,7 +73,7 @@ namespace Platform.Presentation.Forms.Components
         private List<string> _excludeProperties = new List<string>();
 
         /// <summary>
-        /// Should the Form <see cref="UICulture"/> be changed when the 
+        /// Should the Form <see cref="UICulture"/> be changed when the
         /// <see cref="ApplicationUICulture"/> changes.
         /// </summary>
         private bool _synchronizeUICulture = true;
@@ -87,12 +83,13 @@ namespace Platform.Presentation.Forms.Components
         /// </summary>
         private SizeF _autoScaleFactor = new SizeF(1, 1);
 
-        #endregion
+        #endregion Member Variables
 
         public class CultureChangeEventArgs : EventArgs
         {
             private CultureInfo culture;
             public CultureInfo Culture { get { return culture; } }
+
             public CultureChangeEventArgs(CultureInfo newCulture)
             {
                 culture = newCulture;
@@ -101,7 +98,6 @@ namespace Platform.Presentation.Forms.Components
 
         public class ExcludedResourceEventArgs : EventArgs
         {
-
             private string componentName;
             private string propertyName;
 
@@ -118,22 +114,22 @@ namespace Platform.Presentation.Forms.Components
         #region Public Static Methods
 
         /// <summary>
-        /// Represents the method that will handle the <see cref="UICultureChanged"/> event   
+        /// Represents the method that will handle the <see cref="UICultureChanged"/> event
         /// </summary>
         public delegate void CultureChangedHandler(object sender, CultureChangeEventArgs e);
 
         /// <summary>
-        /// Raised when the <see cref="ApplicationUICulture"/> is changed  
+        /// Raised when the <see cref="ApplicationUICulture"/> is changed
         /// </summary>
         public static event CultureChangedHandler ApplicationUICultureChanged;
 
         /// <summary>
-        /// Set/Get the UICulture for whole application. 
+        /// Set/Get the UICulture for whole application.
         /// </summary>
         /// <remarks>
-        /// Setting this property changes the <see cref="Thread.CurrentUICulture"/> 
-        /// and sets the <see cref="UICulture"/> for all <see cref="CultureManager">CultureManagers</see> 
-        /// to the given culture.  
+        /// Setting this property changes the <see cref="Thread.CurrentUICulture"/>
+        /// and sets the <see cref="UICulture"/> for all <see cref="CultureManager">CultureManagers</see>
+        /// to the given culture.
         /// </remarks>
         public static CultureInfo ApplicationUICulture
         {
@@ -161,7 +157,6 @@ namespace Platform.Presentation.Forms.Components
             }
         }
 
-
         /// <summary>
         /// If set to true then the <see cref="Thread.CurrentCulture"/> property is changed
         /// to match the current <see cref="UICulture"/>
@@ -180,8 +175,8 @@ namespace Platform.Presentation.Forms.Components
         }
 
         /// <summary>
-        /// Set the <see cref="Thread.CurrentUICulture"/>, and optionally <see cref="Thread.CurrentCulture"/>, of the current thread 
-        /// to match the <see cref="ApplicationUICulture"/>. 
+        /// Set the <see cref="Thread.CurrentUICulture"/>, and optionally <see cref="Thread.CurrentCulture"/>, of the current thread
+        /// to match the <see cref="ApplicationUICulture"/>.
         /// </summary>
         /// <param name="synchronizeThreadCulture">If true the <see cref="Thread.CurrentCulture"/> property is set to a compatible culture</param>
         public static void SetThreadUICulture(bool synchronizeThreadCulture)
@@ -200,8 +195,7 @@ namespace Platform.Presentation.Forms.Components
             }
         }
 
-
-        #endregion
+        #endregion Public Static Methods
 
         #region Public Instance Methods
 
@@ -212,7 +206,7 @@ namespace Platform.Presentation.Forms.Components
         public event CultureChangedHandler UICultureChanged;
 
         /// <summary>
-        /// Represents the method that will handle the <see cref="ExcludeResource"/> event   
+        /// Represents the method that will handle the <see cref="ExcludeResource"/> event
         /// </summary>
         public delegate void ExcludedResourceHandler(object sender, ExcludedResourceEventArgs e);
 
@@ -319,12 +313,13 @@ namespace Platform.Presentation.Forms.Components
         {
             _excludeProperties.Clear();
         }
+
         /// <summary>
-        /// The current user interface culture for the <see cref="ManagedControl"/>. 
+        /// The current user interface culture for the <see cref="ManagedControl"/>.
         /// </summary>
         /// <remarks>
         /// This can be set independently of the <see cref="ApplicationUICulture"/>, allowing
-        /// you to have an application simultaneously displaying forms with different cultures.   
+        /// you to have an application simultaneously displaying forms with different cultures.
         /// Set the <see cref="ApplicationUICulture"/> to change the <see cref="UICulture"/> of
         /// all forms in the application which have associated CultureManagers.
         /// </remarks>
@@ -359,7 +354,7 @@ namespace Platform.Presentation.Forms.Components
             set { _synchronizeUICulture = value; }
         }
 
-        #endregion
+        #endregion Public Instance Methods
 
         #region Local Methods
 
@@ -391,7 +386,7 @@ namespace Platform.Presentation.Forms.Components
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="newCulture"></param>
         protected virtual void OnUICultureChanged(CultureInfo newCulture)
@@ -589,7 +584,6 @@ namespace Platform.Presentation.Forms.Components
             control.Location = location;
         }
 
-
         /// <summary>
         /// Apply a resource for an extender provider to the given control
         /// </summary>
@@ -748,7 +742,7 @@ namespace Platform.Presentation.Forms.Components
             {
                 string fieldName = field.Name;
 
-                // in VB the field names are prepended with an "underscore" so we need to 
+                // in VB the field names are prepended with an "underscore" so we need to
                 // remove this
                 //
                 if (isVB)
@@ -780,7 +774,7 @@ namespace Platform.Presentation.Forms.Components
                 }
             }
 
-            // now process the resources 
+            // now process the resources
             //
             foreach (KeyValuePair<string, object> pair in resources)
             {
@@ -816,6 +810,7 @@ namespace Platform.Presentation.Forms.Components
                         case "Margin":
                             resourceValue = AutoScalePadding((Padding)resourceValue);
                             break;
+
                         case "ClientSize":
                             if (control is Form && PreserveFormSize) continue;
                             resourceValue = AutoScaleSize((Size)resourceValue);
@@ -848,11 +843,9 @@ namespace Platform.Presentation.Forms.Components
                         ApplyExtenderResource(extenderProviders, control, propertyName, resourceValue);
                     }
                 }
-
             }
-
         }
 
-        #endregion
+        #endregion Local Methods
     }
 }

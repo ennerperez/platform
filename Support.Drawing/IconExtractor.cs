@@ -1,15 +1,11 @@
 ﻿using Platform.Support.Windows;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace Platform.Support.Drawing
 {
     public class IconExtractor
     {
-
         public static Icon Extract(string file, int number, bool largeIcon)
         {
             IntPtr large;
@@ -24,8 +20,6 @@ namespace Platform.Support.Drawing
                 ex.DebugThis();
                 return null;
             }
-
         }
-
     }
 }

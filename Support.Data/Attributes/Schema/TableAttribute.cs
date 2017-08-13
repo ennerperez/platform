@@ -3,14 +3,12 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Platform.Support.Data.Attributes
 {
-
     /// <summary>
-	/// Specifies the database table that a class is mapped to.
-	/// </summary>
+    /// Specifies the database table that a class is mapped to.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false), SuppressMessage("Microsoft.Performance", "CA1813:AvoidUnsealedAttributes")]
     public class TableAttribute : Attribute
     {
-
         private readonly string _name;
 
         private string _schema;
@@ -27,9 +25,9 @@ namespace Platform.Support.Data.Attributes
         }
 
         /// <summary>
-		/// The schema of the table the class is mapped to.
-		/// </summary>
-		public string Schema
+        /// The schema of the table the class is mapped to.
+        /// </summary>
+        public string Schema
         {
             get
             {

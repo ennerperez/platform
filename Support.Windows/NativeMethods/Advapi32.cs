@@ -1,13 +1,12 @@
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
+using Microsoft.Win32.SafeHandles;
 using System;
 using System.Runtime.InteropServices;
-using Microsoft.Win32.SafeHandles;
 
 namespace Platform.Support.Windows
 {
-
     public class Advapi32
     {
         [DllImport(ExternDll.Advapi32, CharSet = CharSet.Auto, SetLastError = true)]
@@ -32,7 +31,6 @@ namespace Platform.Support.Windows
             SafeWaitHandle hEvent,
             bool fAsynchronous
             );
-
     }
 
     public struct STANDARD_RIGHTS

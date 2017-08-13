@@ -30,6 +30,7 @@ namespace Platform.Presentation.Forms
                 case AnchorStyles.Bottom:
                 case AnchorStyles.Right | AnchorStyles.Bottom:
                     break;
+
                 default:
                     throw new ArgumentException("Only combinations of Right and Bottom are allowed");
             }

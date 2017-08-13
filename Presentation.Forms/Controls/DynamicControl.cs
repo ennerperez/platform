@@ -1,61 +1,70 @@
-﻿using System;
+﻿using Platform.Support;
+using Platform.Support.Reflection;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.ComponentModel;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using System.Drawing.Design;
+using System.Linq;
 using System.Reflection;
-using Platform.Support.Reflection;
-using Platform.Support;
-using System.Collections;
 using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 
 [assembly: InternalsVisibleTo("Sample")]
 
 namespace Platform.Presentation.Forms.Controls
 {
-
     //TODO: WIP
     internal partial class DynamicControl : Control, INotifyPropertyChanged
     {
-
         public Type GetDataType()
         {
             switch (Type)
             {
                 case VariantType.Short:
                     return typeof(short);
+
                 case VariantType.Integer:
                     return typeof(int);
+
                 case VariantType.Single:
                     return typeof(Single);
+
                 case VariantType.Double:
                 case VariantType.Currency:
                     return typeof(double);
+
                 case VariantType.Date:
                     return typeof(DateTime);
+
                 case VariantType.String:
                     return typeof(string);
+
                 case VariantType.Object:
                 case VariantType.Variant:
                 case VariantType.DataObject:
                 case VariantType.UserDefinedType:
                     return typeof(object);
+
                 case VariantType.Error:
                     return typeof(Exception);
+
                 case VariantType.Boolean:
                     return typeof(bool);
+
                 case VariantType.Decimal:
                     return typeof(decimal);
+
                 case VariantType.Byte:
                     return typeof(byte);
+
                 case VariantType.Char:
                     return typeof(char);
+
                 case VariantType.Long:
                     return typeof(long);
+
                 case VariantType.Array:
                     return typeof(IEnumerable);
 
@@ -70,7 +79,6 @@ namespace Platform.Presentation.Forms.Controls
         private Control internalControl = new TextBox();
 
         public Control Control { get { return internalControl; } }
-
 
         #region TextBox
 
@@ -87,6 +95,7 @@ namespace Platform.Presentation.Forms.Controls
         [DefaultValue(false)]
         [Category("TextBox")]
         public bool AcceptsReturn { get; set; }
+
         //
         // Summary:
         //     Gets or sets a custom System.Collections.Specialized.StringCollection to use
@@ -101,6 +110,7 @@ namespace Platform.Presentation.Forms.Controls
         [Localizable(true)]
         [Category("TextBox")]
         public AutoCompleteStringCollection AutoCompleteCustomSource { get; set; } = new AutoCompleteStringCollection();
+
         //
         // Summary:
         //     Gets or sets an option that controls how automatic completion works for the System.Windows.Forms.TextBox.
@@ -123,6 +133,7 @@ namespace Platform.Presentation.Forms.Controls
         [EditorBrowsable(EditorBrowsableState.Always)]
         [Category("TextBox")]
         public AutoCompleteMode AutoCompleteMode { get; set; } = AutoCompleteMode.None;
+
         //
         // Summary:
         //     Gets or sets a value specifying the source of complete strings used for automatic
@@ -141,6 +152,7 @@ namespace Platform.Presentation.Forms.Controls
         [EditorBrowsable(EditorBrowsableState.Always)]
         [Category("TextBox")]
         public System.Windows.Forms.AutoCompleteSource AutoCompleteSource { get; set; } = System.Windows.Forms.AutoCompleteSource.None;
+
         //
         // Summary:
         //     Gets or sets whether the System.Windows.Forms.TextBox control modifies the case
@@ -158,6 +170,7 @@ namespace Platform.Presentation.Forms.Controls
         [DefaultValue(CharacterCasing.Normal)]
         [Category("TextBox")]
         public CharacterCasing CharacterCasing { get; set; } = CharacterCasing.Normal;
+
         //
         // Summary:
         //     Gets or sets a value indicating whether this is a multiline System.Windows.Forms.TextBox
@@ -168,6 +181,7 @@ namespace Platform.Presentation.Forms.Controls
         //     false. The default is false.
         [Category("TextBox")]
         public bool Multiline { get; set; }
+
         //
         // Summary:
         //     Gets or sets the character used to mask characters of a password in a single-line
@@ -183,6 +197,7 @@ namespace Platform.Presentation.Forms.Controls
         [RefreshProperties(RefreshProperties.Repaint)]
         [Category("TextBox")]
         public char PasswordChar { get; set; } = '\0';
+
         //
         // Summary:
         //     Gets or sets which scroll bars should appear in a multiline System.Windows.Forms.TextBox
@@ -219,6 +234,7 @@ namespace Platform.Presentation.Forms.Controls
         [Localizable(true)]
         [Category("TextBox")]
         public HorizontalAlignment TextAlign { get; set; } = HorizontalAlignment.Left;
+
         //
         // Summary:
         //     Gets or sets a value indicating whether the text in the System.Windows.Forms.TextBox
@@ -232,12 +248,13 @@ namespace Platform.Presentation.Forms.Controls
         [Category("TextBox")]
         public bool UseSystemPasswordChar { get; set; }
 
-        #endregion
+        #endregion TextBox
 
         #region NumericUpDown
 
         [Category("NumericUpDown")]
         public int DecimalPlaces { get; set; }
+
         //
         // Summary:
         //     Gets or sets a value indicating whether the spin box (also known as an up-down
@@ -249,6 +266,7 @@ namespace Platform.Presentation.Forms.Controls
         [DefaultValue(false)]
         [Category("NumericUpDown")]
         public bool Hexadecimal { get; set; }
+
         //
         // Summary:
         //     Gets or sets the value to increment or decrement the spin box (also known as
@@ -264,6 +282,7 @@ namespace Platform.Presentation.Forms.Controls
         //     The assigned value is not greater than or equal to zero.
         [Category("NumericUpDown")]
         public decimal Increment { get; set; }
+
         //
         // Summary:
         //     Gets or sets the maximum value for the spin box (also known as an up-down control).
@@ -273,6 +292,7 @@ namespace Platform.Presentation.Forms.Controls
         [RefreshProperties(RefreshProperties.All)]
         [Category("NumericUpDown")]
         public decimal Maximum { get; set; }
+
         //
         // Summary:
         //     Gets or sets the minimum allowed value for the spin box (also known as an up-down
@@ -297,8 +317,7 @@ namespace Platform.Presentation.Forms.Controls
         [Category("NumericUpDown")]
         public bool ThousandsSeparator { get; set; }
 
-
-        #endregion
+        #endregion NumericUpDown
 
         #region DateTimePicker
 
@@ -312,6 +331,7 @@ namespace Platform.Presentation.Forms.Controls
         [Localizable(true)]
         [Category("DateTimePicker")]
         public Font CalendarFont { get; set; }
+
         //
         // Summary:
         //     Gets or sets the foreground color of the calendar.
@@ -324,6 +344,7 @@ namespace Platform.Presentation.Forms.Controls
         //     The value assigned is null.
         [Category("DateTimePicker")]
         public Color CalendarForeColor { get; set; }
+
         //
         // Summary:
         //     Gets or sets the background color of the calendar month.
@@ -336,6 +357,7 @@ namespace Platform.Presentation.Forms.Controls
         //     The value assigned is null.
         [Category("DateTimePicker")]
         public Color CalendarMonthBackground { get; set; }
+
         //
         // Summary:
         //     Gets or sets the background color of the calendar title.
@@ -348,6 +370,7 @@ namespace Platform.Presentation.Forms.Controls
         //     The value assigned is null.
         [Category("DateTimePicker")]
         public Color CalendarTitleBackColor { get; set; }
+
         //
         // Summary:
         //     Gets or sets the foreground color of the calendar title.
@@ -360,6 +383,7 @@ namespace Platform.Presentation.Forms.Controls
         //     The value assigned is null.
         [Category("DateTimePicker")]
         public Color CalendarTitleForeColor { get; set; }
+
         //
         // Summary:
         //     Gets or sets the foreground color of the calendar trailing dates.
@@ -373,7 +397,7 @@ namespace Platform.Presentation.Forms.Controls
         //     The value assigned is null.
         [Category("DateTimePicker")]
         public Color CalendarTrailingForeColor { get; set; }
-        
+
         //
         // Summary:
         //     Gets or sets the custom date/time format string.
@@ -385,6 +409,7 @@ namespace Platform.Presentation.Forms.Controls
         [RefreshProperties(RefreshProperties.Repaint)]
         [Category("DateTimePicker")]
         public string CustomFormat { get; set; }
+
         //
         // Summary:
         //     Gets or sets the alignment of the drop-down calendar on the System.Windows.Forms.DateTimePicker
@@ -416,6 +441,7 @@ namespace Platform.Presentation.Forms.Controls
         [RefreshProperties(RefreshProperties.Repaint)]
         [Category("DateTimePicker")]
         public DateTimePickerFormat Format { get; set; } = DateTimePickerFormat.Long;
+
         //
         // Summary:
         //     Gets or sets the maximum date and time that can be selected in the control.
@@ -434,6 +460,7 @@ namespace Platform.Presentation.Forms.Controls
         //     value.
         [Category("DateTimePicker")]
         public DateTime MaxDate { get; set; } = DateTimePicker.MaximumDateTime;
+
         //
         // Summary:
         //     Gets or sets the minimum date and time that can be selected in the control.
@@ -465,6 +492,7 @@ namespace Platform.Presentation.Forms.Controls
         [Localizable(true)]
         [Category("DateTimePicker")]
         public virtual bool RightToLeftLayout { get; set; }
+
         //
         // Summary:
         //     Gets or sets a value indicating whether a check box is displayed to the left
@@ -476,6 +504,7 @@ namespace Platform.Presentation.Forms.Controls
         [DefaultValue(false)]
         [Category("DateTimePicker")]
         public bool ShowCheckBox { get; set; }
+
         //
         // Summary:
         //     Gets or sets a value indicating whether a spin button control (also known as
@@ -488,10 +517,9 @@ namespace Platform.Presentation.Forms.Controls
         [Category("DateTimePicker")]
         public bool ShowUpDown { get; set; }
 
-        #endregion
+        #endregion DateTimePicker
 
         #region CheckBox
-
 
         //
         // Summary:
@@ -508,6 +536,7 @@ namespace Platform.Presentation.Forms.Controls
         [Localizable(true)]
         [Category("CheckBox")]
         public Appearance Appearance { get; set; } = Appearance.Normal;
+
         //
         // Summary:
         //     Gets or set a value indicating whether the System.Windows.Forms.CheckBox.Checked
@@ -558,7 +587,7 @@ namespace Platform.Presentation.Forms.Controls
         [RefreshProperties(RefreshProperties.All)]
         [Category("CheckBox")]
         public CheckState CheckState { get; set; } = CheckState.Unchecked;
-        
+
         //
         // Summary:
         //     Gets or sets a value indicating whether the System.Windows.Forms.CheckBox will
@@ -571,8 +600,8 @@ namespace Platform.Presentation.Forms.Controls
         [Category("CheckBox")]
         public bool ThreeState { get; set; }
 
-        #endregion
-        
+        #endregion CheckBox
+
         #region Shared
 
         //
@@ -587,6 +616,7 @@ namespace Platform.Presentation.Forms.Controls
         [EditorBrowsable(EditorBrowsableState.Never)]
         [Category("Control")]
         protected override bool DoubleBuffered { get; set; }
+
         //
         // Summary:
         //     Gets or sets a value indicating the background color of the System.Windows.Forms.Control
@@ -598,6 +628,7 @@ namespace Platform.Presentation.Forms.Controls
         [EditorBrowsable(EditorBrowsableState.Never)]
         [Category("Control")]
         public override Color BackColor { get; set; }
+
         //
         // Summary:
         //     Gets or sets the background image for the control.
@@ -608,6 +639,7 @@ namespace Platform.Presentation.Forms.Controls
         [EditorBrowsable(EditorBrowsableState.Never)]
         [Category("Control")]
         public override Image BackgroundImage { get; set; }
+
         //
         // Summary:
         //     Gets or sets the layout of the background image of the System.Windows.Forms.Control
@@ -619,6 +651,7 @@ namespace Platform.Presentation.Forms.Controls
         [EditorBrowsable(EditorBrowsableState.Never)]
         [Category("Control")]
         public override ImageLayout BackgroundImageLayout { get; set; }
+
         //
         // Summary:
         //     Gets or sets the foreground color of the System.Windows.Forms.Control
@@ -644,8 +677,8 @@ namespace Platform.Presentation.Forms.Controls
         [EditorBrowsable(EditorBrowsableState.Always)]
         [Category("Control")]
         public override bool AutoSize { get; set; }
-        
-        #endregion
+
+        #endregion Shared
 
         #region Values
 
@@ -698,7 +731,7 @@ namespace Platform.Presentation.Forms.Controls
         [Category("Control")]
         public bool Checked { get { return @checked; } set { this.SetField(ref @checked, value, "Checked"); } }
 
-        #endregion
+        #endregion Values
 
         public DynamicControl() : base()
         {
@@ -722,10 +755,8 @@ namespace Platform.Presentation.Forms.Controls
             if (internalControl.GetType() == typeof(DateTimePicker))
                 externalProps = typeof(DateTimePicker).GetProperties();
 
-
             if (externalProps != null && internalControl != null)
             {
-
                 var _type = internalControl.GetType();
                 var internalProps = typeof(DynamicControl).GetProperties().Where((item) =>
                 {
@@ -737,12 +768,11 @@ namespace Platform.Presentation.Forms.Controls
                 if (internalControl.GetType() == typeof(TextBox))
                     internalControl.DataBindings.Add(new Binding("Text", this, "Text", true, DataSourceUpdateMode.OnPropertyChanged));
 
-                if (internalControl.GetType() == typeof(NumericUpDown) || internalControl.GetType() == typeof(DateTimePicker)) 
+                if (internalControl.GetType() == typeof(NumericUpDown) || internalControl.GetType() == typeof(DateTimePicker))
                     internalControl.DataBindings.Add(new Binding("Value", this, "Value", true, DataSourceUpdateMode.OnPropertyChanged));
-                
+
                 if (internalControl.GetType() == typeof(CheckBox) || internalControl.GetType() == typeof(DateTimePicker))
                     internalControl.DataBindings.Add(new Binding("Checked", this, "Checked", true, DataSourceUpdateMode.OnPropertyChanged));
-
 
                 if (internalControl.GetType() == typeof(CheckBox))
                     internalControl.DataBindings.Add(new Binding("AutoSize", this, "AutoSize", true, DataSourceUpdateMode.OnPropertyChanged));
@@ -765,9 +795,8 @@ namespace Platform.Presentation.Forms.Controls
                     //}
                 }
             }
-
         }
-        
+
         private void InitializeControl()
         {
             this.SuspendLayout();
@@ -796,7 +825,6 @@ namespace Platform.Presentation.Forms.Controls
 
             if (internalControl != null)
             {
-
                 if (internalControl.GetType() != typeof(TextBox) || !this.Multiline)
                     this.Height = internalControl.Height;
 
@@ -811,7 +839,6 @@ namespace Platform.Presentation.Forms.Controls
 
             this.ResumeLayout();
             this.Invalidate();
-
         }
 
         protected virtual void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -822,10 +849,8 @@ namespace Platform.Presentation.Forms.Controls
 
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(sender, e);
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
     }
 }

@@ -7,13 +7,11 @@ namespace Platform.Support.Security.Cryptography
 {
     public static class CryptographyHelper
     {
-
         public const string PublicKey = "!#$a54?3";
         private static byte[] IV = { 0x12, 0x34, 0x56, 0x78, 0x90, 0xab, 0xcd, 0xef };
 
         public static string Encrypt(string input, string key = null)
         {
-
             if (key == null)
                 key = PublicKey;
 
@@ -40,12 +38,10 @@ namespace Platform.Support.Security.Cryptography
                 ex.DebugThis();
                 return null;
             }
-
-
         }
+
         public static string Decrypt(string input, string key = null)
         {
-
             if (key == null)
                 key = PublicKey;
 
@@ -77,8 +73,6 @@ namespace Platform.Support.Security.Cryptography
                 ex.DebugThis();
                 return null;
             }
-
         }
-
     }
 }

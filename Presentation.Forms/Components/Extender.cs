@@ -1,14 +1,8 @@
 ﻿using Platform.Support.Windows;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
 
 //TODO: Fix behavior
@@ -18,8 +12,8 @@ namespace Platform.Presentation.Forms.Components
     [System.Drawing.ToolboxBitmap(typeof(System.Windows.Forms.Form))]
     public partial class Extender : Component, IExtenderProvider
     {
-
         #region Designer
+
         public Extender()
         {
             InitializeComponent();
@@ -37,7 +31,7 @@ namespace Platform.Presentation.Forms.Components
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Limpiar los recursos que se estén utilizando.
         /// </summary>
         /// <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
@@ -61,9 +55,9 @@ namespace Platform.Presentation.Forms.Components
             components = new System.ComponentModel.Container();
         }
 
-        #endregion
+        #endregion Código generado por el Diseñador de componentes
 
-        #endregion
+        #endregion Designer
 
         #region Parent form
 
@@ -74,6 +68,7 @@ namespace Platform.Presentation.Forms.Components
         }
 
         private ContainerControl _containerControl = null;
+
         public override ISite Site
         {
             get { return base.Site; }
@@ -95,11 +90,12 @@ namespace Platform.Presentation.Forms.Components
             }
         }
 
-        #endregion
+        #endregion Parent form
 
-        #region  Border
+        #region Border
 
         private System.Drawing.Color _BorderColor = System.Drawing.Color.Gray;
+
         [DefaultValue("System.Drawing.Color.Gray")]
         [Category("Border")]
         public System.Drawing.Color BorderColor
@@ -117,6 +113,7 @@ namespace Platform.Presentation.Forms.Components
         }
 
         private int _BorderWidth = 1;
+
         [DefaultValue(1)]
         [Category("Border")]
         public int BorderWidth
@@ -132,6 +129,7 @@ namespace Platform.Presentation.Forms.Components
                 }
             }
         }
+
         private void Form_Paint(object sender, PaintEventArgs e)
         {
             if (!this.DesignMode)
@@ -145,24 +143,25 @@ namespace Platform.Presentation.Forms.Components
             }
         }
 
-        #endregion
+        #endregion Border
 
-        #region  Mouse Move
-                
+        #region Mouse Move
+
         private void MoveForm()
         {
             User32.ReleaseCapture();
             User32.SendMessage(this.ContainerControl.FindForm().Handle, User32.WM_SYSCOMMAND, User32.MOUSE_MOVE, 0);
         }
 
-
         private System.Drawing.Size _Size;
 
         private bool _Moving = false;
+
         private void Form_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             _Moving = e.Button == MouseButtons.Left;
         }
+
         private void Form_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             _Moving = false;
@@ -171,10 +170,9 @@ namespace Platform.Presentation.Forms.Components
         private void Form_MouseMove(object sender, MouseEventArgs e)
         {
             {
-                //_Moving Then 
+                //_Moving Then
                 if (e.Button == System.Windows.Forms.MouseButtons.Left)
                 {
-
                     if (_Size != null)
                     {
                         this.ContainerControl.FindForm().Size = _Size;
@@ -183,7 +181,7 @@ namespace Platform.Presentation.Forms.Components
 
                     MoveForm();
 
-                    Rectangle _WorkingArea =  Screen.FromControl((Control) sender).WorkingArea;
+                    Rectangle _WorkingArea = Screen.FromControl((Control)sender).WorkingArea;
                     //Screen.GetWorkingArea(Cursor.Position)
 
                     _WorkingArea = new Rectangle();
@@ -194,7 +192,6 @@ namespace Platform.Presentation.Forms.Components
                         {
                             _WorkingArea.Width += item.WorkingArea.Width;
                         }
-
                     }
 
                     //Dim _WorkingAreaFull As New Rectangle(0, 0, Screen.AllScreens.Sum(Function(w) w.WorkingArea.Width), Screen.AllScreens.Sum(Function(w) w.WorkingArea.Height))
@@ -226,7 +223,6 @@ namespace Platform.Presentation.Forms.Components
                             this.ContainerControl.FindForm().WindowState = FormWindowState.Maximized;
                         }
                     }
-
                 }
                 else
                 {
@@ -235,20 +231,19 @@ namespace Platform.Presentation.Forms.Components
             }
         }
 
-        #endregion
+        #endregion Mouse Move
 
         #region IExtenderProvider
 
         public class Properties
         {
-
             public bool Border { get; set; }
 
             public bool Snap { get; set; }
-
         }
 
         private Hashtable m_properties = new Hashtable();
+
         private Properties EnsurePropertiesExists(object key)
         {
             Properties p = (Properties)m_properties[key];
@@ -273,7 +268,6 @@ namespace Platform.Presentation.Forms.Components
             return EnsurePropertiesExists(b).Snap;
         }
 
-
         public void SetBorder(Form b, bool value)
         {
             EnsurePropertiesExists(b).Border = value;
@@ -289,7 +283,6 @@ namespace Platform.Presentation.Forms.Components
 
             b.Invalidate();
         }
-
 
         public void SetSnap(Form b, bool value)
         {
@@ -316,12 +309,9 @@ namespace Platform.Presentation.Forms.Components
             return extendee is System.Windows.Forms.Form;
         }
 
-
-        #endregion
-
+        #endregion IExtenderProvider
     }
 }
-
 
 //internal static partial class NativeMethods
 //{

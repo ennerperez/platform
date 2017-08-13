@@ -5,13 +5,10 @@ using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Controls
 {
-
     [ToolboxBitmap(typeof(System.Windows.Forms.ImageList))]
     [ToolboxItem(true)]
     public partial class BlinkingImage : PictureBox
     {
-
-
         public const int BLINK_INTERVAL_DEFAULT_VALUE = 300;
 
         private bool _BlinkEnabled = true;

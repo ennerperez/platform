@@ -6,23 +6,23 @@
     {
         private readonly Body body = new Body();
         private readonly Inch width = new Inch(6.5);
+
         private readonly Page page = new Page
-                                         {
-                                             LeftMargin = new Inch(1),
-                                             RightMargin = new Inch(1),
-                                             TopMargin = new Inch(1),
-                                             BottomMargin = new Inch(1)
-                                         };
+        {
+            LeftMargin = new Inch(1),
+            RightMargin = new Inch(1),
+            TopMargin = new Inch(1),
+            BottomMargin = new Inch(1)
+        };
 
         public ReportSection()
-        {            
+        {
         }
 
         public ReportSection(Body body)
         {
             this.body = body;
         }
-
 
         public XElement Element
         {

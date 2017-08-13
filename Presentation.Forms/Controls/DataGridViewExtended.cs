@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Controls
 {
-
     [ToolboxBitmap(typeof(System.Windows.Forms.DataGridView))]
     [ToolboxItem(true)]
     public class DataGridViewExtended : DataGridView
     {
-
         #region Designer
 
         private System.ComponentModel.IContainer components;
@@ -63,14 +59,13 @@ namespace Platform.Presentation.Forms.Controls
             this.mainContextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)this).EndInit();
             this.ResumeLayout(false);
-
         }
 
         internal ContextMenuStrip mainContextMenuStrip;
         internal ToolStripMenuItem toolStripMenuItemAutoSize;
         internal ToolStripSeparator toolStripSeparatorOptions;
 
-        #endregion
+        #endregion Designer
 
         public DataGridViewExtended() : base()
         {
@@ -80,6 +75,7 @@ namespace Platform.Presentation.Forms.Controls
         }
 
         private string autoSizeText = "Autosize columns";
+
         [Browsable(true), DefaultValue("Autosize columns"), Localizable(true), Category("Extended")]
         public string AutoSizeText
         {
@@ -88,6 +84,7 @@ namespace Platform.Presentation.Forms.Controls
         }
 
         private List<string> exclude = new List<string> { "internal" };
+
         [Browsable(true), Category("Extended"), DefaultValue("internal")]
         [Editor("System.Windows.Forms.Design.StringCollectionEditor, System.Design", "System.Drawing.Design.UITypeEditor, System.Drawing")]
         [Localizable(false)]
@@ -98,6 +95,7 @@ namespace Platform.Presentation.Forms.Controls
         }
 
         private IEnumerable<int> columnsWidths = null;
+
         [Browsable(false)]
         public IEnumerable<int> ColumnsWidths
         {
@@ -113,7 +111,6 @@ namespace Platform.Presentation.Forms.Controls
 
         private void dataGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-
             if (e.Button == MouseButtons.Right)
             {
                 this.toolStripMenuItemAutoSize.Checked = this.AutoSizeColumnsMode == DataGridViewAutoSizeColumnsMode.Fill;
@@ -135,12 +132,10 @@ namespace Platform.Presentation.Forms.Controls
 
                     this.mainContextMenuStrip.Items.Add(toolStripItemMenuItem);
                     column.HeaderCell.ContextMenuStrip = mainContextMenuStrip;
-
                 }
 
                 this.toolStripMenuItemAutoSize.Text = this.AutoSizeText;
                 this.mainContextMenuStrip.Show(MousePosition);
-
             }
         }
 
@@ -152,6 +147,7 @@ namespace Platform.Presentation.Forms.Controls
                 case true:
                     AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     break;
+
                 case false:
                     AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                     if (ColumnsWidths != null && ColumnsWidths.Count() > 0)
@@ -178,9 +174,7 @@ namespace Platform.Presentation.Forms.Controls
                     toolStripMenuItem.Checked = true;
 
                 Columns[toolStripMenuItem.Name].Visible = toolStripMenuItem.Checked;
-
             }
         }
-
     }
 }

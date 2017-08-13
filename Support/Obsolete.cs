@@ -1,16 +1,15 @@
-﻿using System;
-
-namespace Platform.Support
+﻿namespace Platform.Support
 {
 #if PORTABLE
+
     namespace Core
     {
 #endif
 
-     // Use this file for include obsolete elements
+        // Use this file for include obsolete elements
 
 #if PORTABLE
     }
-#endif
 
+#endif
 }

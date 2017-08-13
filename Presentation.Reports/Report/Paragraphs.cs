@@ -3,7 +3,7 @@
     public class Paragraphs : CollectionOf<Paragraph>, IElement
     {
         public Paragraphs()
-        {            
+        {
         }
 
         public Paragraphs(Paragraph paragraph)

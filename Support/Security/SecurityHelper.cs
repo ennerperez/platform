@@ -6,7 +6,6 @@ namespace Platform.Support.Security
 {
     public static class SecurityHelper
     {
-
         public static int CalculateStrength(string password, int min = 6)
         {
             char[] ValidLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
@@ -52,7 +51,6 @@ namespace Platform.Support.Security
                 _return += 20;
 
             return (int)_return;
-
         }
 
         public static string CalculateSHA1(string input)
@@ -66,6 +64,5 @@ namespace Platform.Support.Security
             cHash = cHash.Replace("-", "");
             return cHash;
         }
-
     }
 }

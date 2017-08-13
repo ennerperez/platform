@@ -1,10 +1,6 @@
 ﻿using Platform.Support.Windows;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms
@@ -44,7 +40,6 @@ namespace Platform.Presentation.Forms
 
             User32.SendMessage(te.Handle, User32.EM_SETCHARFORMAT, User32.SCF_ALL, ref fmt);
         }
-        
     }
 }
 
@@ -86,15 +81,15 @@ namespace Platform.Presentation.Forms
 //    }
 
 //    #region CFE_
-//    // CHARFORMAT effects 
+//    // CHARFORMAT effects
 //    internal const UInt32 CFE_BOLD = 0x0001;
 //    internal const UInt32 CFE_ITALIC = 0x0002;
 //    internal const UInt32 CFE_UNDERLINE = 0x0004;
 //    internal const UInt32 CFE_STRIKEOUT = 0x0008;
 //    internal const UInt32 CFE_PROTECTED = 0x0010;
 //    internal const UInt32 CFE_LINK = 0x0020;
-//    internal const UInt32 CFE_AUTOCOLOR = 0x40000000;            // NOTE: this corresponds to 
-//                                                        // CFM_COLOR, which controls it 
+//    internal const UInt32 CFE_AUTOCOLOR = 0x40000000;            // NOTE: this corresponds to
+//                                                        // CFM_COLOR, which controls it
 //                                                        // Masks and effects defined for CHARFORMAT2 -- an (*) indicates
 //                                                        // that the data is stored by RichEdit 2.0/3.0, but not displayed
 //    internal const UInt32 CFE_SMALLCAPS = CFM_SMALLCAPS;
@@ -112,41 +107,41 @@ namespace Platform.Presentation.Forms
 //    internal const UInt32 CFE_AUTOBACKCOLOR = CFM_BACKCOLOR;
 //    #endregion
 //    #region CFM_
-//    // CHARFORMAT masks 
+//    // CHARFORMAT masks
 //    internal const UInt32 CFM_BOLD = 0x00000001;
 //    internal const UInt32 CFM_ITALIC = 0x00000002;
 //    internal const UInt32 CFM_UNDERLINE = 0x00000004;
 //    internal const UInt32 CFM_STRIKEOUT = 0x00000008;
 //    internal const UInt32 CFM_PROTECTED = 0x00000010;
-//    internal const UInt32 CFM_LINK = 0x00000020;         // Exchange hyperlink extension 
+//    internal const UInt32 CFM_LINK = 0x00000020;         // Exchange hyperlink extension
 //    internal const UInt32 CFM_SIZE = 0x80000000;
 //    internal const UInt32 CFM_COLOR = 0x40000000;
 //    internal const UInt32 CFM_FACE = 0x20000000;
 //    internal const UInt32 CFM_OFFSET = 0x10000000;
 //    internal const UInt32 CFM_CHARSET = 0x08000000;
 
-//    internal const UInt32 CFM_SMALLCAPS = 0x0040;            // (*)	
-//    internal const UInt32 CFM_ALLCAPS = 0x0080;          // Displayed by 3.0	
-//    internal const UInt32 CFM_HIDDEN = 0x0100;           // Hidden by 3.0 
-//    internal const UInt32 CFM_OUTLINE = 0x0200;          // (*)	
-//    internal const UInt32 CFM_SHADOW = 0x0400;           // (*)	
-//    internal const UInt32 CFM_EMBOSS = 0x0800;           // (*)	
-//    internal const UInt32 CFM_IMPRINT = 0x1000;          // (*)	
+//    internal const UInt32 CFM_SMALLCAPS = 0x0040;            // (*)
+//    internal const UInt32 CFM_ALLCAPS = 0x0080;          // Displayed by 3.0
+//    internal const UInt32 CFM_HIDDEN = 0x0100;           // Hidden by 3.0
+//    internal const UInt32 CFM_OUTLINE = 0x0200;          // (*)
+//    internal const UInt32 CFM_SHADOW = 0x0400;           // (*)
+//    internal const UInt32 CFM_EMBOSS = 0x0800;           // (*)
+//    internal const UInt32 CFM_IMPRINT = 0x1000;          // (*)
 //    internal const UInt32 CFM_DISABLED = 0x2000;
 //    internal const UInt32 CFM_REVISED = 0x4000;
 
 //    internal const UInt32 CFM_BACKCOLOR = 0x04000000;
 //    internal const UInt32 CFM_LCID = 0x02000000;
-//    internal const UInt32 CFM_UNDERLINETYPE = 0x00800000;        // Many displayed by 3.0 
+//    internal const UInt32 CFM_UNDERLINETYPE = 0x00800000;        // Many displayed by 3.0
 //    internal const UInt32 CFM_WEIGHT = 0x00400000;
-//    internal const UInt32 CFM_SPACING = 0x00200000;      // Displayed by 3.0	
-//    internal const UInt32 CFM_KERNING = 0x00100000;      // (*)	
-//    internal const UInt32 CFM_STYLE = 0x00080000;        // (*)	
-//    internal const UInt32 CFM_ANIMATION = 0x00040000;        // (*)	
+//    internal const UInt32 CFM_SPACING = 0x00200000;      // Displayed by 3.0
+//    internal const UInt32 CFM_KERNING = 0x00100000;      // (*)
+//    internal const UInt32 CFM_STYLE = 0x00080000;        // (*)
+//    internal const UInt32 CFM_ANIMATION = 0x00040000;        // (*)
 //    internal const UInt32 CFM_REVAUTHOR = 0x00008000;
 
-//    internal const UInt32 CFE_SUBSCRIPT = 0x00010000;        // Superscript and subscript are 
-//    internal const UInt32 CFE_SUPERSCRIPT = 0x00020000;      //  mutually exclusive			 
+//    internal const UInt32 CFE_SUBSCRIPT = 0x00010000;        // Superscript and subscript are
+//    internal const UInt32 CFE_SUPERSCRIPT = 0x00020000;      //  mutually exclusive
 
 //    internal const UInt32 CFM_SUBSCRIPT = (CFE_SUBSCRIPT | CFE_SUPERSCRIPT);
 //    internal const UInt32 CFM_SUPERSCRIPT = CFM_SUBSCRIPT;

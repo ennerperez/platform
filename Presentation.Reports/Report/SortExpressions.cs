@@ -4,7 +4,7 @@
     {
         public SortExpressions(SortExpression sortExpression)
             : base(sortExpression)
-        {            
+        {
         }
 
         protected sealed override string GetRdlName()

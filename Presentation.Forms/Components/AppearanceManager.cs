@@ -1,27 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms
 {
-
     namespace Components
     {
-
         using Presentation.Forms.Designers;
         using Presentation.Forms.Renderers.ColorTables;
         using System.Drawing.Design;
-        using System.IO;
-        using System.Windows.Forms.Design;
         using System.Xml.Serialization;
 
         public class AppearanceManager : Component
         {
-
             public event EventHandler AppearanceChanged;
 
             #region Renders
@@ -34,7 +26,7 @@ namespace Platform.Presentation.Forms
             private ToolStripProfessionalRenderer xpRenderer = null;
             private ToolStripProfessionalRenderer classicRenderer = null;
 
-            #endregion
+            #endregion Renders
 
             public enum enumPresetStyles
             {
@@ -62,6 +54,7 @@ namespace Platform.Presentation.Forms
             }
 
             private ToolStripProfessionalRenderer _Renderer = null;
+
             [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
             [Browsable(false)]
             public ToolStripProfessionalRenderer Renderer
@@ -71,6 +64,7 @@ namespace Platform.Presentation.Forms
             }
 
             private enumPresetStyles _Preset;
+
             [Category("Appearance")]
             public enumPresetStyles Preset
             {
@@ -84,21 +78,27 @@ namespace Platform.Presentation.Forms
                         case enumPresetStyles.Custom:
                             this.Renderer = customRenderer;
                             break;
+
                         case enumPresetStyles.Office2003Blue:
                             this.Renderer = blueRenderer;
                             break;
+
                         case enumPresetStyles.Office2003Olive:
                             this.Renderer = oliveRenderer;
                             break;
+
                         case enumPresetStyles.Office2003Silver:
                             this.Renderer = silverRenderer;
                             break;
+
                         case enumPresetStyles.Office2007:
                             this.Renderer = office2007Renderer;
                             break;
+
                         case enumPresetStyles.OfficeClassic:
                             this.Renderer = classicRenderer;
                             break;
+
                         case enumPresetStyles.OfficeXP:
                             this.Renderer = xpRenderer;
                             break;
@@ -109,6 +109,7 @@ namespace Platform.Presentation.Forms
             }
 
             private AppearanceProperties _CustomAppearance;
+
             [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
             [Category("Appearance")]
             [Editor(typeof(CustomAppearancePropertyEditor), typeof(UITypeEditor))]
@@ -121,7 +122,6 @@ namespace Platform.Presentation.Forms
             [Serializable()]
             public class AppearanceProperties
             {
-
                 //Parameterless ctor required for serialization
                 public AppearanceProperties()
                 {
@@ -161,6 +161,7 @@ namespace Platform.Presentation.Forms
                 }
 
                 private ButtonAppearanceProperties _ButtonAppearance;
+
                 [TypeConverter(typeof(ExpandableObjectConverter))]
                 [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                 [Category("Appearance")]
@@ -171,6 +172,7 @@ namespace Platform.Presentation.Forms
                 }
 
                 private GripAppearanceProperties _GripAppearance;
+
                 [TypeConverter(typeof(ExpandableObjectConverter))]
                 [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                 [Category("Appearance")]
@@ -181,6 +183,7 @@ namespace Platform.Presentation.Forms
                 }
 
                 private ImageMarginAppearanceProperties _ImageMarginAppearance;
+
                 [TypeConverter(typeof(ExpandableObjectConverter))]
                 [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                 [Category("Appearance")]
@@ -191,6 +194,7 @@ namespace Platform.Presentation.Forms
                 }
 
                 private MenuStripAppearanceProperties _MenuStripAppearance;
+
                 [TypeConverter(typeof(ExpandableObjectConverter))]
                 [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                 [Category("Appearance")]
@@ -201,6 +205,7 @@ namespace Platform.Presentation.Forms
                 }
 
                 private MenuItemAppearanceProperties _MenuItemAppearance;
+
                 [TypeConverter(typeof(ExpandableObjectConverter))]
                 [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                 [Category("Appearance")]
@@ -211,6 +216,7 @@ namespace Platform.Presentation.Forms
                 }
 
                 private RaftingContainerAppearanceProperties _RaftingContainerAppearance;
+
                 [TypeConverter(typeof(ExpandableObjectConverter))]
                 [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                 [Category("Appearance")]
@@ -221,6 +227,7 @@ namespace Platform.Presentation.Forms
                 }
 
                 private SeparatorAppearanceProperties _SeparatorAppearance;
+
                 [TypeConverter(typeof(ExpandableObjectConverter))]
                 [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                 [Category("Appearance")]
@@ -231,6 +238,7 @@ namespace Platform.Presentation.Forms
                 }
 
                 private StatusStripAppearanceProperties _StatusStripAppearance;
+
                 [TypeConverter(typeof(ExpandableObjectConverter))]
                 [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                 [Category("Appearance")]
@@ -241,6 +249,7 @@ namespace Platform.Presentation.Forms
                 }
 
                 private ToolStripAppearanceProperties _ToolStripAppearance;
+
                 [TypeConverter(typeof(ExpandableObjectConverter))]
                 [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                 [Category("Appearance")]
@@ -251,6 +260,7 @@ namespace Platform.Presentation.Forms
                 }
 
                 private OverflowButtonAppearanceProperties _OverflowButtonAppearance;
+
                 [TypeConverter(typeof(ExpandableObjectConverter))]
                 [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                 [Category("Appearance")]
@@ -263,7 +273,6 @@ namespace Platform.Presentation.Forms
                 [Serializable()]
                 public class ButtonAppearanceProperties
                 {
-
                     //Parameterless ctor required for serialization
                     public ButtonAppearanceProperties()
                     {
@@ -277,6 +286,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private SelectedButtonAppearanceProperties _SelectedAppearance;
+
                     [TypeConverter(typeof(ExpandableObjectConverter))]
                     [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                     public SelectedButtonAppearanceProperties SelectedAppearance
@@ -286,6 +296,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private CheckedButtonAppearanceProperties _CheckedAppearance;
+
                     [TypeConverter(typeof(ExpandableObjectConverter))]
                     [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                     public CheckedButtonAppearanceProperties CheckedAppearance
@@ -295,6 +306,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private PressedButtonAppearanceProperties _PressedAppearance;
+
                     [TypeConverter(typeof(ExpandableObjectConverter))]
                     [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                     public PressedButtonAppearanceProperties PressedAppearance
@@ -312,7 +324,6 @@ namespace Platform.Presentation.Forms
                 [Serializable()]
                 public class ImageMarginAppearanceProperties
                 {
-
                     //Parameterless ctor required for serialization
                     public ImageMarginAppearanceProperties()
                     {
@@ -325,6 +336,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private ImageMarginNormalAppearanceProperties _Normal;
+
                     [TypeConverter(typeof(ExpandableObjectConverter))]
                     [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                     public ImageMarginNormalAppearanceProperties Normal
@@ -334,6 +346,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private ImageMarginRevealedAppearanceProperties _Revealed;
+
                     [TypeConverter(typeof(ExpandableObjectConverter))]
                     [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
                     public ImageMarginRevealedAppearanceProperties Revealed
@@ -348,12 +361,11 @@ namespace Platform.Presentation.Forms
                     }
                 }
 
-                #region  Property Group Classes
+                #region Property Group Classes
 
                 [Serializable()]
                 public class SelectedButtonAppearanceProperties
                 {
-
                     public SelectedButtonAppearanceProperties()
                     {
                         ProfessionalColorTable pct = new ProfessionalColorTable();
@@ -368,6 +380,7 @@ namespace Platform.Presentation.Forms
 
                     [NonSerialized]
                     private AppearanceManager ap;
+
                     public SelectedButtonAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
@@ -380,6 +393,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientBegin = Color.FromArgb(255, 255, 222);
+
                     [DefaultValue(typeof(Color), "255, 255, 222")]
                     [XmlIgnore()]
                     public Color GradientBegin
@@ -394,6 +408,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientMiddle = Color.FromArgb(255, 225, 172);
+
                     [DefaultValue(typeof(Color), "255, 225, 172")]
                     [XmlIgnore()]
                     public Color GradientMiddle
@@ -408,6 +423,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientEnd = Color.FromArgb(255, 203, 136);
+
                     [DefaultValue(typeof(Color), "255, 203, 136")]
                     [XmlIgnore()]
                     public Color GradientEnd
@@ -422,6 +438,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _Highlight = Color.FromArgb(196, 208, 229);
+
                     [DefaultValue(typeof(Color), "196, 208, 229")]
                     [XmlIgnore()]
                     public Color Highlight
@@ -436,6 +453,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _BorderHighlight = Color.FromArgb(0, 0, 128);
+
                     [DefaultValue(typeof(Color), "0, 0, 128")]
                     [XmlIgnore()]
                     public Color BorderHighlight
@@ -450,6 +468,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _Border = Color.FromArgb(0, 0, 128);
+
                     [DefaultValue(typeof(Color), "0, 0, 128")]
                     [XmlIgnore()]
                     public Color Border
@@ -462,6 +481,7 @@ namespace Platform.Presentation.Forms
                                 ap.OnAppearanceChanged(EventArgs.Empty);
                         }
                     }
+
                     public override string ToString()
                     {
                         return string.Empty;
@@ -508,7 +528,6 @@ namespace Platform.Presentation.Forms
                         get { return this.Border.ToArgb(); }
                         set { this.Border = Color.FromArgb(value); }
                     }
-
                 }
 
                 [Serializable()]
@@ -524,11 +543,11 @@ namespace Platform.Presentation.Forms
                         this._GradientEnd = pct.ButtonPressedGradientEnd;
                         this._GradientMiddle = pct.ButtonPressedGradientMiddle;
                         this._Highlight = pct.ButtonPressedHighlight;
-
                     }
 
                     [NonSerialized]
                     private AppearanceManager ap;
+
                     public PressedButtonAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
@@ -541,6 +560,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientBegin = Color.FromArgb(254, 128, 62);
+
                     [DefaultValue(typeof(Color), "254, 128, 62")]
                     [XmlIgnore()]
                     public Color GradientBegin
@@ -555,6 +575,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientMiddle = Color.FromArgb(255, 177, 109);
+
                     [DefaultValue(typeof(Color), "255, 177, 109")]
                     [XmlIgnore()]
                     public Color GradientMiddle
@@ -569,6 +590,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientEnd = Color.FromArgb(255, 223, 154);
+
                     [DefaultValue(typeof(Color), "255, 223, 154")]
                     [XmlIgnore()]
                     public Color GradientEnd
@@ -583,6 +605,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _Highlight = Color.FromArgb(152, 173, 210);
+
                     [DefaultValue(typeof(Color), "152, 173, 210")]
                     [XmlIgnore()]
                     public Color Highlight
@@ -597,6 +620,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _BorderHighlight = Color.FromArgb(51, 94, 168);
+
                     [DefaultValue(typeof(Color), "51, 94, 168")]
                     [XmlIgnore()]
                     public Color BorderHighlight
@@ -611,6 +635,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _Border = Color.FromArgb(0, 0, 128);
+
                     [DefaultValue(typeof(Color), "0, 0, 128")]
                     [XmlIgnore()]
                     public Color Border
@@ -623,6 +648,7 @@ namespace Platform.Presentation.Forms
                                 ap.OnAppearanceChanged(EventArgs.Empty);
                         }
                     }
+
                     public override string ToString()
                     {
                         return string.Empty;
@@ -669,8 +695,6 @@ namespace Platform.Presentation.Forms
                         get { return this.Border.ToArgb(); }
                         set { this.Border = Color.FromArgb(value); }
                     }
-
-
                 }
 
                 [Serializable()]
@@ -692,6 +716,7 @@ namespace Platform.Presentation.Forms
 
                     [NonSerialized]
                     private AppearanceManager ap;
+
                     public CheckedButtonAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
@@ -702,7 +727,9 @@ namespace Platform.Presentation.Forms
                     {
                         ap = appearanceControl;
                     }
+
                     private Color _GradientBegin = Color.FromArgb(255, 223, 154);
+
                     [DefaultValue(typeof(Color), "255, 223, 154")]
                     [XmlIgnore()]
                     public Color GradientBegin
@@ -717,6 +744,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientMiddle = Color.FromArgb(255, 195, 116);
+
                     [DefaultValue(typeof(Color), "255, 195, 116")]
                     [XmlIgnore()]
                     public Color GradientMiddle
@@ -731,6 +759,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientEnd = Color.FromArgb(255, 166, 76);
+
                     [DefaultValue(typeof(Color), "255, 166, 76")]
                     [XmlIgnore()]
                     public Color GradientEnd
@@ -745,6 +774,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _Highlight = Color.FromArgb(196, 208, 229);
+
                     [DefaultValue(typeof(Color), "196, 208, 229")]
                     [XmlIgnore()]
                     public Color Highlight
@@ -759,6 +789,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _BorderHighlight = Color.FromArgb(51, 94, 168);
+
                     [DefaultValue(typeof(Color), "51, 94, 168")]
                     [XmlIgnore()]
                     public Color BorderHighlight
@@ -773,6 +804,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _Background = Color.FromArgb(255, 192, 111);
+
                     [DefaultValue(typeof(Color), "255, 192, 111")]
                     [XmlIgnore()]
                     public Color Background
@@ -787,6 +819,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _SelectedBackground = Color.FromArgb(254, 128, 62);
+
                     [DefaultValue(typeof(Color), "254, 128, 62")]
                     [XmlIgnore()]
                     public Color SelectedBackground
@@ -801,6 +834,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _PressedBackrgound = Color.FromArgb(254, 128, 62);
+
                     [DefaultValue(typeof(Color), "254, 128, 62")]
                     [XmlIgnore()]
                     public Color PressedBackground
@@ -874,7 +908,6 @@ namespace Platform.Presentation.Forms
                         get { return this.PressedBackground.ToArgb(); }
                         set { this.PressedBackground = Color.FromArgb(value); }
                     }
-
                 }
 
                 [Serializable()]
@@ -886,11 +919,11 @@ namespace Platform.Presentation.Forms
 
                         this._Dark = pct.GripDark;
                         this._Light = pct.GripLight;
-
                     }
 
                     [NonSerialized]
                     private AppearanceManager ap;
+
                     public GripAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
@@ -901,7 +934,9 @@ namespace Platform.Presentation.Forms
                     {
                         ap = appearanceControl;
                     }
+
                     private Color _Dark = Color.FromArgb(39, 65, 118);
+
                     [DefaultValue(typeof(Color), "39, 65, 118")]
                     [XmlIgnore()]
                     public Color Dark
@@ -916,6 +951,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _Light = Color.FromArgb(255, 255, 255);
+
                     [DefaultValue(typeof(Color), "255, 255, 255")]
                     [XmlIgnore()]
                     public Color Light
@@ -947,7 +983,6 @@ namespace Platform.Presentation.Forms
                         get { return this.Light.ToArgb(); }
                         set { this.Light = Color.FromArgb(value); }
                     }
-
                 }
 
                 [Serializable()]
@@ -960,11 +995,11 @@ namespace Platform.Presentation.Forms
                         this._Border = pct.ButtonSelectedBorder;
                         this._GradientBegin = pct.ButtonSelectedGradientBegin;
                         this._GradientEnd = pct.ButtonSelectedGradientEnd;
-
                     }
 
                     [NonSerialized]
                     private AppearanceManager ap;
+
                     public MenuStripAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
@@ -975,7 +1010,9 @@ namespace Platform.Presentation.Forms
                     {
                         ap = appearanceControl;
                     }
+
                     private Color _Border = Color.FromArgb(0, 45, 150);
+
                     [DefaultValue(typeof(Color), "0, 45, 150")]
                     [XmlIgnore()]
                     public Color Border
@@ -990,6 +1027,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientBegin = Color.FromArgb(158, 190, 245);
+
                     [DefaultValue(typeof(Color), "158, 190, 245")]
                     [XmlIgnore()]
                     public Color GradientBegin
@@ -1004,6 +1042,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientEnd = Color.FromArgb(196, 218, 250);
+
                     [DefaultValue(typeof(Color), "196, 218, 250")]
                     [XmlIgnore()]
                     public Color GradientEnd
@@ -1042,7 +1081,6 @@ namespace Platform.Presentation.Forms
                         get { return this.GradientEnd.ToArgb(); }
                         set { this.GradientEnd = Color.FromArgb(value); }
                     }
-
                 }
 
                 [Serializable()]
@@ -1059,11 +1097,11 @@ namespace Platform.Presentation.Forms
                         this._Selected = pct.MenuItemSelected;
                         this._SelectedGradientBegin = pct.MenuItemSelectedGradientBegin;
                         this._SelectedGradientEnd = pct.MenuItemSelectedGradientEnd;
-
                     }
 
                     [NonSerialized]
                     private AppearanceManager ap;
+
                     public MenuItemAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
@@ -1074,7 +1112,9 @@ namespace Platform.Presentation.Forms
                     {
                         ap = appearanceControl;
                     }
+
                     private Color _Selected = Color.FromArgb(255, 238, 194);
+
                     [DefaultValue(typeof(Color), "255, 238, 194")]
                     [XmlIgnore()]
                     public Color Selected
@@ -1089,6 +1129,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _Border = Color.FromArgb(0, 0, 128);
+
                     [DefaultValue(typeof(Color), "0, 0, 128")]
                     [XmlIgnore()]
                     public Color Border
@@ -1103,6 +1144,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _SelectedGradientBegin = Color.FromArgb(255, 255, 222);
+
                     [DefaultValue(typeof(Color), "255, 255, 222")]
                     [XmlIgnore()]
                     public Color SelectedGradientBegin
@@ -1117,6 +1159,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _SelectedGradientEnd = Color.FromArgb(255, 203, 136);
+
                     [DefaultValue(typeof(Color), "255, 203, 136")]
                     [XmlIgnore()]
                     public Color SelectedGradientEnd
@@ -1131,6 +1174,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _PressedGradientBegin = Color.FromArgb(227, 239, 255);
+
                     [DefaultValue(typeof(Color), "227, 239, 255")]
                     [XmlIgnore()]
                     public Color PressedGradientBegin
@@ -1145,6 +1189,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _PressedGradientMiddle = Color.FromArgb(161, 197, 249);
+
                     [DefaultValue(typeof(Color), "161, 197, 249")]
                     [XmlIgnore()]
                     public Color PressedGradientMiddle
@@ -1159,6 +1204,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _PressedGradientEnd = Color.FromArgb(123, 164, 224);
+
                     [DefaultValue(typeof(Color), "123, 164, 224")]
                     [XmlIgnore()]
                     public Color PressedGradientEnd
@@ -1225,7 +1271,6 @@ namespace Platform.Presentation.Forms
                         get { return this.PressedGradientEnd.ToArgb(); }
                         set { this.PressedGradientEnd = Color.FromArgb(value); }
                     }
-
                 }
 
                 [Serializable()]
@@ -1237,11 +1282,11 @@ namespace Platform.Presentation.Forms
 
                         this._GradientBegin = pct.RaftingContainerGradientBegin;
                         this._GradientEnd = pct.RaftingContainerGradientEnd;
-
                     }
 
                     [NonSerialized]
                     private AppearanceManager ap;
+
                     public RaftingContainerAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
@@ -1252,7 +1297,9 @@ namespace Platform.Presentation.Forms
                     {
                         ap = appearanceControl;
                     }
+
                     private Color _GradientBegin = Color.FromArgb(158, 190, 245);
+
                     [DefaultValue(typeof(Color), "158, 190, 245")]
                     [XmlIgnore()]
                     public Color GradientBegin
@@ -1267,6 +1314,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientEnd = Color.FromArgb(196, 218, 250);
+
                     [DefaultValue(typeof(Color), "196, 218, 250")]
                     [XmlIgnore()]
                     public Color GradientEnd
@@ -1298,7 +1346,6 @@ namespace Platform.Presentation.Forms
                         get { return this.GradientEnd.ToArgb(); }
                         set { this.GradientEnd = Color.FromArgb(value); }
                     }
-
                 }
 
                 [Serializable()]
@@ -1306,16 +1353,15 @@ namespace Platform.Presentation.Forms
                 {
                     public StatusStripAppearanceProperties()
                     {
-
                         ProfessionalColorTable pct = new ProfessionalColorTable();
 
                         this._GradientBegin = pct.StatusStripGradientBegin;
                         this._GradientEnd = pct.StatusStripGradientEnd;
-
                     }
 
                     [NonSerialized]
                     private AppearanceManager ap;
+
                     public StatusStripAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
@@ -1326,7 +1372,9 @@ namespace Platform.Presentation.Forms
                     {
                         ap = appearanceControl;
                     }
+
                     private Color _GradientBegin = Color.FromArgb(158, 190, 245);
+
                     [DefaultValue(typeof(Color), "158, 190, 245")]
                     [XmlIgnore()]
                     public Color GradientBegin
@@ -1341,6 +1389,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientEnd = Color.FromArgb(196, 218, 250);
+
                     [DefaultValue(typeof(Color), "196, 218, 250")]
                     [XmlIgnore()]
                     public Color GradientEnd
@@ -1372,7 +1421,6 @@ namespace Platform.Presentation.Forms
                         get { return this.GradientEnd.ToArgb(); }
                         set { this.GradientEnd = Color.FromArgb(value); }
                     }
-
                 }
 
                 [Serializable()]
@@ -1380,16 +1428,15 @@ namespace Platform.Presentation.Forms
                 {
                     public SeparatorAppearanceProperties()
                     {
-
                         ProfessionalColorTable pct = new ProfessionalColorTable();
 
                         this._Dark = pct.SeparatorDark;
                         this._Light = pct.SeparatorLight;
-
                     }
 
                     [NonSerialized]
                     private AppearanceManager ap;
+
                     public SeparatorAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
@@ -1400,7 +1447,9 @@ namespace Platform.Presentation.Forms
                     {
                         ap = appearanceControl;
                     }
+
                     private Color _Dark = Color.FromArgb(106, 140, 203);
+
                     [DefaultValue(typeof(Color), "106, 140, 203")]
                     [XmlIgnore()]
                     public Color Dark
@@ -1415,6 +1464,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _Light = Color.FromArgb(241, 249, 255);
+
                     [DefaultValue(typeof(Color), "241, 249, 255")]
                     [XmlIgnore()]
                     public Color Light
@@ -1446,16 +1496,13 @@ namespace Platform.Presentation.Forms
                         get { return this.Light.ToArgb(); }
                         set { this.Light = Color.FromArgb(value); }
                     }
-
                 }
 
                 [Serializable()]
                 public class ToolStripAppearanceProperties
                 {
-
                     public ToolStripAppearanceProperties()
                     {
-
                         ProfessionalColorTable pct = new ProfessionalColorTable();
 
                         this._Border = pct.ToolStripBorder;
@@ -1467,11 +1514,11 @@ namespace Platform.Presentation.Forms
                         this._GradientMiddle = pct.ToolStripGradientMiddle;
                         this._PanelGradientBegin = pct.ToolStripPanelGradientBegin;
                         this._PanelGradientEnd = pct.ToolStripPanelGradientEnd;
-
                     }
 
                     [NonSerialized]
                     private AppearanceManager ap;
+
                     public ToolStripAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
@@ -1484,6 +1531,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientBegin = Color.FromArgb(227, 239, 255);
+
                     [DefaultValue(typeof(Color), "227, 239, 255")]
                     [XmlIgnore()]
                     public Color GradientBegin
@@ -1498,6 +1546,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientMiddle = Color.FromArgb(203, 225, 252);
+
                     [DefaultValue(typeof(Color), "203, 225, 252")]
                     [XmlIgnore()]
                     public Color GradientMiddle
@@ -1512,6 +1561,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientEnd = Color.FromArgb(123, 164, 224);
+
                     [DefaultValue(typeof(Color), "123, 164, 224")]
                     [XmlIgnore()]
                     public Color GradientEnd
@@ -1526,6 +1576,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _Border = Color.FromArgb(59, 97, 156);
+
                     [DefaultValue(typeof(Color), "59, 97, 156")]
                     [XmlIgnore()]
                     public Color Border
@@ -1540,6 +1591,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _DropDownBackground = Color.FromArgb(246, 246, 246);
+
                     [DefaultValue(typeof(Color), "246, 246, 246")]
                     [XmlIgnore()]
                     public Color DropDownBackground
@@ -1554,6 +1606,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _ContentPanelGradientBegin = Color.FromArgb(158, 190, 245);
+
                     [DefaultValue(typeof(Color), "158, 190, 245")]
                     [XmlIgnore()]
                     public Color ContentPanelGradientBegin
@@ -1568,6 +1621,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _ContentPanelGradientEnd = Color.FromArgb(196, 218, 250);
+
                     [DefaultValue(typeof(Color), "196, 218, 250")]
                     [XmlIgnore()]
                     public Color ContentPanelGradientEnd
@@ -1582,6 +1636,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _PanelGradientBegin = Color.FromArgb(158, 190, 245);
+
                     [DefaultValue(typeof(Color), "158, 190, 245")]
                     [XmlIgnore()]
                     public Color PanelGradientBegin
@@ -1596,6 +1651,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _PanelGradientEnd = Color.FromArgb(196, 218, 250);
+
                     [DefaultValue(typeof(Color), "196, 218, 250")]
                     [XmlIgnore()]
                     public Color PanelGradientEnd
@@ -1676,7 +1732,6 @@ namespace Platform.Presentation.Forms
                         get { return this.PanelGradientEnd.ToArgb(); }
                         set { this.PanelGradientEnd = Color.FromArgb(value); }
                     }
-
                 }
 
                 [Serializable()]
@@ -1684,17 +1739,16 @@ namespace Platform.Presentation.Forms
                 {
                     public OverflowButtonAppearanceProperties()
                     {
-
                         ProfessionalColorTable pct = new ProfessionalColorTable();
 
                         this._GradientBegin = pct.OverflowButtonGradientBegin;
                         this._GradientEnd = pct.OverflowButtonGradientEnd;
                         this._GradientMiddle = pct.OverflowButtonGradientMiddle;
-
                     }
 
                     [NonSerialized]
                     private AppearanceManager ap;
+
                     public OverflowButtonAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
@@ -1705,7 +1759,9 @@ namespace Platform.Presentation.Forms
                     {
                         ap = appearanceControl;
                     }
+
                     private Color _GradientBegin = Color.FromArgb(127, 177, 250);
+
                     [DefaultValue(typeof(Color), "127, 177, 250")]
                     [XmlIgnore()]
                     public Color GradientBegin
@@ -1720,6 +1776,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientMiddle = Color.FromArgb(82, 127, 208);
+
                     [DefaultValue(typeof(Color), "82, 127, 208")]
                     [XmlIgnore()]
                     public Color GradientMiddle
@@ -1734,6 +1791,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientEnd = Color.FromArgb(0, 53, 145);
+
                     [DefaultValue(typeof(Color), "0, 53, 145")]
                     [XmlIgnore()]
                     public Color GradientEnd
@@ -1772,7 +1830,6 @@ namespace Platform.Presentation.Forms
                         get { return this.GradientEnd.ToArgb(); }
                         set { this.GradientEnd = Color.FromArgb(value); }
                     }
-
                 }
 
                 [Serializable()]
@@ -1780,17 +1837,16 @@ namespace Platform.Presentation.Forms
                 {
                     public ImageMarginNormalAppearanceProperties()
                     {
-
                         ProfessionalColorTable pct = new ProfessionalColorTable();
 
                         this._GradientBegin = pct.ImageMarginGradientBegin;
                         this._GradientEnd = pct.ImageMarginGradientEnd;
                         this._GradientMiddle = pct.ImageMarginGradientMiddle;
-
                     }
 
                     [NonSerialized]
                     private AppearanceManager ap;
+
                     public ImageMarginNormalAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
@@ -1801,7 +1857,9 @@ namespace Platform.Presentation.Forms
                     {
                         ap = appearanceControl;
                     }
+
                     private Color _GradientBegin = Color.FromArgb(227, 239, 255);
+
                     [DefaultValue(typeof(Color), "227, 239, 255")]
                     [XmlIgnore()]
                     public Color GradientBegin
@@ -1816,6 +1874,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientMiddle = Color.FromArgb(203, 225, 252);
+
                     [DefaultValue(typeof(Color), "203, 225, 252")]
                     [XmlIgnore()]
                     public Color GradientMiddle
@@ -1830,6 +1889,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientEnd = Color.FromArgb(123, 164, 224);
+
                     [DefaultValue(typeof(Color), "123, 164, 224")]
                     [XmlIgnore()]
                     public Color GradientEnd
@@ -1868,7 +1928,6 @@ namespace Platform.Presentation.Forms
                         get { return this.GradientEnd.ToArgb(); }
                         set { this.GradientEnd = Color.FromArgb(value); }
                     }
-
                 }
 
                 [Serializable()]
@@ -1876,17 +1935,16 @@ namespace Platform.Presentation.Forms
                 {
                     public ImageMarginRevealedAppearanceProperties()
                     {
-
                         ProfessionalColorTable pct = new ProfessionalColorTable();
 
                         this._GradientBegin = pct.ImageMarginRevealedGradientBegin;
                         this._GradientEnd = pct.ImageMarginRevealedGradientEnd;
                         this._GradientMiddle = pct.ImageMarginRevealedGradientMiddle;
-
                     }
 
                     [NonSerialized]
                     private AppearanceManager ap;
+
                     public ImageMarginRevealedAppearanceProperties(AppearanceManager appearanceControl)
                         : this()
                     {
@@ -1897,7 +1955,9 @@ namespace Platform.Presentation.Forms
                     {
                         ap = appearanceControl;
                     }
+
                     private Color _GradientBegin = Color.FromArgb(203, 221, 246);
+
                     [DefaultValue(typeof(Color), "203, 221, 246")]
                     [XmlIgnore()]
                     public Color GradientBegin
@@ -1912,6 +1972,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientMiddle = Color.FromArgb(161, 197, 249);
+
                     [DefaultValue(typeof(Color), "161, 197, 249")]
                     [XmlIgnore()]
                     public Color GradientMiddle
@@ -1926,6 +1987,7 @@ namespace Platform.Presentation.Forms
                     }
 
                     private Color _GradientEnd = Color.FromArgb(114, 155, 215);
+
                     [DefaultValue(typeof(Color), "114, 155, 215")]
                     [XmlIgnore()]
                     public Color GradientEnd
@@ -1964,16 +2026,14 @@ namespace Platform.Presentation.Forms
                         get { return this.GradientEnd.ToArgb(); }
                         set { this.GradientEnd = Color.FromArgb(value); }
                     }
-
                 }
 
-                #endregion
+                #endregion Property Group Classes
 
                 public override string ToString()
                 {
                     return string.Empty;
                 }
-
             }
 
             public virtual void OnAppearanceChanged(EventArgs e)
@@ -1983,21 +2043,17 @@ namespace Platform.Presentation.Forms
                     AppearanceChanged(this, e);
                 }
             }
-
         }
-
     }
 
     namespace Renderers.ColorTables
     {
-
         using Presentation.Forms.Components;
 
         public class CustomColorTable : ProfessionalColorTable
         {
-
-
             private AppearanceManager ac = null;
+
             public CustomColorTable(AppearanceManager appearanceControl)
             {
                 ac = appearanceControl;
@@ -2282,11 +2338,6 @@ namespace Platform.Presentation.Forms
             {
                 get { return ac.CustomAppearance.OverflowButtonAppearance.GradientEnd; }
             }
-
         }
-
-
     }
 }
-
-

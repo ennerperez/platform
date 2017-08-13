@@ -5,11 +5,10 @@ using System.Globalization;
 
 namespace Platform.Support.Data.Attributes
 {
-
     /// <summary>
-	/// Specifies the maximum length of array/string data allowed in a property.
-	/// </summary>
-	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false), SuppressMessage("Microsoft.Performance", "CA1813:AvoidUnsealedAttributes", Justification = "We want users to be able to extend this class")]
+    /// Specifies the maximum length of array/string data allowed in a property.
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false), SuppressMessage("Microsoft.Performance", "CA1813:AvoidUnsealedAttributes", Justification = "We want users to be able to extend this class")]
     public class MaxLengthAttribute : ValidationAttribute
     {
         private const int MaxAllowableLength = -1;
@@ -54,7 +53,7 @@ namespace Platform.Support.Data.Attributes
         /// Determines whether a specified object is valid. (Overrides <see cref="M:System.ComponentModel.DataAnnotations.ValidationAttribute.IsValid(System.Object)" />)
         /// </summary>
         /// <remarks>
-        /// This method returns <c>true</c> if the <paramref name="value" /> is null.  
+        /// This method returns <c>true</c> if the <paramref name="value" /> is null.
         /// It is assumed the <see cref="T:RequiredAttribute" /> is used if the value may not be null.
         /// </remarks>
         /// <param name="value"> The object to validate. </param>

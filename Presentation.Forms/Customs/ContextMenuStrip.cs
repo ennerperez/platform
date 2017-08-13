@@ -1,10 +1,7 @@
 ﻿using Platform.Presentation.Forms.Components;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Customs
@@ -13,7 +10,6 @@ namespace Platform.Presentation.Forms.Customs
     [ToolboxItem(true)]
     public class ContextMenuStrip : System.Windows.Forms.ContextMenuStrip
     {
-
         public event EventHandler AppearanceControlChanged;
 
         public ContextMenuStrip()
@@ -27,6 +23,7 @@ namespace Platform.Presentation.Forms.Customs
         }
 
         private AppearanceManager _Appearance;
+
         public AppearanceManager Appearance
         {
             get { return _Appearance; }

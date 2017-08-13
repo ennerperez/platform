@@ -1,23 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 //using System;
 using System.Runtime.InteropServices;
 
 namespace Platform.Presentation.Forms
 {
-
-
     namespace Controls
     {
-
         /// <summary>
         /// The primary coordinator of the Windows 7 taskbar-related activities.
         /// </summary>
         public static class TaskBar
         {
             private static ITaskbarList3 _taskbarList;
+
             internal static ITaskbarList3 TaskbarList
             {
                 get
@@ -38,7 +34,7 @@ namespace Platform.Presentation.Forms
                 }
             }
 
-            static readonly OperatingSystem osInfo = Environment.OSVersion;
+            private static readonly OperatingSystem osInfo = Environment.OSVersion;
 
             internal static bool Windows7OrGreater
             {
@@ -60,6 +56,7 @@ namespace Platform.Presentation.Forms
                 if (Windows7OrGreater)
                     TaskbarList.SetProgressState(hwnd, state);
             }
+
             /// <summary>
             /// Sets the progress value of the specified window's
             /// taskbar button.
@@ -72,9 +69,7 @@ namespace Platform.Presentation.Forms
                 if (Windows7OrGreater)
                     TaskbarList.SetProgressValue(hwnd, current, maximum);
             }
-
         }
-
     }
 
     /// <summary>
@@ -86,18 +81,22 @@ namespace Platform.Presentation.Forms
         /// No progress is displayed.
         /// </summary>
         NoProgress = 0,
+
         /// <summary>
         /// The progress is indeterminate (marquee).
         /// </summary>
         Indeterminate = 0x1,
+
         /// <summary>
         /// Normal progress is displayed.
         /// </summary>
         Normal = 0x2,
+
         /// <summary>
         /// An error occurred (red).
         /// </summary>
         Error = 0x4,
+
         /// <summary>
         /// The operation is paused (yellow).
         /// </summary>
@@ -113,12 +112,16 @@ namespace Platform.Presentation.Forms
         // ITaskbarList
         [PreserveSig]
         void HrInit();
+
         [PreserveSig]
         void AddTab(IntPtr hwnd);
+
         [PreserveSig]
         void DeleteTab(IntPtr hwnd);
+
         [PreserveSig]
         void ActivateTab(IntPtr hwnd);
+
         [PreserveSig]
         void SetActiveAlt(IntPtr hwnd);
 
@@ -130,6 +133,7 @@ namespace Platform.Presentation.Forms
 
         // ITaskbarList3
         void SetProgressValue(IntPtr hwnd, UInt64 ullCompleted, UInt64 ullTotal);
+
         void SetProgressState(IntPtr hwnd, ThumbnailProgressState tbpFlags);
 
         // yadda, yadda - there's more to the interface, but we don't need it.
@@ -139,5 +143,4 @@ namespace Platform.Presentation.Forms
     [ClassInterface(ClassInterfaceType.None)]
     [ComImport()]
     internal class CTaskbarList { }
-
 }

@@ -4,7 +4,7 @@
     {
         public CellContents(ReportItem reportItem)
             : base(reportItem)
-        {            
+        {
         }
 
         protected sealed override string GetRdlName()

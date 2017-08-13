@@ -1,25 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace Platform.Support.Windows
 {
-
 #if !INTEROP
     internal class ComDlg32
 #else
+
     public class ComDlg32
 #endif
     {
-
         [DllImport(ExternDll.ComDlg32, CharSet = CharSet.Unicode)]
         public static extern bool GetOpenFileName(ref OPENFILENAME ofn);
 
         [DllImport(ExternDll.ComDlg32, CharSet = CharSet.Unicode)]
         public static extern Int32 CommDlgExtendedError();
-
     }
 
     #region Structures
@@ -31,6 +26,7 @@ namespace Platform.Support.Windows
 #if !INTEROP
     internal struct OPENFILENAME
 #else
+
     public struct OPENFILENAME
 #endif
     {
@@ -59,6 +55,5 @@ namespace Platform.Support.Windows
         public Int32 FlagsEx;
     };
 
-#endregion
-
+    #endregion Structures
 }

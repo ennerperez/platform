@@ -8,7 +8,6 @@ namespace Platform.Support.Configuration
 {
     public class ConfigurationManager : IDisposable
     {
-
         public Dictionary<string, string> Connectionstrings { get; set; }
 
         private DirectoryInfo _Folder = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
@@ -21,18 +20,16 @@ namespace Platform.Support.Configuration
 
         public void Load()
         {
-
             XDocument _XDocument;
             if (!File.Exists(_File))
                 this.Save();
 
             _XDocument = XDocument.Load(_File);
 
-            foreach (XElement item in _XDocument.Element("configuration").Elements("connectionstrings").Where(x=> x.HasAttributes))
+            foreach (XElement item in _XDocument.Element("configuration").Elements("connectionstrings").Where(x => x.HasAttributes))
             {
-                    this.Connectionstrings.Add(item.Element("name").Value, item.Element("@connectionstring").Value);
+                this.Connectionstrings.Add(item.Element("name").Value, item.Element("@connectionstring").Value);
             }
-
         }
 
         public void Reset()
@@ -56,19 +53,17 @@ namespace Platform.Support.Configuration
                 }
 
                 _configuration.Add(_connectionstrings);
-
             }
 
             _XDocument.Add(_configuration);
             _XDocument.Save(_File);
-
         }
 
         #region IDisposable Support
 
         // Para detectar llamadas redundantes
         private bool disposedValue;
-        
+
         // IDisposable
         protected virtual void Dispose(bool disposing)
         {
@@ -92,7 +87,6 @@ namespace Platform.Support.Configuration
             GC.SuppressFinalize(this);
         }
 
-        #endregion
-
+        #endregion IDisposable Support
     }
 }
