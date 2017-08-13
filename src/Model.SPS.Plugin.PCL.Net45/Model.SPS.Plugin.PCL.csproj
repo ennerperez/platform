@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1E1A1127-1ECC-4A97-8D28-6DF0139436B1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Platform.Model.SPS.Plugin</RootNamespace>
+    <AssemblyName>Platform.Model.SPS.Plugin.PCL</AssemblyName>
+    <DefaultLanguage>es-ES</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs">
+      <Link>Properties\AssemblyInfo.Common.cs</Link>
+    </Compile>
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs">
+      <Link>Properties\AssemblyInfo.Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
+      <Link>Properties\AssemblyInfo.Version.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS.Plugin.PCL\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS.PlugIn\Attributes\PlugInAttribute.cs">
+      <Link>Attributes\PlugInAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS.PlugIn\Interfaces\IPluggable.cs">
+      <Link>Interfaces\IPluggable.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS.PlugIn\Interfaces\IPlugIn.cs">
+      <Link>Interfaces\IPlugIn.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS.PlugIn\Interfaces\IPlugInApplication.cs">
+      <Link>Interfaces\IPlugInApplication.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS.PlugIn\Interfaces\Runnable\IRunnable.cs">
+      <Link>Interfaces\Runnable\IRunnable.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS.PlugIn\Interfaces\Runnable\IRunnablePlugIn.cs">
+      <Link>Interfaces\Runnable\IRunnablePlugIn.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS.PlugIn\PlugIn.cs">
+      <Link>PlugIn.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS.PlugIn\PlugInApplication.cs">
+      <Link>PlugInApplication.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS.PlugIn\Runnable\RunnablePlugIn.cs">
+      <Link>Runnable\RunnablePlugIn.cs</Link>
+    </Compile>
+    <Compile Include="..\Model.SPS\Helper.cs">
+      <Link>Helper.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Support.PCL.Net45\Support.PCL.csproj">
+      <Project>{b0bc9452-381f-4bf7-8e3c-382635a14187}</Project>
+      <Name>Support.PCL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

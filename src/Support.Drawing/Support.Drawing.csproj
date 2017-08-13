@@ -4,18 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{71174989-9F8D-4766-B487-015E8A7A61E0}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{D544E494-3925-4180-A4A8-26801118D527}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sample.Branding</RootNamespace>
-    <AssemblyName>Sample.Branding</AssemblyName>
+    <RootNamespace>Platform.Support.Drawing</RootNamespace>
+    <AssemblyName>Platform.Support.Drawing</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,7 +24,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,62 +32,84 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Platform.Support.Core">
-      <HintPath>..\..\src\Support\bin\Release\Platform.Support.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.Support.Drawing">
-      <HintPath>..\..\src\Support.Drawing\bin\Release\Platform.Support.Drawing.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormMain.cs">
-      <SubType>Form</SubType>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs">
+      <Link>Properties\AssemblyInfo.Common.cs</Link>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs">
+      <Link>Properties\AssemblyInfo.Platform.cs</Link>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
+      <Link>Properties\AssemblyInfo.Version.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\Errors.cs">
+      <Link>NativeMethods\Errors.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\ExternDll.cs">
+      <Link>NativeMethods\ExternDll.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Gdi32.cs">
+      <Link>NativeMethods\Gdi32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Kernel32.cs">
+      <Link>NativeMethods\Kernel32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Ole32.cs">
+      <Link>NativeMethods\Ole32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\OleAut32.cs">
+      <Link>NativeMethods\OleAut32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Propsys.cs">
+      <Link>NativeMethods\Propsys.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Shell32.cs">
+      <Link>NativeMethods\Shell32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\User32.cs">
+      <Link>NativeMethods\User32.cs</Link>
+    </Compile>
+    <Compile Include="ColorSpaces\RGB.cs" />
+    <Compile Include="Extensions\GeometricExtensions.cs" />
+    <Compile Include="Extensions\ImageExtensions.cs" />
+    <Compile Include="Helpers\RectangleHelper.cs" />
+    <Compile Include="Reflection\ReflectionExtensions.cs" />
+    <Compile Include="ColorSpaces\CMYK.cs" />
+    <Compile Include="ColorSpace.cs" />
+    <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Helpers\GeometricHelper.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="ColorSpaces\HEX.cs" />
+    <Compile Include="ColorSpaces\HSB.cs" />
+    <Compile Include="Reflection\ReflectionHelper.cs" />
+    <Compile Include="IconExtractor.cs" />
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="Palette.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
+    <Compile Include="Swatch.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Brand.sku">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <ProjectReference Include="..\Support\Support.csproj">
+      <Project>{25ab6bbf-a879-4570-9e0e-947d52ae7333}</Project>
+      <Name>Support</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Package.nuspec" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -100,7 +120,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
