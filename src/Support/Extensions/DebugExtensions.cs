@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace Platform.Support
 {
@@ -15,26 +16,26 @@ namespace Platform.Support
         public static class DebugExtensions
         {
             [Conditional("DEBUG")]
-#if NETFX_45 && !PORTABLE
-        public static void DebugThis(this string str, [CallerMemberName] string callername = "", [CallerFilePath] string filename = "")
+#if !PORTABLE
+        public static void DebugThis(this string str, [CallerMemberName] string callername = "", [CallerFilePath] string filename = "", [CallerLineNumber] int linenumber = 0)
 #else
-            public static void DebugThis(this string str, string callername = "", string filename = "")
+        public static void DebugThis(this string str, string callername = "", string filename = "", int linenumber = 0)
 #endif
-            {
-                if (!string.IsNullOrEmpty(callername))
-                    Debug.WriteLine("{1} in {3}:{0}{2}", Environment.NewLine, callername, str, filename);
+        {
+            if (!string.IsNullOrEmpty(callername))
+                    Debug.WriteLine($"{callername} in {filename}:{Environment.NewLine}{str} line {linenumber}");
                 else
                     Debug.WriteLine(str);
             }
 
             [Conditional("DEBUG")]
-#if NETFX_45 && !PORTABLE
-        public static void DebugThis(this Exception ex, [CallerMemberName] string callername = "", [CallerFilePath] string filename = "")
+#if !PORTABLE
+        public static void DebugThis(this Exception ex, [CallerMemberName] string callername = "", [CallerFilePath] string filename = "", [CallerLineNumber] int linenumber = 0)
 #else
-            public static void DebugThis(this Exception ex, string callername = "", string filename = "")
+        public static void DebugThis(this Exception ex, string callername = "", string filename = "", int linenumber = 0)
 #endif
-            {
-                DebugThis(ex.Message, callername, filename);
+        {
+            DebugThis(ex.Message, callername, filename, linenumber);
             }
         }
 
