@@ -87,7 +87,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Razor\IReportBuilder.cs" />
-    <Compile Include="Razor\RazorReport.cs" />
+    <Compile Include="Razor\ReportBuilder.cs" />
     <Compile Include="Razor\TemplateFinder.cs" />
     <Compile Include="ReportBuilder.cs" />
     <Compile Include="ReportGenerator.cs" />

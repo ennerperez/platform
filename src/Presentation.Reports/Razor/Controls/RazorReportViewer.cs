@@ -27,13 +27,10 @@ namespace Platform.Presentation.Reports
             {
                 this.SuspendLayout();
 
-                Engine = new RazorReport();
                 PropertyChanged += RazorReportViewer_PropertyChanged;
 
                 this.ResumeLayout(false);
             }
-
-            private RazorReport Engine;
 
             private int zoon;
             public int Zoom { get { return zoon; } set { this.SetField(ref zoon, value); } }
@@ -63,7 +60,7 @@ namespace Platform.Presentation.Reports
             protected void OnPropertyChanging(PropertyChangingEventArgs e)
             {
                 if (!DesignMode)
-                    this.DocumentText = Engine.Run(null, "Loading", null);
+                    Refresh();
                 PropertyChanging?.Invoke(this, e);
             }
 
@@ -82,19 +79,22 @@ namespace Platform.Presentation.Reports
 
                 try
                 {
-                    var viewBag = new DynamicViewBag();
+                    var viewBag = new Dictionary<string, object>();
                     //if ((e.PropertyName == "PaperKind" || string.IsNullOrEmpty(e.PropertyName)))
-                    viewBag.AddValue("PaperKind", this.PaperKind);
+                    viewBag.Add("PaperKind", this.PaperKind);
 
                     //if ((e.PropertyName == "Template" || string.IsNullOrEmpty(e.PropertyName)))
-                    Engine.Compile(File.ReadAllText(Template), Name);
+                    var report = ReportBuilder.Create(DateTime.Now.Ticks.ToString())
+                        .WithTemplate(File.ReadAllText(Template))
+                        .WithViewBag(viewBag)
+                        .WithPrecompilation();
 
-                    this.DocumentText = Engine.Run(Model, Name, viewBag);
+                    this.DocumentText = report.BuildReport(Model);
                 }
                 catch (Exception ex)
                 {
                     ex.DebugThis();
-                    this.DocumentText = Engine.Run<Exception>(ex, "_ExceptionLayout", null);
+                    this.DocumentText = ReportBuilder.Create("ExceptionLayout").WithPrecompilation().BuildReport(ex);
                 }
                 finally
                 {
