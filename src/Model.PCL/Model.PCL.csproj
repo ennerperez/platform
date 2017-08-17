@@ -70,9 +70,6 @@
     <Compile Include="..\Model\Interfaces\IWarning.cs">
       <Link>Interfaces\IWarning.cs</Link>
     </Compile>
-    <Compile Include="..\Model\Singleton.cs">
-      <Link>Singleton.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
