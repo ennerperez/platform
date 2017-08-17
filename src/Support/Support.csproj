@@ -63,6 +63,7 @@
     <Compile Include="..\Support.Windows\NativeMethods\Kernel32.cs">
       <Link>NativeMethods\Kernel32.cs</Link>
     </Compile>
+    <Compile Include="Attributes\CallerAttributes.cs" />
     <Compile Include="Console\ListBox.cs" />
     <Compile Include="Helpers\StreamHelper.cs" />
     <Compile Include="IO\StreamExtensions.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Security\SecurityHelper.cs" />
     <Compile Include="Security\PasswordHash.cs" />
     <Compile Include="SemanticVersion.cs" />
+    <Compile Include="Singleton.cs" />
     <Compile Include="Text\CharacterEncoder.cs" />
     <Compile Include="Text\Markdown.cs" />
     <Compile Include="Threading\FuncAwaitable.cs" />

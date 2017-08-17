@@ -153,6 +153,9 @@
     <Compile Include="..\Support\SemanticVersion.cs">
       <Link>SemanticVersion.cs</Link>
     </Compile>
+    <Compile Include="..\Support\Singleton.cs">
+      <Link>Singleton.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Text\Markdown.cs">
       <Link>Text\Markdown.cs</Link>
     </Compile>

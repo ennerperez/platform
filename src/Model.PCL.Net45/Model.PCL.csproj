@@ -66,9 +66,6 @@
     <Compile Include="..\Model\Interfaces\IWarning.cs">
       <Link>Interfaces\IWarning.cs</Link>
     </Compile>
-    <Compile Include="..\Model\Singleton.cs">
-      <Link>Singleton.cs</Link>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
