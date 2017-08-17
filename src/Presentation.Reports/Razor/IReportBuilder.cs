@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RazorEngine.Templating;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Platform.Presentation.Reports.Razor
 {
-    public interface IReportBuilder<T>
+    public interface IReportBuilder<T>: Platform.Presentation.Reports.IReportBuilder<T>
     {
         IReportBuilder<T> WithTemplate(string template);
         IReportBuilder<T> WithCss(string css);
@@ -16,6 +17,9 @@ namespace Platform.Presentation.Reports.Razor
         IReportBuilder<T> WithCssFromResource(string resourceName, Assembly assembly);
         IReportBuilder<T> WithPrecompilation();
 
-        string BuildReport(T model);
+        IReportBuilder<T> WithViewBag(IDictionary<string, object> source);
+
+        //string BuildReport(T model, DynamicViewBag viewBag);
+
     }
 }
