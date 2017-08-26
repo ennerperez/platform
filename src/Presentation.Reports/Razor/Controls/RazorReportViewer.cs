@@ -84,8 +84,8 @@ namespace Platform.Presentation.Reports
                     viewBag.Add("PaperKind", this.PaperKind);
 
                     //if ((e.PropertyName == "Template" || string.IsNullOrEmpty(e.PropertyName)))
-                    var report = ReportBuilder.Create(DateTime.Now.Ticks.ToString())
-                        .WithTemplate(File.ReadAllText(Template))
+                    var report = ReportBuilder<object>.Create(DateTime.Now.Ticks.ToString())
+                        .WithTemplate(Template)
                         .WithViewBag(viewBag)
                         .WithPrecompilation();
 
@@ -94,7 +94,10 @@ namespace Platform.Presentation.Reports
                 catch (Exception ex)
                 {
                     ex.DebugThis();
-                    this.DocumentText = ReportBuilder.Create("ExceptionLayout").WithPrecompilation().BuildReport(ex);
+                    var report = ReportBuilder<Exception>.Create(DateTime.Now.Ticks.ToString())
+                       .WithTemplate(Properties.Resources._ExceptionLayout)
+                       .WithPrecompilation();
+                    this.DocumentText = report.BuildReport(ex);
                 }
                 finally
                 {

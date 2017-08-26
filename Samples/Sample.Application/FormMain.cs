@@ -1,4 +1,6 @@
 ﻿using Platform.Presentation.Reports.Windows.Forms;
+using RazorEngine;
+using RazorEngine.Templating;
 using System.Windows.Forms;
 
 namespace Sample
@@ -30,13 +32,14 @@ namespace Sample
             this.Controls.Add(Report);
 
             Report.BringToFront();
-            Report.Refresh();
-            Report.Update();
+            //Report.Refresh();
+            //Report.Update();
+
         }
 
         private void Child_Click(object sender, System.EventArgs e)
         {
-            Report.Template = $"templates\\{(sender as ToolStripMenuItem).Text}";
+            Report.Template = System.IO.File.ReadAllText($"templates\\{(sender as ToolStripMenuItem).Text}");
         }
     }
 }

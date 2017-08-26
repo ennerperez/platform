@@ -22,7 +22,7 @@ namespace Platform.Presentation.Reports.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Platform.Presentation.Reports.Properties {
         ///   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Platform.Presentation.Reports.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Platform.Presentation.Reports.Properties {
         ///   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -82,7 +82,7 @@ namespace Platform.Presentation.Reports.Properties {
         ///&lt;/body&gt;
         ///&lt;/html&gt;.
         /// </summary>
-        internal static string _ExceptionLayout {
+        public static string _ExceptionLayout {
             get {
                 return ResourceManager.GetString("_ExceptionLayout", resourceCulture);
             }
@@ -109,7 +109,7 @@ namespace Platform.Presentation.Reports.Properties {
         ///&lt;/body&gt;
         ///&lt;/html&gt;.
         /// </summary>
-        internal static string _LoadingLayout {
+        public static string _LoadingLayout {
             get {
                 return ResourceManager.GetString("_LoadingLayout", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Platform.Presentation.Reports.Properties {
         ///            margin-bottom: 0.5cm;
         ///            box-s [resto de la cadena truncado]&quot;;.
         /// </summary>
-        internal static string _PrintLayout {
+        public static string _PrintLayout {
             get {
                 return ResourceManager.GetString("_PrintLayout", resourceCulture);
             }
