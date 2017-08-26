@@ -38,10 +38,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Platform.Support.Core">
-      <HintPath>..\..\src\Support\bin\Release\Platform.Support.Core.dll</HintPath>
+      <HintPath>..\..\src\Support\bin\$(Configuration)\Platform.Support.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Platform.Support.Core.PCL">
-      <HintPath>..\..\src\Support.PCL\bin\Release\Platform.Support.Core.PCL.dll</HintPath>
+    <Reference Include="Platform.Support.PCL">
+      <HintPath>..\..\src\Support.PCL\bin\$(Configuration)\Platform.Support.Core.PCL.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
