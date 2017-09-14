@@ -61,7 +61,7 @@ internal static class ExternDll
     public const string Uxtheme = "uxtheme.dll";
     public const string WinInet = "WinInet.dll";
     public const string WinMM = "winmm.dll";
-
+    
     public const string Hhctrl = "hhctrl.ocx";
     public const string Imm32 = "imm32.dll";
 
@@ -83,6 +83,8 @@ internal static class ExternDll
     public const string Version = "version.dll";
     public const string Vsassert = "vsassert.dll";
     public const string Fxassert = "Fxassert.dll";
+
+    public const string UserEnv = "userenv.dll";
 
     // system.data specific
     internal const string Odbc32 = "odbc32.dll";
