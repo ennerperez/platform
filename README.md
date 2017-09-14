@@ -1,4 +1,4 @@
-![logo](https://raw.githubusercontent.com/ennerperez/platform/master/.editoricon.png)
+![logo](src/.editoricon.png)
 
 # .NET Framework Base Development Platform
 
