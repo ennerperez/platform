@@ -1281,8 +1281,9 @@ namespace Platform.Support.Windows
         public const int SHOWNA = 8;
         public const int RESTORE = 9;
         public const int SHOWDEFAULT = 10;
-        public const int FORCEMINIMIZE = 11;
-        public const int MAX = 11;
+        public const int MAX = 10;
+        //public const int FORCEMINIMIZE = 11;
+        //public const int MAX = 11; 10
     }
 
     /// <summary>

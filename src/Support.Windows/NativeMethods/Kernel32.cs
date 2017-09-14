@@ -401,6 +401,10 @@ namespace Platform.Support.Windows
 
         [DllImport(ExternDll.Kernel32, CharSet = CharSet.Auto, EntryPoint = "CopyMemory")]
         public extern static void CopyMemory(IntPtr dest, IntPtr src, uint length);
+
+        [DllImport(ExternDll.Kernel32)]
+        public extern static uint WTSGetActiveConsoleSessionId();
+
     }
 
 #if !INTEROP
