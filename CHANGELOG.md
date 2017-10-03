@@ -19,6 +19,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - NotifyProperty Extensions
 - ListBox for Console
 - Windows Service Loader
+- IsSingleton Extension
 
 ## [3.2.32] - [2016-12-31]
 
