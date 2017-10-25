@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A4E49E51-DBBC-4588-BA35-FBC70397D8D4}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,6 +17,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Console", "Sample.Console\Sample.Console.csproj", "{BD0B53C6-7C65-4E17-AB2C-AD3641A891DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.DataModel", "Sample.DataModel\Sample.DataModel.csproj", "{AA133076-D483-496E-866F-06E83E58A05A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Core", "Sample.Core\Sample.Core.csproj", "{31A52908-5532-4838-9A15-007CADCB99EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +42,10 @@ Global
 		{AA133076-D483-496E-866F-06E83E58A05A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA133076-D483-496E-866F-06E83E58A05A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA133076-D483-496E-866F-06E83E58A05A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31A52908-5532-4838-9A15-007CADCB99EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31A52908-5532-4838-9A15-007CADCB99EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31A52908-5532-4838-9A15-007CADCB99EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31A52908-5532-4838-9A15-007CADCB99EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{A4E49E51-DBBC-4588-BA35-FBC70397D8D4} = {E9E411D7-1044-4839-A1D4-59C45956314A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {201FA654-6DE8-484E-ACF6-6BD7E38CDE3F}
 		BuildVersion_BuildVersioningStyle = None.None.None.Increment
 		BuildVersion_UpdateAssemblyVersion = True
 		BuildVersion_StartDate = 2016/1/1

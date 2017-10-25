@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sample.Console</RootNamespace>
     <AssemblyName>Sample.Console</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
@@ -37,11 +37,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Platform.Support.Core">
-      <HintPath>..\..\src\Support\bin\$(Configuration)\Platform.Support.Core.dll</HintPath>
+    <Reference Include="Platform.Support.Core, Version=3.3.33.40655, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\src\Support\bin\Debug\Platform.Support.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Platform.Support.PCL">
-      <HintPath>..\..\src\Support.PCL\bin\$(Configuration)\Platform.Support.Core.PCL.dll</HintPath>
+    <Reference Include="Platform.Support.Core.PCL, Version=3.3.33.39275, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\src\Support.PCL.Net45\bin\Debug\Platform.Support.Core.PCL.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,6 +63,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sample.Core\Sample.Core.csproj">
+      <Project>{31a52908-5532-4838-9a15-007cadcb99eb}</Project>
+      <Name>Sample.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

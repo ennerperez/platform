@@ -1,5 +1,6 @@
 ﻿using System;
 using ListBox = Platform.Support.ConsoleEx.ListBox;
+using Platform.Support.Reflection;
 
 namespace Sample.Console
 {
@@ -10,8 +11,11 @@ namespace Sample.Console
             if (Platform.Support.Library.IsPortable())
                 System.Console.WriteLine("Platform PCL");
 
-            if (Platform.Support.Core.Library.IsPortable())
-                System.Console.WriteLine("Platform PCL");
+            if (Sample.Core.Demostrative.Instance.IsSingleton())
+                System.Console.WriteLine("Demostrative is Singleton");
+            
+            //if (Platform.Support.Core.Library.IsPortable())
+            //    System.Console.WriteLine("Platform PCL");
 
             if (Platform.Support.OS.OSHelper.IsWindows())
                 System.Console.WriteLine("Running Windows");

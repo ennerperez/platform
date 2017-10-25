@@ -34,14 +34,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Platform.Presentation.Forms">
-      <HintPath>..\..\src\Presentation.Forms\bin\Release\Platform.Presentation.Forms.dll</HintPath>
-    </Reference>
     <Reference Include="Platform.Support.Core">
-      <HintPath>..\..\src\Support\bin\Release\Platform.Support.Core.dll</HintPath>
+      <HintPath>..\..\src\Support\bin\Debug\Platform.Support.Core.dll</HintPath>
     </Reference>
     <Reference Include="Platform.Support.Drawing">
-      <HintPath>..\..\src\Support.Drawing\bin\Release\Platform.Support.Drawing.dll</HintPath>
+      <HintPath>..\..\src\Support.Drawing\bin\Debug\Platform.Support.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

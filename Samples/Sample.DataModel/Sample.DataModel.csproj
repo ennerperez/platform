@@ -35,13 +35,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Platform.Model.Core">
-      <HintPath>..\..\src\Model\bin\$(Configuration)\Platform.Model.Core.dll</HintPath>
+      <HintPath>..\..\src\Model\bin\Debug\Platform.Model.Core.dll</HintPath>
     </Reference>
     <Reference Include="Platform.Support.Core">
-      <HintPath>..\..\src\Support\bin\$(Configuration)\Platform.Support.Core.dll</HintPath>
+      <HintPath>..\..\src\Support\bin\Debug\Platform.Support.Core.dll</HintPath>
     </Reference>
     <Reference Include="Platform.Support.Data">
-      <HintPath>..\..\src\Support.Data\bin\$(Configuration)\Platform.Support.Data.dll</HintPath>
+      <HintPath>..\..\src\Support.Data\bin\Debug\Platform.Support.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
