@@ -34,7 +34,7 @@ Skips restoring of packages.
 Remaining arguments are added here.
 
 .LINK
-http://cakebuild.net
+https://cakebuild.net
 
 #>
 
@@ -45,7 +45,7 @@ Param(
     [ValidateSet("Release", "Debug")]
     [string]$Configuration = "Release",
     [ValidateSet("Quiet", "Minimal", "Normal", "Verbose", "Diagnostic")]
-    [string]$Verbosity = "Diagnostic",
+    [string]$Verbosity = "Verbose",
     [switch]$Experimental,
     [Alias("DryRun","Noop")]
     [switch]$WhatIf,
@@ -122,7 +122,7 @@ if ((Test-Path $PSScriptRoot) -and !(Test-Path $TOOLS_DIR)) {
 # Make sure that packages.config exist.
 if (!(Test-Path $PACKAGES_CONFIG)) {
     Write-Verbose -Message "Downloading packages.config..."
-    try { (New-Object System.Net.WebClient).DownloadFile("http://cakebuild.net/download/bootstrapper/packages", $PACKAGES_CONFIG) } catch {
+    try { (New-Object System.Net.WebClient).DownloadFile("https://cakebuild.net/download/bootstrapper/packages", $PACKAGES_CONFIG) } catch {
         Throw "Could not download packages.config."
     }
 }
@@ -168,7 +168,7 @@ if(-Not $SkipToolPackageRestore.IsPresent) {
     $NuGetOutput = Invoke-Expression "&`"$NUGET_EXE`" install -ExcludeVersion -OutputDirectory `"$TOOLS_DIR`""
 
     if ($LASTEXITCODE -ne 0) {
-        Throw "An error occurred while restoring NuGet tools."
+        Throw "An error occured while restoring NuGet tools."
     }
     else
     {
