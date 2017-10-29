@@ -122,6 +122,27 @@ namespace Platform.Support
 
                 #endregion Generics
 
+                public static bool IsSingleton(this object obj)
+                {
+
+                    var type = obj.GetType();
+
+#if !PORTABLE || PROFILE_328
+                    var props = type.GetProperties(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
+                    var instance = props.Count(p => p.Name == "Instance") == 1;
+
+                    var ctors = type.GetMembers(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).OfType<System.Reflection.ConstructorInfo>();
+                    var ctor = ctors.Where(m => m.IsFamily).Count() == 1;
+#else
+                    var props = type.GetRuntimeProperties();
+                    var instance = props.Count(p => p.Name == "Instance") == 1;
+
+                    var ctors = type.GetRuntimeMethods().Where(m => m.IsConstructor);
+                    var ctor = ctors.Where(m => m.IsFamily).Count() == 1;
+#endif
+                    return instance && ctor;
+                }
+
                 public static string GetNameSafe(this Assembly assembly)
                 {
                     if (assembly == null)

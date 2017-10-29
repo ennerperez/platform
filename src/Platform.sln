@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "Support\Support.csproj", "{25AB6BBF-A879-4570-9E0E-947D52AE7333}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -49,7 +49,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.MVC.PCL", "Model.MVC.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".resources", ".resources", "{438EDCA0-3C84-4A67-903C-BC1E306C227D}"
 	ProjectSection(SolutionItems) = preProject
-		.resources\AppIcon.Platform.ico = .resources\AppIcon.Platform.ico
+		..\.resources\AppIcon.Platform.ico = ..\.resources\AppIcon.Platform.ico
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Portable", "Portable", "{E2558961-1D89-4AC7-840E-F57D987E8173}"
@@ -68,11 +68,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.SPS.Plugin", "Model.S
 	ProjectSection(ProjectDependencies) = postProject
 		{1E1A1127-1ECC-4A97-8D28-6DF0139436B1} = {1E1A1127-1ECC-4A97-8D28-6DF0139436B1}
 		{4FC3D191-70EB-46D4-B471-C550DA3B842A} = {4FC3D191-70EB-46D4-B471-C550DA3B842A}
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A4E49E51-DBBC-4588-BA35-FBC70397D8D4}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.config = .nuget\NuGet.config
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Web.PCL", "Support.Web.PCL\Support.Web.PCL.csproj", "{9767D236-D9E5-4ECC-A649-EF9391963F84}"
@@ -100,13 +95,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E9E411D7-1044-4839-A1D4-59C45956314A}"
 	ProjectSection(SolutionItems) = preProject
 		.editoricon.png = .editoricon.png
-		.gitattributes = .gitattributes
-		.gitignore = .gitignore
-		build.cake = build.cake
-		build.ps1 = build.ps1
-		CHANGELOG.md = CHANGELOG.md
-		LICENSE = LICENSE
-		README.md = README.md
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\build.cake = ..\build.cake
+		..\build.ps1 = ..\build.ps1
+		..\CHANGELOG.md = ..\CHANGELOG.md
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".files", ".files", "{70671A51-61FB-4AA2-9D80-8C68A5B934ED}"
@@ -232,7 +227,6 @@ Global
 		{C4C6EA21-5740-42F0-990B-BE703B1F8B66} = {0897EA21-1224-4433-AD2D-030419B8BED7}
 		{438EDCA0-3C84-4A67-903C-BC1E306C227D} = {E9E411D7-1044-4839-A1D4-59C45956314A}
 		{62521597-3B37-4CF9-80E4-1F2728D86F4B} = {0897EA21-1224-4433-AD2D-030419B8BED7}
-		{A4E49E51-DBBC-4588-BA35-FBC70397D8D4} = {E9E411D7-1044-4839-A1D4-59C45956314A}
 		{9767D236-D9E5-4ECC-A649-EF9391963F84} = {0897EA21-1224-4433-AD2D-030419B8BED7}
 		{989FFC57-46D2-4C73-BFA9-97EBFFA1960B} = {E2558961-1D89-4AC7-840E-F57D987E8173}
 		{0897EA21-1224-4433-AD2D-030419B8BED7} = {E2558961-1D89-4AC7-840E-F57D987E8173}
@@ -246,10 +240,11 @@ Global
 		{70671A51-61FB-4AA2-9D80-8C68A5B934ED} = {E9E411D7-1044-4839-A1D4-59C45956314A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
-		BuildVersion_StartDate = 2016/1/1
-		BuildVersion_UpdateAssemblyVersion = True
 		BuildVersion_BuildVersioningStyle = None.None.None.Increment
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_StartDate = 2016/1/1
+		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
+		SolutionGuid = {7EA34FD7-B2A4-4717-8FFD-337069CCE0F8}
 	EndGlobalSection
 	GlobalSection(AutomaticVersions) = postSolution
 		AssemblyInfoFilePath.Release|Any CPU = D:\Developments\GitHub\platform\.files\AssemblyInfo.Version.cs

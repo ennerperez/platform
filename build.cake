@@ -1,3 +1,4 @@
+#tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
@@ -8,6 +9,9 @@ var configuration = Argument("configuration", "Release");
 //////////////////////////////////////////////////////////////////////
 // PREPARATION
 //////////////////////////////////////////////////////////////////////
+
+// Define directories.
+var buildDir = Directory("./build") + Directory(configuration);
 
 // Define solutions.
 var solutions = new Dictionary<string, string> {
@@ -22,10 +26,6 @@ var assemblyInfoCommon = ParseAssemblyInfo("./.files/AssemblyInfo.Common.cs");
 var elapsedSpan = new TimeSpan(DateTime.Now.Ticks - new DateTime(2001, 1, 1).Ticks);
 var assemblyVersion = assemblyInfoVersion.AssemblyVersion.Replace("*", elapsedSpan.Ticks.ToString().Substring(4, 4));
 var version = EnvironmentVariable("APPVEYOR_BUILD_VERSION") ?? Argument("version", assemblyVersion);
-
-// Define directories.
-var outputDirectory = "build/" + configuration;
-var buildDir = Directory("../" + outputDirectory);
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -90,7 +90,7 @@ Task("Build-NuGet-Packages")
                 var assemblyInfo = ParseAssemblyInfo(path + "/Properties/AssemblyInfo.cs");
                 var nuGetPackSettings = new NuGetPackSettings()
                 {
-                    OutputDirectory = outputDirectory,
+                    OutputDirectory = buildDir,
                     IncludeReferencedProjects = false,
                     Id = assemblyInfo.Title.Replace(" ", "."),
                     Title = assemblyInfo.Title,
@@ -107,12 +107,22 @@ Task("Build-NuGet-Packages")
     }
 });
 
+Task("Run-Unit-Tests")
+    .IsDependentOn("Build")
+    .Does(() =>
+{
+    NUnit3("./src/**/bin/" + configuration + "/*.Tests.dll", new NUnit3Settings {
+        NoResults = true
+        });
+});
+
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .IsDependentOn("Build-NuGet-Packages");
+    .IsDependentOn("Run-Unit-Tests")
+	.IsDependentOn("Build-NuGet-Packages");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION

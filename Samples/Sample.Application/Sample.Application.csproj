@@ -34,37 +34,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\src\Presentation.Reports\bin\$(Configuration)\Microsoft.ReportViewer.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\src\Presentation.Reports\bin\$(Configuration)\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\src\Presentation.Reports\bin\$(Configuration)\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebForms, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\src\Presentation.Reports\bin\$(Configuration)\Microsoft.ReportViewer.WebForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\src\Presentation.Reports\bin\$(Configuration)\Microsoft.ReportViewer.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.Presentation.Forms">
-      <HintPath>..\..\src\Presentation.Forms\bin\$(Configuration)\Platform.Presentation.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.Presentation.Reports">
-      <HintPath>..\..\src\Presentation.Reports\bin\$(Configuration)\Platform.Presentation.Reports.dll</HintPath>
-    </Reference>
     <Reference Include="Platform.Support.Core">
-      <HintPath>..\..\src\Support\bin\$(Configuration)\Platform.Support.Core.dll</HintPath>
+      <HintPath>..\..\src\Support\bin\Debug\Platform.Support.Core.dll</HintPath>
     </Reference>
     <Reference Include="Platform.Support.Drawing">
-      <HintPath>..\..\src\Support.Drawing\bin\$(Configuration)\Platform.Support.Drawing.dll</HintPath>
+      <HintPath>..\..\src\Support.Drawing\bin\Debug\Platform.Support.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="RazorEngine, Version=3.6.1.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <HintPath>..\packages\RazorEngine.3.6.1\lib\net40\RazorEngine.dll</HintPath>

@@ -35,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Platform.Support.Core">
-      <HintPath>..\..\src\Support\bin\$(Configuration)\Platform.Support.Core.dll</HintPath>
+      <HintPath>..\..\src\Support\bin\Debug\Platform.Support.Core.dll</HintPath>
     </Reference>
     <Reference Include="Platform.Support.Drawing">
-      <HintPath>..\..\src\Support.Drawing\bin\$(Configuration)\Platform.Support.Drawing.dll</HintPath>
+      <HintPath>..\..\src\Support.Drawing\bin\Debug\Platform.Support.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
