@@ -40,8 +40,8 @@
     <Reference Include="Platform.Support.Drawing">
       <HintPath>..\..\src\Support.Drawing\bin\Debug\Platform.Support.Drawing.dll</HintPath>
     </Reference>
-    <Reference Include="RazorEngine, Version=3.6.1.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
-      <HintPath>..\packages\RazorEngine.3.6.1\lib\net40\RazorEngine.dll</HintPath>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -65,15 +65,186 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Components\bootstrap\dist\css\bootstrap-theme.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\bootstrap\dist\css\bootstrap-theme.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\bootstrap\dist\css\bootstrap.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\bootstrap\dist\css\bootstrap.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\bootstrap\dist\fonts\glyphicons-halflings-regular.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\bootstrap\dist\js\bootstrap.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\bootstrap\dist\js\bootstrap.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\bootstrap\dist\js\npm.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Components\bootstrap\Gruntfile.js" />
+    <Content Include="Components\bootstrap\grunt\bs-commonjs-generator.js" />
+    <Content Include="Components\bootstrap\grunt\bs-glyphicons-data-generator.js" />
+    <Content Include="Components\bootstrap\grunt\bs-lessdoc-parser.js" />
+    <Content Include="Components\bootstrap\grunt\bs-raw-files-generator.js" />
+    <Content Include="Components\bootstrap\grunt\change-version.js" />
+    <Content Include="Components\bootstrap\js\affix.js" />
+    <Content Include="Components\bootstrap\js\alert.js" />
+    <Content Include="Components\bootstrap\js\button.js" />
+    <Content Include="Components\bootstrap\js\carousel.js" />
+    <Content Include="Components\bootstrap\js\collapse.js" />
+    <Content Include="Components\bootstrap\js\dropdown.js" />
+    <Content Include="Components\bootstrap\js\modal.js" />
+    <Content Include="Components\bootstrap\js\popover.js" />
+    <Content Include="Components\bootstrap\js\scrollspy.js" />
+    <Content Include="Components\bootstrap\js\tab.js" />
+    <Content Include="Components\bootstrap\js\tooltip.js" />
+    <Content Include="Components\bootstrap\js\transition.js" />
+    <Content Include="Components\bootstrap\package.js" />
+    <Content Include="Components\jquery\AUTHORS.txt" />
+    <Content Include="Components\jquery\dist\core.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\jquery\dist\jquery.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\jquery\dist\jquery.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\jquery\dist\jquery.slim.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\jquery\dist\jquery.slim.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\jquery\external\sizzle\dist\sizzle.js" />
+    <Content Include="Components\jquery\external\sizzle\dist\sizzle.min.js" />
+    <Content Include="Components\jquery\external\sizzle\LICENSE.txt" />
+    <Content Include="Components\jquery\LICENSE.txt" />
+    <Content Include="Components\jquery\src\ajax.js" />
+    <Content Include="Components\jquery\src\ajax\jsonp.js" />
+    <Content Include="Components\jquery\src\ajax\load.js" />
+    <Content Include="Components\jquery\src\ajax\parseXML.js" />
+    <Content Include="Components\jquery\src\ajax\script.js" />
+    <Content Include="Components\jquery\src\ajax\var\location.js" />
+    <Content Include="Components\jquery\src\ajax\var\nonce.js" />
+    <Content Include="Components\jquery\src\ajax\var\rquery.js" />
+    <Content Include="Components\jquery\src\ajax\xhr.js" />
+    <Content Include="Components\jquery\src\attributes.js" />
+    <Content Include="Components\jquery\src\attributes\attr.js" />
+    <Content Include="Components\jquery\src\attributes\classes.js" />
+    <Content Include="Components\jquery\src\attributes\prop.js" />
+    <Content Include="Components\jquery\src\attributes\support.js" />
+    <Content Include="Components\jquery\src\attributes\val.js" />
+    <Content Include="Components\jquery\src\callbacks.js" />
+    <Content Include="Components\jquery\src\core.js" />
+    <Content Include="Components\jquery\src\core\access.js" />
+    <Content Include="Components\jquery\src\core\DOMEval.js" />
+    <Content Include="Components\jquery\src\core\init.js" />
+    <Content Include="Components\jquery\src\core\nodeName.js" />
+    <Content Include="Components\jquery\src\core\parseHTML.js" />
+    <Content Include="Components\jquery\src\core\ready-no-deferred.js" />
+    <Content Include="Components\jquery\src\core\ready.js" />
+    <Content Include="Components\jquery\src\core\readyException.js" />
+    <Content Include="Components\jquery\src\core\stripAndCollapse.js" />
+    <Content Include="Components\jquery\src\core\support.js" />
+    <Content Include="Components\jquery\src\core\var\rsingleTag.js" />
+    <Content Include="Components\jquery\src\css.js" />
+    <Content Include="Components\jquery\src\css\addGetHookIf.js" />
+    <Content Include="Components\jquery\src\css\adjustCSS.js" />
+    <Content Include="Components\jquery\src\css\curCSS.js" />
+    <Content Include="Components\jquery\src\css\hiddenVisibleSelectors.js" />
+    <Content Include="Components\jquery\src\css\showHide.js" />
+    <Content Include="Components\jquery\src\css\support.js" />
+    <Content Include="Components\jquery\src\css\var\cssExpand.js" />
+    <Content Include="Components\jquery\src\css\var\getStyles.js" />
+    <Content Include="Components\jquery\src\css\var\isHiddenWithinTree.js" />
+    <Content Include="Components\jquery\src\css\var\rmargin.js" />
+    <Content Include="Components\jquery\src\css\var\rnumnonpx.js" />
+    <Content Include="Components\jquery\src\css\var\swap.js" />
+    <Content Include="Components\jquery\src\data.js" />
+    <Content Include="Components\jquery\src\data\Data.js" />
+    <Content Include="Components\jquery\src\data\var\acceptData.js" />
+    <Content Include="Components\jquery\src\data\var\dataPriv.js" />
+    <Content Include="Components\jquery\src\data\var\dataUser.js" />
+    <Content Include="Components\jquery\src\deferred.js" />
+    <Content Include="Components\jquery\src\deferred\exceptionHook.js" />
+    <Content Include="Components\jquery\src\deprecated.js" />
+    <Content Include="Components\jquery\src\dimensions.js" />
+    <Content Include="Components\jquery\src\effects.js" />
+    <Content Include="Components\jquery\src\effects\animatedSelector.js" />
+    <Content Include="Components\jquery\src\effects\Tween.js" />
+    <Content Include="Components\jquery\src\event.js" />
+    <Content Include="Components\jquery\src\event\ajax.js" />
+    <Content Include="Components\jquery\src\event\alias.js" />
+    <Content Include="Components\jquery\src\event\focusin.js" />
+    <Content Include="Components\jquery\src\event\support.js" />
+    <Content Include="Components\jquery\src\event\trigger.js" />
+    <Content Include="Components\jquery\src\exports\amd.js" />
+    <Content Include="Components\jquery\src\exports\global.js" />
+    <Content Include="Components\jquery\src\jquery.js" />
+    <Content Include="Components\jquery\src\manipulation.js" />
+    <Content Include="Components\jquery\src\manipulation\buildFragment.js" />
+    <Content Include="Components\jquery\src\manipulation\getAll.js" />
+    <Content Include="Components\jquery\src\manipulation\setGlobalEval.js" />
+    <Content Include="Components\jquery\src\manipulation\support.js" />
+    <Content Include="Components\jquery\src\manipulation\var\rcheckableType.js" />
+    <Content Include="Components\jquery\src\manipulation\var\rscriptType.js" />
+    <Content Include="Components\jquery\src\manipulation\var\rtagName.js" />
+    <Content Include="Components\jquery\src\manipulation\wrapMap.js" />
+    <Content Include="Components\jquery\src\manipulation\_evalUrl.js" />
+    <Content Include="Components\jquery\src\offset.js" />
+    <Content Include="Components\jquery\src\queue.js" />
+    <Content Include="Components\jquery\src\queue\delay.js" />
+    <Content Include="Components\jquery\src\selector-native.js" />
+    <Content Include="Components\jquery\src\selector-sizzle.js" />
+    <Content Include="Components\jquery\src\selector.js" />
+    <Content Include="Components\jquery\src\serialize.js" />
+    <Content Include="Components\jquery\src\traversing.js" />
+    <Content Include="Components\jquery\src\traversing\findFilter.js" />
+    <Content Include="Components\jquery\src\traversing\var\dir.js" />
+    <Content Include="Components\jquery\src\traversing\var\rneedsContext.js" />
+    <Content Include="Components\jquery\src\traversing\var\siblings.js" />
+    <Content Include="Components\jquery\src\var\arr.js" />
+    <Content Include="Components\jquery\src\var\class2type.js" />
+    <Content Include="Components\jquery\src\var\concat.js" />
+    <Content Include="Components\jquery\src\var\document.js" />
+    <Content Include="Components\jquery\src\var\documentElement.js" />
+    <Content Include="Components\jquery\src\var\fnToString.js" />
+    <Content Include="Components\jquery\src\var\getProto.js" />
+    <Content Include="Components\jquery\src\var\hasOwn.js" />
+    <Content Include="Components\jquery\src\var\indexOf.js" />
+    <Content Include="Components\jquery\src\var\ObjectFunctionString.js" />
+    <Content Include="Components\jquery\src\var\pnum.js" />
+    <Content Include="Components\jquery\src\var\push.js" />
+    <Content Include="Components\jquery\src\var\rcssNum.js" />
+    <Content Include="Components\jquery\src\var\rnothtmlwhite.js" />
+    <Content Include="Components\jquery\src\var\slice.js" />
+    <Content Include="Components\jquery\src\var\support.js" />
+    <Content Include="Components\jquery\src\var\toString.js" />
+    <Content Include="Components\jquery\src\wrap.js" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include=".bowerrc">
+      <DependentUpon>bower.json</DependentUpon>
+    </None>
     <None Include="app.config" />
-    <Content Include="Templates\Demo.cshtml">
+    <Content Include="Reports\Persons.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="bower.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -84,6 +255,139 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Reports\Person.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Components\bootstrap\.bower.json" />
+    <None Include="Components\bootstrap\bower.json" />
+    <None Include="Components\bootstrap\CHANGELOG.md" />
+    <Content Include="Components\bootstrap\dist\css\bootstrap-theme.css.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\bootstrap\dist\css\bootstrap-theme.min.css.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\bootstrap\dist\css\bootstrap.css.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\bootstrap\dist\css\bootstrap.min.css.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Components\bootstrap\dist\fonts\glyphicons-halflings-regular.eot">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Components\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Components\bootstrap\dist\fonts\glyphicons-halflings-regular.woff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Components\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Components\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Components\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Components\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Components\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Components\bootstrap\Gemfile" />
+    <None Include="Components\bootstrap\Gemfile.lock" />
+    <None Include="Components\bootstrap\grunt\.jshintrc" />
+    <None Include="Components\bootstrap\grunt\configBridge.json" />
+    <None Include="Components\bootstrap\grunt\npm-shrinkwrap.json" />
+    <None Include="Components\bootstrap\grunt\sauce_browsers.yml" />
+    <None Include="Components\bootstrap\ISSUE_TEMPLATE.md" />
+    <None Include="Components\bootstrap\js\.jscsrc" />
+    <None Include="Components\bootstrap\js\.jshintrc" />
+    <None Include="Components\bootstrap\less\.csscomb.json" />
+    <None Include="Components\bootstrap\less\.csslintrc" />
+    <None Include="Components\bootstrap\less\alerts.less" />
+    <None Include="Components\bootstrap\less\badges.less" />
+    <None Include="Components\bootstrap\less\bootstrap.less" />
+    <None Include="Components\bootstrap\less\breadcrumbs.less" />
+    <None Include="Components\bootstrap\less\button-groups.less" />
+    <None Include="Components\bootstrap\less\buttons.less" />
+    <None Include="Components\bootstrap\less\carousel.less" />
+    <None Include="Components\bootstrap\less\close.less" />
+    <None Include="Components\bootstrap\less\code.less" />
+    <None Include="Components\bootstrap\less\component-animations.less" />
+    <None Include="Components\bootstrap\less\dropdowns.less" />
+    <None Include="Components\bootstrap\less\forms.less" />
+    <None Include="Components\bootstrap\less\glyphicons.less" />
+    <None Include="Components\bootstrap\less\grid.less" />
+    <None Include="Components\bootstrap\less\input-groups.less" />
+    <None Include="Components\bootstrap\less\jumbotron.less" />
+    <None Include="Components\bootstrap\less\labels.less" />
+    <None Include="Components\bootstrap\less\list-group.less" />
+    <None Include="Components\bootstrap\less\media.less" />
+    <None Include="Components\bootstrap\less\mixins.less" />
+    <None Include="Components\bootstrap\less\mixins\alerts.less" />
+    <None Include="Components\bootstrap\less\mixins\background-variant.less" />
+    <None Include="Components\bootstrap\less\mixins\border-radius.less" />
+    <None Include="Components\bootstrap\less\mixins\buttons.less" />
+    <None Include="Components\bootstrap\less\mixins\center-block.less" />
+    <None Include="Components\bootstrap\less\mixins\clearfix.less" />
+    <None Include="Components\bootstrap\less\mixins\forms.less" />
+    <None Include="Components\bootstrap\less\mixins\gradients.less" />
+    <None Include="Components\bootstrap\less\mixins\grid-framework.less" />
+    <None Include="Components\bootstrap\less\mixins\grid.less" />
+    <None Include="Components\bootstrap\less\mixins\hide-text.less" />
+    <None Include="Components\bootstrap\less\mixins\image.less" />
+    <None Include="Components\bootstrap\less\mixins\labels.less" />
+    <None Include="Components\bootstrap\less\mixins\list-group.less" />
+    <None Include="Components\bootstrap\less\mixins\nav-divider.less" />
+    <None Include="Components\bootstrap\less\mixins\nav-vertical-align.less" />
+    <None Include="Components\bootstrap\less\mixins\opacity.less" />
+    <None Include="Components\bootstrap\less\mixins\pagination.less" />
+    <None Include="Components\bootstrap\less\mixins\panels.less" />
+    <None Include="Components\bootstrap\less\mixins\progress-bar.less" />
+    <None Include="Components\bootstrap\less\mixins\reset-filter.less" />
+    <None Include="Components\bootstrap\less\mixins\reset-text.less" />
+    <None Include="Components\bootstrap\less\mixins\resize.less" />
+    <None Include="Components\bootstrap\less\mixins\responsive-visibility.less" />
+    <None Include="Components\bootstrap\less\mixins\size.less" />
+    <None Include="Components\bootstrap\less\mixins\tab-focus.less" />
+    <None Include="Components\bootstrap\less\mixins\table-row.less" />
+    <None Include="Components\bootstrap\less\mixins\text-emphasis.less" />
+    <None Include="Components\bootstrap\less\mixins\text-overflow.less" />
+    <None Include="Components\bootstrap\less\mixins\vendor-prefixes.less" />
+    <None Include="Components\bootstrap\less\modals.less" />
+    <None Include="Components\bootstrap\less\navbar.less" />
+    <None Include="Components\bootstrap\less\navs.less" />
+    <None Include="Components\bootstrap\less\normalize.less" />
+    <None Include="Components\bootstrap\less\pager.less" />
+    <None Include="Components\bootstrap\less\pagination.less" />
+    <None Include="Components\bootstrap\less\panels.less" />
+    <None Include="Components\bootstrap\less\popovers.less" />
+    <None Include="Components\bootstrap\less\print.less" />
+    <None Include="Components\bootstrap\less\progress-bars.less" />
+    <None Include="Components\bootstrap\less\responsive-embed.less" />
+    <None Include="Components\bootstrap\less\responsive-utilities.less" />
+    <None Include="Components\bootstrap\less\scaffolding.less" />
+    <None Include="Components\bootstrap\less\tables.less" />
+    <None Include="Components\bootstrap\less\theme.less" />
+    <None Include="Components\bootstrap\less\thumbnails.less" />
+    <None Include="Components\bootstrap\less\tooltip.less" />
+    <None Include="Components\bootstrap\less\type.less" />
+    <None Include="Components\bootstrap\less\utilities.less" />
+    <None Include="Components\bootstrap\less\variables.less" />
+    <None Include="Components\bootstrap\less\wells.less" />
+    <None Include="Components\bootstrap\LICENSE" />
+    <None Include="Components\bootstrap\nuget\bootstrap.less.nuspec" />
+    <None Include="Components\bootstrap\nuget\bootstrap.nuspec" />
+    <None Include="Components\bootstrap\nuget\MyGet.ps1" />
+    <None Include="Components\bootstrap\package.json" />
+    <None Include="Components\bootstrap\README.md" />
+    <None Include="Components\jquery\.bower.json" />
+    <None Include="Components\jquery\bower.json" />
+    <Content Include="Components\jquery\dist\jquery.min.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Components\jquery\dist\jquery.slim.min.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Components\jquery\external\sizzle\dist\sizzle.min.map" />
+    <None Include="Components\jquery\README.md" />
+    <None Include="Components\jquery\src\.eslintrc.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Palettes\colors_blue_indigo.xml">
@@ -92,6 +396,12 @@
     <Content Include="Palettes\colors_green_teal.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Presentation.Reports\Presentation.Reports.csproj">
+      <Project>{ee7da415-99ed-4e8a-b129-be09f40acb83}</Project>
+      <Name>Presentation.Reports</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

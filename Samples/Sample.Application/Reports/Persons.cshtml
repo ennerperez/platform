@@ -1,0 +1,33 @@
+﻿@using System.Collections.Generic;
+
+@model List<Sample.Models.Person>
+
+@{
+    Layout = "PrintLayout";
+}
+
+<div style="padding: 2cm;">
+    <h1>Listado de personas</h1>
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Sample.Models.Person item in Model)
+            {
+                <tr>
+                    <th>@(item.Name)</th>
+                    <th>@(item.Age)</th>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Un total de @(Model.Count()) personas.</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

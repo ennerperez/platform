@@ -1,0 +1,31 @@
+﻿@model Sample.Models.Person
+
+@{
+    Layout = "PrintLayout";
+}
+
+@section styles
+{
+    <link href="~/Components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+}
+
+<div class="container" style="padding: 2cm;">
+    <div class="jumbotron">
+        <h1>Bienvenido</h1>
+        <p class="lead">@(Model.Name) tiene @(Model.Age) años de edad.</p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Continuar</a></p>
+    </div>
+</div>
+
+@section footer
+{
+    <footer class="footer">
+        <p>© @(DateTime.Now.Year.ToString())</p>
+    </footer>
+}
+
+@section scripts
+{
+    <script src="~/Components/jquery/dist/jquery.min.js"></script>
+    <script src="~/Components/bootstrap/dist/js/bootstrap.min.js"></script>
+}

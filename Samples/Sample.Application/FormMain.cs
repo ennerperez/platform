@@ -1,6 +1,8 @@
 ﻿using Platform.Presentation.Reports.Windows.Forms;
 using RazorEngine;
 using RazorEngine.Templating;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Sample
@@ -17,12 +19,11 @@ namespace Sample
         private void FormMain_Shown(object sender, System.EventArgs e)
         {
 
-            foreach (var item in System.IO.Directory.GetFiles("templates", "*.cshtml"))
+            foreach (var item in System.IO.Directory.GetFiles("reports", "*.cshtml"))
             {
-                var fileinfo = new System.IO.FileInfo(item);
-                var child = new ToolStripMenuItem(fileinfo.Name);
+                var child = new ToolStripMenuItem(System.IO.Path.GetFileNameWithoutExtension(item));
                 child.Click += Child_Click;
-                templatesToolStripMenuItem.DropDownItems.Add(child);
+                reportsToolStripMenuItem.DropDownItems.Add(child);
             }
 
             Report = new RazorReportViewer()
@@ -39,7 +40,25 @@ namespace Sample
 
         private void Child_Click(object sender, System.EventArgs e)
         {
-            Report.Template = System.IO.File.ReadAllText($"templates\\{(sender as ToolStripMenuItem).Text}");
+            if ((sender as ToolStripMenuItem).Text == "Person")
+            {
+                Report.Model = new Sample.Models.Person()
+                {
+                    Name = "Suami Cepeda",
+                    Age = 27
+                };
+            }
+            else if ((sender as ToolStripMenuItem).Text == "Persons")
+            {
+                Report.Model = new List<Sample.Models.Person>()
+                {
+                    new Models.Person(){ Name="Enner Pérez", Age =30},
+                    new Models.Person(){ Name="Suami Cepeda", Age =30},
+                };
+                
+            }
+            Report.Template = System.IO.File.ReadAllText($"reports\\{(sender as ToolStripMenuItem).Text}.cshtml");
+            Report.Refresh();
         }
     }
 }
