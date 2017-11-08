@@ -16,7 +16,7 @@ namespace Platform.Support.Reflection
     {
         public static bool SetField(this INotifyPropertyChanged self, ref object field, object value, string propertyName = "")
         {
-            if (field == null && value == null || field.Equals(value))
+            if (field == null && value == null || (field != null && field.Equals(value)))
                 return false;
 
             field = value;
