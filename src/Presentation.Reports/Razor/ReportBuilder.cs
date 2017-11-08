@@ -8,18 +8,19 @@ using RazorEngine.Templating;
 using System.Reflection;
 using System.IO;
 using System.Collections;
+using RazorEngine.Configuration;
 
 namespace Platform.Presentation.Reports.Razor
 {
 
-    public class ReportBuilder : ReportBuilder<object>
+    public class ReportBuilder : ReportBuilder<dynamic>
     {
     }
 
     public class ReportBuilder<T> : IReportBuilder<T>
     {
 
-        private IRazorEngineService Engine = RazorEngine.Engine.Razor;
+        private IRazorEngineService Engine = null;
 
         private string name;
         private string mainTemplate;
@@ -27,11 +28,19 @@ namespace Platform.Presentation.Reports.Razor
         private bool precompile;
         private bool needsCompilation = true;
         private DynamicViewBag viewBag;
-
+        
         public ReportBuilder() : base()
         {
             try
             {
+
+                var config = new TemplateServiceConfiguration();
+#if DEBUG
+                config.Debug = true;
+#endif
+                var service = RazorEngineService.Create(config);
+                Engine = service;
+
                 mainTemplate = Properties.Resources._PrintLayout;
                 Engine.AddTemplate("PrintLayout", Properties.Resources._PrintLayout);
                 Engine.AddTemplate("ExceptionLayout", Properties.Resources._ExceptionLayout);
@@ -39,6 +48,7 @@ namespace Platform.Presentation.Reports.Razor
                 Engine.Compile(Properties.Resources._PrintLayout, "PrintLayout", typeof(object));
                 Engine.Compile(Properties.Resources._ExceptionLayout, "ExceptionLayout", typeof(Exception));
                 Engine.Compile(Properties.Resources._LoadingLayout, "LoadingLayout", typeof(object));
+
             }
             catch (Exception ex)
             {
@@ -60,14 +70,16 @@ namespace Platform.Presentation.Reports.Razor
         {
             if (needsCompilation)
             {
-                Engine.Compile(PrepareTemplate(), name, typeof(T));
+                var template = PrepareTemplate();
+                Engine.AddTemplate(name, template);
+                Engine.Compile(template, name, typeof(T));
                 needsCompilation = false;
             }
-            return Engine.Run(name, model != null ? model.GetType() : typeof(object), model, viewBag);
+            return Engine.Run(name, typeof(T), model != null ? model : default(T), viewBag);
         }
         private string Report(T model)
         {
-            return Engine.Run(name, model != null ? model.GetType() : typeof(object), model, viewBag);
+            return Engine.Run(name, typeof(T), model != null ? model : default(T), viewBag);
         }
 
         string PrepareTemplate()
@@ -129,7 +141,7 @@ namespace Platform.Presentation.Reports.Razor
             viewBag = new DynamicViewBag(source);
             return this;
         }
-
+                
         #endregion
 
     }

@@ -19,7 +19,7 @@ namespace Platform.Presentation.Reports.Properties {
     // a través de una herramienta como ResGen o Visual Studio.
     // Para agregar o quitar un miembro, edite el archivo .ResX y, a continuación, vuelva a ejecutar ResGen
     // con la opción /str o recompile su proyecto de VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -77,7 +77,7 @@ namespace Platform.Presentation.Reports.Properties {
         ///&lt;body&gt;
         ///
         ///    &lt;h1&gt;Error:&lt;/h1&gt;
-        ///    &lt;p&gt;@(Model.Message)&lt;/p&gt;
+        ///    @RenderBody()
         ///
         ///&lt;/body&gt;
         ///&lt;/html&gt;.
@@ -138,6 +138,25 @@ namespace Platform.Presentation.Reports.Properties {
         public static string _PrintLayout {
             get {
                 return ResourceManager.GetString("_PrintLayout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a @{
+        ///    Layout = &quot;ExceptionLayout&quot;;
+        ///}
+        ///
+        ///@model System.Exception
+        ///
+        ///&lt;div style=&quot;padding: 2cm;&quot;&gt;
+        ///    &lt;p&gt;
+        ///        @(Model.Message)
+        ///    &lt;/p&gt;
+        ///&lt;/div&gt;.
+        /// </summary>
+        public static string Exception {
+            get {
+                return ResourceManager.GetString("Exception", resourceCulture);
             }
         }
     }

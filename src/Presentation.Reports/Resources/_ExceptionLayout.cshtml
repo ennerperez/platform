@@ -1,22 +1,28 @@
-﻿@model System.Exception
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    @RenderSection("head", required: false)
+
+    @RenderSection("styles", required: false)
+
     <style>
         body {
             background: rgb(204,204,204);
+            font-family: Arial, Helvetica, sans-serif;
         }
     </style>
 </head>
 <body>
 
     <h1>Error:</h1>
-    <p>@(Model.Message)</p>
+    @RenderBody()
+
+    @RenderSection("scripts", required: false)
 
 </body>
 </html>

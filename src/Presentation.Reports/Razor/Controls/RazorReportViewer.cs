@@ -10,6 +10,10 @@ using System.Drawing.Printing;
 using RazorEngine.Templating;
 using System.IO;
 using Platform.Presentation.Reports.Razor;
+using System.Security.Permissions;
+using System.Reflection;
+using System.Security.Policy;
+using System.Security;
 
 namespace Platform.Presentation.Reports
 {
@@ -59,15 +63,14 @@ namespace Platform.Presentation.Reports
             }
             protected void OnPropertyChanging(PropertyChangingEventArgs e)
             {
-                if (!DesignMode)
-                    Refresh();
+                //if (!DesignMode)
+                //    Refresh();
                 PropertyChanging?.Invoke(this, e);
             }
 
             private void RazorReportViewer_PropertyChanged(object sender, PropertyChangedEventArgs e)
             {
-                //if ((e.PropertyName == "Zoom" || string.IsNullOrEmpty(e.PropertyName)) && )
-                Refresh();
+                //Refresh();
             }
 
             public override void Refresh()
@@ -77,26 +80,52 @@ namespace Platform.Presentation.Reports
                 if (DesignMode)
                     return;
 
+                var viewBag = new Dictionary<string, object>
+                {
+                    { "PaperKind", this.PaperKind }
+                };
+
+                //if (AppDomain.CurrentDomain.IsDefaultAppDomain())
+                //{
+                //    // RazorEngine cannot clean up from the default appdomain...
+                //    Console.WriteLine("Switching to second AppDomain, for RazorEngine...");
+                //    AppDomainSetup adSetup = new AppDomainSetup
+                //    {
+                //        ApplicationBase = AppDomain.CurrentDomain.SetupInformation.ApplicationBase
+                //    };
+                //    var current = AppDomain.CurrentDomain;
+                //    // You only need to add strongnames when your appdomain is not a full trust environment.
+                //    var strongNames = new StrongName[0];
+
+                //    var domain = AppDomain.CreateDomain(
+                //        AppDomain.CurrentDomain.FriendlyName, null,
+                //        current.SetupInformation, new PermissionSet(PermissionState.Unrestricted),
+                //        strongNames);
+                //    var exitCode = domain.ExecuteAssembly(Assembly.GetEntryAssembly().Location);
+                //    // RazorEngine will cleanup. 
+                //    AppDomain.Unload(domain);
+                //    return;
+                //}
+
                 try
                 {
-                    var viewBag = new Dictionary<string, object>();
-                    //if ((e.PropertyName == "PaperKind" || string.IsNullOrEmpty(e.PropertyName)))
-                    viewBag.Add("PaperKind", this.PaperKind);
-
-                    //if ((e.PropertyName == "Template" || string.IsNullOrEmpty(e.PropertyName)))
                     var report = ReportBuilder<object>.Create(DateTime.Now.Ticks.ToString())
                         .WithTemplate(Template)
                         .WithViewBag(viewBag)
                         .WithPrecompilation();
 
                     this.DocumentText = report.BuildReport(Model);
+
                 }
                 catch (Exception ex)
                 {
                     ex.DebugThis();
+
                     var report = ReportBuilder<Exception>.Create(DateTime.Now.Ticks.ToString())
-                       .WithTemplate(Properties.Resources._ExceptionLayout)
+                       .WithTemplate(Presentation.Reports.Properties.Resources.Exception)
+                       .WithViewBag(viewBag)
                        .WithPrecompilation();
+
                     this.DocumentText = report.BuildReport(ex);
                 }
                 finally
