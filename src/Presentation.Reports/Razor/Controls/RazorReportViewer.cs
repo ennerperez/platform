@@ -73,17 +73,18 @@ namespace Platform.Presentation.Reports
                 //Refresh();
             }
 
-            public override void Refresh()
+            public void Refresh(Dictionary<string, object> viewBag = null)
             {
-                base.Refresh();
-
                 if (DesignMode)
                     return;
 
-                var viewBag = new Dictionary<string, object>
+                if (viewBag == null)
+                    viewBag = new Dictionary<string, object>
                 {
                     { "PaperKind", this.PaperKind }
                 };
+                else
+                    viewBag.Add("PaperKind", this.PaperKind);
 
                 //if (AppDomain.CurrentDomain.IsDefaultAppDomain())
                 //{
@@ -134,6 +135,8 @@ namespace Platform.Presentation.Reports
                         this.Document.Body.Style = $"zoom:{Zoom}";
                     this.Update();
                 }
+
+                base.Refresh();
 
             }
 
