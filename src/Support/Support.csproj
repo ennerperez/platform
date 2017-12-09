@@ -129,6 +129,7 @@
     <Compile Include="SemanticVersion.cs" />
     <Compile Include="Singleton.cs" />
     <Compile Include="Text\CharacterEncoder.cs" />
+    <Compile Include="Text\Generator.cs" />
     <Compile Include="Text\Markdown.cs" />
     <Compile Include="Threading\FuncAwaitable.cs" />
     <Compile Include="Threading\FuncAwaiter.cs" />
