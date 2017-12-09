@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - ListBox for Console
 - Windows Service Loader
 - IsSingleton Extension
+- Strings Random Generator
 
 ## [3.2.32] - [2016-12-31]
 
