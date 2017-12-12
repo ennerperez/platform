@@ -68,19 +68,17 @@ namespace Platform.Presentation.Reports.Properties {
         ///    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
         ///    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
         ///    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+        ///
+        ///    @RenderSection(&quot;head&quot;, required: false)
+        ///
+        ///    @RenderSection(&quot;styles&quot;, required: false)
+        ///
         ///    &lt;style&gt;
         ///        body {
         ///            background: rgb(204,204,204);
+        ///            font-family: Arial, Helvetica, sans-serif;
         ///        }
-        ///    &lt;/style&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///
-        ///    &lt;h1&gt;Error:&lt;/h1&gt;
-        ///    @RenderBody()
-        ///
-        ///&lt;/body&gt;
-        ///&lt;/html&gt;.
+        ///    &lt;/ [resto de la cadena truncado]&quot;;.
         /// </summary>
         public static string _ExceptionLayout {
             get {
@@ -96,18 +94,17 @@ namespace Platform.Presentation.Reports.Properties {
         ///    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
         ///    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
         ///    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+        ///
+        ///    @RenderSection(&quot;head&quot;, required: false)
+        ///
+        ///    @RenderSection(&quot;styles&quot;, required: false)
+        ///
         ///    &lt;style&gt;
         ///        body {
         ///            background: rgb(204,204,204);
+        ///            font-family: Arial, Helvetica, sans-serif;
         ///        }
-        ///    &lt;/style&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///
-        ///    &lt;h1&gt;Cargando...&lt;/h1&gt;
-        ///
-        ///&lt;/body&gt;
-        ///&lt;/html&gt;.
+        ///    &lt;/ [resto de la cadena truncado]&quot;;.
         /// </summary>
         public static string _LoadingLayout {
             get {
@@ -123,17 +120,13 @@ namespace Platform.Presentation.Reports.Properties {
         ///    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
         ///    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
         ///    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
-        ///    &lt;style&gt;
-        ///        body {
-        ///            background: rgb(204,204,204);
-        ///        }
         ///
-        ///        page {
-        ///            background: white;
-        ///            display: block;
-        ///            margin: 0 auto;
-        ///            margin-bottom: 0.5cm;
-        ///            box-s [resto de la cadena truncado]&quot;;.
+        ///    @RenderSection(&quot;head&quot;, required: false)
+        ///
+        ///    &lt;!-- WARNING: Respond.js doesn&apos;t work if you view the page via file:// --&gt;
+        ///    &lt;!--[if lt IE 9]&gt;
+        ///      &lt;script src=&quot;https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js&quot;&gt;&lt;/script&gt;
+        ///     [resto de la cadena truncado]&quot;;.
         /// </summary>
         public static string _PrintLayout {
             get {

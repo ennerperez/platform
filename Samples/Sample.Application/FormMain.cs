@@ -40,22 +40,23 @@ namespace Sample
 
         private void Child_Click(object sender, System.EventArgs e)
         {
+
+            var source = new List<Sample.Models.Person>()
+                {
+                    new Models.Person(){ Name="Enner Pérez", Age =31},
+                    new Models.Person(){ Name="Richard Pérez", Age =30},
+                    new Models.Person(){ Name="Jamile Pérez", Age =26},
+                    new Models.Person(){ Name="Mariana Pérez", Age =24},
+                    new Models.Person(){ Name="Suami Cepeda", Age =30},
+                };
+
             if ((sender as ToolStripMenuItem).Text == "Person")
             {
-                Report.Model = new Sample.Models.Person()
-                {
-                    Name = "Suami Cepeda",
-                    Age = 27
-                };
+                Report.Model = source[0];
             }
             else if ((sender as ToolStripMenuItem).Text == "Persons")
             {
-                Report.Model = new List<Sample.Models.Person>()
-                {
-                    new Models.Person(){ Name="Enner Pérez", Age =30},
-                    new Models.Person(){ Name="Suami Cepeda", Age =30},
-                };
-                
+                Report.Model = source;
             }
             Report.Template = System.IO.File.ReadAllText($"reports\\{(sender as ToolStripMenuItem).Text}.cshtml");
             Report.Refresh();

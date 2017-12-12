@@ -1,11 +1,11 @@
-﻿using Platform.Presentation.Reports.ReportBuilderEntities;
+﻿using Platform.Presentation.Reports.RDLC.ReportBuilderEntities;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Platform.Presentation.Reports
+namespace Platform.Presentation.Reports.RDLC
 {
     public static class ReportEngine
     {

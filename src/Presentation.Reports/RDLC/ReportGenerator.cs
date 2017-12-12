@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Platform.Presentation.Reports
+namespace Platform.Presentation.Reports.RDLC
 {
     namespace Windows.Forms
     {
@@ -16,12 +16,7 @@ namespace Platform.Presentation.Reports
 
             public ReportGenerator(LocalReport localReport)
             {
-                if (localReport == null)
-                {
-                    throw new ArgumentNullException("localReport");
-                }
-
-                this.localReport = localReport;
+                this.localReport = localReport ?? throw new ArgumentNullException("localReport");
                 this.DataSources = localReport.DataSources;
             }
 
@@ -56,12 +51,7 @@ namespace Platform.Presentation.Reports
 
             public ReportGenerator(LocalReport localReport)
             {
-                if (localReport == null)
-                {
-                    throw new ArgumentNullException("localReport");
-                }
-
-                this.localReport = localReport;
+                this.localReport = localReport ?? throw new ArgumentNullException("localReport");
                 this.DataSources = localReport.DataSources;
             }
 
