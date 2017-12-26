@@ -66,6 +66,8 @@
     <Compile Include="Attributes\CallerAttributes.cs" />
     <Compile Include="Console\ListBox.cs" />
     <Compile Include="Helpers\StreamHelper.cs" />
+    <Compile Include="IO\ShortcutExtensions.cs" />
+    <Compile Include="IO\ShortcutHelper.cs" />
     <Compile Include="IO\StreamExtensions.cs" />
     <Compile Include="IO\StreamHelper.cs" />
     <Compile Include="Reflection\ApplicationInfo.cs" />

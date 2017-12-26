@@ -21,6 +21,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Windows Service Loader
 - IsSingleton Extension
 - Strings Random Generator
+- Shortcut Helpers/Extensions
 
 ## [3.2.32] - [2016-12-31]
 
