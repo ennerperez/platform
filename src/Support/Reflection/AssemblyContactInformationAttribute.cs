@@ -8,36 +8,41 @@ namespace Platform.Support
     {
 #endif
 
-        namespace Reflection
+    namespace Reflection
+    {
+        /// <summary>
+        /// Contact information
+        /// </summary>
+        [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true, Inherited = false)]
+        public sealed class AssemblyContactInformationAttribute : global::System.Attribute
         {
-            /// <summary>
-            /// Contact information
-            /// </summary>
-            [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true, Inherited = false)]
-            public sealed class AssemblyContactInformationAttribute : global::System.Attribute
+            public AssemblyContactInformationAttribute(string description, string value)
             {
-                public AssemblyContactInformationAttribute(string description, string value)
-                {
-                    this.description = description;
-                    this.value = value;
-                }
+                Description = description;
+                Value = value;
+            }
 
-                public AssemblyContactInformationAttribute(string value)
-                {
-                    if (value.IsNumeric()) { this.description = "number"; }
-                    if (value.IsEmail()) { this.description = "email"; }
-                    this.value = value;
-                }
+            public AssemblyContactInformationAttribute(string value)
+            {
+                if (value.IsNumeric()) { Description = "number"; }
+                if (value.IsEmail()) { Description = "email"; }
+                Value = value;
+            }
 
-                private string description;
-                private string value;
+            public string Description { get; internal set; }
+            public string Value { get; internal set; }
 
-                public string[] Contact
-                {
-                    get { return new string[] { this.description, this.value }; }
-                }
+            public string[] Contact
+            {
+                get { return new string[] { Description, Value }; }
+            }
+
+            public override string ToString()
+            {
+                return $"{Description}: {Value}";
             }
         }
+    }
 
 #if PORTABLE
     }

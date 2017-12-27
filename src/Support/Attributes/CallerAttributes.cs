@@ -1,6 +1,5 @@
-﻿#if NETFX_40 && !NETFX_45
+﻿#if !NETFX_45 || (PORTABLE && !PROFILE_78)
 
-//namespace Platform.Support.Attributes
 namespace System.Runtime.CompilerServices
 {
     [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false, Inherited = false)]

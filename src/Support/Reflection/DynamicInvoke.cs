@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !PORTABLE
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -214,3 +215,4 @@ namespace Platform.Support.Reflection
         }
     }
 }
+#endif

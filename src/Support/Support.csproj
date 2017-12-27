@@ -77,15 +77,14 @@
     <Compile Include="Obsolete.cs" />
     <Compile Include="Attributes\TagAttribute.cs" />
     <Compile Include="Reflection\AssemblyCompanyUrlAttribute.cs" />
+    <Compile Include="Reflection\AssemblyRepoAttribute.cs" />
     <Compile Include="Reflection\AssemblyThirdPartyAttribute.cs" />
     <Compile Include="Reflection\AssemblyProductLevelAttribute.cs" />
     <Compile Include="Reflection\AssemblyCompanyIdAttribute.cs" />
     <Compile Include="Reflection\AssemblyExternalRefAttribute.cs" />
-    <Compile Include="Attributes\AttributesHelper.cs" />
     <Compile Include="Reflection\AssemblyDeveloperAttribute.cs" />
     <Compile Include="Reflection\AssemblyContactInformationAttribute.cs" />
     <Compile Include="Reflection\AssemblyBuildDateAttribute.cs" />
-    <Compile Include="Check.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Console\ProgressBar.cs" />
     <Compile Include="Console\Spinner.cs" />
@@ -100,7 +99,7 @@
     <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\TypeHelper.cs" />
-    <Compile Include="IsNull.cs" />
+    <Compile Include="Parameter.cs" />
     <Compile Include="Managers\BrandingManager.cs" />
     <Compile Include="Collections\CollectionExtensions.cs" />
     <Compile Include="Collections\TypeListComparer.cs" />
@@ -114,10 +113,9 @@
     <Compile Include="OS\OSHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\DynamicInvoke.cs" />
-    <Compile Include="Reflection\NotifyPropertyExtensions.cs" />
     <Compile Include="Reflection\ReflectionExtensions.cs" />
     <Compile Include="Reflection\IReflectionService.cs" />
-    <Compile Include="Reflection\NotifyPropertyHelper.cs" />
+    <Compile Include="Reflection\PropertyNotifierService.cs" />
     <Compile Include="Reflection\ReflectionService.cs" />
     <Compile Include="Reflection\ReflectOn.cs" />
     <Compile Include="Security\Cryptography\CRC32.cs" />
@@ -137,6 +135,7 @@
     <Compile Include="Threading\FuncAwaiter.cs" />
     <Compile Include="Threading\FuncExtensions.cs" />
     <Compile Include="Threading\IAwaitable.cs" />
+    <Compile Include="ValueConverter.cs" />
     <Compile Include="VariantType.cs" />
   </ItemGroup>
   <ItemGroup>

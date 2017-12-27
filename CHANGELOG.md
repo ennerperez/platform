@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - IsSingleton Extension
 - Strings Random Generator
 - Shortcut Helpers/Extensions
+- Repo Attributes (GitHub)
 
 ## [3.2.32] - [2016-12-31]
 

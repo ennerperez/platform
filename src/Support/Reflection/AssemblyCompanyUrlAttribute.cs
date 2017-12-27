@@ -8,25 +8,24 @@ namespace Platform.Support
     {
 #endif
 
-        namespace Reflection
+    namespace Reflection
+    {
+        [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false)]
+        public sealed class AssemblyCompanyUrlAttribute : global::System.Attribute
         {
-            [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false)]
-            public sealed class AssemblyCompanyUrlAttribute : global::System.Attribute
+            public AssemblyCompanyUrlAttribute(Uri uri)
             {
-                public AssemblyCompanyUrlAttribute(Uri uri)
-                {
-                    this.url = uri.ToString();
-                }
-
-                public AssemblyCompanyUrlAttribute(string url)
-                {
-                    this.url = url;
-                }
-
-                private string url;
-                public string Url { get { return url; } }
+                Url = uri.ToString();
             }
+
+            public AssemblyCompanyUrlAttribute(string url)
+            {
+                Url = url;
+            }
+
+            public string Url { get; internal set; }
         }
+    }
 
 #if PORTABLE
     }

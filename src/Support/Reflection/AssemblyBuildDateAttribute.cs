@@ -8,38 +8,37 @@ namespace Platform.Support
     {
 #endif
 
-        namespace Reflection
+    namespace Reflection
+    {
+        /// <summary>
+        /// Define the build <typeparamref name="datetime"/> for the project
+        /// </summary>
+        [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false)]
+        public sealed class AssemblyBuildDateAttribute : global::System.Attribute
         {
-            /// <summary>
-            /// Define the build <typeparamref name="datetime"/> for the project
-            /// </summary>
-            [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false)]
-            public sealed class AssemblyBuildDateAttribute : global::System.Attribute
+            public AssemblyBuildDateAttribute() : base()
             {
-                public AssemblyBuildDateAttribute() : base()
-                {
-                    buildDate = DateTime.Now;
-                }
-
-                public AssemblyBuildDateAttribute(string date) : base()
-                {
-                    buildDate = DateTime.Parse(date);
-                }
-
-                public AssemblyBuildDateAttribute(int year, int month, int day = 0) : base()
-                {
-                    buildDate = new DateTime(year, month, day == 0 ? 1 : day);
-                }
-
-                public AssemblyBuildDateAttribute(DateTime date) : base()
-                {
-                    buildDate = date;
-                }
-
-                private DateTime buildDate;
-                public DateTime Date { get { return buildDate; } }
+                Date = DateTime.Now;
             }
+
+            public AssemblyBuildDateAttribute(string date) : base()
+            {
+                Date = DateTime.Parse(date);
+            }
+
+            public AssemblyBuildDateAttribute(int year, int month, int day = 0) : base()
+            {
+                Date = new DateTime(year, month, day == 0 ? 1 : day);
+            }
+
+            public AssemblyBuildDateAttribute(DateTime date) : base()
+            {
+                Date = date;
+            }
+
+            public DateTime Date { get; internal set; }
         }
+    }
 
 #if PORTABLE
     }

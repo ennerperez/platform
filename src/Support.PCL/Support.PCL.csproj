@@ -45,14 +45,11 @@
     <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Attributes\AttributesHelper.cs">
-      <Link>Attributes\AttributesHelper.cs</Link>
+    <Compile Include="..\Support\Attributes\CallerAttributes.cs">
+      <Link>Attributes\CallerAttributes.cs</Link>
     </Compile>
     <Compile Include="..\Support\Attributes\TagAttribute.cs">
       <Link>Attributes\TagAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Check.cs">
-      <Link>Check.cs</Link>
     </Compile>
     <Compile Include="..\Support\Collections\CollectionExtensions.cs">
       <Link>Collections\CollectionExtensions.cs</Link>
@@ -99,17 +96,20 @@
     <Compile Include="..\Support\IO\StreamHelper.cs">
       <Link>IO\StreamHelper.cs</Link>
     </Compile>
-    <Compile Include="..\Support\IsNull.cs">
-      <Link>IsNull.cs</Link>
-    </Compile>
     <Compile Include="..\Support\Maths\MathHelper.cs">
       <Link>Maths\MathHelper.cs</Link>
     </Compile>
     <Compile Include="..\Support\Maths\Vector2.cs">
       <Link>Maths\Vector2.cs</Link>
     </Compile>
+    <Compile Include="..\Support\NativeMethods.cs">
+      <Link>NativeMethods.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Obsolete.cs">
       <Link>Obsolete.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Parameter.cs">
+      <Link>Parameter.cs</Link>
     </Compile>
     <Compile Include="..\Support\Reflection\ApplicationInfo.cs">
       <Link>Reflection\ApplicationInfo.cs</Link>
@@ -144,11 +144,29 @@
     <Compile Include="..\Support\Reflection\AssemblyProductLevelAttribute.cs">
       <Link>Reflection\AssemblyProductLevelAttribute.cs</Link>
     </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyRepoAttribute.cs">
+      <Link>Reflection\AssemblyRepoAttribute.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Reflection\AssemblyThirdPartyAttribute.cs">
       <Link>Reflection\AssemblyThirdPartyAttribute.cs</Link>
     </Compile>
+    <Compile Include="..\Support\Reflection\DynamicInvoke.cs">
+      <Link>Reflection\DynamicInvoke.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\IReflectionService.cs">
+      <Link>Reflection\IReflectionService.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\PropertyNotifierService.cs">
+      <Link>Reflection\PropertyNotifierService.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Reflection\ReflectionExtensions.cs">
       <Link>Reflection\ReflectionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\ReflectionService.cs">
+      <Link>Reflection\ReflectionService.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\ReflectOn.cs">
+      <Link>Reflection\ReflectOn.cs</Link>
     </Compile>
     <Compile Include="..\Support\SemanticVersion.cs">
       <Link>SemanticVersion.cs</Link>
@@ -158,6 +176,12 @@
     </Compile>
     <Compile Include="..\Support\Text\Markdown.cs">
       <Link>Text\Markdown.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\ValueConverter.cs">
+      <Link>ValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\VariantType.cs">
+      <Link>VariantType.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

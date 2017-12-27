@@ -1,5 +1,11 @@
 ﻿namespace Platform.Support
 {
+#if PORTABLE
+
+    namespace Core
+    {
+#endif
+
     public enum VariantType
     {
         Empty = 0,
@@ -23,4 +29,8 @@
         UserDefinedType = 36,
         Array = 8192,
     }
+
+#if PORTABLE
+    }
+#endif
 }

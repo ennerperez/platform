@@ -30,3 +30,4 @@ using Platform.Support.Core.Reflection;
 
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
+[assembly: GitHub("ennerperez", "platform")]

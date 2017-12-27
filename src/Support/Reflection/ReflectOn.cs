@@ -2,19 +2,33 @@
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Platform.Support.Reflection
+namespace Platform.Support
 {
-    public static class ReflectOn<T>
+#if PORTABLE
+
+    namespace Core
     {
-        public static PropertyInfo GetProperty<TResult>(Expression<Func<T, TResult>> expression)
+#endif
+
+        namespace Reflection
         {
-            return (PropertyInfo)GetMember(expression);
+            public static class ReflectOn<T>
+            {
+                public static PropertyInfo GetProperty<TResult>(Expression<Func<T, TResult>> expression)
+                {
+                    return (PropertyInfo)GetMember(expression);
+                }
+
+                private static MemberInfo GetMember<TResult>(Expression<Func<T, TResult>> expression)
+                {
+                    var memberExpression = (MemberExpression)expression.Body;
+                    return memberExpression.Member;
+                }
+            }
         }
 
-        private static MemberInfo GetMember<TResult>(Expression<Func<T, TResult>> expression)
-        {
-            var memberExpression = (MemberExpression)expression.Body;
-            return memberExpression.Member;
-        }
+#if PORTABLE
     }
+
+#endif
 }
