@@ -13,14 +13,14 @@ namespace Sample.Console
 
             if (Sample.Core.Demostrative.Instance.IsSingleton())
                 System.Console.WriteLine("Demostrative is Singleton");
-            
+
             //if (Platform.Support.Core.Library.IsPortable())
             //    System.Console.WriteLine("Platform PCL");
 
-            if (Platform.Support.OS.OSHelper.IsWindows())
+            if (Platform.Support.OS.Environment.IsWindows())
                 System.Console.WriteLine("Running Windows");
 
-            if (Platform.Support.OS.OSHelper.IsLinux())
+            if (Platform.Support.OS.Environment.IsLinux())
                 System.Console.WriteLine("Running Linux");
 
             System.Console.ReadKey();
