@@ -1,10 +1,13 @@
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
+using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections;
 using System.Diagnostics;
+using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
 using System.Text;
 
 namespace Platform.Support.Windows
@@ -120,6 +123,66 @@ namespace Platform.Support.Windows
             string lpszProxyName, //always null
             string lpszProxyBypass,  // always null
             int dwFlags);
+
+        // Token: 0x0600008E RID: 142
+        [DllImport(ExternDll.WinInet, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern SafeInetHandle InternetOpen(
+            string lpszAgent,
+            uint dwAccessType,
+            string lpszProxyName,
+            string lpszProxyBypass,
+            uint dwFlags);
+
+        // Token: 0x0600008F RID: 143
+        [DllImport(ExternDll.WinInet, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern IntPtr InternetOpenUrl(
+            SafeInetHandle hInternet,
+            string lpszUrl,
+            string lpszHeaders,
+            int dwHeadersLength,
+            int dwFlags,
+            IntPtr dwContext);
+
+        // Token: 0x06000090 RID: 144
+        [DllImport(ExternDll.WinInet, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern bool InternetSetCookie(
+            string lpszUrlName,
+            string lbszCookieName,
+            string lpszCookieData);
+
+        // Token: 0x06000091 RID: 145
+        [DllImport(ExternDll.WinInet, SetLastError = true, CharSet = CharSet.Unicode)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool HttpQueryInfo(IntPtr hRequest,
+            uint dwInfoLevel,
+            [MarshalAs(UnmanagedType.LPArray)] byte[] lpvBuffer,
+            ref int dwBufferLength,
+            out int dwIndex);
+
+        // Token: 0x06000092 RID: 146
+        [DllImport(ExternDll.WinInet, SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern bool InternetSetOption(
+            IntPtr hInternet,
+            uint dwOption,
+            IntPtr lpBuffer,
+            int dwBufferLength);
+
+        // Token: 0x06000093 RID: 147
+        [DllImport(ExternDll.WinInet, SetLastError = true, CharSet = CharSet.Unicode)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool InternetReadFile(
+            IntPtr hRequest,
+            [MarshalAs(UnmanagedType.LPArray)] byte[] lpBuffer,
+            int dwNumberOfBytesToRead,
+            out int lpdwNumberOfBytesRead);
+
+        // Token: 0x0600009A RID: 154
+        [DllImport(ExternDll.WinInet, SetLastError = true, CharSet = CharSet.Unicode)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool InternetGetLastResponseInfo(
+            out int errorcode,
+            StringBuilder buffer,
+            ref int bufferLength);
 
         /// <summary>
         /// Creates the internet connection
@@ -457,6 +520,23 @@ namespace Platform.Support.Windows
             }
 
             return stringBuffer.ToString();
+        }
+    }
+
+    [SecurityPermission(SecurityAction.LinkDemand, UnmanagedCode = true)]
+    public class SafeInetHandle : SafeHandleZeroOrMinusOneIsInvalid
+    {
+        internal SafeInetHandle() : base(true)
+        {
+        }
+
+        [ReliabilityContract(Consistency.WillNotCorruptState, Cer.MayFail)]
+        protected override bool ReleaseHandle()
+        {
+            bool flag = WinInet.InternetCloseHandle(this.handle);
+            if (!flag)
+                Marshal.GetLastWin32Error();
+            return flag;
         }
     }
 

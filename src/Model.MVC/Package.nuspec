@@ -23,6 +23,7 @@
   </metadata>
   <files>
     <file src="..\Model.MVC\bin\release\Platform.Model.MVC.dll" target="lib\net40\Platform.Model.MVC.dll" />
+    <file src="..\Model.MVC.Net45\bin\release\Platform.Model.MVC.dll" target="lib\net45\Platform.Model.MVC.dll" />
     <file src="..\Model.MVC.PCL\bin\release\Platform.Model.MVC.PCL.dll" target="lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Model.MVC.PCL.dll" />
     <file src="..\Model.MVC.PCL.Net45\bin\release\Platform.Model.MVC.PCL.dll" target="lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Model.MVC.PCL.dll" />
   </files>

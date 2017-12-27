@@ -156,7 +156,7 @@ namespace Platform.Support.Data.Attributes
         /// <param name="name">The index name.</param>
         public IndexAttribute(string name)
         {
-            Check.NotEmpty(name, "name");
+            Parameter.NotEmpty(name, "name");
             this._name = name;
         }
 
@@ -172,7 +172,7 @@ namespace Platform.Support.Data.Attributes
         /// <param name="order">A number which will be used to determine column ordering for multi-column indexes.</param>
         public IndexAttribute(string name, int order)
         {
-            Check.NotEmpty(name, "name");
+            Parameter.NotEmpty(name, "name");
             if (order < 0)
             {
                 throw new ArgumentOutOfRangeException("order");

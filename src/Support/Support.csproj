@@ -34,9 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -65,9 +63,14 @@
     </Compile>
     <Compile Include="Attributes\CallerAttributes.cs" />
     <Compile Include="ConsoleEx\ListBox.cs" />
+    <Compile Include="DisposableObject.cs" />
+    <Compile Include="IO\ProgressUpdate.cs" />
     <Compile Include="IO\ShortcutExtensions.cs" />
     <Compile Include="IO\Shortcut.cs" />
     <Compile Include="IO\StreamExtensions.cs" />
+    <Compile Include="IO\Utilities.cs" />
+    <Compile Include="Localization\LocalizedException.cs" />
+    <Compile Include="NoSuitableEngineException.cs" />
     <Compile Include="Reflection\ApplicationInfo.cs" />
     <Compile Include="Reflection\AssemblyLicenseAttribute.cs" />
     <Compile Include="Reflection\AssemblyOwnerAttribute.cs" />
@@ -125,6 +128,7 @@
     <Compile Include="Threading\FuncAwaiter.cs" />
     <Compile Include="Threading\FuncExtensions.cs" />
     <Compile Include="Threading\IAwaitable.cs" />
+    <Compile Include="Diagnostics\Utilities.cs" />
     <Compile Include="ValueConverter.cs" />
     <Compile Include="VariantType.cs" />
   </ItemGroup>

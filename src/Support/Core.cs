@@ -8,7 +8,7 @@ namespace Platform.Support
     {
 #endif
 
-    public static class Library
+    public static partial class Library
     {
 #if PORTABLE
             private const bool isPortable = true;

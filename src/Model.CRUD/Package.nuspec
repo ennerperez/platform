@@ -23,6 +23,7 @@
   </metadata>
   <files>
     <file src="..\Model.CRUD\bin\release\Platform.Model.CRUD.dll" target="lib\net40\Platform.Model.CRUD.dll" />
+    <file src="..\Model.CRUD.Net45\bin\release\Platform.Model.CRUD.dll" target="lib\net45\Platform.Model.CRUD.dll" />
     <file src="..\Model.CRUD.PCL\bin\release\Platform.Model.CRUD.PCL.dll" target="lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Model.CRUD.PCL.dll" />
     <file src="..\Model.CRUD.PCL.Net45\bin\release\Platform.Model.CRUD.PCL.dll" target="lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Model.CRUD.PCL.dll" />
   </files>

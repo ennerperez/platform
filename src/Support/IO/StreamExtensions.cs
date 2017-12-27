@@ -249,6 +249,31 @@ namespace Platform.Support
                 }
                 return memStream.ToArray();
             }
+
+            public static string ConvertToBase64(this Stream stream)
+            {
+                if (stream == null)
+                    throw new ArgumentNullException("stream");
+                long length = stream.Length;
+                if (length > 2147483647L)
+                    throw new IOException(string.Format("Cannot convert a stream longer than ${0} bytes to Base 64 string. Stream length: ${1}", new object[]
+                    {
+                                int.MaxValue,
+                                length
+                    }));
+                int num = (int)length;
+                byte[] array = new byte[num];
+                stream.Read(array, 0, num);
+                return Convert.ToBase64String(array);
+            }
+
+            public static void WriteBase64(this Stream stream, string base64Data)
+            {
+                if (stream == null)
+                    throw new ArgumentNullException("stream");
+                byte[] array = Convert.FromBase64String(base64Data);
+                stream.Write(array, 0, array.Length);
+            }
         }
     }
 

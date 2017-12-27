@@ -75,6 +75,12 @@
     <Compile Include="..\Support\Core.cs">
       <Link>Core.cs</Link>
     </Compile>
+    <Compile Include="..\Support\Diagnostics\Utilities.cs">
+      <Link>Diagnostics\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\DisposableObject.cs">
+      <Link>DisposableObject.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Extensions\DateTimeExtensions.cs">
       <Link>Extensions\DateTimeExtensions.cs</Link>
     </Compile>
@@ -99,6 +105,9 @@
     <Compile Include="..\Support\IO\IniFile.cs">
       <Link>IO\IniFile.cs</Link>
     </Compile>
+    <Compile Include="..\Support\IO\ProgressUpdate.cs">
+      <Link>IO\ProgressUpdate.cs</Link>
+    </Compile>
     <Compile Include="..\Support\IO\Shortcut.cs">
       <Link>IO\Shortcut.cs</Link>
     </Compile>
@@ -107,6 +116,12 @@
     </Compile>
     <Compile Include="..\Support\IO\StreamExtensions.cs">
       <Link>IO\StreamExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\IO\Utilities.cs">
+      <Link>IO\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Localization\LocalizedException.cs">
+      <Link>Localization\LocalizedException.cs</Link>
     </Compile>
     <Compile Include="..\Support\Localization\ResourceEnumConverter.cs">
       <Link>Localization\ResourceEnumConverter.cs</Link>
@@ -122,6 +137,9 @@
     </Compile>
     <Compile Include="..\Support\NativeMethods.cs">
       <Link>NativeMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\NoSuitableEngineException.cs">
+      <Link>NoSuitableEngineException.cs</Link>
     </Compile>
     <Compile Include="..\Support\Obsolete.cs">
       <Link>Obsolete.cs</Link>

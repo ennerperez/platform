@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9C79F916-61FA-4811-9264-A109B865CBA7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Platform.Support.Windows</RootNamespace>
+    <AssemblyName>Platform.Support.Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_45;NETFX_40;NETFX_35;NETFX_30;NETFX_20;INTEROP;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_45;NETFX_40;NETFX_35;NETFX_30;NETFX_20;INTEROP;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Support.Net45\Support.csproj">
+      <Project>{5654d378-10ca-4ab0-aaf1-f3f72c6202b6}</Project>
+      <Name>Support</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs">
+      <Link>Properties\AssemblyInfo.Common.cs</Link>
+    </Compile>
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs">
+      <Link>Properties\AssemblyInfo.Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
+      <Link>Properties\AssemblyInfo.Version.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\Errors.cs">
+      <Link>Errors.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\ExternDll.cs">
+      <Link>ExternDll.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\Helpers\MessageHelper.cs">
+      <Link>Helpers\MessageHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\Helpers\OSHelper.cs">
+      <Link>Helpers\OSHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\Helpers\RegistryHelper.cs">
+      <Link>Helpers\RegistryHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\Helpers\UACHelper.cs">
+      <Link>Helpers\UACHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Advapi32.cs">
+      <Link>NativeMethods\Advapi32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\ComCtl32.cs">
+      <Link>NativeMethods\ComCtl32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\ComDlg32.cs">
+      <Link>NativeMethods\ComDlg32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Crypt32.cs">
+      <Link>NativeMethods\Crypt32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\DbgHelp.cs">
+      <Link>NativeMethods\DbgHelp.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Dwmapi.cs">
+      <Link>NativeMethods\Dwmapi.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Gdi32.cs">
+      <Link>NativeMethods\Gdi32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\GdiPlus.cs">
+      <Link>NativeMethods\GdiPlus.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Kernel32.cs">
+      <Link>NativeMethods\Kernel32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Mapi32.cs">
+      <Link>NativeMethods\Mapi32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Mpr.cs">
+      <Link>NativeMethods\Mpr.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Ole32.cs">
+      <Link>NativeMethods\Ole32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\OleAut32.cs">
+      <Link>NativeMethods\OleAut32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Propsys.cs">
+      <Link>NativeMethods\Propsys.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Psapi.cs">
+      <Link>NativeMethods\Psapi.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Shell32.cs">
+      <Link>NativeMethods\Shell32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Shlwapi.cs">
+      <Link>NativeMethods\Shlwapi.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\UrlMon.cs">
+      <Link>NativeMethods\UrlMon.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\User32.cs">
+      <Link>NativeMethods\User32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\UserEnv.cs">
+      <Link>NativeMethods\UserEnv.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Uxtheme.cs">
+      <Link>NativeMethods\Uxtheme.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\WinInet.cs">
+      <Link>NativeMethods\WinInet.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\WinMm.cs">
+      <Link>NativeMethods\WinMm.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Wtsapi32.cs">
+      <Link>NativeMethods\Wtsapi32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\ServiceLoader.cs">
+      <Link>ServiceLoader.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+  </Target>
+</Project>

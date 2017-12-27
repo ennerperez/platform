@@ -31,7 +31,7 @@ namespace Platform.Support.Data.Attributes
         /// <param name="name"> If placed on a foreign key property, the name of the associated navigation property. If placed on a navigation property, the name of the associated foreign key(s). If a navigation property has multiple foreign keys, a comma separated list should be supplied. </param>
         public ForeignKeyAttribute(string name)
         {
-            Check.NotEmpty(name, "name");
+            Parameter.NotEmpty(name, "name");
             this._name = name;
         }
     }

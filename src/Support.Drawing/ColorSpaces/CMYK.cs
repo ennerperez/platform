@@ -16,9 +16,9 @@ namespace Platform.Support.Drawing
             double m = value.Magenta * (1 - value.Key) + value.Key;
             double y = value.Yellow * (1 - value.Key) + value.Key;
 
-            int r = (int)Math.Round((1 - c) * 255);
-            int g = (int)Math.Round((1 - m) * 255);
-            int b = (int)Math.Round((1 - y) * 255);
+            int r = (int)System.Math.Round((1 - c) * 255);
+            int g = (int)System.Math.Round((1 - m) * 255);
+            int b = (int)System.Math.Round((1 - y) * 255);
 
             return Color.FromArgb(value.Alpha, r, g, b);
         }
@@ -33,7 +33,7 @@ namespace Platform.Support.Drawing
             double c = 1 - (color.R / 255d);
             double m = 1 - (color.G / 255d);
             double y = 1 - (color.B / 255d);
-            double k = Math.Min(c, Math.Min(m, y));
+            double k = System.Math.Min(c, System.Math.Min(m, y));
 
             c = (c - k) / (1 - k);
             m = (m - k) / (1 - k);

@@ -10,24 +10,9 @@ namespace Platform.Support
 
     public static partial class Extensions
     {
-        private static readonly object randomLock = new object();
-        private static readonly Random random = new Random();
-
-        public static int Random(this int max)
-        {
-            lock (randomLock)
-                return random.Next(max + 1);
-        }
-
-        public static int Random(this int min, int max)
-        {
-            lock (randomLock)
-                return random.Next(min, max + 1);
-        }
-
         public static int RandomAdd(this int num, int min, int max)
         {
-            return num + min.Random(max);
+            return num + Math.Random(min, max);
         }
 
         public static int Min(this int num, int min)

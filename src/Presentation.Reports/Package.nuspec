@@ -22,5 +22,6 @@
   </metadata>
   <files>
     <file src="..\Presentation.Reports\bin\release\Platform.Presentation.Reports.dll" target="lib\net40\Platform.Presentation.Reports.dll" />
+    <file src="..\Presentation.Reports.Net45\bin\release\Platform.Presentation.Reports.dll" target="lib\net45\Platform.Presentation.Reports.dll" />
   </files>
 </package>

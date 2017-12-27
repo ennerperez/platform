@@ -28,7 +28,7 @@ namespace Platform.Support.Data.Attributes
         /// <param name="property"> The navigation property representing the other end of the same relationship. </param>
         public InversePropertyAttribute(string property)
         {
-            Check.NotEmpty(property, "property");
+            Parameter.NotEmpty(property, "property");
             this._property = property;
         }
     }

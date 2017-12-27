@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 
+#if !PORTABLE
+
+using System.IO;
+
+#endif
+
 namespace Platform.Support
 {
 #if PORTABLE
@@ -25,6 +31,18 @@ namespace Platform.Support
             }
 
 #if !PORTABLE
+
+            public static string GetTemporaryDirectory()
+            {
+                string text;
+                do
+                {
+                    text = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+                }
+                while (Directory.Exists(text));
+                Directory.CreateDirectory(text);
+                return text;
+            }
 
             /// <summary>
             /// returns 32 for 32 bit systems 64 for 64 bit systems

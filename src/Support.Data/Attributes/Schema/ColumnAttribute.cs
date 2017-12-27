@@ -56,7 +56,7 @@ namespace Platform.Support.Data.Attributes
             }
             set
             {
-                Check.NotEmpty(value, "value");
+                Parameter.NotEmpty(value, "value");
                 this._typeName = value;
             }
         }
@@ -74,7 +74,7 @@ namespace Platform.Support.Data.Attributes
         /// <param name="name"> The name of the column the property is mapped to. </param>
         public ColumnAttribute(string name)
         {
-            Check.NotEmpty(name, "name");
+            Parameter.NotEmpty(name, "name");
             this._name = name;
         }
     }

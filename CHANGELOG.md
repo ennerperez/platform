@@ -7,8 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- Dialog Helper
-- Stream Helper
+- NETFX45 Libraries
 - ToolTip Extended
 - Color Spaces
 - AsType Extensions
@@ -17,14 +16,19 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Windows Service Loader
 - IsSingleton Extension
 - Strings Random Generator
-- Shortcut Helpers/Extensions
+- Stream Extensions
+- Shortcut Extensions
 - Repo Attributes (GitHub)
+- Dialogs Extensions
+- CommandLine Processor
+- DownloadManager
 
 ### Changed
 
-- Build engine
+- Build Engine
 - Extensions Naming
 - Reflected Namespaces
+- Helpers as Utilities
 
 ## [3.2.32] - [2016-12-31]
 

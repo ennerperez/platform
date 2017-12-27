@@ -80,4 +80,49 @@ namespace Platform.Support.Windows
         public const int CONNECTION_REFUSED = 10061;
         public const int NOT_CONNECTED = 2250;
     }
+
+#if !INTEROP
+
+    internal enum Win32ErrorCode
+#else
+
+    public enum Win32ErrorCode
+#endif
+    {
+        ERROR_FILE_NOT_FOUND = 2,
+        ERROR_PATH_NOT_FOUND,
+        ERROR_ACCESS_DENIED = 5,
+        ERROR_INVALID_HANDLE,
+        ERROR_INVALID_DRIVE = 15,
+        ERROR_NO_MORE_FILES = 18,
+        ERROR_NOT_READY = 21,
+        ERROR_SHARING_VIOLATION = 32,
+        ERROR_FILE_EXISTS = 80,
+        ERROR_INVALID_PARAMETER = 87,
+        ERROR_INVALID_NAME = 123,
+        ERROR_BAD_PATHNAME = 161,
+        ERROR_ALREADY_EXISTS = 183,
+        ERROR_FILENAME_EXCED_RANGE = 206,
+        ERROR_OPERATION_ABORTED = 995,
+        ELEMENT_NOT_FOUND = 1168
+    }
+
+#if !INTEROP
+
+    internal static partial class Win32Error
+#else
+
+    public static partial class Win32Error
+#endif
+    {
+        public static string GetMessage(Win32ErrorCode errorCode)
+        {
+            return Kernel32.GetMessage((int)errorCode);
+        }
+
+        public static int MakeHRFromErrorCode(Win32ErrorCode errorCode)
+        {
+            return (int)((Win32ErrorCode)(-2147024896) | errorCode);
+        }
+    }
 }

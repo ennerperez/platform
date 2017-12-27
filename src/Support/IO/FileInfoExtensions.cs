@@ -2,6 +2,7 @@
 
 using System;
 using System.IO;
+using System.Threading;
 
 namespace Platform.Support.IO
 {

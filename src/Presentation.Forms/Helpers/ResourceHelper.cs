@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
 using Platform.Support;
+using Platform.Support.IO;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -107,7 +108,7 @@ namespace Platform.Presentation.Forms
                             // Bitmaps require their underlying streams to remain open
                             // for as long as their bitmaps are in use.  We don't want to hold open the
                             // resource stream though, so copy it to a memory stream.
-                            bitmap = new Bitmap(StreamHelper.CopyToMemoryStream(stream));
+                            bitmap = new Bitmap(stream.CopyToMemoryStream());
 
                             if (BidiHelper.IsRightToLeft && mirror)
                             {
@@ -263,7 +264,7 @@ namespace Platform.Presentation.Forms
                 // Load stream and transfer it to the target stream
                 using (Stream resourceStream = assembly.GetManifestResourceStream(resourceName))
                 {
-                    StreamHelper.Transfer(resourceStream, fileStream);
+                    resourceStream.Transfer(fileStream);
                 }
             }
         }
@@ -282,7 +283,7 @@ namespace Platform.Presentation.Forms
             // Load stream and transfer it to the target stream
             using (Stream resourceStream = assembly.GetManifestResourceStream(resourceName))
             {
-                StreamHelper.Transfer(resourceStream, targetStream);
+                resourceStream.Transfer(targetStream);
             }
         }
     }

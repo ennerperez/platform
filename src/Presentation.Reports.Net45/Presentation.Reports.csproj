@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3CECF307-6681-460F-870C-AE75ADD010B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Platform.Presentation.Reports</RootNamespace>
+    <AssemblyName>Platform.Presentation.Reports</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WebForms.10.0.40219.1\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Support.Net45\Support.csproj">
+      <Project>{5654d378-10ca-4ab0-aaf1-f3f72c6202b6}</Project>
+      <Name>Support</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs">
+      <Link>Properties\AssemblyInfo.Common.cs</Link>
+    </Compile>
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs">
+      <Link>Properties\AssemblyInfo.Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
+      <Link>Properties\AssemblyInfo.Version.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\ReportBuilder.cs">
+      <Link>ReportBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\ReportGenerator.cs">
+      <Link>ReportGenerator.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\BackgroundImage.cs">
+      <Link>Report\BackgroundImage.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\BackgroundRepeat.cs">
+      <Link>Report\BackgroundRepeat.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Body.cs">
+      <Link>Report\Body.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Border.cs">
+      <Link>Report\Border.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\BorderStyle.cs">
+      <Link>Report\BorderStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\BottomBorder.cs">
+      <Link>Report\BottomBorder.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\CellContents.cs">
+      <Link>Report\CellContents.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\CollectionOf.cs">
+      <Link>Report\CollectionOf.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\DataSet.cs">
+      <Link>Report\DataSet.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\DataSets.cs">
+      <Link>Report\DataSets.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\DataSources.cs">
+      <Link>Report\DataSources.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\EmbeddedImage.cs">
+      <Link>Report\EmbeddedImage.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\EmbeddedImages.cs">
+      <Link>Report\EmbeddedImages.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Expression.cs">
+      <Link>Report\Expression.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\FontWeight.cs">
+      <Link>Report\FontWeight.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Group.cs">
+      <Link>Report\Group.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\GroupExpression.cs">
+      <Link>Report\GroupExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\GroupExpressions.cs">
+      <Link>Report\GroupExpressions.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\IElement.cs">
+      <Link>Report\IElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Inch.cs">
+      <Link>Report\Inch.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\LeftBorder.cs">
+      <Link>Report\LeftBorder.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\MarkupType.cs">
+      <Link>Report\MarkupType.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Page.cs">
+      <Link>Report\Page.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Paragraph.cs">
+      <Link>Report\Paragraph.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Paragraphs.cs">
+      <Link>Report\Paragraphs.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\ParentOf.cs">
+      <Link>Report\ParentOf.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Point.cs">
+      <Link>Report\Point.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\RdlColor.cs">
+      <Link>Report\RdlColor.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Rectangle.cs">
+      <Link>Report\Rectangle.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Report.cs">
+      <Link>Report\Report.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\ReportItem.cs">
+      <Link>Report\ReportItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\ReportItems.cs">
+      <Link>Report\ReportItems.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\ReportItemsContainer.cs">
+      <Link>Report\ReportItemsContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\ReportSection.cs">
+      <Link>Report\ReportSection.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\ReportSections.cs">
+      <Link>Report\ReportSections.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\RightBorder.cs">
+      <Link>Report\RightBorder.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\SortExpression.cs">
+      <Link>Report\SortExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\SortExpressions.cs">
+      <Link>Report\SortExpressions.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Source.cs">
+      <Link>Report\Source.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Style.cs">
+      <Link>Report\Style.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Tablix.cs">
+      <Link>Report\Tablix.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixBody.cs">
+      <Link>Report\TablixBody.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixCell.cs">
+      <Link>Report\TablixCell.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixCells.cs">
+      <Link>Report\TablixCells.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixColumn.cs">
+      <Link>Report\TablixColumn.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixColumnHierarchy.cs">
+      <Link>Report\TablixColumnHierarchy.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixColumns.cs">
+      <Link>Report\TablixColumns.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixCorner.cs">
+      <Link>Report\TablixCorner.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixCornerCell.cs">
+      <Link>Report\TablixCornerCell.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixCornerRow.cs">
+      <Link>Report\TablixCornerRow.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixCornerRows.cs">
+      <Link>Report\TablixCornerRows.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixHeader.cs">
+      <Link>Report\TablixHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixMember.cs">
+      <Link>Report\TablixMember.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixMembers.cs">
+      <Link>Report\TablixMembers.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixRow.cs">
+      <Link>Report\TablixRow.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixRowHierarchy.cs">
+      <Link>Report\TablixRowHierarchy.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TablixRows.cs">
+      <Link>Report\TablixRows.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TextAlign.cs">
+      <Link>Report\TextAlign.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Textbox.cs">
+      <Link>Report\Textbox.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TextboxStyle.cs">
+      <Link>Report\TextboxStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TextRun.cs">
+      <Link>Report\TextRun.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TextRuns.cs">
+      <Link>Report\TextRuns.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TopBorder.cs">
+      <Link>Report\TopBorder.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\TypeExtension.cs">
+      <Link>Report\TypeExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Value.cs">
+      <Link>Report\Value.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\VerticalAlign.cs">
+      <Link>Report\VerticalAlign.cs</Link>
+    </Compile>
+    <Compile Include="..\Presentation.Reports\Report\Width.cs">
+      <Link>Report\Width.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+  </Target>
+</Project>

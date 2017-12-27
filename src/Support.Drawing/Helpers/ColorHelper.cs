@@ -61,7 +61,7 @@ namespace Platform.Support.Drawing
 
         public static Color RandomColor()
         {
-            return Color.FromArgb(Maths.MathHelper.Random(255), Maths.MathHelper.Random(255), Maths.MathHelper.Random(255));
+            return Color.FromArgb(Math.Random(255), Math.Random(255), Math.Random(255));
         }
 
         public static Color ParseColor(string color)
@@ -124,7 +124,7 @@ namespace Platform.Support.Drawing
 
         public static int PerceivedBrightness(Color c)
         {
-            return (int)Math.Sqrt(
+            return (int)System.Math.Sqrt(
                 c.R * c.R * .299 +
                 c.G * c.G * .587 +
                 c.B * c.B * .114);
@@ -137,9 +137,9 @@ namespace Platform.Support.Drawing
 
         public static Color Lerp(Color from, Color to, float amount)
         {
-            return Color.FromArgb((int)Maths.MathHelper.Lerp(from.R, to.R, amount),
-                (int)Maths.MathHelper.Lerp(from.G, to.G, amount),
-                (int)Maths.MathHelper.Lerp(from.B, to.B, amount));
+            return Color.FromArgb((int)Math.Lerp(from.R, to.R, amount),
+                (int)Math.Lerp(from.G, to.G, amount),
+                (int)Math.Lerp(from.B, to.B, amount));
         }
 
         public static Color GetDarkColor(Color c, byte d)
@@ -178,7 +178,7 @@ namespace Platform.Support.Drawing
 
         public static int GetLuminosity(Color color)
         {
-            int num = Math.Max(Math.Max(color.R, color.G), color.B) + Math.Min(Math.Min(color.R, color.G), color.B);
+            int num = System.Math.Max(System.Math.Max(color.R, color.G), color.B) + System.Math.Min(System.Math.Min(color.R, color.G), color.B);
             return ((num * 240) + 0xff) / 510;
         }
 
