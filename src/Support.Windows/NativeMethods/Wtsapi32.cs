@@ -5,7 +5,6 @@ namespace Platform.Support.Windows
 {
     public class Wtsapi32
     {
-
         [DllImport(ExternDll.Wtsapi32, SetLastError = true)]
         public static extern int WTSEnumerateSessions(
             IntPtr hServer,
@@ -16,7 +15,6 @@ namespace Platform.Support.Windows
 
         [DllImport(ExternDll.Wtsapi32)]
         public static extern uint WTSQueryUserToken(uint SessionId, ref IntPtr phToken);
-
     }
 
     public enum WTS_CONNECTSTATE_CLASS

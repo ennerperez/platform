@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace Platform.Support.Reflection
 {
@@ -14,14 +15,14 @@ namespace Platform.Support.Reflection
     /// </summary>
     public static class NotifyPropertyHelper
     {
-        public static bool SetField(this INotifyPropertyChanged self, ref object field, object value, string propertyName = "")
+        public static bool SetField(this INotifyPropertyChanged self, ref object field, object value, [CallerMemberName] string propertyName = "")
         {
             if (field == null && value == null || (field != null && field.Equals(value)))
                 return false;
 
             field = value;
 
-            var addEventMethodInfo = self.GetType().GetMethod("OnPropertyChanged", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+            var addEventMethodInfo = self.GetType().GetMethod("OnPropertyChanged");//, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
             if (addEventMethodInfo != null)
                 if (addEventMethodInfo.GetParameters().Count() == 1)
                     addEventMethodInfo.Invoke(self, new object[] { new PropertyChangedEventArgs(propertyName) });
@@ -33,14 +34,14 @@ namespace Platform.Support.Reflection
             return true;
         }
 
-        public static bool SetField<T>(this INotifyPropertyChanged self, ref T field, T value, string propertyName = "")
+        public static bool SetField<T>(this INotifyPropertyChanged self, ref T field, T value, [CallerMemberName] string propertyName = "")
         {
             if (EqualityComparer<T>.Default.Equals(field, value))
                 return false;
 
             field = value;
 
-            var addEventMethodInfo = self.GetType().GetMethod("OnPropertyChanged", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+            var addEventMethodInfo = self.GetType().GetMethod("OnPropertyChanged"); //, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
             if (addEventMethodInfo != null)
                 if (addEventMethodInfo.GetParameters().Count() == 1)
                     addEventMethodInfo.Invoke(self, new object[] { new PropertyChangedEventArgs(propertyName) });
@@ -65,7 +66,7 @@ namespace Platform.Support.Reflection
 #if PORTABLE
             FieldInfo fi = self.GetType().GetRuntimeField("PropertyChanged");
 #else
-            FieldInfo fi = self.GetType().GetField("PropertyChanged", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+            FieldInfo fi = self.GetType().GetField("PropertyChanged");//, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
 #endif
             if (fi != null)
             {
@@ -102,7 +103,7 @@ namespace Platform.Support.Reflection
             FieldInfo fi = self.GetType().GetRuntimeField("PropertyChanged"); //, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
 #else
             Debug.Assert(string.IsNullOrEmpty(propertyName) || self.GetType().GetProperty(propertyName) != null);
-            FieldInfo fi = self.GetType().GetField("PropertyChanged", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+            FieldInfo fi = self.GetType().GetField("PropertyChanged");//, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
 #endif
             if (fi != null)
             {

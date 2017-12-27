@@ -404,7 +404,6 @@ namespace Platform.Support.Windows
 
         [DllImport(ExternDll.Kernel32)]
         public extern static uint WTSGetActiveConsoleSessionId();
-
     }
 
 #if !INTEROP

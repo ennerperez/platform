@@ -520,6 +520,7 @@ namespace Platform.Support.Drawing
 
             return iconResult;
         }
+
         public static Icon CreateIcon(Bitmap sourceBitmap, IconSizeDimensions iconSize)
         {
             return CreateIcon(sourceBitmap, (int)iconSize);

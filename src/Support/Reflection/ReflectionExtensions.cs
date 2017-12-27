@@ -124,7 +124,6 @@ namespace Platform.Support
 
                 public static bool IsSingleton(this object obj)
                 {
-
                     var type = obj.GetType();
 
 #if !PORTABLE || PROFILE_328

@@ -19,10 +19,10 @@ namespace Platform.Support
 #if !PORTABLE
         public static void DebugThis(this string str, [CallerMemberName] string callername = "", [CallerFilePath] string filename = "", [CallerLineNumber] int linenumber = 0)
 #else
-        public static void DebugThis(this string str, string callername = "", string filename = "", int linenumber = 0)
+            public static void DebugThis(this string str, string callername = "", string filename = "", int linenumber = 0)
 #endif
-        {
-            if (!string.IsNullOrEmpty(callername))
+            {
+                if (!string.IsNullOrEmpty(callername))
                     Debug.WriteLine($"{callername} in {filename}:{Environment.NewLine}{str} line {linenumber}");
                 else
                     Debug.WriteLine(str);
@@ -32,10 +32,10 @@ namespace Platform.Support
 #if !PORTABLE
         public static void DebugThis(this Exception ex, [CallerMemberName] string callername = "", [CallerFilePath] string filename = "", [CallerLineNumber] int linenumber = 0)
 #else
-        public static void DebugThis(this Exception ex, string callername = "", string filename = "", int linenumber = 0)
+            public static void DebugThis(this Exception ex, string callername = "", string filename = "", int linenumber = 0)
 #endif
-        {
-            DebugThis(ex.Message, callername, filename, linenumber);
+            {
+                DebugThis(ex.Message, callername, filename, linenumber);
             }
         }
 

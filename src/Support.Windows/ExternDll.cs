@@ -61,7 +61,7 @@ internal static class ExternDll
     public const string Uxtheme = "uxtheme.dll";
     public const string WinInet = "WinInet.dll";
     public const string WinMM = "winmm.dll";
-    
+
     public const string Hhctrl = "hhctrl.ocx";
     public const string Imm32 = "imm32.dll";
 

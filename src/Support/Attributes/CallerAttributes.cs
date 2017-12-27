@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-#if NETFX_40 && !NETFX_45
+﻿#if NETFX_40 && !NETFX_45
 
 //namespace Platform.Support.Attributes
 namespace System.Runtime.CompilerServices

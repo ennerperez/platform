@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
 
 namespace Platform.Support
 {
@@ -12,9 +10,9 @@ namespace Platform.Support
     namespace Core
     {
 #endif
+
     namespace Text
     {
-
         public struct Characters
         {
             public const string UpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -24,7 +22,6 @@ namespace Platform.Support
             public const string Text = LowerCase + UpperCase;
             public const string Alphanumeric = Text + Numeric;
             public const string All = Alphanumeric + Special;
-
         }
 
         public class Generator
@@ -76,6 +73,7 @@ namespace Platform.Support
                 var domain = domains[random.Next(domains.Length)];
                 return $"{RandomString(length)}@{RandomString()}.{domain}".ToLower();
             }
+
             public static string RandomEmail(string name)
             {
                 var domains = new[] { "com", "org", "net", "int", "edu", "gov", "mil" };
@@ -105,11 +103,9 @@ namespace Platform.Support
                 }
                 return new string(result);
             }
-
-
         }
-
     }
+
 #if PORTABLE
     }
 #endif
