@@ -34,10 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Platform.Support.Core, Version=3.3.33.26574, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Platform.Support.Core, Version=3.3.33.35105, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Core.3.3.33\lib\net40\Platform.Support.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Platform.Support.Drawing, Version=3.3.33.26576, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Platform.Support.Drawing, Version=3.3.33.35106, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Drawing.3.3.33\lib\net40\Platform.Support.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
