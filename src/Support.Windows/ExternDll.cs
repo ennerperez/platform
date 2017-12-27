@@ -1,4 +1,5 @@
-﻿//------------------------------------------------------------------------------
+﻿#if !PORTABLE
+//------------------------------------------------------------------------------
 // <copyright file="ExternDll.cs" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
@@ -61,7 +62,7 @@ internal static class ExternDll
     public const string Uxtheme = "uxtheme.dll";
     public const string WinInet = "WinInet.dll";
     public const string WinMM = "winmm.dll";
-    
+
     public const string Hhctrl = "hhctrl.ocx";
     public const string Imm32 = "imm32.dll";
 
@@ -98,3 +99,5 @@ internal static class ExternDll
 
 #endif
 }
+
+#endif

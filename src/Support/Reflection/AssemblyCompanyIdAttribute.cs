@@ -8,23 +8,22 @@ namespace Platform.Support
     {
 #endif
 
-        namespace Reflection
+    namespace Reflection
+    {
+        /// <summary>
+        /// Company Id, usually tax payer id, or a DNI.
+        /// </summary>
+        [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false)]
+        public sealed class AssemblyCompanyIdAttribute : global::System.Attribute
         {
-            /// <summary>
-            /// Company Id, usually tax payer id, or a DNI.
-            /// </summary>
-            [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false)]
-            public sealed class AssemblyCompanyIdAttribute : global::System.Attribute
+            public AssemblyCompanyIdAttribute(string id) : base()
             {
-                public AssemblyCompanyIdAttribute(string id) : base()
-                {
-                    companyid = id;
-                }
-
-                private string companyid;
-                public string Id { get { return companyid; } }
+                Id = id;
             }
+
+            public string Id { get; internal set; }
         }
+    }
 
 #if PORTABLE
     }

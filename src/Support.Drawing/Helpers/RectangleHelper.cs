@@ -41,8 +41,8 @@ namespace Platform.Support.Drawing
         {
             return new Rectangle(rectangle.X + x,
                                     rectangle.Y + y,
-                                     Math.Max(0, rectangle.Width - x),
-                                    Math.Max(0, rectangle.Height - y));
+                                     System.Math.Max(0, rectangle.Width - x),
+                                    System.Math.Max(0, rectangle.Height - y));
         }
 
         /// <summary>
@@ -145,11 +145,13 @@ namespace Platform.Support.Drawing
         /// <returns>converted rect</returns>
         public static RECT Convert(Rectangle rect)
         {
-            RECT newRect = new RECT();
-            newRect.left = rect.Left;
-            newRect.top = rect.Top;
-            newRect.right = rect.Right;
-            newRect.bottom = rect.Bottom;
+            var newRect = new RECT
+            {
+                left = rect.Left,
+                top = rect.Top,
+                right = rect.Right,
+                bottom = rect.Bottom
+            };
             return newRect;
         }
 
@@ -280,14 +282,14 @@ namespace Platform.Support.Drawing
             if (imageAspectRatio < portalAspectRatio)
             {
                 srcRect.Height = System.Convert.ToInt32(originalSize.Width / portalAspectRatio);
-                srcRect.Y = Math.Max(0, (originalSize.Height - srcRect.Height) / 2);
-                srcRect.Height = Math.Min(srcRect.Height, originalSize.Height - srcRect.Y);
+                srcRect.Y = System.Math.Max(0, (originalSize.Height - srcRect.Height) / 2);
+                srcRect.Height = System.Math.Min(srcRect.Height, originalSize.Height - srcRect.Y);
             }
             else
             {
                 srcRect.Width = System.Convert.ToInt32(originalSize.Height * portalAspectRatio);
-                srcRect.X = Math.Max(0, (originalSize.Width - srcRect.Width) / 2);
-                srcRect.Width = Math.Min(srcRect.Width, originalSize.Width - srcRect.X);
+                srcRect.X = System.Math.Max(0, (originalSize.Width - srcRect.Width) / 2);
+                srcRect.Width = System.Math.Min(srcRect.Width, originalSize.Width - srcRect.X);
             }
 
             srcRect.Offset(bounds.Location);
@@ -312,11 +314,13 @@ namespace Platform.Support.Drawing
 
         public static implicit operator RECT(Rectangle rectangle)
         {
-            RECT rect = new RECT();
-            rect.left = rectangle.Left;
-            rect.top = rectangle.Top;
-            rect.right = rectangle.Right;
-            rect.bottom = rectangle.Bottom;
+            var rect = new RECT
+            {
+                left = rectangle.Left,
+                top = rectangle.Top,
+                right = rectangle.Right,
+                bottom = rectangle.Bottom
+            };
             return rect;
         }
 

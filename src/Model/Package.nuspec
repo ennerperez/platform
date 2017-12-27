@@ -22,6 +22,7 @@
   </metadata>
   <files>
     <file src="..\Model\bin\release\Platform.Model.Core.dll" target="lib\net40\Platform.Model.Core.dll" />
+    <file src="..\Model.Net45\bin\release\Platform.Model.Core.dll" target="lib\net45\Platform.Model.Core.dll" />
     <file src="..\Model.PCL\bin\release\Platform.Model.Core.PCL.dll" target="lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Model.Core.PCL.dll" />
     <file src="..\Model.PCL.Net45\bin\release\Platform.Model.Core.PCL.dll" target="lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Model.Core.PCL.dll" />
   </files>

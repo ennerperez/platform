@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if !PORTABLE
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -90,3 +92,5 @@ namespace Platform.Support.Configuration
         #endregion IDisposable Support
     }
 }
+
+#endif

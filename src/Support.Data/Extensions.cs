@@ -1156,7 +1156,7 @@ namespace Platform.Support.Data
             try
             {
 #endif
-            _return = cmd.ExecuteNonQuery();
+                _return = cmd.ExecuteNonQuery();
 #if DEBUG
             }
             catch (Exception ex)
@@ -2336,7 +2336,7 @@ namespace Platform.Support.Data
                         try
                         {
 #endif
-                        Item.SetValue(obj, val);
+                            Item.SetValue(obj, val);
 #if DEBUG
                         }
                         catch (Exception ex)

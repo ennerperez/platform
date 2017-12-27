@@ -8,33 +8,37 @@ namespace Platform.Support
     {
 #endif
 
-        namespace Attributes
+    namespace Attributes
+    {
+        /// <summary>
+        /// Tags
+        /// </summary>
+        [AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
+        public sealed class TagAttribute : global::System.Attribute
         {
-            /// <summary>
-            /// Tags
-            /// </summary>
-            [AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = false)]
-            public sealed class TagAttribute : global::System.Attribute
+            public TagAttribute(params string[] tags)
             {
-                public TagAttribute(params string[] tags)
-                {
-                    this.tags = tags;
-                }
+                Tags = tags;
+            }
 
-                public TagAttribute(string tag)
-                {
-                    tags = new string[] { tag };
-                }
+            public TagAttribute(string tag)
+            {
+                Tags = new string[] { tag };
+            }
 
-                private string[] tags;
-                public string[] Tags { get { return tags; } }
+            public string[] Tags { get; internal set; }
+
+            public override string ToString()
+            {
+                return string.Join(System.Globalization.CultureInfo.CurrentCulture.TextInfo.ListSeparator, Tags);
             }
         }
+    }
 
-        public sealed class Tags
-        {
-            public const string Important = "Important";
-        }
+    public sealed class Tags
+    {
+        public const string Important = "Important";
+    }
 
 #if PORTABLE
     }

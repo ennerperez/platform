@@ -1,62 +1,76 @@
 ﻿using System.Text;
 
-namespace Platform.Support.Text
+namespace Platform.Support
 {
-    public static class CharacterEncoder
+#if PORTABLE
+
+    namespace Core
     {
-        public static string Encode(string originalText)
+#endif
+
+        namespace Text
         {
-            if (string.IsNullOrWhiteSpace(originalText))
+            public static class CharacterEncoder
             {
-                return string.Empty;
-            }
-
-            StringBuilder encodedText = new StringBuilder();
-            for (int i = 0; i < originalText.Length; i++)
-            {
-                switch (originalText[i])
+                public static string Encode(string originalText)
                 {
-                    case '"':
-                        encodedText.Append("&quot;");
-                        break;
+                    if (string.IsNullOrWhiteSpace(originalText))
+                    {
+                        return string.Empty;
+                    }
 
-                    case '&':
-                        encodedText.Append(@"&amp;");
-                        break;
+                    StringBuilder encodedText = new StringBuilder();
+                    for (int i = 0; i < originalText.Length; i++)
+                    {
+                        switch (originalText[i])
+                        {
+                            case '"':
+                                encodedText.Append("&quot;");
+                                break;
 
-                    case '\'':
-                        encodedText.Append(@"&apos;");
-                        break;
+                            case '&':
+                                encodedText.Append(@"&amp;");
+                                break;
 
-                    case '<':
-                        encodedText.Append(@"&lt;");
-                        break;
+                            case '\'':
+                                encodedText.Append(@"&apos;");
+                                break;
 
-                    case '>':
-                        encodedText.Append(@"&gt;");
-                        break;
+                            case '<':
+                                encodedText.Append(@"&lt;");
+                                break;
 
-                    // The character '\' should be converted to @"\\" or "\\\\"
-                    case '\\':
-                        encodedText.Append(@"\\");
-                        break;
+                            case '>':
+                                encodedText.Append(@"&gt;");
+                                break;
 
-                    // The character '{' should be converted to @"\{" or "\\{"
-                    case '{':
-                        encodedText.Append(@"\{");
-                        break;
+                            // The character '\' should be converted to @"\\" or "\\\\"
+                            case '\\':
+                                encodedText.Append(@"\\");
+                                break;
 
-                    // The character '}' should be converted to @"\}" or "\\}"
-                    case '}':
-                        encodedText.Append(@"\}");
-                        break;
+                            // The character '{' should be converted to @"\{" or "\\{"
+                            case '{':
+                                encodedText.Append(@"\{");
+                                break;
 
-                    default:
-                        encodedText.Append(originalText[i]);
-                        break;
+                            // The character '}' should be converted to @"\}" or "\\}"
+                            case '}':
+                                encodedText.Append(@"\}");
+                                break;
+
+                            default:
+                                encodedText.Append(originalText[i]);
+                                break;
+                        }
+                    }
+                    return encodedText.ToString();
                 }
             }
-            return encodedText.ToString();
         }
+
+#if PORTABLE
     }
+
+#endif
 }

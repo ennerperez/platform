@@ -26,9 +26,6 @@
   </metadata>
   <files>
     <file src="..\Support.Net\bin\release\Platform.Support.Net.dll" target="lib\net40\Platform.Support.Net.dll" />
-    <!--
-    <file src="..\Support.Web.PCL\bin\release\Platform.Support.Net.PCL.dll" target="lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Support.Net.PCL.dll" />
-    <file src="..\Support.Web.PCL.Net45\bin\release\Platform.Support.Net.PCL.dll" target="lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Support.Net.PCL.dll" />
-    -->
+    <file src="..\Support.Net.Net45\bin\release\Platform.Support.Net.dll" target="lib\net45\Platform.Support.Net.dll" />
   </files>
 </package>

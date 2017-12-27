@@ -8,24 +8,27 @@ namespace Platform.Support
     {
 #endif
 
-        namespace Reflection
+    namespace Reflection
+    {
+        [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true, Inherited = false)]
+        public sealed class AssemblyThirdPartyAttribute : global::System.Attribute
         {
-            [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true, Inherited = false)]
-            public sealed class AssemblyThirdPartyAttribute : global::System.Attribute
+            public AssemblyThirdPartyAttribute(string name, string info = null)
             {
-                public AssemblyThirdPartyAttribute(string name, string info = null)
-                {
-                    this.name = name;
-                    this.info = info;
-                }
+                Name = name;
+                Info = info;
+            }
 
-                private string name;
-                public string Name { get { return name; } }
+            public string Name { get; internal set; }
 
-                private string info;
-                public string Info { get { return info; } }
+            public string Info { get; internal set; }
+
+            public override string ToString()
+            {
+                return Name;
             }
         }
+    }
 
 #if PORTABLE
     }

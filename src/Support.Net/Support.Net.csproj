@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -46,9 +48,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="System.IO">
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Runtime, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -62,7 +63,6 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +75,48 @@
     <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
+    <Compile Include="..\Support.Windows\Errors.cs">
+      <Link>NativeMethods\Errors.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\ExternDll.cs">
+      <Link>ExternDll.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Kernel32.cs">
+      <Link>NativeMethods\Kernel32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\WinInet.cs">
+      <Link>NativeMethods\WinInet.cs</Link>
+    </Compile>
+    <Compile Include="Download\BitsEngine.cs" />
+    <Compile Include="Download\Bits\BackgroundCopyManager.cs" />
+    <Compile Include="Download\Bits\BitsJob.cs" />
+    <Compile Include="Download\Bits\IBackgroundCopyCallback.cs" />
+    <Compile Include="Download\Bits\IBackgroundCopyError.cs" />
+    <Compile Include="Download\Bits\IBackgroundCopyFile.cs" />
+    <Compile Include="Download\Bits\IBackgroundCopyJobHttpOptions.cs" />
+    <Compile Include="Download\Bits\IEnumBackgroundCopyFiles.cs" />
+    <Compile Include="Download\Bits\IEnumBackgroundCopyJobs.cs" />
+    <Compile Include="Download\Bits\Types.cs" />
+    <Compile Include="Download\Bits\IBackgroundCopyJob.cs" />
+    <Compile Include="Download\Bits\IBackgroundCopyManager.cs" />
+    <Compile Include="Download\DownloadContext.cs" />
+    <Compile Include="Download\DownloadCookie.cs" />
+    <Compile Include="Download\DownloadEngineBase.cs" />
+    <Compile Include="Download\DownloadFailureInformation.cs" />
+    <Compile Include="Download\DownloadHelpers.cs" />
+    <Compile Include="Download\DownloadManager.cs" />
+    <Compile Include="Download\DownloadSource.cs" />
+    <Compile Include="Download\DownloadSummary.cs" />
+    <Compile Include="Download\EngineException.cs" />
+    <Compile Include="Download\FileDownloadEngine.cs" />
+    <Compile Include="Download\IDownloadEngine.cs" />
+    <Compile Include="Download\IDownloadManager.cs" />
+    <Compile Include="ProxyResolution.cs" />
+    <Compile Include="Download\WebClientEngine.cs" />
+    <Compile Include="Download\WinInetEngine.cs" />
+    <Compile Include="Download\WinInet\ManagedWinInet.cs" />
+    <Compile Include="Download\WinInet\WinInetInternetReadStream.cs" />
+    <Compile Include="Download\WrappedWebException.cs" />
     <Compile Include="InternetInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

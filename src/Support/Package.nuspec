@@ -19,6 +19,7 @@
   </metadata>
   <files>
     <file src="..\Support\bin\release\Platform.Support.Core.dll" target="lib\net40\Platform.Support.Core.dll" />
+    <file src="..\Support.Net45\bin\release\Platform.Support.Core.dll" target="lib\net45\Platform.Support.Core.dll" />
     <file src="..\Support.PCL\bin\release\Platform.Support.Core.PCL.dll" target="lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Support.Core.PCL.dll" />
     <file src="..\Support.PCL.Net45\bin\release\Platform.Support.Core.PCL.dll" target="lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Support.Core.PCL.dll" />
   </files>

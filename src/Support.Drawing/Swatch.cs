@@ -65,13 +65,13 @@ namespace Platform.Support.Drawing
                 //return;
             }
 
-            int r = (int)Math.Ceiling(255.0 * ReadSingle(data, offset));
+            int r = (int)System.Math.Ceiling(255.0 * ReadSingle(data, offset));
             offset += sizeof(Single);
 
-            int g = (int)Math.Ceiling(255.0 * ReadSingle(data, offset));
+            int g = (int)System.Math.Ceiling(255.0 * ReadSingle(data, offset));
             offset += sizeof(Single);
 
-            int b = (int)Math.Ceiling(255.0 * ReadSingle(data, offset));
+            int b = (int)System.Math.Ceiling(255.0 * ReadSingle(data, offset));
             offset += sizeof(Single);
 
             UInt16 colorType = ReadUInt16(data, offset);

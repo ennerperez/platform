@@ -7,36 +7,50 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Platform.Support.Threading
+namespace Platform.Support
 {
-    //public interface IAwaitable
-    //{
-    //    IAwaiter GetAwaiter();
-    //}
+#if PORTABLE
 
-    //public interface IAwaiter : INotifyCompletion // or ICriticalNotifyCompletion
-    //{
-    //    // INotifyCompletion has one method: void OnCompleted(Action continuation);
-
-    //    // ICriticalNotifyCompletion implements INotifyCompletion,
-    //    // also has this method: void UnsafeOnCompleted(Action continuation);
-
-    //    bool IsCompleted { get; }
-
-    //    void GetResult();
-    //}
-
-    public interface IAwaitable<out TResult>
+    namespace Core
     {
-        IAwaiter<TResult> GetAwaiter();
+#endif
+
+        namespace Threading
+        {
+            //public interface IAwaitable
+            //{
+            //    IAwaiter GetAwaiter();
+            //}
+
+            //public interface IAwaiter : INotifyCompletion // or ICriticalNotifyCompletion
+            //{
+            //    // INotifyCompletion has one method: void OnCompleted(Action continuation);
+
+            //    // ICriticalNotifyCompletion implements INotifyCompletion,
+            //    // also has this method: void UnsafeOnCompleted(Action continuation);
+
+            //    bool IsCompleted { get; }
+
+            //    void GetResult();
+            //}
+
+            public interface IAwaitable<out TResult>
+            {
+                IAwaiter<TResult> GetAwaiter();
+            }
+
+            public interface IAwaiter<out TResult> : INotifyCompletion // or ICriticalNotifyCompletion
+            {
+                bool IsCompleted { get; }
+
+                TResult GetResult();
+            }
+        }
     }
 
-    public interface IAwaiter<out TResult> :  INotifyCompletion // or ICriticalNotifyCompletion
-    {
-        bool IsCompleted { get; }
-
-        TResult GetResult();
-    }
+#if PORTABLE
 }
+
+#endif
 
 #endif

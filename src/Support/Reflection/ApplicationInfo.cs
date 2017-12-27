@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace Platform.Support
 {
@@ -14,95 +16,48 @@ namespace Platform.Support
         {
             public static class ApplicationInfo
             {
-                public static Version Version
+                public static Assembly Assembly
                 {
                     get
                     {
 #if !PORTABLE
-                    return Assembly.GetCallingAssembly().GetName().Version;
+                    return Assembly.GetCallingAssembly();
 #elif !PROFILE_78
-                        return new AssemblyName(Assembly.GetCallingAssembly().FullName).Version;
+                        return System.Reflection.Assembly.GetCallingAssembly();
 #else
-                        return new AssemblyName(typeof(ApplicationInfo).GetTypeInfo().Assembly.FullName).Version;
+                        return typeof(ApplicationInfo).GetTypeInfo().Assembly;
 #endif
                     }
                 }
 
-                public static string Title
-                {
-                    get
-                    {
-#if !PROFILE_78
-                        object[] attributes = Assembly.GetCallingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
-#else
-                        var attributes = typeof(ApplicationInfo).GetTypeInfo().Assembly.GetCustomAttributes(typeof(AssemblyTitleAttribute)).ToArray();
-#endif
-                        if (attributes.Length > 0)
-                        {
-                            AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
-                            if (titleAttribute.Title.Length > 0) return titleAttribute.Title;
-                        }
+                public static Version Version => Assembly.GetCustomAttribute<AssemblyVersionAttribute>().Version.As<Version>();
+                public static string Title => Assembly.GetCustomAttribute<AssemblyTitleAttribute>().Title;
+                public static string Product => Assembly.GetCustomAttribute<AssemblyProductAttribute>().Product;
+                public static string Description => Assembly.GetCustomAttribute<AssemblyDescriptionAttribute>().Description;
+                public static string Copyright => Assembly.GetCustomAttribute<AssemblyCopyrightAttribute>().Copyright;
+                public static string Company => Assembly.GetCustomAttribute<AssemblyCompanyAttribute>().Company;
+
 #if !PORTABLE
-                    return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
-#elif !PROFILE_78
-                        return new AssemblyName(Assembly.GetCallingAssembly().FullName).Name;
-#else
-                        return new AssemblyName(typeof(ApplicationInfo).GetTypeInfo().Assembly.FullName).Name;
-#endif
-                    }
-                }
+            public static Guid Guid => Assembly.GetCustomAttribute<GuidAttribute>().Value.As<Guid>();
 
-                public static string ProductName
-                {
-                    get
-                    {
-#if !PROFILE_78
-                        object[] attributes = Assembly.GetCallingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
-#else
-                        var attributes = typeof(ApplicationInfo).GetTypeInfo().Assembly.GetCustomAttributes(typeof(AssemblyProductAttribute)).ToArray();
-#endif
-                        return attributes.Length == 0 ? "" : ((AssemblyProductAttribute)attributes[0]).Product;
-                    }
-                }
+            public static Dictionary<string, string> GetCommandLine()
+            {
+                var commandArgs = new Dictionary<string, string>();
 
-                public static string Description
-                {
-                    get
-                    {
-#if !PROFILE_78
-                        object[] attributes = Assembly.GetCallingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
-#else
-                        var attributes = typeof(ApplicationInfo).GetTypeInfo().Assembly.GetCustomAttributes(typeof(AssemblyDescriptionAttribute)).ToArray();
-#endif
-                        return attributes.Length == 0 ? "" : ((AssemblyDescriptionAttribute)attributes[0]).Description;
-                    }
-                }
+                var assembly = string.Format(@"""{0}"" ", Assembly.Location);
+                var collection = System.Environment.CommandLine.Replace(assembly, "").Split(' ').Select(a => a.ToLower()).ToList();
 
-                public static string CopyrightHolder
-                {
-                    get
-                    {
-#if !PROFILE_78
-                        object[] attributes = Assembly.GetCallingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
-#else
-                        var attributes = typeof(ApplicationInfo).GetTypeInfo().Assembly.GetCustomAttributes(typeof(AssemblyCopyrightAttribute)).ToArray();
-#endif
-                        return attributes.Length == 0 ? "" : ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
-                    }
-                }
+                if (collection.Any())
+                    foreach (var item in collection.Where(m => m.StartsWith("/") || m.StartsWith("-")))
+                        if (collection.Count - 1 > collection.IndexOf(item))
+                            commandArgs.Add(item.ToLower().Substring(0), collection[collection.IndexOf(item) + 1].Replace(@"""", @""));
+                        else
+                            commandArgs.Add(item.ToLower().Substring(0), null);
 
-                public static string CompanyName
-                {
-                    get
-                    {
-#if !PROFILE_78
-                        object[] attributes = Assembly.GetCallingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
-#else
-                        var attributes = typeof(ApplicationInfo).GetTypeInfo().Assembly.GetCustomAttributes(typeof(AssemblyCompanyAttribute)).ToArray();
+                return commandArgs;
+            }
+
 #endif
-                        return attributes.Length == 0 ? "" : ((AssemblyCompanyAttribute)attributes[0]).Company;
-                    }
-                }
             }
         }
 

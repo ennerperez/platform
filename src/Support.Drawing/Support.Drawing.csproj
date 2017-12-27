@@ -33,7 +33,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
@@ -81,6 +80,7 @@
       <Link>NativeMethods\User32.cs</Link>
     </Compile>
     <Compile Include="ColorSpaces\RGB.cs" />
+    <Compile Include="Extensions\DebugExtensions.cs" />
     <Compile Include="Extensions\GeometricExtensions.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Helpers\RectangleHelper.cs" />

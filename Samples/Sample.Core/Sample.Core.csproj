@@ -37,9 +37,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Platform.Support.Core.PCL">
-      <HintPath>..\..\src\Support.PCL.Net45\bin\Debug\Platform.Support.Core.PCL.dll</HintPath>
+    <Reference Include="Platform.Support.Core.PCL, Version=3.3.33.26574, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Platform.Support.Core.3.3.33\lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Support.Core.PCL.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

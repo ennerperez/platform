@@ -202,7 +202,7 @@ namespace Platform.Support
 
             private static Version NormalizeVersionValue(Version version)
             {
-                return new Version(version.Major, version.Minor, Math.Max(version.Build, 0), Math.Max(version.Revision, 0));
+                return new Version(version.Major, version.Minor, System.Math.Max(version.Build, 0), System.Math.Max(version.Revision, 0));
             }
 
             public static bool operator ==(SemanticVersion version1, SemanticVersion version2)

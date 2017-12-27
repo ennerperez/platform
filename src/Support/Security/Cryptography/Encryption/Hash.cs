@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if !PORTABLE
+
+using System;
 using System.Security.Cryptography;
 
 namespace Platform.Support.Security.Cryptography.Encryption
@@ -176,3 +178,5 @@ namespace Platform.Support.Security.Cryptography.Encryption
         #endregion IDisposable
     }
 }
+
+#endif

@@ -35,7 +35,7 @@ namespace Platform.Support.Data.Attributes
             }
             set
             {
-                Check.NotEmpty(value, "value");
+                Parameter.NotEmpty(value, "value");
                 this._schema = value;
             }
         }
@@ -46,7 +46,7 @@ namespace Platform.Support.Data.Attributes
         /// <param name="name"> The name of the table the class is mapped to. </param>
         public TableAttribute(string name)
         {
-            Check.NotEmpty(name, "name");
+            Parameter.NotEmpty(name, "name");
             this._name = name;
         }
     }

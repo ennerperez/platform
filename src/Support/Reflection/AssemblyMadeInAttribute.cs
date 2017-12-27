@@ -8,26 +8,26 @@ namespace Platform.Support
     {
 #endif
 
-        namespace Reflection
+    namespace Reflection
+    {
+        /// <summary>
+        /// Assembly country made in information
+        /// </summary>
+        [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = false)]
+        public sealed class AssemblyMadeInAttribute : global::System.Attribute
         {
-            /// <summary>
-            /// Assembly country made in information
-            /// </summary>
-            [AttributeUsage(AttributeTargets.Assembly, Inherited = false, AllowMultiple = false)]
-            public sealed class AssemblyMadeInAttribute : global::System.Attribute
+            public AssemblyMadeInAttribute(string name, string code = null) : base()
             {
-                public AssemblyMadeInAttribute(string name, string code = null) : base()
-                {
-                    this.name = name;
-                    this.countryCode = code;
-                }
-
-                private string name;
-                public string Name { get { return name; } }
-                private string countryCode;
-                public string CountryCode { get { return countryCode; } }
+                Name = name;
+                if (code.Length != 2)
+                    throw new InvalidCastException("Can't convert a string into a ISO3166 Country Code");
+                CountryCode = code.ToUpper();
             }
+
+            public string Name { get; internal set; }
+            public string CountryCode { get; internal set; }
         }
+    }
 
 #if PORTABLE
     }

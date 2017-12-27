@@ -63,7 +63,11 @@ namespace Platform.Support
                 Ping pinger = new Ping();
                 try
                 {
+#if NETFX_45
+                    PingReply reply = await pinger.SendPingAsync(hostname);
+#else
                     PingReply reply = await pinger.SendTaskAsync(hostname);
+#endif
                     pingable = reply.Status == IPStatus.Success;
                 }
                 catch (PingException)

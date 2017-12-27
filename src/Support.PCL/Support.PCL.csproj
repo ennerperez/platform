@@ -45,14 +45,14 @@
     <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Attributes\AttributesHelper.cs">
-      <Link>Attributes\AttributesHelper.cs</Link>
+    <Compile Include="..\Support.Windows\ExternDll.cs">
+      <Link>ExternDll.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Attributes\CallerAttributes.cs">
+      <Link>Attributes\CallerAttributes.cs</Link>
     </Compile>
     <Compile Include="..\Support\Attributes\TagAttribute.cs">
       <Link>Attributes\TagAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Check.cs">
-      <Link>Check.cs</Link>
     </Compile>
     <Compile Include="..\Support\Collections\CollectionExtensions.cs">
       <Link>Collections\CollectionExtensions.cs</Link>
@@ -60,8 +60,23 @@
     <Compile Include="..\Support\Collections\TypeListComparer.cs">
       <Link>Collections\TypeListComparer.cs</Link>
     </Compile>
+    <Compile Include="..\Support\ConsoleEx\ListBox.cs">
+      <Link>ConsoleEx\ListBox.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\ConsoleEx\ProgressBar.cs">
+      <Link>ConsoleEx\ProgressBar.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\ConsoleEx\Spinner.cs">
+      <Link>ConsoleEx\Spinner.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Core.cs">
       <Link>Core.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Diagnostics\Utilities.cs">
+      <Link>Diagnostics\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\DisposableObject.cs">
+      <Link>DisposableObject.cs</Link>
     </Compile>
     <Compile Include="..\Support\Extensions\DateTimeExtensions.cs">
       <Link>Extensions\DateTimeExtensions.cs</Link>
@@ -72,8 +87,8 @@
     <Compile Include="..\Support\Extensions\EnumExtensions.cs">
       <Link>Extensions\EnumExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Extensions\NumberExtensions.cs">
-      <Link>Extensions\NumberExtensions.cs</Link>
+    <Compile Include="..\Support\Extensions\MathExtensions.cs">
+      <Link>Extensions\MathExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Support\Extensions\StringExtensions.cs">
       <Link>Extensions\StringExtensions.cs</Link>
@@ -81,35 +96,56 @@
     <Compile Include="..\Support\Extensions\TypeExtensions.cs">
       <Link>Extensions\TypeExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Helpers\DateTimeHelper.cs">
-      <Link>Helpers\DateTimeHelper.cs</Link>
+    <Compile Include="..\Support\IO\FileInfoExtensions.cs">
+      <Link>IO\FileInfoExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Helpers\EnumHelper.cs">
-      <Link>Helpers\EnumHelper.cs</Link>
+    <Compile Include="..\Support\IO\IniFile.cs">
+      <Link>IO\IniFile.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Helpers\StringHelper.cs">
-      <Link>Helpers\StringHelper.cs</Link>
+    <Compile Include="..\Support\IO\ProgressUpdate.cs">
+      <Link>IO\ProgressUpdate.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Helpers\TypeHelper.cs">
-      <Link>Helpers\TypeHelper.cs</Link>
+    <Compile Include="..\Support\IO\Shortcut.cs">
+      <Link>IO\Shortcut.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\IO\ShortcutExtensions.cs">
+      <Link>IO\ShortcutExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Support\IO\StreamExtensions.cs">
       <Link>IO\StreamExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\Support\IO\StreamHelper.cs">
-      <Link>IO\StreamHelper.cs</Link>
+    <Compile Include="..\Support\IO\Utilities.cs">
+      <Link>IO\Utilities.cs</Link>
     </Compile>
-    <Compile Include="..\Support\IsNull.cs">
-      <Link>IsNull.cs</Link>
+    <Compile Include="..\Support\Localization\LocalizedException.cs">
+      <Link>Localization\LocalizedException.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Maths\MathHelper.cs">
-      <Link>Maths\MathHelper.cs</Link>
+    <Compile Include="..\Support\Localization\ResourceEnumConverter.cs">
+      <Link>Localization\ResourceEnumConverter.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Maths\Vector2.cs">
-      <Link>Maths\Vector2.cs</Link>
+    <Compile Include="..\Support\Managers\BrandingManager.cs">
+      <Link>Managers\BrandingManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Managers\ConfigurationManager.cs">
+      <Link>Managers\ConfigurationManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Math.cs">
+      <Link>Math.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\NativeMethods.cs">
+      <Link>NativeMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\NoSuitableEngineException.cs">
+      <Link>NoSuitableEngineException.cs</Link>
     </Compile>
     <Compile Include="..\Support\Obsolete.cs">
       <Link>Obsolete.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\OS\Environment.cs">
+      <Link>OS\Environment.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Parameter.cs">
+      <Link>Parameter.cs</Link>
     </Compile>
     <Compile Include="..\Support\Reflection\ApplicationInfo.cs">
       <Link>Reflection\ApplicationInfo.cs</Link>
@@ -144,11 +180,47 @@
     <Compile Include="..\Support\Reflection\AssemblyProductLevelAttribute.cs">
       <Link>Reflection\AssemblyProductLevelAttribute.cs</Link>
     </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyRepoAttribute.cs">
+      <Link>Reflection\AssemblyRepoAttribute.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Reflection\AssemblyThirdPartyAttribute.cs">
       <Link>Reflection\AssemblyThirdPartyAttribute.cs</Link>
     </Compile>
+    <Compile Include="..\Support\Reflection\DynamicInvoke.cs">
+      <Link>Reflection\DynamicInvoke.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\IReflectionService.cs">
+      <Link>Reflection\IReflectionService.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\PropertyNotifierService.cs">
+      <Link>Reflection\PropertyNotifierService.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Reflection\ReflectionExtensions.cs">
       <Link>Reflection\ReflectionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\ReflectionService.cs">
+      <Link>Reflection\ReflectionService.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\ReflectOn.cs">
+      <Link>Reflection\ReflectOn.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Security\Cryptography\CRC32.cs">
+      <Link>Security\Cryptography\CRC32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Security\Cryptography\CryptographyExtensions.cs">
+      <Link>Security\Cryptography\CryptographyExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Security\Cryptography\Encryption\Data.cs">
+      <Link>Security\Cryptography\Encryption\Data.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Security\Cryptography\Encryption\Hash.cs">
+      <Link>Security\Cryptography\Encryption\Hash.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Security\PasswordHash.cs">
+      <Link>Security\PasswordHash.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Security\SecurityExtensions.cs">
+      <Link>Security\SecurityExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Support\SemanticVersion.cs">
       <Link>SemanticVersion.cs</Link>
@@ -156,12 +228,40 @@
     <Compile Include="..\Support\Singleton.cs">
       <Link>Singleton.cs</Link>
     </Compile>
+    <Compile Include="..\Support\Text\CharacterEncoder.cs">
+      <Link>Text\CharacterEncoder.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Text\Generator.cs">
+      <Link>Text\Generator.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Text\Markdown.cs">
       <Link>Text\Markdown.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Threading\FuncAwaitable.cs">
+      <Link>Threading\FuncAwaitable.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Threading\FuncAwaiter.cs">
+      <Link>Threading\FuncAwaiter.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Threading\FuncExtensions.cs">
+      <Link>Threading\FuncExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Threading\IAwaitable.cs">
+      <Link>Threading\IAwaitable.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\ValueConverter.cs">
+      <Link>ValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\VariantType.cs">
+      <Link>VariantType.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Support\Schemas\BrandingSchema.xsd">
+      <Link>Schemas\BrandingSchema.xsd</Link>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>

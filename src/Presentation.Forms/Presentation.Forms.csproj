@@ -33,7 +33,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
@@ -185,6 +184,7 @@
     <Compile Include="Designers\CustomAppearancePropertyEditor.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Extensions\DebugExtensions.cs" />
     <Compile Include="Extensions\FormExtensions.cs" />
     <Compile Include="Components\CultureManager.cs">
       <SubType>Component</SubType>

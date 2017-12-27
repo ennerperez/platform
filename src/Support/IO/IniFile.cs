@@ -1,4 +1,6 @@
-﻿using Platform.Support.Windows;
+﻿#if !PORTABLE
+
+using Platform.Support.Windows;
 
 namespace Platform.Support.IO
 {
@@ -24,3 +26,5 @@ namespace Platform.Support.IO
         }
     }
 }
+
+#endif

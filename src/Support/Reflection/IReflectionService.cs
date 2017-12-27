@@ -3,12 +3,26 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Platform.Support.Reflection
+namespace Platform.Support
 {
-    public interface IReflectionService
-    {
-        IEnumerable<PropertyInfo> GetPublicInstanceProperties(Type mappedType);
+#if PORTABLE
 
-        object GetMemberValue(object obj, Expression expr, MemberInfo member);
+    namespace Core
+    {
+#endif
+
+        namespace Reflection
+        {
+            public interface IReflectionService
+            {
+                IEnumerable<PropertyInfo> GetPublicInstanceProperties(Type mappedType);
+
+                object GetMemberValue(object obj, Expression expr, MemberInfo member);
+            }
+        }
+
+#if PORTABLE
     }
+
+#endif
 }

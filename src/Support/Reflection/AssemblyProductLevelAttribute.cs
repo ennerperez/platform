@@ -8,41 +8,43 @@ namespace Platform.Support
     {
 #endif
 
-        namespace Reflection
+    namespace Reflection
+    {
+        [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false)]
+        public sealed class AssemblyProductLevelAttribute : global::System.Attribute
         {
-            [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false)]
-            public sealed class AssemblyProductLevelAttribute : global::System.Attribute
+            public AssemblyProductLevelAttribute(ProductLevels level, short number = 1)
             {
-                public AssemblyProductLevelAttribute(ProductLevels level, short number = 1)
-                {
-                    this.level = level;
-                    this.number = number;
-                }
+                Level = level;
+                Number = number;
+            }
 
-                private ProductLevels level;
-                public ProductLevels Level { get { return level; } }
+            public ProductLevels Level { get; internal set; }
+            public short Number { get; internal set; }
 
-                private short number;
-                public short Number { get { return number; } }
+            public override string ToString()
+            {
+                return $"{Enum.GetName(typeof(ProductLevels), Level)} {Number.ToString()}";
             }
         }
+    }
 
-        /// <summary>
-        /// Product type levels
-        /// </summary>
-        /// <remarks></remarks>
-        public enum ProductLevels : short
-        {
-            Milestone = -3,
-            Alpha = -2,
-            Beta = -1,
-            Preview = -1,
-            RC = 0,
-            Release = 1,
-            RTM = 1,
-            RTW = 1,
-            GA = 1
-        }
+    /// <summary>
+    /// Product type levels
+    /// </summary>
+    /// <remarks></remarks>
+    public enum ProductLevels : short
+    {
+        Milestone = -3,
+        Alpha = -2,
+        Beta = -1,
+        Preview = -1,
+        RC = 0,
+        Release = 1,
+        RTM = 1,
+        RTW = 1,
+        GA = 1
+    }
 
 #if PORTABLE
     }

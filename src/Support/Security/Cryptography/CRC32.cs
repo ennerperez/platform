@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if !PORTABLE
+
+using System;
 using System.Security.Cryptography;
 
 namespace Platform.Support.Security.Cryptography
@@ -165,3 +167,5 @@ namespace Platform.Support.Security.Cryptography
         }
     }
 }
+
+#endif

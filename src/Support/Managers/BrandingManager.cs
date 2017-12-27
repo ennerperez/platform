@@ -1,4 +1,6 @@
-﻿using Platform.Support.Reflection;
+﻿#if !PORTABLE
+
+using Platform.Support.Reflection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -533,3 +535,5 @@ namespace Platform.Support.Branding
         }
     }
 }
+
+#endif

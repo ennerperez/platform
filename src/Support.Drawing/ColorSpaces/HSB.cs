@@ -53,43 +53,43 @@ namespace Platform.Support.Drawing
         public static Color ToColor(HSB value)
         {
             int Mid;
-            int Max = (int)Math.Round(value.Brightness * 255);
-            int Min = (int)Math.Round((1.0 - value.Saturation) * (value.Brightness / 1.0) * 255);
+            int Max = (int)System.Math.Round(value.Brightness * 255);
+            int Min = (int)System.Math.Round((1.0 - value.Saturation) * (value.Brightness / 1.0) * 255);
             double q = (double)(Max - Min) / 255;
 
             if (value.Hue >= 0 && value.Hue <= (double)1 / 6)
             {
-                Mid = (int)Math.Round(((value.Hue - 0) * q) * 1530 + Min);
+                Mid = (int)System.Math.Round(((value.Hue - 0) * q) * 1530 + Min);
                 return Color.FromArgb(value.Alpha, Max, Mid, Min);
             }
 
             if (value.Hue <= (double)1 / 3)
             {
-                Mid = (int)Math.Round(-((value.Hue - (double)1 / 6) * q) * 1530 + Max);
+                Mid = (int)System.Math.Round(-((value.Hue - (double)1 / 6) * q) * 1530 + Max);
                 return Color.FromArgb(value.Alpha, Mid, Max, Min);
             }
 
             if (value.Hue <= 0.5)
             {
-                Mid = (int)Math.Round(((value.Hue - (double)1 / 3) * q) * 1530 + Min);
+                Mid = (int)System.Math.Round(((value.Hue - (double)1 / 3) * q) * 1530 + Min);
                 return Color.FromArgb(value.Alpha, Min, Max, Mid);
             }
 
             if (value.Hue <= (double)2 / 3)
             {
-                Mid = (int)Math.Round(-((value.Hue - 0.5) * q) * 1530 + Max);
+                Mid = (int)System.Math.Round(-((value.Hue - 0.5) * q) * 1530 + Max);
                 return Color.FromArgb(value.Alpha, Min, Mid, Max);
             }
 
             if (value.Hue <= (double)5 / 6)
             {
-                Mid = (int)Math.Round(((value.Hue - (double)2 / 3) * q) * 1530 + Min);
+                Mid = (int)System.Math.Round(((value.Hue - (double)2 / 3) * q) * 1530 + Min);
                 return Color.FromArgb(value.Alpha, Mid, Min, Max);
             }
 
             if (value.Hue <= 1.0)
             {
-                Mid = (int)Math.Round(-((value.Hue - (double)5 / 6) * q) * 1530 + Max);
+                Mid = (int)System.Math.Round(-((value.Hue - (double)5 / 6) * q) * 1530 + Max);
                 return Color.FromArgb(value.Alpha, Max, Min, Mid);
             }
 
@@ -99,7 +99,7 @@ namespace Platform.Support.Drawing
         public static string HSB(HSB source, bool relative = true)
         {
             if (relative)
-                return string.Join(",", new string[] { Math.Round(source.Hue360, 0).ToString(), Math.Round(source.Saturation100, 0).ToString(), Math.Round(source.Brightness100, 0).ToString() });
+                return string.Join(",", new string[] { System.Math.Round(source.Hue360, 0).ToString(), System.Math.Round(source.Saturation100, 0).ToString(), System.Math.Round(source.Brightness100, 0).ToString() });
             else
                 return string.Join(",", new string[] { source.Hue.ToString(), source.Saturation.ToString(), source.Brightness.ToString() });
         }

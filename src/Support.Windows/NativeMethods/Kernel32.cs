@@ -405,6 +405,78 @@ namespace Platform.Support.Windows
         [DllImport(ExternDll.Kernel32)]
         public extern static uint WTSGetActiveConsoleSessionId();
 
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public extern static bool MoveFileEx(
+            string lpExistingFileName,
+            string lpNewFileName,
+            [MarshalAs(UnmanagedType.U4)] MoveFileFlags dwFlags);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern int FormatMessageW(
+            FormatMessageFlags dwFlags,
+            IntPtr lpSource,
+            int dwMessageId,
+            int dwLanguageId,
+            StringBuilder lpBuffer,
+            int nSize,
+            IntPtr Arguments);
+
+        public static string GetMessage(int errorCode)
+        {
+            return FormatMessage(errorCode, 0);
+        }
+
+        public static string GetMessageInENU(int errorCode)
+        {
+            return FormatMessage(errorCode, 1033);
+        }
+
+        private static string FormatMessage(int errorCode, int langID)
+        {
+            StringBuilder stringBuilder = new StringBuilder(512);
+            if (FormatMessageW((FormatMessageFlags)12800, IntPtr.Zero, errorCode, langID, stringBuilder, stringBuilder.Capacity, IntPtr.Zero) != 0)
+            {
+                return stringBuilder.ToString();
+            }
+            if (langID == 1033)
+            {
+                return string.Format(System.Globalization.CultureInfo.InvariantCulture, "Unknown error {0}", new object[]
+                {
+                    errorCode
+                });
+            }
+            return string.Format(System.Globalization.CultureInfo.CurrentCulture, "Unknown error {0}", new object[]
+            {
+                errorCode
+            });
+        }
+    }
+
+#if !INTEROP
+
+    [Flags]
+    internal enum FormatMessageFlags
+#else
+    [Flags]
+    public enum FormatMessageFlags
+#endif
+    {
+        IGNORE_INSERTS = 512,
+        FROM_SYSTEM = 4096,
+        ARGUMENT_ARRAY = 8192
+    }
+
+#if !INTEROP
+
+    [Flags]
+    internal enum MoveFileFlags
+#else
+    [Flags]
+    public enum MoveFileFlags
+#endif
+    {
+        // Token: 0x0400017B RID: 379
+        MOVEFILE_DELAY_UNTIL_REBOOT = 4
     }
 
 #if !INTEROP

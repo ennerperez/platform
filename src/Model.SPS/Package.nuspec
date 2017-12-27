@@ -23,5 +23,6 @@
   </metadata>
   <files>
     <file src="..\Model.SPS\bin\release\Platform.Model.SPS.dll" target="lib\net40\Platform.Model.SPS.dll" />
+    <file src="..\Model.SPS.Net45\bin\release\Platform.Model.SPS.dll" target="lib\net45\Platform.Model.SPS.dll" />
   </files>
 </package>

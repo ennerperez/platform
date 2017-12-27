@@ -23,8 +23,9 @@ var assemblyInfoVersion = ParseAssemblyInfo("./.files/AssemblyInfo.Version.cs");
 var assemblyInfoCommon = ParseAssemblyInfo("./.files/AssemblyInfo.Common.cs");
 
 // Define version.
-var elapsedSpan = new TimeSpan(DateTime.Now.Ticks - new DateTime(2001, 1, 1).Ticks);
-var assemblyVersion = assemblyInfoVersion.AssemblyVersion.Replace("*", elapsedSpan.Ticks.ToString().Substring(4, 4));
+//var elapsedSpan = new TimeSpan(DateTime.Now.Ticks - new DateTime(2001, 1, 1).Ticks);
+//var assemblyVersion = assemblyInfoVersion.AssemblyVersion.Replace("*", elapsedSpan.Ticks.ToString().Substring(4, 4));
+var assemblyVersion = assemblyInfoVersion.AssemblyVersion.Replace(".*", "");
 var version = EnvironmentVariable("APPVEYOR_BUILD_VERSION") ?? Argument("version", assemblyVersion);
 
 //////////////////////////////////////////////////////////////////////
@@ -37,6 +38,7 @@ Task("Clean")
     CleanDirectory(buildDir);
     CleanDirectories("./**/bin");
     CleanDirectories("./**/obj");
+	CleanDirectories("./**/samples/packages");
 });
 
 Task("Restore-NuGet-Packages")

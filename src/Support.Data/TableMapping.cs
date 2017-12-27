@@ -316,57 +316,57 @@ namespace Platform.Support.Data
                 try
                 {
 #endif
-                if (propType.IsGenericType && propType.GetGenericTypeDefinition() == typeof(Nullable<>))
-                {
-                    Type[] typeCol = propType.GetGenericArguments();
-                    if (typeCol.Length > 0)
+                    if (propType.IsGenericType && propType.GetGenericTypeDefinition() == typeof(Nullable<>))
                     {
-                        Type nullableType = typeCol[0];
-                        if (object.ReferenceEquals(nullableType.BaseType, typeof(Enum)))
+                        Type[] typeCol = propType.GetGenericArguments();
+                        if (typeCol.Length > 0)
                         {
-                            object result = val == null ? null : Enum.Parse(nullableType, val.ToString(), false);
-                            _prop.SetValue(obj, result, null);
-                        }
-                        else
-                        {
-                            _prop.SetValue(obj, val, null);
+                            Type nullableType = typeCol[0];
+                            if (object.ReferenceEquals(nullableType.BaseType, typeof(Enum)))
+                            {
+                                object result = val == null ? null : Enum.Parse(nullableType, val.ToString(), false);
+                                _prop.SetValue(obj, result, null);
+                            }
+                            else
+                            {
+                                _prop.SetValue(obj, val, null);
+                            }
                         }
                     }
-                }
-                else if (propType.IsEnum)
-                {
-                    _prop.SetValue(obj, Enum.Parse(propType, val.ToString()), null);
-                }
-                else if (val == null || val.GetType() == typeof(System.DBNull))
-                {
-                    _prop.SetValue(obj, null, null);
-                }
-                else if (object.ReferenceEquals(propType, typeof(Int32)) & object.ReferenceEquals(val.GetType(), typeof(Int64)))
-                {
-                    if (Convert.ToInt32(val) <= Int32.MaxValue)
+                    else if (propType.IsEnum)
                     {
-                        _prop.SetValue(obj, Convert.ToInt32(val), null);
+                        _prop.SetValue(obj, Enum.Parse(propType, val.ToString()), null);
                     }
-                }
-                else
-                {
-                    if (object.ReferenceEquals(propType, typeof(bool)))
-                        val = Convert.ToInt32(val) == 1;
-                    if (object.ReferenceEquals(propType, typeof(int)))
-                        val = Convert.ToInt32(val);
-                    //if (object.ReferenceEquals(val.GetType(), typeof(byte[])))
-                    //    val = BitConverter.ToInt64((byte[])val, 0);
-                    if (object.ReferenceEquals(propType, typeof(TimeSpan)))
-                        val = TimeSpan.Parse(val.ToString());
+                    else if (val == null || val.GetType() == typeof(System.DBNull))
+                    {
+                        _prop.SetValue(obj, null, null);
+                    }
+                    else if (object.ReferenceEquals(propType, typeof(Int32)) & object.ReferenceEquals(val.GetType(), typeof(Int64)))
+                    {
+                        if (Convert.ToInt32(val) <= Int32.MaxValue)
+                        {
+                            _prop.SetValue(obj, Convert.ToInt32(val), null);
+                        }
+                    }
+                    else
+                    {
+                        if (object.ReferenceEquals(propType, typeof(bool)))
+                            val = Convert.ToInt32(val) == 1;
+                        if (object.ReferenceEquals(propType, typeof(int)))
+                            val = Convert.ToInt32(val);
+                        //if (object.ReferenceEquals(val.GetType(), typeof(byte[])))
+                        //    val = BitConverter.ToInt64((byte[])val, 0);
+                        if (object.ReferenceEquals(propType, typeof(TimeSpan)))
+                            val = TimeSpan.Parse(val.ToString());
 
-                    if (object.ReferenceEquals(propType, typeof(Guid)))
-                        val = Guid.Parse(val.ToString());
+                        if (object.ReferenceEquals(propType, typeof(Guid)))
+                            val = Guid.Parse(val.ToString());
 
-                    if (object.ReferenceEquals(propType, typeof(Version)))
-                        val = Version.Parse(val.ToString());
+                        if (object.ReferenceEquals(propType, typeof(Version)))
+                            val = Version.Parse(val.ToString());
 
-                    _prop.SetValue(obj, val, null);
-                }
+                        _prop.SetValue(obj, val, null);
+                    }
 
 #if DEBUG
                 }

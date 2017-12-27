@@ -1,10 +1,12 @@
-﻿using System;
+﻿#if !PORTABLE
+
+using System;
 using System.IO;
-using Helpers = Platform.Support.IO.FileInfoHelper;
+using System.Threading;
 
 namespace Platform.Support.IO
 {
-    public static class FileInfoExtensions
+    public static partial class Extensions
     {
         public static void FromBytes(this FileInfo file, byte[] data)
         {
@@ -54,7 +56,23 @@ namespace Platform.Support.IO
 
         public static string GetCRC32(this FileInfo source)
         {
-            return Helpers.GetCRC32(source);
+            var crc32 = new Security.Cryptography.CRC32();
+            String hash = String.Empty;
+            if (File.Exists(source.FullName))
+            {
+                try
+                {
+                    using (FileStream fs = File.Open(source.FullName, FileMode.Open, FileAccess.Read, FileShare.Read))
+                        foreach (byte b in crc32.ComputeHash(fs))
+                            hash += b.ToString("x2").ToLower();
+                }
+                catch (Exception ex)
+                {
+                    ex.DebugThis();
+                }
+            }
+
+            return hash;
         }
 
         public static MemoryStream ToStream(this FileInfo file, string filepath)
@@ -68,3 +86,5 @@ namespace Platform.Support.IO
         }
     }
 }
+
+#endif

@@ -7,7 +7,6 @@ using System.Runtime.InteropServices;
 
 namespace Platform.Support.Windows
 {
-
     public class Advapi32
     {
         [DllImport(ExternDll.Advapi32, CharSet = CharSet.Auto, SetLastError = true)]
@@ -56,7 +55,6 @@ namespace Platform.Support.Windows
             int TokenType,
             int ImpersonationLevel,
             ref IntPtr DuplicateTokenHandle);
-
 
         #region Win32 Constants
 
@@ -179,7 +177,6 @@ namespace Platform.Support.Windows
 
             return true;
         }
-
     }
 
     public struct STANDARD_RIGHTS
@@ -261,5 +258,4 @@ namespace Platform.Support.Windows
         TokenPrimary = 1,
         TokenImpersonation = 2
     }
-    
 }
