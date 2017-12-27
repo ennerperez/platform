@@ -12,14 +12,12 @@ using RazorEngine.Configuration;
 
 namespace Platform.Presentation.Reports.Razor
 {
-
     public class ReportBuilder : ReportBuilder<dynamic>
     {
     }
 
     public class ReportBuilder<T> : IReportBuilder<T>
     {
-
         private IRazorEngineService Engine = null;
 
         private string name;
@@ -28,12 +26,11 @@ namespace Platform.Presentation.Reports.Razor
         private bool precompile;
         private bool needsCompilation = true;
         private DynamicViewBag viewBag;
-        
+
         public ReportBuilder() : base()
         {
             try
             {
-
                 var config = new TemplateServiceConfiguration();
 #if DEBUG
                 config.Debug = true;
@@ -48,7 +45,6 @@ namespace Platform.Presentation.Reports.Razor
                 Engine.Compile(Properties.Resources._PrintLayout, "PrintLayout", typeof(object));
                 Engine.Compile(Properties.Resources._ExceptionLayout, "ExceptionLayout", typeof(Exception));
                 Engine.Compile(Properties.Resources._LoadingLayout, "LoadingLayout", typeof(object));
-
             }
             catch (Exception ex)
             {
@@ -60,7 +56,7 @@ namespace Platform.Presentation.Reports.Razor
         {
             return new ReportBuilder<T> { name = name };
         }
-        
+
         public string BuildReport(T model = default(T))
         {
             return precompile ? CompiledReport(model) : Report(model);
@@ -93,7 +89,7 @@ namespace Platform.Presentation.Reports.Razor
         {
             return string.IsNullOrEmpty(styleSheet) ? string.Empty : $"<style type='text/css'>{Environment.NewLine}{styleSheet}{Environment.NewLine}</style>";
         }
-        
+
         #region Razor.IReportBuilder
 
         public IReportBuilder<T> WithPrecompilation()
@@ -141,8 +137,7 @@ namespace Platform.Presentation.Reports.Razor
             viewBag = new DynamicViewBag(source);
             return this;
         }
-                
-        #endregion
 
+        #endregion Razor.IReportBuilder
     }
 }

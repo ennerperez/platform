@@ -9,7 +9,6 @@ namespace Platform.Presentation.Reports.Razor
 {
     public class TemplateFinder
     {
-
         public static string GetTemplateFromResource(string resourceName, Assembly assembly)
         {
             using (var stream = assembly.GetManifestResourceStream(resourceName))

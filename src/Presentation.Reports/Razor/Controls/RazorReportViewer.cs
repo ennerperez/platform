@@ -23,7 +23,6 @@ namespace Platform.Presentation.Reports
     {
         public class RazorReportViewer : System.Windows.Forms.WebBrowser, INotifyPropertyChanged, INotifyPropertyChanging
         {
-
             public RazorReportViewer() : base()
             {
                 InitializeComponent();
@@ -77,7 +76,7 @@ namespace Platform.Presentation.Reports
             {
                 //Refresh();
             }
-                       
+
             public void Refresh(Dictionary<string, object> viewBag = null)
             {
                 if (DesignMode)
@@ -108,7 +107,7 @@ namespace Platform.Presentation.Reports
                 //        current.SetupInformation, new PermissionSet(PermissionState.Unrestricted),
                 //        strongNames);
                 //    var exitCode = domain.ExecuteAssembly(Assembly.GetEntryAssembly().Location);
-                //    // RazorEngine will cleanup. 
+                //    // RazorEngine will cleanup.
                 //    AppDomain.Unload(domain);
                 //    return;
                 //}
@@ -121,7 +120,6 @@ namespace Platform.Presentation.Reports
                         .WithPrecompilation();
 
                     this.DocumentText = report.BuildReport(Model);
-
                 }
                 catch (Exception ex)
                 {
@@ -142,7 +140,6 @@ namespace Platform.Presentation.Reports
                 }
 
                 base.Refresh();
-
             }
 
             #region IE
@@ -306,12 +303,15 @@ namespace Platform.Presentation.Reports
                         case 10:
                             emulationCode = BrowserEmulationVersion.Version10;
                             break;
+
                         case 9:
                             emulationCode = BrowserEmulationVersion.Version9;
                             break;
+
                         case 8:
                             emulationCode = BrowserEmulationVersion.Version8;
                             break;
+
                         default:
                             emulationCode = BrowserEmulationVersion.Version7;
                             break;
@@ -325,8 +325,7 @@ namespace Platform.Presentation.Reports
                 return GetBrowserEmulationVersion() != BrowserEmulationVersion.Default;
             }
 
-            #endregion
-
+            #endregion IE
         }
     }
 }

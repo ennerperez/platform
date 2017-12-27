@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Platform.Presentation.Reports.Razor
 {
-    public interface IReportBuilder<T>: Platform.Presentation.Reports.IReportBuilder<T>
+    public interface IReportBuilder<T> : Platform.Presentation.Reports.IReportBuilder<T>
     {
         IReportBuilder<T> WithTemplate(string template);
         IReportBuilder<T> WithCss(string css);
@@ -20,6 +20,5 @@ namespace Platform.Presentation.Reports.Razor
         IReportBuilder<T> WithViewBag(IDictionary<string, object> source);
 
         //string BuildReport(T model, DynamicViewBag viewBag);
-
     }
 }
