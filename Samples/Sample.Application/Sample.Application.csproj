@@ -101,12 +101,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Presentation.Reports\Presentation.Reports.csproj">
-      <Project>{ee7da415-99ed-4e8a-b129-be09f40acb83}</Project>
-      <Name>Presentation.Reports</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

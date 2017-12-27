@@ -16,7 +16,7 @@ namespace Platform.Presentation.Reports.Razor
     {
     }
 
-    public class ReportBuilder<T> : IReportBuilder<T>
+    public class ReportBuilder<T> : IRazorReportBuilder<T>
     {
         private IRazorEngineService Engine = null;
 
@@ -52,7 +52,7 @@ namespace Platform.Presentation.Reports.Razor
             }
         }
 
-        public static IReportBuilder<T> Create(string name)
+        public static IRazorReportBuilder<T> Create(string name)
         {
             return new ReportBuilder<T> { name = name };
         }
@@ -73,66 +73,71 @@ namespace Platform.Presentation.Reports.Razor
             }
             return Engine.Run(name, typeof(T), model != null ? model : default(T), viewBag);
         }
+
         private string Report(T model)
         {
             return Engine.Run(name, typeof(T), model != null ? model : default(T), viewBag);
         }
 
-        string PrepareTemplate()
+        private string PrepareTemplate()
         {
             if (string.IsNullOrEmpty(mainTemplate))
                 throw new InvalidOperationException("ReportBuilder must have Template configured before use.");
             return mainTemplate.Replace("@@STYLES", PrepareStylesheet());
         }
 
-        string PrepareStylesheet()
+        private string PrepareStylesheet()
         {
             return string.IsNullOrEmpty(styleSheet) ? string.Empty : $"<style type='text/css'>{Environment.NewLine}{styleSheet}{Environment.NewLine}</style>";
         }
 
         #region Razor.IReportBuilder
 
-        public IReportBuilder<T> WithPrecompilation()
+        public IRazorReportBuilder<T> WithPrecompilation()
         {
             precompile = true;
             return this;
         }
 
-        public IReportBuilder<T> WithCss(string css)
+        public IRazorReportBuilder<T> WithCss(string css)
         {
             needsCompilation = styleSheet != css;
             styleSheet = css;
             return this;
         }
-        public IReportBuilder<T> WithCssFromFileSystem(string cssPath)
+
+        public IRazorReportBuilder<T> WithCssFromFileSystem(string cssPath)
         {
             return WithCss(File.ReadAllText(cssPath));
         }
-        public IReportBuilder<T> WithCssFromResource(string resourceName, Assembly assembly)
+
+        public IRazorReportBuilder<T> WithCssFromResource(string resourceName, Assembly assembly)
         {
             using (var stream = assembly.GetManifestResourceStream(resourceName))
             using (TextReader reader = new StreamReader(stream))
                 return WithCss(reader.ReadToEnd());
         }
 
-        public IReportBuilder<T> WithTemplate(string template)
+        public IRazorReportBuilder<T> WithTemplate(string template)
         {
             needsCompilation = mainTemplate != template;
             mainTemplate = template;
             return this;
         }
-        public IReportBuilder<T> WithTemplateFromFileSystem(string templatePath)
+
+        public IRazorReportBuilder<T> WithTemplateFromFileSystem(string templatePath)
         {
             return WithTemplate(File.ReadAllText(templatePath));
         }
-        public IReportBuilder<T> WithTemplateFromResource(string resourceName, Assembly assembly)
+
+        public IRazorReportBuilder<T> WithTemplateFromResource(string resourceName, Assembly assembly)
         {
             using (var stream = assembly.GetManifestResourceStream(resourceName))
             using (TextReader reader = new StreamReader(stream))
                 return WithTemplate(reader.ReadToEnd());
         }
 
-        public IReportBuilder<T> WithViewBag(IDictionary<string, object> source)
+        public IRazorReportBuilder<T> WithViewBag(IDictionary<string, object> source)
         {
             viewBag = new DynamicViewBag(source);
             return this;

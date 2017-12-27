@@ -48,7 +48,7 @@
       <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
-      <HintPath>..\..\samples\packages\RazorEngine.3.10.0\lib\net40\RazorEngine.dll</HintPath>
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -85,11 +85,9 @@
     <Compile Include="Razor\Controls\RazorReportViewer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Razor\IReportBuilder.cs" />
+    <Compile Include="Razor\IRazorReportBuilder.cs" />
     <Compile Include="Razor\ReportBuilder.cs" />
     <Compile Include="Razor\TemplateFinder.cs" />
-    <Compile Include="RDLC\ReportBuilder.cs" />
-    <Compile Include="RDLC\ReportGenerator.cs" />
     <Compile Include="RDLC\BackgroundImage.cs" />
     <Compile Include="RDLC\BackgroundRepeat.cs" />
     <Compile Include="RDLC\Body.cs" />
@@ -120,6 +118,11 @@
     <Compile Include="RDLC\RdlColor.cs" />
     <Compile Include="RDLC\Rectangle.cs" />
     <Compile Include="RDLC\Report.cs" />
+    <Compile Include="RDLC\ReportBuilder.cs" />
+    <Compile Include="RDLC\Components\ReportGenerator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RDLC\ReportEngine.cs" />
     <Compile Include="RDLC\ReportItem.cs" />
     <Compile Include="RDLC\ReportItems.cs" />
     <Compile Include="RDLC\ReportItemsContainer.cs" />

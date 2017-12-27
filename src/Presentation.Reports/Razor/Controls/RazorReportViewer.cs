@@ -1,27 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using Platform.Support.Reflection;
-using RazorEngine;
 using Platform.Support;
 using System.Drawing.Printing;
-using RazorEngine.Templating;
 using System.IO;
 using Platform.Presentation.Reports.Razor;
-using System.Security.Permissions;
-using System.Reflection;
-using System.Security.Policy;
 using System.Security;
 using Microsoft.Win32;
-using System.Threading.Tasks;
 
 namespace Platform.Presentation.Reports
 {
     namespace Windows.Forms
     {
-        public class RazorReportViewer : System.Windows.Forms.WebBrowser, INotifyPropertyChanged, INotifyPropertyChanging
+        public class RazorReportViewer : System.Windows.Forms.WebBrowser, INotifyPropertyChanged
         {
             public RazorReportViewer() : base()
             {
@@ -58,18 +50,11 @@ namespace Platform.Presentation.Reports
             //private PaperSize paperSize;
             //public PaperSize PaperSize { get { return paperSize; } set { this.SetField(ref paperSize, value); } }
 
-            public event PropertyChangingEventHandler PropertyChanging;
             public event PropertyChangedEventHandler PropertyChanged;
 
             protected void OnPropertyChanged(PropertyChangedEventArgs e)
             {
                 PropertyChanged?.Invoke(this, e);
-            }
-            protected void OnPropertyChanging(PropertyChangingEventArgs e)
-            {
-                //if (!DesignMode)
-                //    Refresh();
-                PropertyChanging?.Invoke(this, e);
             }
 
             private void RazorReportViewer_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -203,6 +188,7 @@ namespace Platform.Presentation.Reports
 
                 return result;
             }
+
             private const string BrowserEmulationKey = InternetExplorerRootKey + @"\Main\FeatureControl\FEATURE_BROWSER_EMULATION";
 
             public static BrowserEmulationVersion GetBrowserEmulationVersion()
@@ -241,6 +227,7 @@ namespace Platform.Presentation.Reports
 
                 return result;
             }
+
             public static bool SetBrowserEmulationVersion(BrowserEmulationVersion browserEmulationVersion)
             {
                 bool result;
@@ -320,6 +307,7 @@ namespace Platform.Presentation.Reports
 
                 return SetBrowserEmulationVersion(emulationCode);
             }
+
             public static bool IsBrowserEmulationSet()
             {
                 return GetBrowserEmulationVersion() != BrowserEmulationVersion.Default;

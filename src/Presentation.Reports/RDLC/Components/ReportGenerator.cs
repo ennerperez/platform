@@ -7,9 +7,10 @@ namespace Platform.Presentation.Reports.RDLC
     {
         using Microsoft.Reporting.WinForms;
 
-        public class ReportGenerator
+        public class ReportGenerator : System.ComponentModel.Component
         {
             protected readonly RDLC.Report Report = new RDLC.Report();
+
             protected readonly ReportDataSourceCollection DataSources;
 
             private readonly LocalReport localReport;
@@ -42,7 +43,7 @@ namespace Platform.Presentation.Reports.RDLC
     {
         using Microsoft.Reporting.WebForms;
 
-        public class ReportGenerator
+        public class ReportGenerator : System.ComponentModel.Component
         {
             protected readonly RDLC.Report Report = new RDLC.Report();
             protected readonly ReportDataSourceCollection DataSources;
