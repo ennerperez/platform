@@ -1,30 +1,37 @@
 ﻿#if NETFX_45
 
-using Platform.Support.Threading;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace Platform.Support.Extensions
+namespace Platform.Support
 {
-    internal struct FuncAwaitable<TResult> : IAwaitable<TResult>
+#if PORTABLE
+
+    namespace Core
     {
-        private readonly Func<TResult> function;
+#endif
 
-        public FuncAwaitable(Func<TResult> function)
+        namespace Threading
         {
-            this.function = function;
+            public struct FuncAwaitable<TResult> : IAwaitable<TResult>
+            {
+                private readonly Func<TResult> function;
+
+                public FuncAwaitable(Func<TResult> function)
+                {
+                    this.function = function;
+                }
+
+                public IAwaiter<TResult> GetAwaiter()
+                {
+                    return new FuncAwaiter<TResult>(this.function);
+                }
+            }
         }
 
-        public IAwaiter<TResult> GetAwaiter()
-        {
-            return new FuncAwaiter<TResult>(this.function);
-        }
+#if PORTABLE
     }
+
+#endif
 }
 
 #endif

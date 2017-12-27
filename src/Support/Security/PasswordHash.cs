@@ -1,3 +1,4 @@
+#if !PORTABLE
 /*
  * Password Hashing With PBKDF2 (http://crackstation.net/hashing-security.htm).
  * Copyright (c) 2013, Taylor Hornby
@@ -113,9 +114,13 @@ namespace Platform.Support.Security
         /// <returns>A hash of the password.</returns>
         private static byte[] PBKDF2(string password, byte[] salt, int iterations, int outputBytes)
         {
-            Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, salt);
-            pbkdf2.IterationCount = iterations;
+            Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, salt)
+            {
+                IterationCount = iterations
+            };
             return pbkdf2.GetBytes(outputBytes);
         }
     }
 }
+
+#endif

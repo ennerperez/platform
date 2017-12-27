@@ -58,18 +58,16 @@
       <Link>NativeMethods\Errors.cs</Link>
     </Compile>
     <Compile Include="..\Support.Windows\ExternDll.cs">
-      <Link>NativeMethods\ExternDll.cs</Link>
+      <Link>ExternDll.cs</Link>
     </Compile>
     <Compile Include="..\Support.Windows\NativeMethods\Kernel32.cs">
       <Link>NativeMethods\Kernel32.cs</Link>
     </Compile>
     <Compile Include="Attributes\CallerAttributes.cs" />
-    <Compile Include="Console\ListBox.cs" />
-    <Compile Include="Helpers\StreamHelper.cs" />
+    <Compile Include="ConsoleEx\ListBox.cs" />
     <Compile Include="IO\ShortcutExtensions.cs" />
-    <Compile Include="IO\ShortcutHelper.cs" />
+    <Compile Include="IO\Shortcut.cs" />
     <Compile Include="IO\StreamExtensions.cs" />
-    <Compile Include="IO\StreamHelper.cs" />
     <Compile Include="Reflection\ApplicationInfo.cs" />
     <Compile Include="Reflection\AssemblyLicenseAttribute.cs" />
     <Compile Include="Reflection\AssemblyOwnerAttribute.cs" />
@@ -86,31 +84,25 @@
     <Compile Include="Reflection\AssemblyContactInformationAttribute.cs" />
     <Compile Include="Reflection\AssemblyBuildDateAttribute.cs" />
     <Compile Include="NativeMethods.cs" />
-    <Compile Include="Console\ProgressBar.cs" />
-    <Compile Include="Console\Spinner.cs" />
+    <Compile Include="ConsoleEx\ProgressBar.cs" />
+    <Compile Include="ConsoleEx\Spinner.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\DebugExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
-    <Compile Include="Extensions\NumberExtensions.cs" />
-    <Compile Include="Helpers\DateTimeHelper.cs" />
-    <Compile Include="Helpers\StringHelper.cs" />
-    <Compile Include="Helpers\EnumHelper.cs" />
-    <Compile Include="Helpers\TypeHelper.cs" />
+    <Compile Include="Extensions\MathExtensions.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="Managers\BrandingManager.cs" />
     <Compile Include="Collections\CollectionExtensions.cs" />
     <Compile Include="Collections\TypeListComparer.cs" />
     <Compile Include="IO\FileInfoExtensions.cs" />
-    <Compile Include="IO\FileInfoHelper.cs" />
     <Compile Include="IO\IniFile.cs" />
     <Compile Include="Localization\ResourceEnumConverter.cs" />
     <Compile Include="Managers\ConfigurationManager.cs" />
-    <Compile Include="Maths\MathHelper.cs" />
-    <Compile Include="Maths\Vector2.cs" />
-    <Compile Include="OS\OSHelper.cs" />
+    <Compile Include="Math.cs" />
+    <Compile Include="OS\Environment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\DynamicInvoke.cs" />
     <Compile Include="Reflection\ReflectionExtensions.cs" />
@@ -122,9 +114,7 @@
     <Compile Include="Security\Cryptography\Encryption\Data.cs" />
     <Compile Include="Security\Cryptography\Encryption\Hash.cs" />
     <Compile Include="Security\Cryptography\CryptographyExtensions.cs" />
-    <Compile Include="Security\Cryptography\CryptographyHelper.cs" />
     <Compile Include="Security\SecurityExtensions.cs" />
-    <Compile Include="Security\SecurityHelper.cs" />
     <Compile Include="Security\PasswordHash.cs" />
     <Compile Include="SemanticVersion.cs" />
     <Compile Include="Singleton.cs" />

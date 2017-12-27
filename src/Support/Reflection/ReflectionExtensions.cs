@@ -17,14 +17,14 @@ namespace Platform.Support
 
     namespace Reflection
     {
-        public static partial class ReflectionExtensions
+        public static partial class Extensions
         {
             #region Assembly
 
 #if (!PORTABLE)
             internal static Assembly assembly = Assembly.GetEntryAssembly();
 #elif NETFX_45
-            internal static Assembly assembly = typeof(ReflectionExtensions).GetTypeInfo().Assembly;
+            internal static Assembly assembly = typeof(Extensions).GetTypeInfo().Assembly;
 #else
             internal static Assembly assembly = Assembly.GetCallingAssembly();
 #endif
@@ -52,7 +52,7 @@ namespace Platform.Support
 
             public static object[] GetAttributes(Type AttributeType, Assembly assembly = null)
             {
-                if (assembly == null) { assembly = ReflectionExtensions.assembly; }
+                if (assembly == null) { assembly = Extensions.assembly; }
 
 #if NETFX_45
                 var customAttributes = assembly.GetCustomAttributes(AttributeType);

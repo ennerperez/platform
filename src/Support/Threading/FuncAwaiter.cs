@@ -7,36 +7,50 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Platform.Support.Threading
+namespace Platform.Support
 {
-    public struct FuncAwaiter<TResult> : IAwaiter<TResult>
+#if PORTABLE
+
+    namespace Core
     {
-        private readonly Task<TResult> task;
+#endif
 
-        public FuncAwaiter(Func<TResult> function)
+        namespace Threading
         {
-            this.task = new Task<TResult>(function);
-            this.task.Start();
-        }
-
-        bool IAwaiter<TResult>.IsCompleted
-        {
-            get
+            public struct FuncAwaiter<TResult> : IAwaiter<TResult>
             {
-                return this.task.IsCompleted;
+                private readonly Task<TResult> task;
+
+                public FuncAwaiter(Func<TResult> function)
+                {
+                    this.task = new Task<TResult>(function);
+                    this.task.Start();
+                }
+
+                bool IAwaiter<TResult>.IsCompleted
+                {
+                    get
+                    {
+                        return this.task.IsCompleted;
+                    }
+                }
+
+                TResult IAwaiter<TResult>.GetResult()
+                {
+                    return this.task.Result;
+                }
+
+                public void OnCompleted(Action continuation)
+                {
+                    new Task(continuation).Start();
+                }
             }
         }
 
-        TResult IAwaiter<TResult>.GetResult()
-        {
-            return this.task.Result;
-        }
-
-        void OnCompleted(Action continuation)
-        {
-            new Task(continuation).Start();
-        }
+#if PORTABLE
     }
+
+#endif
 }
 
 #endif

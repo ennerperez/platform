@@ -168,7 +168,7 @@ namespace Platform.Support.Reflection
         }
     }
 
-    public static partial class ReflectionExtensions
+    public static partial class Extensions
     {
         public static void SetField<U>(this object obj, ref U field, U value, [CallerMemberName] string propertyName = "")
         {

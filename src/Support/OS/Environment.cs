@@ -9,20 +9,20 @@ namespace Platform.Support
     {
 #endif
 
-        namespace OS
+    namespace OS
+    {
+        [DebuggerStepThrough()]
+        public static class Environment
         {
-            [DebuggerStepThrough()]
-            public static class OSHelper
+            /// <summary>
+            ///  returns 32 if runs in 32 bit mode and 64 for 64 bit mode
+            /// </summary>
+            /// <returns></returns>
+            /// <remarks></remarks>
+            public static int Architecture()
             {
-                /// <summary>
-                ///  returns 32 if runs in 32 bit mode and 64 for 64 bit mode
-                /// </summary>
-                /// <returns></returns>
-                /// <remarks></remarks>
-                public static int Architecture()
-                {
-                    return (IntPtr.Size == 8 ? 64 : 32);
-                }
+                return (IntPtr.Size == 8 ? 64 : 32);
+            }
 
 #if !PORTABLE
 
@@ -33,7 +33,7 @@ namespace Platform.Support
             /// <remarks></remarks>
             public static int EnvironmentArchitecture()
             {
-                string pa = Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
+                string pa = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
                 return (string.IsNullOrEmpty(pa) | string.Compare(pa, 0, "x86", 0, 3, true) == 0 ? 32 : 64);
             }
 
@@ -43,7 +43,7 @@ namespace Platform.Support
             /// <returns></returns>
             public static bool IsWindows()
             {
-                int p = (int)Environment.OSVersion.Platform;
+                int p = (int)System.Environment.OSVersion.Platform;
                 return (p != 4) && (p != 6) && (p != 128);
             }
 
@@ -53,13 +53,13 @@ namespace Platform.Support
             /// <returns></returns>
             public static bool IsLinux()
             {
-                int p = (int)Environment.OSVersion.Platform;
+                int p = (int)System.Environment.OSVersion.Platform;
                 return (p == 4) || (p == 6) || (p == 128);
             }
 
 #endif
-            }
         }
+    }
 
 #if PORTABLE
     }

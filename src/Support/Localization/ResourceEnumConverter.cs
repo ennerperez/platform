@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if !PORTABLE
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -41,10 +43,8 @@ namespace Platform.Support.Localization
     /// to make the LocalizedEnumConverter the default TypeConverter for the enums in your
     /// project.
     /// </remarks>
-#if !PORTABLE
 
     [ComVisible(false)]
-#endif
     public class ResourceEnumConverter : EnumConverter
     {
         private class LookupTable : Dictionary<string, object> { }
@@ -321,3 +321,5 @@ namespace Platform.Support.Localization
         }
     }
 }
+
+#endif

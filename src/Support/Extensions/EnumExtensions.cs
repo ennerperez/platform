@@ -1,12 +1,5 @@
-﻿#if PORTABLE
-
-using Helpers = Platform.Support.Core.EnumHelper;
-
-#else
-
-using Helpers = Platform.Support.EnumHelper;
-
-#endif
+﻿using System;
+using System.Linq;
 
 namespace Platform.Support
 {
@@ -16,8 +9,8 @@ namespace Platform.Support
     {
 #endif
 
-        public static class EnumExtensions
-        {
+    public static partial class Extensions
+    {
 #if (!PORTABLE)
 
         /// <summary>
@@ -32,7 +25,17 @@ namespace Platform.Support
         /// <returns>Human readable string for enum element</returns>
         public static string GetDescription(this System.Enum value)
         {
-            return Helpers.GetDescription(value);
+            // Get information on the enum element
+            System.Reflection.FieldInfo fi = value.GetType().GetField(value.ToString());
+            // Get description for elum element
+            System.ComponentModel.DescriptionAttribute[] attributes = (System.ComponentModel.DescriptionAttribute[])fi.GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), false);
+            if (attributes.Length > 0)
+            {
+                // DescriptionAttribute exists - return that
+                return attributes.FirstOrDefault().Description;
+            }
+            // No Description set - return enum element name
+            return value.ToString();
         }
 
         /// <summary>
@@ -50,11 +53,23 @@ namespace Platform.Support
         /// <returns>Enum element</returns>
         public static T ValueOf<T>(this string description)
         {
-            return Helpers.ValueOf<T>(description);
+            Type enumType = typeof(T);
+            string[] names = System.Enum.GetNames(enumType);
+
+            foreach (string name in names)
+            {
+                if (GetDescription((System.Enum)System.Enum.Parse(enumType, name, true)).Equals(description, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    // Found it!
+                    return (T)System.Enum.Parse(enumType, name, true);
+                }
+            }
+            // No such description in this enum
+            throw new ArgumentException("The string is not a description or value of the specified enum.");
         }
 
 #endif
-        }
+    }
 
 #if PORTABLE
     }

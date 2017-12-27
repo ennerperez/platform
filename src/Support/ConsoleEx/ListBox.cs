@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if !PORTABLE
+
+using System;
 
 namespace Platform.Support.ConsoleEx
 {
@@ -142,3 +144,5 @@ namespace Platform.Support.ConsoleEx
         }
     }
 }
+
+#endif

@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Text;
 
-#if PORTABLE
+#if !PORTABLE
 
-using Helpers = Platform.Support.Core.StringHelper;
-
-#else
-
-using Helpers = Platform.Support.StringHelper;
+using System.Security.Cryptography;
 
 #endif
 
@@ -21,72 +18,131 @@ namespace Platform.Support
     {
 #endif
 
-        public static class StringExtensions
+    public static partial class Extensions
+    {
+        public static bool IsNumeric(this string value)
         {
-            public static bool IsNumeric(this string expression)
+            bool hasDecimal = false;
+            for (int i = 0; i < value.Length; i++)
             {
-                return Helpers.IsNumeric(expression);
-            }
-
-            public static bool IsEmail(this string expression)
-            {
-                return Helpers.IsEmail(expression);
-            }
-
-            public static string ToSentence(this string obj, bool capitalize = false)
-            {
-                return Helpers.ToSentence(obj, capitalize);
-            }
-
-            public static string TrimFromEnd(this string source, string suffix)
-            {
-                if (string.IsNullOrEmpty(source) || string.IsNullOrEmpty(suffix))
+                // Check for decimal
+                if (value[i] == '.')
                 {
-                    return source;
+                    if (hasDecimal) // 2nd decimal
+                        return false;
+                    else // 1st decimal
+                    {
+                        // inform loop decimal found and continue
+                        hasDecimal = true;
+                        continue;
+                    }
                 }
-                int num = source.LastIndexOf(suffix, StringComparison.OrdinalIgnoreCase);
-                if (num <= 0)
+                // check if number
+                if (!char.IsNumber(value[i]))
+                    return false;
+            }
+            return true;
+        }
+
+        public static bool IsEmail(this string value)
+        {
+            return Regex.IsMatch(value, @"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+        }
+
+        public static string ToSentence(this string obj, bool capitalize = false)
+        {
+            if (capitalize)
+            {
+                List<string> _return = new List<string>();
+                foreach (string Item in obj.Split(' '))
                 {
-                    return source;
+                    _return.Add(Item.ToSentence());
                 }
-                return source.Substring(0, num);
+                return String.Join(" ", _return);
             }
-
-            public static IEnumerable<String> SplitInParts(this String s, Int32 partLength)
+            else
             {
-                if (s == null)
-                    throw new ArgumentNullException("s");
-                if (partLength <= 0)
-                    throw new ArgumentException("Part length has to be positive.", "partLength");
-
-                for (var i = 0; i < s.Length; i += partLength)
-                    yield return s.Substring(i, Math.Min(partLength, s.Length - i));
+                return obj.Substring(0, 1).ToUpper() + obj.Substring(1).ToLower();
             }
+        }
 
-            public static IEnumerable<String> SpliceText(this string text, int lineLength)
+        public static string TrimFromEnd(this string source, string suffix)
+        {
+            if (string.IsNullOrEmpty(source) || string.IsNullOrEmpty(suffix))
             {
-                return Regex.Matches(text, ".{1," + lineLength + "}").Cast<Match>().Select(m => m.Value).ToArray();
+                return source;
             }
-
-            public static string Last(this string text, int chars = 1)
+            int num = source.LastIndexOf(suffix, StringComparison.OrdinalIgnoreCase);
+            if (num <= 0)
             {
-                return text.Substring(text.Length - chars, chars);
+                return source;
             }
+            return source.Substring(0, num);
+        }
+
+        public static IEnumerable<String> SplitInParts(this String s, Int32 partLength)
+        {
+            if (s == null)
+                throw new ArgumentNullException("s");
+            if (partLength <= 0)
+                throw new ArgumentException("Part length has to be positive.", "partLength");
+
+            for (var i = 0; i < s.Length; i += partLength)
+                yield return s.Substring(i, System.Math.Min(partLength, s.Length - i));
+        }
+
+        public static IEnumerable<String> SpliceText(this string text, int lineLength)
+        {
+            return Regex.Matches(text, ".{1," + lineLength + "}").Cast<Match>().Select(m => m.Value).ToArray();
+        }
+
+        public static string Last(this string text, int chars = 1)
+        {
+            return text.Substring(text.Length - chars, chars);
+        }
 
 #if !PORTABLE
 
         public static string SHA256(this string source, string key = null)
         {
-            return Helpers.SHA256(source, key);
+            string result;
+            var expr_05 = new UTF8Encoding();
+            byte[] bytes2 = expr_05.GetBytes(source);
+            var hMAC = new HMACSHA256();
+            if (!string.IsNullOrEmpty(key))
+            {
+                byte[] bytes = expr_05.GetBytes(key);
+                hMAC = new HMACSHA256(bytes);
+            }
+
+            result = BitConverter.ToString(hMAC.ComputeHash(bytes2)).Replace("-", "").ToLower();
+
+            hMAC.Dispose();
+
+            return result;
         }
 
         public static string MD5(this string source, string key = null)
         {
-            return Helpers.MD5(source, key);
+            string result;
+            var expr_05 = new UTF8Encoding();
+            byte[] bytes2 = expr_05.GetBytes(source);
+            var hMAC = new HMACMD5();
+            if (!string.IsNullOrEmpty(key))
+            {
+                byte[] bytes = expr_05.GetBytes(key);
+                hMAC = new HMACMD5(bytes);
+            }
+
+            result = BitConverter.ToString(hMAC.ComputeHash(bytes2)).Replace("-", "").ToLower();
+
+            hMAC.Dispose();
+
+            return result;
         }
 
 #endif
-        }
+    }
 
 #if PORTABLE
     }

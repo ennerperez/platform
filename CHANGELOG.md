@@ -5,10 +5,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [3.3.33] - [UNRELEASED]
 
-### Changed
-
-- Build engine
-
 ### Added
 
 - Dialog Helper
@@ -23,6 +19,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Strings Random Generator
 - Shortcut Helpers/Extensions
 - Repo Attributes (GitHub)
+
+### Changed
+
+- Build engine
+- Extensions Naming
+- Reflected Namespaces
 
 ## [3.2.32] - [2016-12-31]
 

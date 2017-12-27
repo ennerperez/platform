@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if !PORTABLE
+
+using System;
 using System.Threading;
 
 namespace Platform.Support.ConsoleEx
@@ -79,3 +81,5 @@ namespace Platform.Support.ConsoleEx
         #endregion IDisposable
     }
 }
+
+#endif

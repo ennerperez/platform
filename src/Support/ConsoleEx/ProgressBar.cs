@@ -1,4 +1,6 @@
-﻿using Platform.Support.Windows;
+﻿#if !PORTABLE
+
+using Platform.Support.Windows;
 using System;
 using System.Text;
 using System.Threading;
@@ -54,7 +56,7 @@ namespace Platform.Support.ConsoleEx
         public void Report(double value)
         {
             // Make sure value is in [0..1] range
-            value = Math.Max(0, Math.Min(1, value));
+            value = System.Math.Max(0, System.Math.Min(1, value));
             Interlocked.Exchange(ref currentProgress, value);
         }
 
@@ -81,7 +83,7 @@ namespace Platform.Support.ConsoleEx
         {
             // Get length of common portion
             int commonPrefixLength = 0;
-            int commonLength = Math.Min(currentText.Length, text.Length);
+            int commonLength = System.Math.Min(currentText.Length, text.Length);
             while (commonPrefixLength < commonLength && text[commonPrefixLength] == currentText[commonPrefixLength])
             {
                 commonPrefixLength++;
@@ -189,3 +191,5 @@ namespace Platform.Support.ConsoleEx
         #endregion IDisposable
     }
 }
+
+#endif
