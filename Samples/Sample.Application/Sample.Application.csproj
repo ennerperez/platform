@@ -34,16 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Platform.Presentation.Forms, Version=3.3.33.35107, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Platform.Presentation.Windows.Forms.3.3.33\lib\net40\Platform.Presentation.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.Presentation.Reports, Version=3.3.33.35107, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Platform.Presentation.Reporting.3.3.33\lib\net40\Platform.Presentation.Reports.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.Support.Core, Version=3.3.33.35105, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Platform.Support.Core, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Core.3.3.33\lib\net40\Platform.Support.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Platform.Support.Drawing, Version=3.3.33.35106, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Platform.Support.Drawing, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Drawing.3.3.33\lib\net40\Platform.Support.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="Platform.Support.Windows, Version=3.3.33.35107, Culture=neutral, processorArchitecture=MSIL">
@@ -120,7 +114,7 @@
   </Target>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
