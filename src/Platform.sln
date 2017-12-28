@@ -153,8 +153,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".files", ".files", "{70671A51-61FB-4AA2-9D80-8C68A5B934ED}"
 	ProjectSection(SolutionItems) = preProject
 		..\.files\AssemblyInfo.Common.cs = ..\.files\AssemblyInfo.Common.cs
+		..\.files\AssemblyInfo.Common.props = ..\.files\AssemblyInfo.Common.props
 		..\.files\AssemblyInfo.Platform.cs = ..\.files\AssemblyInfo.Platform.cs
+		..\.files\AssemblyInfo.Platform.props = ..\.files\AssemblyInfo.Platform.props
 		..\.files\AssemblyInfo.Version.cs = ..\.files\AssemblyInfo.Version.cs
+		..\.files\AssemblyInfo.Version.props = ..\.files\AssemblyInfo.Version.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Standard", "Standard", "{39AACD32-F123-4B20-B8E8-6CF49D37C6C2}"
@@ -190,6 +193,18 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reports", "Presentation.Reports.Net45\Presentation.Reports.csproj", "{3CECF307-6681-460F-870C-AE75ADD010B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.SPS.Plugin", "Model.SPS.Plugin.Net45\Model.SPS.Plugin.csproj", "{62104A7A-35E6-4CD6-A9F8-A79807FF9B4D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support", "Support.NetStandard2\Support.csproj", "{7D96C246-5A22-4610-9936-2EF74E534E7F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model.NetStandard2\Model.csproj", "{35F2AE15-D4B8-4F18-9D4D-E9B451BC5F2B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.CRUD", "Model.CRUD.NetStandard2\Model.CRUD.csproj", "{0076162C-999D-48A1-B5A3-06840CC53F28}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.MVC", "Model.MVC.NetStandard2\Model.MVC.csproj", "{57113C42-0081-45D0-AA85-80E4B50442EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.SPS", "Model.SPS.NetStandard2\Model.SPS.csproj", "{B0CBFC38-9BFC-4652-A0AE-4722B597AD50}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.SPS.Plugin", "Model.SPS.Plugin.NetStandard2\Model.SPS.Plugin.csproj", "{1977C725-5807-4768-BA71-8D95ED9632B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -349,6 +364,30 @@ Global
 		{62104A7A-35E6-4CD6-A9F8-A79807FF9B4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62104A7A-35E6-4CD6-A9F8-A79807FF9B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62104A7A-35E6-4CD6-A9F8-A79807FF9B4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D96C246-5A22-4610-9936-2EF74E534E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D96C246-5A22-4610-9936-2EF74E534E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D96C246-5A22-4610-9936-2EF74E534E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D96C246-5A22-4610-9936-2EF74E534E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35F2AE15-D4B8-4F18-9D4D-E9B451BC5F2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35F2AE15-D4B8-4F18-9D4D-E9B451BC5F2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35F2AE15-D4B8-4F18-9D4D-E9B451BC5F2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35F2AE15-D4B8-4F18-9D4D-E9B451BC5F2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0076162C-999D-48A1-B5A3-06840CC53F28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0076162C-999D-48A1-B5A3-06840CC53F28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0076162C-999D-48A1-B5A3-06840CC53F28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0076162C-999D-48A1-B5A3-06840CC53F28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57113C42-0081-45D0-AA85-80E4B50442EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57113C42-0081-45D0-AA85-80E4B50442EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57113C42-0081-45D0-AA85-80E4B50442EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57113C42-0081-45D0-AA85-80E4B50442EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0CBFC38-9BFC-4652-A0AE-4722B597AD50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0CBFC38-9BFC-4652-A0AE-4722B597AD50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0CBFC38-9BFC-4652-A0AE-4722B597AD50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0CBFC38-9BFC-4652-A0AE-4722B597AD50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1977C725-5807-4768-BA71-8D95ED9632B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1977C725-5807-4768-BA71-8D95ED9632B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1977C725-5807-4768-BA71-8D95ED9632B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1977C725-5807-4768-BA71-8D95ED9632B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -398,13 +437,19 @@ Global
 		{1256D57E-5D7A-40E4-B935-B60138E03518} = {7F317395-1540-44B5-98F4-2132D346D129}
 		{3CECF307-6681-460F-870C-AE75ADD010B8} = {7F317395-1540-44B5-98F4-2132D346D129}
 		{62104A7A-35E6-4CD6-A9F8-A79807FF9B4D} = {7F317395-1540-44B5-98F4-2132D346D129}
+		{7D96C246-5A22-4610-9936-2EF74E534E7F} = {1EB07200-536C-485B-AEE0-55FEBD800202}
+		{35F2AE15-D4B8-4F18-9D4D-E9B451BC5F2B} = {1EB07200-536C-485B-AEE0-55FEBD800202}
+		{0076162C-999D-48A1-B5A3-06840CC53F28} = {1EB07200-536C-485B-AEE0-55FEBD800202}
+		{57113C42-0081-45D0-AA85-80E4B50442EB} = {1EB07200-536C-485B-AEE0-55FEBD800202}
+		{B0CBFC38-9BFC-4652-A0AE-4722B597AD50} = {1EB07200-536C-485B-AEE0-55FEBD800202}
+		{1977C725-5807-4768-BA71-8D95ED9632B3} = {1EB07200-536C-485B-AEE0-55FEBD800202}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_BuildVersioningStyle = None.None.None.Increment
-		BuildVersion_UpdateAssemblyVersion = True
-		BuildVersion_StartDate = 2016/1/1
-		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
 		SolutionGuid = {7EA34FD7-B2A4-4717-8FFD-337069CCE0F8}
+		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
+		BuildVersion_StartDate = 2016/1/1
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_BuildVersioningStyle = None.None.None.Increment
 	EndGlobalSection
 	GlobalSection(AutomaticVersions) = postSolution
 		AssemblyInfoFilePath.Release|Any CPU = D:\Developments\GitHub\platform\.files\AssemblyInfo.Version.cs

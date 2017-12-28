@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Platform.Model.CRUD</AssemblyName>
+    <RootNamespace>Platform.Model.CRUD</RootNamespace>
+    <Description>Platform Model CRUD Pattern</Description>
+  </PropertyGroup>
+
+  <Import Project="..\..\.files\AssemblyInfo.Common.props" Condition="Exists('..\..\.files\AssemblyInfo.Common.props')" />
+  <Import Project="..\..\.files\AssemblyInfo.Platform.props" Condition="Exists('..\..\.files\AssemblyInfo.Platform.props')" />
+  <Import Project="..\..\.files\AssemblyInfo.Version.props" Condition="Exists('..\..\.files\AssemblyInfo.Version.props')" />
+
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs" Link="Properties\AssemblyInfo.Common.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs" Link="Properties\AssemblyInfo.Platform.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs" Link="Properties\AssemblyInfo.Version.cs" />
+    <Compile Include="..\Model.CRUD\Entities\Entity.cs" Link="Entities\Entity.cs" />
+    <Compile Include="..\Model.CRUD\Interfaces\IRecord.cs" Link="Interfaces\IRecord.cs" />
+    <Compile Include="..\Model.CRUD\RecordEventArgs.cs" Link="RecordEventArgs.cs" />
+    <Compile Include="..\Model.CRUD\Types\Operations.cs" Link="Types\Operations.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Types\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Model.NetStandard2\Model.csproj" />
+    <ProjectReference Include="..\Support.NetStandard2\Support.csproj" />
+  </ItemGroup>
+</Project>

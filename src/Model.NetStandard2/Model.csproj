@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Platform.Model.Core</AssemblyName>
+    <RootNamespace>Platform.Model</RootNamespace>
+    <Description>Platform Model Pattern</Description>
+  </PropertyGroup>
+
+  <Import Project="..\..\.files\AssemblyInfo.Common.props" Condition="Exists('..\..\.files\AssemblyInfo.Common.props')" />
+  <Import Project="..\..\.files\AssemblyInfo.Platform.props" Condition="Exists('..\..\.files\AssemblyInfo.Platform.props')" />
+  <Import Project="..\..\.files\AssemblyInfo.Version.props" Condition="Exists('..\..\.files\AssemblyInfo.Version.props')" />
+
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs" Link="Properties\AssemblyInfo.Common.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs" Link="Properties\AssemblyInfo.Platform.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs" Link="Properties\AssemblyInfo.Version.cs" />
+    <Compile Include="..\Model\Entities\Entities.cs" Link="Entities\Entities.cs" />
+    <Compile Include="..\Model\Entities\Entity.cs" Link="Entities\Entity.cs" />
+    <Compile Include="..\Model\Interfaces\IAuditable.cs" Link="Interfaces\IAuditable.cs" />
+    <Compile Include="..\Model\Interfaces\IEntity.cs" Link="Interfaces\IEntity.cs" />
+    <Compile Include="..\Model\Interfaces\ISynchronizable.cs" Link="Interfaces\ISynchronizable.cs" />
+    <Compile Include="..\Model\Interfaces\IWarning.cs" Link="Interfaces\IWarning.cs" />
+    <Compile Include="..\Model\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Support.NetStandard2\Support.csproj" />
+  </ItemGroup>
+</Project>

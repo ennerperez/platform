@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Platform.Model.SPS</AssemblyName>
+    <RootNamespace>Platform.Model.SPS</RootNamespace>
+    <Description>Platform Model SPS Pattern</Description>
+  </PropertyGroup>
+
+  <Import Project="..\..\.files\AssemblyInfo.Common.props" Condition="Exists('..\..\.files\AssemblyInfo.Common.props')" />
+  <Import Project="..\..\.files\AssemblyInfo.Platform.props" Condition="Exists('..\..\.files\AssemblyInfo.Platform.props')" />
+  <Import Project="..\..\.files\AssemblyInfo.Version.props" Condition="Exists('..\..\.files\AssemblyInfo.Version.props')" />
+
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs" Link="Properties\AssemblyInfo.Common.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs" Link="Properties\AssemblyInfo.Platform.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs" Link="Properties\AssemblyInfo.Version.cs" />
+    <Compile Include="..\Model.SPS\ApplicationPlugIn.cs" Link="ApplicationPlugIn.cs" />
+    <Compile Include="..\Model.SPS\Attributes\PlugInApplicationAttribute.cs" Link="Attributes\PlugInApplicationAttribute.cs" />
+    <Compile Include="..\Model.SPS\Helper.cs" Link="Helper.cs" />
+    <Compile Include="..\Model.SPS\Interfaces\IApplicationPlugIn.cs" Link="Interfaces\IApplicationPlugIn.cs" />
+    <Compile Include="..\Model.SPS\Interfaces\IPlugInBasedApplication.cs" Link="Interfaces\IPlugInBasedApplication.cs" />
+    <Compile Include="..\Model.SPS\PlugInBasedApplication.cs" Link="PlugInBasedApplication.cs" />
+    <Compile Include="..\Model.SPS\Runnable\RunnablePlugInBasedApplication.cs" Link="Runnable\RunnablePlugInBasedApplication.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Attributes\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Properties\" />
+    <Folder Include="Runnable\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Model.SPS.Plugin.NetStandard2\Model.SPS.Plugin.csproj" />
+    <ProjectReference Include="..\Support.NetStandard2\Support.csproj" />
+  </ItemGroup>
+</Project>

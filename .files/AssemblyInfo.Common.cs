@@ -14,8 +14,10 @@ using Platform.Support.Attributes;
 
 #endif
 
+#if !NETSTANDARD2_0
 [assembly: AssemblyCompany("Enner Pérez")]
 [assembly: AssemblyCopyright("Copyright © Enner Pérez")]
+#endif
 [assembly: AssemblyTrademark("Enner Pérez")]
 [assembly: AssemblyCompanyId("J-18384909-0")]
 [assembly: AssemblyCompanyUrl("http://www.ennerperez.com.ve/")]

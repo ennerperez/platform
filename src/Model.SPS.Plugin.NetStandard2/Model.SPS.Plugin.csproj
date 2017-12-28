@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Platform.Model.SPS.Plugin</AssemblyName>
+    <RootNamespace>Platform.Model.SPS.Plugin</RootNamespace>
+    <Description>Platform Model SPS Plugin Pattern</Description>
+  </PropertyGroup>
+
+  <Import Project="..\..\.files\AssemblyInfo.Common.props" Condition="Exists('..\..\.files\AssemblyInfo.Common.props')" />
+  <Import Project="..\..\.files\AssemblyInfo.Platform.props" Condition="Exists('..\..\.files\AssemblyInfo.Platform.props')" />
+  <Import Project="..\..\.files\AssemblyInfo.Version.props" Condition="Exists('..\..\.files\AssemblyInfo.Version.props')" />
+
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs" Link="Properties\AssemblyInfo.Common.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs" Link="Properties\AssemblyInfo.Platform.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs" Link="Properties\AssemblyInfo.Version.cs" />
+    <Compile Include="..\Model.SPS.Plugin\Attributes\PlugInAttribute.cs" Link="Attributes\PlugInAttribute.cs" />
+    <Compile Include="..\Model.SPS.Plugin\Interfaces\IPluggable.cs" Link="Interfaces\IPluggable.cs" />
+    <Compile Include="..\Model.SPS.Plugin\Interfaces\IPlugIn.cs" Link="Interfaces\IPlugIn.cs" />
+    <Compile Include="..\Model.SPS.Plugin\Interfaces\IPlugInApplication.cs" Link="Interfaces\IPlugInApplication.cs" />
+    <Compile Include="..\Model.SPS.Plugin\Interfaces\Runnable\IRunnable.cs" Link="Interfaces\Runnable\IRunnable.cs" />
+    <Compile Include="..\Model.SPS.Plugin\Interfaces\Runnable\IRunnablePlugIn.cs" Link="Interfaces\Runnable\IRunnablePlugIn.cs" />
+    <Compile Include="..\Model.SPS.Plugin\PlugIn.cs" Link="PlugIn.cs" />
+    <Compile Include="..\Model.SPS.Plugin\PlugInApplication.cs" Link="PlugInApplication.cs" />
+    <Compile Include="..\Model.SPS.Plugin\Runnable\RunnablePlugIn.cs" Link="Runnable\RunnablePlugIn.cs" />
+    <Compile Include="..\Model.SPS\Helper.cs" Link="Helper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Attributes\" />
+    <Folder Include="Interfaces\Runnable\" />
+    <Folder Include="Runnable\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Support.NetStandard2\Support.csproj" />
+  </ItemGroup>
+</Project>
