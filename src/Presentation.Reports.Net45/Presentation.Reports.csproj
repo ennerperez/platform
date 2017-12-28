@@ -82,6 +82,14 @@
     <Resource Include="..\Presentation.Reports\Resources\_PrintLayout.cshtml">
       <Link>Resources\_PrintLayout.cshtml</Link>
     </Resource>
+    <Content Include="..\Presentation.Reports\CefAssemblyAdapter.props">
+      <Link>CefAssemblyAdapter.props</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Presentation.Reports\CefAssemblyAdapter.targets">
+      <Link>CefAssemblyAdapter.targets</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -359,8 +367,10 @@
     <Error Condition="!Exists('..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.props'))" />
     <Error Condition="!Exists('..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.targets'))" />
     <Error Condition="!Exists('..\packages\CefSharp.WinForms.49.0.1\build\CefSharp.WinForms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.49.0.1\build\CefSharp.WinForms.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.WinForms.49.0.1\build\CefSharp.WinForms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.49.0.1\build\CefSharp.WinForms.targets'))" />
   </Target>
   <Import Project="..\packages\cef.redist.x64.3.2623.1401\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2623.1401\build\cef.redist.x64.targets')" />
   <Import Project="..\packages\cef.redist.x86.3.2623.1401\build\cef.redist.x86.targets" Condition="Exists('..\packages\cef.redist.x86.3.2623.1401\build\cef.redist.x86.targets')" />
   <Import Project="..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.49.0.1\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\CefSharp.WinForms.49.0.1\build\CefSharp.WinForms.targets" Condition="Exists('..\packages\CefSharp.WinForms.49.0.1\build\CefSharp.WinForms.targets')" />
 </Project>

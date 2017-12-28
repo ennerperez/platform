@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <!-- CefSharp & CefSharp.Core -->
+    <Reference Include="CefSharp" Condition="'$(Platform)' == 'x86'">
+      <HintPath>$(MSBuildThisFileDirectory)..\cef\x86\CefSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.Core" Condition="'$(Platform)' == 'x86'">
+      <HintPath>$(MSBuildThisFileDirectory)..\cef\x86\CefSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp" Condition="'$(Platform)' == 'x64' or '$(Platform)' == 'AnyCPU'">
+      <HintPath>$(MSBuildThisFileDirectory)..\cef\x64\CefSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.Core" Condition="'$(Platform)' == 'x64' or '$(Platform)' == 'AnyCPU'">
+      <HintPath>$(MSBuildThisFileDirectory)..\cef\x64\CefSharp.Core.dll</HintPath>
+    </Reference>
+    <!-- CefSharp.WinForms -->
+    <Reference Include="CefSharp.WinForms" Condition="'$(Platform)' == 'x86'">
+      <HintPath>$(MSBuildThisFileDirectory)..\cef\x86\CefSharp.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="CefSharp.WinForms" Condition="'$(Platform)' == 'x64' or '$(Platform)' == 'AnyCPU'">
+      <HintPath>$(MSBuildThisFileDirectory)..\cef\x64\CefSharp.WinForms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

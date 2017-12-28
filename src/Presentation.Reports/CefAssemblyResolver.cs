@@ -9,7 +9,7 @@ namespace Platform.Presentation.Reports
 {
     public static class CefAssemblyResolve
     {
-        internal static bool resolved;
+        private static bool resolved;
 
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void Resolve()
@@ -17,23 +17,30 @@ namespace Platform.Presentation.Reports
             if (resolved)
                 return;
 
+            AppDomain.CurrentDomain.AssemblyLoad += Loader;
             AppDomain.CurrentDomain.AssemblyResolve += Resolver;
-
-            //Perform dependency check to make sure all relevant resources are in our output directory.
-            var settings = new CefSettings
-            {
-                BrowserSubprocessPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
-                                                   Environment.Is64BitProcess ? "x64" : "x86",
-                                                   "CefSharp.BrowserSubprocess.exe")
-            };
-
-            Cef.Initialize(settings, true, false);//, browserProcessHandler: null);
 
             resolved = true;
         }
 
+        internal static void Loader(object sender, AssemblyLoadEventArgs args)
+        {
+            if (args.LoadedAssembly.GetName().Name.StartsWith("CefSharp"))
+            {
+                //Perform dependency check to make sure all relevant resources are in our output directory.
+                var settings = new CefSettings
+                {
+                    BrowserSubprocessPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
+                                                   Environment.Is64BitProcess ? "x64" : "x86",
+                                                   "CefSharp.BrowserSubprocess.exe")
+                };
+
+                Cef.Initialize(settings, true, false);//, browserProcessHandler: null);
+            }
+        }
+
         // Will attempt to load missing assembly from either x86 or x64 subdir
-        private static Assembly Resolver(object sender, ResolveEventArgs args)
+        internal static Assembly Resolver(object sender, ResolveEventArgs args)
         {
             if (args.Name.StartsWith("CefSharp"))
             {
