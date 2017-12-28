@@ -292,3 +292,9 @@ tools/**
 *.xsd.cs
 
 # End of https://www.gitignore.io/api/visualstudio
+
+# CEF Specials
+!src/packages/cef.redist.x64.3.2623.1401/build/**
+!src/packages/cef.redist.x86.3.2623.1401/build/**
+!src/packages/CefSharp.Common.49.0.1/build/**
+!src/packages/CefSharp.WinForms.49.0.1/build/**

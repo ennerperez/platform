@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Only execute if the Platform folder exists in this package -->
+  <Target Name="CefRedistCopyDllPak32" BeforeTargets="AfterBuild" Condition="Exists('$(MSBuildThisFileDirectory)..\CEF\x86')">
+    <ItemGroup>
+      <CefBinaries Include="$(MSBuildThisFileDirectory)..\CEF\x86\*.*" />
+      <CefPakFiles Include="$(MSBuildThisFileDirectory)..\CEF\*.*" />
+      <CefLocales Include="$(MSBuildThisFileDirectory)..\CEF\locales\*.*" />
+    </ItemGroup>
+    <Message Importance="high" Text="-- cef.redist.targets at $(MSBuildThisFileDirectory)" />
+    <Message Importance="high" Text="Copying CEF .dll files from $(MSBuildThisFileDirectory)..\CEF\x86 to $(TargetDir)\x86" />
+    <Copy SourceFiles="@(CefBinaries)" DestinationFolder="$(TargetDir)\x86" />
+    <Message Importance="high" Text="Copying CEF .pak files from $(MSBuildThisFileDirectory)..\CEF to $(TargetDir)\x86" />
+    <Copy SourceFiles="@(CefPakFiles)" DestinationFolder="$(TargetDir)\x86" />
+    <Message Importance="high" Text="Copying CEF locales    from $(MSBuildThisFileDirectory)..\CEF\locales to $(TargetDir)\x86\locales" />
+    <Copy SourceFiles="@(CefLocales)" DestinationFolder="$(TargetDir)\x86\locales" />
+  </Target>
+</Project>
