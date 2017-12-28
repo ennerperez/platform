@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
-    <id>$id$</id>
+    <id>Platform.Model.Core.NETCore</id>
     <version>$version$</version>
-    <title>$title$</title>
+    <title>Platform.Model.Core</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
     <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
@@ -11,21 +11,20 @@
     <iconUrl>https://raw.githubusercontent.com/ennerperez/platform/master/src/.editoricon.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Libset for agile software development</description>
-    <summary>$description$</summary>
+    <summary>Platform Model Core</summary>
     <releaseNotes />
     <copyright>$copyright$</copyright>
     <language>en</language>
     <tags>.NET Framework Base Development Platform</tags>
     <dependencies>
-      <group>
-        <dependency id="Platform.Support.Core" version="3.3" />
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="NETStandard.Library" version="2.0.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CSharp" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="Platform.Support.Core.NETCore" version="$version$" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\Model.SPS.Plugin\bin\release\Platform.Model.SPS.Plugin.dll" target="lib\net40\Platform.Model.SPS.Plugin.dll" />
-    <file src="..\Model.SPS.Plugin.Net45\bin\release\Platform.Model.SPS.Plugin.dll" target="lib\net45\Platform.Model.SPS.Plugin.dll" />
-    <file src="..\Model.SPS.Plugin.PCL\bin\release\Platform.Model.SPS.Plugin.PCL.dll" target="lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Model.SPS.Plugin.PCL.dll" />
-    <file src="..\Model.SPS.Plugin.PCL.Net45\bin\release\Platform.Model.SPS.Plugin.PCL.dll" target="lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Model.SPS.Plugin.PCL.dll" />
+    <file src="..\Model.NetStandard2\bin\release\netstandard2.0\Platform.Model.Core.dll" target="lib\netstandard2.0\Platform.Model.Core.dll" />
   </files>
 </package>

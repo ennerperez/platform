@@ -17,8 +17,10 @@
     <language>en</language>
     <tags>.NET Framework Base Development Platform</tags>
     <dependencies>
-      <dependency id="Platform.Support.Core" version="3.3" />
-      <dependency id="Platform.Support.Drawing" version="3.3" />
+      <group>
+        <dependency id="Platform.Support.Core" version="3.3" />
+        <dependency id="Platform.Support.Drawing" version="3.3" />
+      </group>
     </dependencies>
   </metadata>
   <files>

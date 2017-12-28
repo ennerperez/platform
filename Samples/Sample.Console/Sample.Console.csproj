@@ -37,7 +37,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Platform.Support.Core, Version=3.3.33.26574, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Platform.Support.Core, Version=3.3.33.42832, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Core.3.3.33\lib\net45\Platform.Support.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />

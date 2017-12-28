@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
-  <metadata minClientVersion="2.8.1">
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
@@ -17,7 +17,9 @@
     <language>en</language>
     <tags>.NET Framework Base Development Platform</tags>
     <dependencies>
-      <dependency id="Platform.Support.Core" version="3.3" />
+      <group>
+        <dependency id="Platform.Support.Core" version="3.3" />
+      </group>
     </dependencies>
   </metadata>
   <files>

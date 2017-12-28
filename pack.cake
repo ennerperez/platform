@@ -36,50 +36,11 @@ Task("Clean")
     .Does(() =>
 {
     CleanDirectory(buildDir);
-    CleanDirectories("./**/bin");
-    CleanDirectories("./**/obj");
 	CleanDirectories("./**/samples/packages");
 });
 
-Task("Restore-NuGet-Packages")
-    .IsDependentOn("Clean")
-    .Does(() =>
-{
-    foreach (var solution in solutions)
-    {
-        NuGetRestore(solution.Key);
-    }
-});
-
-Task("Build")
-    .IsDependentOn("Restore-NuGet-Packages")
-    .Does(() =>
-{
-    foreach (var solution in solutions)
-    {
-        if (IsRunningOnWindows())
-        {
-            var settings = new MSBuildSettings()
-            .WithProperty("PackageVersion", version)
-            .WithProperty("BuildSymbolsPackage", "false");
-            settings.SetConfiguration(configuration);
-            // Use MSBuild
-            MSBuild(solution.Key, settings);
-        }
-        else
-        {
-            var settings = new XBuildSettings()
-            .WithProperty("PackageVersion", version)
-            .WithProperty("BuildSymbolsPackage", "false");
-            settings.SetConfiguration(configuration);
-            // Use XBuild
-            XBuild(solution.Key, settings);
-        }
-    }
-});
-
 Task("Build-NuGet-Packages")
-    .IsDependentOn("Build")
+	.IsDependentOn("Clean")
     .Does(() =>
     {
     foreach (var solution in solutions)
@@ -129,21 +90,11 @@ Task("Build-NuGet-Packages")
     }
 });
 
-Task("Run-Unit-Tests")
-    .IsDependentOn("Build")
-    .Does(() =>
-{
-    NUnit3("./src/**/bin/" + configuration + "/*.Tests.dll", new NUnit3Settings {
-        NoResults = true
-        });
-});
-
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .IsDependentOn("Run-Unit-Tests")
 	.IsDependentOn("Build-NuGet-Packages");
 
 //////////////////////////////////////////////////////////////////////

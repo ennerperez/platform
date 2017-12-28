@@ -160,6 +160,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\build.ps1 = ..\build.ps1
 		..\CHANGELOG.md = ..\CHANGELOG.md
 		..\LICENSE = ..\LICENSE
+		..\pack.cake = ..\pack.cake
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
@@ -175,7 +176,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".files", ".files", "{70671A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Standard", "Standard", "{39AACD32-F123-4B20-B8E8-6CF49D37C6C2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{1EB07200-536C-485B-AEE0-55FEBD800202}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NETCore", "NETCore", "{1EB07200-536C-485B-AEE0-55FEBD800202}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.0", "4.0", "{C6297CDA-49E4-4C9B-8C6A-CDD6633ED33F}"
 EndProject

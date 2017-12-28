@@ -37,7 +37,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Platform.Support.Core.PCL, Version=3.3.33.26574, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Platform.Support.Core.PCL, Version=3.3.33.42832, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Core.3.3.33\lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Support.Core.PCL.dll</HintPath>
     </Reference>
   </ItemGroup>
