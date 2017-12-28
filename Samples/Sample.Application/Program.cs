@@ -1,4 +1,5 @@
-﻿using Platform.Support.Drawing;
+﻿using Platform.Presentation.Reports;
+using Platform.Support.Drawing;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -31,6 +32,9 @@ namespace Sample
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //CefAssemblyResolve.Resolve();
+
             Application.Run(new FormMain());
         }
     }

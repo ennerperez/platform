@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Platform.Presentation.Reporting.3.3.33\build\Platform.Presentation.Reporting.props" Condition="Exists('..\packages\Platform.Presentation.Reporting.3.3.33\build\Platform.Presentation.Reporting.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -34,14 +35,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Platform.Presentation.Forms, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Platform.Presentation.Windows.Forms.3.3.33\lib\net40\Platform.Presentation.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Platform.Presentation.Reports, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Platform.Presentation.Reporting.3.3.33\lib\net40\Platform.Presentation.Reports.dll</HintPath>
+    </Reference>
     <Reference Include="Platform.Support.Core, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Core.3.3.33\lib\net40\Platform.Support.Core.dll</HintPath>
     </Reference>
     <Reference Include="Platform.Support.Drawing, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Drawing.3.3.33\lib\net40\Platform.Support.Drawing.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.Support.Windows, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Platform.Support.Windows.3.3.33\lib\net40\Platform.Support.Windows.dll</HintPath>
     </Reference>
     <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <HintPath>..\packages\RazorEngine.3.10.0\lib\net40\RazorEngine.dll</HintPath>
@@ -104,16 +120,19 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+    <Error Condition="!Exists('..\packages\Platform.Presentation.Reporting.3.3.33\build\Platform.Presentation.Reporting.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Platform.Presentation.Reporting.3.3.33\build\Platform.Presentation.Reporting.props'))" />
+    <Error Condition="!Exists('..\packages\Platform.Presentation.Reporting.3.3.33\build\Platform.Presentation.Reporting.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Platform.Presentation.Reporting.3.3.33\build\Platform.Presentation.Reporting.targets'))" />
   </Target>
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <Import Project="..\packages\Platform.Presentation.Reporting.3.3.33\build\Platform.Presentation.Reporting.targets" Condition="Exists('..\packages\Platform.Presentation.Reporting.3.3.33\build\Platform.Presentation.Reporting.targets')" />
+  <!--<Import Project="..\packagesPlatform.Presentation.Reporting.3.3.33\build\Platform.Presentation.Reporting.targets" Condition="Exists('..\packages\Platform.Presentation.Reporting.3.3.33\build\Platform.Presentation.Reporting.targets')" />-->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
