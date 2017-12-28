@@ -21,7 +21,6 @@
     <Compile Include="..\Model\Interfaces\IEntity.cs" Link="Interfaces\IEntity.cs" />
     <Compile Include="..\Model\Interfaces\ISynchronizable.cs" Link="Interfaces\ISynchronizable.cs" />
     <Compile Include="..\Model\Interfaces\IWarning.cs" Link="Interfaces\IWarning.cs" />
-    <Compile Include="..\Model\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -51,7 +51,6 @@
     <Compile Include="..\Support\Obsolete.cs" Link="Obsolete.cs" />
     <Compile Include="..\Support\OS\Environment.cs" Link="OS\Environment.cs" />
     <Compile Include="..\Support\Parameter.cs" Link="Parameter.cs" />
-    <Compile Include="..\Support\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
     <Compile Include="..\Support\Reflection\ApplicationInfo.cs" Link="Reflection\ApplicationInfo.cs" />
     <Compile Include="..\Support\Reflection\AssemblyBuildDateAttribute.cs" Link="Reflection\AssemblyBuildDateAttribute.cs" />
     <Compile Include="..\Support\Reflection\AssemblyCompanyIdAttribute.cs" Link="Reflection\AssemblyCompanyIdAttribute.cs" />
