@@ -34,13 +34,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Platform.Model.Core, Version=3.3.33.42834, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Platform.Model.Core, Version=3.3.33.2848, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Model.Core.3.3.33\lib\net40\Platform.Model.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Platform.Support.Core, Version=3.3.33.42833, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Platform.Support.Core, Version=3.3.33.2847, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Core.3.3.33\lib\net40\Platform.Support.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Platform.Support.Data, Version=3.3.33.42835, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Platform.Support.Data, Version=3.3.33.2848, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Data.3.3.33\lib\net40\Platform.Support.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
