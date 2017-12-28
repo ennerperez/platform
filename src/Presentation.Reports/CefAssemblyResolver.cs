@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CefSharp;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -19,13 +20,14 @@ namespace Platform.Presentation.Reports
             AppDomain.CurrentDomain.AssemblyResolve += Resolver;
 
             //Perform dependency check to make sure all relevant resources are in our output directory.
-            var settings = new CefSettings();
-
-            settings.BrowserSubprocessPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
+            var settings = new CefSettings
+            {
+                BrowserSubprocessPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
                                                    Environment.Is64BitProcess ? "x64" : "x86",
-                                                   "CefSharp.BrowserSubprocess.exe");
+                                                   "CefSharp.BrowserSubprocess.exe")
+            };
 
-            Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler: null);
+            Cef.Initialize(settings, true, false);//, browserProcessHandler: null);
 
             resolved = true;
         }
