@@ -40,7 +40,7 @@
     <Reference Include="Platform.Support.Drawing, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Drawing.3.3.33\lib\net40\Platform.Support.Drawing.dll</HintPath>
     </Reference>
-    <Reference Include="Platform.Support.Windows, Version=3.3.33.35107, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Platform.Support.Windows, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Windows.3.3.33\lib\net40\Platform.Support.Windows.dll</HintPath>
     </Reference>
     <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
