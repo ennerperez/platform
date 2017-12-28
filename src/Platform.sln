@@ -159,8 +159,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".files", ".files", "{70671A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Standard", "Standard", "{39AACD32-F123-4B20-B8E8-6CF49D37C6C2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{1EB07200-536C-485B-AEE0-55FEBD800202}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.0", "4.0", "{C6297CDA-49E4-4C9B-8C6A-CDD6633ED33F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.5", "4.5", "{7F317395-1540-44B5-98F4-2132D346D129}"
@@ -400,11 +398,11 @@ Global
 		{62104A7A-35E6-4CD6-A9F8-A79807FF9B4D} = {7F317395-1540-44B5-98F4-2132D346D129}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_BuildVersioningStyle = None.None.None.Increment
-		BuildVersion_UpdateAssemblyVersion = True
-		BuildVersion_StartDate = 2016/1/1
-		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
 		SolutionGuid = {7EA34FD7-B2A4-4717-8FFD-337069CCE0F8}
+		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
+		BuildVersion_StartDate = 2016/1/1
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_BuildVersioningStyle = None.None.None.Increment
 	EndGlobalSection
 	GlobalSection(AutomaticVersions) = postSolution
 		AssemblyInfoFilePath.Release|Any CPU = D:\Developments\GitHub\platform\.files\AssemblyInfo.Version.cs
