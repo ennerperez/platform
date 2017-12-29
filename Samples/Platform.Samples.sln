@@ -48,10 +48,10 @@ Global
 		{A4E49E51-DBBC-4588-BA35-FBC70397D8D4} = {E9E411D7-1044-4839-A1D4-59C45956314A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_BuildVersioningStyle = None.None.None.Increment
-		BuildVersion_UpdateAssemblyVersion = True
-		BuildVersion_StartDate = 2016/1/1
 		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
+		BuildVersion_StartDate = 2016/1/1
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_BuildVersioningStyle = None.None.None.Increment
 		SolutionGuid = {201FA654-6DE8-484E-ACF6-6BD7E38CDE3F}
 	EndGlobalSection
 	GlobalSection(AutomaticVersions) = postSolution
