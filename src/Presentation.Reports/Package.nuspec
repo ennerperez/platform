@@ -21,10 +21,11 @@
       <group targetFramework=".NETFramework3.5" />
       <group targetFramework=".NETFramework4.0">
         <dependency id="Platform.Support.Core" version="$version$" />
-      <dependency id="RazorEngine" version="3.6.1" />
+        <dependency id="RazorEngine" version="3.10" />
       </group>
       <group targetFramework=".NETFramework4.5">
         <dependency id="Platform.Support.Core" version="$version$" />
+        <dependency id="RazorEngine" version="3.10" />
       </group>
       <group targetFramework=".NETPortable0.0-Profile328" />
       <group targetFramework=".NETPortable0.0-Profile78" />
