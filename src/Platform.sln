@@ -160,7 +160,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\build.ps1 = ..\build.ps1
 		..\CHANGELOG.md = ..\CHANGELOG.md
 		..\LICENSE = ..\LICENSE
-		..\pack.cake = ..\pack.cake
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
@@ -208,17 +207,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reports", "Pre
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.SPS.Plugin", "Model.SPS.Plugin.Net45\Model.SPS.Plugin.csproj", "{62104A7A-35E6-4CD6-A9F8-A79807FF9B4D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support", "Support.NetStandard2\Support.csproj", "{7D96C246-5A22-4610-9936-2EF74E534E7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support", "Support.NETCore\Support.csproj", "{7D96C246-5A22-4610-9936-2EF74E534E7F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model.NetStandard2\Model.csproj", "{35F2AE15-D4B8-4F18-9D4D-E9B451BC5F2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model.NETCore\Model.csproj", "{35F2AE15-D4B8-4F18-9D4D-E9B451BC5F2B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.CRUD", "Model.CRUD.NetStandard2\Model.CRUD.csproj", "{0076162C-999D-48A1-B5A3-06840CC53F28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.CRUD", "Model.CRUD.NETCore\Model.CRUD.csproj", "{0076162C-999D-48A1-B5A3-06840CC53F28}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.MVC", "Model.MVC.NetStandard2\Model.MVC.csproj", "{57113C42-0081-45D0-AA85-80E4B50442EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.MVC", "Model.MVC.NETCore\Model.MVC.csproj", "{57113C42-0081-45D0-AA85-80E4B50442EB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.SPS", "Model.SPS.NetStandard2\Model.SPS.csproj", "{B0CBFC38-9BFC-4652-A0AE-4722B597AD50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.SPS", "Model.SPS.NETCore\Model.SPS.csproj", "{B0CBFC38-9BFC-4652-A0AE-4722B597AD50}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.SPS.Plugin", "Model.SPS.Plugin.NetStandard2\Model.SPS.Plugin.csproj", "{1977C725-5807-4768-BA71-8D95ED9632B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model.SPS.Plugin", "Model.SPS.Plugin.NETCore\Model.SPS.Plugin.csproj", "{1977C725-5807-4768-BA71-8D95ED9632B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -26,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NETCore", "NETCore", "{84E9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Standard", "Standard", "{D56EE48A-AB57-44DA-A57E-795BE2BE4BCA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples.Console", "Console.NetStandar2\Samples.Console.csproj", "{7C4B003E-420E-4F51-B09D-686F299D0D12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples.Console", "Console.NETCore\Samples.Console.csproj", "{82780BBA-8BC6-4B49-87F4-6C32EFEC48D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,10 +50,10 @@ Global
 		{19D05955-5523-4F6E-88BA-B47ECE3F0E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19D05955-5523-4F6E-88BA-B47ECE3F0E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19D05955-5523-4F6E-88BA-B47ECE3F0E4F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C4B003E-420E-4F51-B09D-686F299D0D12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C4B003E-420E-4F51-B09D-686F299D0D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C4B003E-420E-4F51-B09D-686F299D0D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C4B003E-420E-4F51-B09D-686F299D0D12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82780BBA-8BC6-4B49-87F4-6C32EFEC48D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82780BBA-8BC6-4B49-87F4-6C32EFEC48D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82780BBA-8BC6-4B49-87F4-6C32EFEC48D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82780BBA-8BC6-4B49-87F4-6C32EFEC48D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,14 +64,14 @@ Global
 		{31A52908-5532-4838-9A15-007CADCB99EB} = {D56EE48A-AB57-44DA-A57E-795BE2BE4BCA}
 		{BD0B53C6-7C65-4E17-AB2C-AD3641A891DD} = {D56EE48A-AB57-44DA-A57E-795BE2BE4BCA}
 		{19D05955-5523-4F6E-88BA-B47ECE3F0E4F} = {D56EE48A-AB57-44DA-A57E-795BE2BE4BCA}
-		{7C4B003E-420E-4F51-B09D-686F299D0D12} = {84E9ECF7-9B04-43FE-A3C7-E986AB33C84F}
+		{82780BBA-8BC6-4B49-87F4-6C32EFEC48D1} = {84E9ECF7-9B04-43FE-A3C7-E986AB33C84F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
-		BuildVersion_StartDate = 2016/1/1
-		BuildVersion_UpdateAssemblyVersion = True
-		BuildVersion_BuildVersioningStyle = None.None.None.Increment
 		SolutionGuid = {201FA654-6DE8-484E-ACF6-6BD7E38CDE3F}
+		BuildVersion_BuildVersioningStyle = None.None.None.Increment
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_StartDate = 2016/1/1
+		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
 	EndGlobalSection
 	GlobalSection(AutomaticVersions) = postSolution
 		AssemblyInfoFilePath.Release|Any CPU = D:\Developments\GitHub\platform\.files\AssemblyInfo.Version.cs
