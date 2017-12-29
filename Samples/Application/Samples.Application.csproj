@@ -7,8 +7,8 @@
     <ProjectGuid>{19D05955-5523-4F6E-88BA-B47ECE3F0E4F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sample</RootNamespace>
-    <AssemblyName>Sample</AssemblyName>
+    <RootNamespace>Platform.Samples</RootNamespace>
+    <AssemblyName>Samples</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -34,11 +34,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Platform.Model.Core, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Platform.Model.Core.3.3.33\lib\net40\Platform.Model.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Platform.Presentation.Forms, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Platform.Presentation.Windows.Forms.3.3.33\lib\net40\Platform.Presentation.Forms.dll</HintPath>
+    </Reference>
     <Reference Include="Platform.Support.Core, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Core.3.3.33\lib\net40\Platform.Support.Core.dll</HintPath>
     </Reference>
     <Reference Include="Platform.Support.Drawing, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Drawing.3.3.33\lib\net40\Platform.Support.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Platform.Support.Windows, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Platform.Support.Windows.3.3.33\lib\net40\Platform.Support.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,16 +62,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormMain.cs">
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs">
+      <Link>Properties\AssemblyInfo.Common.cs</Link>
+    </Compile>
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs">
+      <Link>Properties\AssemblyInfo.Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
+      <Link>Properties\AssemblyInfo.Version.cs</Link>
+    </Compile>
+    <Compile Include="Forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
+    <Compile Include="Forms\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormBrand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormBrand.Designer.cs">
+      <DependentUpon>FormBrand.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormMain.resx">
+    <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormBrand.resx">
+      <DependentUpon>FormBrand.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,6 +102,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <Content Include="Brand.sku">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -94,16 +124,20 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Samples.Core.csproj">
+      <Project>{ddfa08aa-9ae7-4a07-b9fc-8fefccd82160}</Project>
+      <Name>Samples.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets'))" />
   </Target>
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

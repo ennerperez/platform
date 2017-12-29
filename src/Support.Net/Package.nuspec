@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
-  <metadata minClientVersion="2.8.1">
+  <metadata minClientVersion="2.12">
     <id>$id$</id>
     <version>$version$</version>
-    <title>$id$</title>
+    <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
     <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
@@ -17,11 +17,20 @@
     <language>en</language>
     <tags>.NET Framework Base Development Platform</tags>
     <dependencies>
-      <dependency id="Platform.Support.Core" version="3.3" />
-      <dependency id="Microsoft.Bcl" version="1.1" />
-      <dependency id="Microsoft.Bcl.Async" version="1.0" />
-      <dependency id="Microsoft.Bcl.Build" version="1.0" />
-      <dependency id="Microsoft.Net.Http" version="2.2" />
+      <group targetFramework=".NETFramework2.0" />
+      <group targetFramework=".NETFramework3.5" />
+      <group targetFramework=".NETFramework4.0">
+        <dependency id="Platform.Support.Core" version="$version$" />
+        <dependency id="Microsoft.Bcl" version="1.1" />
+        <dependency id="Microsoft.Bcl.Async" version="1.0" />
+        <dependency id="Microsoft.Bcl.Build" version="1.0" />
+        <dependency id="Microsoft.Net.Http" version="2.2" />
+      </group>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Platform.Support.Core" version="$version$" />
+      </group>
+      <group targetFramework=".NETPortable0.0-Profile328" />
+      <group targetFramework=".NETPortable0.0-Profile78" />
     </dependencies>
   </metadata>
   <files>
