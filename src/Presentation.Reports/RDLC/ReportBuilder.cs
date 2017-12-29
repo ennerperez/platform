@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Platform.Presentation.Reports.RDLC
 
         public ReportPage Page { get; set; }
         public ReportBody Body { get; set; }
-        public System.Data.DataSet DataSource { get; set; }
+        public DataSet DataSource { get; set; }
 
         private bool autoGenerateReport = true;
 
@@ -28,7 +29,12 @@ namespace Platform.Presentation.Reports.RDLC
 
         public string BuildReport(T model = default(T))
         {
-            throw new System.NotImplementedException();
+            return ReportEngine<T>.GetReportData(this);
+        }
+
+        public Stream BuildReportAsStream(T model = default(T))
+        {
+            return ReportEngine<T>.GenerateReport(this);
         }
 
         public static class ReportGlobalParameters

@@ -44,6 +44,9 @@
     <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="Platform.Model.Core, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Model.Core.3.3.33\lib\net40\Platform.Model.Core.dll</HintPath>
     </Reference>
@@ -52,6 +55,9 @@
     </Reference>
     <Reference Include="Platform.Presentation.Reports, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Presentation.Reports.3.3.33\lib\net40\Platform.Presentation.Reports.dll</HintPath>
+    </Reference>
+    <Reference Include="Platform.Presentation.Reports.Forms, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Platform.Presentation.Reports.Forms.3.3.33\lib\net40\Platform.Presentation.Reports.Forms.dll</HintPath>
     </Reference>
     <Reference Include="Platform.Support.Core, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Platform.Support.Core.3.3.33\lib\net40\Platform.Support.Core.dll</HintPath>
@@ -151,6 +157,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Reports\Persons.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\Persons.rdcl">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
