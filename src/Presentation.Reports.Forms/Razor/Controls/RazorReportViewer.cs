@@ -14,14 +14,11 @@ namespace Platform.Presentation.Reports
 {
     namespace Windows.Forms
     {
-        public class RazorReportViewer : System.Windows.Forms.WebBrowser, INotifyPropertyChanged
+        public class RazorReportViewer : CefSharp.WinForms.ChromiumWebBrowser, INotifyPropertyChanged
         {
-            public RazorReportViewer() : base()
+            public RazorReportViewer() : base("chrome://settings/help")
             {
                 InitializeComponent();
-
-                if (!IsBrowserEmulationSet())
-                    SetBrowserEmulationVersion();
             }
 
             private void InitializeComponent()
@@ -29,7 +26,7 @@ namespace Platform.Presentation.Reports
                 this.SuspendLayout();
 
                 PropertyChanged += RazorReportViewer_PropertyChanged;
-                DocumentCompleted += RazorReportViewer_DocumentCompleted;
+                //DocumentCompleted += RazorReportViewer_DocumentCompleted;
 
                 this.ResumeLayout(false);
             }
@@ -175,6 +172,10 @@ namespace Platform.Presentation.Reports
                 //    return;
                 //}
 
+                var tempDir = Support.OS.Environment.GetTemporaryDirectory();
+                var tempFile = Path.Combine(tempDir, Path.GetRandomFileName());
+                var content = string.Empty;
+
                 try
                 {
                     var report = ReportBuilder<object>.Create(DateTime.Now.Ticks.ToString())
@@ -182,7 +183,10 @@ namespace Platform.Presentation.Reports
                         .WithViewBag(ViewBag)
                         .WithPrecompilation();
 
-                    this.DocumentText = report.BuildReport(Model);
+                    tempDir = Support.OS.Environment.GetTemporaryDirectory();
+                    content = report.BuildReport(Model);
+                    tempFile = Path.Combine(tempDir, Path.GetRandomFileName());
+                    File.WriteAllText(tempFile, content);
                 }
                 catch (Exception ex)
                 {
@@ -193,22 +197,28 @@ namespace Platform.Presentation.Reports
                        .WithViewBag(ViewBag)
                        .WithPrecompilation();
 
-                    this.DocumentText = report.BuildReport(ex);
+                    tempDir = Support.OS.Environment.GetTemporaryDirectory();
+                    content = report.BuildReport(ex);
+                    tempFile = Path.Combine(tempDir, Path.GetRandomFileName());
+                }
+                finally
+                {
+                    this.Load(tempFile);
                 }
             }
 
             private bool isDocumentCompleted = false;
 
-            private void ajustView()
-            {
-                if (this.Document != null && this.Document.Body != null)
-                    this.Document.Body.Style = $"zoom:{Zoom}%;";
-            }
+            //private void ajustView()
+            //{
+            //    if (this.Document != null && this.Document.Body != null)
+            //        this.Document.Body.Style = $"zoom:{Zoom}%;";
+            //}
 
             private void RazorReportViewer_DocumentCompleted(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
             {
                 isDocumentCompleted = true;
-                ajustView();
+                //ajustView();
             }
 
             #region IE
