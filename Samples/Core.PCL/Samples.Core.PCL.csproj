@@ -50,6 +50,9 @@
     <Compile Include="..\Core\Models\Model2.cs">
       <Link>Models\Model2.cs</Link>
     </Compile>
+    <Compile Include="..\Core\Models\Person.cs">
+      <Link>Models\Person.cs</Link>
+    </Compile>
     <Compile Include="..\Core\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>

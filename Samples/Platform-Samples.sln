@@ -17,10 +17,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Console", "Console\Samples.Console.csproj", "{BD0B53C6-7C65-4E17-AB2C-AD3641A891DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples.Application", "Application\Samples.Application.csproj", "{19D05955-5523-4F6E-88BA-B47ECE3F0E4F}"
-	ProjectSection(ProjectDependencies) = postProject
-		{31A52908-5532-4838-9A15-007CADCB99EB} = {31A52908-5532-4838-9A15-007CADCB99EB}
-		{BD0B53C6-7C65-4E17-AB2C-AD3641A891DD} = {BD0B53C6-7C65-4E17-AB2C-AD3641A891DD}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,11 +48,11 @@ Global
 		{A4E49E51-DBBC-4588-BA35-FBC70397D8D4} = {E9E411D7-1044-4839-A1D4-59C45956314A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {201FA654-6DE8-484E-ACF6-6BD7E38CDE3F}
-		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
-		BuildVersion_StartDate = 2016/1/1
-		BuildVersion_UpdateAssemblyVersion = True
 		BuildVersion_BuildVersioningStyle = None.None.None.Increment
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_StartDate = 2016/1/1
+		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
+		SolutionGuid = {201FA654-6DE8-484E-ACF6-6BD7E38CDE3F}
 	EndGlobalSection
 	GlobalSection(AutomaticVersions) = postSolution
 		AssemblyInfoFilePath.Release|Any CPU = D:\Developments\GitHub\platform\.files\AssemblyInfo.Version.cs

@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\Model2.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

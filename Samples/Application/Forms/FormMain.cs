@@ -27,5 +27,11 @@ namespace Platform.Samples.Forms
         {
             Process.Start("Samples.Console.exe");
         }
+
+        private void commandLinkReports_Click(object sender, EventArgs e)
+        {
+            var child = new Forms.FormReports();
+            child.ShowDialog();
+        }
     }
 }
