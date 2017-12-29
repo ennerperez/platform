@@ -19,6 +19,7 @@
     <Compile Include="..\Model.MVC\IController.cs" Link="IController.cs" />
     <Compile Include="..\Model.MVC\IModel.cs" Link="IModel.cs" />
     <Compile Include="..\Model.MVC\IView.cs" Link="IView.cs" />
+    <Compile Include="..\Model.MVC\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Support.NetStandard2\Support.csproj" />
+    <ProjectReference Include="..\Support.NETCore\Support.csproj" />
   </ItemGroup>
 </Project>

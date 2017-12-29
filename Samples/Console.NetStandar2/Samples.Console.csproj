@@ -10,6 +10,7 @@
     <Compile Include="..\..\.files\AssemblyInfo.Platform.cs" Link="Properties\AssemblyInfo.Platform.cs" />
     <Compile Include="..\..\.files\AssemblyInfo.Version.cs" Link="Properties\AssemblyInfo.Version.cs" />
     <Compile Include="..\Console\Program.cs" Link="Program.cs" />
+    <Compile Include="..\Console\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>

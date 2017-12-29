@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Platform.Model.CRUD</AssemblyName>
-    <RootNamespace>Platform.Model.CRUD</RootNamespace>
-    <Description>Platform Model CRUD Pattern</Description>
+    <AssemblyName>Platform.Model.Core</AssemblyName>
+    <RootNamespace>Platform.Model</RootNamespace>
+    <Description>Platform Model Pattern</Description>
   </PropertyGroup>
 
   <Import Project="..\..\.files\AssemblyInfo.Common.props" Condition="Exists('..\..\.files\AssemblyInfo.Common.props')" />
@@ -15,21 +15,24 @@
     <Compile Include="..\..\.files\AssemblyInfo.Common.cs" Link="Properties\AssemblyInfo.Common.cs" />
     <Compile Include="..\..\.files\AssemblyInfo.Platform.cs" Link="Properties\AssemblyInfo.Platform.cs" />
     <Compile Include="..\..\.files\AssemblyInfo.Version.cs" Link="Properties\AssemblyInfo.Version.cs" />
-    <Compile Include="..\Model.CRUD\Entities\Entity.cs" Link="Entities\Entity.cs" />
-    <Compile Include="..\Model.CRUD\Interfaces\IRecord.cs" Link="Interfaces\IRecord.cs" />
-    <Compile Include="..\Model.CRUD\RecordEventArgs.cs" Link="RecordEventArgs.cs" />
-    <Compile Include="..\Model.CRUD\Types\Operations.cs" Link="Types\Operations.cs" />
+    <Compile Include="..\Model\Entities\Entities.cs" Link="Entities\Entities.cs" />
+    <Compile Include="..\Model\Entities\Entity.cs" Link="Entities\Entity.cs" />
+    <Compile Include="..\Model\Interfaces\IAuditable.cs" Link="Interfaces\IAuditable.cs" />
+    <Compile Include="..\Model\Interfaces\IEntity.cs" Link="Interfaces\IEntity.cs" />
+    <Compile Include="..\Model\Interfaces\ISynchronizable.cs" Link="Interfaces\ISynchronizable.cs" />
+    <Compile Include="..\Model\Interfaces\IWarning.cs" Link="Interfaces\IWarning.cs" />
+    <Compile Include="..\Model\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="Interfaces\" />
-    <Folder Include="Types\" />
     <Folder Include="Properties\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Model.NetStandard2\Model.csproj" />
-    <ProjectReference Include="..\Support.NetStandard2\Support.csproj" />
+    <ProjectReference Include="..\Support.NETCore\Support.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties Project_1json__JSONSchema="http://json.schemastore.org/project" /></VisualStudio></ProjectExtensions>
 </Project>

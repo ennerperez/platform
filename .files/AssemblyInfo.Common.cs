@@ -14,7 +14,7 @@ using Platform.Support.Attributes;
 
 #endif
 
-#if !NETSTANDARD2_0
+#if !NETSTANDARD2_0 && !NETCOREAPP2_0
 [assembly: AssemblyCompany("Enner Pérez")]
 [assembly: AssemblyCopyright("Copyright © Enner Pérez")]
 #endif

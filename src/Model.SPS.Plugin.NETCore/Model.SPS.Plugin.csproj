@@ -23,6 +23,7 @@
     <Compile Include="..\Model.SPS.Plugin\Interfaces\Runnable\IRunnablePlugIn.cs" Link="Interfaces\Runnable\IRunnablePlugIn.cs" />
     <Compile Include="..\Model.SPS.Plugin\PlugIn.cs" Link="PlugIn.cs" />
     <Compile Include="..\Model.SPS.Plugin\PlugInApplication.cs" Link="PlugInApplication.cs" />
+    <Compile Include="..\Model.SPS.Plugin\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
     <Compile Include="..\Model.SPS.Plugin\Runnable\RunnablePlugIn.cs" Link="Runnable\RunnablePlugIn.cs" />
     <Compile Include="..\Model.SPS\Helper.cs" Link="Helper.cs" />
   </ItemGroup>
@@ -35,6 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Support.NetStandard2\Support.csproj" />
+    <ProjectReference Include="..\Support.NETCore\Support.csproj" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata minClientVersion="2.12">
+    <id>Platform.Model.Core.NETCore</id>
+    <version>$version$</version>
+    <title>Platform.Model.Core</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/ennerperez/platform</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/ennerperez/platform/master/src/.editoricon.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Libset for agile software development</description>
+    <summary>Platform Model Core</summary>
+    <releaseNotes />
+    <copyright>$copyright$</copyright>
+    <language>en</language>
+    <tags>.NET Framework Base Development Platform</tags>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="NETStandard.Library" version="2.0.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CSharp" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="Platform.Support.Core.NETCore" version="$version$" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\Model.NETCore\bin\release\netstandard2.0\Platform.Model.Core.dll" target="lib\netstandard2.0\Platform.Model.Core.dll" />
+  </files>
+</package>

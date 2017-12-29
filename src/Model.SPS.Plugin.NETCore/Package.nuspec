@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
-  <metadata>
-    <id>Platform.Support.Core.NETCore</id>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata minClientVersion="2.12">
+    <id>Platform.Model.SPS.Plugin.NETCore</id>
     <version>$version$</version>
-    <title>Platform.Support.Core</title>
+    <title>Platform.Model.SPS.Plugin</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
     <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/ennerperez/platform/master/src/.editoricon.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Libset for agile software development</description>
-    <summary>Platform Support Core</summary>
+    <summary>Platform Model SPS Plugin</summary>
     <releaseNotes />
     <copyright>$copyright$</copyright>
     <language>en</language>
@@ -20,10 +20,11 @@
       <group targetFramework=".NETStandard2.0">
         <dependency id="NETStandard.Library" version="2.0.1" exclude="Build,Analyzers" />
         <dependency id="Microsoft.CSharp" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="Platform.Support.Core.NETCore" version="$version$" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\Support.NetStandard2\bin\release\netstandard2.0\Platform.Support.Core.dll" target="lib\netstandard2.0\Platform.Support.Core.dll" />
+    <file src="..\Model.SPS.Plugin.NETCore\bin\release\netstandard2.0\Platform.Model.SPS.Plugin.dll" target="lib\netstandard2.0\Platform.Model.SPS.Plugin.dll" />
   </files>
 </package>

@@ -15,7 +15,7 @@ using Platform.Support.Core.Reflection;
 
 #endif
 
-#if !NETSTANDARD2_0
+#if !NETSTANDARD2_0 && !NETCOREAPP2_0
 [assembly: AssemblyProduct("Platform")]
 #endif
 #if !PORTABLE || PROFILE_78
@@ -24,12 +24,12 @@ using Platform.Support.Core.Reflection;
 [assembly: CLSCompliant(false)]
 #if (DEBUG)
 [assembly: AssemblyProductLevel(ProductLevels.Preview)]
-#if !NETSTANDARD2_0
+#if !NETSTANDARD2_0 && !NETCOREAPP2_0
 [assembly: AssemblyConfiguration("Debug")]
 #endif
 #else
 [assembly: AssemblyProductLevel(ProductLevels.RTW)]
-#if !NETSTANDARD2_0
+#if !NETSTANDARD2_0 && !NETCOREAPP2_0
 [assembly: AssemblyConfiguration("Release")]
 #endif
 #endif

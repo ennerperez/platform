@@ -21,6 +21,7 @@
     <Compile Include="..\Model.SPS\Interfaces\IApplicationPlugIn.cs" Link="Interfaces\IApplicationPlugIn.cs" />
     <Compile Include="..\Model.SPS\Interfaces\IPlugInBasedApplication.cs" Link="Interfaces\IPlugInBasedApplication.cs" />
     <Compile Include="..\Model.SPS\PlugInBasedApplication.cs" Link="PlugInBasedApplication.cs" />
+    <Compile Include="..\Model.SPS\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
     <Compile Include="..\Model.SPS\Runnable\RunnablePlugInBasedApplication.cs" Link="Runnable\RunnablePlugInBasedApplication.cs" />
   </ItemGroup>
 
@@ -32,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Model.SPS.Plugin.NetStandard2\Model.SPS.Plugin.csproj" />
-    <ProjectReference Include="..\Support.NetStandard2\Support.csproj" />
+    <ProjectReference Include="..\Model.SPS.Plugin.NETCore\Model.SPS.Plugin.csproj" />
+    <ProjectReference Include="..\Support.NETCore\Support.csproj" />
   </ItemGroup>
 </Project>

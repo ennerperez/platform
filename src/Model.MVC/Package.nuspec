@@ -21,19 +21,19 @@
       <group targetFramework=".NETFramework3.5" />
       <group targetFramework=".NETFramework4.0">
         <dependency id="Platform.Support.Core" version="$version$" />
-        <dependency id="Platform.Model.Core" version="$version$" />
+        <!--<dependency id="Platform.Model.Core" version="$version$" />-->
       </group>
       <group targetFramework=".NETFramework4.5">
         <dependency id="Platform.Support.Core" version="$version$" />
-        <dependency id="Platform.Model.Core" version="$version$" />
+        <!--<dependency id="Platform.Model.Core" version="$version$" />-->
       </group>
       <group targetFramework=".NETPortable0.0-Profile328">
         <dependency id="Platform.Support.Core" version="$version$" />
-        <dependency id="Platform.Model.Core" version="$version$" />
+        <!--<dependency id="Platform.Model.Core" version="$version$" />-->
       </group>
       <group targetFramework=".NETPortable0.0-Profile78">
         <dependency id="Platform.Support.Core" version="$version$" />
-        <dependency id="Platform.Model.Core" version="$version$" />
+        <!--<dependency id="Platform.Model.Core" version="$version$" />-->
       </group>
     </dependencies>
   </metadata>
