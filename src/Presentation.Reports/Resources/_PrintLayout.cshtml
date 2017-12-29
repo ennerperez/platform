@@ -17,6 +17,7 @@
     @RenderSection("styles", required: false)
 
     <style>
+
         body {
             background: rgb(204,204,204);
             font-family: Arial, Helvetica, sans-serif;
@@ -25,1075 +26,1076 @@
         page {
             background: white;
             display: block;
-            margin: 0 auto;
+            width: 50%;
+            margin: auto;
             margin-bottom: 0.5cm;
             box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
         }
 
-        page[size="Letter"] {
-            width: 216mm;
-            height: 279mm;
-        }
-
-            page[size="Letter"][layout="portrait"] {
-                width: 279mm;
-                height: 216mm;
+            page[size="Letter"] {
+                width: 216mm;
+                height: 279mm;
             }
 
-        page[size="LetterSmall"] {
-            width: 216mm;
-            height: 279mm;
-        }
+                page[size="Letter"][layout="portrait"] {
+                    width: 279mm;
+                    height: 216mm;
+                }
 
-            page[size="LetterSmall"][layout="portrait"] {
-                width: 279mm;
-                height: 216mm;
+            page[size="LetterSmall"] {
+                width: 216mm;
+                height: 279mm;
             }
 
-        page[size="Tabloid"] {
-            width: 279mm;
-            height: 432mm;
-        }
+                page[size="LetterSmall"][layout="portrait"] {
+                    width: 279mm;
+                    height: 216mm;
+                }
 
-            page[size="Tabloid"][layout="portrait"] {
+            page[size="Tabloid"] {
+                width: 279mm;
+                height: 432mm;
+            }
+
+                page[size="Tabloid"][layout="portrait"] {
+                    width: 432mm;
+                    height: 279mm;
+                }
+
+            page[size="Ledger"] {
                 width: 432mm;
                 height: 279mm;
             }
 
-        page[size="Ledger"] {
-            width: 432mm;
-            height: 279mm;
-        }
+                page[size="Ledger"][layout="portrait"] {
+                    width: 279mm;
+                    height: 432mm;
+                }
 
-            page[size="Ledger"][layout="portrait"] {
-                width: 279mm;
-                height: 432mm;
+            page[size="Legal"] {
+                width: 216mm;
+                height: 356mm;
             }
 
-        page[size="Legal"] {
-            width: 216mm;
-            height: 356mm;
-        }
+                page[size="Legal"][layout="portrait"] {
+                    width: 356mm;
+                    height: 216mm;
+                }
 
-            page[size="Legal"][layout="portrait"] {
-                width: 356mm;
+            page[size="Statement"] {
+                width: 140mm;
                 height: 216mm;
             }
 
-        page[size="Statement"] {
-            width: 140mm;
-            height: 216mm;
-        }
+                page[size="Statement"][layout="portrait"] {
+                    width: 216mm;
+                    height: 140mm;
+                }
 
-            page[size="Statement"][layout="portrait"] {
-                width: 216mm;
-                height: 140mm;
+            page[size="Executive"] {
+                width: 7.25in;
+                height: 10.5in;
             }
 
-        page[size="Executive"] {
-            width: 7.25in;
-            height: 10.5in;
-        }
+                page[size="Executive"][layout="portrait"] {
+                    width: 10.5in;
+                    height: 7.25in;
+                }
 
-            page[size="Executive"][layout="portrait"] {
-                width: 10.5in;
-                height: 7.25in;
-            }
-
-        page[size="A3"] {
-            width: 297mm;
-            height: 420mm;
-        }
-
-            page[size="A3"][layout="portrait"] {
-                width: 420mm;
-                height: 297mm;
-            }
-
-        page[size="A4"] {
-            width: 210mm;
-            height: 297mm;
-        }
-
-            page[size="A4"][layout="portrait"] {
+            page[size="A3"] {
                 width: 297mm;
-                height: 210mm;
-            }
-
-        page[size="A4Small"] {
-            width: 210mm;
-            height: 297mm;
-        }
-
-            page[size="A4Small"][layout="portrait"] {
-                width: 297mm;
-                height: 210mm;
-            }
-
-        page[size="A5"] {
-            width: 148mm;
-            height: 210mm;
-        }
-
-            page[size="A5"][layout="portrait"] {
-                width: 210mm;
-                height: 148mm;
-            }
-
-        page[size="B4"] {
-            width: 250mm;
-            height: 353mm;
-        }
-
-            page[size="B4"][layout="portrait"] {
-                width: 353mm;
-                height: 250mm;
-            }
-
-        page[size="B5"] {
-            width: 176mm;
-            height: 250mm;
-        }
-
-            page[size="B5"][layout="portrait"] {
-                width: 250mm;
-                height: 176mm;
-            }
-
-        page[size="Folio"] {
-            width: 8.5in;
-            height: 13in;
-        }
-
-            page[size="Folio"][layout="portrait"] {
-                width: 13in;
-                height: 8.5in;
-            }
-
-        page[size="Quarto"] {
-            width: 215mm;
-            height: 275mm;
-        }
-
-            page[size="Quarto"][layout="portrait"] {
-                width: 275mm;
-                height: 215mm;
-            }
-
-        page[size="Standard10x14"] {
-            width: 10in;
-            height: 14in;
-        }
-
-            page[size="Standard10x14"][layout="portrait"] {
-                width: 14in;
-                height: 10in;
-            }
-
-        page[size="Standard11x17"] {
-            width: 11in;
-            height: 17in;
-        }
-
-            page[size="Standard11x17"][layout="portrait"] {
-                width: 17in;
-                height: 11in;
-            }
-
-        page[size="Note"] {
-            width: 8.5in;
-            height: 11in;
-        }
-
-            page[size="Note"][layout="portrait"] {
-                width: 11in;
-                height: 8.5in;
-            }
-
-        page[size="Number9Envelope"] {
-            width: 3.875in;
-            height: 8.875in;
-        }
-
-            page[size="Number9Envelope"][layout="portrait"] {
-                width: 8.875in;
-                height: 3.875in;
-            }
-
-        page[size="Number10Envelope"] {
-            width: 4.125in;
-            height: 9.5in;
-        }
-
-            page[size="Number10Envelope"][layout="portrait"] {
-                width: 9.5in;
-                height: 4.125in;
-            }
-
-        page[size="Number11Envelope"] {
-            width: 4.5in;
-            height: 10.375in;
-        }
-
-            page[size="Number11Envelope"][layout="portrait"] {
-                width: 10.375in;
-                height: 4.5in;
-            }
-
-        page[size="Number12Envelope"] {
-            width: 4.75in;
-            height: 11in;
-        }
-
-            page[size="Number12Envelope"][layout="portrait"] {
-                width: 11in;
-                height: 4.75in;
-            }
-
-        page[size="Number14Envelope"] {
-            width: 5in;
-            height: 11.5in;
-        }
-
-            page[size="Number14Envelope"][layout="portrait"] {
-                width: 11.5in;
-                height: 5in;
-            }
-
-        page[size="CSheet"] {
-            width: 432mm;
-            height: 559mm;
-        }
-
-            page[size="CSheet"][layout="portrait"] {
-                width: 559mm;
-                height: 432mm;
-            }
-
-        page[size="DSheet"] {
-            width: 559mm;
-            height: 864mm;
-        }
-
-            page[size="DSheet"][layout="portrait"] {
-                width: 864mm;
-                height: 559mm;
-            }
-
-        page[size="ESheet"] {
-            width: 864mm;
-            height: 1118mm;
-        }
-
-            page[size="ESheet"][layout="portrait"] {
-                width: 1118mm;
-                height: 864mm;
-            }
-
-        page[size="DLEnvelope"] {
-            width: 110mm;
-            height: 220mm;
-        }
-
-            page[size="DLEnvelope"][layout="portrait"] {
-                width: 220mm;
-                height: 110mm;
-            }
-
-        page[size="C5Envelope"] {
-            width: 162mm;
-            height: 229mm;
-        }
-
-            page[size="C5Envelope"][layout="portrait"] {
-                width: 229mm;
-                height: 162mm;
-            }
-
-        page[size="C3Envelope"] {
-            width: 324mm;
-            height: 458mm;
-        }
-
-            page[size="C3Envelope"][layout="portrait"] {
-                width: 458mm;
-                height: 324mm;
-            }
-
-        page[size="C4Envelope"] {
-            width: 229mm;
-            height: 324mm;
-        }
-
-            page[size="C4Envelope"][layout="portrait"] {
-                width: 324mm;
-                height: 229mm;
-            }
-
-        page[size="C6Envelope"] {
-            width: 114mm;
-            height: 162mm;
-        }
-
-            page[size="C6Envelope"][layout="portrait"] {
-                width: 162mm;
-                height: 114mm;
-            }
-
-        page[size="C65Envelope"] {
-            width: 114mm;
-            height: 229mm;
-        }
-
-            page[size="C65Envelope"][layout="portrait"] {
-                width: 229mm;
-                height: 114mm;
-            }
-
-        page[size="B4Envelope"] {
-            width: 250mm;
-            height: 353mm;
-        }
-
-            page[size="B4Envelope"][layout="portrait"] {
-                width: 353mm;
-                height: 250mm;
-            }
-
-        page[size="B5Envelope"] {
-            width: 176mm;
-            height: 250mm;
-        }
-
-            page[size="B5Envelope"][layout="portrait"] {
-                width: 250mm;
-                height: 176mm;
-            }
-
-        page[size="B6Envelope"] {
-            width: 176mm;
-            height: 125mm;
-        }
-
-            page[size="B6Envelope"][layout="portrait"] {
-                width: 125mm;
-                height: 176mm;
-            }
-
-        page[size="ItalyEnvelope"] {
-            width: 110mm;
-            height: 230mm;
-        }
-
-            page[size="ItalyEnvelope"][layout="portrait"] {
-                width: 230mm;
-                height: 110mm;
-            }
-
-        page[size="MonarchEnvelope"] {
-            width: 3.875in;
-            height: 7.5in;
-        }
-
-            page[size="MonarchEnvelope"][layout="portrait"] {
-                width: 7.5in;
-                height: 3.875in;
-            }
-
-        page[size="PersonalEnvelope"] {
-            width: 3.625in;
-            height: 6.5in;
-        }
-
-            page[size="PersonalEnvelope"][layout="portrait"] {
-                width: 6.5in;
-                height: 3.625in;
-            }
-
-        page[size="USStandardFanfold"] {
-            width: 14.875in;
-            height: 11in;
-        }
-
-            page[size="USStandardFanfold"][layout="portrait"] {
-                width: 11in;
-                height: 14.875in;
-            }
-
-        page[size="GermanStandardFanfold"] {
-            width: 8.5in;
-            height: 12in;
-        }
-
-            page[size="GermanStandardFanfold"][layout="portrait"] {
-                width: 12in;
-                height: 8.5in;
-            }
-
-        page[size="GermanLegalFanfold"] {
-            width: 8.5in;
-            height: 13in;
-        }
-
-            page[size="GermanLegalFanfold"][layout="portrait"] {
-                width: 13in;
-                height: 8.5in;
-            }
-
-        page[size="IsoB4"] {
-            width: 250mm;
-            height: 353mm;
-        }
-
-            page[size="IsoB4"][layout="portrait"] {
-                width: 353mm;
-                height: 250mm;
-            }
-
-        page[size="JapanesePostcard"] {
-            width: 100mm;
-            height: 148mm;
-        }
-
-            page[size="JapanesePostcard"][layout="portrait"] {
-                width: 148mm;
-                height: 100mm;
-            }
-
-        page[size="Standard9x11"] {
-            width: 9in;
-            height: 11in;
-        }
-
-            page[size="Standard9x11"][layout="portrait"] {
-                width: 11in;
-                height: 9in;
-            }
-
-        page[size="Standard10x11"] {
-            width: 10in;
-            height: 11in;
-        }
-
-            page[size="Standard10x11"][layout="portrait"] {
-                width: 11in;
-                height: 10in;
-            }
-
-        page[size="Standard15x11"] {
-            width: 15in;
-            height: 11in;
-        }
-
-            page[size="Standard15x11"][layout="portrait"] {
-                width: 11in;
-                height: 15in;
-            }
-
-        page[size="InviteEnvelope"] {
-            width: 220mm;
-            height: 220mm;
-        }
-
-            page[size="InviteEnvelope"][layout="portrait"] {
-                width: 220mm;
-                height: 220mm;
-            }
-
-        page[size="LetterExtra"] {
-            width: 9.275in;
-            height: 12in;
-        }
-
-            page[size="LetterExtra"][layout="portrait"] {
-                width: 12in;
-                height: 9.275in;
-            }
-
-        page[size="LegalExtra"] {
-            width: 9.275in;
-            height: 15in;
-        }
-
-            page[size="LegalExtra"][layout="portrait"] {
-                width: 15in;
-                height: 9.275in;
-            }
-
-        page[size="TabloidExtra"] {
-            width: 11.69in;
-            height: 18in;
-        }
-
-            page[size="TabloidExtra"][layout="portrait"] {
-                width: 18in;
-                height: 11.69in;
-            }
-
-        page[size="A4Extra"] {
-            width: 236mm;
-            height: 322mm;
-        }
-
-            page[size="A4Extra"][layout="portrait"] {
-                width: 322mm;
-                height: 236mm;
-            }
-
-        page[size="LetterTransverse"] {
-            width: 8.275in;
-            height: 11in;
-        }
-
-            page[size="LetterTransverse"][layout="portrait"] {
-                width: 11in;
-                height: 8.275in;
-            }
-
-        page[size="A4Transverse"] {
-            width: 210mm;
-            height: 297mm;
-        }
-
-            page[size="A4Transverse"][layout="portrait"] {
-                width: 297mm;
-                height: 210mm;
-            }
-
-        page[size="LetterExtraTransverse"] {
-            width: 9.275in;
-            height: 12in;
-        }
-
-            page[size="LetterExtraTransverse"][layout="portrait"] {
-                width: 12in;
-                height: 9.275in;
-            }
-
-        page[size="APlus"] {
-            width: 227mm;
-            height: 356mm;
-        }
-
-            page[size="APlus"][layout="portrait"] {
-                width: 356mm;
-                height: 227mm;
-            }
-
-        page[size="BPlus"] {
-            width: 305mm;
-            height: 487mm;
-        }
-
-            page[size="BPlus"][layout="portrait"] {
-                width: 487mm;
-                height: 305mm;
-            }
-
-        page[size="LetterPlus"] {
-            width: 8.5in;
-            height: 12.69in;
-        }
-
-            page[size="LetterPlus"][layout="portrait"] {
-                width: 12.69in;
-                height: 8.5in;
-            }
-
-        page[size="A4Plus"] {
-            width: 210mm;
-            height: 330mm;
-        }
-
-            page[size="A4Plus"][layout="portrait"] {
-                width: 330mm;
-                height: 210mm;
-            }
-
-        page[size="A5Transverse"] {
-            width: 148mm;
-            height: 210mm;
-        }
-
-            page[size="A5Transverse"][layout="portrait"] {
-                width: 210mm;
-                height: 148mm;
-            }
-
-        page[size="B5Transverse"] {
-            width: 182mm;
-            height: 257mm;
-        }
-
-            page[size="B5Transverse"][layout="portrait"] {
-                width: 257mm;
-                height: 182mm;
-            }
-
-        page[size="A3Extra"] {
-            width: 322mm;
-            height: 445mm;
-        }
-
-            page[size="A3Extra"][layout="portrait"] {
-                width: 445mm;
-                height: 322mm;
-            }
-
-        page[size="A5Extra"] {
-            width: 174mm;
-            height: 235mm;
-        }
-
-            page[size="A5Extra"][layout="portrait"] {
-                width: 235mm;
-                height: 174mm;
-            }
-
-        page[size="B5Extra"] {
-            width: 201mm;
-            height: 276mm;
-        }
-
-            page[size="B5Extra"][layout="portrait"] {
-                width: 276mm;
-                height: 201mm;
-            }
-
-        page[size="A2"] {
-            width: 420mm;
-            height: 594mm;
-        }
-
-            page[size="A2"][layout="portrait"] {
-                width: 594mm;
                 height: 420mm;
             }
 
-        page[size="A3Transverse"] {
-            width: 297mm;
-            height: 420mm;
-        }
+                page[size="A3"][layout="portrait"] {
+                    width: 420mm;
+                    height: 297mm;
+                }
 
-            page[size="A3Transverse"][layout="portrait"] {
-                width: 420mm;
+            page[size="A4"] {
+                width: 210mm;
                 height: 297mm;
             }
 
-        page[size="A3ExtraTransverse"] {
-            width: 322mm;
-            height: 445mm;
-        }
+                page[size="A4"][layout="portrait"] {
+                    width: 297mm;
+                    height: 210mm;
+                }
 
-            page[size="A3ExtraTransverse"][layout="portrait"] {
-                width: 445mm;
-                height: 322mm;
+            page[size="A4Small"] {
+                width: 210mm;
+                height: 297mm;
             }
 
-        page[size="JapaneseDoublePostcard"] {
-            width: 200mm;
-            height: 148mm;
-        }
+                page[size="A4Small"][layout="portrait"] {
+                    width: 297mm;
+                    height: 210mm;
+                }
 
-            page[size="JapaneseDoublePostcard"][layout="portrait"] {
+            page[size="A5"] {
                 width: 148mm;
-                height: 200mm;
+                height: 210mm;
             }
 
-        page[size="A6"] {
-            width: 105mm;
-            height: 148mm;
-        }
+                page[size="A5"][layout="portrait"] {
+                    width: 210mm;
+                    height: 148mm;
+                }
 
-            page[size="A6"][layout="portrait"] {
-                width: 148mm;
-                height: 105mm;
+            page[size="B4"] {
+                width: 250mm;
+                height: 353mm;
             }
 
-        page[size="LetterRotated"] {
-            width: 11in;
-            height: 8.5in;
-        }
+                page[size="B4"][layout="portrait"] {
+                    width: 353mm;
+                    height: 250mm;
+                }
 
-            page[size="LetterRotated"][layout="portrait"] {
+            page[size="B5"] {
+                width: 176mm;
+                height: 250mm;
+            }
+
+                page[size="B5"][layout="portrait"] {
+                    width: 250mm;
+                    height: 176mm;
+                }
+
+            page[size="Folio"] {
+                width: 8.5in;
+                height: 13in;
+            }
+
+                page[size="Folio"][layout="portrait"] {
+                    width: 13in;
+                    height: 8.5in;
+                }
+
+            page[size="Quarto"] {
+                width: 215mm;
+                height: 275mm;
+            }
+
+                page[size="Quarto"][layout="portrait"] {
+                    width: 275mm;
+                    height: 215mm;
+                }
+
+            page[size="Standard10x14"] {
+                width: 10in;
+                height: 14in;
+            }
+
+                page[size="Standard10x14"][layout="portrait"] {
+                    width: 14in;
+                    height: 10in;
+                }
+
+            page[size="Standard11x17"] {
+                width: 11in;
+                height: 17in;
+            }
+
+                page[size="Standard11x17"][layout="portrait"] {
+                    width: 17in;
+                    height: 11in;
+                }
+
+            page[size="Note"] {
                 width: 8.5in;
                 height: 11in;
             }
 
-        page[size="A3Rotated"] {
-            width: 420mm;
-            height: 297mm;
-        }
+                page[size="Note"][layout="portrait"] {
+                    width: 11in;
+                    height: 8.5in;
+                }
 
-            page[size="A3Rotated"][layout="portrait"] {
-                width: 297mm;
-                height: 420mm;
+            page[size="Number9Envelope"] {
+                width: 3.875in;
+                height: 8.875in;
             }
 
-        page[size="A4Rotated"] {
-            width: 297mm;
-            height: 210mm;
-        }
+                page[size="Number9Envelope"][layout="portrait"] {
+                    width: 8.875in;
+                    height: 3.875in;
+                }
 
-            page[size="A4Rotated"][layout="portrait"] {
-                width: 210mm;
-                height: 297mm;
+            page[size="Number10Envelope"] {
+                width: 4.125in;
+                height: 9.5in;
             }
 
-        page[size="A5Rotated"] {
-            width: 210mm;
-            height: 148mm;
-        }
+                page[size="Number10Envelope"][layout="portrait"] {
+                    width: 9.5in;
+                    height: 4.125in;
+                }
 
-            page[size="A5Rotated"][layout="portrait"] {
-                width: 148mm;
-                height: 210mm;
+            page[size="Number11Envelope"] {
+                width: 4.5in;
+                height: 10.375in;
             }
 
-        page[size="B4JisRotated"] {
-            width: 364mm;
-            height: 257mm;
-        }
+                page[size="Number11Envelope"][layout="portrait"] {
+                    width: 10.375in;
+                    height: 4.5in;
+                }
 
-            page[size="B4JisRotated"][layout="portrait"] {
-                width: 257mm;
-                height: 364mm;
+            page[size="Number12Envelope"] {
+                width: 4.75in;
+                height: 11in;
             }
 
-        page[size="B5JisRotated"] {
-            width: 257mm;
-            height: 182mm;
-        }
+                page[size="Number12Envelope"][layout="portrait"] {
+                    width: 11in;
+                    height: 4.75in;
+                }
 
-            page[size="B5JisRotated"][layout="portrait"] {
-                width: 182mm;
-                height: 257mm;
+            page[size="Number14Envelope"] {
+                width: 5in;
+                height: 11.5in;
             }
 
-        page[size="JapanesePostcardRotated"] {
-            width: 148mm;
-            height: 100mm;
-        }
+                page[size="Number14Envelope"][layout="portrait"] {
+                    width: 11.5in;
+                    height: 5in;
+                }
 
-            page[size="JapanesePostcardRotated"][layout="portrait"] {
-                width: 100mm;
-                height: 148mm;
+            page[size="CSheet"] {
+                width: 432mm;
+                height: 559mm;
             }
 
-        page[size="JapaneseDoublePostcardRotated"] {
-            width: 148mm;
-            height: 200mm;
-        }
+                page[size="CSheet"][layout="portrait"] {
+                    width: 559mm;
+                    height: 432mm;
+                }
 
-            page[size="JapaneseDoublePostcardRotated"][layout="portrait"] {
-                width: 200mm;
-                height: 148mm;
+            page[size="DSheet"] {
+                width: 559mm;
+                height: 864mm;
             }
 
-        page[size="A6Rotated"] {
-            width: 148mm;
-            height: 105mm;
-        }
+                page[size="DSheet"][layout="portrait"] {
+                    width: 864mm;
+                    height: 559mm;
+                }
 
-            page[size="A6Rotated"][layout="portrait"] {
-                width: 105mm;
-                height: 148mm;
+            page[size="ESheet"] {
+                width: 864mm;
+                height: 1118mm;
             }
 
-        page[size="B6Jis"] {
-            width: 128mm;
-            height: 182mm;
-        }
+                page[size="ESheet"][layout="portrait"] {
+                    width: 1118mm;
+                    height: 864mm;
+                }
 
-            page[size="B6Jis"][layout="portrait"] {
-                width: 182mm;
-                height: 128mm;
-            }
-
-        page[size="B6JisRotated"] {
-            width: 182mm;
-            height: 128mm;
-        }
-
-            page[size="B6JisRotated"][layout="portrait"] {
-                width: 128mm;
-                height: 182mm;
-            }
-
-        page[size="Standard12x11"] {
-            width: 12in;
-            height: 11in;
-        }
-
-            page[size="Standard12x11"][layout="portrait"] {
-                width: 11in;
-                height: 12in;
-            }
-
-        page[size="Prc16K"] {
-            width: 146mm;
-            height: 215mm;
-        }
-
-            page[size="Prc16K"][layout="portrait"] {
-                width: 215mm;
-                height: 146mm;
-            }
-
-        page[size="Prc32K"] {
-            width: 97mm;
-            height: 151mm;
-        }
-
-            page[size="Prc32K"][layout="portrait"] {
-                width: 151mm;
-                height: 97mm;
-            }
-
-        page[size="Prc32KBig"] {
-            width: 97mm;
-            height: 151mm;
-        }
-
-            page[size="Prc32KBig"][layout="portrait"] {
-                width: 151mm;
-                height: 97mm;
-            }
-
-        page[size="PrcEnvelopeNumber1"] {
-            width: 102mm;
-            height: 165mm;
-        }
-
-            page[size="PrcEnvelopeNumber1"][layout="portrait"] {
-                width: 165mm;
-                height: 102mm;
-            }
-
-        page[size="PrcEnvelopeNumber2"] {
-            width: 102mm;
-            height: 176mm;
-        }
-
-            page[size="PrcEnvelopeNumber2"][layout="portrait"] {
-                width: 176mm;
-                height: 102mm;
-            }
-
-        page[size="PrcEnvelopeNumber3"] {
-            width: 125mm;
-            height: 176mm;
-        }
-
-            page[size="PrcEnvelopeNumber3"][layout="portrait"] {
-                width: 176mm;
-                height: 125mm;
-            }
-
-        page[size="PrcEnvelopeNumber4"] {
-            width: 110mm;
-            height: 208mm;
-        }
-
-            page[size="PrcEnvelopeNumber4"][layout="portrait"] {
-                width: 208mm;
-                height: 110mm;
-            }
-
-        page[size="PrcEnvelopeNumber5"] {
-            width: 110mm;
-            height: 220mm;
-        }
-
-            page[size="PrcEnvelopeNumber5"][layout="portrait"] {
-                width: 220mm;
-                height: 110mm;
-            }
-
-        page[size="PrcEnvelopeNumber6"] {
-            width: 120mm;
-            height: 230mm;
-        }
-
-            page[size="PrcEnvelopeNumber6"][layout="portrait"] {
-                width: 230mm;
-                height: 120mm;
-            }
-
-        page[size="PrcEnvelopeNumber7"] {
-            width: 160mm;
-            height: 230mm;
-        }
-
-            page[size="PrcEnvelopeNumber7"][layout="portrait"] {
-                width: 230mm;
-                height: 160mm;
-            }
-
-        page[size="PrcEnvelopeNumber8"] {
-            width: 120mm;
-            height: 309mm;
-        }
-
-            page[size="PrcEnvelopeNumber8"][layout="portrait"] {
-                width: 309mm;
-                height: 120mm;
-            }
-
-        page[size="PrcEnvelopeNumber9"] {
-            width: 229mm;
-            height: 324mm;
-        }
-
-            page[size="PrcEnvelopeNumber9"][layout="portrait"] {
-                width: 324mm;
-                height: 229mm;
-            }
-
-        page[size="PrcEnvelopeNumber10"] {
-            width: 324mm;
-            height: 458mm;
-        }
-
-            page[size="PrcEnvelopeNumber10"][layout="portrait"] {
-                width: 458mm;
-                height: 324mm;
-            }
-
-        page[size="Prc16KRotated"] {
-            width: 146mm;
-            height: 215mm;
-        }
-
-            page[size="Prc16KRotated"][layout="portrait"] {
-                width: 215mm;
-                height: 146mm;
-            }
-
-        page[size="Prc32KRotated"] {
-            width: 97mm;
-            height: 151mm;
-        }
-
-            page[size="Prc32KRotated"][layout="portrait"] {
-                width: 151mm;
-                height: 97mm;
-            }
-
-        page[size="Prc32KBigRotated"] {
-            width: 97mm;
-            height: 151mm;
-        }
-
-            page[size="Prc32KBigRotated"][layout="portrait"] {
-                width: 151mm;
-                height: 97mm;
-            }
-
-        page[size="PrcEnvelopeNumber1Rotated"] {
-            width: 165mm;
-            height: 102mm;
-        }
-
-            page[size="PrcEnvelopeNumber1Rotated"][layout="portrait"] {
-                width: 102mm;
-                height: 165mm;
-            }
-
-        page[size="PrcEnvelopeNumber2Rotated"] {
-            width: 176mm;
-            height: 102mm;
-        }
-
-            page[size="PrcEnvelopeNumber2Rotated"][layout="portrait"] {
-                width: 102mm;
-                height: 176mm;
-            }
-
-        page[size="PrcEnvelopeNumber3Rotated"] {
-            width: 176mm;
-            height: 125mm;
-        }
-
-            page[size="PrcEnvelopeNumber3Rotated"][layout="portrait"] {
-                width: 125mm;
-                height: 176mm;
-            }
-
-        page[size="PrcEnvelopeNumber4Rotated"] {
-            width: 208mm;
-            height: 110mm;
-        }
-
-            page[size="PrcEnvelopeNumber4Rotated"][layout="portrait"] {
-                width: 110mm;
-                height: 208mm;
-            }
-
-        page[size="PrcEnvelopeNumber5Rotated"] {
-            width: 220mm;
-            height: 110mm;
-        }
-
-            page[size="PrcEnvelopeNumber5Rotated"][layout="portrait"] {
+            page[size="DLEnvelope"] {
                 width: 110mm;
                 height: 220mm;
             }
 
-        page[size="PrcEnvelopeNumber6Rotated"] {
-            width: 230mm;
-            height: 120mm;
-        }
+                page[size="DLEnvelope"][layout="portrait"] {
+                    width: 220mm;
+                    height: 110mm;
+                }
 
-            page[size="PrcEnvelopeNumber6Rotated"][layout="portrait"] {
-                width: 120mm;
-                height: 230mm;
+            page[size="C5Envelope"] {
+                width: 162mm;
+                height: 229mm;
             }
 
-        page[size="PrcEnvelopeNumber7Rotated"] {
-            width: 230mm;
-            height: 160mm;
-        }
+                page[size="C5Envelope"][layout="portrait"] {
+                    width: 229mm;
+                    height: 162mm;
+                }
 
-            page[size="PrcEnvelopeNumber7Rotated"][layout="portrait"] {
-                width: 160mm;
-                height: 230mm;
-            }
-
-        page[size="PrcEnvelopeNumber8Rotated"] {
-            width: 309mm;
-            height: 120mm;
-        }
-
-            page[size="PrcEnvelopeNumber8Rotated"][layout="portrait"] {
-                width: 120mm;
-                height: 309mm;
-            }
-
-        page[size="PrcEnvelopeNumber9Rotated"] {
-            width: 324mm;
-            height: 229mm;
-        }
-
-            page[size="PrcEnvelopeNumber9Rotated"][layout="portrait"] {
-                width: 229mm;
-                height: 324mm;
-            }
-
-        page[size="PrcEnvelopeNumber10Rotated"] {
-            width: 458mm;
-            height: 324mm;
-        }
-
-            page[size="PrcEnvelopeNumber10Rotated"][layout="portrait"] {
+            page[size="C3Envelope"] {
                 width: 324mm;
                 height: 458mm;
             }
 
+                page[size="C3Envelope"][layout="portrait"] {
+                    width: 458mm;
+                    height: 324mm;
+                }
+
+            page[size="C4Envelope"] {
+                width: 229mm;
+                height: 324mm;
+            }
+
+                page[size="C4Envelope"][layout="portrait"] {
+                    width: 324mm;
+                    height: 229mm;
+                }
+
+            page[size="C6Envelope"] {
+                width: 114mm;
+                height: 162mm;
+            }
+
+                page[size="C6Envelope"][layout="portrait"] {
+                    width: 162mm;
+                    height: 114mm;
+                }
+
+            page[size="C65Envelope"] {
+                width: 114mm;
+                height: 229mm;
+            }
+
+                page[size="C65Envelope"][layout="portrait"] {
+                    width: 229mm;
+                    height: 114mm;
+                }
+
+            page[size="B4Envelope"] {
+                width: 250mm;
+                height: 353mm;
+            }
+
+                page[size="B4Envelope"][layout="portrait"] {
+                    width: 353mm;
+                    height: 250mm;
+                }
+
+            page[size="B5Envelope"] {
+                width: 176mm;
+                height: 250mm;
+            }
+
+                page[size="B5Envelope"][layout="portrait"] {
+                    width: 250mm;
+                    height: 176mm;
+                }
+
+            page[size="B6Envelope"] {
+                width: 176mm;
+                height: 125mm;
+            }
+
+                page[size="B6Envelope"][layout="portrait"] {
+                    width: 125mm;
+                    height: 176mm;
+                }
+
+            page[size="ItalyEnvelope"] {
+                width: 110mm;
+                height: 230mm;
+            }
+
+                page[size="ItalyEnvelope"][layout="portrait"] {
+                    width: 230mm;
+                    height: 110mm;
+                }
+
+            page[size="MonarchEnvelope"] {
+                width: 3.875in;
+                height: 7.5in;
+            }
+
+                page[size="MonarchEnvelope"][layout="portrait"] {
+                    width: 7.5in;
+                    height: 3.875in;
+                }
+
+            page[size="PersonalEnvelope"] {
+                width: 3.625in;
+                height: 6.5in;
+            }
+
+                page[size="PersonalEnvelope"][layout="portrait"] {
+                    width: 6.5in;
+                    height: 3.625in;
+                }
+
+            page[size="USStandardFanfold"] {
+                width: 14.875in;
+                height: 11in;
+            }
+
+                page[size="USStandardFanfold"][layout="portrait"] {
+                    width: 11in;
+                    height: 14.875in;
+                }
+
+            page[size="GermanStandardFanfold"] {
+                width: 8.5in;
+                height: 12in;
+            }
+
+                page[size="GermanStandardFanfold"][layout="portrait"] {
+                    width: 12in;
+                    height: 8.5in;
+                }
+
+            page[size="GermanLegalFanfold"] {
+                width: 8.5in;
+                height: 13in;
+            }
+
+                page[size="GermanLegalFanfold"][layout="portrait"] {
+                    width: 13in;
+                    height: 8.5in;
+                }
+
+            page[size="IsoB4"] {
+                width: 250mm;
+                height: 353mm;
+            }
+
+                page[size="IsoB4"][layout="portrait"] {
+                    width: 353mm;
+                    height: 250mm;
+                }
+
+            page[size="JapanesePostcard"] {
+                width: 100mm;
+                height: 148mm;
+            }
+
+                page[size="JapanesePostcard"][layout="portrait"] {
+                    width: 148mm;
+                    height: 100mm;
+                }
+
+            page[size="Standard9x11"] {
+                width: 9in;
+                height: 11in;
+            }
+
+                page[size="Standard9x11"][layout="portrait"] {
+                    width: 11in;
+                    height: 9in;
+                }
+
+            page[size="Standard10x11"] {
+                width: 10in;
+                height: 11in;
+            }
+
+                page[size="Standard10x11"][layout="portrait"] {
+                    width: 11in;
+                    height: 10in;
+                }
+
+            page[size="Standard15x11"] {
+                width: 15in;
+                height: 11in;
+            }
+
+                page[size="Standard15x11"][layout="portrait"] {
+                    width: 11in;
+                    height: 15in;
+                }
+
+            page[size="InviteEnvelope"] {
+                width: 220mm;
+                height: 220mm;
+            }
+
+                page[size="InviteEnvelope"][layout="portrait"] {
+                    width: 220mm;
+                    height: 220mm;
+                }
+
+            page[size="LetterExtra"] {
+                width: 9.275in;
+                height: 12in;
+            }
+
+                page[size="LetterExtra"][layout="portrait"] {
+                    width: 12in;
+                    height: 9.275in;
+                }
+
+            page[size="LegalExtra"] {
+                width: 9.275in;
+                height: 15in;
+            }
+
+                page[size="LegalExtra"][layout="portrait"] {
+                    width: 15in;
+                    height: 9.275in;
+                }
+
+            page[size="TabloidExtra"] {
+                width: 11.69in;
+                height: 18in;
+            }
+
+                page[size="TabloidExtra"][layout="portrait"] {
+                    width: 18in;
+                    height: 11.69in;
+                }
+
+            page[size="A4Extra"] {
+                width: 236mm;
+                height: 322mm;
+            }
+
+                page[size="A4Extra"][layout="portrait"] {
+                    width: 322mm;
+                    height: 236mm;
+                }
+
+            page[size="LetterTransverse"] {
+                width: 8.275in;
+                height: 11in;
+            }
+
+                page[size="LetterTransverse"][layout="portrait"] {
+                    width: 11in;
+                    height: 8.275in;
+                }
+
+            page[size="A4Transverse"] {
+                width: 210mm;
+                height: 297mm;
+            }
+
+                page[size="A4Transverse"][layout="portrait"] {
+                    width: 297mm;
+                    height: 210mm;
+                }
+
+            page[size="LetterExtraTransverse"] {
+                width: 9.275in;
+                height: 12in;
+            }
+
+                page[size="LetterExtraTransverse"][layout="portrait"] {
+                    width: 12in;
+                    height: 9.275in;
+                }
+
+            page[size="APlus"] {
+                width: 227mm;
+                height: 356mm;
+            }
+
+                page[size="APlus"][layout="portrait"] {
+                    width: 356mm;
+                    height: 227mm;
+                }
+
+            page[size="BPlus"] {
+                width: 305mm;
+                height: 487mm;
+            }
+
+                page[size="BPlus"][layout="portrait"] {
+                    width: 487mm;
+                    height: 305mm;
+                }
+
+            page[size="LetterPlus"] {
+                width: 8.5in;
+                height: 12.69in;
+            }
+
+                page[size="LetterPlus"][layout="portrait"] {
+                    width: 12.69in;
+                    height: 8.5in;
+                }
+
+            page[size="A4Plus"] {
+                width: 210mm;
+                height: 330mm;
+            }
+
+                page[size="A4Plus"][layout="portrait"] {
+                    width: 330mm;
+                    height: 210mm;
+                }
+
+            page[size="A5Transverse"] {
+                width: 148mm;
+                height: 210mm;
+            }
+
+                page[size="A5Transverse"][layout="portrait"] {
+                    width: 210mm;
+                    height: 148mm;
+                }
+
+            page[size="B5Transverse"] {
+                width: 182mm;
+                height: 257mm;
+            }
+
+                page[size="B5Transverse"][layout="portrait"] {
+                    width: 257mm;
+                    height: 182mm;
+                }
+
+            page[size="A3Extra"] {
+                width: 322mm;
+                height: 445mm;
+            }
+
+                page[size="A3Extra"][layout="portrait"] {
+                    width: 445mm;
+                    height: 322mm;
+                }
+
+            page[size="A5Extra"] {
+                width: 174mm;
+                height: 235mm;
+            }
+
+                page[size="A5Extra"][layout="portrait"] {
+                    width: 235mm;
+                    height: 174mm;
+                }
+
+            page[size="B5Extra"] {
+                width: 201mm;
+                height: 276mm;
+            }
+
+                page[size="B5Extra"][layout="portrait"] {
+                    width: 276mm;
+                    height: 201mm;
+                }
+
+            page[size="A2"] {
+                width: 420mm;
+                height: 594mm;
+            }
+
+                page[size="A2"][layout="portrait"] {
+                    width: 594mm;
+                    height: 420mm;
+                }
+
+            page[size="A3Transverse"] {
+                width: 297mm;
+                height: 420mm;
+            }
+
+                page[size="A3Transverse"][layout="portrait"] {
+                    width: 420mm;
+                    height: 297mm;
+                }
+
+            page[size="A3ExtraTransverse"] {
+                width: 322mm;
+                height: 445mm;
+            }
+
+                page[size="A3ExtraTransverse"][layout="portrait"] {
+                    width: 445mm;
+                    height: 322mm;
+                }
+
+            page[size="JapaneseDoublePostcard"] {
+                width: 200mm;
+                height: 148mm;
+            }
+
+                page[size="JapaneseDoublePostcard"][layout="portrait"] {
+                    width: 148mm;
+                    height: 200mm;
+                }
+
+            page[size="A6"] {
+                width: 105mm;
+                height: 148mm;
+            }
+
+                page[size="A6"][layout="portrait"] {
+                    width: 148mm;
+                    height: 105mm;
+                }
+
+            page[size="LetterRotated"] {
+                width: 11in;
+                height: 8.5in;
+            }
+
+                page[size="LetterRotated"][layout="portrait"] {
+                    width: 8.5in;
+                    height: 11in;
+                }
+
+            page[size="A3Rotated"] {
+                width: 420mm;
+                height: 297mm;
+            }
+
+                page[size="A3Rotated"][layout="portrait"] {
+                    width: 297mm;
+                    height: 420mm;
+                }
+
+            page[size="A4Rotated"] {
+                width: 297mm;
+                height: 210mm;
+            }
+
+                page[size="A4Rotated"][layout="portrait"] {
+                    width: 210mm;
+                    height: 297mm;
+                }
+
+            page[size="A5Rotated"] {
+                width: 210mm;
+                height: 148mm;
+            }
+
+                page[size="A5Rotated"][layout="portrait"] {
+                    width: 148mm;
+                    height: 210mm;
+                }
+
+            page[size="B4JisRotated"] {
+                width: 364mm;
+                height: 257mm;
+            }
+
+                page[size="B4JisRotated"][layout="portrait"] {
+                    width: 257mm;
+                    height: 364mm;
+                }
+
+            page[size="B5JisRotated"] {
+                width: 257mm;
+                height: 182mm;
+            }
+
+                page[size="B5JisRotated"][layout="portrait"] {
+                    width: 182mm;
+                    height: 257mm;
+                }
+
+            page[size="JapanesePostcardRotated"] {
+                width: 148mm;
+                height: 100mm;
+            }
+
+                page[size="JapanesePostcardRotated"][layout="portrait"] {
+                    width: 100mm;
+                    height: 148mm;
+                }
+
+            page[size="JapaneseDoublePostcardRotated"] {
+                width: 148mm;
+                height: 200mm;
+            }
+
+                page[size="JapaneseDoublePostcardRotated"][layout="portrait"] {
+                    width: 200mm;
+                    height: 148mm;
+                }
+
+            page[size="A6Rotated"] {
+                width: 148mm;
+                height: 105mm;
+            }
+
+                page[size="A6Rotated"][layout="portrait"] {
+                    width: 105mm;
+                    height: 148mm;
+                }
+
+            page[size="B6Jis"] {
+                width: 128mm;
+                height: 182mm;
+            }
+
+                page[size="B6Jis"][layout="portrait"] {
+                    width: 182mm;
+                    height: 128mm;
+                }
+
+            page[size="B6JisRotated"] {
+                width: 182mm;
+                height: 128mm;
+            }
+
+                page[size="B6JisRotated"][layout="portrait"] {
+                    width: 128mm;
+                    height: 182mm;
+                }
+
+            page[size="Standard12x11"] {
+                width: 12in;
+                height: 11in;
+            }
+
+                page[size="Standard12x11"][layout="portrait"] {
+                    width: 11in;
+                    height: 12in;
+                }
+
+            page[size="Prc16K"] {
+                width: 146mm;
+                height: 215mm;
+            }
+
+                page[size="Prc16K"][layout="portrait"] {
+                    width: 215mm;
+                    height: 146mm;
+                }
+
+            page[size="Prc32K"] {
+                width: 97mm;
+                height: 151mm;
+            }
+
+                page[size="Prc32K"][layout="portrait"] {
+                    width: 151mm;
+                    height: 97mm;
+                }
+
+            page[size="Prc32KBig"] {
+                width: 97mm;
+                height: 151mm;
+            }
+
+                page[size="Prc32KBig"][layout="portrait"] {
+                    width: 151mm;
+                    height: 97mm;
+                }
+
+            page[size="PrcEnvelopeNumber1"] {
+                width: 102mm;
+                height: 165mm;
+            }
+
+                page[size="PrcEnvelopeNumber1"][layout="portrait"] {
+                    width: 165mm;
+                    height: 102mm;
+                }
+
+            page[size="PrcEnvelopeNumber2"] {
+                width: 102mm;
+                height: 176mm;
+            }
+
+                page[size="PrcEnvelopeNumber2"][layout="portrait"] {
+                    width: 176mm;
+                    height: 102mm;
+                }
+
+            page[size="PrcEnvelopeNumber3"] {
+                width: 125mm;
+                height: 176mm;
+            }
+
+                page[size="PrcEnvelopeNumber3"][layout="portrait"] {
+                    width: 176mm;
+                    height: 125mm;
+                }
+
+            page[size="PrcEnvelopeNumber4"] {
+                width: 110mm;
+                height: 208mm;
+            }
+
+                page[size="PrcEnvelopeNumber4"][layout="portrait"] {
+                    width: 208mm;
+                    height: 110mm;
+                }
+
+            page[size="PrcEnvelopeNumber5"] {
+                width: 110mm;
+                height: 220mm;
+            }
+
+                page[size="PrcEnvelopeNumber5"][layout="portrait"] {
+                    width: 220mm;
+                    height: 110mm;
+                }
+
+            page[size="PrcEnvelopeNumber6"] {
+                width: 120mm;
+                height: 230mm;
+            }
+
+                page[size="PrcEnvelopeNumber6"][layout="portrait"] {
+                    width: 230mm;
+                    height: 120mm;
+                }
+
+            page[size="PrcEnvelopeNumber7"] {
+                width: 160mm;
+                height: 230mm;
+            }
+
+                page[size="PrcEnvelopeNumber7"][layout="portrait"] {
+                    width: 230mm;
+                    height: 160mm;
+                }
+
+            page[size="PrcEnvelopeNumber8"] {
+                width: 120mm;
+                height: 309mm;
+            }
+
+                page[size="PrcEnvelopeNumber8"][layout="portrait"] {
+                    width: 309mm;
+                    height: 120mm;
+                }
+
+            page[size="PrcEnvelopeNumber9"] {
+                width: 229mm;
+                height: 324mm;
+            }
+
+                page[size="PrcEnvelopeNumber9"][layout="portrait"] {
+                    width: 324mm;
+                    height: 229mm;
+                }
+
+            page[size="PrcEnvelopeNumber10"] {
+                width: 324mm;
+                height: 458mm;
+            }
+
+                page[size="PrcEnvelopeNumber10"][layout="portrait"] {
+                    width: 458mm;
+                    height: 324mm;
+                }
+
+            page[size="Prc16KRotated"] {
+                width: 146mm;
+                height: 215mm;
+            }
+
+                page[size="Prc16KRotated"][layout="portrait"] {
+                    width: 215mm;
+                    height: 146mm;
+                }
+
+            page[size="Prc32KRotated"] {
+                width: 97mm;
+                height: 151mm;
+            }
+
+                page[size="Prc32KRotated"][layout="portrait"] {
+                    width: 151mm;
+                    height: 97mm;
+                }
+
+            page[size="Prc32KBigRotated"] {
+                width: 97mm;
+                height: 151mm;
+            }
+
+                page[size="Prc32KBigRotated"][layout="portrait"] {
+                    width: 151mm;
+                    height: 97mm;
+                }
+
+            page[size="PrcEnvelopeNumber1Rotated"] {
+                width: 165mm;
+                height: 102mm;
+            }
+
+                page[size="PrcEnvelopeNumber1Rotated"][layout="portrait"] {
+                    width: 102mm;
+                    height: 165mm;
+                }
+
+            page[size="PrcEnvelopeNumber2Rotated"] {
+                width: 176mm;
+                height: 102mm;
+            }
+
+                page[size="PrcEnvelopeNumber2Rotated"][layout="portrait"] {
+                    width: 102mm;
+                    height: 176mm;
+                }
+
+            page[size="PrcEnvelopeNumber3Rotated"] {
+                width: 176mm;
+                height: 125mm;
+            }
+
+                page[size="PrcEnvelopeNumber3Rotated"][layout="portrait"] {
+                    width: 125mm;
+                    height: 176mm;
+                }
+
+            page[size="PrcEnvelopeNumber4Rotated"] {
+                width: 208mm;
+                height: 110mm;
+            }
+
+                page[size="PrcEnvelopeNumber4Rotated"][layout="portrait"] {
+                    width: 110mm;
+                    height: 208mm;
+                }
+
+            page[size="PrcEnvelopeNumber5Rotated"] {
+                width: 220mm;
+                height: 110mm;
+            }
+
+                page[size="PrcEnvelopeNumber5Rotated"][layout="portrait"] {
+                    width: 110mm;
+                    height: 220mm;
+                }
+
+            page[size="PrcEnvelopeNumber6Rotated"] {
+                width: 230mm;
+                height: 120mm;
+            }
+
+                page[size="PrcEnvelopeNumber6Rotated"][layout="portrait"] {
+                    width: 120mm;
+                    height: 230mm;
+                }
+
+            page[size="PrcEnvelopeNumber7Rotated"] {
+                width: 230mm;
+                height: 160mm;
+            }
+
+                page[size="PrcEnvelopeNumber7Rotated"][layout="portrait"] {
+                    width: 160mm;
+                    height: 230mm;
+                }
+
+            page[size="PrcEnvelopeNumber8Rotated"] {
+                width: 309mm;
+                height: 120mm;
+            }
+
+                page[size="PrcEnvelopeNumber8Rotated"][layout="portrait"] {
+                    width: 120mm;
+                    height: 309mm;
+                }
+
+            page[size="PrcEnvelopeNumber9Rotated"] {
+                width: 324mm;
+                height: 229mm;
+            }
+
+                page[size="PrcEnvelopeNumber9Rotated"][layout="portrait"] {
+                    width: 229mm;
+                    height: 324mm;
+                }
+
+            page[size="PrcEnvelopeNumber10Rotated"] {
+                width: 458mm;
+                height: 324mm;
+            }
+
+                page[size="PrcEnvelopeNumber10Rotated"][layout="portrait"] {
+                    width: 324mm;
+                    height: 458mm;
+                }
+
         @@media print {
             body, page {
                 margin: 0;
-                box-shadow: 0;
+                box-shadow: none;
             }
         }
     </style>

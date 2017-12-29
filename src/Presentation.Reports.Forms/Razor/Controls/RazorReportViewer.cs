@@ -8,6 +8,7 @@ using System.IO;
 using Platform.Presentation.Reports.Razor;
 using System.Security;
 using Microsoft.Win32;
+using System.Linq;
 
 namespace Platform.Presentation.Reports
 {
@@ -28,27 +29,92 @@ namespace Platform.Presentation.Reports
                 this.SuspendLayout();
 
                 PropertyChanged += RazorReportViewer_PropertyChanged;
+                DocumentCompleted += RazorReportViewer_DocumentCompleted;
 
                 this.ResumeLayout(false);
             }
 
-            private int zoon;
-            public int Zoom { get { return zoon; } set { this.SetField(ref zoon, value); } }
+            #region Properties
+
+            private int zoom;
+
+            public int Zoom
+            {
+                get
+                {
+                    return zoom;
+                }
+                set
+                {
+                    if (zoom != value)
+                    {
+                        zoom = value;
+                        OnPropertyChanged(new PropertyChangedEventArgs("Zoom"));
+                    }
+                }
+            }
 
             private string template;
-            public string Template { get { return template; } set { this.SetField(ref template, value); } }
+
+            public string Template
+            {
+                get
+                {
+                    return template;
+                }
+                set
+                {
+                    if (template != value)
+                    {
+                        template = value;
+                        OnPropertyChanged(new PropertyChangedEventArgs("Template"));
+                    }
+                }
+            }
 
             private PaperKind paperKind = PaperKind.Letter;
-            public PaperKind PaperKind { get { return paperKind; } set { this.SetField(ref paperKind, value); } }
+
+            public PaperKind PaperKind
+            {
+                get
+                {
+                    return paperKind;
+                }
+                set
+                {
+                    if (paperKind != value)
+                    {
+                        paperKind = value;
+                        OnPropertyChanged(new PropertyChangedEventArgs("PaperKind"));
+                    }
+                }
+            }
 
             //private Orientation paperLayout;
             //public Orientation PaperLayout { get { return paperLayout; } set { this.SetField(ref paperLayout, value); } }
 
             private object model;
-            public object Model { get { return model; } set { this.SetField(ref model, value); } }
+
+            public object Model
+            {
+                get
+                {
+                    return model;
+                }
+                set
+                {
+                    if (model != value)
+                    {
+                        model = value;
+                        OnPropertyChanged(new PropertyChangedEventArgs("Model"));
+                    }
+                }
+            }
 
             //private PaperSize paperSize;
             //public PaperSize PaperSize { get { return paperSize; } set { this.SetField(ref paperSize, value); } }
+
+            #endregion Properties
 
             public event PropertyChangedEventHandler PropertyChanged;
 
@@ -59,21 +125,33 @@ namespace Platform.Presentation.Reports
 
             private void RazorReportViewer_PropertyChanged(object sender, PropertyChangedEventArgs e)
             {
-                //Refresh();
+                if (!isDocumentCompleted)
+                    return;
+
+                if (e.PropertyName == "Zoom")
+                    ajustView();
+                else
+                    Show(ViewBag);
             }
 
-            public void Refresh(Dictionary<string, object> viewBag = null)
+            public Dictionary<string, object> ViewBag { get; internal set; }
+
+            public void Show(Dictionary<string, object> viewBag = null)
             {
                 if (DesignMode)
                     return;
 
-                if (viewBag == null)
-                    viewBag = new Dictionary<string, object>()
+                isDocumentCompleted = false;
+
+                ViewBag = viewBag;
+
+                if (ViewBag == null)
+                    ViewBag = new Dictionary<string, object>()
                     {
                         { "PaperKind", this.PaperKind }
                     };
-                else
-                    viewBag.Add("PaperKind", this.PaperKind);
+                else if (!ViewBag.ContainsKey("PaperKind"))
+                    ViewBag.Add("PaperKind", this.PaperKind);
 
                 //if (AppDomain.CurrentDomain.IsDefaultAppDomain())
                 //{
@@ -101,7 +179,7 @@ namespace Platform.Presentation.Reports
                 {
                     var report = ReportBuilder<object>.Create(DateTime.Now.Ticks.ToString())
                         .WithTemplate(Template)
-                        .WithViewBag(viewBag)
+                        .WithViewBag(ViewBag)
                         .WithPrecompilation();
 
                     this.DocumentText = report.BuildReport(Model);
@@ -112,19 +190,25 @@ namespace Platform.Presentation.Reports
 
                     var report = ReportBuilder<Exception>.Create(DateTime.Now.Ticks.ToString())
                        .WithTemplate(Presentation.Reports.Properties.Resources.Exception)
-                       .WithViewBag(viewBag)
+                       .WithViewBag(ViewBag)
                        .WithPrecompilation();
 
                     this.DocumentText = report.BuildReport(ex);
                 }
-                finally
-                {
-                    if (this.Document != null && this.Document.Body != null)
-                        this.Document.Body.Style = $"zoom:{Zoom}";
-                    this.Update();
-                }
+            }
 
-                base.Refresh();
+            private bool isDocumentCompleted = false;
+
+            private void ajustView()
+            {
+                if (this.Document != null && this.Document.Body != null)
+                    this.Document.Body.Style = $"zoom:{Zoom}%;";
+            }
+
+            private void RazorReportViewer_DocumentCompleted(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
+            {
+                isDocumentCompleted = true;
+                ajustView();
             }
 
             #region IE
