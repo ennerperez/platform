@@ -158,6 +158,9 @@
     <Content Include="Reports\Persons.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Reports\Persons.rdcl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Palettes\colors_blue_indigo.xml">
