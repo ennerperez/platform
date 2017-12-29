@@ -42,7 +42,7 @@
     <file src="..\Presentation.Reports\bin\release\x86\" target="cef\x86" />
     <file src="..\Presentation.Reports\bin\release\x64\" target="cef\x64" />
 
-    <file src="..\Presentation.Reports\bin\release\CefAssemblyAdapter.props" target="build\Platform.Presentation.Reporting.props" />
-    <file src="..\Presentation.Reports\bin\release\CefAssemblyAdapter.targets" target="build\Platform.Presentation.Reporting.targets" />
+    <file src="..\Presentation.Reports\bin\release\CefAssemblyAdapter.props" target="build\Platform.Presentation.Reports.props" />
+    <file src="..\Presentation.Reports\bin\release\CefAssemblyAdapter.targets" target="build\Platform.Presentation.Reports.targets" />
   </files>
 </package>
