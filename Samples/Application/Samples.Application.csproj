@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Platform.Presentation.Reports.3.3.33\build\Platform.Presentation.Reports.props" Condition="Exists('..\packages\Platform.Presentation.Reports.3.3.33\build\Platform.Presentation.Reports.props')" />
+  <Import Project="..\packages\Platform.Presentation.Reports.Forms.3.3.33\build\Platform.Presentation.Reports.Forms.props" Condition="Exists('..\packages\Platform.Presentation.Reports.Forms.3.3.33\build\Platform.Presentation.Reports.Forms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -184,10 +184,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets'))" />
-    <Error Condition="!Exists('..\packages\Platform.Presentation.Reports.3.3.33\build\Platform.Presentation.Reports.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Platform.Presentation.Reports.3.3.33\build\Platform.Presentation.Reports.props'))" />
-    <Error Condition="!Exists('..\packages\Platform.Presentation.Reports.3.3.33\build\Platform.Presentation.Reports.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Platform.Presentation.Reports.3.3.33\build\Platform.Presentation.Reports.targets'))" />
+    <Error Condition="!Exists('..\packages\Platform.Presentation.Reports.Forms.3.3.33\build\Platform.Presentation.Reports.Forms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Platform.Presentation.Reports.Forms.3.3.33\build\Platform.Presentation.Reports.Forms.props'))" />
+    <Error Condition="!Exists('..\packages\Platform.Presentation.Reports.Forms.3.3.33\build\Platform.Presentation.Reports.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Platform.Presentation.Reports.Forms.3.3.33\build\Platform.Presentation.Reports.Forms.targets'))" />
   </Target>
-  <Import Project="..\packages\Platform.Presentation.Reports.3.3.33\build\Platform.Presentation.Reports.targets" Condition="Exists('..\packages\Platform.Presentation.Reports.3.3.33\build\Platform.Presentation.Reports.targets')" />
+  <Import Project="..\packages\Platform.Presentation.Reports.Forms.3.3.33\build\Platform.Presentation.Reports.Forms.targets" Condition="Exists('..\packages\Platform.Presentation.Reports.Forms.3.3.33\build\Platform.Presentation.Reports.Forms.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
