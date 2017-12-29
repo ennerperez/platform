@@ -38,5 +38,11 @@
   <files>
     <file src="..\Presentation.Reports.Forms\bin\release\Platform.Presentation.Reports.Forms.dll" target="lib\net40\Platform.Presentation.Reports.Forms.dll" />
     <file src="..\Presentation.Reports.Forms.Net45\bin\release\Platform.Presentation.Reports.Forms.dll" target="lib\net45\Platform.Presentation.Reports.Forms.dll" />
+
+    <file src="..\Presentation.Reports.Forms\bin\release\x86\" target="cef\x86" />
+    <file src="..\Presentation.Reports.Forms\bin\release\x64\" target="cef\x64" />
+
+    <file src="..\Presentation.Reports.Forms\bin\release\CefAssemblyAdapter.props" target="build\Platform.Presentation.Reports.Forms.props" />
+    <file src="..\Presentation.Reports.Forms\bin\release\CefAssemblyAdapter.targets" target="build\Platform.Presentation.Reports.Forms.targets" />
   </files>
 </package>

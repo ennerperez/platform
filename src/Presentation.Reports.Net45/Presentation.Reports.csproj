@@ -64,14 +64,6 @@
     <Resource Include="..\Presentation.Reports\Resources\_PrintLayout.cshtml">
       <Link>Resources\_PrintLayout.cshtml</Link>
     </Resource>
-    <Content Include="..\Presentation.Reports\CefAssemblyAdapter.props">
-      <Link>CefAssemblyAdapter.props</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Presentation.Reports\CefAssemblyAdapter.targets">
-      <Link>CefAssemblyAdapter.targets</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -96,9 +88,6 @@
     </Compile>
     <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\CefAssemblyResolver.cs">
-      <Link>CefAssemblyResolver.cs</Link>
     </Compile>
     <Compile Include="..\Presentation.Reports\IReportBuilder.cs">
       <Link>IReportBuilder.cs</Link>

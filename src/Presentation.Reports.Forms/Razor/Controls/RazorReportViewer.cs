@@ -209,16 +209,16 @@ namespace Platform.Presentation.Reports
 
             private bool isDocumentCompleted = false;
 
-            //private void ajustView()
-            //{
-            //    if (this.Document != null && this.Document.Body != null)
-            //        this.Document.Body.Style = $"zoom:{Zoom}%;";
-            //}
+            private void ajustView()
+            {
+                //if (this.Document != null && this.Document.Body != null)
+                //    this.Document.Body.Style = $"zoom:{Zoom}%;";
+            }
 
             private void RazorReportViewer_DocumentCompleted(object sender, System.Windows.Forms.WebBrowserDocumentCompletedEventArgs e)
             {
                 isDocumentCompleted = true;
-                //ajustView();
+                ajustView();
             }
 
             #region IE

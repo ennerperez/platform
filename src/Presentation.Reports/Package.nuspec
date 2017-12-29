@@ -22,13 +22,11 @@
       <group targetFramework=".NETFramework4.0">
         <dependency id="Platform.Support.Core" version="$version$" />
         <dependency id="RazorEngine" version="3.10" />
-        <dependency id="Microsoft.ReportViewer.Common" version="10.0.40219.1" />
         <dependency id="Microsoft.AspNet.Razor" version="2.0.30506.0" />
       </group>
       <group targetFramework=".NETFramework4.5">
         <dependency id="Platform.Support.Core" version="$version$" />
         <dependency id="RazorEngine" version="3.10" />
-        <dependency id="Microsoft.ReportViewer.Common" version="10.0.40219.1" />
         <dependency id="Microsoft.AspNet.Razor" version="3.2.3" />
       </group>
       <group targetFramework=".NETPortable0.0-Profile328" />
@@ -38,11 +36,5 @@
   <files>
     <file src="..\Presentation.Reports\bin\release\Platform.Presentation.Reports.dll" target="lib\net40\Platform.Presentation.Reports.dll" />
     <file src="..\Presentation.Reports.Net45\bin\release\Platform.Presentation.Reports.dll" target="lib\net45\Platform.Presentation.Reports.dll" />
-
-    <file src="..\Presentation.Reports\bin\release\x86\" target="cef\x86" />
-    <file src="..\Presentation.Reports\bin\release\x64\" target="cef\x64" />
-
-    <file src="..\Presentation.Reports\bin\release\CefAssemblyAdapter.props" target="build\Platform.Presentation.Reports.props" />
-    <file src="..\Presentation.Reports\bin\release\CefAssemblyAdapter.targets" target="build\Platform.Presentation.Reports.targets" />
   </files>
 </package>
