@@ -62,10 +62,6 @@
       <Link>Razor\Controls\RazorReportViewer.cs</Link>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="..\Presentation.Reports.Forms\RDLC\Components\ReportGenerator.cs">
-      <Link>RDLC\Components\ReportGenerator.cs</Link>
-      <SubType>Component</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Presentation.Reports.Net45\Presentation.Reports.csproj">
