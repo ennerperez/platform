@@ -127,6 +127,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reports", "Pre
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.SPS.Plugin", "Model.SPS.Plugin.Net45\Model.SPS.Plugin.csproj", "{62104A7A-35E6-4CD6-A9F8-A79807FF9B4D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reports.Forms", "Presentation.Reports.Forms\Presentation.Reports.Forms.csproj", "{CC820E50-5DA7-4C9B-8482-49CEA931EDFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reports.Forms", "Presentation.Reports.Forms.Net45\Presentation.Reports.Forms.csproj", "{A2C6718C-A58E-417F-9047-80BDC05E125E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -285,6 +289,14 @@ Global
 		{62104A7A-35E6-4CD6-A9F8-A79807FF9B4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62104A7A-35E6-4CD6-A9F8-A79807FF9B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62104A7A-35E6-4CD6-A9F8-A79807FF9B4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC820E50-5DA7-4C9B-8482-49CEA931EDFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC820E50-5DA7-4C9B-8482-49CEA931EDFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC820E50-5DA7-4C9B-8482-49CEA931EDFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC820E50-5DA7-4C9B-8482-49CEA931EDFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2C6718C-A58E-417F-9047-80BDC05E125E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2C6718C-A58E-417F-9047-80BDC05E125E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2C6718C-A58E-417F-9047-80BDC05E125E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2C6718C-A58E-417F-9047-80BDC05E125E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -334,13 +346,15 @@ Global
 		{1256D57E-5D7A-40E4-B935-B60138E03518} = {7F317395-1540-44B5-98F4-2132D346D129}
 		{3CECF307-6681-460F-870C-AE75ADD010B8} = {7F317395-1540-44B5-98F4-2132D346D129}
 		{62104A7A-35E6-4CD6-A9F8-A79807FF9B4D} = {7F317395-1540-44B5-98F4-2132D346D129}
+		{CC820E50-5DA7-4C9B-8482-49CEA931EDFF} = {C6297CDA-49E4-4C9B-8C6A-CDD6633ED33F}
+		{A2C6718C-A58E-417F-9047-80BDC05E125E} = {7F317395-1540-44B5-98F4-2132D346D129}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7EA34FD7-B2A4-4717-8FFD-337069CCE0F8}
-		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
-		BuildVersion_StartDate = 2016/1/1
-		BuildVersion_UpdateAssemblyVersion = True
 		BuildVersion_BuildVersioningStyle = None.None.None.Increment
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_StartDate = 2016/1/1
+		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
+		SolutionGuid = {7EA34FD7-B2A4-4717-8FFD-337069CCE0F8}
 	EndGlobalSection
 	GlobalSection(AutomaticVersions) = postSolution
 		AssemblyInfoFilePath.Release|Any CPU = D:\Developments\GitHub\platform\.files\AssemblyInfo.Version.cs

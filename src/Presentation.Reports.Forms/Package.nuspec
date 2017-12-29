@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata minClientVersion="2.12">
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/ennerperez/platform</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/ennerperez/platform/master/src/.editoricon.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Libset for agile software development</description>
+    <summary>$description$</summary>
+    <releaseNotes />
+    <copyright>$copyright$</copyright>
+    <language>en</language>
+    <tags>.NET Framework Base Development Platform</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework2.0" />
+      <group targetFramework=".NETFramework3.5" />
+      <group targetFramework=".NETFramework4.0">
+        <dependency id="Platform.Support.Core" version="$version$" />
+        <dependency id="Platform.Presentation.Reports" version="$version$" />
+        <dependency id="Microsoft.ReportViewer.Common" version="10.0.40219.1" />
+        <dependency id="Microsoft.ReportViewer.WinForms" version="10.0.40219.1" />
+      </group>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Platform.Support.Core" version="$version$" />
+        <dependency id="Platform.Presentation.Reports" version="$version$" />
+        <dependency id="Microsoft.ReportViewer.Common" version="10.0.40219.1" />
+        <dependency id="Microsoft.ReportViewer.WinForms" version="10.0.40219.1" />
+      </group>
+      <group targetFramework=".NETPortable0.0-Profile328" />
+      <group targetFramework=".NETPortable0.0-Profile78" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\Presentation.Reports.Forms\bin\release\Platform.Presentation.Reports.Forms.dll" target="lib\net40\Platform.Presentation.Reports.Forms.dll" />
+    <file src="..\Presentation.Reports.Forms.Net45\bin\release\Platform.Presentation.Reports.Forms.dll" target="lib\net45\Platform.Presentation.Reports.Forms.dll" />
+  </files>
+</package>
