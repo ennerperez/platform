@@ -95,6 +95,12 @@
     <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
+    <Compile Include="Forms\FormControls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormControls.Designer.cs">
+      <DependentUpon>FormControls.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FormControls.resx">
+      <DependentUpon>FormControls.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>

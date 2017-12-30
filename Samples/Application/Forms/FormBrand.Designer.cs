@@ -96,7 +96,6 @@
             this.Controls.Add(this.pictureBoxBrandLogo);
             this.Controls.Add(this.pictureBoxBrandBanner);
             this.Name = "FormBrand";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Branding";
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBrandBanner)).EndInit();
