@@ -32,27 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.WebForms.10.0.40219.1\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -69,76 +59,18 @@
     <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
+    <Compile Include="IReportBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportBuilder.cs" />
-    <Compile Include="ReportGenerator.cs" />
-    <Compile Include="Report\BackgroundImage.cs" />
-    <Compile Include="Report\BackgroundRepeat.cs" />
-    <Compile Include="Report\Body.cs" />
-    <Compile Include="Report\Border.cs" />
-    <Compile Include="Report\BorderStyle.cs" />
-    <Compile Include="Report\BottomBorder.cs" />
-    <Compile Include="Report\CellContents.cs" />
-    <Compile Include="Report\CollectionOf.cs" />
-    <Compile Include="Report\DataSet.cs" />
-    <Compile Include="Report\DataSets.cs" />
-    <Compile Include="Report\DataSources.cs" />
-    <Compile Include="Report\EmbeddedImage.cs" />
-    <Compile Include="Report\EmbeddedImages.cs" />
-    <Compile Include="Report\Expression.cs" />
-    <Compile Include="Report\FontWeight.cs" />
-    <Compile Include="Report\Group.cs" />
-    <Compile Include="Report\GroupExpression.cs" />
-    <Compile Include="Report\GroupExpressions.cs" />
-    <Compile Include="Report\IElement.cs" />
-    <Compile Include="Report\Inch.cs" />
-    <Compile Include="Report\LeftBorder.cs" />
-    <Compile Include="Report\MarkupType.cs" />
-    <Compile Include="Report\Page.cs" />
-    <Compile Include="Report\Paragraph.cs" />
-    <Compile Include="Report\Paragraphs.cs" />
-    <Compile Include="Report\ParentOf.cs" />
-    <Compile Include="Report\Point.cs" />
-    <Compile Include="Report\RdlColor.cs" />
-    <Compile Include="Report\Rectangle.cs" />
-    <Compile Include="Report\Report.cs" />
-    <Compile Include="Report\ReportItem.cs" />
-    <Compile Include="Report\ReportItems.cs" />
-    <Compile Include="Report\ReportItemsContainer.cs" />
-    <Compile Include="Report\ReportSection.cs" />
-    <Compile Include="Report\ReportSections.cs" />
-    <Compile Include="Report\RightBorder.cs" />
-    <Compile Include="Report\SortExpression.cs" />
-    <Compile Include="Report\SortExpressions.cs" />
-    <Compile Include="Report\Source.cs" />
-    <Compile Include="Report\Style.cs" />
-    <Compile Include="Report\Tablix.cs" />
-    <Compile Include="Report\TablixBody.cs" />
-    <Compile Include="Report\TablixCell.cs" />
-    <Compile Include="Report\TablixCells.cs" />
-    <Compile Include="Report\TablixColumn.cs" />
-    <Compile Include="Report\TablixColumnHierarchy.cs" />
-    <Compile Include="Report\TablixColumns.cs" />
-    <Compile Include="Report\TablixCorner.cs" />
-    <Compile Include="Report\TablixCornerCell.cs" />
-    <Compile Include="Report\TablixCornerRow.cs" />
-    <Compile Include="Report\TablixCornerRows.cs" />
-    <Compile Include="Report\TablixHeader.cs" />
-    <Compile Include="Report\TablixMember.cs" />
-    <Compile Include="Report\TablixMembers.cs" />
-    <Compile Include="Report\TablixRow.cs" />
-    <Compile Include="Report\TablixRowHierarchy.cs" />
-    <Compile Include="Report\TablixRows.cs" />
-    <Compile Include="Report\TextAlign.cs" />
-    <Compile Include="Report\Textbox.cs" />
-    <Compile Include="Report\TextboxStyle.cs" />
-    <Compile Include="Report\TextRun.cs" />
-    <Compile Include="Report\TextRuns.cs" />
-    <Compile Include="Report\TopBorder.cs" />
-    <Compile Include="Report\TypeExtension.cs" />
-    <Compile Include="Report\Value.cs" />
-    <Compile Include="Report\VerticalAlign.cs" />
-    <Compile Include="Report\Width.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Razor\IRazorReportBuilder.cs" />
+    <Compile Include="Razor\ReportBuilder.cs" />
+    <Compile Include="Razor\TemplateFinder.cs" />
+    <Compile Include="RDLC\ReportBuilder.cs" />
+    <Compile Include="RDLC\ReportEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Support\Support.csproj">
@@ -149,7 +81,20 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Package.nuspec" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Exception.cshtml" />
+    <None Include="Resources\_ExceptionLayout.cshtml" />
+    <None Include="Resources\_LoadingLayout.cshtml" />
+    <None Include="Resources\_PrintLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

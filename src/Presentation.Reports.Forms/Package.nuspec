@@ -21,18 +21,22 @@
       <group targetFramework=".NETFramework3.5" />
       <group targetFramework=".NETFramework4.0">
         <dependency id="Platform.Support.Core" version="$version$" />
-        <dependency id="RazorEngine" version="3.10" />
+        <dependency id="Platform.Presentation.Reports" version="$version$" />
+        <dependency id="Microsoft.ReportViewer.Common" version="10.0.40219.1" />
+        <dependency id="Microsoft.ReportViewer.WinForms" version="10.0.40219.1" />
       </group>
       <group targetFramework=".NETFramework4.5">
         <dependency id="Platform.Support.Core" version="$version$" />
-        <dependency id="RazorEngine" version="3.10" />
+        <dependency id="Platform.Presentation.Reports" version="$version$" />
+        <dependency id="Microsoft.ReportViewer.Common" version="10.0.40219.1" />
+        <dependency id="Microsoft.ReportViewer.WinForms" version="10.0.40219.1" />
       </group>
       <group targetFramework=".NETPortable0.0-Profile328" />
       <group targetFramework=".NETPortable0.0-Profile78" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\Presentation.Reports\bin\release\Platform.Presentation.Reports.dll" target="lib\net40\Platform.Presentation.Reports.dll" />
-    <file src="..\Presentation.Reports.Net45\bin\release\Platform.Presentation.Reports.dll" target="lib\net45\Platform.Presentation.Reports.dll" />
+    <file src="..\Presentation.Reports.Forms\bin\release\Platform.Presentation.Reports.Forms.dll" target="lib\net40\Platform.Presentation.Reports.Forms.dll" />
+    <file src="..\Presentation.Reports.Forms.Net45\bin\release\Platform.Presentation.Reports.Forms.dll" target="lib\net45\Platform.Presentation.Reports.Forms.dll" />
   </files>
 </package>

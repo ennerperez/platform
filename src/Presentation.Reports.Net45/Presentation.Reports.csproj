@@ -32,26 +32,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.WebForms.10.0.40219.1\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="..\Presentation.Reports\Resources\Exception.cshtml">
+      <Link>Resources\Exception.cshtml</Link>
+    </Resource>
+    <Resource Include="..\Presentation.Reports\Resources\_ExceptionLayout.cshtml">
+      <Link>Resources\_ExceptionLayout.cshtml</Link>
+    </Resource>
+    <Resource Include="..\Presentation.Reports\Resources\_LoadingLayout.cshtml">
+      <Link>Resources\_LoadingLayout.cshtml</Link>
+    </Resource>
+    <Resource Include="..\Presentation.Reports\Resources\_PrintLayout.cshtml">
+      <Link>Resources\_PrintLayout.cshtml</Link>
+    </Resource>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -68,7 +70,13 @@
       <Name>Support</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="..\Presentation.Reports\Properties\Resources.resx">
+      <Link>Properties\Resources.resx</Link>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\.files\AssemblyInfo.Common.cs">
       <Link>Properties\AssemblyInfo.Common.cs</Link>
@@ -79,215 +87,32 @@
     <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
+    <Compile Include="..\Presentation.Reports\IReportBuilder.cs">
+      <Link>IReportBuilder.cs</Link>
+    </Compile>
     <Compile Include="..\Presentation.Reports\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Presentation.Reports\ReportBuilder.cs">
-      <Link>ReportBuilder.cs</Link>
+    <Compile Include="..\Presentation.Reports\Properties\Resources.Designer.cs">
+      <Link>Properties\Resources.Designer.cs</Link>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="..\Presentation.Reports\ReportGenerator.cs">
-      <Link>ReportGenerator.cs</Link>
+    <Compile Include="..\Presentation.Reports\Razor\IRazorReportBuilder.cs">
+      <Link>Razor\IRazorReportBuilder.cs</Link>
     </Compile>
-    <Compile Include="..\Presentation.Reports\Report\BackgroundImage.cs">
-      <Link>Report\BackgroundImage.cs</Link>
+    <Compile Include="..\Presentation.Reports\Razor\ReportBuilder.cs">
+      <Link>Razor\ReportBuilder.cs</Link>
     </Compile>
-    <Compile Include="..\Presentation.Reports\Report\BackgroundRepeat.cs">
-      <Link>Report\BackgroundRepeat.cs</Link>
+    <Compile Include="..\Presentation.Reports\Razor\TemplateFinder.cs">
+      <Link>Razor\TemplateFinder.cs</Link>
     </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Body.cs">
-      <Link>Report\Body.cs</Link>
+    <Compile Include="..\Presentation.Reports\RDLC\ReportBuilder.cs">
+      <Link>RDLC\ReportBuilder.cs</Link>
     </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Border.cs">
-      <Link>Report\Border.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\BorderStyle.cs">
-      <Link>Report\BorderStyle.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\BottomBorder.cs">
-      <Link>Report\BottomBorder.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\CellContents.cs">
-      <Link>Report\CellContents.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\CollectionOf.cs">
-      <Link>Report\CollectionOf.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\DataSet.cs">
-      <Link>Report\DataSet.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\DataSets.cs">
-      <Link>Report\DataSets.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\DataSources.cs">
-      <Link>Report\DataSources.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\EmbeddedImage.cs">
-      <Link>Report\EmbeddedImage.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\EmbeddedImages.cs">
-      <Link>Report\EmbeddedImages.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Expression.cs">
-      <Link>Report\Expression.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\FontWeight.cs">
-      <Link>Report\FontWeight.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Group.cs">
-      <Link>Report\Group.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\GroupExpression.cs">
-      <Link>Report\GroupExpression.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\GroupExpressions.cs">
-      <Link>Report\GroupExpressions.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\IElement.cs">
-      <Link>Report\IElement.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Inch.cs">
-      <Link>Report\Inch.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\LeftBorder.cs">
-      <Link>Report\LeftBorder.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\MarkupType.cs">
-      <Link>Report\MarkupType.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Page.cs">
-      <Link>Report\Page.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Paragraph.cs">
-      <Link>Report\Paragraph.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Paragraphs.cs">
-      <Link>Report\Paragraphs.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\ParentOf.cs">
-      <Link>Report\ParentOf.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Point.cs">
-      <Link>Report\Point.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\RdlColor.cs">
-      <Link>Report\RdlColor.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Rectangle.cs">
-      <Link>Report\Rectangle.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Report.cs">
-      <Link>Report\Report.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\ReportItem.cs">
-      <Link>Report\ReportItem.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\ReportItems.cs">
-      <Link>Report\ReportItems.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\ReportItemsContainer.cs">
-      <Link>Report\ReportItemsContainer.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\ReportSection.cs">
-      <Link>Report\ReportSection.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\ReportSections.cs">
-      <Link>Report\ReportSections.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\RightBorder.cs">
-      <Link>Report\RightBorder.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\SortExpression.cs">
-      <Link>Report\SortExpression.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\SortExpressions.cs">
-      <Link>Report\SortExpressions.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Source.cs">
-      <Link>Report\Source.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Style.cs">
-      <Link>Report\Style.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Tablix.cs">
-      <Link>Report\Tablix.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixBody.cs">
-      <Link>Report\TablixBody.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixCell.cs">
-      <Link>Report\TablixCell.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixCells.cs">
-      <Link>Report\TablixCells.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixColumn.cs">
-      <Link>Report\TablixColumn.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixColumnHierarchy.cs">
-      <Link>Report\TablixColumnHierarchy.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixColumns.cs">
-      <Link>Report\TablixColumns.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixCorner.cs">
-      <Link>Report\TablixCorner.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixCornerCell.cs">
-      <Link>Report\TablixCornerCell.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixCornerRow.cs">
-      <Link>Report\TablixCornerRow.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixCornerRows.cs">
-      <Link>Report\TablixCornerRows.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixHeader.cs">
-      <Link>Report\TablixHeader.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixMember.cs">
-      <Link>Report\TablixMember.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixMembers.cs">
-      <Link>Report\TablixMembers.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixRow.cs">
-      <Link>Report\TablixRow.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixRowHierarchy.cs">
-      <Link>Report\TablixRowHierarchy.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TablixRows.cs">
-      <Link>Report\TablixRows.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TextAlign.cs">
-      <Link>Report\TextAlign.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Textbox.cs">
-      <Link>Report\Textbox.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TextboxStyle.cs">
-      <Link>Report\TextboxStyle.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TextRun.cs">
-      <Link>Report\TextRun.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TextRuns.cs">
-      <Link>Report\TextRuns.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TopBorder.cs">
-      <Link>Report\TopBorder.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\TypeExtension.cs">
-      <Link>Report\TypeExtension.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Value.cs">
-      <Link>Report\Value.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\VerticalAlign.cs">
-      <Link>Report\VerticalAlign.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Reports\Report\Width.cs">
-      <Link>Report\Width.cs</Link>
+    <Compile Include="..\Presentation.Reports\RDLC\ReportEngine.cs">
+      <Link>RDLC\ReportEngine.cs</Link>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -30,6 +30,7 @@
         {
             this.commandLinkConsole = new Platform.Presentation.Forms.Controls.CommandLink();
             this.commandLinkBrand = new Platform.Presentation.Forms.Controls.CommandLink();
+            this.commandLinkReports = new Platform.Presentation.Forms.Controls.CommandLink();
             this.SuspendLayout();
             // 
             // commandLinkConsole
@@ -56,12 +57,25 @@
             this.commandLinkBrand.Text = "Show branding";
             this.commandLinkBrand.Click += new System.EventHandler(this.commandLinkBrand_Click);
             // 
+            // commandLinkReports
+            // 
+            this.commandLinkReports.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.commandLinkReports.ImageScalingSize = new System.Drawing.Size(0, 0);
+            this.commandLinkReports.Location = new System.Drawing.Point(12, 152);
+            this.commandLinkReports.Name = "commandLinkReports";
+            this.commandLinkReports.Note = "Shows the report engine viewer";
+            this.commandLinkReports.Size = new System.Drawing.Size(256, 64);
+            this.commandLinkReports.TabIndex = 0;
+            this.commandLinkReports.Text = "Show Reports";
+            this.commandLinkReports.Click += new System.EventHandler(this.commandLinkReports_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(624, 441);
+            this.Controls.Add(this.commandLinkReports);
             this.Controls.Add(this.commandLinkBrand);
             this.Controls.Add(this.commandLinkConsole);
             this.Name = "FormMain";
@@ -75,6 +89,7 @@
 
         private Platform.Presentation.Forms.Controls.CommandLink commandLinkConsole;
         private Presentation.Forms.Controls.CommandLink commandLinkBrand;
+        private Presentation.Forms.Controls.CommandLink commandLinkReports;
     }
 }
 
