@@ -54,11 +54,11 @@
     <Compile Include="..\Model.CRUD\Interfaces\IRecord.cs">
       <Link>Interfaces\IRecord.cs</Link>
     </Compile>
+    <Compile Include="..\Model.CRUD\Operation.cs">
+      <Link>Operation.cs</Link>
+    </Compile>
     <Compile Include="..\Model.CRUD\RecordEventArgs.cs">
       <Link>RecordEventArgs.cs</Link>
-    </Compile>
-    <Compile Include="..\Model.CRUD\Types\Operations.cs">
-      <Link>Types\Operations.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>

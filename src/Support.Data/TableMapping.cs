@@ -8,6 +8,7 @@ using System.Reflection;
 
 namespace Platform.Support.Data
 {
+    [Obsolete("Use EF instead")]
     public class TableMapping
     {
         private readonly Column _autoPk;
@@ -17,7 +18,7 @@ namespace Platform.Support.Data
         //private string _insertCommandExtra;
         private Column[] _insertOrReplaceColumns;
 
-        public TableMapping(System.Data.IDbConnection conn, Type type, CreateFlags createFlags = CreateFlags.None, BindingFlags bindinFlags = BindingFlags.Public)
+        public TableMapping(System.Data.IDbConnection conn, Type type, Create createFlags = Create.None, BindingFlags bindinFlags = BindingFlags.Public)
         {
             MappedType = type;
 
@@ -28,7 +29,7 @@ namespace Platform.Support.Data
 
             TableName = tableAttr != null ? Convert.ToString(tableAttr.ConstructorArguments.FirstOrDefault().Value) : MappedType.Name;
 
-            if (conn.GetEngine() == Engines.Sql)
+            if (conn.GetEngine() == Engine.Sql)
             {
                 SchemaName = schemaAttr != null ? Convert.ToString(schemaAttr.ConstructorArguments.FirstOrDefault().Value) : "dbo";
             }
@@ -101,8 +102,8 @@ namespace Platform.Support.Data
                 // People should not be calling Get/Find without a PK
                 switch (conn.GetEngine())
                 {
-                    case Engines.SQLite:
-                    case Engines.MySql:
+                    case Engine.SQLite:
+                    case Engine.MySql:
                         GetByPrimaryKeySql = string.Format("SELECT {0} FROM {1} LIMIT 1", string.Join(", ", ((List<Column>)cols).Select(c => string.Format("[{0}]", c.Name)).ToArray()), TableName);
                         break;
 
@@ -243,7 +244,7 @@ namespace Platform.Support.Data
         {
             private readonly PropertyInfo _prop;
 
-            public Column(PropertyInfo prop, CreateFlags createFlags = CreateFlags.None)
+            public Column(PropertyInfo prop, Create createFlags = Create.None)
             {
                 IEnumerable<ColumnAttribute> attributes = (IEnumerable<ColumnAttribute>)prop.GetCustomAttributes(typeof(ColumnAttribute), true);
                 ColumnAttribute colAttr = attributes.FirstOrDefault<ColumnAttribute>();
@@ -255,11 +256,11 @@ namespace Platform.Support.Data
                 Collation = Orm.Collation(prop);
 
                 IsPK = Orm.IsPK(prop) ||
-                (((createFlags & CreateFlags.ImplicitPK) == CreateFlags.ImplicitPK) &&
+                (((createFlags & Create.ImplicitPK) == Create.ImplicitPK) &&
                 string.Compare(prop.Name, Orm.ImplicitPkName, StringComparison.OrdinalIgnoreCase) == 0);
 
                 bool isAuto = Orm.IsAutoInc(prop) ||
-                              (IsPK && ((createFlags & CreateFlags.AutoIncPK) == CreateFlags.AutoIncPK));
+                              (IsPK && ((createFlags & Create.AutoIncPK) == Create.AutoIncPK));
                 IsAutoGuid = isAuto && ColumnType == typeof(Guid);
                 IsAutoInc = isAuto && !IsAutoGuid;
 
@@ -268,7 +269,7 @@ namespace Platform.Support.Data
                 Indices = Orm.GetIndices(prop);
                 if (!Indices.Any()
                     && !IsPK
-                    && ((createFlags & CreateFlags.ImplicitIndex) == CreateFlags.ImplicitIndex)
+                    && ((createFlags & Create.ImplicitIndex) == Create.ImplicitIndex)
                     && Name.EndsWith(Orm.ImplicitIndexSuffix, StringComparison.OrdinalIgnoreCase))
                 {
                     Indices = new[] { new IndexedAttribute() };

@@ -56,7 +56,7 @@ namespace Platform.Support.Security.Cryptography
             if (key.Length < 8)
                 key = key.PadLeft(8, '0');
 
-            //TODO: Provisional, corregir la codificación de caracteres.
+            //TODO: Temporal, fix char encoding.
             input = input.Replace(" ", "+");
             byte[] inputByteArray = new byte[input.Length];
 

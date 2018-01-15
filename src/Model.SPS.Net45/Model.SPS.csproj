@@ -71,9 +71,6 @@
     <Compile Include="..\Model.SPS\Attributes\PlugInApplicationAttribute.cs">
       <Link>Attributes\PlugInApplicationAttribute.cs</Link>
     </Compile>
-    <Compile Include="..\Model.SPS\Helper.cs">
-      <Link>Helper.cs</Link>
-    </Compile>
     <Compile Include="..\Model.SPS\Interfaces\IApplicationPlugIn.cs">
       <Link>Interfaces\IApplicationPlugIn.cs</Link>
     </Compile>

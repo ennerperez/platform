@@ -7,8 +7,6 @@ namespace Platform.Presentation.Forms
 {
     public static class ControlExtensions
     {
-        //TODO: Crear Helpers
-
         public static bool IsDesignerHosted(this Control @this)
         {
             Control ctrl = @this;

@@ -43,9 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Support.Data\Diagram.cd">
-      <Link>Diagram.cd</Link>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -128,11 +125,11 @@
     <Compile Include="..\Support.Data\ColumnInfo.cs">
       <Link>ColumnInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Data\CreateFlags.cs">
-      <Link>CreateFlags.cs</Link>
+    <Compile Include="..\Support.Data\Create.cs">
+      <Link>Create.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Data\Engines.cs">
-      <Link>Engines.cs</Link>
+    <Compile Include="..\Support.Data\Engine.cs">
+      <Link>Engine.cs</Link>
     </Compile>
     <Compile Include="..\Support.Data\Extensions.cs">
       <Link>Extensions.cs</Link>
@@ -143,17 +140,11 @@
     <Compile Include="..\Support.Data\IndexInfo.cs">
       <Link>IndexInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Data\LambdaValueConverter.cs">
-      <Link>LambdaValueConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\Operations.cs">
-      <Link>Operations.cs</Link>
+    <Compile Include="..\Support.Data\Operation.cs">
+      <Link>Operation.cs</Link>
     </Compile>
     <Compile Include="..\Support.Data\Orm.cs">
       <Link>Orm.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Data\PreparedInsertCommand.cs">
-      <Link>PreparedInsertCommand.cs</Link>
     </Compile>
     <Compile Include="..\Support.Data\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>

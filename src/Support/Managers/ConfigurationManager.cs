@@ -70,15 +70,7 @@ namespace Platform.Support.Configuration
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    // TODO: eliminar estado administrado (objetos administrados).
-                }
-
-                // TODO: liberar recursos no administrados (objetos no administrados) e invalidar Finalize() below.
-                // TODO: Establecer campos grandes como Null.
-            }
+                _Folder = null;
             disposedValue = true;
         }
 

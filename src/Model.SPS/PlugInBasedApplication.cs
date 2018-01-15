@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using RU = Platform.Support.Reflection.Utilities;
+using PU = Platform.Model.SPS.Utilities;
 
 namespace Platform.Model.SPS
 {
@@ -39,7 +41,7 @@ namespace Platform.Model.SPS
         public PlugInBasedApplication()
         {
             Initialize();
-            PlugInFolder = Helper.GetCurrentDirectory();
+            PlugInFolder = PU.GetCurrentDirectory();
         }
 
         /// <summary>
@@ -62,7 +64,7 @@ namespace Platform.Model.SPS
                 throw new ApplicationException("PlugInFoler must be a valid folder path");
             }
 
-            var assemblyFiles = Helper.FindAssemblyFiles(PlugInFolder);
+            var assemblyFiles = PU.FindAssemblyFiles(PlugInFolder);
             var plugInType = typeof(TPlugIn);
             foreach (var assemblyFile in assemblyFiles)
             {
@@ -84,7 +86,7 @@ namespace Platform.Model.SPS
         /// </summary>
         private void Initialize()
         {
-            var plugInApplicationAttribute = Helper.GetAttribute<PlugInApplicationAttribute>(GetType());
+            var plugInApplicationAttribute = RU.GetAttribute<PlugInApplicationAttribute>(GetType());
             Name = plugInApplicationAttribute == null ? GetType().Name : plugInApplicationAttribute.Name;
             PlugIns = new List<IApplicationPlugIn<TPlugIn>>();
         }

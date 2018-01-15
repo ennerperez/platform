@@ -9,6 +9,7 @@ using System.Text;
 
 namespace Platform.Support.Data
 {
+    [Obsolete("Use EF instead")]
     public class TableQuery<T> : BaseTableQuery, IEnumerable<T>
     {
         private bool _deferred;
@@ -248,8 +249,8 @@ namespace Platform.Support.Data
 
                 switch (Connection.GetEngine())
                 {
-                    case Engines.SQLite:
-                    case Engines.MySql:
+                    case Engine.SQLite:
+                    case Engine.MySql:
                         if (_limit.HasValue)
                         {
                             cmdText += " LIMIT " + _limit.Value;
@@ -341,8 +342,8 @@ namespace Platform.Support.Data
                     {
                         switch (Connection.GetEngine())
                         {
-                            case Engines.Sql:
-                            case Engines.SqlCE:
+                            case Engine.Sql:
+                            case Engine.SqlCE:
                                 queryArgs.Add(Connection.CreateParameter(obj.CommandText, args[0].Value));
                                 sqlCall = string.Format("(CONTAINS([{0}], @{0}))", obj.CommandText);
                                 break;

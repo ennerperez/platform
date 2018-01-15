@@ -32,22 +32,22 @@ namespace Platform.Model
 
             public virtual object Create()
             {
-                return null;
+                throw new NotImplementedException();
             }
 
             public virtual object Read()
             {
-                return null;
+                throw new NotImplementedException();
             }
 
             public virtual object Update()
             {
-                return null;
+                throw new NotImplementedException();
             }
 
             public virtual object Delete()
             {
-                return null;
+                throw new NotImplementedException();
             }
 
             #endregion Basic CRUD
@@ -58,14 +58,14 @@ namespace Platform.Model
 
             public void OnChanged(RecordEventArgs e)
             {
-                if (Changed != null) { Changed(this, e); }
+                Changed?.Invoke(this, e);
             }
 
             public event EventHandler<RecordEventArgs> Error;
 
             public void OnError(RecordEventArgs e)
             {
-                if (Error != null) { Error(this, e); }
+                Error?.Invoke(this, e);
             }
 
             #endregion EventHandler
@@ -78,21 +78,21 @@ namespace Platform.Model
 
             public virtual void Load()
             {
-                if (Loaded != null) { Loaded(this, new EventArgs()); }
+                Loaded?.Invoke(this, new EventArgs());
             }
 
             public event EventHandler Saved;
 
             public virtual void Save()
             {
-                if (Saved != null) { Saved(this, new EventArgs()); }
+                Saved?.Invoke(this, new EventArgs());
             }
 
             public event EventHandler Erased;
 
             public virtual void Erase()
             {
-                if (Erased != null) { Erased(this, new EventArgs()); }
+                Erased?.Invoke(this, new EventArgs());
             }
 
             #endregion Extended LSE
@@ -102,22 +102,22 @@ namespace Platform.Model
         {
             public override object Create()
             {
-                return Id == 0;
+                throw new NotImplementedException();
             }
 
             public override object Read()
             {
-                return Id == 0;
+                throw new NotImplementedException();
             }
 
             public override object Update()
             {
-                return Id != 0;
+                throw new NotImplementedException();
             }
 
             public override object Delete()
             {
-                return Id != 0;
+                throw new NotImplementedException();
             }
         }
     }

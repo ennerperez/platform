@@ -33,10 +33,13 @@ namespace Platform.Support.Windows
         [DllImport(ExternDll.User32)]
         public static extern int GetClassName(IntPtr hWnd, [Out] StringBuilder lpClassName, int nMaxCount);
 
-        [DllImport(ExternDll.User32)]
-        public static extern int GetIconInfo(IntPtr hIcon, out ICONINFO piconinfo);
+        //[DllImport(ExternDll.User32)]
+        //public static extern int GetIconInfo(IntPtr hIcon, out ICONINFO piconinfo);
 
-        [StructLayout(LayoutKind.Sequential)]
+        [DllImport(ExternDll.User32)]
+        public static extern bool GetIconInfo(IntPtr hIcon, out ICONINFO piconinfo);
+
+        [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct ICONINFO
         {
             public bool fIcon;
@@ -375,6 +378,11 @@ namespace Platform.Support.Windows
         public static extern IntPtr SetWindowsHookEx(
             WH hookType, HookDelegate lpfn, IntPtr hMod, uint dwThreadId);
 
+        [DllImport(ExternDll.User32, CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern IntPtr SetWindowsHookEx(int idHook, LowLevelProc lpfn, IntPtr hMod, uint dwThreadId);
+
+        public delegate IntPtr LowLevelProc(int nCode, IntPtr wParam, IntPtr lParam);
+
         /// <summary>
         /// Uninstalls a windows hook procedure
         /// </summary>
@@ -390,6 +398,16 @@ namespace Platform.Support.Windows
         [DllImport(ExternDll.User32)]
         public static extern IntPtr CallNextHookEx(
             IntPtr hhk, int nCode, UIntPtr wParam, IntPtr lParam);
+
+        [DllImport(ExternDll.User32)]
+        public static extern IntPtr CallNextHookEx(
+            IntPtr hhk,
+            int nCode,
+            IntPtr wParam,
+            IntPtr lParam);
+
+        [DllImport(ExternDll.User32)]
+        public static extern IntPtr GetModuleHandle(string lpModuleName);
 
         /// <summary>
         /// Retrieves the identifier of the thread that created the specified window
@@ -1147,11 +1165,13 @@ namespace Platform.Support.Windows
 
         public static implicit operator RECT(Rectangle rectangle)
         {
-            RECT rect = new RECT();
-            rect.left = rectangle.Left;
-            rect.top = rectangle.Top;
-            rect.right = rectangle.Right;
-            rect.bottom = rectangle.Bottom;
+            RECT rect = new RECT
+            {
+                left = rectangle.Left,
+                top = rectangle.Top,
+                right = rectangle.Right,
+                bottom = rectangle.Bottom
+            };
             return rect;
         }
 

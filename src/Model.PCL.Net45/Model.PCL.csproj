@@ -63,9 +63,6 @@
     <Compile Include="..\Model\Interfaces\ISynchronizable.cs">
       <Link>Interfaces\ISynchronizable.cs</Link>
     </Compile>
-    <Compile Include="..\Model\Interfaces\IWarning.cs">
-      <Link>Interfaces\IWarning.cs</Link>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

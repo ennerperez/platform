@@ -2,8 +2,12 @@
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Platform.Support.Windows
 {
@@ -43,6 +47,9 @@ namespace Platform.Support.Windows
         public static extern IntPtr CreateCompatibleDC(
             IntPtr hdc   // handle to DC
             );
+
+        [DllImport(ExternDll.Gdi32, SetLastError = true)]
+        public static extern IntPtr CreateDIBSection(IntPtr hdc, [In] ref BITMAPINFO pbmi, uint iUsage, out IntPtr ppvBits, IntPtr hSection, uint dwOffset);
 
         [DllImport(ExternDll.Gdi32, SetLastError = true)]
         public static extern bool DeleteDC(IntPtr hdc);
@@ -242,6 +249,1039 @@ namespace Platform.Support.Windows
         public short bmPlanes;
         public short bmBitsPixel;
         public int bmBits;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Unicode)]
+    internal struct RGBQUAD
+#else
+    [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Unicode)]
+    public struct RGBQUAD
+#endif
+    {
+        public void Set(byte r, byte g, byte b)
+        {
+            this.rgbRed = r;
+            this.rgbGreen = g;
+            this.rgbBlue = b;
+        }
+
+        public byte rgbBlue;
+
+        public byte rgbGreen;
+
+        public byte rgbRed;
+
+        public byte rgbReserved;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2, CharSet = CharSet.Unicode)]
+    internal struct BITMAPINFOHEADER
+#else
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2, CharSet = CharSet.Unicode)]
+    public struct BITMAPINFOHEADER
+#endif
+    {
+        public BITMAPINFOHEADER(Stream stream)
+        {
+            this = default(BITMAPINFOHEADER);
+            this.Read(stream);
+        }
+
+        public unsafe void Read(Stream stream)
+        {
+            byte[] array = new byte[sizeof(BITMAPINFOHEADER)];
+            stream.Read(array, 0, array.Length);
+            fixed (byte* ptr = array)
+            {
+                this = *(BITMAPINFOHEADER*)ptr;
+            }
+        }
+
+        public unsafe void Write(Stream stream)
+        {
+            byte[] array = new byte[sizeof(BITMAPINFOHEADER)];
+            fixed (BITMAPINFOHEADER* ptr = &this)
+            {
+                Marshal.Copy((IntPtr)((void*)ptr), array, 0, sizeof(BITMAPINFOHEADER));
+            }
+            stream.Write(array, 0, sizeof(BITMAPINFOHEADER));
+        }
+
+        public uint biSize;
+
+        public uint biWidth;
+
+        public uint biHeight;
+
+        public ushort biPlanes;
+
+        public ushort biBitCount;
+
+        public int biCompression;
+
+        public uint biSizeImage;
+
+        public int biXPelsPerMeter;
+
+        public int biYPelsPerMeter;
+
+        public uint biClrUsed;
+
+        public uint biClrImportant;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2, CharSet = CharSet.Unicode)]
+    internal struct BITMAPINFO
+#else
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2, CharSet = CharSet.Unicode)]
+    public struct BITMAPINFO
+#endif
+    {
+        public BITMAPINFOHEADER icHeader;
+
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
+        public RGBQUAD[] icColors;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal struct ICONDIRENTRY
+#else
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public struct ICONDIRENTRY
+#endif
+    {
+        public ICONDIRENTRY(Stream stream)
+        {
+            this = default(ICONDIRENTRY);
+            this.Read(stream);
+        }
+
+        public unsafe void Read(Stream stream)
+        {
+            BinaryReader binaryReader = new BinaryReader(stream);
+            byte[] array = new byte[sizeof(ICONDIRENTRY)];
+            binaryReader.Read(array, 0, sizeof(ICONDIRENTRY));
+            fixed (byte* ptr = array)
+            {
+                this = *(ICONDIRENTRY*)ptr;
+            }
+        }
+
+        public unsafe void Write(Stream stream)
+        {
+            byte[] array = new byte[sizeof(ICONDIRENTRY)];
+            fixed (ICONDIRENTRY* ptr = &this)
+            {
+                Marshal.Copy((IntPtr)((void*)ptr), array, 0, sizeof(ICONDIRENTRY));
+            }
+            stream.Write(array, 0, sizeof(ICONDIRENTRY));
+        }
+
+        public GRPICONDIRENTRY ToGrpIconEntry()
+        {
+            return new GRPICONDIRENTRY
+            {
+                bColorCount = this.bColorCount,
+                bHeight = this.bHeight,
+                bReserved = this.bReserved,
+                bWidth = this.bWidth,
+                dwBytesInRes = this.dwBytesInRes,
+                wBitCount = this.wBitCount,
+                wPlanes = this.wPlanes
+            };
+        }
+
+        public byte bWidth;
+
+        public byte bHeight;
+
+        public byte bColorCount;
+
+        public byte bReserved;
+
+        public ushort wPlanes;
+
+        public ushort wBitCount;
+
+        public uint dwBytesInRes;
+
+        public uint dwImageOffset;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal struct ICONDIR
+#else
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public struct ICONDIR
+#endif
+    {
+        public ICONDIR(ushort reserved, ushort type, ushort count)
+        {
+            this.idReserved = reserved;
+            this.idType = type;
+            this.idCount = count;
+        }
+
+        public ICONDIR(Stream stream)
+        {
+            this = default(ICONDIR);
+            this.Read(stream);
+        }
+
+        public static ICONDIR Initalizated
+        {
+            get
+            {
+                return new ICONDIR(0, 1, 0);
+            }
+        }
+
+        public unsafe void Read(Stream stream)
+        {
+            byte[] array = new byte[sizeof(ICONDIR)];
+            stream.Read(array, 0, sizeof(ICONDIR));
+            fixed (byte* ptr = array)
+            {
+                this = *(ICONDIR*)ptr;
+            }
+        }
+
+        public unsafe void Write(Stream stream)
+        {
+            byte[] array = new byte[sizeof(ICONDIR)];
+            fixed (ICONDIR* ptr = &this)
+            {
+                Marshal.Copy((IntPtr)((void*)ptr), array, 0, sizeof(ICONDIR));
+            }
+            stream.Write(array, 0, sizeof(ICONDIR));
+        }
+
+        public ushort idReserved;
+
+        public ushort idType;
+
+        public ushort idCount;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal unsafe struct GRPICONDIR
+#else
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public unsafe struct GRPICONDIR
+#endif
+    {
+        public GRPICONDIR(ushort reserved, ushort type, ushort count)
+        {
+            this.idReserved = reserved;
+            this.idType = type;
+            this.idCount = count;
+            this.idEntries = new GRPICONDIRENTRY[0];
+        }
+
+        public GRPICONDIR(Stream stream)
+        {
+            this = default(GRPICONDIR);
+            this.Read(stream);
+        }
+
+        public static GRPICONDIR Initalizated
+        {
+            get
+            {
+                return new GRPICONDIR(0, 1, 0);
+            }
+        }
+
+        public int GroupDirSize
+        {
+            get
+            {
+                return 6 + this.idEntries.Length * sizeof(GRPICONDIRENTRY);
+            }
+        }
+
+        public void Read(Stream stream)
+        {
+            BinaryReader binaryReader = new BinaryReader(stream);
+            this.idReserved = binaryReader.ReadUInt16();
+            this.idType = binaryReader.ReadUInt16();
+            this.idCount = binaryReader.ReadUInt16();
+            this.idEntries = new GRPICONDIRENTRY[(int)this.idCount];
+            for (int i = 0; i < (int)this.idCount; i++)
+            {
+                this.idEntries[i] = new GRPICONDIRENTRY(stream);
+            }
+        }
+
+        public void Write(Stream stream)
+        {
+            BinaryWriter binaryWriter = new BinaryWriter(stream);
+            binaryWriter.Write(this.idReserved);
+            binaryWriter.Write(this.idType);
+            binaryWriter.Write(this.idCount);
+            for (int i = 0; i < (int)this.idCount; i++)
+            {
+                this.idEntries[i].Write(stream);
+            }
+        }
+
+        public ushort idReserved;
+
+        public ushort idType;
+
+        public ushort idCount;
+
+        public GRPICONDIRENTRY[] idEntries;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal struct GRPICONDIRENTRY
+#else
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public struct GRPICONDIRENTRY
+#endif
+    {
+        public GRPICONDIRENTRY(Stream stream)
+        {
+            this = default(GRPICONDIRENTRY);
+            this.Read(stream);
+        }
+
+        public unsafe void Read(Stream stream)
+        {
+            byte[] array = new byte[sizeof(GRPICONDIRENTRY)];
+            stream.Read(array, 0, sizeof(GRPICONDIRENTRY));
+            fixed (byte* ptr = array)
+            {
+                this = *(GRPICONDIRENTRY*)ptr;
+            }
+        }
+
+        public unsafe void Write(Stream stream)
+        {
+            byte[] array = new byte[sizeof(GRPICONDIRENTRY)];
+            fixed (GRPICONDIRENTRY* ptr = &this)
+            {
+                Marshal.Copy((IntPtr)((void*)ptr), array, 0, sizeof(GRPICONDIRENTRY));
+            }
+            stream.Write(array, 0, sizeof(GRPICONDIRENTRY));
+        }
+
+        public ICONDIRENTRY ToIconDirEntry()
+        {
+            return new ICONDIRENTRY
+            {
+                bColorCount = this.bColorCount,
+                bHeight = this.bHeight,
+                bReserved = this.bReserved,
+                bWidth = this.bWidth,
+                dwBytesInRes = this.dwBytesInRes,
+                wBitCount = this.wBitCount,
+                wPlanes = this.wPlanes
+            };
+        }
+
+        public byte bWidth;
+
+        public byte bHeight;
+
+        public byte bColorCount;
+
+        public byte bReserved;
+
+        public ushort wPlanes;
+
+        public ushort wBitCount;
+
+        public uint dwBytesInRes;
+
+        public ushort nID;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal struct MEMICONDIR
+#else
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public struct MEMICONDIR
+#endif
+    {
+        public ushort wReserved;
+
+        public ushort wType;
+
+        public ushort wCount;
+
+        public MEMICONDIRENTRY arEntries;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal struct MEMICONDIRENTRY
+#else
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public struct MEMICONDIRENTRY
+#endif
+    {
+        public byte bWidth;
+
+        public byte bHeight;
+
+        public byte bColorCount;
+
+        public byte bReserved;
+
+        public ushort wPlanes;
+
+        public ushort wBitCount;
+
+        public uint dwBytesInRes;
+
+        public ushort wId;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal struct IMAGE_DOS_HEADER
+#else
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public unsafe struct IMAGE_DOS_HEADER
+#endif
+    {
+        public IMAGE_DOS_HEADER(Stream stream)
+        {
+            this = default(IMAGE_DOS_HEADER);
+            this.Read(stream);
+        }
+
+        public unsafe void Read(Stream stream)
+        {
+            byte[] array = new byte[sizeof(IMAGE_DOS_HEADER)];
+            stream.Read(array, 0, array.Length);
+            fixed (byte* ptr = array)
+            {
+                this = *(IMAGE_DOS_HEADER*)ptr;
+            }
+        }
+
+        public unsafe void Write(Stream stream)
+        {
+            byte[] array = new byte[sizeof(IMAGE_DOS_HEADER)];
+            fixed (IMAGE_DOS_HEADER* ptr = &this)
+            {
+                Marshal.Copy((IntPtr)((void*)ptr), array, 0, sizeof(IMAGE_DOS_HEADER));
+            }
+            stream.Write(array, 0, sizeof(IMAGE_DOS_HEADER));
+        }
+
+        public ushort e_magic;
+
+        public ushort e_cblp;
+
+        public ushort e_cp;
+
+        public ushort e_crlc;
+
+        public ushort e_cparhdr;
+
+        public ushort e_minalloc;
+
+        public ushort e_maxalloc;
+
+        public ushort e_ss;
+
+        public ushort e_sp;
+
+        public ushort e_csum;
+
+        public ushort e_ip;
+
+        public ushort e_cs;
+
+        public ushort e_lfarlc;
+
+        public ushort e_ovno;
+
+        //TODO: Validation
+        //[FixedBuffer(typeof(short), 4)]
+        public FixedBuffer0 e_res;
+
+        public ushort e_oemid;
+
+        public ushort e_oeminfo;
+
+        //TODO: Validation
+        //[FixedBuffer(typeof(short), 10)]
+        public FixedBuffer1 e_res2;
+
+        public uint e_lfanew;
+
+        [UnsafeValueType]
+        [CompilerGenerated]
+        [StructLayout(LayoutKind.Sequential, Size = 8)]
+        public struct FixedBuffer0
+        {
+            public short FixedElementField;
+        }
+
+        [UnsafeValueType]
+        [CompilerGenerated]
+        [StructLayout(LayoutKind.Sequential, Size = 20)]
+        public struct FixedBuffer1
+        {
+            public short FixedElementField;
+        }
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal struct IMAGE_OS2_HEADER
+#else
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public struct IMAGE_OS2_HEADER
+#endif
+    {
+        public IMAGE_OS2_HEADER(Stream stream)
+        {
+            this = default(IMAGE_OS2_HEADER);
+            this.Read(stream);
+        }
+
+        public unsafe void Read(Stream stream)
+        {
+            byte[] array = new byte[sizeof(IMAGE_OS2_HEADER)];
+            stream.Read(array, 0, array.Length);
+            fixed (byte* ptr = array)
+            {
+                this = *(IMAGE_OS2_HEADER*)ptr;
+            }
+        }
+
+        public unsafe void Write(Stream stream)
+        {
+            byte[] array = new byte[sizeof(IMAGE_OS2_HEADER)];
+            fixed (IMAGE_OS2_HEADER* ptr = &this)
+            {
+                Marshal.Copy((IntPtr)((void*)ptr), array, 0, sizeof(IMAGE_OS2_HEADER));
+            }
+            stream.Write(array, 0, sizeof(IMAGE_OS2_HEADER));
+        }
+
+        public ushort ne_magic;
+
+        public sbyte ne_ver;
+
+        public sbyte ne_rev;
+
+        public ushort ne_enttab;
+
+        public ushort ne_cbenttab;
+
+        public uint ne_crc;
+
+        public ushort ne_flags;
+
+        public ushort ne_autodata;
+
+        public ushort ne_heap;
+
+        public ushort ne_stack;
+
+        public uint ne_csip;
+
+        public uint ne_sssp;
+
+        public ushort ne_cseg;
+
+        public ushort ne_cmod;
+
+        public ushort ne_cbnrestab;
+
+        public ushort ne_segtab;
+
+        public ushort ne_rsrctab;
+
+        public ushort ne_restab;
+
+        public ushort ne_modtab;
+
+        public ushort ne_imptab;
+
+        public uint ne_nrestab;
+
+        public ushort ne_cmovent;
+
+        public ushort ne_align;
+
+        public ushort ne_cres;
+
+        public byte ne_exetyp;
+
+        public byte ne_flagsothers;
+
+        public ushort ne_pretthunks;
+
+        public ushort ne_psegrefbytes;
+
+        public ushort ne_swaparea;
+
+        public ushort ne_expver;
+    }
+
+#if !INTEROP
+
+    [Flags]
+    internal enum ResourceMemoryType : ushort
+#else
+    [Flags]
+    public enum ResourceMemoryType : ushort
+#endif
+    {
+        None = 0,
+        Moveable = 16,
+        Pure = 32,
+        PreLoad = 64,
+        Unknown = 7168
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal struct TNAMEINFO
+#else
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public struct TNAMEINFO
+#endif
+    {
+        public TNAMEINFO(Stream stream)
+        {
+            this = default(TNAMEINFO);
+            this.Read(stream);
+        }
+
+        public ushort ID
+        {
+            get
+            {
+                if (this.rnID <= 32768)
+                {
+                    return this.rnID;
+                }
+                return (ushort)((int)this.rnID & -32769);
+            }
+        }
+
+        public ResourceMemoryType ResourceMemoryType
+        {
+            get
+            {
+                return (ResourceMemoryType)this.rnFlags;
+            }
+        }
+
+        public unsafe void Read(Stream stream)
+        {
+            byte[] array = new byte[sizeof(TNAMEINFO)];
+            stream.Read(array, 0, array.Length);
+            fixed (byte* ptr = array)
+            {
+                this = *(TNAMEINFO*)ptr;
+            }
+        }
+
+        public unsafe void Write(Stream stream)
+        {
+            byte[] array = new byte[sizeof(TNAMEINFO)];
+            fixed (TNAMEINFO* ptr = &this)
+            {
+                Marshal.Copy((IntPtr)((void*)ptr), array, 0, sizeof(TNAMEINFO));
+            }
+            stream.Write(array, 0, sizeof(TNAMEINFO));
+        }
+
+        public ushort rnOffset;
+
+        public ushort rnLength;
+
+        public ushort rnFlags;
+
+        public ushort rnID;
+
+        public ushort rnHandle;
+
+        public ushort rnUsage;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal struct TYPEINFO
+#else
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public struct TYPEINFO
+#endif
+    {
+        public TYPEINFO(Stream stream)
+        {
+            this = default(TYPEINFO);
+            this.Read(stream);
+        }
+
+        public ResourceType ResourceType
+        {
+            get
+            {
+                return (ResourceType)(this.rtTypeID & 255);
+            }
+        }
+
+        public void Read(Stream stream)
+        {
+            BinaryReader binaryReader = new BinaryReader(stream);
+            this.rtTypeID = binaryReader.ReadUInt16();
+            if (this.rtTypeID == 0)
+            {
+                return;
+            }
+            this.rtResourceCount = binaryReader.ReadUInt16();
+            this.rtReserved = binaryReader.ReadUInt32();
+            this.rtNameInfo = new TNAMEINFO[(int)this.rtResourceCount];
+            for (int i = 0; i < this.rtNameInfo.Length; i++)
+            {
+                this.rtNameInfo[i].Read(stream);
+            }
+        }
+
+        public void Write(Stream stream)
+        {
+            BinaryWriter binaryWriter = new BinaryWriter(stream);
+            binaryWriter.Write(this.rtTypeID);
+            binaryWriter.Write(this.rtResourceCount);
+            binaryWriter.Write(this.rtReserved);
+            foreach (TNAMEINFO tnameinfo in this.rtNameInfo)
+            {
+                tnameinfo.Write(stream);
+            }
+        }
+
+        public ushort rtTypeID;
+
+        public ushort rtResourceCount;
+
+        public uint rtReserved;
+
+        public TNAMEINFO[] rtNameInfo;
+    }
+
+#if !INTEROP
+
+    internal enum ResourceType : uint
+#else
+    public enum ResourceType : uint
+#endif
+    {
+        RT_CURSOR = 1u,
+        RT_BITMAP,
+        RT_ICON,
+        RT_MENU,
+        RT_DIALOG,
+        RT_STRING,
+        RT_FONTDIR,
+        RT_FONT,
+        RT_ACCELERATOR,
+        RT_RCDATA,
+        RT_MESSAGETABLE,
+        RT_GROUP_CURSOR,
+        RT_GROUP_ICON = 14u,
+        RT_VERSION = 16u,
+        RT_DLGINCLUDE,
+        RT_PLUGPLAY = 19u,
+        RT_VXD,
+        RT_ANICURSOR,
+        RT_ANIICON,
+        RT_HTML
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal struct RESOURCE_TABLE
+#else
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public struct RESOURCE_TABLE
+#endif
+    {
+        public RESOURCE_TABLE(Stream stream)
+        {
+            this = default(RESOURCE_TABLE);
+            this.Read(stream);
+        }
+
+        public string[] ResourceNames
+        {
+            get
+            {
+                List<string> list = new List<string>();
+                byte b;
+                for (int i = 0; i < this.rscResourceNames.Length; i += (int)b)
+                {
+                    b = this.rscResourceNames[i++];
+                    list.Add(Encoding.GetEncoding(1251).GetString(this.rscResourceNames, i, (int)b));
+                }
+                return list.ToArray();
+            }
+        }
+
+        public void Read(Stream stream)
+        {
+            BinaryReader binaryReader = new BinaryReader(stream);
+            this.rscAlignShift = binaryReader.ReadUInt16();
+            List<TYPEINFO> list = new List<TYPEINFO>();
+            TYPEINFO item = new TYPEINFO(stream);
+            while (item.rtTypeID != 0)
+            {
+                list.Add(item);
+                item = new TYPEINFO(stream);
+            }
+            this.rscTypes = list.ToArray();
+            this.rscEndTypes = 0;
+            this.rscResourceNames = new byte[0];
+            for (byte b = binaryReader.ReadByte(); b != 0; b = binaryReader.ReadByte())
+            {
+                byte[] array = new byte[this.rscResourceNames.Length + (int)b + 1];
+                this.rscResourceNames.CopyTo(array, 0);
+                array[this.rscResourceNames.Length] = b;
+                stream.Read(array, this.rscResourceNames.Length + 1, (int)b);
+                this.rscResourceNames = array;
+            }
+            this.rscEndNames = 0;
+        }
+
+        public void Write(Stream stream)
+        {
+            BinaryWriter binaryWriter = new BinaryWriter(stream);
+            binaryWriter.Write(this.rscAlignShift);
+            foreach (TYPEINFO typeinfo in this.rscTypes)
+            {
+                typeinfo.Write(stream);
+            }
+            binaryWriter.Write(this.rscEndTypes);
+            binaryWriter.Write(this.rscResourceNames);
+            binaryWriter.Write(this.rscEndNames);
+        }
+
+        public List<GRPICONDIR> GetGroupIcons(Stream stream)
+        {
+            List<GRPICONDIR> list = new List<GRPICONDIR>();
+            for (int i = 0; i < this.rscTypes.Length; i++)
+            {
+                if (this.rscTypes[i].ResourceType == ResourceType.RT_GROUP_ICON)
+                {
+                    for (int j = 0; j < this.rscTypes[i].rtNameInfo.Length; j++)
+                    {
+                        stream.Seek((long)((1 << (int)this.rscAlignShift) * (int)this.rscTypes[i].rtNameInfo[j].rnOffset), SeekOrigin.Begin);
+                        GRPICONDIR item = new GRPICONDIR(stream);
+                        list.Add(item);
+                    }
+                    break;
+                }
+            }
+            return list;
+        }
+
+        public void SetGroupIcons(Stream stream, List<GRPICONDIR> grpIconDir)
+        {
+            for (int i = 0; i < this.rscTypes.Length; i++)
+            {
+                if (this.rscTypes[i].ResourceType == ResourceType.RT_GROUP_ICON)
+                {
+                    for (int j = 0; j < this.rscTypes[i].rtNameInfo.Length; j++)
+                    {
+                        stream.Seek((long)((1 << (int)this.rscAlignShift) * (int)this.rscTypes[i].rtNameInfo[j].rnOffset), SeekOrigin.Begin);
+                        grpIconDir[j].Write(stream);
+                    }
+                    return;
+                }
+            }
+        }
+
+        public List<ushort> GetGroupIDs(Stream stream)
+        {
+            List<ushort> list = new List<ushort>();
+            for (int i = 0; i < this.rscTypes.Length; i++)
+            {
+                if (this.rscTypes[i].ResourceType == ResourceType.RT_GROUP_ICON)
+                {
+                    for (int j = 0; j < this.rscTypes[i].rtNameInfo.Length; j++)
+                    {
+                        list.Add(this.rscTypes[i].rtNameInfo[j].ID);
+                    }
+                    break;
+                }
+            }
+            return list;
+        }
+
+        public ushort rscAlignShift;
+
+        public TYPEINFO[] rscTypes;
+
+        public ushort rscEndTypes;
+
+        public byte[] rscResourceNames;
+
+        public byte rscEndNames;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal struct IMAGE_DATA_DIRECTORY
+#else
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public struct IMAGE_DATA_DIRECTORY
+#endif
+    {
+        public uint VirtualAddress;
+        public uint Size;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal struct IMAGE_OPTIONAL_HEADER
+#else
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public struct IMAGE_OPTIONAL_HEADER
+#endif
+    {
+        public ushort Magic;
+        public byte MajorLinkerVersion;
+        public byte MinorLinkerVersion;
+        public uint SizeOfCode;
+        public uint SizeOfInitializedData;
+        public uint SizeOfUninitializedData;
+        public uint AddressOfEntryPoint;
+        public uint BaseOfCode;
+        public uint BaseOfData;
+        public uint ImageBase;
+        public uint SectionAlignment;
+        public uint FileAlignment;
+        public ushort MajorOperatingSystemVersion;
+        public ushort MinorOperatingSystemVersion;
+        public ushort MajorImageVersion;
+        public ushort MinorImageVersion;
+        public ushort MajorSubsystemVersion;
+        public ushort MinorSubsystemVersion;
+        public uint Win32VersionValue;
+        public uint SizeOfImage;
+        public uint SizeOfHeaders;
+        public uint CheckSum;
+        public ushort Subsystem;
+        public ushort DllCharacteristics;
+        public uint SizeOfStackReserve;
+        public uint SizeOfStackCommit;
+        public uint SizeOfHeapReserve;
+        public uint SizeOfHeapCommit;
+        public uint LoaderFlags;
+        public uint NumberOfRvaAndSizes;
+        public IMAGE_DATA_DIRECTORY DataDirectory1;
+        public IMAGE_DATA_DIRECTORY DataDirectory2;
+        public IMAGE_DATA_DIRECTORY DataDirectory3;
+        public IMAGE_DATA_DIRECTORY DataDirectory4;
+        public IMAGE_DATA_DIRECTORY DataDirectory5;
+        public IMAGE_DATA_DIRECTORY DataDirectory6;
+        public IMAGE_DATA_DIRECTORY DataDirectory7;
+        public IMAGE_DATA_DIRECTORY DataDirectory8;
+        public IMAGE_DATA_DIRECTORY DataDirectory9;
+        public IMAGE_DATA_DIRECTORY DataDirectory10;
+        public IMAGE_DATA_DIRECTORY DataDirectory11;
+        public IMAGE_DATA_DIRECTORY DataDirectory12;
+        public IMAGE_DATA_DIRECTORY DataDirectory13;
+        public IMAGE_DATA_DIRECTORY DataDirectory14;
+        public IMAGE_DATA_DIRECTORY DataDirectory15;
+        public IMAGE_DATA_DIRECTORY DataDirectory16;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal struct IMAGE_FILE_HEADER
+#else
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public struct IMAGE_FILE_HEADER
+#endif
+    {
+        public ushort Machine;
+        public ushort NumberOfSections;
+        public uint TimeDateStamp;
+        public uint PointerToSymbolTable;
+        public uint NumberOfSymbols;
+        public ushort SizeOfOptionalHeader;
+        public ushort Characteristics;
+    }
+
+#if !INTEROP
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    internal struct IMAGE_NT_HEADERS
+#else
+
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
+    public struct IMAGE_NT_HEADERS
+#endif
+    {
+        public IMAGE_NT_HEADERS(Stream stream)
+        {
+            this = default(IMAGE_NT_HEADERS);
+            this.Read(stream);
+        }
+
+        public unsafe void Read(Stream stream)
+        {
+            BinaryReader binaryReader = new BinaryReader(stream);
+            this.Signature = binaryReader.ReadUInt32();
+            byte[] array = new byte[sizeof(IMAGE_FILE_HEADER)];
+            stream.Read(array, 0, array.Length);
+            fixed (byte* ptr = array)
+            {
+                this.FileHeader = *(IMAGE_FILE_HEADER*)ptr;
+            }
+            array = new byte[sizeof(IMAGE_OPTIONAL_HEADER)];
+            stream.Read(array, 0, array.Length);
+            fixed (byte* ptr2 = array)
+            {
+                this.OptionalHeader = *(IMAGE_OPTIONAL_HEADER*)ptr2;
+            }
+        }
+
+        public uint Signature;
+
+        public IMAGE_FILE_HEADER FileHeader;
+
+        public IMAGE_OPTIONAL_HEADER OptionalHeader;
     }
 
 #pragma warning restore

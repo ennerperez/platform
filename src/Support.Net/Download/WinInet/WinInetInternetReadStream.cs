@@ -15,7 +15,7 @@ namespace Platform.Support.Net.Download.WinInet
     {
         internal WinInetInternetReadStream(IntPtr inetFile)
         {
-            this.helper = new DownloadHelpers();
+            this.helper = new Utilities();
             this.inetFile = inetFile;
             this.localBuffer = new byte[32768];
             this.contentLength = this.helper.GetContentLength(inetFile);
@@ -120,7 +120,7 @@ namespace Platform.Support.Net.Download.WinInet
 
         //private readonly ILogger logger;
 
-        private readonly DownloadHelpers helper;
+        private readonly Utilities helper;
 
         private readonly int contentLength;
 

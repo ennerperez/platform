@@ -75,8 +75,7 @@ namespace Platform.Support
 
             public static DateTime GetDate(string v)
             {
-                DateTime _value;
-                DateTime.TryParse(v, out _value);
+                DateTime.TryParse(v, out DateTime _value);
                 return _value;
             }
         }

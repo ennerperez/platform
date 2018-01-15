@@ -3,14 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Platform.Support.Net
+namespace Platform.Support
 {
-    internal enum ProxyResolution
+#if PORTABLE
+    namespace Core
     {
-        Default,
-        DefaultCredentialsOrNoAutoProxy,
-        NetworkCredentials,
-        DirectAccess,
-        Error
+#endif
+
+    namespace Net
+    {
+        internal enum ProxyResolution
+        {
+            Default,
+            DefaultCredentialsOrNoAutoProxy,
+            NetworkCredentials,
+            DirectAccess,
+            Error
+        }
     }
+
+#if PORTABLE
+    }
+#endif
 }

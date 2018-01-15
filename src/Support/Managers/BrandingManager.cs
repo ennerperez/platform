@@ -256,28 +256,27 @@ namespace Platform.Support.Branding
 
         #region IDisposable Support
 
-        // Para detectar llamadas redundantes
         private bool disposedValue;
 
-        // IDisposable
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
             {
                 if (disposing)
                 {
-                    // TODO: eliminar estado administrado (objetos administrados).
+                    logos.Clear();
+                    products.Clear();
+                    colors.Clear();
                 }
-
-                // TODO: liberar recursos no administrados (objetos no administrados) e invalidar Finalize() below.
-                // TODO: Establecer campos grandes como Null.
+                logos = null;
+                products = null;
+                colors = null;
             }
             disposedValue = true;
         }
 
         public void Dispose()
         {
-            // No cambie este código. Coloque el código de limpieza en Dispose(disposing As Boolean).
             Dispose(true);
             GC.SuppressFinalize(this);
         }

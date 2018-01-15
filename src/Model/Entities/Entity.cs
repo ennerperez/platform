@@ -12,12 +12,12 @@ namespace Platform.Model
     {
 #endif
 
-        public abstract class Entity<TKey> : IEntity<TKey>, INotifyPropertyChanged
+    public abstract class Entity<TKey> : IEntity<TKey>, INotifyPropertyChanged
 #if !PORTABLE
 , ICloneable, INotifyPropertyChanging
 #endif
-        {
-            public event PropertyChangedEventHandler PropertyChanged;
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
 
 #if !PORTABLE
 
@@ -25,78 +25,66 @@ namespace Platform.Model
 
 #endif
 
-            protected internal void SetField<U>(ref U field, U value)
-            {
+        protected internal void SetField<U>(ref U field, U value)
+        {
 #if (!PORTABLE)
             if (!EqualityComparer<U>.Default.Equals(field, value))
             {
-                if (PropertyChanging != null)
-                {
-                    PropertyChanging(this, new PropertyChangingEventArgs(field.ToString()));
-                }
+                PropertyChanging?.Invoke(this, new PropertyChangingEventArgs(field.ToString()));
 #endif
                 field = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs(field.ToString()));
-                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(field.ToString()));
 #if (!PORTABLE)
             }
 #endif
-            }
+        }
 
-            protected internal void SetField(ref object field, object value)
-            {
+        protected internal void SetField(ref object field, object value)
+        {
 #if (!PORTABLE)
             if (!EqualityComparer<object>.Default.Equals(field, value))
             {
-                if (PropertyChanging != null)
-                {
-                    PropertyChanging(this, new PropertyChangingEventArgs(field.ToString()));
-                }
+                PropertyChanging?.Invoke(this, new PropertyChangingEventArgs(field.ToString()));
 #endif
                 field = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs(field.ToString()));
-                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(field.ToString()));
 #if (!PORTABLE)
             }
 #endif
-            }
+        }
 
-            #region Properties
+        #region Properties
 
-            public virtual TKey Id { get; set; }
+        public virtual TKey Id { get; set; }
 
-            #endregion Properties
+        #endregion Properties
 
-            #region Operators
+        #region Operators
 
-            public override bool Equals(Object obj)
-            {
-                // Check for null values and compare run-time types.
-                if (obj == null || GetType() != obj.GetType()) return false;
+        public override bool Equals(Object obj)
+        {
+            // Check for null values and compare run-time types.
+            if (obj == null || GetType() != obj.GetType()) return false;
 
-                Entity<TKey> p = (Entity<TKey>)obj;
-                return (Id.Equals(p.Id));
-            }
+            Entity<TKey> p = (Entity<TKey>)obj;
+            return (Id.Equals(p.Id));
+        }
 
-            #endregion Operators
+        #endregion Operators
 
-            public virtual void Refresh(object e)
-            {
-            }
+        public virtual void Refresh(object e)
+        {
+        }
 
-            public virtual IEnumerable AsEnumerable()
-            {
-                return null;
-            }
+        public virtual IEnumerable AsEnumerable()
+        {
+            return null;
+        }
 
-            public override int GetHashCode()
-            {
-                return Id.GetHashCode();
-            }
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
 
 #if !PORTABLE
 
@@ -135,7 +123,7 @@ namespace Platform.Model
         }
 
 #endif
-        }
+    }
 
 #if PORTABLE
     }

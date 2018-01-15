@@ -37,15 +37,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Platform.Model.Core, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Platform.Model.Core.3.3.33\lib\net45\Platform.Model.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.Support.Core, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Platform.Support.Core.3.3.33\lib\net45\Platform.Support.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.Support.Windows, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Platform.Support.Windows.3.3.33\lib\net45\Platform.Support.Windows.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
@@ -75,6 +66,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Model.Net45\Model.csproj">
+      <Project>{2d856692-23f9-4ed5-93b4-90553c427106}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Support.Net45\Support.csproj">
+      <Project>{5654d378-10ca-4ab0-aaf1-f3f72c6202b6}</Project>
+      <Name>Support</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Support.Windows.Net45\Support.Windows.csproj">
+      <Project>{9c79f916-61fa-4811-9264-a109b865cba7}</Project>
+      <Name>Support.Windows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core.PCL\Samples.Core.PCL.csproj">
       <Project>{31a52908-5532-4838-9a15-007cadcb99eb}</Project>
       <Name>Samples.Core.PCL</Name>

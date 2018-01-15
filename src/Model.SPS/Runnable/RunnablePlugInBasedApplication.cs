@@ -36,9 +36,7 @@ namespace Platform.Model.SPS.Runnable
             OnStarting();
 
             foreach (var plugIn in PlugIns)
-            {
                 plugIn.PlugInProxy.Start();
-            }
 
             OnStarted();
         }
@@ -51,9 +49,7 @@ namespace Platform.Model.SPS.Runnable
             OnStopping();
 
             foreach (var plugIn in PlugIns)
-            {
                 plugIn.PlugInProxy.Stop();
-            }
 
             OnStopped();
         }
@@ -64,9 +60,7 @@ namespace Platform.Model.SPS.Runnable
         public void WaitToStop()
         {
             foreach (var plugIn in PlugIns)
-            {
                 plugIn.PlugInProxy.WaitToStop();
-            }
 
             OnWaitToStop();
         }
@@ -78,10 +72,7 @@ namespace Platform.Model.SPS.Runnable
         /// </summary>
         protected virtual void OnStarting()
         {
-            if (Starting != null)
-            {
-                Starting(this, new EventArgs());
-            }
+            Starting?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -91,10 +82,7 @@ namespace Platform.Model.SPS.Runnable
         /// </summary>
         protected virtual void OnStarted()
         {
-            if (Started != null)
-            {
-                Started(this, new EventArgs());
-            }
+            Started?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -104,10 +92,7 @@ namespace Platform.Model.SPS.Runnable
         /// </summary>
         protected virtual void OnStopping()
         {
-            if (Stopping != null)
-            {
-                Stopping(this, new EventArgs());
-            }
+            Stopping?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -117,10 +102,7 @@ namespace Platform.Model.SPS.Runnable
         /// </summary>
         protected virtual void OnStopped()
         {
-            if (Stopped != null)
-            {
-                Stopped(this, new EventArgs());
-            }
+            Stopped?.Invoke(this, new EventArgs());
         }
 
         /// <summary>

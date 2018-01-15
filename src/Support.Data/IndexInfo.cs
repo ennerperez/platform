@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Platform.Support.Data
 {
+    [Obsolete("Use EF instead")]
     public struct IndexInfo
     {
         public List<IndexedColumn> Columns { get; set; }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Platform.Model
 {
@@ -8,20 +9,11 @@ namespace Platform.Model
     {
 #endif
 
-        public interface IAuditable
-        {
-            IEnumerable<Audit> Audits { get; set; }
-        }
-
-        public struct Audit
-        {
-            System.DateTime Created { get; set; }
-            System.DateTime Modified { get; set; }
-            IEntity Owner { get; set; }
-
-            string Property { get; set; }
-            object Value { get; set; }
-        }
+    public interface IAuditable
+    {
+        DateTime CreatedAt { get; set; }
+        DateTime? ModificatedAt { get; set; }
+    }
 
 #if PORTABLE
     }

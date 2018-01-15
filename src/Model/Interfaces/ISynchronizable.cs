@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 
 #if PORTABLE
 
@@ -78,11 +79,12 @@ namespace Platform.Model
     {
 #endif
 
-        public class ISynchronizable
-        {
-            private DataRowVersion RowVersion { get; set; }
-            private DataRowState RowState { get; set; }
-        }
+    public class ISynchronizable
+    {
+        private Guid? RowId { get; set; }
+        private DataRowVersion RowVersion { get; set; }
+        private DataRowState RowState { get; set; }
+    }
 
 #if PORTABLE
     }

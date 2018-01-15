@@ -17,12 +17,12 @@ namespace Platform.Model
 
             public RecordEventArgs()
             {
-                Operation = Operations.Unknow;
+                Operation = Operation.Unknow;
                 Result = null;
                 Argument = null;
             }
 
-            public RecordEventArgs(Operations operation, object result = null, object argument = null)
+            public RecordEventArgs(Operation operation, object result = null, object argument = null)
             {
                 Operation = operation;
                 Result = result;
@@ -33,7 +33,7 @@ namespace Platform.Model
 
             #region Properties
 
-            public Operations Operation { get; set; }
+            public Operation Operation { get; set; }
             public object Result { get; set; }
             public object Argument { get; set; }
 

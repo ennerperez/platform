@@ -71,17 +71,17 @@
     <Compile Include="..\Support.Windows\ExternDll.cs">
       <Link>ExternDll.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Windows\Helpers\MessageHelper.cs">
-      <Link>Helpers\MessageHelper.cs</Link>
+    <Compile Include="..\Support.Windows\Hardware\HardwareListener.cs">
+      <Link>Hardware\HardwareListener.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Windows\Helpers\OSHelper.cs">
-      <Link>Helpers\OSHelper.cs</Link>
+    <Compile Include="..\Support.Windows\Hardware\KeyboardListener.cs">
+      <Link>Hardware\KeyboardListener.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Windows\Helpers\RegistryHelper.cs">
-      <Link>Helpers\RegistryHelper.cs</Link>
+    <Compile Include="..\Support.Windows\Hardware\MouseListener.cs">
+      <Link>Hardware\MouseListener.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Windows\Helpers\UACHelper.cs">
-      <Link>Helpers\UACHelper.cs</Link>
+    <Compile Include="..\Support.Windows\Message.cs">
+      <Link>Message.cs</Link>
     </Compile>
     <Compile Include="..\Support.Windows\NativeMethods\Advapi32.cs">
       <Link>NativeMethods\Advapi32.cs</Link>
@@ -155,12 +155,21 @@
     <Compile Include="..\Support.Windows\NativeMethods\Wtsapi32.cs">
       <Link>NativeMethods\Wtsapi32.cs</Link>
     </Compile>
+    <Compile Include="..\Support.Windows\OS.cs">
+      <Link>OS.cs</Link>
+    </Compile>
     <Compile Include="..\Support.Windows\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\Registry.cs">
+      <Link>Registry.cs</Link>
     </Compile>
     <Compile Include="..\Support.Windows\ServiceLoader.cs">
       <Link>ServiceLoader.cs</Link>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\Support.Windows\UAC.cs">
+      <Link>UAC.cs</Link>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

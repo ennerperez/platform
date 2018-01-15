@@ -76,7 +76,6 @@
     <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
-    <Compile Include="Methods.cs" />
     <Compile Include="RSS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -26,7 +26,7 @@ namespace Platform.Support.Net.Download
 
             return new DownloadSummary
             {
-                DownloadedSize = Utilities.CopyFileToStream(uri.LocalPath, outputStream, progress, cancellationToken)
+                DownloadedSize = IO.Utilities.CopyFileToStream(uri.LocalPath, outputStream, progress, cancellationToken)
             };
         }
 

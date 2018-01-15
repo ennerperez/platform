@@ -40,7 +40,7 @@ namespace Platform.Support.Net.Download
                 throw;
             }
             string tempFileName = Path.GetTempFileName();
-            Utilities.DeleteFileIfExists(tempFileName);
+            IO.Utilities.DeleteFileIfExists(tempFileName);
             try
             {
                 //IServiceProvider serviceProvider = this.serviceProvider;
@@ -62,11 +62,11 @@ namespace Platform.Support.Net.Download
                     bitsJob.WaitForCompletion(progress, cancellationToken);
                 }
                 downloadSummary.ProxyResolution = ProxyResolution.Default.ToString();
-                downloadSummary.DownloadedSize = Utilities.CopyFileToStream(tempFileName, outputStream, null, cancellationToken);
+                downloadSummary.DownloadedSize = IO.Utilities.CopyFileToStream(tempFileName, outputStream, null, cancellationToken);
             }
             finally
             {
-                Utilities.DeleteFileIfExists(tempFileName);
+                IO.Utilities.DeleteFileIfExists(tempFileName);
             }
             return downloadSummary;
         }

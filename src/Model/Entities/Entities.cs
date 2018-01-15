@@ -17,14 +17,14 @@ namespace Platform.Model
     {
 #endif
 
-        public abstract class Entities<TEntity, TKey> :
+    public abstract class Entities<TEntity, TKey> :
 #if !(PORTABLE)
  ObservableCollection<TEntity>
 #else
  Collection<TEntity>
 #endif
  where TEntity : IEntity<TKey>
-        {
+    {
 #if (!PORTABLE)
 
         public Entities() : base()
@@ -43,8 +43,7 @@ namespace Platform.Model
 
         public virtual void OnChanged()
         {
-            if (Changed != null)
-                Changed(this, EventArgs.Empty);
+            Changed?.Invoke(this, EventArgs.Empty);
         }
 
         public event EventHandler Changed;
@@ -58,99 +57,91 @@ namespace Platform.Model
 
 #endif
 
-            public TEntity GetItem(TKey id)
-            {
+        public TEntity GetItem(TKey id)
+        {
 #if (!PORTABLE)
             return this.Items.FirstOrDefault(i => i.Id.Equals(id));
 #else
                 return this.FirstOrDefault(i => i.Id.Equals(id));
 #endif
-            }
+        }
 
-            public Type Type()
-            {
-                return typeof(TEntity);
-            }
+        public Type Type()
+        {
+            return typeof(TEntity);
+        }
 
-            protected internal bool IsLoaded;
+        protected internal bool IsLoaded;
 
-            public virtual void OnLoad(object e)
-            {
-                IsLoaded = true;
-                if (Loaded != null) { Loaded(this, EventArgs.Empty); }
-                IsLoading = false;
-            }
+        public virtual void OnLoad(object e)
+        {
+            IsLoaded = true;
+            Loaded?.Invoke(this, EventArgs.Empty); IsLoading = false;
+        }
 
-            public event EventHandler Loaded;
+        public event EventHandler Loaded;
 
-            protected internal bool IsLoading;
+        protected internal bool IsLoading;
 
-            public virtual void OnLoading(object e)
+        public virtual void OnLoading(object e)
+        {
+            IsLoaded = false;
+            Loading?.Invoke(this, EventArgs.Empty); IsLoading = true;
+        }
+
+        public event EventHandler Loading;
+
+        public virtual void Refresh(object e)
+        {
+            if (!IsLoading)
             {
                 IsLoaded = false;
-                if (Loading != null) { Loading(this, EventArgs.Empty); }
-                IsLoading = true;
+                this.Load();
             }
+        }
 
-            public event EventHandler Loading;
+        public abstract void Load();
 
-            public virtual void Refresh(object e)
+        public virtual void Load(bool async)
+        {
+        }
+
+        #region IDisposable Support
+
+        private bool disposedValue;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposedValue)
             {
-                if (!IsLoading)
+                if (disposing)
                 {
-                    IsLoaded = false;
-                    this.Load();
+                    this.IsLoaded = false;
                 }
-            }
-
-            public abstract void Load();
-
-            public virtual void Load(bool async)
-            {
-            }
-
-            #region IDisposable Support
-
-            // Para detectar llamadas redundantes
-            private bool disposedValue;
-
-            // IDisposable
-            protected virtual void Dispose(bool disposing)
-            {
-                if (!this.disposedValue)
-                {
-                    if (disposing)
-                    {
-                        // TODO: eliminar estado administrado (objetos administrados).
-                        this.IsLoaded = false;
-                    }
-                    // TODO: liberar recursos no administrados (objetos no administrados) e invalidar Finalize() below.
-                    // TODO: Establecer campos grandes como Null.
 #if (!PORTABLE)
                 this.ClearItems();
 #else
                     this.Clear();
 #endif
-                }
-                this.disposedValue = true;
             }
-
-            public void Dispose()
-            {
-                // No cambie este código. Coloque el código de limpieza en Dispose(disposing As Boolean).
-                Dispose(true);
-                GC.SuppressFinalize(this);
-            }
-
-            #endregion IDisposable Support
+            this.disposedValue = true;
         }
 
-        public abstract class Entities<TEntity> : Entities<TEntity, long> where TEntity : IEntity<long>
+        public void Dispose()
         {
-            public Entities() : base()
-            {
-            }
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
+
+        #endregion IDisposable Support
+    }
+
+    public abstract class Entities<TEntity> : Entities<TEntity, long> where TEntity : IEntity<long>
+    {
+        public Entities() : base()
+        {
+        }
+    }
 
 #if PORTABLE
     }

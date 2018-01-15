@@ -61,12 +61,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Platform.Model.Core.PCL, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Platform.Model.Core.3.3.33\lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Model.Core.PCL.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.Support.Core.PCL, Version=3.3.33.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Platform.Support.Core.3.3.33\lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Support.Core.PCL.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\src\Model.PCL.Net45\Model.PCL.csproj">
+      <Project>{f141c367-11e3-4e5f-a089-95173b4029d3}</Project>
+      <Name>Model.PCL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Support.PCL.Net45\Support.PCL.csproj">
+      <Project>{b0bc9452-381f-4bf7-8e3c-382635a14187}</Project>
+      <Name>Support.PCL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />

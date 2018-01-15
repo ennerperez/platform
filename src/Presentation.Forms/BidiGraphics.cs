@@ -98,7 +98,7 @@ namespace Platform.Presentation.Forms
 
         public void DrawImage(bool allowMirroring, Image image, int x, int y)
         {
-            //TODO: measure image to get width for high DPI
+            //TODO: Measure image to get width for high DPI
             Rectangle rect = new Rectangle(x, y, image.Width, image.Height);
             rect = TranslateImageRectangle(rect, allowMirroring);
             g.DrawImage(image, rect);
@@ -106,7 +106,7 @@ namespace Platform.Presentation.Forms
 
         public void DrawImage(bool allowMirroring, Image image, Point point)
         {
-            //TODO: measure image to get width for high DPI
+            //TODO: Measure image to get width for high DPI
             Rectangle rect = new Rectangle(point.X, point.Y, image.Width, image.Height);
             rect = TranslateImageRectangle(rect, allowMirroring);
             g.DrawImage(image, rect);
@@ -120,7 +120,7 @@ namespace Platform.Presentation.Forms
 
         public void DrawImage(bool allowMirroring, Image image, Rectangle destRect, int srcX, int srcY, int srcWidth, int srcHeight, GraphicsUnit srcUnit)
         {
-            //TODO: source coordinates need to deal with mirroring
+            //TODO: Source coordinates need to deal with mirroring
             Debug.Assert(srcUnit == GraphicsUnit.Pixel, "BidiGraphics does not support non-Pixel units");
             g.DrawImage(image,
                 TranslateImageRectangle(destRect, allowMirroring),
@@ -129,7 +129,7 @@ namespace Platform.Presentation.Forms
 
         public void DrawImage(bool allowMirroring, Image image, Rectangle destRect, Rectangle srcRect, GraphicsUnit srcUnit)
         {
-            //TODO: source coordinates need to deal with mirroring
+            //TODO: Source coordinates need to deal with mirroring
             Debug.Assert(srcUnit == GraphicsUnit.Pixel, "BidiGraphics does not support non-Pixel units");
             g.DrawImage(image,
                 TranslateImageRectangle(destRect, allowMirroring),
@@ -138,7 +138,7 @@ namespace Platform.Presentation.Forms
 
         public void DrawImage(bool allowMirroring, Image image, Rectangle destRect, int srcX, int srcY, int srcWidth, int srcHeight, GraphicsUnit srcUnit, ImageAttributes imageAttributes)
         {
-            //TODO: source coordinates need to deal with mirroring
+            //TODO: Source coordinates need to deal with mirroring
             Debug.Assert(srcUnit == GraphicsUnit.Pixel, "BidiGraphics does not support non-Pixel units");
             g.DrawImage(image,
                 TranslateImageRectangle(destRect, allowMirroring),
@@ -148,7 +148,7 @@ namespace Platform.Presentation.Forms
 
         public void DrawIcon(bool allowMirroring, Icon icon, int x, int y)
         {
-            //TODO: measure image to get width for high DPI
+            //TODO: Measure image to get width for high DPI
             Rectangle rect = new Rectangle(x, y, icon.Width, icon.Height);
             DrawIcon(allowMirroring, icon, rect);
         }

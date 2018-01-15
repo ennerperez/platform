@@ -242,6 +242,9 @@ namespace Platform.Support.Windows
         public static extern void CopyMemory(IntPtr Destination, IntPtr Source, UIntPtr Length);
 
         [DllImport(ExternDll.Kernel32, SetLastError = true)]
+        public unsafe static extern void CopyMemory(void* dest, void* src, int length);
+
+        [DllImport(ExternDll.Kernel32, SetLastError = true)]
         public static extern IntPtr CreateMutex(
             IntPtr lpMutexAttributes,
             int bInitialOwner,
@@ -450,6 +453,138 @@ namespace Platform.Support.Windows
                 errorCode
             });
         }
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern bool EnumResourceNames(
+            IntPtr hModule,
+            IntPtr pType,
+            EnumResNameProc callback,
+            IntPtr param);
+
+        public delegate int EnumResTypeProc(IntPtr hModule, IntPtr lpszType, IntPtr lParam);
+
+        public delegate bool EnumResNameProc(IntPtr hModule, IntPtr pType, IntPtr pName, IntPtr param);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr LoadLibraryEx(
+            string path,
+            IntPtr hFile,
+            LoadLibraryFlags flags);
+
+        public static bool IS_INTRESOURCE(IntPtr value)
+        {
+            return (int)value <= 65535;
+        }
+
+        public static bool IS_INTRESOURCE(string value)
+        {
+            return int.TryParse(value, out int num);
+        }
+
+        public static int MAKEINTRESOURCE(int resource)
+        {
+            return 65535 & resource;
+        }
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr FindResource(
+            IntPtr hModule,
+            string resourceID,
+            IntPtr type);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr FindResource(
+            IntPtr hModule,
+            int resourceID,
+            IntPtr type);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr FindResource(
+            IntPtr hModule,
+            IntPtr resourceID,
+            IntPtr type);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr FindResource(
+            IntPtr hModule,
+            IntPtr resourceID,
+            string resourceName);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr LoadResource(
+            IntPtr hModule,
+            IntPtr hResource);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr LockResource(IntPtr hGlobalResource);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern int SizeofResource(IntPtr hModule, IntPtr hResource);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern int FreeLibrary(IntPtr hModule);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr BeginUpdateResource(
+            string pFileName,
+            bool bDeleteExistingResources);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern bool EndUpdateResource(
+            IntPtr hUpdate,
+            bool fDiscard);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern bool UpdateResource(
+            IntPtr hUpdate,
+            uint lpType,
+            ref string pName,
+            ushort wLanguage,
+            byte[] lpData,
+            uint cbData);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern bool UpdateResource(
+            IntPtr hUpdate,
+            uint lpType,
+            IntPtr pName,
+            ushort wLanguage,
+            byte[] lpData,
+            uint cbData);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern bool UpdateResource(
+            IntPtr hUpdate,
+            uint lpType,
+            byte[] pName,
+            ushort wLanguage,
+            byte[] lpData,
+            uint cbData);
+
+        [DllImport(ExternDll.Kernel32, CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern bool UpdateResource(
+            IntPtr hUpdate,
+            uint lpType,
+            uint lpName,
+            ushort wLanguage,
+            byte[] lpData,
+            uint cbData);
+    }
+
+#if !INTEROP
+
+    internal enum LoadLibraryFlags
+#else
+    public enum LoadLibraryFlags
+#endif
+    {
+        DONT_RESOLVE_DLL_REFERENCES = 1,
+
+        LOAD_LIBRARY_AS_DATAFILE,
+
+        LOAD_WITH_ALTERED_SEARCH_PATH = 8,
+
+        LOAD_IGNORE_CODE_AUTHZ_LEVEL = 16
     }
 
 #if !INTEROP

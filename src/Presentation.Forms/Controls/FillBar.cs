@@ -6,10 +6,7 @@ using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Controls
 {
-    /// <summary>
-    /// TODO: Fix, render problems when scrollings.
-    /// </summary>
-
+    //TODO: Fix, render problems when scrolling.
     [ToolboxBitmap(typeof(System.Windows.Forms.ProgressBar))]
     [ToolboxItem(true)]
     public class FillBar : Control

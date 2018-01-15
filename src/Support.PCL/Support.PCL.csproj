@@ -204,6 +204,9 @@
     <Compile Include="..\Support\Reflection\ReflectOn.cs">
       <Link>Reflection\ReflectOn.cs</Link>
     </Compile>
+    <Compile Include="..\Support\Reflection\Utilities.cs">
+      <Link>Reflection\Utilities.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Security\Cryptography\CRC32.cs">
       <Link>Security\Cryptography\CRC32.cs</Link>
     </Compile>

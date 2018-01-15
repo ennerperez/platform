@@ -1,9 +1,11 @@
 ﻿#if PORTABLE
 
+using RU = Platform.Support.Core.Reflection.Utilities;
 using Platform.Model.Core.SPS.Attributes;
 
 #else
 
+using RU = Platform.Support.Reflection.Utilities;
 using Platform.Model.SPS.Attributes;
 
 #endif
@@ -45,7 +47,7 @@ namespace Platform.Model
 
                 //Get Name from PlugIn attribute.
                 var thisPlugInType = GetType();
-                var plugInAttribute = Helper.GetAttribute<PlugInAttribute>(thisPlugInType);
+                var plugInAttribute = RU.GetAttribute<PlugInAttribute>(thisPlugInType);
                 Name = plugInAttribute == null ? thisPlugInType.Name : plugInAttribute.Name;
             }
         }

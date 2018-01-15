@@ -26,7 +26,7 @@ namespace Platform.Support.Drawing
             var assemblyName = Assembly.GetEntryAssembly().GetName().Name;
 
             bmp.Save(@"..\..\.editoricon.png");
-            ImageHelper.ConvertToIcon(@"..\..\.editoricon.png", $@"..\..\{assemblyName}\App.ico", (img.Width + img.Height) / 2, true);
+            Bitmaps.Utilities.ConvertToIcon(@"..\..\.editoricon.png", $@"..\..\{assemblyName}\App.ico", (img.Width + img.Height) / 2, true);
         }
     }
 }

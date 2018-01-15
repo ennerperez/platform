@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -273,9 +275,6 @@
     </Compile>
     <Compile Include="..\Presentation.Forms\Helpers\SystemButtonHelper.cs">
       <Link>Helpers\SystemButtonHelper.cs</Link>
-    </Compile>
-    <Compile Include="..\Presentation.Forms\NativeMethods.cs">
-      <Link>NativeMethods.cs</Link>
     </Compile>
     <Compile Include="..\Presentation.Forms\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>

@@ -75,9 +75,6 @@
     <Compile Include="..\Model\Interfaces\ISynchronizable.cs">
       <Link>Interfaces\ISynchronizable.cs</Link>
     </Compile>
-    <Compile Include="..\Model\Interfaces\IWarning.cs">
-      <Link>Interfaces\IWarning.cs</Link>
-    </Compile>
     <Compile Include="..\Model\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>

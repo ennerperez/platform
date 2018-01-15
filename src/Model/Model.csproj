@@ -56,7 +56,6 @@
     <Compile Include="Interfaces\IAuditable.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Interfaces\ISynchronizable.cs" />
-    <Compile Include="Interfaces\IWarning.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

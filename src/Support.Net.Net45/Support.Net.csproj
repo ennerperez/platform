@@ -111,9 +111,6 @@
     <Compile Include="..\Support.Net\Download\DownloadFailureInformation.cs">
       <Link>Download\DownloadFailureInformation.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Net\Download\DownloadHelpers.cs">
-      <Link>Download\DownloadHelpers.cs</Link>
-    </Compile>
     <Compile Include="..\Support.Net\Download\DownloadManager.cs">
       <Link>Download\DownloadManager.cs</Link>
     </Compile>
@@ -134,6 +131,9 @@
     </Compile>
     <Compile Include="..\Support.Net\Download\IDownloadManager.cs">
       <Link>Download\IDownloadManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Net\Download\Utilities.cs">
+      <Link>Download\Utilities.cs</Link>
     </Compile>
     <Compile Include="..\Support.Net\Download\WebClientEngine.cs">
       <Link>Download\WebClientEngine.cs</Link>

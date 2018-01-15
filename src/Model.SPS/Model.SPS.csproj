@@ -55,7 +55,6 @@
     </Compile>
     <Compile Include="ApplicationPlugIn.cs" />
     <Compile Include="Attributes\PlugInApplicationAttribute.cs" />
-    <Compile Include="Helper.cs" />
     <Compile Include="Interfaces\IApplicationPlugIn.cs" />
     <Compile Include="Interfaces\IPlugInBasedApplication.cs" />
     <Compile Include="PlugInBasedApplication.cs" />

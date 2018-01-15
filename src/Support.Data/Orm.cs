@@ -18,8 +18,8 @@ namespace Platform.Support.Data
 
             switch (conn.GetEngine())
             {
-                case Engines.Sql:
-                case Engines.SqlCE:
+                case Engine.Sql:
+                case Engine.SqlCE:
                     decl = "[" + p.Name + "] ";
                     break;
 
@@ -35,8 +35,8 @@ namespace Platform.Support.Data
 
             switch (conn.GetEngine())
             {
-                case Engines.Sql:
-                case Engines.SqlCE:
+                case Engine.Sql:
+                case Engine.SqlCE:
                     if (p.IsAutoInc)
                         decl += "IDENTITY(1,1) ";
                     break;
@@ -63,8 +63,8 @@ namespace Platform.Support.Data
 
             switch (engine)
             {
-                case Engines.Sql:
-                case Engines.SqlCE:
+                case Engine.Sql:
+                case Engine.SqlCE:
                     if (object.ReferenceEquals(clrType, typeof(Boolean)))
                         return "BIT";
                     if (object.ReferenceEquals(clrType, typeof(Double)))
@@ -79,7 +79,7 @@ namespace Platform.Support.Data
                         return "INTEGER";
                     break;
 
-                case Engines.OleDb:
+                case Engine.OleDb:
                     if (object.ReferenceEquals(clrType, typeof(Boolean)))
                         return "BIT";
                     if (object.ReferenceEquals(clrType, typeof(Double)) ||
@@ -116,9 +116,9 @@ namespace Platform.Support.Data
             }
 
             if (object.ReferenceEquals(clrType, typeof(UInt32)) || object.ReferenceEquals(clrType, typeof(Int64)))
-                if (engine == Engines.SQLite && p.IsAutoInc)
+                if (engine == Engine.SQLite && p.IsAutoInc)
                     return "INTEGER";
-                else if (engine == Engines.OleDb)
+                else if (engine == Engine.OleDb)
                     if (p.IsAutoInc)
                         return "NUMERIC";
                     else
@@ -134,8 +134,8 @@ namespace Platform.Support.Data
                 System.Nullable<int> len = p.MaxStringLength;
                 switch (engine)
                 {
-                    case Engines.Sql:
-                    case Engines.SqlCE:
+                    case Engine.Sql:
+                    case Engine.SqlCE:
                         if (len.HasValue)
                             if (len > 200)
                                 return "VARCHAR(" + len.Value + ")";
@@ -143,7 +143,7 @@ namespace Platform.Support.Data
                                 return "VARCHAR(MAX)";
                         return "VARCHAR(200)";
 
-                    case Engines.OleDb:
+                    case Engine.OleDb:
                         if (len.HasValue && len > 200)
                             return "LONGTEXT";
                         return "VARCHAR";
@@ -166,8 +166,8 @@ namespace Platform.Support.Data
             {
                 switch (engine)
                 {
-                    case Engines.Sql:
-                    case Engines.SqlCE:
+                    case Engine.Sql:
+                    case Engine.SqlCE:
                         System.Nullable<int> len = p.MaxStringLength;
                         if (len.HasValue)
                         {
@@ -175,7 +175,7 @@ namespace Platform.Support.Data
                         }
                         return "VARBINARY(MAX)";
 
-                    case Engines.OleDb:
+                    case Engine.OleDb:
                         return "VARBINARY";
 
                     default:
@@ -187,11 +187,11 @@ namespace Platform.Support.Data
             {
                 switch (engine)
                 {
-                    case Engines.Sql:
-                    case Engines.SqlCE:
+                    case Engine.Sql:
+                    case Engine.SqlCE:
                         return "UNIQUEIDENTIFIER";
 
-                    case Engines.OleDb:
+                    case Engine.OleDb:
                         return "GUID";
 
                     default:
@@ -203,11 +203,11 @@ namespace Platform.Support.Data
             {
                 switch (engine)
                 {
-                    case Engines.Sql:
-                    case Engines.SqlCE:
+                    case Engine.Sql:
+                    case Engine.SqlCE:
                         return "NVARCHAR(400)";
 
-                    case Engines.OleDb:
+                    case Engine.OleDb:
                         return "LONGTEXT";
 
                     default:

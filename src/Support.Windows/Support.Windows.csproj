@@ -56,6 +56,9 @@
     <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
+    <Compile Include="Hardware\HardwareListener.cs" />
+    <Compile Include="Hardware\KeyboardListener.cs" />
+    <Compile Include="Hardware\MouseListener.cs" />
     <Compile Include="NativeMethods\Advapi32.cs" />
     <Compile Include="NativeMethods\ComCtl32.cs" />
     <Compile Include="NativeMethods\Crypt32.cs" />
@@ -64,7 +67,7 @@
     <Compile Include="NativeMethods\Dwmapi.cs" />
     <Compile Include="NativeMethods\GdiPlus.cs" />
     <Compile Include="NativeMethods\Mapi32.cs" />
-    <Compile Include="Helpers\MessageHelper.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="NativeMethods\Mpr.cs" />
     <Compile Include="NativeMethods\Ole32.cs" />
     <Compile Include="NativeMethods\OleAut32.cs" />
@@ -77,13 +80,13 @@
     <Compile Include="NativeMethods\Uxtheme.cs" />
     <Compile Include="NativeMethods\WinInet.cs" />
     <Compile Include="NativeMethods\WinMm.cs" />
-    <Compile Include="Helpers\OSHelper.cs" />
+    <Compile Include="OS.cs" />
     <Compile Include="ExternDll.cs" />
     <Compile Include="NativeMethods\ComDlg32.cs" />
     <Compile Include="NativeMethods\Gdi32.cs" />
     <Compile Include="NativeMethods\Kernel32.cs" />
-    <Compile Include="Helpers\RegistryHelper.cs" />
-    <Compile Include="Helpers\UACHelper.cs" />
+    <Compile Include="Registry.cs" />
+    <Compile Include="UAC.cs" />
     <Compile Include="NativeMethods\Wtsapi32.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NativeMethods\User32.cs" />

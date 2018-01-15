@@ -17,7 +17,7 @@ namespace Platform.Support.Net.Download.WinInet
     {
         public ManagedWinInet()
         {
-            this.helper = new DownloadHelpers();
+            this.helper = new Utilities();
         }
 
         //public ManagedWinInet(IServiceProvider serviceProvider)
@@ -240,7 +240,7 @@ namespace Platform.Support.Net.Download.WinInet
 
         //private readonly ILogger logger;
 
-        private readonly DownloadHelpers helper;
+        private readonly Utilities helper;
 
         private SafeInetHandle inetHandle;
     }

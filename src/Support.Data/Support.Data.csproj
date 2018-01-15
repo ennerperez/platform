@@ -73,15 +73,13 @@
     <Compile Include="Attributes\UniqueAttribute.cs" />
     <Compile Include="BaseTableQuery.cs" />
     <Compile Include="ColumnInfo.cs" />
+    <Compile Include="Create.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="IndexedColumn.cs" />
     <Compile Include="IndexInfo.cs" />
-    <Compile Include="CreateFlags.cs" />
-    <Compile Include="Engines.cs" />
-    <Compile Include="LambdaValueConverter.cs" />
-    <Compile Include="Operations.cs" />
+    <Compile Include="Engine.cs" />
+    <Compile Include="Operation.cs" />
     <Compile Include="Orm.cs" />
-    <Compile Include="PreparedInsertCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableMapping.cs" />
     <Compile Include="TableQuery.cs" />
@@ -94,7 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Diagram.cd" />
     <None Include="Package.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>

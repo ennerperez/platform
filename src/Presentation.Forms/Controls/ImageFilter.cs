@@ -7,7 +7,6 @@ using System.Windows.Forms;
 namespace Platform.Presentation.Forms.Controls
 {
     //TODO: WIP
-
     [ToolboxBitmap(typeof(System.Windows.Forms.PictureBox))]
     [ToolboxItem(false)]
     public partial class ImageFilter : UserControl

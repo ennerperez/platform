@@ -14,7 +14,7 @@ namespace Platform.Support.Net.Download
     {
         public WebClientEngine() : base("WebClient", new DownloadSource[] { DownloadSource.Internet })
         {
-            this.helper = new DownloadHelpers();
+            this.helper = new Utilities();
         }
 
         //public WebClientEngine(IServiceProvider serviceProvider) : base("WebClient", new DownloadSource[]
@@ -261,6 +261,6 @@ namespace Platform.Support.Net.Download
 
         //private readonly ILogger logger;
 
-        private readonly DownloadHelpers helper;
+        private readonly Utilities helper;
     }
 }

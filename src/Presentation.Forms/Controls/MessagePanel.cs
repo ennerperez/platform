@@ -102,7 +102,7 @@ namespace Platform.Presentation.Forms.Controls
         {
             base.OnPaint(e);
 
-            var gradientRectangle = new Rectangle(new Point(0, 0), new Size(GradientWidth, Height));
+            var gradientRectangle = new System.Drawing.Rectangle(new Point(0, 0), new Size(GradientWidth, Height));
             var paddingLeft = GradientWidth + DefaultMargin.Left;
 
             if (colors.ContainsKey(Style))
@@ -118,7 +118,7 @@ namespace Platform.Presentation.Forms.Controls
                 }
 
             if (ShowIcon && Style != MessageStyle.None)
-                imageIcon = IconExtractor.Extract("imageres.dll", (int)Style, IconSize == IconSize.Large).ToBitmap();
+                imageIcon = Platform.Support.Drawing.Icons.Utilities.ExtractIcon("imageres.dll", (int)Style, IconSize == IconSize.Large).ToBitmap();
 
             if (ShowIcon && imageIcon != null)
             {

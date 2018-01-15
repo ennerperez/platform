@@ -79,8 +79,8 @@
     <Compile Include="..\Model.SPS.PlugIn\Runnable\RunnablePlugIn.cs">
       <Link>Runnable\RunnablePlugIn.cs</Link>
     </Compile>
-    <Compile Include="..\Model.SPS\Helper.cs">
-      <Link>Helper.cs</Link>
+    <Compile Include="..\Model.SPS.PlugIn\Utilities.cs">
+      <Link>Utilities.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

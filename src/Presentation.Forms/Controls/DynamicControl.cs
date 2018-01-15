@@ -15,8 +15,7 @@ using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms.Controls
 {
-    //TODO: WIP
-    internal partial class DynamicControl : Control, INotifyPropertyChanged
+    public partial class DynamicControl : Control, INotifyPropertyChanged
     {
         public Type GetDataType()
         {
@@ -843,12 +842,9 @@ namespace Platform.Presentation.Forms.Controls
 
         protected virtual void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            this.DataBindings.Clear();
             InitializeControl();
             InitializeBindings();
-
-            if (PropertyChanged != null)
-                PropertyChanged.Invoke(sender, e);
+            PropertyChanged?.Invoke(sender, e);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -55,7 +55,7 @@
     <Compile Include="RecordEventArgs.cs" />
     <Compile Include="Interfaces\IRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Types\Operations.cs" />
+    <Compile Include="Operation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

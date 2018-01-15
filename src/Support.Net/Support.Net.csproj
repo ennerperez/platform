@@ -103,7 +103,7 @@
     <Compile Include="Download\DownloadCookie.cs" />
     <Compile Include="Download\DownloadEngineBase.cs" />
     <Compile Include="Download\DownloadFailureInformation.cs" />
-    <Compile Include="Download\DownloadHelpers.cs" />
+    <Compile Include="Download\Utilities.cs" />
     <Compile Include="Download\DownloadManager.cs" />
     <Compile Include="Download\DownloadSource.cs" />
     <Compile Include="Download\DownloadSummary.cs" />

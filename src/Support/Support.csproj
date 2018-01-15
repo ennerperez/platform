@@ -22,6 +22,7 @@
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +32,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -113,6 +115,7 @@
     <Compile Include="Reflection\PropertyNotifierService.cs" />
     <Compile Include="Reflection\ReflectionService.cs" />
     <Compile Include="Reflection\ReflectOn.cs" />
+    <Compile Include="Reflection\Utilities.cs" />
     <Compile Include="Security\Cryptography\CRC32.cs" />
     <Compile Include="Security\Cryptography\Encryption\Data.cs" />
     <Compile Include="Security\Cryptography\Encryption\Hash.cs" />
