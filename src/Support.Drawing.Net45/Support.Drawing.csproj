@@ -68,9 +68,6 @@
     <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
       <Link>Properties\AssemblyInfo.Version.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Drawing\Bitmaps\Extensions.cs">
-      <Link>Bitmaps\Extensions.cs</Link>
-    </Compile>
     <Compile Include="..\Support.Drawing\Bitmaps\Utilities.cs">
       <Link>Bitmaps\Utilities.cs</Link>
     </Compile>
@@ -79,9 +76,6 @@
     </Compile>
     <Compile Include="..\Support.Drawing\Colors\EuclideanQuantizer.cs">
       <Link>Colors\EuclideanQuantizer.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Drawing\Colors\Extensions.cs">
-      <Link>Colors\Extensions.cs</Link>
     </Compile>
     <Compile Include="..\Support.Drawing\Colors\FloydSteinbergDithering.cs">
       <Link>Colors\FloydSteinbergDithering.cs</Link>
@@ -104,20 +98,39 @@
     <Compile Include="..\Support.Drawing\Colors\Utilities.cs">
       <Link>Colors\Utilities.cs</Link>
     </Compile>
-    <Compile Include="..\Support.Drawing\Extensions\DebugExtensions.cs">
-      <Link>Extensions\DebugExtensions.cs</Link>
+    <Compile Include="..\Support.Drawing\Extensions.Color.cs">
+      <Link>Extensions.Color.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
     </Compile>
-    <Compile Include="..\Support.Drawing\Extensions\ReflectionExtensions.cs">
-      <Link>Extensions\ReflectionExtensions.cs</Link>
+    <Compile Include="..\Support.Drawing\Extensions.ColorSpaces.cs">
+      <Link>Extensions.ColorSpaces.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
     </Compile>
-    <Compile Include="..\Support.Drawing\Geometrics\Extensions.cs">
-      <Link>Geometrics\Extensions.cs</Link>
+    <Compile Include="..\Support.Drawing\Extensions.cs">
+      <Link>Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Extensions.Debug.cs">
+      <Link>Extensions.Debug.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Extensions.Geometrics.cs">
+      <Link>Extensions.Geometrics.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Extensions.Icons.cs">
+      <Link>Extensions.Icons.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Extensions.Image.cs">
+      <Link>Extensions.Image.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Extensions.Reflection.cs">
+      <Link>Extensions.Reflection.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
     </Compile>
     <Compile Include="..\Support.Drawing\Geometrics\Rectangle.cs">
       <Link>Geometrics\Rectangle.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Drawing\Geometrics\Utilities.cs">
-      <Link>Geometrics\Utilities.cs</Link>
     </Compile>
     <Compile Include="..\Support.Drawing\Icons\Encoders\BMPEncoder.cs">
       <Link>Icons\Encoders\BMPEncoder.cs</Link>
@@ -142,9 +155,6 @@
     </Compile>
     <Compile Include="..\Support.Drawing\Icons\Exceptions.cs">
       <Link>Icons\Exceptions.cs</Link>
-    </Compile>
-    <Compile Include="..\Support.Drawing\Icons\Extensions.cs">
-      <Link>Icons\Extensions.cs</Link>
     </Compile>
     <Compile Include="..\Support.Drawing\Icons\IconImage.cs">
       <Link>Icons\IconImage.cs</Link>

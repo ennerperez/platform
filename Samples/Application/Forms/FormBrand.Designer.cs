@@ -33,8 +33,14 @@
             this.richTextBoxEULA = new System.Windows.Forms.RichTextBox();
             this.labelInfo = new System.Windows.Forms.Label();
             this.linkLabelURL = new System.Windows.Forms.LinkLabel();
+            this.richTextBoxLicense = new System.Windows.Forms.RichTextBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBrandBanner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBrandLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxBrandBanner
@@ -57,13 +63,11 @@
             // 
             // richTextBoxEULA
             // 
-            this.richTextBoxEULA.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxEULA.Location = new System.Drawing.Point(136, 79);
+            this.richTextBoxEULA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxEULA.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxEULA.Name = "richTextBoxEULA";
             this.richTextBoxEULA.ReadOnly = true;
-            this.richTextBoxEULA.Size = new System.Drawing.Size(476, 327);
+            this.richTextBoxEULA.Size = new System.Drawing.Size(473, 162);
             this.richTextBoxEULA.TabIndex = 2;
             this.richTextBoxEULA.Text = "";
             // 
@@ -85,14 +89,44 @@
             this.linkLabelURL.Size = new System.Drawing.Size(476, 23);
             this.linkLabelURL.TabIndex = 4;
             // 
+            // richTextBoxLicense
+            // 
+            this.richTextBoxLicense.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxLicense.Location = new System.Drawing.Point(0, 0);
+            this.richTextBoxLicense.Name = "richTextBoxLicense";
+            this.richTextBoxLicense.ReadOnly = true;
+            this.richTextBoxLicense.Size = new System.Drawing.Size(473, 158);
+            this.richTextBoxLicense.TabIndex = 2;
+            this.richTextBoxLicense.Text = "";
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(139, 82);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.richTextBoxEULA);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.richTextBoxLicense);
+            this.splitContainer1.Size = new System.Drawing.Size(473, 324);
+            this.splitContainer1.SplitterDistance = 162;
+            this.splitContainer1.TabIndex = 5;
+            // 
             // FormBrand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 441);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.linkLabelURL);
             this.Controls.Add(this.labelInfo);
-            this.Controls.Add(this.richTextBoxEULA);
             this.Controls.Add(this.pictureBoxBrandLogo);
             this.Controls.Add(this.pictureBoxBrandBanner);
             this.Name = "FormBrand";
@@ -100,6 +134,10 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBrandBanner)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBrandLogo)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -111,6 +149,8 @@
         private System.Windows.Forms.RichTextBox richTextBoxEULA;
         private System.Windows.Forms.Label labelInfo;
         private System.Windows.Forms.LinkLabel linkLabelURL;
+        private System.Windows.Forms.RichTextBox richTextBoxLicense;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 

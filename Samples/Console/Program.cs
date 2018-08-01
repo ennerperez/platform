@@ -1,4 +1,4 @@
-﻿#define SANDBOX
+﻿//#define SANDBOX
 
 using System;
 using ListBox = Platform.Support.ConsoleEx.ListBox;

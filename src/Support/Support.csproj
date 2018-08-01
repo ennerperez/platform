@@ -64,12 +64,54 @@
       <Link>NativeMethods\Kernel32.cs</Link>
     </Compile>
     <Compile Include="Attributes\CallerAttributes.cs" />
+    <Compile Include="Attributes\LocalizedDescriptionAttribute.cs" />
     <Compile Include="ConsoleEx\ListBox.cs" />
     <Compile Include="DisposableObject.cs" />
+    <Compile Include="Extensions.Collections.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Cryptography.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Extensions.DateTime.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Debug.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Enum.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.FileInfo.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Math.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Reflection.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Security.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Shortcut.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Stream.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.String.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Threading.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Type.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
     <Compile Include="IO\ProgressUpdate.cs" />
-    <Compile Include="IO\ShortcutExtensions.cs" />
     <Compile Include="IO\Shortcut.cs" />
-    <Compile Include="IO\StreamExtensions.cs" />
     <Compile Include="IO\Utilities.cs" />
     <Compile Include="Localization\LocalizedException.cs" />
     <Compile Include="NoSuitableEngineException.cs" />
@@ -92,17 +134,9 @@
     <Compile Include="ConsoleEx\ProgressBar.cs" />
     <Compile Include="ConsoleEx\Spinner.cs" />
     <Compile Include="Core.cs" />
-    <Compile Include="Extensions\DateTimeExtensions.cs" />
-    <Compile Include="Extensions\DebugExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="Extensions\TypeExtensions.cs" />
-    <Compile Include="Extensions\MathExtensions.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="Managers\BrandingManager.cs" />
-    <Compile Include="Collections\CollectionExtensions.cs" />
     <Compile Include="Collections\TypeListComparer.cs" />
-    <Compile Include="IO\FileInfoExtensions.cs" />
     <Compile Include="IO\IniFile.cs" />
     <Compile Include="Localization\ResourceEnumConverter.cs" />
     <Compile Include="Managers\ConfigurationManager.cs" />
@@ -110,7 +144,6 @@
     <Compile Include="OS\Environment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\DynamicInvoke.cs" />
-    <Compile Include="Reflection\ReflectionExtensions.cs" />
     <Compile Include="Reflection\IReflectionService.cs" />
     <Compile Include="Reflection\PropertyNotifierService.cs" />
     <Compile Include="Reflection\ReflectionService.cs" />
@@ -119,8 +152,6 @@
     <Compile Include="Security\Cryptography\CRC32.cs" />
     <Compile Include="Security\Cryptography\Encryption\Data.cs" />
     <Compile Include="Security\Cryptography\Encryption\Hash.cs" />
-    <Compile Include="Security\Cryptography\CryptographyExtensions.cs" />
-    <Compile Include="Security\SecurityExtensions.cs" />
     <Compile Include="Security\PasswordHash.cs" />
     <Compile Include="SemanticVersion.cs" />
     <Compile Include="Singleton.cs" />
@@ -129,7 +160,6 @@
     <Compile Include="Text\Markdown.cs" />
     <Compile Include="Threading\FuncAwaitable.cs" />
     <Compile Include="Threading\FuncAwaiter.cs" />
-    <Compile Include="Threading\FuncExtensions.cs" />
     <Compile Include="Threading\IAwaitable.cs" />
     <Compile Include="Diagnostics\Utilities.cs" />
     <Compile Include="ValueConverter.cs" />

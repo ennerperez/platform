@@ -9,6 +9,63 @@ using System.Xml.Linq;
 
 namespace Platform.Support.Drawing.Colors
 {
+    public enum Palettes : short
+    {
+        [Description("Rosado")]
+        pink,
+
+        [Description("Púrpura")]
+        purple,
+
+        [Description("Morado oscuro")]
+        deep_purple,
+
+        [Description("Índigo")]
+        indigo,
+
+        [Description("Azul")]
+        blue,
+
+        [Description("Azul claro")]
+        light_blue,
+
+        [Description("Cían")]
+        cyan,
+
+        [Description("Verde azulado")]
+        teal,
+
+        [Description("Verde")]
+        green,
+
+        [Description("Verde claro")]
+        light_green,
+
+        [Description("Lima")]
+        lime,
+
+        [Description("Amarillo")]
+        yellow,
+
+        [Description("Ámbar")]
+        amber,
+
+        [Description("Naranja")]
+        orange,
+
+        [Description("Naranja profundo")]
+        deep_orange,
+
+        [Description("Marrón")]
+        brown,
+
+        [Description("Gris")]
+        grey,
+
+        [Description("Gris azulado")]
+        blue_grey,
+    }
+
     public class Palette : INotifyPropertyChanged
     {
         private Color primary;

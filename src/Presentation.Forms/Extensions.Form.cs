@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms
 {
-    public static class FormExtensions
+    public static partial class Extensions
     {
         public static void ShowIn(this Form form, Form parent, EventHandler shown, params object[] param)
         {

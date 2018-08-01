@@ -5,11 +5,8 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Platform.Support.Drawing
+namespace Platform.Presentation.Forms
 {
-    /// <summary>
-    /// Class DebugExtensions.
-    /// </summary>
     public static partial class Extensions
     {
         [Conditional("DEBUG")]

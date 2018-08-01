@@ -13,7 +13,7 @@ namespace Platform.Support
 
     namespace IO
     {
-        public static class StreamExtensions
+        public static partial class Extensions
         {
             public static void CopyTo(this Stream input, ref Stream output)
             {

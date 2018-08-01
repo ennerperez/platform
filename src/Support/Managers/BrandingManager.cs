@@ -3,7 +3,11 @@
 using Platform.Support.Reflection;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Reflection;
+using System.Text;
 using System.Xml.Linq;
 
 namespace Platform.Support.Branding
@@ -12,245 +16,228 @@ namespace Platform.Support.Branding
     {
         public BrandingManager()
         {
-            logos = new Dictionary<string, byte[]>();
-            colors = new Dictionary<string, string>();
-            phonesNumbers = new Dictionary<string, string>();
-            urls = new Dictionary<string, Uri>();
-            mailAdress = new Dictionary<string, System.Net.Mail.MailAddress>();
-            products = new Dictionary<Guid, BrandedProduct>();
+            Information = new Information();
+            Products = new List<Product>();
+            Licenses = new List<License>();
         }
 
-        public BrandingManager(System.IO.FileInfo file, Guid guid)
-            : this()
+        public BrandingManager(FileInfo file, Guid guid) : this()
         {
             if (file != null && file.Exists)
-                this.Load(file, guid);
+                Load(file, guid);
         }
 
         #region Properties
 
-        private string id;
+        public string Id { get; private set; }
 
-        public string Id
-        {
-            get { return id; }
-        }
+        public Guid Key { get; private set; }
 
-        private string name;
+        public Information Information { get; private set; }
 
-        public string Name
-        {
-            get { return name; }
-        }
+        public List<Product> Products { get; private set; }
 
-        private string description;
-
-        public string Description
-        {
-            get { return description; }
-        }
-
-        private Guid key;
-
-        public Guid Key
-        {
-            get { return key; }
-        }
-
-        private Dictionary<string, byte[]> logos;
-
-        public Dictionary<string, byte[]> Logos
-        {
-            get { return logos; }
-        }
-
-        private Dictionary<string, string> colors;
-
-        public Dictionary<string, string> Colors
-        {
-            get { return colors; }
-        }
-
-        private Dictionary<string, string> phonesNumbers;
-
-        public Dictionary<string, string> PhonesNumbers
-        {
-            get { return phonesNumbers; }
-        }
-
-        private Dictionary<string, Uri> urls;
-
-        public Dictionary<string, Uri> URLs
-        {
-            get { return urls; }
-        }
-
-        private Dictionary<Guid, BrandedProduct> products;
-
-        public Dictionary<Guid, BrandedProduct> Products
-        {
-            get { return products; }
-        }
-
-        private Dictionary<string, System.Net.Mail.MailAddress> mailAdress;
-
-        public Dictionary<string, System.Net.Mail.MailAddress> MailAddress
-        {
-            get { return mailAdress; }
-        }
-
-        private string productName;
-
-        public string ProductName
-        {
-            get { return productName; }
-        }
-
-        private string productDescription;
-
-        public string ProductDescription
-        {
-            get { return productDescription; }
-        }
-
-        private string productEULA;
-
-        public string ProductEULA
-        {
-            get { return productEULA; }
-        }
-
-        private string eula;
-
-        public string EULA
-        {
-            get { return eula; }
-        }
+        public List<License> Licenses { get; private set; }
 
         #endregion Properties
 
         public void Load(string directory, Guid guid)
         {
-            this.Load(new System.IO.DirectoryInfo(directory), guid);
+            Load(new DirectoryInfo(directory), guid);
         }
 
-        public void Load(System.IO.DirectoryInfo directory, Guid guid)
+        public void Load(DirectoryInfo directory, Guid guid)
         {
-            System.IO.FileInfo _File = directory.GetFiles("*.sku").FirstOrDefault();
-            this.Load(_File, guid);
+            var _File = directory.GetFiles("*.sku").FirstOrDefault();
+            Load(_File, guid);
         }
 
-        public void Load(System.IO.FileInfo file, Guid guid)
+        public void Load(FileInfo file, Guid guid)
         {
             if (file != null)
             {
                 XDocument _XDocument;
-                XNamespace _ns = "http://www.w3.org/2016/brandingSchema";
+                XNamespace _ns = "http://www.w3.org/2018/brandingSchema";
 
                 _XDocument = XDocument.Load(file.FullName);
 
                 var brand = _XDocument.Element(_ns + "SKUID").Element(_ns + "brand");
 
-                this.id = brand.Attribute("id").Value;
-                this.key = new Guid(brand.Attribute("key").Value);
+                Id = brand.Attribute("id").Value;
+                Key = new Guid(brand.Attribute("key").Value);
 
-                this.name = brand.Element(_ns + "name").Value;
-                this.description = brand.Element(_ns + "description").Value;
-                this.eula = brand.Element(_ns + "eula").Value;
+                var info = brand.Element(_ns + "information");
 
-                foreach (var item in brand.Elements(_ns + "logos").Elements())
-                {
-                    string _prelogo = item.Value;
-                    if (!string.IsNullOrEmpty(_prelogo))
+                Information.Name = info.Element(_ns + "name").Value;
+                Information.Description = info.Element(_ns + "description").Value;
+                Information.EULA = info.Element(_ns + "eula").Value;
+
+                #region Nested Information
+
+                if (info.Elements(_ns + "images") != null)
+                    foreach (var item in info.Elements(_ns + "images").Elements())
+                    {
+                        string _prelogo = item.Value;
+                        if (!string.IsNullOrEmpty(_prelogo))
+                        {
+                            try
+                            {
+                                Information.Images.Add(item.Attribute("id").Value, Convert.FromBase64String(_prelogo));
+                            }
+                            catch (Exception ex)
+                            {
+                                ex.DebugThis();
+                            }
+                        }
+                    }
+
+                if (info.Elements(_ns + "colors") != null)
+                    foreach (var item in info.Elements(_ns + "colors").Elements())
+                    {
+                        string _precolor = item.Value;
+                        if (!string.IsNullOrEmpty(_precolor))
+                        {
+                            Information.Colors.Add(item.Attribute("id").Value, _precolor);
+                        }
+                    }
+
+                if (info.Elements(_ns + "phones") != null)
+                    foreach (var item in info.Elements(_ns + "phones").Elements())
+                    {
+                        string _prephone = item.Value;
+                        if (!string.IsNullOrEmpty(_prephone))
+                        {
+                            Information.Phones.Add(item.Attribute("id").Value, _prephone);
+                        }
+                    }
+
+                if (info.Elements(_ns + "urls") != null)
+                    foreach (var item in info.Elements(_ns + "urls").Elements())
+                    {
+                        string _preurl = item.Value;
+                        if (!string.IsNullOrEmpty(_preurl))
+                        {
+                            try
+                            {
+                                var _url = new Uri(_preurl);
+                                Information.URLs.Add(item.Attribute("id").Value, _url);
+                            }
+                            catch (Exception ex)
+                            {
+                                ex.DebugThis();
+                            }
+                        }
+                    }
+
+                if (info.Elements(_ns + "emails") != null)
+                    foreach (var item in info.Elements(_ns + "emails").Elements())
+                    {
+                        string _preemail = item.Value;
+                        if (!string.IsNullOrEmpty(_preemail))
+                        {
+                            try
+                            {
+                                var _email = new MailAddress(_preemail);
+                                Information.Emails.Add(item.Attribute("id").Value, _email);
+                            }
+                            catch (Exception ex)
+                            {
+                                ex.DebugThis();
+                            }
+                        }
+                    }
+
+                if (info.Elements(_ns + "contacts") != null)
+                    foreach (var item in info.Elements(_ns + "contacts").Elements())
+                    {
+                        string _precontact = item.Value;
+                        if (!string.IsNullOrEmpty(_precontact))
+                        {
+                            Information.Contacts.Add(item.Attribute("id").Value, _precontact);
+                        }
+                    }
+
+                #endregion Nested Information
+
+                if (brand.Elements(_ns + "products") != null)
+                    foreach (var item in brand.Elements(_ns + "products").Elements())
                     {
                         try
                         {
-                            this.logos.Add(item.Attribute("id").Value, System.Convert.FromBase64String(_prelogo));
+                            var bpguid = new Guid(item.Attribute("key").Value);
+                            var bpculture = string.Empty;
+                            if (item.Attribute("culture") != null)
+                                bpculture = item.Attribute("culture").Value;
+                            var bpneutral = false;
+                            if (item.Attribute("neutral") != null)
+                                bpneutral = int.Parse(item.Attribute("neutral").Value) == 1;
+
+                            string name = null;
+                            string description = null;
+                            string eula = null;
+
+                            if (item.Element(_ns + "name") != null)
+                                name = item.Element(_ns + "name").Value;
+                            if (item.Element(_ns + "description") != null)
+                                description = item.Element(_ns + "description").Value;
+                            if (item.Element(_ns + "eula") != null)
+                                eula = item.Element(_ns + "eula").Value;
+
+                            var bproduct = new Product(bpguid, name, description, eula)
+                            {
+                                Culture = bpculture,
+                                Neutral = bpneutral
+                            };
+
+                            if (item.Elements(_ns + "images") != null)
+                                foreach (var subitem in item.Elements(_ns + "images").Elements())
+                                {
+                                    string _prelogo = subitem.Value;
+                                    if (!string.IsNullOrEmpty(_prelogo))
+                                    {
+                                        try
+                                        {
+                                            bproduct.Images.Add(subitem.Attribute("id").Value, Convert.FromBase64String(_prelogo));
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            ex.DebugThis();
+                                        }
+                                    }
+                                }
+
+                            if (item.Elements(_ns + "colors") != null)
+                                foreach (var subitem in item.Elements(_ns + "colors").Elements())
+                                {
+                                    string _precolor = subitem.Value;
+                                    if (!string.IsNullOrEmpty(_precolor))
+                                    {
+                                        bproduct.Colors.Add(subitem.Attribute("id").Value, _precolor);
+                                    }
+                                }
+
+                            Products.Add(bproduct);
                         }
-                        catch (Exception) { }
+                        catch (Exception ex)
+                        {
+                            ex.DebugThis();
+                        }
                     }
-                }
 
-                foreach (var item in brand.Elements(_ns + "colors").Elements())
-                {
-                    string _precolor = item.Value;
-                    if (!string.IsNullOrEmpty(_precolor))
-                    {
-                        this.colors.Add(item.Attribute("id").Value, _precolor);
-                    }
-                }
-
-                foreach (var item in brand.Elements(_ns + "phones").Elements())
-                {
-                    string _prephone = item.Value;
-                    if (!string.IsNullOrEmpty(_prephone))
-                    {
-                        this.phonesNumbers.Add(item.Attribute("id").Value, _prephone);
-                    }
-                }
-
-                foreach (var item in brand.Elements(_ns + "urls").Elements())
-                {
-                    string _preurl = item.Value;
-                    if (!string.IsNullOrEmpty(_preurl))
+                if (brand.Elements(_ns + "licenses") != null)
+                    foreach (var item in brand.Elements(_ns + "licenses").Elements())
                     {
                         try
                         {
-                            Uri _url = new Uri(_preurl);
-                            this.urls.Add(item.Attribute("id").Value, _url);
+                            var blguid = item.Attribute("serial").Value;
+                            var data = item.Value;
+                            Licenses.Add(new License(blguid, data));
                         }
-                        catch (Exception) { }
-                    }
-                }
-
-                foreach (var item in brand.Elements(_ns + "emails").Elements())
-                {
-                    string _preemail = item.Value;
-                    if (!string.IsNullOrEmpty(_preemail))
-                    {
-                        try
+                        catch (Exception ex)
                         {
-                            System.Net.Mail.MailAddress _email = new System.Net.Mail.MailAddress(_preemail);
-                            this.mailAdress.Add(item.Attribute("id").Value, _email);
+                            ex.DebugThis();
                         }
-                        catch (Exception) { }
                     }
-                }
-
-                foreach (var item in brand.Elements(_ns + "products").Elements())
-                {
-                    try
-                    {
-                        var bpguid = new Guid(item.Attribute("guid").Value);
-
-                        string name = null;
-                        string description = null;
-                        string eula = null;
-
-                        if (item.Element(_ns + "name") != null)
-                            name = item.Element(_ns + "name").Value;
-                        if (item.Element(_ns + "description") != null)
-                            description = item.Element(_ns + "description").Value;
-                        if (item.Element(_ns + "eula") != null)
-                            eula = item.Element(_ns + "eula").Value;
-
-                        var bproduct = new BrandedProduct(new Guid(item.Attribute("guid").Value), name, description, eula);
-
-                        this.products.Add(bpguid, bproduct);
-                    }
-                    catch (Exception) { }
-                }
-
-                XElement product = brand.Element(_ns + "products").Elements().Where<XElement>((x) => x.Attribute("guid").Value.ToLower() == guid.ToString().ToLower()).FirstOrDefault();
-                if (product != null)
-                {
-                    if (product.Element(_ns + "name") != null)
-                        this.productName = product.Element(_ns + "name").Value;
-                    if (product.Element(_ns + "description") != null)
-                        this.productDescription = product.Element(_ns + "description").Value;
-                    if (product.Element(_ns + "eula") != null)
-                        this.productEULA = product.Element(_ns + "eula").Value;
-                }
             }
         }
 
@@ -264,13 +251,15 @@ namespace Platform.Support.Branding
             {
                 if (disposing)
                 {
-                    logos.Clear();
-                    products.Clear();
-                    colors.Clear();
+                    Products.Clear();
+                    Information.Images.Clear();
+                    Information.Colors.Clear();
                 }
-                logos = null;
-                products = null;
-                colors = null;
+
+                Products = null;
+                Information.Images = null;
+                Information.Colors = null;
+                Information = null;
             }
             disposedValue = true;
         }
@@ -284,250 +273,287 @@ namespace Platform.Support.Branding
         #endregion IDisposable Support
     }
 
-    public struct BrandedProduct
+    public class Information
     {
-        public BrandedProduct(Guid g, string n, string d, string e = null)
+        public Information()
         {
-            GUID = g;
+            Images = new Dictionary<string, byte[]>();
+            Colors = new Dictionary<string, string>();
+            Phones = new Dictionary<string, string>();
+            Emails = new Dictionary<string, MailAddress>();
+            URLs = new Dictionary<string, Uri>();
+            Contacts = new Dictionary<string, string>();
+        }
+
+        public Information(string n, string d, string e = null) : this()
+        {
             Name = n;
             Description = d;
             EULA = e;
         }
 
-        public Guid GUID { get; set; }
-        public String Name { get; set; }
-        public String Description { get; set; }
-        public String EULA { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string EULA { get; set; }
+
+        public Dictionary<string, byte[]> Images { get; set; }
+        public Dictionary<string, string> Colors { get; set; }
+        public Dictionary<string, string> Phones { get; set; }
+        public Dictionary<string, MailAddress> Emails { get; set; }
+        public Dictionary<string, Uri> URLs { get; set; }
+        public Dictionary<string, string> Contacts { get; set; }
+    }
+
+    public class Product
+    {
+        public Product()
+        {
+            Images = new Dictionary<string, byte[]>();
+            Colors = new Dictionary<string, string>();
+        }
+
+        public Product(Guid k, string n, string d, string e = null) : this()
+        {
+            Key = k;
+            Name = n;
+            Description = d;
+            EULA = e;
+            Culture = string.Empty;
+            Neutral = false;
+        }
+
+        public Guid Key { get; set; }
+
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string EULA { get; set; }
+
+        public string Culture { get; set; }
+        public bool Neutral { get; set; }
+
+        public Dictionary<string, byte[]> Images { get; set; }
+
+        public Dictionary<string, string> Colors { get; set; }
+    }
+
+    public class License
+    {
+        public License(string serial, string data)
+        {
+            Serial = serial;
+            Data = data.Replace(" ", "");
+            Compute();
+        }
+
+        public string Serial { get; private set; }
+        public Guid Product { get; private set; }
+        public string Data { get; private set; }
+        public string Hash { get; private set; }
+
+        private string Private { get; set; }
+
+        public IEnumerable<string> GetData(string serial)
+        {
+            var result = new List<string>();
+            var parts = Private.Split('|');
+            if (parts.Any() && parts[1] == serial)
+            {
+                for (int i = 2; i < parts.Count(); i++)
+                    result.Add(parts[i]);
+                return result;
+            }
+
+            return null;
+        }
+
+        private void Compute()
+        {
+            try
+            {
+                var data = Data.Substring(0, Data.Length - 2);
+                var lines = data.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                var base64 = string.Empty;
+                foreach (var line in lines)
+                {
+                    Hash += line.Substring(0, 2) + line.Substring(line.Length - 2, 2);
+                    base64 += line.Substring(2, line.Length - 4);
+                }
+                base64 = base64 + "=";
+                var buffer = Convert.FromBase64String(base64);
+                Private = Encoding.UTF8.GetString(buffer);
+                var parts = Private.Split('|');
+                if (parts.Any())
+                    Product = new Guid(parts[0]);
+            }
+            catch (Exception ex)
+            {
+                ex.DebugThis();
+            }
+        }
     }
 
     public static class Brand
     {
         private static BrandingManager cache;
 
-        private static IEnumerable<System.IO.FileInfo> GetBrandFiles(System.Reflection.Assembly assembly)
+        private static IEnumerable<FileInfo> GetBrandFiles(Assembly assembly)
         {
-            if (assembly == null) assembly = System.Reflection.Assembly.GetEntryAssembly();
-            return new System.IO.FileInfo(assembly.Location).Directory.GetFiles("*.sku");
+            if (assembly == null) assembly = Assembly.GetEntryAssembly();
+            return new FileInfo(assembly.Location).Directory.GetFiles("*.sku");
         }
 
-        public static bool IsBranded(this System.Reflection.Assembly assembly)
+        public static bool IsBranded(this Assembly assembly)
         {
-            System.IO.FileInfo _file = Brand.GetBrandFiles(assembly).FirstOrDefault();
-            if (_file != null && _file.Exists)
+            if (cache == null)
             {
-                cache = new BrandingManager(_file, assembly.GUID().Value);
+                var _file = Brand.GetBrandFiles(assembly).FirstOrDefault();
+                if (_file != null && _file.Exists)
+                    cache = new BrandingManager(_file, assembly.GUID().Value);
             }
-            else
-            {
-                cache = null;
-            }
+
             return cache != null;
         }
 
-        public static string BrandName(this System.Reflection.Assembly assembly)
-        {
-            if (cache == null)
-            {
-                if (IsBranded(assembly))
-                {
-                    if (cache != null && !string.IsNullOrEmpty(cache.Name))
-                    {
-                        return cache.Name;
-                    }
-                }
-            }
+        #region Brand Information
 
-            return cache.Name;
+        public static string BrandName(this Assembly assembly)
+        {
+            if (!IsBranded(assembly)) return null;
+            return cache.Information.Name;
         }
 
-        public static string BrandEULA(this System.Reflection.Assembly assembly)
+        public static string BrandEULA(this Assembly assembly)
         {
-            if (cache == null)
-            {
-                if (IsBranded(assembly))
-                {
-                    if (cache != null && !string.IsNullOrEmpty(cache.EULA))
-                    {
-                        return cache.EULA;
-                    }
-                }
-            }
-
-            return cache.EULA;
+            if (!IsBranded(assembly)) return null;
+            return cache.Information.EULA;
         }
 
-        public static string BrandURL(this System.Reflection.Assembly assembly, string key = null)
+        public static string BrandURL(this Assembly assembly, string key = null)
         {
-            if (cache == null)
-            {
-                if (IsBranded(assembly))
-                {
-                    if (key == null)
-                    {
-                        if (cache != null && cache.URLs.Count > 0)
-                        {
-                            var frist = cache.URLs.FirstOrDefault();
-                            return frist.Value.ToString();
-                        }
-                    }
-                    else
-                    {
-                        if (cache != null && cache.URLs.ContainsKey(key))
-                        {
-                            return cache.URLs[key].ToString();
-                        }
-                    }
-                }
-            }
+            if (!IsBranded(assembly)) return null;
 
-            if (key == null)
-            {
-                if (cache.URLs.Count > 0)
-                {
-                    var frist = cache.URLs.FirstOrDefault();
-                    return frist.Value.ToString();
-                }
-            }
-            else
-            {
-                if (cache.URLs.ContainsKey(key))
-                {
-                    return cache.URLs[key].ToString();
-                }
-            }
+            if (key == null && cache.Information.URLs.Any())
+                return cache.Information.URLs.FirstOrDefault().Value.ToString();
+            else if (cache.Information.URLs.ContainsKey(key))
+                return cache.Information.URLs[key].ToString();
 
             return null;
         }
 
-        public static BrandedProduct? BrandProduct(this System.Reflection.Assembly assembly, Guid? key = null)
+        public static byte[] BrandImage(this Assembly assembly, string key = null)
         {
+            if (!IsBranded(assembly)) return null;
+
+            if (key == null && cache.Information.Images.Any())
+                return cache.Information.Images.FirstOrDefault().Value;
+            else if (cache.Information.Images.ContainsKey(key))
+                return cache.Information.Images[key];
+
+            return null;
+        }
+
+        public static string BrandColor(this Assembly assembly, string key = null)
+        {
+            if (!IsBranded(assembly)) return null;
+
+            if (key == null && cache.Information.Colors.Any())
+                return cache.Information.Colors.FirstOrDefault().Value;
+            else if (cache.Information.Colors.ContainsKey(key))
+                return cache.Information.Colors[key];
+
+            return null;
+        }
+
+        public static string BrandPhone(this Assembly assembly, string key = null)
+        {
+            if (!IsBranded(assembly)) return null;
+
+            if (key == null && cache.Information.Phones.Any())
+                return cache.Information.Phones.FirstOrDefault().Value;
+            else if (cache.Information.Phones.ContainsKey(key))
+                return cache.Information.Phones[key];
+
+            return null;
+        }
+
+        public static MailAddress BrandEmail(this Assembly assembly, string key = null)
+        {
+            if (!IsBranded(assembly)) return null;
+
+            if (key == null && cache.Information.Emails.Any())
+                return cache.Information.Emails.FirstOrDefault().Value;
+            else if (cache.Information.Emails.ContainsKey(key))
+                return cache.Information.Emails[key];
+
+            return null;
+        }
+
+        public static string BrandContact(this Assembly assembly, string key = null)
+        {
+            if (!IsBranded(assembly)) return null;
+
+            if (key == null && cache.Information.Contacts.Any())
+                return cache.Information.Contacts.FirstOrDefault().Value;
+            else if (cache.Information.Contacts.ContainsKey(key))
+                return cache.Information.Contacts[key];
+
+            return null;
+        }
+
+        #endregion Brand Information
+
+        public static Product BrandProduct(this Assembly assembly, Guid? key = null, string culture = "")
+        {
+            if (!IsBranded(assembly)) return null;
+
             if (key == null)
-            {
                 key = assembly.GUID();
-            }
 
-            if (cache == null)
-            {
-                if (IsBranded(assembly))
-                {
-                    if (key == null)
-                    {
-                        if (cache != null && cache.Products.Count > 0)
-                        {
-                            var frist = cache.Products.FirstOrDefault();
-                            return frist.Value;
-                        }
-                    }
-                    else
-                    {
-                        if (cache != null && cache.Products.ContainsKey(key.Value))
-                        {
-                            return cache.Products[key.Value];
-                        }
-                    }
-                }
-            }
+            var neutral = culture == string.Empty;
+
+            if (key == null && cache.Products.Any())
+                return cache.Products.FirstOrDefault();
+            else if (cache.Products.Any())
+                return (from item in cache.Products
+                        where item.Key == key.Value &&
+                        ((neutral && item.Neutral) || (!neutral && item.Culture.ToLower() == culture.ToLower()))
+                        select item).FirstOrDefault();
+
+            return null;
+        }
+
+        public static IEnumerable<License> BrandLicenses(this Assembly assembly, Guid? key = null)
+        {
+            if (!IsBranded(assembly)) return null;
 
             if (key == null)
+                key = assembly.GUID();
+
+            if (cache.Licenses.Any())
             {
-                if (cache.URLs.Count > 0)
-                {
-                    var frist = cache.Products.FirstOrDefault();
-                    return frist.Value;
-                }
-            }
-            else
-            {
-                if (cache.Products.ContainsKey(key.Value))
-                {
-                    return cache.Products[key.Value];
-                }
+                var licenses = (from item in cache.Licenses
+                                where item.Product == key
+                                select item);
+                return licenses;
             }
 
             return null;
         }
 
-        public static byte[] BrandLogo(this System.Reflection.Assembly assembly, string key = null)
+        public static IEnumerable<string> BrandLicenseData(this Assembly assembly, Guid? key = null, string serial = "")
         {
-            if (cache == null)
-            {
-                if (IsBranded(assembly))
-                {
-                    if (key == null)
-                    {
-                        if (cache != null && cache.Logos.Count > 0)
-                        {
-                            var frist = cache.Logos.FirstOrDefault();
-                            return frist.Value;
-                        }
-                    }
-                    else
-                    {
-                        if (cache != null && cache.Logos.ContainsKey(key))
-                        {
-                            return cache.Logos[key];
-                        }
-                    }
-                }
-            }
+            if (!IsBranded(assembly)) return null;
 
             if (key == null)
-            {
-                if (cache.Logos.Count > 0)
-                {
-                    var frist = cache.Logos.FirstOrDefault();
-                    return frist.Value;
-                }
-            }
-            else
-            {
-                if (cache.Logos.ContainsKey(key))
-                {
-                    return cache.Logos[key];
-                }
-            }
+                key = assembly.GUID();
 
-            return null;
-        }
-
-        public static string BrandColor(this System.Reflection.Assembly assembly, string key = null)
-        {
-            if (cache == null)
+            if (cache.Licenses.Any())
             {
-                if (IsBranded(assembly))
-                {
-                    if (key == null)
-                    {
-                        if (cache != null && cache.Colors.Count > 0)
-                        {
-                            var frist = cache.Colors.FirstOrDefault();
-                            return frist.Value;
-                        }
-                    }
-                    else
-                    {
-                        if (cache != null && cache.Colors.ContainsKey(key))
-                        {
-                            return cache.Colors[key];
-                        }
-                    }
-                }
-            }
-
-            if (key == null)
-            {
-                if (cache.Colors.Count > 0)
-                {
-                    var frist = cache.Colors.FirstOrDefault();
-                    return frist.Value;
-                }
-            }
-            else
-            {
-                if (cache.Colors.ContainsKey(key))
-                {
-                    return cache.Colors[key];
-                }
+                var license = (from item in cache.Licenses
+                               where item.Product == key && item.Serial == serial
+                               select item).SingleOrDefault();
+                if (license != null)
+                    return license.GetData(serial);
             }
 
             return null;

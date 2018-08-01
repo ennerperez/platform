@@ -6,7 +6,7 @@ using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Platform.Support.Security.Cryptography
+namespace Platform.Support.Security
 {
     public static partial class Extensions
     {

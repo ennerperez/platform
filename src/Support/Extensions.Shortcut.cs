@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace Platform.Support.IO
 {
-    public static class ShortcutExtensions
+    public static partial class Extensions
     {
         public static string CreateShortcut(this ProcessStartInfo process, string targetPath, string name, string description = "")
         {

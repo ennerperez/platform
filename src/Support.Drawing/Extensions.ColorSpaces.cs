@@ -1,167 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Platform.Support.Drawing.Colors
+namespace Platform.Support.Drawing
 {
     public static partial class Extensions
     {
-        public static Color Lerp(this Color from, Color to, float amount)
-        {
-            return Color.FromArgb((int)Math.Lerp(from.R, to.R, amount),
-                (int)Math.Lerp(from.G, to.G, amount),
-                (int)Math.Lerp(from.B, to.B, amount));
-        }
-
-        public static Color GetDarkColor(this Color color, byte d)
-        {
-            byte r = 0;
-            byte g = 0;
-            byte b = 0;
-
-            if ((color.R > d))
-                r = (byte)(color.R - d);
-            if ((color.G > d))
-                g = (byte)(color.G - d);
-            if ((color.B > d))
-                b = (byte)(color.B - d);
-
-            Color c1 = Color.FromArgb(r, g, b);
-            return c1;
-        }
-
-        public static Color GetLightColor(this Color color, byte d)
-        {
-            byte r = 255;
-            byte g = 255;
-            byte b = 255;
-
-            if (((int)color.R + (int)d <= 255))
-                r = (byte)(color.R + d);
-            if (((int)color.G + (int)d <= 255))
-                g = (byte)(color.G + d);
-            if (((int)color.B + (int)d <= 255))
-                b = (byte)(color.B + d);
-
-            Color c2 = Color.FromArgb(r, g, b);
-            return c2;
-        }
-
-        public static int GetLuminosity(this Color color)
-        {
-            int num = System.Math.Max(System.Math.Max(color.R, color.G), color.B) + System.Math.Min(System.Math.Min(color.R, color.G), color.B);
-            return ((num * 240) + 0xff) / 510;
-        }
-
-        public static int PerceivedBrightness(this Color color)
-        {
-            return (int)System.Math.Sqrt(
-                color.R * color.R * .299 +
-                color.G * color.G * .587 +
-                color.B * color.B * .114);
-        }
-
-        public static Color ChangeColorBrightness(this Color color, float correctionFactor)
-        {
-            float red = (float)color.R;
-            float green = (float)color.G;
-            float blue = (float)color.B;
-
-            if (correctionFactor < 0)
-            {
-                correctionFactor = 1 + correctionFactor;
-                red *= correctionFactor;
-                green *= correctionFactor;
-                blue *= correctionFactor;
-            }
-            else
-            {
-                red = (255 - red) * correctionFactor + red;
-                green = (255 - green) * correctionFactor + green;
-                blue = (255 - blue) * correctionFactor + blue;
-            }
-
-            return Color.FromArgb(color.A, (int)red, (int)green, (int)blue);
-        }
-
-        public static Color LightenBy(this Color color, int percent)
-        {
-            return ChangeColorBrightness(color, (float)(percent / 100.0));
-        }
-
-        public static Color DarkenBy(this Color color, int percent)
-        {
-            return ChangeColorBrightness(color, (float)(-1 * percent / 100.0));
-        }
-
-        public static Color Invert(this Color color)
-        {
-            return Color.FromArgb(color.ToArgb() ^ 0xffffff);
-        }
-
-        public static Color Mix(this IEnumerable<Color> colors)
-        {
-            int a = 0;
-            int r = 0;
-            int g = 0;
-            int b = 0;
-            int count = 0;
-
-            foreach (Color color in colors)
-                if (!color.Equals(Color.Empty))
-                {
-                    a += color.A;
-                    r += color.R;
-                    g += color.G;
-                    b += color.B;
-                    count++;
-                }
-
-            if (count == 0)
-                return Color.Empty;
-
-            return Color.FromArgb(a / count, r / count, g / count, b / count);
-        }
-
-        public static Color VisibleTextColor(this Color color)
-        {
-            return PerceivedBrightness(color) > 130 ? Color.Black : Color.White;
-        }
-
-        public static Color GetDominantColor(this Image image)
-        {
-            //Used for tally
-            int r = 0;
-            int g = 0;
-            int b = 0;
-
-            int total = 0;
-
-            for (int x = 0; x < image.Width; x++)
-                for (int y = 0; y < image.Height; y++)
-                {
-                    var clr = (image as Bitmap).GetPixel(x, y);
-
-                    r += clr.R;
-                    g += clr.G;
-                    b += clr.B;
-
-                    total++;
-                }
-
-            //Calculate average
-            r /= total;
-            g /= total;
-            b /= total;
-
-            return Color.FromArgb(r, g, b);
-        }
-
-        #region ColorSpaces
-
         public static Color FromHex(this Color color, string value)
         {
             value = (!value.StartsWith("#") ? "#" : "") + value;
@@ -400,7 +249,5 @@ namespace Platform.Support.Drawing.Colors
         {
             return string.Format("Cyan: {0:0.0}%, Magenta: {1:0.0}%, Yellow: {2:0.0}%, Key: {3:0.0}%", color.GetCyan(), color.GetMagenta(), color.GetYellow(), color.GetKey());
         }
-
-        #endregion ColorSpaces
     }
 }

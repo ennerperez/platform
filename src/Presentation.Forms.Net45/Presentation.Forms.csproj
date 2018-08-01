@@ -231,17 +231,24 @@
       <Link>Designers\CustomAppearancePropertyEditor.cs</Link>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="..\Presentation.Forms\Extensions\ControlExtensions.cs">
-      <Link>Extensions\ControlExtensions.cs</Link>
+    <Compile Include="..\Presentation.Forms\Extensions.Control.cs">
+      <Link>Extensions.Control.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
     </Compile>
-    <Compile Include="..\Presentation.Forms\Extensions\DebugExtensions.cs">
-      <Link>Extensions\DebugExtensions.cs</Link>
+    <Compile Include="..\Presentation.Forms\Extensions.cs">
+      <Link>Extensions.cs</Link>
     </Compile>
-    <Compile Include="..\Presentation.Forms\Extensions\FormExtensions.cs">
-      <Link>Extensions\FormExtensions.cs</Link>
+    <Compile Include="..\Presentation.Forms\Extensions.Debug.cs">
+      <Link>Extensions.Debug.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
     </Compile>
-    <Compile Include="..\Presentation.Forms\Extensions\RichTextExtensions.cs">
-      <Link>Extensions\RichTextExtensions.cs</Link>
+    <Compile Include="..\Presentation.Forms\Extensions.Form.cs">
+      <Link>Extensions.Form.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Presentation.Forms\Extensions.RichText.cs">
+      <Link>Extensions.RichText.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
     </Compile>
     <Compile Include="..\Presentation.Forms\Helpers\AlignHelper.cs">
       <Link>Helpers\AlignHelper.cs</Link>

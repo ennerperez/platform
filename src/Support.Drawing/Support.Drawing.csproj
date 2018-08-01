@@ -81,18 +81,36 @@
     <Compile Include="..\Support.Windows\NativeMethods\User32.cs">
       <Link>NativeMethods\User32.cs</Link>
     </Compile>
+    <Compile Include="Extensions.Color.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.ColorSpaces.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Extensions.Debug.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Geometrics.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Icons.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Image.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Reflection.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Icons\Encoders\BMPEncoder.cs" />
     <Compile Include="Icons\Encoders\ImageEncoder.cs" />
     <Compile Include="Colors\EuclideanQuantizer.cs" />
-    <Compile Include="Colors\Extensions.cs" />
     <Compile Include="Colors\FloydSteinbergDithering.cs" />
     <Compile Include="Colors\IColorQuantizer.cs" />
     <Compile Include="Colors\IDithering.cs" />
     <Compile Include="Colors\IPaletteQuantizer.cs" />
     <Compile Include="Colors\OctreeQuantizer.cs" />
-    <Compile Include="Extensions\DebugExtensions.cs" />
-    <Compile Include="Geometrics\Extensions.cs" />
-    <Compile Include="Bitmaps\Extensions.cs" />
     <Compile Include="Geometrics\Rectangle.cs" />
     <Compile Include="Icons\Encoders\PNGEncoder.cs" />
     <Compile Include="Icons\EncodingFormats\IconFormat.cs" />
@@ -100,16 +118,13 @@
     <Compile Include="Icons\EncodingFormats\NEFormat.cs" />
     <Compile Include="Icons\EncodingFormats\PEFormat.cs" />
     <Compile Include="Icons\Exceptions.cs" />
-    <Compile Include="Icons\Extensions.cs" />
     <Compile Include="Icons\IconImage.cs" />
     <Compile Include="Icons\IconImageFormat.cs" />
     <Compile Include="Icons\IconOutputFormat.cs" />
     <Compile Include="Icons\IconSizeDimensions.cs" />
     <Compile Include="Icons\MultiIcon.cs" />
     <Compile Include="Icons\MultiIconFormat.cs" />
-    <Compile Include="Extensions\ReflectionExtensions.cs" />
     <Compile Include="Colors\ColorSpace.cs" />
-    <Compile Include="Geometrics\Utilities.cs" />
     <Compile Include="Bitmaps\Utilities.cs" />
     <Compile Include="Icons\Utilities.cs" />
     <Compile Include="Colors\Palette.cs" />

@@ -172,32 +172,6 @@ namespace Platform.Support.Drawing.Bitmaps
 
         #endregion Base64
 
-        public static Color GetDominantColor(Image source)
-        {
-            int totalR = 0;
-            int totalG = 0;
-            int totalB = 0;
-
-            Bitmap bmp = new Bitmap(source);
-
-            for (int x = 0; x <= source.Width - 1; x++)
-            {
-                for (int y = 0; y <= source.Height - 1; y++)
-                {
-                    Color pixel = bmp.GetPixel(x, y);
-                    totalR += pixel.R;
-                    totalG += pixel.G;
-                    totalB += pixel.B;
-                }
-            }
-
-            int totalPixels = source.Height * source.Width;
-            int averageR = totalR / totalPixels;
-            int averageg = totalG / totalPixels;
-            int averageb = totalB / totalPixels;
-            return Color.FromArgb(averageR, averageg, averageb);
-        }
-
         public static IEnumerable<Color> GetPalette(Image image)
         {
             List<Color> colors;

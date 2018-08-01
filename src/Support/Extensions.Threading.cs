@@ -16,7 +16,7 @@ namespace Platform.Support
 
         namespace Threading
         {
-            public static class FuncExtensions
+            public static partial class Extensions
             {
                 public static IAwaiter<TResult> GetAwaiter<TResult>(this Func<TResult> function)
                 {
@@ -31,7 +31,7 @@ namespace Platform.Support
                 //}
             }
 
-            //public static class ActionExtensions
+            //public static partial class Extensions
             //{
             //    public static TaskAwaiter GetAwaiter(this Action action)
             //    {

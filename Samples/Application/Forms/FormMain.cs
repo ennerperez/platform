@@ -39,7 +39,7 @@ namespace Platform.Samples.Forms
                 }
                 catch (Exception)
                 {
-                    var xml = File.ReadAllText("Brand.sku").Replace(@"xmlns=""http://www.w3.org/2016/brandingSchema""", "");
+                    var xml = File.ReadAllText("Brand.sku").Replace(@"xmlns=""http://www.w3.org/2018/brandingSchema""", "");
                     xmlViewer.Load(xml);
                 }
 

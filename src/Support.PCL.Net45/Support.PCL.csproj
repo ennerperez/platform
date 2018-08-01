@@ -54,11 +54,11 @@
     <Compile Include="..\Support\Attributes\CallerAttributes.cs">
       <Link>Attributes\CallerAttributes.cs</Link>
     </Compile>
+    <Compile Include="..\Support\Attributes\LocalizedDescriptionAttribute.cs">
+      <Link>Attributes\LocalizedDescriptionAttribute.cs</Link>
+    </Compile>
     <Compile Include="..\Support\Attributes\TagAttribute.cs">
       <Link>Attributes\TagAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Collections\CollectionExtensions.cs">
-      <Link>Collections\CollectionExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Support\Collections\TypeListComparer.cs">
       <Link>Collections\TypeListComparer.cs</Link>
@@ -81,26 +81,64 @@
     <Compile Include="..\Support\DisposableObject.cs">
       <Link>DisposableObject.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Extensions\DateTimeExtensions.cs">
-      <Link>Extensions\DateTimeExtensions.cs</Link>
+    <Compile Include="..\Support\Extensions.Collections.cs">
+      <Link>Extensions.Collections.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
     </Compile>
-    <Compile Include="..\Support\Extensions\DebugExtensions.cs">
-      <Link>Extensions\DebugExtensions.cs</Link>
+    <Compile Include="..\Support\Extensions.Cryptography.cs">
+      <Link>Extensions.Cryptography.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
     </Compile>
-    <Compile Include="..\Support\Extensions\EnumExtensions.cs">
-      <Link>Extensions\EnumExtensions.cs</Link>
+    <Compile Include="..\Support\Extensions.cs">
+      <Link>Extensions.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Extensions\MathExtensions.cs">
-      <Link>Extensions\MathExtensions.cs</Link>
+    <Compile Include="..\Support\Extensions.DateTime.cs">
+      <Link>Extensions.DateTime.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
     </Compile>
-    <Compile Include="..\Support\Extensions\StringExtensions.cs">
-      <Link>Extensions\StringExtensions.cs</Link>
+    <Compile Include="..\Support\Extensions.Debug.cs">
+      <Link>Extensions.Debug.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
     </Compile>
-    <Compile Include="..\Support\Extensions\TypeExtensions.cs">
-      <Link>Extensions\TypeExtensions.cs</Link>
+    <Compile Include="..\Support\Extensions.Enum.cs">
+      <Link>Extensions.Enum.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
     </Compile>
-    <Compile Include="..\Support\IO\FileInfoExtensions.cs">
-      <Link>IO\FileInfoExtensions.cs</Link>
+    <Compile Include="..\Support\Extensions.FileInfo.cs">
+      <Link>Extensions.FileInfo.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Math.cs">
+      <Link>Extensions.Math.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Reflection.cs">
+      <Link>Extensions.Reflection.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Security.cs">
+      <Link>Extensions.Security.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Shortcut.cs">
+      <Link>Extensions.Shortcut.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Stream.cs">
+      <Link>Extensions.Stream.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.String.cs">
+      <Link>Extensions.String.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Threading.cs">
+      <Link>Extensions.Threading.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Type.cs">
+      <Link>Extensions.Type.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
     </Compile>
     <Compile Include="..\Support\IO\IniFile.cs">
       <Link>IO\IniFile.cs</Link>
@@ -110,12 +148,6 @@
     </Compile>
     <Compile Include="..\Support\IO\Shortcut.cs">
       <Link>IO\Shortcut.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\IO\ShortcutExtensions.cs">
-      <Link>IO\ShortcutExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\IO\StreamExtensions.cs">
-      <Link>IO\StreamExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Support\IO\Utilities.cs">
       <Link>IO\Utilities.cs</Link>
@@ -198,9 +230,6 @@
     <Compile Include="..\Support\Reflection\PropertyNotifierService.cs">
       <Link>Reflection\PropertyNotifierService.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Reflection\ReflectionExtensions.cs">
-      <Link>Reflection\ReflectionExtensions.cs</Link>
-    </Compile>
     <Compile Include="..\Support\Reflection\ReflectionService.cs">
       <Link>Reflection\ReflectionService.cs</Link>
     </Compile>
@@ -213,9 +242,6 @@
     <Compile Include="..\Support\Security\Cryptography\CRC32.cs">
       <Link>Security\Cryptography\CRC32.cs</Link>
     </Compile>
-    <Compile Include="..\Support\Security\Cryptography\CryptographyExtensions.cs">
-      <Link>Security\Cryptography\CryptographyExtensions.cs</Link>
-    </Compile>
     <Compile Include="..\Support\Security\Cryptography\Encryption\Data.cs">
       <Link>Security\Cryptography\Encryption\Data.cs</Link>
     </Compile>
@@ -224,9 +250,6 @@
     </Compile>
     <Compile Include="..\Support\Security\PasswordHash.cs">
       <Link>Security\PasswordHash.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Security\SecurityExtensions.cs">
-      <Link>Security\SecurityExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Support\SemanticVersion.cs">
       <Link>SemanticVersion.cs</Link>
@@ -248,9 +271,6 @@
     </Compile>
     <Compile Include="..\Support\Threading\FuncAwaiter.cs">
       <Link>Threading\FuncAwaiter.cs</Link>
-    </Compile>
-    <Compile Include="..\Support\Threading\FuncExtensions.cs">
-      <Link>Threading\FuncExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Support\Threading\IAwaitable.cs">
       <Link>Threading\IAwaitable.cs</Link>

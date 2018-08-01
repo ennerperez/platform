@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<SKUID xmlns="http://www.w3.org/2016/brandingSchema">
-  <brand id="X000000000" value="DEMO" key="00000000-AAAA-BBBB-CCCC-000000000000" culture="es">
-    <name>name1</name>
-    <description>description1</description>
-    <eula>
-      <![CDATA[
+<SKUID xmlns="http://www.w3.org/2018/brandingSchema">
+  <brand id="X000000000" value="DEMO" key="00000000-AAAA-BBBB-CCCC-000000000000">
+    <information>
+      <name>name1</name>
+      <description>description1</description>
+      <eula>
+        <![CDATA[
       Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License
 
       By exercising the Licensed Rights (defined below), You accept and agree to be bound by the terms and conditions of this Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License ("Public License"). To the extent this Public License may be interpreted as a contract, You are granted the Licensed Rights in consideration of Your acceptance of these terms and conditions, and the Licensor grants You such rights in consideration of benefits the Licensor receives from making the Licensed Material available under these terms and conditions.
@@ -102,83 +103,84 @@
       No term or condition of this Public License will be waived and no failure to comply consented to unless expressly agreed to by the Licensor.
       Nothing in this Public License constitutes or may be interpreted as a limitation upon, or waiver of, any privileges and immunities that apply to the Licensor or You, including from the legal processes of any jurisdiction or authority.
       ]]>
-    </eula>
-    <logos>
-      <logo id="main">
-        /9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgsKCgwQDAwMDAwM
-        EAwODxAPDgwTExQUExMcGxsbHCAgICAgICAgICD/2wBDAQcHBw0MDRgQEBgaFREVGiAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICD/wAARCABAAEADAREAAhEBAxEB/8QA
-        GgABAAMBAQEAAAAAAAAAAAAAAAEEBgUDAv/EADMQAAEDAwIBCAkFAAAAAAAAAAECAwQABREGIRIHExQi
-        MUFhgTRDUVJxcoKRoRUyYpKx/8QAGgEBAAMBAQEAAAAAAAAAAAAAAAIDBAEFBv/EACYRAAICAQMCBwEB
-        AAAAAAAAAAABAgMRBBIhIjETMkFCUWFxUmL/2gAMAwEAAhEDEQA/AOpXyB4woBQCgFAKAUAoBQCgFAKA
-        UAoBQCgFAKAigJwR27V0Gnl6ft0TQ0O6upWq6XB3DA4jgN5Jzwd/UT+a2SpjGlS9zL3BKGfVmXrEUE0A
-        oAAScAZJ7AK6DUWjk7v01vpEzhtcIbqek7Kx7QjY/wBsVsq0M5cvpX2Xxok/pHUTL5OtOejtqv1xR61W
-        C0D4E9QeQNXbtPV265E81w/0zJ3ObJvt7ck82G35ziEpaRuAThtIGaxWSdk8+rKJPc/02Gubx+j6gssW
-        IkOJsbKVBpWySpQ4cHH8E/mt+st2Til7EaLp7ZL6PNdw5O9R+msqsVxV69GOaJ8SBwH6kio76Le/RI5u
-        rn34ZzbtydXyI30mAUXWCd0vRt1Y+TfP0k1VZoZrldS+iEtO125RllJUlRSoFKhsUnYg+IrEUHpFkuxZ
-        TMlrHOsLS63nccSDkZ8xXYyw8/B1PBuXdZaa1Ky3F1PGciuJ/ZLjLWWwfaU748wqvSeqrt4sWPw0+LGf
-        mKk3k1luMdL0/NZu0Q7pAUlLnw9w/iq5aB4zB7kcen/nkraCskhzWbDMplTS4HE++2sYKSgdXP1KBqOi
-        qfjYfoRoh1/hyr7KfvWpZj0dCnnJL6kx20jKilPVQAPlTVF0nZY8erITe6R3YHJpODHS77LatMMbq41J
-        U5/vAPua0w0Dxmb2osWnfu4LjOrtLaYacj6ajuzX17OS31qDR8eHbPkkfGrFqa6eK1l/JLxYw8ph5st6
-        bNfmPY56Q4p1zh2HEo5OBXmzluefkzN5Z41E4KAsQLjPt7/PwZC4zvvNnGfiOw+dThOUXlPB1Sa7G309
-        d3UWPUeppjqDcpSRHZxhKiUoCchI8VD7V6NFvROx+ZmquXEpeph7dNkW+YzMjECRHPE0pQ4hnGOzzrzo
-        TcXld0ZYvB9XC53G5Pc/PkuSXe4uHIHyjsHlSdkpvLeTspN9ytUCIoBQCgFARgZz30BNAKAUAoBQCgFA
-        KAUAoBQCgP/Z
-      </logo>
-      <logo id="sidebar">
-        /9j/4AAQSkZJRgABAQEASABIAAD/4QBaRXhpZgAATU0AKgAAAAgABAExAAIAAAAUAAAAPlEQAAEAAAAB
-        AQAAAFERAAQAAAABAAALElESAAQAAAABAAALEgAAAABBZG9iZSBGaXJld29ya3MgQ1M2AP/bAEMACAYG
-        BwYFCAcHBwkJCAoMFA0MCwsMGRITDxQdGh8eHRocHCAkLicgIiwjHBwoNyksMDE0NDQfJzk9ODI8LjM0
-        Mv/bAEMBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy
-        MjIyMjIyMjIyMv/AABEIATgAggMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJ
-        Cgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKC
-        CQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImK
-        kpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T1
-        9vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncA
-        AQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RF
-        RkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1
-        tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AL9FFFfN
-        nlhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFF
-        FABRRRQAUUUUAFFFFABRRRQAUUUUAFFFbuneFby9gW6uJIrOzYBhLKw5HqB/jiqhCU3aKKUXLYwqkeCa
-        OOOSSJ0STOxmUgNjrj1rqFvPDOhf8esDandr/wAtX+4D7Z4/IGsXWNbutbnSS5WNFjBCIg4UHrz36Vcq
-        cYrWWvl/mNxSW+poeH7K0/sjVdTvYEljgTbGHGRuxn+q1gSwTWziOeJ43Izh1xketdPqI/s3wHYWfIkv
-        X81x7fe/+Jplr4tSW2Sz1nT4ru3UBQyjDAfQ/wBMVpKELKDdnb8y2o6J6HMUV1TaBo+rjfoeorHKf+XW
-        4OD9B3/nXP3+nXemXP2e8iMcmMjkEEeoNZTpSir9O5Dg1qVaKKKzICiiigAooooAKKKKACiiigArf0/x
-        Vc21qtleW8N7ZKAojkUZAHof8RWBRVQnKDvFlKTjsdYNM8Oa5/yDrttPuj/ywl+6T7Z/ofwrKu/Dl7Y6
-        pa2FwEJuXCo6NkMMgE+3Wsiug8NX0Y1i3l1O92wWkbGLzmzgnjA/n+FbKUKjSas+5acZOzVh/ja5V9aW
-        1TiK0hCADsTyf0xT7Twg4tlu9VvYbK2I3feBYj+Q/WsC+uTe39zct1mkZvwJ4/Sm3FzPduHuJnlYDALt
-        nA9vSk6kHOUpK/YTknJto6U61oWinGjWAubhelzcdvcZ5/LFYGo6nd6rdfaLyQPIBtGFwFHoKqUVE6sp
-        K2y7Cc29AooorMgKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
-        KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
-        KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
-        KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
-        KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
-        KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
-        KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
-        KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
-        KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
-        KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//Z
-      </logo>
-    </logos>
-    <colors>
-      <color id="main">#70AC48</color>
-    </colors>
-    <phones>
-      <phone id="main">582617540406</phone>
-      <phone id="mobile">584146328236</phone>
-      <phone id="private">584126412324</phone>
-    </phones>
-    <emails>
-      <email id="main">ennerperez@gmail.com</email>
-      <email id="secondary">ennerperez@hotmail.com</email>
-    </emails>
-    <urls>
-      <url id="main">http://www.ennerperez.com.ve/</url>
-      <url id="twitter">https://www.twitter.com/enerperez/</url>
-      <url id="github">https://github.com/ennerperez/platform</url>
-    </urls>
+      </eula>
+      <images>
+        <image id="main">
+          /9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgsKCgwQDAwMDAwM
+          EAwODxAPDgwTExQUExMcGxsbHCAgICAgICAgICD/2wBDAQcHBw0MDRgQEBgaFREVGiAgICAgICAgICAg
+          ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICD/wAARCABAAEADAREAAhEBAxEB/8QA
+          GgABAAMBAQEAAAAAAAAAAAAAAAEEBgUDAv/EADMQAAEDAwIBCAkFAAAAAAAAAAECAwQABREGIRIHExQi
+          MUFhgTRDUVJxcoKRoRUyYpKx/8QAGgEBAAMBAQEAAAAAAAAAAAAAAAIDBAEFBv/EACYRAAICAQMCBwEB
+          AAAAAAAAAAABAgMRBBIhIjETMkFCUWFxUmL/2gAMAwEAAhEDEQA/AOpXyB4woBQCgFAKAUAoBQCgFAKA
+          UAoBQCgFAKAigJwR27V0Gnl6ft0TQ0O6upWq6XB3DA4jgN5Jzwd/UT+a2SpjGlS9zL3BKGfVmXrEUE0A
+          oAAScAZJ7AK6DUWjk7v01vpEzhtcIbqek7Kx7QjY/wBsVsq0M5cvpX2Xxok/pHUTL5OtOejtqv1xR61W
+          C0D4E9QeQNXbtPV265E81w/0zJ3ObJvt7ck82G35ziEpaRuAThtIGaxWSdk8+rKJPc/02Gubx+j6gssW
+          IkOJsbKVBpWySpQ4cHH8E/mt+st2Til7EaLp7ZL6PNdw5O9R+msqsVxV69GOaJ8SBwH6kio76Le/RI5u
+          rn34ZzbtydXyI30mAUXWCd0vRt1Y+TfP0k1VZoZrldS+iEtO125RllJUlRSoFKhsUnYg+IrEUHpFkuxZ
+          TMlrHOsLS63nccSDkZ8xXYyw8/B1PBuXdZaa1Ky3F1PGciuJ/ZLjLWWwfaU748wqvSeqrt4sWPw0+LGf
+          mKk3k1luMdL0/NZu0Q7pAUlLnw9w/iq5aB4zB7kcen/nkraCskhzWbDMplTS4HE++2sYKSgdXP1KBqOi
+          qfjYfoRoh1/hyr7KfvWpZj0dCnnJL6kx20jKilPVQAPlTVF0nZY8erITe6R3YHJpODHS77LatMMbq41J
+          U5/vAPua0w0Dxmb2osWnfu4LjOrtLaYacj6ajuzX17OS31qDR8eHbPkkfGrFqa6eK1l/JLxYw8ph5st6
+          bNfmPY56Q4p1zh2HEo5OBXmzluefkzN5Z41E4KAsQLjPt7/PwZC4zvvNnGfiOw+dThOUXlPB1Sa7G309
+          d3UWPUeppjqDcpSRHZxhKiUoCchI8VD7V6NFvROx+ZmquXEpeph7dNkW+YzMjECRHPE0pQ4hnGOzzrzo
+          TcXld0ZYvB9XC53G5Pc/PkuSXe4uHIHyjsHlSdkpvLeTspN9ytUCIoBQCgFARgZz30BNAKAUAoBQCgFA
+          KAUAoBQCgP/Z
+        </image>
+        <image id="sidebar">
+          /9j/4AAQSkZJRgABAQEASABIAAD/4QBaRXhpZgAATU0AKgAAAAgABAExAAIAAAAUAAAAPlEQAAEAAAAB
+          AQAAAFERAAQAAAABAAALElESAAQAAAABAAALEgAAAABBZG9iZSBGaXJld29ya3MgQ1M2AP/bAEMACAYG
+          BwYFCAcHBwkJCAoMFA0MCwsMGRITDxQdGh8eHRocHCAkLicgIiwjHBwoNyksMDE0NDQfJzk9ODI8LjM0
+          Mv/bAEMBCQkJDAsMGA0NGDIhHCEyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy
+          MjIyMjIyMjIyMv/AABEIATgAggMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJ
+          Cgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKC
+          CQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImK
+          kpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T1
+          9vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncA
+          AQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RF
+          RkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1
+          tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/AL9FFFfN
+          nlhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFF
+          FABRRRQAUUUUAFFFFABRRRQAUUUUAFFFbuneFby9gW6uJIrOzYBhLKw5HqB/jiqhCU3aKKUXLYwqkeCa
+          OOOSSJ0STOxmUgNjrj1rqFvPDOhf8esDandr/wAtX+4D7Z4/IGsXWNbutbnSS5WNFjBCIg4UHrz36Vcq
+          cYrWWvl/mNxSW+poeH7K0/sjVdTvYEljgTbGHGRuxn+q1gSwTWziOeJ43Izh1xketdPqI/s3wHYWfIkv
+          X81x7fe/+Jplr4tSW2Sz1nT4ru3UBQyjDAfQ/wBMVpKELKDdnb8y2o6J6HMUV1TaBo+rjfoeorHKf+XW
+          4OD9B3/nXP3+nXemXP2e8iMcmMjkEEeoNZTpSir9O5Dg1qVaKKKzICiiigAooooAKKKKACiiigArf0/x
+          Vc21qtleW8N7ZKAojkUZAHof8RWBRVQnKDvFlKTjsdYNM8Oa5/yDrttPuj/ywl+6T7Z/ofwrKu/Dl7Y6
+          pa2FwEJuXCo6NkMMgE+3Wsiug8NX0Y1i3l1O92wWkbGLzmzgnjA/n+FbKUKjSas+5acZOzVh/ja5V9aW
+          1TiK0hCADsTyf0xT7Twg4tlu9VvYbK2I3feBYj+Q/WsC+uTe39zct1mkZvwJ4/Sm3FzPduHuJnlYDALt
+          nA9vSk6kHOUpK/YTknJto6U61oWinGjWAubhelzcdvcZ5/LFYGo6nd6rdfaLyQPIBtGFwFHoKqUVE6sp
+          K2y7Cc29AooorMgKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+          KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+          KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+          KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+          KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+          KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+          KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+          KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+          KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+          KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//Z
+        </image>
+      </images>
+      <colors>
+        <color id="main">#70AC48</color>
+      </colors>
+      <phones>
+        <phone id="main">582617540406</phone>
+        <phone id="mobile">584146328236</phone>
+        <phone id="private">584126412324</phone>
+      </phones>
+      <emails>
+        <email id="main">ennerperez@gmail.com</email>
+        <email id="secondary">ennerperez@hotmail.com</email>
+      </emails>
+      <urls>
+        <url id="main">http://www.ennerperez.com.ve/</url>
+        <url id="twitter">https://www.twitter.com/enerperez/</url>
+        <url id="github">https://github.com/ennerperez/platform</url>
+      </urls>
+    </information>
     <products>
-      <product guid="19d05955-5523-4f6e-88ba-b47ece3f0e4f">
+      <product key="19d05955-5523-4f6e-88ba-b47ece3f0e4f" culture="en" neutral="1">
         <name>Branding Demo</name>
         <description>Branding Demo Application</description>
         <eula>
@@ -187,7 +189,49 @@
           ------------------------------------------------------------------------
           ]]>
         </eula>
+        <images>
+          <image id="logo">
+            /9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgsKCgwQDAwMDAwM
+            EAwODxAPDgwTExQUExMcGxsbHCAgICAgICAgICD/2wBDAQcHBw0MDRgQEBgaFREVGiAgICAgICAgICAg
+            ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICD/wAARCABAAEADAREAAhEBAxEB/8QA
+            GgABAAMBAQEAAAAAAAAAAAAAAAEEBgUDAv/EADMQAAEDAwIBCAkFAAAAAAAAAAECAwQABREGIRIHExQi
+            MUFhgTRDUVJxcoKRoRUyYpKx/8QAGgEBAAMBAQEAAAAAAAAAAAAAAAIDBAEFBv/EACYRAAICAQMCBwEB
+            AAAAAAAAAAABAgMRBBIhIjETMkFCUWFxUmL/2gAMAwEAAhEDEQA/AOpXyB4woBQCgFAKAUAoBQCgFAKA
+            UAoBQCgFAKAigJwR27V0Gnl6ft0TQ0O6upWq6XB3DA4jgN5Jzwd/UT+a2SpjGlS9zL3BKGfVmXrEUE0A
+            oAAScAZJ7AK6DUWjk7v01vpEzhtcIbqek7Kx7QjY/wBsVsq0M5cvpX2Xxok/pHUTL5OtOejtqv1xR61W
+            C0D4E9QeQNXbtPV265E81w/0zJ3ObJvt7ck82G35ziEpaRuAThtIGaxWSdk8+rKJPc/02Gubx+j6gssW
+            IkOJsbKVBpWySpQ4cHH8E/mt+st2Til7EaLp7ZL6PNdw5O9R+msqsVxV69GOaJ8SBwH6kio76Le/RI5u
+            rn34ZzbtydXyI30mAUXWCd0vRt1Y+TfP0k1VZoZrldS+iEtO125RllJUlRSoFKhsUnYg+IrEUHpFkuxZ
+            TMlrHOsLS63nccSDkZ8xXYyw8/B1PBuXdZaa1Ky3F1PGciuJ/ZLjLWWwfaU748wqvSeqrt4sWPw0+LGf
+            mKk3k1luMdL0/NZu0Q7pAUlLnw9w/iq5aB4zB7kcen/nkraCskhzWbDMplTS4HE++2sYKSgdXP1KBqOi
+            qfjYfoRoh1/hyr7KfvWpZj0dCnnJL6kx20jKilPVQAPlTVF0nZY8erITe6R3YHJpODHS77LatMMbq41J
+            U5/vAPua0w0Dxmb2osWnfu4LjOrtLaYacj6ajuzX17OS31qDR8eHbPkkfGrFqa6eK1l/JLxYw8ph5st6
+            bNfmPY56Q4p1zh2HEo5OBXmzluefkzN5Z41E4KAsQLjPt7/PwZC4zvvNnGfiOw+dThOUXlPB1Sa7G309
+            d3UWPUeppjqDcpSRHZxhKiUoCchI8VD7V6NFvROx+ZmquXEpeph7dNkW+YzMjECRHPE0pQ4hnGOzzrzo
+            TcXld0ZYvB9XC53G5Pc/PkuSXe4uHIHyjsHlSdkpvLeTspN9ytUCIoBQCgFARgZz30BNAKAUAoBQCgFA
+            KAUAoBQCgP/Z
+          </image>
+        </images>
+        <colors>
+          <color id="main">#70AC48</color>
+        </colors>
+      </product>
+      <product key="19d05955-5523-4f6e-88ba-b47ece3f0e4f" culture="es" neutral="1">
+        <name>Branding Demo (SPA)</name>
+        <description>Branding Demo Application (SPA)</description>
       </product>
     </products>
+    <licenses>
+      <license serial="F03017BFED26">
+        5CODZEMjQ2OTUtQTBBOS00MjVC70
+        98LUIwMzEtMzk5MjNDMjA1RTVB77
+        13fDY1MTUzNDIxLTg3MEYtNEJEB4
+        63QS1CMTVBLUYwMzAxN0JGRUQy10
+        AENnwxNTU2MjQwMDUtMi0yMDE2EB
+        58fEFDSiBISUdIIFZPTFRBR0UgF8
+        87UyBBfEFDSiBIaWdoIFZvbHRhFD
+        E6Z2UgUy5BLnwyMDE4LTIwMjg42=
+      </license>
+    </licenses>
   </brand>
 </SKUID>

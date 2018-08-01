@@ -1,13 +1,15 @@
-﻿using Platform.Support.Windows;
+﻿using Platform.Support.Drawing.Icons;
+using Platform.Support.Windows;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Platform.Support.Drawing.Icons
+namespace Platform.Support.Drawing
 {
-    public static class Extensions
+    public static partial class Extensions
     {
         internal static Dictionary<ushort, IconImage> GetIcons(this RESOURCE_TABLE @this, Stream stream)
         {
@@ -43,6 +45,13 @@ namespace Platform.Support.Drawing.Icons
                     return;
                 }
             }
+        }
+
+        public static Icon AsIcon(this Image image, int size = 32)
+        {
+            var bitmapResult = (Bitmap)image.GetThumbnailImage(size, size, null, new IntPtr());
+            var result = System.Drawing.Icon.FromHandle(bitmapResult.GetHicon());
+            return result;
         }
     }
 }

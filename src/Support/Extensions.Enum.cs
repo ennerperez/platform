@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace Platform.Support
@@ -16,26 +18,67 @@ namespace Platform.Support
         /// <summary>
         /// Get description of a enum value
         /// See DescriptionAttribute for enum element
-        /// </summary>    ''' <remarks>
+        /// </summary>
+        /// <remarks>
         /// Returns the human readable string set as the DescriptionAttribute
         /// for an enum element.
         /// If the DescriptionAttribute has not been set, returns the enum element name
         /// </remarks>
         /// <param name="value">Enum element with human readable string</param>
         /// <returns>Human readable string for enum element</returns>
-        public static string GetDescription(this System.Enum value)
+        public static string GetDescription(this Enum value)
         {
-            // Get information on the enum element
-            System.Reflection.FieldInfo fi = value.GetType().GetField(value.ToString());
-            // Get description for elum element
-            System.ComponentModel.DescriptionAttribute[] attributes = (System.ComponentModel.DescriptionAttribute[])fi.GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), false);
-            if (attributes.Length > 0)
+            var fi = value.GetType().GetField(value.ToString());
+            var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+            if (attributes != null && attributes.Any())
+                return attributes.First().Description;
+            else
+                return value.ToString();
+        }
+
+        /// <summary>
+        /// Get description of a enum value
+        /// See DescriptionAttribute for enum element
+        /// </summary>
+        /// <remarks>
+        /// Returns the human readable string set as the DescriptionAttribute
+        /// for an enum element.
+        /// If the DescriptionAttribute has not been set, returns the enum element name
+        /// </remarks>
+        /// <param name="type">Enum type</param>
+        /// <param name="value">Enum element with human readable string</param>
+        /// <returns>Human readable string for enum element</returns>
+        public static string GetDescription(this Type type, Enum value)
+        {
+            if (type.IsEnum)
             {
-                // DescriptionAttribute exists - return that
-                return attributes.FirstOrDefault().Description;
+                var result = GetDescription(value);
+                return result;
             }
-            // No Description set - return enum element name
-            return value.ToString();
+            return null;
+        }
+
+        /// <summary>
+        /// Get descriptions of all enum values
+        /// </summary>
+        /// <param name="type">Enum type</param>
+        /// <returns></returns>
+        public static IDictionary<Enum, string> GetDescriptions(this Type type)
+        {
+            if (type.IsEnum)
+            {
+                var values = Enum.GetValues(type);
+                var length = values.Length;
+                var result = new Dictionary<Enum, string>();
+                for (int i = 0; i < length; i++)
+                {
+                    var value = (Enum)values.GetValue(i);
+                    var description = GetDescription(value);
+                    result.Add(value, description);
+                }
+                return result;
+            }
+            return null;
         }
 
         /// <summary>

@@ -93,7 +93,6 @@
     <Compile Include="Components\ToolTipExtended.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Extensions\ControlExtensions.cs" />
     <Compile Include="Controls\AnimatedBitmap.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -186,10 +185,21 @@
     <Compile Include="Designers\CustomAppearancePropertyEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Extensions\DebugExtensions.cs" />
-    <Compile Include="Extensions\FormExtensions.cs" />
+    <Compile Include="Extensions.Control.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.cs" />
     <Compile Include="Components\CultureManager.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Extensions.Debug.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.Form.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions.RichText.cs">
+      <DependentUpon>Extensions.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AlignHelper.cs" />
     <Compile Include="Helpers\AutoGrow.cs" />
@@ -216,7 +226,6 @@
     <Compile Include="Renderes\ColorTables\Office\Office2003BlueColorTable.cs" />
     <Compile Include="Renderes\ColorTables\Office\Office2007ColorTable.cs" />
     <Compile Include="Renderes\ColorTables\Office\OfficeXPColorTable.cs" />
-    <Compile Include="Extensions\RichTextExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Support.Drawing\Support.Drawing.csproj">

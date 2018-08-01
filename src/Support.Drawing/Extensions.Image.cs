@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace Platform.Support.Drawing.Bitmaps
+namespace Platform.Support.Drawing
 {
     public static partial class Extensions
     {
@@ -72,16 +72,6 @@ namespace Platform.Support.Drawing.Bitmaps
         public static Image ResizeImage(this Image @this, Size size, bool preserveAspectRatio = true)
         {
             return Bitmaps.Utilities.ResizeImage(@this, size, preserveAspectRatio);
-        }
-
-        public static Color GetDominantColor(this Image @this)
-        {
-            return Bitmaps.Utilities.GetDominantColor(@this);
-        }
-
-        public static IEnumerable<Color> GetPalette(this Image @this)
-        {
-            return Bitmaps.Utilities.GetPalette(@this);
         }
 
         #endregion Image

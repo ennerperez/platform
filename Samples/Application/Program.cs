@@ -1,6 +1,7 @@
 ﻿using Platform.Support;
 using Platform.Support.Attributes;
 using Platform.Support.Drawing;
+using Platform.Support.Drawing.Colors;
 using System;
 using System.IO;
 using System.Windows.Forms;

@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Platform.Presentation.Forms
 {
-    public static class ControlExtensions
+    public static partial class Extensions
     {
         public static bool IsDesignerHosted(this Control @this)
         {
