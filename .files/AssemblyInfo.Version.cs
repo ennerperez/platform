@@ -12,5 +12,5 @@ using Platform.Support.Attributes;
 
 #endif
 
-[assembly: AssemblyVersion("3.3.33.0")]
-[assembly: AssemblyFileVersion("3.3.33")]
+[assembly: AssemblyVersion("3.3.35.0")]
+[assembly: AssemblyFileVersion("3.3.35")]
