@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="BrandingSchema"
+    targetNamespace="http://www.w3.org/2018/brandingSchema"
+    elementFormDefault="qualified"
+    xmlns="http://www.w3.org/2018/brandingSchema"
+    xmlns:mstns="http://www.w3.org/2018/brandingSchema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:annotation>
+    <xs:documentation>
+      Product Branding 2.0
+      (C) 2018 - Enner Pérez
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="sku">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{3}\w{3}" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="color">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="email">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[^@]+@[^\.]+\..+" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="product">
+    <xs:sequence minOccurs="0">
+      <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="eula" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:element name="images" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="image">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:base64Binary">
+                    <xs:attribute name="id" type="xs:string" default="main" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="colors" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="color" default="#000">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="color">
+                    <xs:attribute name="id" type="xs:string" default="main" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="key" type="guid" default="00000000-AAAA-BBBB-CCCC-000000000000" />
+    <xs:attribute name="culture" default="en">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[A-Za-z]{2}(-[A-Za-z]{2,3})?"></xs:pattern>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="neutral" type="xs:int" default="1" />
+  </xs:complexType>
+
+  <xs:complexType name="brand">
+    <xs:sequence>
+      <xs:element name="information" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="eula" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="images" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                  <xs:element name="image">
+                    <xs:complexType>
+                      <xs:simpleContent>
+                        <xs:extension base="xs:base64Binary">
+                          <xs:attribute name="id" type="xs:string" default="main" />
+                        </xs:extension>
+                      </xs:simpleContent>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="colors" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                  <xs:element name="color" default="#000">
+                    <xs:complexType>
+                      <xs:simpleContent>
+                        <xs:extension base="color">
+                          <xs:attribute name="id" type="xs:string" default="main" />
+                        </xs:extension>
+                      </xs:simpleContent>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="phones" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                  <xs:element name="phone">
+                    <xs:complexType>
+                      <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                          <xs:attribute name="id" type="xs:string" default="main" />
+                        </xs:extension>
+                      </xs:simpleContent>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="emails" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                  <xs:element name="email" default="username@domain.com">
+                    <xs:complexType>
+                      <xs:simpleContent>
+                        <xs:extension base="email">
+                          <xs:attribute name="id" type="xs:string" default="main" />
+                        </xs:extension>
+                      </xs:simpleContent>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="urls" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence minOccurs="1" maxOccurs="unbounded">
+                  <xs:element name="url">
+                    <xs:complexType>
+                      <xs:simpleContent>
+                        <xs:extension base="xs:anyURI">
+                          <xs:attribute name="id" type="xs:string" default="main" />
+                        </xs:extension>
+                      </xs:simpleContent>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="contacts" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                  <xs:element name="contact">
+                    <xs:complexType>
+                      <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                          <xs:attribute name="id" type="xs:string" default="main" />
+                          <xs:attribute name="type" type="xs:string" default="general" />
+                        </xs:extension>
+                      </xs:simpleContent>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="products" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="product" type="product" minOccurs="1" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="licenses" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="license">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:base64Binary">
+                    <xs:attribute name="serial" type="xs:string" default="000000000000" />
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="id" default="X000000000">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[A-Za-z]{1}\w+" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="value" default="DEMO">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="\w+" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="key" type="guid" default="00000000-AAAA-BBBB-CCCC-000000000000" />
+  </xs:complexType>
+
+  <xs:element name="SKUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="brand" type="brand" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

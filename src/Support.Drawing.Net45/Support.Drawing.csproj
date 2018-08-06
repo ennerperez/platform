@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E350DF58-553B-4971-BD39-34DBC903B501}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Platform.Support.Drawing</RootNamespace>
+    <AssemblyName>Platform.Support.Drawing</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Support.Net45\Support.csproj">
+      <Project>{5654d378-10ca-4ab0-aaf1-f3f72c6202b6}</Project>
+      <Name>Support</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Support.Drawing\Resources\EmptyDll.dll">
+      <Link>Resources\EmptyDll.dll</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs">
+      <Link>Properties\AssemblyInfo.Common.cs</Link>
+    </Compile>
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs">
+      <Link>Properties\AssemblyInfo.Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
+      <Link>Properties\AssemblyInfo.Version.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Bitmaps\Utilities.cs">
+      <Link>Bitmaps\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Colors\ColorSpace.cs">
+      <Link>Colors\ColorSpace.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Colors\EuclideanQuantizer.cs">
+      <Link>Colors\EuclideanQuantizer.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Colors\FloydSteinbergDithering.cs">
+      <Link>Colors\FloydSteinbergDithering.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Colors\IColorQuantizer.cs">
+      <Link>Colors\IColorQuantizer.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Colors\IDithering.cs">
+      <Link>Colors\IDithering.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Colors\IPaletteQuantizer.cs">
+      <Link>Colors\IPaletteQuantizer.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Colors\OctreeQuantizer.cs">
+      <Link>Colors\OctreeQuantizer.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Colors\Palette.cs">
+      <Link>Colors\Palette.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Colors\Utilities.cs">
+      <Link>Colors\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Extensions.Color.cs">
+      <Link>Extensions.Color.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Extensions.ColorSpaces.cs">
+      <Link>Extensions.ColorSpaces.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Extensions.cs">
+      <Link>Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Extensions.Debug.cs">
+      <Link>Extensions.Debug.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Extensions.Geometrics.cs">
+      <Link>Extensions.Geometrics.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Extensions.Icons.cs">
+      <Link>Extensions.Icons.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Extensions.Image.cs">
+      <Link>Extensions.Image.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Extensions.Reflection.cs">
+      <Link>Extensions.Reflection.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Geometrics\Rectangle.cs">
+      <Link>Geometrics\Rectangle.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\Encoders\BMPEncoder.cs">
+      <Link>Icons\Encoders\BMPEncoder.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\Encoders\ImageEncoder.cs">
+      <Link>Icons\Encoders\ImageEncoder.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\Encoders\PNGEncoder.cs">
+      <Link>Icons\Encoders\PNGEncoder.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\EncodingFormats\IconFormat.cs">
+      <Link>Icons\EncodingFormats\IconFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\EncodingFormats\ILibraryFormat.cs">
+      <Link>Icons\EncodingFormats\ILibraryFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\EncodingFormats\NEFormat.cs">
+      <Link>Icons\EncodingFormats\NEFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\EncodingFormats\PEFormat.cs">
+      <Link>Icons\EncodingFormats\PEFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\Exceptions.cs">
+      <Link>Icons\Exceptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\IconImage.cs">
+      <Link>Icons\IconImage.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\IconImageFormat.cs">
+      <Link>Icons\IconImageFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\IconOutputFormat.cs">
+      <Link>Icons\IconOutputFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\IconSizeDimensions.cs">
+      <Link>Icons\IconSizeDimensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\MultiIcon.cs">
+      <Link>Icons\MultiIcon.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\MultiIconFormat.cs">
+      <Link>Icons\MultiIconFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\SingleIcon.cs">
+      <Link>Icons\SingleIcon.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Icons\Utilities.cs">
+      <Link>Icons\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Properties\Resources.Designer.cs">
+      <Link>Properties\Resources.Designer.cs</Link>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="..\Support.Drawing\Utilities.cs">
+      <Link>Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\Errors.cs">
+      <Link>NativeMethods\Errors.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\ExternDll.cs">
+      <Link>ExternDll.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Gdi32.cs">
+      <Link>NativeMethods\Gdi32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Kernel32.cs">
+      <Link>NativeMethods\Kernel32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Ole32.cs">
+      <Link>NativeMethods\Ole32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\OleAut32.cs">
+      <Link>NativeMethods\OleAut32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Propsys.cs">
+      <Link>NativeMethods\Propsys.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Shell32.cs">
+      <Link>NativeMethods\Shell32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\User32.cs">
+      <Link>NativeMethods\User32.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Support.Drawing\Properties\Resources.resx">
+      <Link>Properties\Resources.resx</Link>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+  </Target>
+</Project>

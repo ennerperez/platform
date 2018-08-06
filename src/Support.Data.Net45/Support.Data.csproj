@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2C74EC71-EE9A-4B3C-8DD9-ADE8A3D0A0C2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Platform.Support.Data</RootNamespace>
+    <AssemblyName>Platform.Support.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Support.Net45\Support.csproj">
+      <Project>{5654d378-10ca-4ab0-aaf1-f3f72c6202b6}</Project>
+      <Name>Support</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs">
+      <Link>Properties\AssemblyInfo.Common.cs</Link>
+    </Compile>
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs">
+      <Link>Properties\AssemblyInfo.Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
+      <Link>Properties\AssemblyInfo.Version.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\AutoIncrementAttribute.cs">
+      <Link>Attributes\AutoIncrementAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\CollationAttribute.cs">
+      <Link>Attributes\CollationAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\DefaultAttribute.cs">
+      <Link>Attributes\DefaultAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\DisplayAttribute.cs">
+      <Link>Attributes\DisplayAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\MaxLengthAttribute.cs">
+      <Link>Attributes\MaxLengthAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\MinLengthAttribute.cs">
+      <Link>Attributes\MinLengthAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\NotNullAttribute.cs">
+      <Link>Attributes\NotNullAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\PrimaryKeyAttribute.cs">
+      <Link>Attributes\PrimaryKeyAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\RequiredAttribute.cs">
+      <Link>Attributes\RequiredAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\SchemaAttribute.cs">
+      <Link>Attributes\SchemaAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\Schema\ColumnAttribute.cs">
+      <Link>Attributes\Schema\ColumnAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\Schema\ComplexTypeAttribute.cs">
+      <Link>Attributes\Schema\ComplexTypeAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\Schema\DatabaseGeneratedAttribute.cs">
+      <Link>Attributes\Schema\DatabaseGeneratedAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\Schema\ForeignKeyAttribute.cs">
+      <Link>Attributes\Schema\ForeignKeyAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\Schema\IndexAttribute.cs">
+      <Link>Attributes\Schema\IndexAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\Schema\InversePropertyAttribute.cs">
+      <Link>Attributes\Schema\InversePropertyAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\Schema\NotMappedAttribute.cs">
+      <Link>Attributes\Schema\NotMappedAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\Schema\TableAttribute.cs">
+      <Link>Attributes\Schema\TableAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Attributes\UniqueAttribute.cs">
+      <Link>Attributes\UniqueAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\BaseTableQuery.cs">
+      <Link>BaseTableQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\ColumnInfo.cs">
+      <Link>ColumnInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Create.cs">
+      <Link>Create.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Engine.cs">
+      <Link>Engine.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Extensions.cs">
+      <Link>Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\IndexedColumn.cs">
+      <Link>IndexedColumn.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\IndexInfo.cs">
+      <Link>IndexInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Operation.cs">
+      <Link>Operation.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Orm.cs">
+      <Link>Orm.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\TableMapping.cs">
+      <Link>TableMapping.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Data\TableQuery.cs">
+      <Link>TableQuery.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+  </Target>
+</Project>

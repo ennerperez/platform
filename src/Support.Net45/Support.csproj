@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5654D378-10CA-4AB0-AAF1-F3F72C6202B6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Platform.Support</RootNamespace>
+    <AssemblyName>Platform.Support.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs">
+      <Link>Properties\AssemblyInfo.Common.cs</Link>
+    </Compile>
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs">
+      <Link>Properties\AssemblyInfo.Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs">
+      <Link>Properties\AssemblyInfo.Version.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\Errors.cs">
+      <Link>NativeMethods\Errors.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\ExternDll.cs">
+      <Link>ExternDll.cs</Link>
+    </Compile>
+    <Compile Include="..\Support.Windows\NativeMethods\Kernel32.cs">
+      <Link>NativeMethods\Kernel32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Attributes\CallerAttributes.cs">
+      <Link>Attributes\CallerAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Attributes\LocalizedDescriptionAttribute.cs">
+      <Link>Attributes\LocalizedDescriptionAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Attributes\TagAttribute.cs">
+      <Link>Attributes\TagAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Collections\TypeListComparer.cs">
+      <Link>Collections\TypeListComparer.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\ConsoleEx\ListBox.cs">
+      <Link>ConsoleEx\ListBox.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\ConsoleEx\ProgressBar.cs">
+      <Link>ConsoleEx\ProgressBar.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\ConsoleEx\Spinner.cs">
+      <Link>ConsoleEx\Spinner.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Core.cs">
+      <Link>Core.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Diagnostics\Utilities.cs">
+      <Link>Diagnostics\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\DisposableObject.cs">
+      <Link>DisposableObject.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Collections.cs">
+      <Link>Extensions.Collections.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Cryptography.cs">
+      <Link>Extensions.Cryptography.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.cs">
+      <Link>Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Extensions.DateTime.cs">
+      <Link>Extensions.DateTime.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Debug.cs">
+      <Link>Extensions.Debug.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Enum.cs">
+      <Link>Extensions.Enum.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.FileInfo.cs">
+      <Link>Extensions.FileInfo.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Math.cs">
+      <Link>Extensions.Math.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Reflection.cs">
+      <Link>Extensions.Reflection.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Security.cs">
+      <Link>Extensions.Security.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Shortcut.cs">
+      <Link>Extensions.Shortcut.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Stream.cs">
+      <Link>Extensions.Stream.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.String.cs">
+      <Link>Extensions.String.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Threading.cs">
+      <Link>Extensions.Threading.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\Extensions.Type.cs">
+      <Link>Extensions.Type.cs</Link>
+      <DependentUpon>Extensions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\Support\IO\IniFile.cs">
+      <Link>IO\IniFile.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\IO\ProgressUpdate.cs">
+      <Link>IO\ProgressUpdate.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\IO\Shortcut.cs">
+      <Link>IO\Shortcut.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\IO\Utilities.cs">
+      <Link>IO\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Localization\LocalizedException.cs">
+      <Link>Localization\LocalizedException.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Localization\ResourceEnumConverter.cs">
+      <Link>Localization\ResourceEnumConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Managers\BrandingManager.cs">
+      <Link>Managers\BrandingManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Managers\ConfigurationManager.cs">
+      <Link>Managers\ConfigurationManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Math.cs">
+      <Link>Math.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\NativeMethods.cs">
+      <Link>NativeMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\NoSuitableEngineException.cs">
+      <Link>NoSuitableEngineException.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Obsolete.cs">
+      <Link>Obsolete.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\OS\Environment.cs">
+      <Link>OS\Environment.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Parameter.cs">
+      <Link>Parameter.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\ApplicationInfo.cs">
+      <Link>Reflection\ApplicationInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyBuildDateAttribute.cs">
+      <Link>Reflection\AssemblyBuildDateAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyCompanyIdAttribute.cs">
+      <Link>Reflection\AssemblyCompanyIdAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyCompanyUrlAttribute.cs">
+      <Link>Reflection\AssemblyCompanyUrlAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyContactInformationAttribute.cs">
+      <Link>Reflection\AssemblyContactInformationAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyDeveloperAttribute.cs">
+      <Link>Reflection\AssemblyDeveloperAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyExternalRefAttribute.cs">
+      <Link>Reflection\AssemblyExternalRefAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyLicenseAttribute.cs">
+      <Link>Reflection\AssemblyLicenseAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyMadeInAttribute.cs">
+      <Link>Reflection\AssemblyMadeInAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyOwnerAttribute.cs">
+      <Link>Reflection\AssemblyOwnerAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyProductLevelAttribute.cs">
+      <Link>Reflection\AssemblyProductLevelAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyRepoAttribute.cs">
+      <Link>Reflection\AssemblyRepoAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\AssemblyThirdPartyAttribute.cs">
+      <Link>Reflection\AssemblyThirdPartyAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\DynamicInvoke.cs">
+      <Link>Reflection\DynamicInvoke.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\IReflectionService.cs">
+      <Link>Reflection\IReflectionService.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\PropertyNotifierService.cs">
+      <Link>Reflection\PropertyNotifierService.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\ReflectionService.cs">
+      <Link>Reflection\ReflectionService.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\ReflectOn.cs">
+      <Link>Reflection\ReflectOn.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Reflection\Utilities.cs">
+      <Link>Reflection\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Security\Cryptography\CRC32.cs">
+      <Link>Security\Cryptography\CRC32.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Security\Cryptography\Encryption\Data.cs">
+      <Link>Security\Cryptography\Encryption\Data.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Security\Cryptography\Encryption\Hash.cs">
+      <Link>Security\Cryptography\Encryption\Hash.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Security\PasswordHash.cs">
+      <Link>Security\PasswordHash.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\SemanticVersion.cs">
+      <Link>SemanticVersion.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Singleton.cs">
+      <Link>Singleton.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Text\CharacterEncoder.cs">
+      <Link>Text\CharacterEncoder.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Text\Generator.cs">
+      <Link>Text\Generator.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Text\Markdown.cs">
+      <Link>Text\Markdown.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Threading\FuncAwaitable.cs">
+      <Link>Threading\FuncAwaitable.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Threading\FuncAwaiter.cs">
+      <Link>Threading\FuncAwaiter.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\Threading\IAwaitable.cs">
+      <Link>Threading\IAwaitable.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\ValueConverter.cs">
+      <Link>ValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Support\VariantType.cs">
+      <Link>VariantType.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Support\Schemas\BrandingSchema.xsd">
+      <Link>Schemas\BrandingSchema.xsd</Link>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets'))" />
+  </Target>
+</Project>
