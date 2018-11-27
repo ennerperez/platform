@@ -14,9 +14,18 @@ namespace Platform.Support.Attributes
         private readonly string _resourceKey;
         private readonly ResourceManager _resource;
 
-        public LocalizedDescriptionAttribute(string resourceKey, Type resourceType)
+        private static Dictionary<Type, ResourceManager> resources = new Dictionary<Type, ResourceManager>();
+
+        public LocalizedDescriptionAttribute(string resourceKey, Type resourceType, bool cached = true)
         {
-            _resource = new ResourceManager(resourceType);
+            if (cached)
+            {
+                if (!resources.ContainsKey(resourceType))
+                    resources.Add(resourceType, new ResourceManager(resourceType));
+                _resource = resources[resourceType];
+            }
+            else
+                _resource = new ResourceManager(resourceType);
             _resourceKey = resourceKey;
         }
 

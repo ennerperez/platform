@@ -15,6 +15,8 @@ namespace Platform.Support
     {
 #if (!PORTABLE)
 
+        private static Dictionary<Type, Dictionary<Enum, string>> enumDescriptions = new Dictionary<Type, Dictionary<Enum, string>>();
+
         /// <summary>
         /// Get description of a enum value
         /// See DescriptionAttribute for enum element
@@ -26,14 +28,34 @@ namespace Platform.Support
         /// </remarks>
         /// <param name="value">Enum element with human readable string</param>
         /// <returns>Human readable string for enum element</returns>
-        public static string GetDescription(this Enum value)
+        public static string GetDescription(this Enum value, bool cached = true)
         {
-            var fi = value.GetType().GetField(value.ToString());
-            var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
-            if (attributes != null && attributes.Any())
-                return attributes.First().Description;
+            var type = value.GetType();
+            if (cached)
+            {
+                if (!enumDescriptions.ContainsKey(type))
+                {
+                    var description = (type.GetField(value.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[]).FirstOrDefault()?.Description;
+                    var item = new Dictionary<Enum, string> { { value, description } };
+                    enumDescriptions.Add(type, item);
+                }
+                else
+                {
+                    var item = enumDescriptions[type];
+                    if (!item.ContainsKey(value))
+                    {
+                        var description = (type.GetField(value.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[]).FirstOrDefault()?.Description;
+                        item.Add(value, description);
+                    }
+                }
+
+                return enumDescriptions[type][value];
+            }
             else
-                return value.ToString();
+            {
+                var description = (type.GetField(value.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[]).FirstOrDefault()?.Description;
+                return description;
+            }
         }
 
         /// <summary>
@@ -48,11 +70,11 @@ namespace Platform.Support
         /// <param name="type">Enum type</param>
         /// <param name="value">Enum element with human readable string</param>
         /// <returns>Human readable string for enum element</returns>
-        public static string GetDescription(this Type type, Enum value)
+        public static string GetDescription(this Type type, Enum value, bool cached = true)
         {
             if (type.IsEnum)
             {
-                var result = GetDescription(value);
+                var result = GetDescription(value, cached);
                 return result;
             }
             return null;
