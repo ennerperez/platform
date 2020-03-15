@@ -128,6 +128,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reports.Forms"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reports.Forms", "Presentation.Reports.Forms.Net45\Presentation.Reports.Forms.csproj", "{A2C6718C-A58E-417F-9047-80BDC05E125E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{1B79BDBE-10CC-4EB6-B3D6-F3DBF9AACF80}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support", "Support.NetCore\Support.csproj", "{CAC389D8-590E-47DD-99C0-2B4BCE24AD04}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model.NetCore\Model.csproj", "{14707B20-7718-4622-A694-6B08A5BD2923}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1", "3.1", "{E23A1A37-4F67-4114-B673-5C5849AD4428}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Drawing", "Support.Drawing.NetCore\Support.Drawing.csproj", "{0DC32015-4E71-458E-A40A-56EA8D6C8A19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Forms", "Presentation.Forms.NetCore\Presentation.Forms.csproj", "{EA233617-BC5A-4DB1-965D-5807CDFB86FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -286,6 +298,22 @@ Global
 		{A2C6718C-A58E-417F-9047-80BDC05E125E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2C6718C-A58E-417F-9047-80BDC05E125E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2C6718C-A58E-417F-9047-80BDC05E125E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAC389D8-590E-47DD-99C0-2B4BCE24AD04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAC389D8-590E-47DD-99C0-2B4BCE24AD04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAC389D8-590E-47DD-99C0-2B4BCE24AD04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAC389D8-590E-47DD-99C0-2B4BCE24AD04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14707B20-7718-4622-A694-6B08A5BD2923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14707B20-7718-4622-A694-6B08A5BD2923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14707B20-7718-4622-A694-6B08A5BD2923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14707B20-7718-4622-A694-6B08A5BD2923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DC32015-4E71-458E-A40A-56EA8D6C8A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DC32015-4E71-458E-A40A-56EA8D6C8A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DC32015-4E71-458E-A40A-56EA8D6C8A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DC32015-4E71-458E-A40A-56EA8D6C8A19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA233617-BC5A-4DB1-965D-5807CDFB86FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA233617-BC5A-4DB1-965D-5807CDFB86FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA233617-BC5A-4DB1-965D-5807CDFB86FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA233617-BC5A-4DB1-965D-5807CDFB86FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -335,13 +363,18 @@ Global
 		{62104A7A-35E6-4CD6-A9F8-A79807FF9B4D} = {7F317395-1540-44B5-98F4-2132D346D129}
 		{CC820E50-5DA7-4C9B-8482-49CEA931EDFF} = {C6297CDA-49E4-4C9B-8C6A-CDD6633ED33F}
 		{A2C6718C-A58E-417F-9047-80BDC05E125E} = {7F317395-1540-44B5-98F4-2132D346D129}
+		{CAC389D8-590E-47DD-99C0-2B4BCE24AD04} = {E23A1A37-4F67-4114-B673-5C5849AD4428}
+		{14707B20-7718-4622-A694-6B08A5BD2923} = {E23A1A37-4F67-4114-B673-5C5849AD4428}
+		{E23A1A37-4F67-4114-B673-5C5849AD4428} = {1B79BDBE-10CC-4EB6-B3D6-F3DBF9AACF80}
+		{0DC32015-4E71-458E-A40A-56EA8D6C8A19} = {E23A1A37-4F67-4114-B673-5C5849AD4428}
+		{EA233617-BC5A-4DB1-965D-5807CDFB86FF} = {E23A1A37-4F67-4114-B673-5C5849AD4428}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7EA34FD7-B2A4-4717-8FFD-337069CCE0F8}
-		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
-		BuildVersion_StartDate = 2016/1/1
-		BuildVersion_UpdateAssemblyVersion = True
 		BuildVersion_BuildVersioningStyle = None.None.None.Increment
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_StartDate = 2016/1/1
+		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
+		SolutionGuid = {7EA34FD7-B2A4-4717-8FFD-337069CCE0F8}
 	EndGlobalSection
 	GlobalSection(AutomaticVersions) = postSolution
 		AssemblyInfoFilePath.Release|Any CPU = D:\Developments\GitHub\platform\.files\AssemblyInfo.Version.cs
