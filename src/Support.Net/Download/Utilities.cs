@@ -27,7 +27,12 @@ namespace Platform.Support.Net.Download
         {
             byte[] array = new byte[32768];
             int count = 32768;
+#if NETFX_40 || NETFX_45
+            int num;
+            if (!Windows.WinInet.HttpQueryInfo(inetFileHandle, 22u, array, ref count, out num))
+#else
             if (!Windows.WinInet.HttpQueryInfo(inetFileHandle, 22u, array, ref count, out int num))
+#endif
             {
                 if (Marshal.GetLastWin32Error() == 122)
                 {
@@ -62,7 +67,12 @@ namespace Platform.Support.Net.Download
             {
                 int num = 100;
                 byte[] array = new byte[num];
+#if NETFX_40 || NETFX_45
+                int num2;
+                if (!Windows.WinInet.HttpQueryInfo(inetFileHandle, 5u, array, ref num, out num2))
+#else
                 if (!Windows.WinInet.HttpQueryInfo(inetFileHandle, 5u, array, ref num, out int num2))
+#endif
                 {
                     //this.logger.WriteVerbose("Querying HTTP information failed with error code: {0}", new object[]
                     //{
