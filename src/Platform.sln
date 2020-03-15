@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2003
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "Support\Support.csproj", "{25AB6BBF-A879-4570-9E0E-947D52AE7333}"
 EndProject
@@ -79,6 +79,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\.gitignore = ..\.gitignore
 		..\build.cake = ..\build.cake
 		..\build.ps1 = ..\build.ps1
+		..\build.sh = ..\build.sh
 		..\CHANGELOG.md = ..\CHANGELOG.md
 		..\LICENSE = ..\LICENSE
 		..\README.md = ..\README.md

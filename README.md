@@ -13,10 +13,18 @@ See the [changelog](CHANGELOG.md) for changes.
 
 ## Blocks
 
-|-|
-|Presentation|Forms|Reporting
-|Model|CRUD|MVC|SPS|
-|Support|Data|Web|Drawing|Windows
+- Presentation
+  - Forms
+  - Reporting
+- Model
+  - CRUD
+  - MVC
+  - SPS
+- Support
+  - Data
+  - Web
+  - Drawing
+  - Windows
 
 ## Roadmap
 
