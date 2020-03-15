@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyName>Samples.NetCore</AssemblyName>
+    <RootNamespace>Platform.Samples</RootNamespace>
+    <Deterministic>false</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs" Link="Properties\AssemblyInfo.Common.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs" Link="Properties\AssemblyInfo.Platform.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs" Link="Properties\AssemblyInfo.Version.cs" />
+    <Compile Include="..\Application\Forms\FormBrand.cs" Link="Forms\FormBrand.cs" />
+    <Compile Include="..\Application\Forms\FormBrand.Designer.cs" Link="Forms\FormBrand.Designer.cs" />
+    <Compile Include="..\Application\Forms\FormControls.cs" Link="Forms\FormControls.cs" />
+    <Compile Include="..\Application\Forms\FormControls.Designer.cs" Link="Forms\FormControls.Designer.cs" />
+    <Compile Include="..\Application\Forms\FormMain.cs" Link="Forms\FormMain.cs" />
+    <Compile Include="..\Application\Forms\FormMain.Designer.cs" Link="Forms\FormMain.Designer.cs" />
+    <Compile Include="..\Application\Forms\FormReports.cs" Link="Forms\FormReports.cs" />
+    <Compile Include="..\Application\Forms\FormReports.Designer.cs" Link="Forms\FormReports.Designer.cs" />
+    <Compile Include="..\Application\Program.cs" Link="Program.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="..\Application\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Forms\" />
+    <Folder Include="Reports\" />
+    <Folder Include="Palettes\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\Application\Brand.sku" Link="Brand.sku">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Application\Palettes\colors_blue_indigo.xml" Link="Palettes\colors_blue_indigo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Application\Palettes\colors_green_teal.xml" Link="Palettes\colors_green_teal.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\Application\Reports\Person.cshtml" Link="Reports\Person.cshtml" />
+    <Content Include="..\Application\Reports\Persons.cshtml" Link="Reports\Persons.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Application\Reports\Persons.rdcl" Link="Reports\Persons.rdcl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\Application\Forms\FormBrand.resx" Link="Forms\FormBrand.resx" />
+    <EmbeddedResource Include="..\Application\Forms\FormControls.resx" Link="Forms\FormControls.resx" />
+    <EmbeddedResource Include="..\Application\Forms\FormMain.resx" Link="Forms\FormMain.resx" />
+    <EmbeddedResource Include="..\Application\Forms\FormReports.resx" Link="Forms\FormReports.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Bcl.Build.Symbols" Version="1.1.27">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Platform.Presentation.Windows.Forms" Version="3.4.37.15142201" />
+    <PackageReference Include="Platform.Support.Core" Version="3.4.37.15142201" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core.NetCore\Samples.Core.NetCore.csproj" />
+  </ItemGroup>
+</Project>
