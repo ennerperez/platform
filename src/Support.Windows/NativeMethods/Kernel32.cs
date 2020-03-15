@@ -478,7 +478,12 @@ namespace Platform.Support.Windows
 
         public static bool IS_INTRESOURCE(string value)
         {
+#if NETFX_40 || NETFX_45
+            int num;
+            return int.TryParse(value, out num);
+#else
             return int.TryParse(value, out int num);
+#endif
         }
 
         public static int MAKEINTRESOURCE(int resource)
@@ -575,6 +580,7 @@ namespace Platform.Support.Windows
 
     internal enum LoadLibraryFlags
 #else
+
     public enum LoadLibraryFlags
 #endif
     {
@@ -592,6 +598,7 @@ namespace Platform.Support.Windows
     [Flags]
     internal enum FormatMessageFlags
 #else
+
     [Flags]
     public enum FormatMessageFlags
 #endif
@@ -606,6 +613,7 @@ namespace Platform.Support.Windows
     [Flags]
     internal enum MoveFileFlags
 #else
+
     [Flags]
     public enum MoveFileFlags
 #endif

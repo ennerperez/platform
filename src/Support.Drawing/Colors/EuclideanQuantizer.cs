@@ -15,7 +15,14 @@ namespace Platform.Support.Drawing.Colors
 
         public EuclideanQuantizer(IPaletteQuantizer quantizer, IDithering dithering)
         {
+#if NETFX_40 || NETFX_45
+            if (quantizer == null)
+                throw new Exception("param 'quantizer' cannot be null");
+            else
+                this.mQuantizer = quantizer;
+#else
             this.mQuantizer = quantizer ?? throw new Exception("param 'quantizer' cannot be null");
+#endif
             this.mDithering = dithering;
         }
 

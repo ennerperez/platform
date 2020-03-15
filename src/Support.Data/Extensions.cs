@@ -608,7 +608,12 @@ namespace Platform.Support.Data
             int firstLen = savepoint.IndexOf('D');
             if (firstLen >= 2 && savepoint.Length > firstLen + 1)
             {
+#if NETFX_40 || NETFX_45
+                int depth;
+                if (Int32.TryParse(savepoint.Substring(firstLen + 1), out depth))
+#else
                 if (Int32.TryParse(savepoint.Substring(firstLen + 1), out int depth))
+#endif
                 {
                     // TODO: Mild race here, but inescapable without locking almost everywhere.
                     if (0 <= depth && depth < _transactionDepth)
@@ -890,8 +895,12 @@ namespace Platform.Support.Data
         {
             if (_mappings == null)
                 _mappings = new Dictionary<string, Support.Data.TableMapping>();
-
+#if NETFX_40 || NETFX_45
+            TableMapping map;
+            if (!_mappings.TryGetValue(type.FullName, out map))
+#else
             if (!_mappings.TryGetValue(type.FullName, out TableMapping map))
+#endif
             {
                 map = new TableMapping(conn, type, createFlags);
                 _mappings[type.FullName] = map;
@@ -965,7 +974,12 @@ namespace Platform.Support.Data
                     csb = (System.Data.Common.DbConnectionStringBuilder)conn.CreateObject("SQLiteConnectionStringBuilder", new object[] { conn.ConnectionString });
                     if (csb.ContainsKey("Data Source"))
                     {
+#if NETFX_40 || NETFX_45
+                        object file;
+                        csb.TryGetValue("Data Source", out file);
+#else
                         csb.TryGetValue("Data Source", out object file);
+#endif
                         if (file != null && System.IO.File.Exists(file.ToString()))
                         {
                             if (conn.State != ConnectionState.Closed) conn.Close();
@@ -1112,7 +1126,12 @@ namespace Platform.Support.Data
                     csb = (System.Data.Common.DbConnectionStringBuilder)conn.CreateObject("SQLiteConnectionStringBuilder", new object[] { conn.ConnectionString });
                     if (csb.ContainsKey("Data Source"))
                     {
+#if NETFX_40 || NETFX_45
+                        object file;
+                        csb.TryGetValue("Data Source", out file);
+#else
                         csb.TryGetValue("Data Source", out object file);
+#endif
                         if (file != null && !System.IO.File.Exists(file.ToString()))
                         {
                             conn.Open();
@@ -1231,7 +1250,12 @@ namespace Platform.Support.Data
                 foreach (IndexedAttribute i in c.Indices)
                 {
                     string iname = i.Name ?? map.GetTableName(false) + "_" + c.Name;
+#if NETFX_40 || NETFX_45
+                    IndexInfo iinfo;
+                    if (!indexes.TryGetValue(iname, out iinfo))
+#else
                     if (!indexes.TryGetValue(iname, out IndexInfo iinfo))
+#endif
                     {
                         iinfo = new IndexInfo
                         {
@@ -1285,7 +1309,12 @@ namespace Platform.Support.Data
             {
                 _tables = new Dictionary<string, TableMapping>();
             }
+#if NETFX_40 || NETFX_45
+            TableMapping map;
+            if (!_tables.TryGetValue(typ.FullName, out map))
+#else
             if (!_tables.TryGetValue(typ.FullName, out TableMapping map))
+#endif
             {
                 map = conn.GetMapping(typ, createFlags);
                 _tables.Add(typ.FullName, map);

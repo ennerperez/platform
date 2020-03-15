@@ -1,4 +1,6 @@
-﻿using Platform.Support.Windows;
+﻿#if NETFX
+
+using Platform.Support.Windows;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -493,3 +495,5 @@ namespace Platform.Presentation.Forms.Components
         }
     }
 }
+
+#endif

@@ -22,7 +22,11 @@ namespace Platform.Presentation.Forms.Controls
         private bool isSplitMenuVisible;
 
         private ContextMenuStrip m_SplitMenuStrip;
+#if NETFX
         private ContextMenu m_SplitMenu;
+#elif NETCORE
+        private ContextMenuStrip m_SplitMenu;
+#endif
 
         private TextFormatFlags textFormatFlags = TextFormatFlags.Default;
 
@@ -47,7 +51,11 @@ namespace Platform.Presentation.Forms.Controls
         }
 
         [DefaultValue(null)]
+#if NETFX
         public ContextMenu SplitMenu
+#elif NETCORE
+        public ContextMenuStrip SplitMenu
+#endif
         {
             get { return m_SplitMenu; }
             set
@@ -55,14 +63,22 @@ namespace Platform.Presentation.Forms.Controls
                 //remove the event handlers for the old SplitMenu
                 if (m_SplitMenu != null)
                 {
+#if NETFX
                     m_SplitMenu.Popup -= SplitMenu_Popup;
+#elif NETCORE
+                    m_SplitMenu.Opening -= SplitMenu_Popup;
+#endif
                 }
 
                 //add the event handlers for the new SplitMenu
                 if (value != null)
                 {
                     ShowSplit = true;
+#if NETFX
                     value.Popup += SplitMenu_Popup;
+#elif NETCORE
+                    value.Opening += SplitMenu_Popup;
+#endif
                 }
                 else
                     ShowSplit = false;

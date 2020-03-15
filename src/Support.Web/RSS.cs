@@ -75,7 +75,12 @@ namespace Platform.Support
 
             public static DateTime GetDate(string v)
             {
+#if NETFX_40 || NETFX_45
+                DateTime _value;
+                DateTime.TryParse(v, out _value);
+#else
                 DateTime.TryParse(v, out DateTime _value);
+#endif
                 return _value;
             }
         }
