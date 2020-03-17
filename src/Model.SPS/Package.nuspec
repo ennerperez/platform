@@ -36,6 +36,10 @@
         <dependency id="Platform.Support.Core" version="$version$" />
         <dependency id="Platform.Model.SPS.Plugin" version="$version$" />
       </group>-->
+      <group targetFramework=".NETStandard2.0" >
+        <dependency id="Platform.Support.Core" version="$version$" />
+        <dependency id="Platform.Model.SPS.Plugin" version="$version$" />
+      </group>
     </dependencies>
   </metadata>
   <files>
@@ -45,5 +49,7 @@
     <!-- NETFX -->
     <file src="..\Model.SPS\bin\release\Platform.Model.SPS.dll" target="lib\net40\Platform.Model.SPS.dll" />
     <file src="..\Model.SPS.Net45\bin\release\Platform.Model.SPS.dll" target="lib\net45\Platform.Model.SPS.dll" />
+    <!-- NETCORE -->
+    <file src="..\Model.SPS.NetCore\bin\release\Platform.Model.SPS.dll" target="lib\netstandard2.0\Platform.Model.SPS.dll" />
   </files>
 </package>

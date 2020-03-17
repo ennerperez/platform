@@ -32,6 +32,9 @@
       <group targetFramework=".NETPortable0.0-Profile328">
         <dependency id="Platform.Support.Core" version="$version$" />
       </group>
+      <group targetFramework=".NETStandard2.0" >
+        <dependency id="Platform.Support.Core" version="$version$" />
+      </group>
     </dependencies>
   </metadata>
   <files>
@@ -44,5 +47,7 @@
     <!-- PCL -->
     <file src="..\Model.SPS.Plugin.PCL\bin\release\Platform.Model.SPS.Plugin.PCL.dll" target="lib\portable-net40+sl5+win8+wp8+wpa81\Platform.Model.SPS.Plugin.PCL.dll" />
     <file src="..\Model.SPS.Plugin.PCL.Net45\bin\release\Platform.Model.SPS.Plugin.PCL.dll" target="lib\portable-net45+win8+wp8+wpa81\Platform.Model.SPS.Plugin.PCL.dll" />
+    <!-- NETCORE -->
+    <file src="..\Model.SPS.Plugin.NetCore\bin\release\Platform.Model.SPS.Plugin.dll" target="lib\netstandard2.0\Platform.Model.SPS.Plugin.dll" />
   </files>
 </package>

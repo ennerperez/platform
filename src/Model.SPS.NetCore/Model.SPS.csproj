@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Deterministic>false</Deterministic>
+    <AssemblyName>Platform.Model.SPS</AssemblyName>
+    <RootNamespace>Platform.Model.SPS</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs" Link="Properties\AssemblyInfo.Common.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs" Link="Properties\AssemblyInfo.Platform.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs" Link="Properties\AssemblyInfo.Version.cs" />
+    <Compile Include="..\Model.SPS\ApplicationPlugIn.cs" Link="ApplicationPlugIn.cs" />
+    <Compile Include="..\Model.SPS\Attributes\PlugInApplicationAttribute.cs" Link="Attributes\PlugInApplicationAttribute.cs" />
+    <Compile Include="..\Model.SPS\Interfaces\IApplicationPlugIn.cs" Link="Interfaces\IApplicationPlugIn.cs" />
+    <Compile Include="..\Model.SPS\Interfaces\IPlugInBasedApplication.cs" Link="Interfaces\IPlugInBasedApplication.cs" />
+    <Compile Include="..\Model.SPS\PlugInBasedApplication.cs" Link="PlugInBasedApplication.cs" />
+    <Compile Include="..\Model.SPS\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\Model.SPS\Runnable\RunnablePlugInBasedApplication.cs" Link="Runnable\RunnablePlugInBasedApplication.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Attributes\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Runnable\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Model.SPS.Plugin.NetCore\Model.SPS.Plugin.csproj" />
+  </ItemGroup>
+</Project>
