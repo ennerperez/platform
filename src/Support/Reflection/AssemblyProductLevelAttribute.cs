@@ -24,7 +24,11 @@ namespace Platform.Support
 
             public override string ToString()
             {
+#if NETFX_40
+                return Enum.GetName(typeof(ProductLevels), Level) + " " + Number.ToString();
+#else
                 return $"{Enum.GetName(typeof(ProductLevels), Level)} {Number.ToString()}";
+#endif
             }
         }
     }

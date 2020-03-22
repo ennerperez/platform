@@ -19,7 +19,11 @@ namespace Platform.Support
         public static void DebugThis(this string str, [CallerMemberName] string callername = "", [CallerFilePath] string filename = "", [CallerLineNumber] int linenumber = 0)
         {
             if (!string.IsNullOrEmpty(callername))
+#if NETFX_40
+                Debug.WriteLine(callername + " in " + filename + ":" + Environment.NewLine + str + " line " + linenumber);
+#else
                 Debug.WriteLine($"{callername} in {filename}:{Environment.NewLine}{str} line {linenumber}");
+#endif
             else
                 Debug.WriteLine(str);
         }
