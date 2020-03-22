@@ -12,11 +12,7 @@ namespace Platform.Support
     {
         public static string ISO8601(this DateTime date, bool dateOnly = false)
         {
-#if NETFX_40
-            return string.Format("{0:yyyy-MM-dd" + (dateOnly ? "" : " HH:mm:ss}"), date);
-#else
             return string.Format($"{{0:yyyy-MM-dd{(dateOnly ? "" : " HH:mm:ss")}}}", date);
-#endif
         }
 
         public static string ISO8601(this TimeSpan time)
