@@ -44,6 +44,6 @@
     <file src="..\Presentation.Forms\bin\release\Platform.Presentation.Forms.dll" target="lib\net40\Platform.Presentation.Forms.dll" />
     <file src="..\Presentation.Forms.Net45\bin\release\Platform.Presentation.Forms.dll" target="lib\net45\Platform.Presentation.Forms.dll" />
     <!-- NETCORE -->
-    <file src="..\Presentation.Forms.NetCore\bin\release\netcoreapp3.1\Platform.Presentation.Forms.dll" target="lib\netstandard2.0\Platform.Presentation.Forms.dll" />
+    <file src="..\Presentation.Forms.NetCore\bin\release\Platform.Presentation.Forms.dll" target="lib\netstandard2.0\Platform.Presentation.Forms.dll" />
   </files>
 </package>
