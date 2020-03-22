@@ -39,11 +39,7 @@ namespace Platform.Support
 
             public override string ToString()
             {
-#if NETFX_40
-                return Description + ": " + Value;
-#else
                 return $"{Description}: {Value}";
-#endif
             }
         }
     }
