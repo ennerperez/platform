@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support", "Support\Support.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.PCL", "Support.PCL\Support.PCL.csproj", "{18F0A51D-255E-4845-A724-B676D5FBBFBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Data", "Support.Data\Support.Data.csproj", "{4AC6FA64-1C7E-4648-BE3F-592DC9567401}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{8E95A50B-545E-4092-94E3-7638D4C8A4F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.PCL", "Model.PCL\Model.PCL.csproj", "{44448EE1-AE0E-4610-A6BE-208EB7FBCFFB}"
@@ -108,8 +106,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.MVC", "Model.MVC.Net4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model.SPS", "Model.SPS.Net45\Model.SPS.csproj", "{5C339DA7-40C7-44BE-A1B6-3FD15C0754C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Data", "Support.Data.Net45\Support.Data.csproj", "{2C74EC71-EE9A-4B3C-8DD9-ADE8A3D0A0C2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Drawing", "Support.Drawing.Net45\Support.Drawing.csproj", "{E350DF58-553B-4971-BD39-34DBC903B501}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Net", "Support.Net.Net45\Support.Net.csproj", "{33EB7E76-C39F-47C9-B8A4-45047065F460}"
@@ -154,9 +150,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support.Web", "Support.Web.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support.Windows", "Support.Windows.NetCore\Support.Windows.csproj", "{F5E15ABC-2D2A-4716-8955-0B9E9E097116}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reports", "Presentation.Reports.NetCore\Presentation.Reports.csproj", "{C24A8E45-C204-4169-8166-FF4FDE3AB0C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation.Reports", "Presentation.Reports.NetCore\Presentation.Reports.csproj", "{C24A8E45-C204-4169-8166-FF4FDE3AB0C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Reports.Forms", "Presentation.Reports.Forms.NetCore\Presentation.Reports.Forms.csproj", "{AFD9DB09-F874-4E09-BAC7-62B263B46746}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation.Reports.Forms", "Presentation.Reports.Forms.NetCore\Presentation.Reports.Forms.csproj", "{AFD9DB09-F874-4E09-BAC7-62B263B46746}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -172,10 +168,6 @@ Global
 		{18F0A51D-255E-4845-A724-B676D5FBBFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18F0A51D-255E-4845-A724-B676D5FBBFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18F0A51D-255E-4845-A724-B676D5FBBFBC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4AC6FA64-1C7E-4648-BE3F-592DC9567401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4AC6FA64-1C7E-4648-BE3F-592DC9567401}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4AC6FA64-1C7E-4648-BE3F-592DC9567401}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4AC6FA64-1C7E-4648-BE3F-592DC9567401}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8E95A50B-545E-4092-94E3-7638D4C8A4F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E95A50B-545E-4092-94E3-7638D4C8A4F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E95A50B-545E-4092-94E3-7638D4C8A4F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -276,10 +268,6 @@ Global
 		{5C339DA7-40C7-44BE-A1B6-3FD15C0754C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C339DA7-40C7-44BE-A1B6-3FD15C0754C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C339DA7-40C7-44BE-A1B6-3FD15C0754C4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C74EC71-EE9A-4B3C-8DD9-ADE8A3D0A0C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C74EC71-EE9A-4B3C-8DD9-ADE8A3D0A0C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C74EC71-EE9A-4B3C-8DD9-ADE8A3D0A0C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C74EC71-EE9A-4B3C-8DD9-ADE8A3D0A0C2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E350DF58-553B-4971-BD39-34DBC903B501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E350DF58-553B-4971-BD39-34DBC903B501}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E350DF58-553B-4971-BD39-34DBC903B501}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -375,7 +363,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{25AB6BBF-A879-4570-9E0E-947D52AE7333} = {C6297CDA-49E4-4C9B-8C6A-CDD6633ED33F}
 		{18F0A51D-255E-4845-A724-B676D5FBBFBC} = {0897EA21-1224-4433-AD2D-030419B8BED7}
-		{4AC6FA64-1C7E-4648-BE3F-592DC9567401} = {C6297CDA-49E4-4C9B-8C6A-CDD6633ED33F}
 		{8E95A50B-545E-4092-94E3-7638D4C8A4F7} = {C6297CDA-49E4-4C9B-8C6A-CDD6633ED33F}
 		{44448EE1-AE0E-4610-A6BE-208EB7FBCFFB} = {0897EA21-1224-4433-AD2D-030419B8BED7}
 		{F3E05D2E-3F45-458C-BD16-A7878B32C4B0} = {C6297CDA-49E4-4C9B-8C6A-CDD6633ED33F}
@@ -407,7 +394,6 @@ Global
 		{86ACD209-C899-4130-AD42-E7934A8F3640} = {7F317395-1540-44B5-98F4-2132D346D129}
 		{85A3186A-2416-4756-9DD4-CB21F1A5C2B3} = {7F317395-1540-44B5-98F4-2132D346D129}
 		{5C339DA7-40C7-44BE-A1B6-3FD15C0754C4} = {7F317395-1540-44B5-98F4-2132D346D129}
-		{2C74EC71-EE9A-4B3C-8DD9-ADE8A3D0A0C2} = {7F317395-1540-44B5-98F4-2132D346D129}
 		{E350DF58-553B-4971-BD39-34DBC903B501} = {7F317395-1540-44B5-98F4-2132D346D129}
 		{33EB7E76-C39F-47C9-B8A4-45047065F460} = {7F317395-1540-44B5-98F4-2132D346D129}
 		{964C21CA-1249-4576-83B0-D3D6B6A4FE23} = {7F317395-1540-44B5-98F4-2132D346D129}
@@ -433,11 +419,11 @@ Global
 		{AFD9DB09-F874-4E09-BAC7-62B263B46746} = {E23A1A37-4F67-4114-B673-5C5849AD4428}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7EA34FD7-B2A4-4717-8FFD-337069CCE0F8}
-		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
-		BuildVersion_StartDate = 2016/1/1
-		BuildVersion_UpdateAssemblyVersion = True
 		BuildVersion_BuildVersioningStyle = None.None.None.Increment
+		BuildVersion_UpdateAssemblyVersion = True
+		BuildVersion_StartDate = 2016/1/1
+		BuildVersion_AssemblyInfoFilename = .files\AssemblyInfo.Version.cs
+		SolutionGuid = {7EA34FD7-B2A4-4717-8FFD-337069CCE0F8}
 	EndGlobalSection
 	GlobalSection(AutomaticVersions) = postSolution
 		AssemblyInfoFilePath.Release|Any CPU = D:\Developments\GitHub\platform\.files\AssemblyInfo.Version.cs
