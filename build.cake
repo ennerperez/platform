@@ -69,6 +69,7 @@ Task("Build")
                         .UseToolVersion(MSBuildToolVersion.VS2019)
                         .WithProperty("PackageVersion", version)
                         .WithProperty("BuildSymbolsPackage", "false")
+                        .WithProperty("AllowUnsafeBlocks", "true")
                         .WithProperty("OutputPath", outputPath);
                         settings.SetConfiguration(configuration);
                         // Use MSBuild
@@ -79,6 +80,7 @@ Task("Build")
                         var settings = new XBuildSettings()
                         .WithProperty("PackageVersion", version)
                         .WithProperty("BuildSymbolsPackage", "false")
+                        .WithProperty("AllowUnsafeBlocks", "true")
                         .WithProperty("OutputPath", outputPath);
                         settings.SetConfiguration(configuration);
                         // Use XBuild
