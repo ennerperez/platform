@@ -132,8 +132,16 @@ namespace Platform.Support
 
             public override bool Equals(object obj)
             {
+#if NETFX_40 || NETFX_45
+                if (obj is Vector2)
+                {
+                    Vector2 v = (Vector2)obj;
+                    return v.x == x && v.y == y;
+                }
+#else
                 if (obj is Vector2 v)
                     return v.x == x && v.y == y;
+#endif
 
                 return false;
             }

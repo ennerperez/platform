@@ -33,7 +33,12 @@ namespace Platform.Support.Net.Download.Bits
             string text = "VsBitsDownloadJob - " + uri.GetHashCode();
             try
             {
+#if NETFX_40 || NETFX_45
+                Guid guid;
+                backgroundCopyManager.CreateJob(text, BG_JOB_TYPE.BG_JOB_TYPE_DOWNLOAD, out guid, out backgroundCopyJob);
+#else
                 backgroundCopyManager.CreateJob(text, BG_JOB_TYPE.BG_JOB_TYPE_DOWNLOAD, out Guid guid, out backgroundCopyJob);
+#endif
                 backgroundCopyJob.SetNotifyFlags(11u);
                 backgroundCopyJob.SetNoProgressTimeout(120u);
                 backgroundCopyJob.SetPriority(BG_JOB_PRIORITY.BG_JOB_PRIORITY_FOREGROUND);

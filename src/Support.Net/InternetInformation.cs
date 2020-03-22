@@ -63,7 +63,7 @@ namespace Platform.Support
                 Ping pinger = new Ping();
                 try
                 {
-#if NETFX_45
+#if NETFX_45 || NETCORE
                     PingReply reply = await pinger.SendPingAsync(hostname);
 #else
                     PingReply reply = await pinger.SendTaskAsync(hostname);

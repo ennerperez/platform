@@ -1,0 +1,79 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Deterministic>false</Deterministic>
+    <AssemblyName>Platform.Support.Windows</AssemblyName>
+    <RootNamespace>Platform.Support.Windows</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE;INTEROP;</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE;INTEROP;</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs" Link="Properties\AssemblyInfo.Common.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs" Link="Properties\AssemblyInfo.Platform.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs" Link="Properties\AssemblyInfo.Version.cs" />
+    <Compile Include="..\Support.Windows\Errors.cs" Link="Errors.cs" />
+    <Compile Include="..\Support.Windows\ExternDll.cs" Link="ExternDll.cs" />
+    <Compile Include="..\Support.Windows\Hardware\HardwareListener.cs" Link="Hardware\HardwareListener.cs" />
+    <Compile Include="..\Support.Windows\Hardware\KeyboardListener.cs" Link="Hardware\KeyboardListener.cs" />
+    <Compile Include="..\Support.Windows\Hardware\MouseListener.cs" Link="Hardware\MouseListener.cs" />
+    <Compile Include="..\Support.Windows\Message.cs" Link="Message.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Advapi32.cs" Link="NativeMethods\Advapi32.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\ComCtl32.cs" Link="NativeMethods\ComCtl32.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\ComDlg32.cs" Link="NativeMethods\ComDlg32.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Crypt32.cs" Link="NativeMethods\Crypt32.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\DbgHelp.cs" Link="NativeMethods\DbgHelp.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Dwmapi.cs" Link="NativeMethods\Dwmapi.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Gdi32.cs" Link="NativeMethods\Gdi32.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\GdiPlus.cs" Link="NativeMethods\GdiPlus.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Kernel32.cs" Link="NativeMethods\Kernel32.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Mapi32.cs" Link="NativeMethods\Mapi32.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Mpr.cs" Link="NativeMethods\Mpr.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Ole32.cs" Link="NativeMethods\Ole32.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\OleAut32.cs" Link="NativeMethods\OleAut32.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Propsys.cs" Link="NativeMethods\Propsys.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Psapi.cs" Link="NativeMethods\Psapi.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Shell32.cs" Link="NativeMethods\Shell32.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Shlwapi.cs" Link="NativeMethods\Shlwapi.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\UrlMon.cs" Link="NativeMethods\UrlMon.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\User32.cs" Link="NativeMethods\User32.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\UserEnv.cs" Link="NativeMethods\UserEnv.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Uxtheme.cs" Link="NativeMethods\Uxtheme.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\WinInet.cs" Link="NativeMethods\WinInet.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\WinMm.cs" Link="NativeMethods\WinMm.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Wtsapi32.cs" Link="NativeMethods\Wtsapi32.cs" />
+    <Compile Include="..\Support.Windows\OS.cs" Link="OS.cs" />
+    <Compile Include="..\Support.Windows\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\Support.Windows\Registry.cs" Link="Registry.cs" />
+    <Compile Include="..\Support.Windows\ServiceLoader.cs" Link="ServiceLoader.cs" />
+    <Compile Include="..\Support.Windows\UAC.cs" Link="UAC.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Bcl.Build.Symbols" Version="1.1.27">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Win32.Registry" Version="4.7.0" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Support.NetCore\Support.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Hardware\" />
+    <Folder Include="NativeMethods\" />
+  </ItemGroup>
+</Project>

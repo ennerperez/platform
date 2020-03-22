@@ -1,0 +1,77 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Deterministic>false</Deterministic>
+    <AssemblyName>Platform.Support.Net</AssemblyName>
+    <RootNamespace>Platform.Support.Net</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs" Link="Properties\AssemblyInfo.Common.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs" Link="Properties\AssemblyInfo.Platform.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs" Link="Properties\AssemblyInfo.Version.cs" />
+    <Compile Include="..\Support.Net\Download\BitsEngine.cs" Link="Download\BitsEngine.cs" />
+    <Compile Include="..\Support.Net\Download\Bits\BackgroundCopyManager.cs" Link="Download\Bits\BackgroundCopyManager.cs" />
+    <Compile Include="..\Support.Net\Download\Bits\BitsJob.cs" Link="Download\Bits\BitsJob.cs" />
+    <Compile Include="..\Support.Net\Download\Bits\IBackgroundCopyCallback.cs" Link="Download\Bits\IBackgroundCopyCallback.cs" />
+    <Compile Include="..\Support.Net\Download\Bits\IBackgroundCopyError.cs" Link="Download\Bits\IBackgroundCopyError.cs" />
+    <Compile Include="..\Support.Net\Download\Bits\IBackgroundCopyFile.cs" Link="Download\Bits\IBackgroundCopyFile.cs" />
+    <Compile Include="..\Support.Net\Download\Bits\IBackgroundCopyJob.cs" Link="Download\Bits\IBackgroundCopyJob.cs" />
+    <Compile Include="..\Support.Net\Download\Bits\IBackgroundCopyJobHttpOptions.cs" Link="Download\Bits\IBackgroundCopyJobHttpOptions.cs" />
+    <Compile Include="..\Support.Net\Download\Bits\IBackgroundCopyManager.cs" Link="Download\Bits\IBackgroundCopyManager.cs" />
+    <Compile Include="..\Support.Net\Download\Bits\IEnumBackgroundCopyFiles.cs" Link="Download\Bits\IEnumBackgroundCopyFiles.cs" />
+    <Compile Include="..\Support.Net\Download\Bits\IEnumBackgroundCopyJobs.cs" Link="Download\Bits\IEnumBackgroundCopyJobs.cs" />
+    <Compile Include="..\Support.Net\Download\Bits\Types.cs" Link="Download\Bits\Types.cs" />
+    <Compile Include="..\Support.Net\Download\DownloadContext.cs" Link="Download\DownloadContext.cs" />
+    <Compile Include="..\Support.Net\Download\DownloadCookie.cs" Link="Download\DownloadCookie.cs" />
+    <Compile Include="..\Support.Net\Download\DownloadEngineBase.cs" Link="Download\DownloadEngineBase.cs" />
+    <Compile Include="..\Support.Net\Download\DownloadFailureInformation.cs" Link="Download\DownloadFailureInformation.cs" />
+    <Compile Include="..\Support.Net\Download\DownloadManager.cs" Link="Download\DownloadManager.cs" />
+    <Compile Include="..\Support.Net\Download\DownloadSource.cs" Link="Download\DownloadSource.cs" />
+    <Compile Include="..\Support.Net\Download\DownloadSummary.cs" Link="Download\DownloadSummary.cs" />
+    <Compile Include="..\Support.Net\Download\EngineException.cs" Link="Download\EngineException.cs" />
+    <Compile Include="..\Support.Net\Download\FileDownloadEngine.cs" Link="Download\FileDownloadEngine.cs" />
+    <Compile Include="..\Support.Net\Download\IDownloadEngine.cs" Link="Download\IDownloadEngine.cs" />
+    <Compile Include="..\Support.Net\Download\IDownloadManager.cs" Link="Download\IDownloadManager.cs" />
+    <Compile Include="..\Support.Net\Download\Utilities.cs" Link="Download\Utilities.cs" />
+    <Compile Include="..\Support.Net\Download\WebClientEngine.cs" Link="Download\WebClientEngine.cs" />
+    <Compile Include="..\Support.Net\Download\WinInetEngine.cs" Link="Download\WinInetEngine.cs" />
+    <Compile Include="..\Support.Net\Download\WinInet\ManagedWinInet.cs" Link="Download\WinInet\ManagedWinInet.cs" />
+    <Compile Include="..\Support.Net\Download\WinInet\WinInetInternetReadStream.cs" Link="Download\WinInet\WinInetInternetReadStream.cs" />
+    <Compile Include="..\Support.Net\Download\WrappedWebException.cs" Link="Download\WrappedWebException.cs" />
+    <Compile Include="..\Support.Net\InternetInformation.cs" Link="InternetInformation.cs" />
+    <Compile Include="..\Support.Net\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\Support.Net\ProxyResolution.cs" Link="ProxyResolution.cs" />
+    <Compile Include="..\Support.Windows\Errors.cs" Link="NativeMethods\Errors.cs" />
+    <Compile Include="..\Support.Windows\ExternDll.cs" Link="ExternDll.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Kernel32.cs" Link="NativeMethods\Kernel32.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\WinInet.cs" Link="NativeMethods\WinInet.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Support.NetCore\Support.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Download\Bits\" />
+    <Folder Include="Download\WinInet\" />
+    <Folder Include="NativeMethods\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Bcl.Build.Symbols" Version="1.1.27">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,132 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Deterministic>false</Deterministic>
+    <AssemblyName>Platform.Presentation.Forms</AssemblyName>
+    <RootNamespace>Platform.Presentation.Forms</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>true</Optimize>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs" Link="Properties\AssemblyInfo.Common.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs" Link="Properties\AssemblyInfo.Platform.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs" Link="Properties\AssemblyInfo.Version.cs" />
+    <Compile Include="..\Presentation.Forms\BidiGraphics.cs" Link="BidiGraphics.cs" />
+    <Compile Include="..\Presentation.Forms\Components\AppearanceManager.cs" Link="Components\AppearanceManager.cs" />
+    <Compile Include="..\Presentation.Forms\Components\CultureManager.cs" Link="Components\CultureManager.cs" />
+    <Compile Include="..\Presentation.Forms\Components\Extender.cs" Link="Components\Extender.cs" />
+    <Compile Include="..\Presentation.Forms\Components\Literals.cs" Link="Components\Literals.cs" />
+    <Compile Include="..\Presentation.Forms\Components\ToolTipExtended.cs" Link="Components\ToolTipExtended.cs" />
+    <Compile Include="..\Presentation.Forms\Components\VistaMenu.cs" Link="Components\VistaMenu.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\AnimatedBitmap.cs" Link="Controls\AnimatedBitmap.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\AutoCompleteTextbox.cs" Link="Controls\AutoCompleteTextbox.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\AutoCompleteTextbox.designer.cs" Link="Controls\AutoCompleteTextbox.designer.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\AutoHeightLabel.cs" Link="Controls\AutoHeightLabel.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\AutoHeightLinkLabel.cs" Link="Controls\AutoHeightLinkLabel.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\BlinkingImage.cs" Link="Controls\BlinkingImage.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\BlinkingImage.designer.cs" Link="Controls\BlinkingImage.designer.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\BufferedPanel.cs" Link="Controls\BufferedPanel.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\CommandLink.cs" Link="Controls\CommandLink.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\DataGridViewExtended.cs" Link="Controls\DataGridViewExtended.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\DynamicControl.cs" Link="Controls\DynamicControl.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\DynamicControl.Designer.cs" Link="Controls\DynamicControl.Designer.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\FillBar.cs" Link="Controls\FillBar.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\ImageComboBox.cs" Link="Controls\ImageComboBox.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\ImageCropControl.cs" Link="Controls\ImageCropControl.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\ImageCropControl.designer.cs" Link="Controls\ImageCropControl.designer.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\ImageCropper.cs" Link="Controls\ImageCropper.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\ImageCropper.Designer.cs" Link="Controls\ImageCropper.Designer.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\ImageFilter.cs" Link="Controls\ImageFilter.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\ImageFilter.Designer.cs" Link="Controls\ImageFilter.Designer.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\LinkLabel.cs" Link="Controls\LinkLabel.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\MessagePanel.cs" Link="Controls\MessagePanel.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\ProgressBar.cs" Link="Controls\ProgressBar.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\SmoothPanel.cs" Link="Controls\SmoothPanel.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\SplitButton.cs" Link="Controls\SplitButton.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\TaskBar.cs" Link="Controls\TaskBar.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\TextAndImageColumn.cs" Link="Controls\TextAndImageColumn.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\XMLViewer.cs" Link="Controls\XMLViewer.cs" />
+    <Compile Include="..\Presentation.Forms\Controls\XMLViewer.Designer.cs" Link="Controls\XMLViewer.Designer.cs" />
+    <Compile Include="..\Presentation.Forms\Customs\ContextMenuStrip.cs" Link="Customs\ContextMenuStrip.cs" />
+    <Compile Include="..\Presentation.Forms\Customs\MenuStrip.cs" Link="Customs\MenuStrip.cs" />
+    <Compile Include="..\Presentation.Forms\Customs\StatusStrip.cs" Link="Customs\StatusStrip.cs" />
+    <Compile Include="..\Presentation.Forms\Customs\ToolStrip.cs" Link="Customs\ToolStrip.cs" />
+    <Compile Include="..\Presentation.Forms\Designers\CustomAppearancePropertyEditor.cs" Link="Designers\CustomAppearancePropertyEditor.cs" />
+    <Compile Include="..\Presentation.Forms\Extensions.Control.cs" Link="Extensions.Control.cs" />
+    <Compile Include="..\Presentation.Forms\Extensions.cs" Link="Extensions.cs" />
+    <Compile Include="..\Presentation.Forms\Extensions.Debug.cs" Link="Extensions.Debug.cs" />
+    <Compile Include="..\Presentation.Forms\Extensions.Form.cs" Link="Extensions.Form.cs" />
+    <Compile Include="..\Presentation.Forms\Extensions.RichText.cs" Link="Extensions.RichText.cs" />
+    <Compile Include="..\Presentation.Forms\Helpers\AlignHelper.cs" Link="Helpers\AlignHelper.cs" />
+    <Compile Include="..\Presentation.Forms\Helpers\AutoGrow.cs" Link="Helpers\AutoGrow.cs" />
+    <Compile Include="..\Presentation.Forms\Helpers\BidiHelper.cs" Link="Helpers\BidiHelper.cs" />
+    <Compile Include="..\Presentation.Forms\Helpers\CultureHelper.cs" Link="Helpers\CultureHelper.cs" />
+    <Compile Include="..\Presentation.Forms\Helpers\DialogHelper.cs" Link="Helpers\DialogHelper.cs" />
+    <Compile Include="..\Presentation.Forms\Helpers\DisplayHelper.cs" Link="Helpers\DisplayHelper.cs" />
+    <Compile Include="..\Presentation.Forms\Helpers\GdiTextHelper.cs" Link="Helpers\GdiTextHelper.cs" />
+    <Compile Include="..\Presentation.Forms\Helpers\GraphicsHelper.cs" Link="Helpers\GraphicsHelper.cs" />
+    <Compile Include="..\Presentation.Forms\Helpers\LayoutHelper.cs" Link="Helpers\LayoutHelper.cs" />
+    <Compile Include="..\Presentation.Forms\Helpers\ResourceHelper.cs" Link="Helpers\ResourceHelper.cs" />
+    <Compile Include="..\Presentation.Forms\Helpers\SystemButtonHelper.cs" Link="Helpers\SystemButtonHelper.cs" />
+    <Compile Include="..\Presentation.Forms\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\Presentation.Forms\Providers\CueProvider.cs" Link="Providers\CueProvider.cs" />
+    <Compile Include="..\Presentation.Forms\Providers\UserAcountControlProvider.cs" Link="Providers\UserAcountControlProvider.cs" />
+    <Compile Include="..\Presentation.Forms\Renderes\ColorTables\CustomColorTable.cs" Link="Renderes\ColorTables\CustomColorTable.cs" />
+    <Compile Include="..\Presentation.Forms\Renderes\ColorTables\Office\Office2003BlueColorTable.cs" Link="Renderes\ColorTables\Office\Office2003BlueColorTable.cs" />
+    <Compile Include="..\Presentation.Forms\Renderes\ColorTables\Office\Office2003OliveColorTable.cs" Link="Renderes\ColorTables\Office\Office2003OliveColorTable.cs" />
+    <Compile Include="..\Presentation.Forms\Renderes\ColorTables\Office\Office2003SilverColorTable.cs" Link="Renderes\ColorTables\Office\Office2003SilverColorTable.cs" />
+    <Compile Include="..\Presentation.Forms\Renderes\ColorTables\Office\Office2007ColorTable.cs" Link="Renderes\ColorTables\Office\Office2007ColorTable.cs" />
+    <Compile Include="..\Presentation.Forms\Renderes\ColorTables\Office\OfficeClassicColorTable.cs" Link="Renderes\ColorTables\Office\OfficeClassicColorTable.cs" />
+    <Compile Include="..\Presentation.Forms\Renderes\ColorTables\Office\OfficeXPColorTable.cs" Link="Renderes\ColorTables\Office\OfficeXPColorTable.cs" />
+    <Compile Include="..\Support.Windows\Errors.cs" Link="NativeMethods\Errors.cs" />
+    <Compile Include="..\Support.Windows\ExternDll.cs" Link="ExternDll.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Dwmapi.cs" Link="NativeMethods\Dwmapi.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Gdi32.cs" Link="NativeMethods\Gdi32.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Kernel32.cs" Link="NativeMethods\Kernel32.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\User32.cs" Link="NativeMethods\User32.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\Presentation.Forms\Controls\AnimatedBitmap.resx" Link="Controls\AnimatedBitmap.resx" />
+    <EmbeddedResource Include="..\Presentation.Forms\Controls\BlinkingImage.resx" Link="Controls\BlinkingImage.resx" />
+    <EmbeddedResource Include="..\Presentation.Forms\Controls\DynamicControl.resx" Link="Controls\DynamicControl.resx" />
+    <EmbeddedResource Include="..\Presentation.Forms\Controls\XMLViewer.resx" Link="Controls\XMLViewer.resx" />
+    <EmbeddedResource Include="..\Presentation.Forms\Designers\CustomAppearancePropertyEditor.resx" Link="Designers\CustomAppearancePropertyEditor.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Customs\" />
+    <Folder Include="Designers\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="NativeMethods\" />
+    <Folder Include="Providers\" />
+    <Folder Include="Properties\" />
+    <Folder Include="Renderes\ColorTables\Office\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Bcl.Build.Symbols" Version="1.1.27">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Support.Drawing.NetCore\Support.Drawing.csproj" />
+    <ProjectReference Include="..\Support.NetCore\Support.csproj" />
+  </ItemGroup>
+</Project>

@@ -4,21 +4,22 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/ennerperez/platform</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/ennerperez/platform/master/src/.editoricon.png</iconUrl>
+    <authors>$author$</authors>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <icon>.editoricon.png</icon>
+    <projectUrl>https://github.com/ennerperez/platform</projectUrl>
     <description>Libset for agile software development</description>
     <summary>$description$</summary>
-    <releaseNotes />
     <copyright>$copyright$</copyright>
-    <language>en</language>
     <tags>.NET Framework Base Development Platform</tags>
+    <repository type="git" url="https://github.com/ennerperez/platform" />
     <dependencies>
+      <!--
       <group targetFramework=".NETFramework2.0" />
       <group targetFramework=".NETFramework3.5" />
+      -->
       <group targetFramework=".NETFramework4.0">
         <dependency id="Platform.Support.Core" version="$version$" />
         <dependency id="Platform.Support.Drawing" version="$version$" />
@@ -27,12 +28,22 @@
         <dependency id="Platform.Support.Core" version="$version$" />
         <dependency id="Platform.Support.Drawing" version="$version$" />
       </group>
-      <group targetFramework=".NETPortable0.0-Profile328" />
-      <group targetFramework=".NETPortable0.0-Profile78" />
+      <!--<group targetFramework=".NETPortable0.0-Profile259" />
+      <group targetFramework=".NETPortable0.0-Profile328" />-->
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Platform.Support.Core" version="$version$" />
+        <dependency id="Platform.Support.Drawing" version="$version$" />
+      </group>
     </dependencies>
   </metadata>
   <files>
+    <file src="..\.editoricon.png" target=".editoricon.png" />
+    <file src="..\..\README.md" target="README.md" />
+    <file src="..\..\CHANGELOG.md" target="CHANGELOG.md" />
+    <!-- NETFX -->
     <file src="..\Presentation.Forms\bin\release\Platform.Presentation.Forms.dll" target="lib\net40\Platform.Presentation.Forms.dll" />
     <file src="..\Presentation.Forms.Net45\bin\release\Platform.Presentation.Forms.dll" target="lib\net45\Platform.Presentation.Forms.dll" />
+    <!-- NETCORE -->
+    <file src="..\Presentation.Forms.NetCore\bin\release\netcoreapp3.1\Platform.Presentation.Forms.dll" target="lib\netstandard2.0\Platform.Presentation.Forms.dll" />
   </files>
 </package>
