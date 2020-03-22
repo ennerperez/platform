@@ -66,8 +66,7 @@ Task("Build")
 				    if (IsRunningOnWindows())
                     {
                         var settings = new MSBuildSettings()
-                        .UseToolVersion(MSBuildToolVersion.VS2019)
-			            .WithProperty("VisualStudioVersion", new string[]{"16.0"})
+                        .UseToolVersion(MSBuildToolVersion.NET46)
                         .WithProperty("PackageVersion", version)
                         .WithProperty("BuildSymbolsPackage", "false")
                         .WithProperty("OutputPath", outputPath);
