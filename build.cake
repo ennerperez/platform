@@ -34,10 +34,10 @@ var version = EnvironmentVariable("APPVEYOR_BUILD_VERSION") ?? Argument("version
 Task("Clean")
     .Does(() =>
 {
-    //CleanDirectory(buildDir);
+    CleanDirectory(buildDir);
     CleanDirectories("./**/bin");
     CleanDirectories("./**/obj");
-	//CleanDirectories("./**/samples/packages");
+	CleanDirectories("./**/samples/packages");
 });
 
 Task("Restore-NuGet-Packages")
@@ -62,12 +62,14 @@ Task("Build")
             {
                 foreach (var file in folder.GetFiles("*.csproj"))
                 {
+                    var outputPath = System.IO.Path.Combine("./", file.Directory.FullName, "bin", configuration);
 				    if (IsRunningOnWindows())
                     {
                         var settings = new MSBuildSettings()
                         .WithProperty("PackageVersion", version)
                         .WithProperty("BuildSymbolsPackage", "false")
-                        .WithProperty("ToolVersion","MSBuildToolVersion.VS2019");
+                        .WithProperty("ToolVersion","MSBuildToolVersion.VS2019")
+                        .WithProperty("OutputPath", outputPath);
                         settings.SetConfiguration(configuration);
                         // Use MSBuild
                         MSBuild(file.FullName, settings);
@@ -76,7 +78,8 @@ Task("Build")
                     {
                         var settings = new XBuildSettings()
                         .WithProperty("PackageVersion", version)
-                        .WithProperty("BuildSymbolsPackage", "false");
+                        .WithProperty("BuildSymbolsPackage", "false")
+                        .WithProperty("OutputPath", outputPath);
                         settings.SetConfiguration(configuration);
                         // Use XBuild
                         XBuild(file.FullName, settings);
@@ -87,10 +90,12 @@ Task("Build")
             {
                 foreach (var file in folder.GetFiles("*.csproj"))
                 {
+                    var outputPath = System.IO.Path.Combine("./", file.Directory.FullName, "bin", configuration);
                     var netcoreBuildSettings = new DotNetCoreBuildSettings
                     {
                         Framework = "netcoreapp3.1",
-                        Configuration = "Release"
+                        Configuration = configuration,
+                        OutputDirectory = outputPath
                     };
                     DotNetCoreBuild(file.FullName, netcoreBuildSettings);
                 }
