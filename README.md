@@ -20,10 +20,11 @@ See the [changelog](CHANGELOG.md) for changes.
   - CRUD
   - MVC
   - SPS
+  - SPS Plugin
 - Support
-  - Data
-  - Web
   - Drawing
+  - Net
+  - Web
   - Windows
 
 ## Roadmap
@@ -33,8 +34,6 @@ See the [changelog](CHANGELOG.md) for changes.
 - [ ] Support Windows API Documentation
 - [ ] HTML Reporting engine
 - [ ] Build tools
-- [x] Support Web PCL
-- [x] Console Extensions
 
 ## TODO
 

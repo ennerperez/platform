@@ -3,9 +3,19 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [3.4.37] - [UNRELEASED]
+## [3.4.37] - [2020-03-22]
+
+### Added
+
 - NETCORE Libraries
+
+### Changed
+
 - NuGet Packages updated
+
+### Removed
+
+- Support Data lib
 
 ## [3.3.36] - [2018-11-27]
 
