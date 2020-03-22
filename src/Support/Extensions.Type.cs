@@ -120,7 +120,12 @@ namespace Platform.Support
 
         public static bool IsSemantic(this Version version)
         {
+#if NETFX_40 || NETFX_45
+            SemanticVersion value;
+            SemanticVersion.TryParse(version.ToString(), out value);
+#else
             SemanticVersion.TryParse(version.ToString(), out SemanticVersion value);
+#endif
             return value != null;
         }
     }

@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyName>Platform.Model.Core</AssemblyName>
+    <RootNamespace>Platform.Model</RootNamespace>
+    <Deterministic>false</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs" Link="Properties\AssemblyInfo.Common.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs" Link="Properties\AssemblyInfo.Platform.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs" Link="Properties\AssemblyInfo.Version.cs" />
+    <Compile Include="..\Model\Entities\Entities.cs" Link="Entities\Entities.cs" />
+    <Compile Include="..\Model\Entities\Entity.cs" Link="Entities\Entity.cs" />
+    <Compile Include="..\Model\Interfaces\IAuditable.cs" Link="Interfaces\IAuditable.cs" />
+    <Compile Include="..\Model\Interfaces\IEntity.cs" Link="Interfaces\IEntity.cs" />
+    <Compile Include="..\Model\Interfaces\ISynchronizable.cs" Link="Interfaces\ISynchronizable.cs" />
+    <Compile Include="..\Model\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Bcl.Build.Symbols" Version="1.1.27">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Support.NetCore\Support.csproj" />
+  </ItemGroup>
+</Project>

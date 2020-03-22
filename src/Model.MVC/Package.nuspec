@@ -4,21 +4,22 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://raw.githubusercontent.com/ennerperez/platform/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/ennerperez/platform</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/ennerperez/platform/master/src/.editoricon.png</iconUrl>
+    <authors>$author$</authors>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <icon>.editoricon.png</icon>
+    <projectUrl>https://github.com/ennerperez/platform</projectUrl>
     <description>Libset for agile software development</description>
     <summary>$description$</summary>
-    <releaseNotes />
     <copyright>$copyright$</copyright>
-    <language>en</language>
     <tags>.NET Framework Base Development Platform</tags>
+    <repository type="git" url="https://github.com/ennerperez/platform" />
     <dependencies>
+      <!--
       <group targetFramework=".NETFramework2.0" />
       <group targetFramework=".NETFramework3.5" />
+      -->
       <group targetFramework=".NETFramework4.0">
         <dependency id="Platform.Support.Core" version="$version$" />
         <dependency id="Platform.Model.Core" version="$version$" />
@@ -27,20 +28,31 @@
         <dependency id="Platform.Support.Core" version="$version$" />
         <dependency id="Platform.Model.Core" version="$version$" />
       </group>
+      <group targetFramework=".NETPortable0.0-Profile259">
+        <dependency id="Platform.Support.Core" version="$version$" />
+        <dependency id="Platform.Model.Core" version="$version$" />
+      </group>
       <group targetFramework=".NETPortable0.0-Profile328">
         <dependency id="Platform.Support.Core" version="$version$" />
         <dependency id="Platform.Model.Core" version="$version$" />
       </group>
-      <group targetFramework=".NETPortable0.0-Profile78">
+      <group targetFramework=".NETStandard2.0">
         <dependency id="Platform.Support.Core" version="$version$" />
         <dependency id="Platform.Model.Core" version="$version$" />
       </group>
     </dependencies>
   </metadata>
   <files>
+    <file src="..\.editoricon.png" target=".editoricon.png" />
+    <file src="..\..\README.md" target="README.md" />
+    <file src="..\..\CHANGELOG.md" target="CHANGELOG.md" />
+    <!-- NETFX -->
     <file src="..\Model.MVC\bin\release\Platform.Model.MVC.dll" target="lib\net40\Platform.Model.MVC.dll" />
     <file src="..\Model.MVC.Net45\bin\release\Platform.Model.MVC.dll" target="lib\net45\Platform.Model.MVC.dll" />
-    <file src="..\Model.MVC.PCL\bin\release\Platform.Model.MVC.PCL.dll" target="lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Model.MVC.PCL.dll" />
-    <file src="..\Model.MVC.PCL.Net45\bin\release\Platform.Model.MVC.PCL.dll" target="lib\portable-net45+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Platform.Model.MVC.PCL.dll" />
+    <!-- PCL -->
+    <file src="..\Model.MVC.PCL\bin\release\Platform.Model.MVC.PCL.dll" target="lib\portable-net40+sl5+win8+wp8+wpa81\Platform.Model.MVC.PCL.dll" />
+    <file src="..\Model.MVC.PCL.Net45\bin\release\Platform.Model.MVC.PCL.dll" target="lib\portable-net45+win8+wp8+wpa81\Platform.Model.MVC.PCL.dll" />
+    <!-- NETCORE -->
+    <file src="..\Model.MVC.NetCore\bin\release\netcoreapp3.1\Platform.Model.MVC.dll" target="lib\netstandard2.0\Platform.Model.MVC.dll" />
   </files>
 </package>

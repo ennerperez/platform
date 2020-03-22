@@ -1,0 +1,129 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyName>Platform.Support.Core</AssemblyName>
+    <RootNamespace>Platform.Support</RootNamespace>
+    <Deterministic>false</Deterministic>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\.files\AssemblyInfo.Common.cs" Link="Properties\AssemblyInfo.Common.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Platform.cs" Link="Properties\AssemblyInfo.Platform.cs" />
+    <Compile Include="..\..\.files\AssemblyInfo.Version.cs" Link="Properties\AssemblyInfo.Version.cs" />
+    <Compile Include="..\Support.Windows\Errors.cs" Link="NativeMethods\Errors.cs" />
+    <Compile Include="..\Support.Windows\ExternDll.cs" Link="ExternDll.cs" />
+    <Compile Include="..\Support.Windows\NativeMethods\Kernel32.cs" Link="NativeMethods\Kernel32.cs" />
+    <Compile Include="..\Support\Attributes\CallerAttributes.cs" Link="Attributes\CallerAttributes.cs" />
+    <Compile Include="..\Support\Attributes\LocalizedDescriptionAttribute.cs" Link="Attributes\LocalizedDescriptionAttribute.cs" />
+    <Compile Include="..\Support\Attributes\TagAttribute.cs" Link="Attributes\TagAttribute.cs" />
+    <Compile Include="..\Support\Collections\TypeListComparer.cs" Link="Collections\TypeListComparer.cs" />
+    <Compile Include="..\Support\ConsoleEx\ListBox.cs" Link="ConsoleEx\ListBox.cs" />
+    <Compile Include="..\Support\ConsoleEx\ProgressBar.cs" Link="ConsoleEx\ProgressBar.cs" />
+    <Compile Include="..\Support\ConsoleEx\Spinner.cs" Link="ConsoleEx\Spinner.cs" />
+    <Compile Include="..\Support\Core.cs" Link="Core.cs" />
+    <Compile Include="..\Support\Diagnostics\Utilities.cs" Link="Diagnostics\Utilities.cs" />
+    <Compile Include="..\Support\DisposableObject.cs" Link="DisposableObject.cs" />
+    <Compile Include="..\Support\Extensions.Collections.cs" Link="Extensions.Collections.cs" />
+    <Compile Include="..\Support\Extensions.Cryptography.cs" Link="Extensions.Cryptography.cs" />
+    <Compile Include="..\Support\Extensions.cs" Link="Extensions.cs" />
+    <Compile Include="..\Support\Extensions.DateTime.cs" Link="Extensions.DateTime.cs" />
+    <Compile Include="..\Support\Extensions.Debug.cs" Link="Extensions.Debug.cs" />
+    <Compile Include="..\Support\Extensions.Enum.cs" Link="Extensions.Enum.cs" />
+    <Compile Include="..\Support\Extensions.FileInfo.cs" Link="Extensions.FileInfo.cs" />
+    <Compile Include="..\Support\Extensions.Math.cs" Link="Extensions.Math.cs" />
+    <Compile Include="..\Support\Extensions.Reflection.cs" Link="Extensions.Reflection.cs" />
+    <Compile Include="..\Support\Extensions.Security.cs" Link="Extensions.Security.cs" />
+    <Compile Include="..\Support\Extensions.Shortcut.cs" Link="Extensions.Shortcut.cs" />
+    <Compile Include="..\Support\Extensions.Stream.cs" Link="Extensions.Stream.cs" />
+    <Compile Include="..\Support\Extensions.String.cs" Link="Extensions.String.cs" />
+    <Compile Include="..\Support\Extensions.Threading.cs" Link="Extensions.Threading.cs" />
+    <Compile Include="..\Support\Extensions.Type.cs" Link="Extensions.Type.cs" />
+    <Compile Include="..\Support\IO\IniFile.cs" Link="IO\IniFile.cs" />
+    <Compile Include="..\Support\IO\ProgressUpdate.cs" Link="IO\ProgressUpdate.cs" />
+    <Compile Include="..\Support\IO\Shortcut.cs" Link="IO\Shortcut.cs" />
+    <Compile Include="..\Support\IO\Utilities.cs" Link="IO\Utilities.cs" />
+    <Compile Include="..\Support\Localization\LocalizedException.cs" Link="Localization\LocalizedException.cs" />
+    <Compile Include="..\Support\Localization\ResourceEnumConverter.cs" Link="Localization\ResourceEnumConverter.cs" />
+    <Compile Include="..\Support\Managers\BrandingManager.cs" Link="Managers\BrandingManager.cs" />
+    <Compile Include="..\Support\Managers\ConfigurationManager.cs" Link="Managers\ConfigurationManager.cs" />
+    <Compile Include="..\Support\Math.cs" Link="Math.cs" />
+    <Compile Include="..\Support\NativeMethods.cs" Link="NativeMethods.cs" />
+    <Compile Include="..\Support\NoSuitableEngineException.cs" Link="NoSuitableEngineException.cs" />
+    <Compile Include="..\Support\Obsolete.cs" Link="Obsolete.cs" />
+    <Compile Include="..\Support\OS\Environment.cs" Link="OS\Environment.cs" />
+    <Compile Include="..\Support\Parameter.cs" Link="Parameter.cs" />
+    <Compile Include="..\Support\Properties\AssemblyInfo.cs" Link="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\Support\Reflection\ApplicationInfo.cs" Link="Reflection\ApplicationInfo.cs" />
+    <Compile Include="..\Support\Reflection\AssemblyBuildDateAttribute.cs" Link="Reflection\AssemblyBuildDateAttribute.cs" />
+    <Compile Include="..\Support\Reflection\AssemblyCompanyIdAttribute.cs" Link="Reflection\AssemblyCompanyIdAttribute.cs" />
+    <Compile Include="..\Support\Reflection\AssemblyCompanyUrlAttribute.cs" Link="Reflection\AssemblyCompanyUrlAttribute.cs" />
+    <Compile Include="..\Support\Reflection\AssemblyContactInformationAttribute.cs" Link="Reflection\AssemblyContactInformationAttribute.cs" />
+    <Compile Include="..\Support\Reflection\AssemblyDeveloperAttribute.cs" Link="Reflection\AssemblyDeveloperAttribute.cs" />
+    <Compile Include="..\Support\Reflection\AssemblyExternalRefAttribute.cs" Link="Reflection\AssemblyExternalRefAttribute.cs" />
+    <Compile Include="..\Support\Reflection\AssemblyLicenseAttribute.cs" Link="Reflection\AssemblyLicenseAttribute.cs" />
+    <Compile Include="..\Support\Reflection\AssemblyMadeInAttribute.cs" Link="Reflection\AssemblyMadeInAttribute.cs" />
+    <Compile Include="..\Support\Reflection\AssemblyOwnerAttribute.cs" Link="Reflection\AssemblyOwnerAttribute.cs" />
+    <Compile Include="..\Support\Reflection\AssemblyProductLevelAttribute.cs" Link="Reflection\AssemblyProductLevelAttribute.cs" />
+    <Compile Include="..\Support\Reflection\AssemblyRepoAttribute.cs" Link="Reflection\AssemblyRepoAttribute.cs" />
+    <Compile Include="..\Support\Reflection\AssemblyThirdPartyAttribute.cs" Link="Reflection\AssemblyThirdPartyAttribute.cs" />
+    <Compile Include="..\Support\Reflection\DynamicInvoke.cs" Link="Reflection\DynamicInvoke.cs" />
+    <Compile Include="..\Support\Reflection\IReflectionService.cs" Link="Reflection\IReflectionService.cs" />
+    <Compile Include="..\Support\Reflection\PropertyNotifierService.cs" Link="Reflection\PropertyNotifierService.cs" />
+    <Compile Include="..\Support\Reflection\ReflectionService.cs" Link="Reflection\ReflectionService.cs" />
+    <Compile Include="..\Support\Reflection\ReflectOn.cs" Link="Reflection\ReflectOn.cs" />
+    <Compile Include="..\Support\Reflection\Utilities.cs" Link="Reflection\Utilities.cs" />
+    <Compile Include="..\Support\Security\Cryptography\CRC32.cs" Link="Security\Cryptography\CRC32.cs" />
+    <Compile Include="..\Support\Security\Cryptography\Encryption\Data.cs" Link="Security\Cryptography\Encryption\Data.cs" />
+    <Compile Include="..\Support\Security\Cryptography\Encryption\Hash.cs" Link="Security\Cryptography\Encryption\Hash.cs" />
+    <Compile Include="..\Support\Security\PasswordHash.cs" Link="Security\PasswordHash.cs" />
+    <Compile Include="..\Support\SemanticVersion.cs" Link="SemanticVersion.cs" />
+    <Compile Include="..\Support\Singleton.cs" Link="Singleton.cs" />
+    <Compile Include="..\Support\Text\CharacterEncoder.cs" Link="Text\CharacterEncoder.cs" />
+    <Compile Include="..\Support\Text\Generator.cs" Link="Text\Generator.cs" />
+    <Compile Include="..\Support\Text\Markdown.cs" Link="Text\Markdown.cs" />
+    <Compile Include="..\Support\Threading\FuncAwaitable.cs" Link="Threading\FuncAwaitable.cs" />
+    <Compile Include="..\Support\Threading\FuncAwaiter.cs" Link="Threading\FuncAwaiter.cs" />
+    <Compile Include="..\Support\Threading\IAwaitable.cs" Link="Threading\IAwaitable.cs" />
+    <Compile Include="..\Support\ValueConverter.cs" Link="ValueConverter.cs" />
+    <Compile Include="..\Support\VariantType.cs" Link="VariantType.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Attributes\" />
+    <Folder Include="IO\" />
+    <Folder Include="Collections\" />
+    <Folder Include="ConsoleEx\" />
+    <Folder Include="Diagnostics\" />
+    <Folder Include="Localization\" />
+    <Folder Include="Managers\" />
+    <Folder Include="NativeMethods\" />
+    <Folder Include="Properties\" />
+    <Folder Include="Threading\" />
+    <Folder Include="Text\" />
+    <Folder Include="Schemas\" />
+    <Folder Include="OS\" />
+    <Folder Include="Reflection\" />
+    <Folder Include="Security\Cryptography\Encryption\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\Support\Schemas\BrandingSchema.xsd" Link="Schemas\BrandingSchema.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Bcl.Build.Symbols" Version="1.1.27">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

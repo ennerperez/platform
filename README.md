@@ -13,10 +13,19 @@ See the [changelog](CHANGELOG.md) for changes.
 
 ## Blocks
 
-|-|
-|Presentation|Forms|Reporting
-|Model|CRUD|MVC|SPS|
-|Support|Data|Web|Drawing|Windows
+- Presentation
+  - Forms
+  - Reporting
+- Model
+  - CRUD
+  - MVC
+  - SPS
+  - SPS Plugin
+- Support
+  - Drawing
+  - Net
+  - Web
+  - Windows
 
 ## Roadmap
 
@@ -25,8 +34,6 @@ See the [changelog](CHANGELOG.md) for changes.
 - [ ] Support Windows API Documentation
 - [ ] HTML Reporting engine
 - [ ] Build tools
-- [x] Support Web PCL
-- [x] Console Extensions
 
 ## TODO
 
