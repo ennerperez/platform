@@ -1,7 +1,4 @@
-﻿#if !NETCORE
-using Platform.Presentation.Reports.Windows.Forms;
-#endif
-
+﻿using Platform.Presentation.Reports.Windows.Forms;
 using Platform.Samples.Core.Models;
 using Platform.Support.Collections;
 using System;
@@ -61,7 +58,6 @@ namespace Platform.Samples.Forms
             panelZoom.Visible = true;
             trackBarZoom.Value = 100;
 
-#if !NETCORE
             var viewer = new RazorReportViewer()
             {
                 Dock = DockStyle.Fill,
@@ -78,7 +74,6 @@ namespace Platform.Samples.Forms
             splitContainerMain.Panel2.Controls.Add(ReportViewer);
             ReportViewer.BringToFront();
             (viewer as RazorReportViewer).Show();
-#endif
         }
 
         private void RDCLChild_Click(object sender, System.EventArgs e)

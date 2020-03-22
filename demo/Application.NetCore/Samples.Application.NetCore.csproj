@@ -11,6 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Reports\Person.cshtml" />
+    <None Remove="Reports\Persons.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="..\..\.files\AssemblyInfo.Common.cs" Link="Properties\AssemblyInfo.Common.cs" />
     <Compile Include="..\..\.files\AssemblyInfo.Platform.cs" Link="Properties\AssemblyInfo.Platform.cs" />
     <Compile Include="..\..\.files\AssemblyInfo.Version.cs" Link="Properties\AssemblyInfo.Version.cs" />
@@ -30,7 +35,6 @@
 
   <ItemGroup>
     <Folder Include="Forms\" />
-    <Folder Include="Reports\" />
     <Folder Include="Palettes\" />
     <Folder Include="Properties\" />
   </ItemGroup>
@@ -45,14 +49,12 @@
     <Content Include="..\Application\Palettes\colors_green_teal.xml" Link="Palettes\colors_green_teal.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\Application\Reports\Person.cshtml" Link="Reports\Person.cshtml" />
-    <Content Include="..\Application\Reports\Persons.cshtml" Link="Reports\Persons.cshtml">
+    <Content Include="Reports\Person.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\Application\Reports\Persons.rdcl" Link="Reports\Persons.rdcl" />
+    <Content Include="Reports\Persons.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -67,11 +69,14 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Platform.Presentation.Windows.Forms" Version="3.4.37.15142201" />
-    <PackageReference Include="Platform.Support.Core" Version="3.4.37.15142201" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Presentation.Forms.NetCore\Presentation.Forms.csproj" />
+    <ProjectReference Include="..\..\src\Presentation.Reports.Forms.NetCore\Presentation.Reports.Forms.csproj" />
+    <ProjectReference Include="..\..\src\Presentation.Reports.NetCore\Presentation.Reports.csproj" />
+    <ProjectReference Include="..\..\src\Support.Drawing.NetCore\Support.Drawing.csproj" />
+    <ProjectReference Include="..\..\src\Support.NetCore\Support.csproj" />
     <ProjectReference Include="..\Core.NetCore\Samples.Core.NetCore.csproj" />
   </ItemGroup>
 </Project>

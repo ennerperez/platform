@@ -60,14 +60,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Platform.Model.Core.PCL, Version=3.4.37.25865, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Platform.Model.Core.3.4.37.15142201\lib\portable-net45+win8+wp8+wpa81\Platform.Model.Core.PCL.dll</HintPath>
-    </Reference>
-    <Reference Include="Platform.Support.Core.PCL, Version=3.4.37.25865, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Platform.Support.Core.3.4.37.15142201\lib\portable-net45+win8+wp8+wpa81\Platform.Support.Core.PCL.dll</HintPath>
-    </Reference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.27\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.27\build\Microsoft.Bcl.Build.Symbols.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
