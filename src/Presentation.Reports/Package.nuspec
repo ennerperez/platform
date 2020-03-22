@@ -30,6 +30,10 @@
       </group>
       <!--<group targetFramework=".NETPortable0.0-Profile259" />
       <group targetFramework=".NETPortable0.0-Profile328" />-->
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Platform.Support.Core" version="$version$" />
+        <dependency id="RazorEngine.NetCore" version="2.2.6" />
+      </group>
     </dependencies>
   </metadata>
   <files>
@@ -39,5 +43,7 @@
     <!-- NETFX -->
     <file src="..\Presentation.Reports\bin\release\Platform.Presentation.Reports.dll" target="lib\net40\Platform.Presentation.Reports.dll" />
     <file src="..\Presentation.Reports.Net45\bin\release\Platform.Presentation.Reports.dll" target="lib\net45\Platform.Presentation.Reports.dll" />
+    <!-- NETCORE -->
+    <file src="..\Presentation.Reports.NetCore\bin\release\netcoreapp3.1\Platform.Presentation.Reports.dll" target="lib\netstandard2.0\Platform.Presentation.Reports.dll" />
   </files>
 </package>

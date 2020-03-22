@@ -18,7 +18,7 @@ namespace Platform.Presentation.Reports.Razor
 
     public class ReportBuilder<T> : IRazorReportBuilder<T>
     {
-        private IRazorEngineService Engine = null;
+        private readonly IRazorEngineService Engine = null;
 
         private string name;
         private string mainTemplate;
@@ -68,10 +68,10 @@ namespace Platform.Presentation.Reports.Razor
             {
                 var template = PrepareTemplate();
                 Engine.AddTemplate(name, template);
-                Engine.Compile(template, name, typeof(T));
+                Engine.Compile(template, name, model.GetType());// typeof(T));
                 needsCompilation = false;
             }
-            return Engine.Run(name, typeof(T), model != null ? model : default(T), viewBag);
+            return Engine.Run(name, model != null ? model.GetType() : typeof(T), model != null ? model : default(T), viewBag);
         }
 
         private string Report(T model)
