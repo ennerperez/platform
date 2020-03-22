@@ -48,6 +48,6 @@
     <file src="..\Model.PCL\bin\release\Platform.Model.Core.PCL.dll" target="lib\portable-net40+sl5+win8+wp8+wpa81\Platform.Model.Core.PCL.dll" />
     <file src="..\Model.PCL.Net45\bin\release\Platform.Model.Core.PCL.dll" target="lib\portable-net45+win8+wp8+wpa81\Platform.Model.Core.PCL.dll" />
     <!-- NETCORE -->
-    <file src="..\Model.NetCore\bin\release\netcoreapp3.1\Platform.Model.Core.dll" target="lib\netstandard2.0\Platform.Model.Core.dll" />
+    <file src="..\Model.NetCore\bin\release\Platform.Model.Core.dll" target="lib\netstandard2.0\Platform.Model.Core.dll" />
   </files>
 </package>
