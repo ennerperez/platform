@@ -35,7 +35,11 @@ namespace Platform.Support
 
             public override string ToString()
             {
+#if NETFX_40
+                return "https://github.com/" + Owner + "/" + Name;
+#else
                 return $"https://github.com/{Owner}/{Name}";
+#endif
             }
         }
     }

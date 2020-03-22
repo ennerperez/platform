@@ -71,7 +71,11 @@ namespace Platform.Support.IO
             link.SetWorkingDirectory(workDir ?? new FileInfo(fileName).Directory.FullName);
             link.SetArguments(args);
 
+#if NETFX_40
+            var result = Path.Combine(targetPath, name + ".lnk");
+#else
             var result = Path.Combine(targetPath, $"{name}.lnk");
+#endif
 
             var file = (IPersistFile)link;
             file.Save(result, false);

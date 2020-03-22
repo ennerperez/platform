@@ -28,7 +28,11 @@ namespace Platform.Support
 
             public override string ToString()
             {
+#if NETFX_40
+                return File + (!string.IsNullOrEmpty(Arguments) ? " " + Arguments : "");
+#else
                 return $"{File}{(!string.IsNullOrEmpty(Arguments) ? " " + Arguments : "")}";
+#endif
             }
         }
     }
