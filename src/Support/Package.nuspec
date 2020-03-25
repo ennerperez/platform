@@ -15,17 +15,17 @@
     <copyright>$copyright$</copyright>
     <tags>.NET Framework Base Development Platform</tags>
     <repository type="git" url="https://github.com/ennerperez/platform" />
-    <!--
     <dependencies>
+      <!--
       <group targetFramework=".NETFramework2.0" />
       <group targetFramework=".NETFramework3.5" />
+      -->
       <group targetFramework=".NETFramework4.0" />
       <group targetFramework=".NETFramework4.5" />
       <group targetFramework=".NETPortable0.0-Profile259" />
       <group targetFramework=".NETPortable0.0-Profile328" />
       <group targetFramework=".NETStandard2.0" />
     </dependencies>
-    -->
   </metadata>
   <files>
     <file src="..\.editoricon.png" target=".editoricon.png" />
