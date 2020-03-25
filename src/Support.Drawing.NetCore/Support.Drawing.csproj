@@ -6,13 +6,6 @@
     <AssemblyName>Platform.Support.Drawing</AssemblyName>
     <RootNamespace>Platform.Support.Drawing</RootNamespace>
     <Deterministic>false</Deterministic>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
