@@ -51,17 +51,24 @@ Task("Restore-NuGet-Packages")
     }
 });
 
-Task("Build")
+Task("BuildCore")
     .IsDependentOn("Restore-NuGet-Packages")
     .Does(() =>
 {
-
     var netcoreBuildSettings = new DotNetCoreBuildSettings
     {
         Framework = "netcoreapp3.1",
         Configuration = configuration
     };
     DotNetCoreBuild(solutions.ElementAt(0).Key, netcoreBuildSettings);
+});
+
+Task("Build")
+    .IsDependentOn("BuildCore")
+    .Does(() =>
+{
+
+    
     if (IsRunningOnWindows())
     {
         var settings = new MSBuildSettings()
@@ -84,7 +91,6 @@ Task("Build")
 });
 
 Task("Build-NuGet-Packages")
-    .IsDependentOn("Build")
     .Does(() =>
     {
         foreach (var folder in new System.IO.FileInfo(solutions.ElementAt(1).Key).Directory.GetDirectories())
