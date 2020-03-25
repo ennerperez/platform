@@ -42,6 +42,6 @@
     <file src="..\Support.Drawing\bin\release\Platform.Support.Drawing.dll" target="lib\net40\Platform.Support.Drawing.dll" />
     <file src="..\Support.Drawing.Net45\bin\release\Platform.Support.Drawing.dll" target="lib\net45\Platform.Support.Drawing.dll" />
     <!-- NETCORE -->
-    <file src="..\Support.Drawing.NetCore\bin\release\Platform.Support.Drawing.dll" target="lib\netstandard2.0\Platform.Support.Drawing.dll" />
+    <file src="..\Support.Drawing.NetCore\bin\release\netcoreapp3.1\Platform.Support.Drawing.dll" target="lib\netstandard2.0\Platform.Support.Drawing.dll" />
   </files>
 </package>

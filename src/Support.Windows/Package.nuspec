@@ -43,6 +43,6 @@
     <file src="..\Support.Windows\bin\release\Platform.Support.Windows.dll" target="lib\net40\Platform.Support.Windows.dll" />
     <file src="..\Support.Windows.Net45\bin\release\Platform.Support.Windows.dll" target="lib\net45\Platform.Support.Windows.dll" />
     <!-- NETCORE -->
-    <file src="..\Support.Windows.NetCore\bin\release\Platform.Support.Windows.dll" target="lib\netstandard2.0\Platform.Support.Windows.dll" />
+    <file src="..\Support.Windows.NetCore\bin\release\netcoreapp3.1\Platform.Support.Windows.dll" target="lib\netstandard2.0\Platform.Support.Windows.dll" />
   </files>
 </package>

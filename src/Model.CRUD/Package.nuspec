@@ -53,6 +53,6 @@
     <file src="..\Model.CRUD.PCL\bin\release\Platform.Model.CRUD.PCL.dll" target="lib\portable-net40+sl5+win8+wp8+wpa81\Platform.Model.CRUD.PCL.dll" />
     <file src="..\Model.CRUD.PCL.Net45\bin\release\Platform.Model.CRUD.PCL.dll" target="lib\portable-net45+win8+wp8+wpa81\Platform.Model.CRUD.PCL.dll" />
     <!-- NETCORE -->
-    <file src="..\Model.CRUD.NetCore\bin\release\Platform.Model.CRUD.dll" target="lib\netstandard2.0\Platform.Model.CRUD.dll" />
+    <file src="..\Model.CRUD.NetCore\bin\release\netcoreapp3.1\Platform.Model.CRUD.dll" target="lib\netstandard2.0\Platform.Model.CRUD.dll" />
   </files>
 </package>

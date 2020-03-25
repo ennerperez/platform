@@ -48,6 +48,6 @@
     <file src="..\Presentation.Reports.Forms\bin\release\Platform.Presentation.Reports.Forms.dll" target="lib\net40\Platform.Presentation.Reports.Forms.dll" />
     <file src="..\Presentation.Reports.Forms.Net45\bin\release\Platform.Presentation.Reports.Forms.dll" target="lib\net45\Platform.Presentation.Reports.Forms.dll" />
     <!-- NETCORE -->
-    <file src="..\Presentation.Reports.Forms.NetCore\bin\release\Platform.Presentation.Reports.Forms.dll" target="lib\netstandard2.0\Platform.Presentation.Reports.Forms.dll" />
+    <file src="..\Presentation.Reports.Forms.NetCore\bin\release\netcoreapp3.1\Platform.Presentation.Reports.Forms.dll" target="lib\netstandard2.0\Platform.Presentation.Reports.Forms.dll" />
   </files>
 </package>
