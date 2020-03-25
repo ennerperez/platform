@@ -50,6 +50,6 @@
     <file src="..\Model.SPS\bin\release\Platform.Model.SPS.dll" target="lib\net40\Platform.Model.SPS.dll" />
     <file src="..\Model.SPS.Net45\bin\release\Platform.Model.SPS.dll" target="lib\net45\Platform.Model.SPS.dll" />
     <!-- NETCORE -->
-    <file src="..\Model.SPS.NetCore\bin\release\Platform.Model.SPS.dll" target="lib\netstandard2.0\Platform.Model.SPS.dll" />
+    <file src="..\Model.SPS.NetCore\bin\release\netcoreapp3.1\Platform.Model.SPS.dll" target="lib\netstandard2.0\Platform.Model.SPS.dll" />
   </files>
 </package>
