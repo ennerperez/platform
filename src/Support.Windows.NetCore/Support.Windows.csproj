@@ -6,14 +6,6 @@
     <Deterministic>false</Deterministic>
     <AssemblyName>Platform.Support.Windows</AssemblyName>
     <RootNamespace>Platform.Support.Windows</RootNamespace>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DefineConstants>TRACE;INTEROP;</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>TRACE;INTEROP;</DefineConstants>
   </PropertyGroup>
